@@ -17,6 +17,8 @@
 #include "task.h"
 #include "queue.h"
 
+
+
 QueueHandle_t xQueueNutrientPump;
 
 const uint8 MAX_SPEED = 6;
@@ -30,7 +32,13 @@ void vNutrientsInit() {
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
-    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, NULL, 1, NULL); 
+    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, NULL, 2, NULL); 
+    
+    /*Initialize test tasks*/
+    #if NUTRIENTSTEST == 1
+        vTestTaskInit();
+    #endif
+    
     
 }
 
@@ -57,7 +65,42 @@ void vTaskNutrientPump() {
     
 }
 
+
+
+
+
+/* --- TEST TASK --- */
+
+/*
+    Task for testing existing implementations.
+
+    DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+    for your current implementation/testing
+    
+    All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
+
+    
+*/
+
+void vTestTaskInit(){
+    xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
+}
+
+
 void vTestTaskNutrientPump() {
+    _Bool bTestState = 1;
+    const TickType_t xDelay500ms = pdMS_TO_TICKS( 500 );
+    
+    for(;;) {
+        if(bTestState == 1)
+            bTestState = 0;
+        else
+            bTestState = 1;
+        
+        xQueueSendToBack(xQueueNutrientPump, &bTestState, portMAX_DELAY);
+        
+        vTaskDelay(xDelay500ms);
+    }
     
 
 }

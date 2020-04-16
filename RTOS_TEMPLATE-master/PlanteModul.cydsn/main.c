@@ -33,6 +33,10 @@
 #include "queue.h"
 #include "semphr.h"
 
+/* Plantemodul includes */
+#include "Nutrients.h"
+
+
 /* The time between cycles of the 'check' functionality (defined within the
 tick hook. */
 #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
@@ -55,6 +59,10 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
+    vNutrientsInit(); //initialize Nutrients control task and parameteres
+     
+    
+    
     xTaskCreate(vTaskPWMTesk, "test PWM" , 1000 , NULL , 3 , NULL);
     
 	/* Will only get here if there was insufficient memory to create the idle
@@ -75,7 +83,6 @@ void vTaskPWMTesk(void *pvParameter){
     const uint8 max_speed = 6;
     const uint8 stop_speed = 19;
     int status = 1;
-    
     for(;;){
         if(status == 1){
             PWM_PERISTALTISK_WriteCompare1(max_speed);
@@ -112,8 +119,10 @@ extern cyisraddress CyRamVectors[];
 
     
 	/* Start-up the peripherals. */
-    PWM_PERISTALTISK_Start();
-
+    
+    
+    PWM_PERISTALTISK_Start(); //start PWM module
+    
 }
 /*---------------------------------------------------------------------------*/
 
