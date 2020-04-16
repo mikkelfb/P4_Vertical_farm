@@ -1,0 +1,2778 @@
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"port.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.data
+  20              		.align	2
+  21              		.type	uxCriticalNesting, %object
+  22              		.size	uxCriticalNesting, 4
+  23              	uxCriticalNesting:
+  24 0000 AAAAAAAA 		.word	-1431655766
+  25              		.section	.text.pxPortInitialiseStack,"ax",%progbits
+  26              		.align	2
+  27              		.global	pxPortInitialiseStack
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	pxPortInitialiseStack, %function
+  31              	pxPortInitialiseStack:
+  32              	.LFB68:
+  33              		.file 1 "Source\\portable\\GCC\\ARM_CM3\\port.c"
+   1:Source\portable\GCC\ARM_CM3/port.c **** /*
+   2:Source\portable\GCC\ARM_CM3/port.c ****  * FreeRTOS Kernel V10.3.1
+   3:Source\portable\GCC\ARM_CM3/port.c ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:Source\portable\GCC\ARM_CM3/port.c ****  *
+   5:Source\portable\GCC\ARM_CM3/port.c ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:Source\portable\GCC\ARM_CM3/port.c ****  * this software and associated documentation files (the "Software"), to deal in
+   7:Source\portable\GCC\ARM_CM3/port.c ****  * the Software without restriction, including without limitation the rights to
+   8:Source\portable\GCC\ARM_CM3/port.c ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:Source\portable\GCC\ARM_CM3/port.c ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:Source\portable\GCC\ARM_CM3/port.c ****  * subject to the following conditions:
+  11:Source\portable\GCC\ARM_CM3/port.c ****  *
+  12:Source\portable\GCC\ARM_CM3/port.c ****  * The above copyright notice and this permission notice shall be included in all
+  13:Source\portable\GCC\ARM_CM3/port.c ****  * copies or substantial portions of the Software.
+  14:Source\portable\GCC\ARM_CM3/port.c ****  *
+  15:Source\portable\GCC\ARM_CM3/port.c ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:Source\portable\GCC\ARM_CM3/port.c ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:Source\portable\GCC\ARM_CM3/port.c ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:Source\portable\GCC\ARM_CM3/port.c ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+  19:Source\portable\GCC\ARM_CM3/port.c ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:Source\portable\GCC\ARM_CM3/port.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:Source\portable\GCC\ARM_CM3/port.c ****  *
+  22:Source\portable\GCC\ARM_CM3/port.c ****  * http://www.FreeRTOS.org
+  23:Source\portable\GCC\ARM_CM3/port.c ****  * http://aws.amazon.com/freertos
+  24:Source\portable\GCC\ARM_CM3/port.c ****  *
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 2
+
+
+  25:Source\portable\GCC\ARM_CM3/port.c ****  * 1 tab == 4 spaces!
+  26:Source\portable\GCC\ARM_CM3/port.c ****  */
+  27:Source\portable\GCC\ARM_CM3/port.c **** 
+  28:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------
+  29:Source\portable\GCC\ARM_CM3/port.c ****  * Implementation of functions defined in portable.h for the ARM CM3 port.
+  30:Source\portable\GCC\ARM_CM3/port.c ****  *----------------------------------------------------------*/
+  31:Source\portable\GCC\ARM_CM3/port.c **** 
+  32:Source\portable\GCC\ARM_CM3/port.c **** /* Scheduler includes. */
+  33:Source\portable\GCC\ARM_CM3/port.c **** #include "FreeRTOS.h"
+  34:Source\portable\GCC\ARM_CM3/port.c **** #include "task.h"
+  35:Source\portable\GCC\ARM_CM3/port.c **** 
+  36:Source\portable\GCC\ARM_CM3/port.c **** /* For backward compatibility, ensure configKERNEL_INTERRUPT_PRIORITY is
+  37:Source\portable\GCC\ARM_CM3/port.c **** defined.  The value should also ensure backward compatibility.
+  38:Source\portable\GCC\ARM_CM3/port.c **** FreeRTOS.org versions prior to V4.4.0 did not include this definition. */
+  39:Source\portable\GCC\ARM_CM3/port.c **** #ifndef configKERNEL_INTERRUPT_PRIORITY
+  40:Source\portable\GCC\ARM_CM3/port.c **** 	#define configKERNEL_INTERRUPT_PRIORITY 255
+  41:Source\portable\GCC\ARM_CM3/port.c **** #endif
+  42:Source\portable\GCC\ARM_CM3/port.c **** 
+  43:Source\portable\GCC\ARM_CM3/port.c **** #ifndef configSYSTICK_CLOCK_HZ
+  44:Source\portable\GCC\ARM_CM3/port.c **** 	#define configSYSTICK_CLOCK_HZ configCPU_CLOCK_HZ
+  45:Source\portable\GCC\ARM_CM3/port.c **** 	/* Ensure the SysTick is clocked at the same frequency as the core. */
+  46:Source\portable\GCC\ARM_CM3/port.c **** 	#define portNVIC_SYSTICK_CLK_BIT	( 1UL << 2UL )
+  47:Source\portable\GCC\ARM_CM3/port.c **** #else
+  48:Source\portable\GCC\ARM_CM3/port.c **** 	/* The way the SysTick is clocked is not modified in case it is not the same
+  49:Source\portable\GCC\ARM_CM3/port.c **** 	as the core. */
+  50:Source\portable\GCC\ARM_CM3/port.c **** 	#define portNVIC_SYSTICK_CLK_BIT	( 0 )
+  51:Source\portable\GCC\ARM_CM3/port.c **** #endif
+  52:Source\portable\GCC\ARM_CM3/port.c **** 
+  53:Source\portable\GCC\ARM_CM3/port.c **** /* Constants required to manipulate the core.  Registers first... */
+  54:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_CTRL_REG			( * ( ( volatile uint32_t * ) 0xe000e010 ) )
+  55:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_LOAD_REG			( * ( ( volatile uint32_t * ) 0xe000e014 ) )
+  56:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_CURRENT_VALUE_REG	( * ( ( volatile uint32_t * ) 0xe000e018 ) )
+  57:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSPRI2_REG				( * ( ( volatile uint32_t * ) 0xe000ed20 ) )
+  58:Source\portable\GCC\ARM_CM3/port.c **** /* ...then bits in the registers. */
+  59:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_INT_BIT			( 1UL << 1UL )
+  60:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_ENABLE_BIT			( 1UL << 0UL )
+  61:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_COUNT_FLAG_BIT		( 1UL << 16UL )
+  62:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_PENDSVCLEAR_BIT 			( 1UL << 27UL )
+  63:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_PEND_SYSTICK_CLEAR_BIT		( 1UL << 25UL )
+  64:Source\portable\GCC\ARM_CM3/port.c **** 
+  65:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_PENDSV_PRI					( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 16UL )
+  66:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_SYSTICK_PRI				( ( ( uint32_t ) configKERNEL_INTERRUPT_PRIORITY ) << 24UL )
+  67:Source\portable\GCC\ARM_CM3/port.c **** 
+  68:Source\portable\GCC\ARM_CM3/port.c **** /* Constants required to check the validity of an interrupt priority. */
+  69:Source\portable\GCC\ARM_CM3/port.c **** #define portFIRST_USER_INTERRUPT_NUMBER		( 16 )
+  70:Source\portable\GCC\ARM_CM3/port.c **** #define portNVIC_IP_REGISTERS_OFFSET_16 	( 0xE000E3F0 )
+  71:Source\portable\GCC\ARM_CM3/port.c **** #define portAIRCR_REG						( * ( ( volatile uint32_t * ) 0xE000ED0C ) )
+  72:Source\portable\GCC\ARM_CM3/port.c **** #define portMAX_8_BIT_VALUE					( ( uint8_t ) 0xff )
+  73:Source\portable\GCC\ARM_CM3/port.c **** #define portTOP_BIT_OF_BYTE					( ( uint8_t ) 0x80 )
+  74:Source\portable\GCC\ARM_CM3/port.c **** #define portMAX_PRIGROUP_BITS				( ( uint8_t ) 7 )
+  75:Source\portable\GCC\ARM_CM3/port.c **** #define portPRIORITY_GROUP_MASK				( 0x07UL << 8UL )
+  76:Source\portable\GCC\ARM_CM3/port.c **** #define portPRIGROUP_SHIFT					( 8UL )
+  77:Source\portable\GCC\ARM_CM3/port.c **** 
+  78:Source\portable\GCC\ARM_CM3/port.c **** /* Masks off all bits but the VECTACTIVE bits in the ICSR register. */
+  79:Source\portable\GCC\ARM_CM3/port.c **** #define portVECTACTIVE_MASK					( 0xFFUL )
+  80:Source\portable\GCC\ARM_CM3/port.c **** 
+  81:Source\portable\GCC\ARM_CM3/port.c **** /* Constants required to set up the initial stack. */
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 3
+
+
+  82:Source\portable\GCC\ARM_CM3/port.c **** #define portINITIAL_XPSR					( 0x01000000UL )
+  83:Source\portable\GCC\ARM_CM3/port.c **** 
+  84:Source\portable\GCC\ARM_CM3/port.c **** /* The systick is a 24-bit counter. */
+  85:Source\portable\GCC\ARM_CM3/port.c **** #define portMAX_24_BIT_NUMBER				( 0xffffffUL )
+  86:Source\portable\GCC\ARM_CM3/port.c **** 
+  87:Source\portable\GCC\ARM_CM3/port.c **** /* A fiddle factor to estimate the number of SysTick counts that would have
+  88:Source\portable\GCC\ARM_CM3/port.c **** occurred while the SysTick counter is stopped during tickless idle
+  89:Source\portable\GCC\ARM_CM3/port.c **** calculations. */
+  90:Source\portable\GCC\ARM_CM3/port.c **** #define portMISSED_COUNTS_FACTOR			( 45UL )
+  91:Source\portable\GCC\ARM_CM3/port.c **** 
+  92:Source\portable\GCC\ARM_CM3/port.c **** /* For strict compliance with the Cortex-M spec the task start address should
+  93:Source\portable\GCC\ARM_CM3/port.c **** have bit-0 clear, as it is loaded into the PC on exit from an ISR. */
+  94:Source\portable\GCC\ARM_CM3/port.c **** #define portSTART_ADDRESS_MASK				( ( StackType_t ) 0xfffffffeUL )
+  95:Source\portable\GCC\ARM_CM3/port.c **** 
+  96:Source\portable\GCC\ARM_CM3/port.c **** /* Let the user override the pre-loading of the initial LR with the address of
+  97:Source\portable\GCC\ARM_CM3/port.c **** prvTaskExitError() in case it messes up unwinding of the stack in the
+  98:Source\portable\GCC\ARM_CM3/port.c **** debugger. */
+  99:Source\portable\GCC\ARM_CM3/port.c **** #ifdef configTASK_RETURN_ADDRESS
+ 100:Source\portable\GCC\ARM_CM3/port.c **** 	#define portTASK_RETURN_ADDRESS	configTASK_RETURN_ADDRESS
+ 101:Source\portable\GCC\ARM_CM3/port.c **** #else
+ 102:Source\portable\GCC\ARM_CM3/port.c **** 	#define portTASK_RETURN_ADDRESS	prvTaskExitError
+ 103:Source\portable\GCC\ARM_CM3/port.c **** #endif
+ 104:Source\portable\GCC\ARM_CM3/port.c **** 
+ 105:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 106:Source\portable\GCC\ARM_CM3/port.c ****  * Setup the timer to generate the tick interrupts.  The implementation in this
+ 107:Source\portable\GCC\ARM_CM3/port.c ****  * file is weak to allow application writers to change the timer used to
+ 108:Source\portable\GCC\ARM_CM3/port.c ****  * generate the tick interrupt.
+ 109:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 110:Source\portable\GCC\ARM_CM3/port.c **** void vPortSetupTimerInterrupt( void );
+ 111:Source\portable\GCC\ARM_CM3/port.c **** 
+ 112:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 113:Source\portable\GCC\ARM_CM3/port.c ****  * Exception handlers.
+ 114:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 115:Source\portable\GCC\ARM_CM3/port.c **** void xPortPendSVHandler( void ) __attribute__ (( naked ));
+ 116:Source\portable\GCC\ARM_CM3/port.c **** void xPortSysTickHandler( void );
+ 117:Source\portable\GCC\ARM_CM3/port.c **** void vPortSVCHandler( void ) __attribute__ (( naked ));
+ 118:Source\portable\GCC\ARM_CM3/port.c **** 
+ 119:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 120:Source\portable\GCC\ARM_CM3/port.c ****  * Start first task is a separate function so it can be tested in isolation.
+ 121:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 122:Source\portable\GCC\ARM_CM3/port.c **** static void prvPortStartFirstTask( void ) __attribute__ (( naked ));
+ 123:Source\portable\GCC\ARM_CM3/port.c **** 
+ 124:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 125:Source\portable\GCC\ARM_CM3/port.c ****  * Used to catch tasks that attempt to return from their implementing function.
+ 126:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 127:Source\portable\GCC\ARM_CM3/port.c **** static void prvTaskExitError( void );
+ 128:Source\portable\GCC\ARM_CM3/port.c **** 
+ 129:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 130:Source\portable\GCC\ARM_CM3/port.c **** 
+ 131:Source\portable\GCC\ARM_CM3/port.c **** /* Each task maintains its own interrupt status in the critical nesting
+ 132:Source\portable\GCC\ARM_CM3/port.c **** variable. */
+ 133:Source\portable\GCC\ARM_CM3/port.c **** static UBaseType_t uxCriticalNesting = 0xaaaaaaaa;
+ 134:Source\portable\GCC\ARM_CM3/port.c **** 
+ 135:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 136:Source\portable\GCC\ARM_CM3/port.c ****  * The number of SysTick increments that make up one tick period.
+ 137:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 138:Source\portable\GCC\ARM_CM3/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 4
+
+
+ 139:Source\portable\GCC\ARM_CM3/port.c **** 	static uint32_t ulTimerCountsForOneTick = 0;
+ 140:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 141:Source\portable\GCC\ARM_CM3/port.c **** 
+ 142:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 143:Source\portable\GCC\ARM_CM3/port.c ****  * The maximum number of tick periods that can be suppressed is limited by the
+ 144:Source\portable\GCC\ARM_CM3/port.c ****  * 24 bit resolution of the SysTick timer.
+ 145:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 146:Source\portable\GCC\ARM_CM3/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 147:Source\portable\GCC\ARM_CM3/port.c **** 	static uint32_t xMaximumPossibleSuppressedTicks = 0;
+ 148:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 149:Source\portable\GCC\ARM_CM3/port.c **** 
+ 150:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 151:Source\portable\GCC\ARM_CM3/port.c ****  * Compensate for the CPU cycles that pass while the SysTick is stopped (low
+ 152:Source\portable\GCC\ARM_CM3/port.c ****  * power functionality only.
+ 153:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 154:Source\portable\GCC\ARM_CM3/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 155:Source\portable\GCC\ARM_CM3/port.c **** 	static uint32_t ulStoppedTimerCompensation = 0;
+ 156:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 157:Source\portable\GCC\ARM_CM3/port.c **** 
+ 158:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 159:Source\portable\GCC\ARM_CM3/port.c ****  * Used by the portASSERT_IF_INTERRUPT_PRIORITY_INVALID() macro to ensure
+ 160:Source\portable\GCC\ARM_CM3/port.c ****  * FreeRTOS API functions are not called from interrupts that have been assigned
+ 161:Source\portable\GCC\ARM_CM3/port.c ****  * a priority above configMAX_SYSCALL_INTERRUPT_PRIORITY.
+ 162:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 163:Source\portable\GCC\ARM_CM3/port.c **** #if( configASSERT_DEFINED == 1 )
+ 164:Source\portable\GCC\ARM_CM3/port.c **** 	 static uint8_t ucMaxSysCallPriority = 0;
+ 165:Source\portable\GCC\ARM_CM3/port.c **** 	 static uint32_t ulMaxPRIGROUPValue = 0;
+ 166:Source\portable\GCC\ARM_CM3/port.c **** 	 static const volatile uint8_t * const pcInterruptPriorityRegisters = ( const volatile uint8_t * c
+ 167:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configASSERT_DEFINED */
+ 168:Source\portable\GCC\ARM_CM3/port.c **** 
+ 169:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 170:Source\portable\GCC\ARM_CM3/port.c **** 
+ 171:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 172:Source\portable\GCC\ARM_CM3/port.c ****  * See header file for description.
+ 173:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 174:Source\portable\GCC\ARM_CM3/port.c **** StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParam
+ 175:Source\portable\GCC\ARM_CM3/port.c **** {
+  34              		.loc 1 175 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 16
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39 0000 80B4     		push	{r7}
+  40              		.cfi_def_cfa_offset 4
+  41              		.cfi_offset 7, -4
+  42 0002 85B0     		sub	sp, sp, #20
+  43              		.cfi_def_cfa_offset 24
+  44 0004 00AF     		add	r7, sp, #0
+  45              		.cfi_def_cfa_register 7
+  46 0006 F860     		str	r0, [r7, #12]
+  47 0008 B960     		str	r1, [r7, #8]
+  48 000a 7A60     		str	r2, [r7, #4]
+ 176:Source\portable\GCC\ARM_CM3/port.c **** 	/* Simulate the stack frame as it would be created by a context switch
+ 177:Source\portable\GCC\ARM_CM3/port.c **** 	interrupt. */
+ 178:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack--; /* Offset added to account for the way the MCU uses the stack on entry/exit of int
+  49              		.loc 1 178 0
+  50 000c FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 5
+
+
+  51 000e 043B     		subs	r3, r3, #4
+  52 0010 FB60     		str	r3, [r7, #12]
+ 179:Source\portable\GCC\ARM_CM3/port.c **** 	*pxTopOfStack = portINITIAL_XPSR;	/* xPSR */
+  53              		.loc 1 179 0
+  54 0012 FB68     		ldr	r3, [r7, #12]
+  55 0014 4FF08072 		mov	r2, #16777216
+  56 0018 1A60     		str	r2, [r3]
+ 180:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack--;
+  57              		.loc 1 180 0
+  58 001a FB68     		ldr	r3, [r7, #12]
+  59 001c 043B     		subs	r3, r3, #4
+  60 001e FB60     		str	r3, [r7, #12]
+ 181:Source\portable\GCC\ARM_CM3/port.c **** 	*pxTopOfStack = ( ( StackType_t ) pxCode ) & portSTART_ADDRESS_MASK;	/* PC */
+  61              		.loc 1 181 0
+  62 0020 BB68     		ldr	r3, [r7, #8]
+  63 0022 23F00102 		bic	r2, r3, #1
+  64 0026 FB68     		ldr	r3, [r7, #12]
+  65 0028 1A60     		str	r2, [r3]
+ 182:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack--;
+  66              		.loc 1 182 0
+  67 002a FB68     		ldr	r3, [r7, #12]
+  68 002c 043B     		subs	r3, r3, #4
+  69 002e FB60     		str	r3, [r7, #12]
+ 183:Source\portable\GCC\ARM_CM3/port.c **** 	*pxTopOfStack = ( StackType_t ) portTASK_RETURN_ADDRESS;	/* LR */
+  70              		.loc 1 183 0
+  71 0030 084A     		ldr	r2, .L3
+  72 0032 FB68     		ldr	r3, [r7, #12]
+  73 0034 1A60     		str	r2, [r3]
+ 184:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack -= 5;	/* R12, R3, R2 and R1. */
+  74              		.loc 1 184 0
+  75 0036 FB68     		ldr	r3, [r7, #12]
+  76 0038 143B     		subs	r3, r3, #20
+  77 003a FB60     		str	r3, [r7, #12]
+ 185:Source\portable\GCC\ARM_CM3/port.c **** 	*pxTopOfStack = ( StackType_t ) pvParameters;	/* R0 */
+  78              		.loc 1 185 0
+  79 003c 7A68     		ldr	r2, [r7, #4]
+  80 003e FB68     		ldr	r3, [r7, #12]
+  81 0040 1A60     		str	r2, [r3]
+ 186:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack -= 8;	/* R11, R10, R9, R8, R7, R6, R5 and R4. */
+  82              		.loc 1 186 0
+  83 0042 FB68     		ldr	r3, [r7, #12]
+  84 0044 203B     		subs	r3, r3, #32
+  85 0046 FB60     		str	r3, [r7, #12]
+ 187:Source\portable\GCC\ARM_CM3/port.c **** 
+ 188:Source\portable\GCC\ARM_CM3/port.c **** 	return pxTopOfStack;
+  86              		.loc 1 188 0
+  87 0048 FB68     		ldr	r3, [r7, #12]
+ 189:Source\portable\GCC\ARM_CM3/port.c **** }
+  88              		.loc 1 189 0
+  89 004a 1846     		mov	r0, r3
+  90 004c 1437     		adds	r7, r7, #20
+  91              		.cfi_def_cfa_offset 4
+  92 004e BD46     		mov	sp, r7
+  93              		.cfi_def_cfa_register 13
+  94              		@ sp needed
+  95 0050 80BC     		pop	{r7}
+  96              		.cfi_restore 7
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 6
+
+
+  97              		.cfi_def_cfa_offset 0
+  98 0052 7047     		bx	lr
+  99              	.L4:
+ 100              		.align	2
+ 101              	.L3:
+ 102 0054 00000000 		.word	prvTaskExitError
+ 103              		.cfi_endproc
+ 104              	.LFE68:
+ 105              		.size	pxPortInitialiseStack, .-pxPortInitialiseStack
+ 106              		.section	.text.prvTaskExitError,"ax",%progbits
+ 107              		.align	2
+ 108              		.thumb
+ 109              		.thumb_func
+ 110              		.type	prvTaskExitError, %function
+ 111              	prvTaskExitError:
+ 112              	.LFB69:
+ 190:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 191:Source\portable\GCC\ARM_CM3/port.c **** 
+ 192:Source\portable\GCC\ARM_CM3/port.c **** static void prvTaskExitError( void )
+ 193:Source\portable\GCC\ARM_CM3/port.c **** {
+ 113              		.loc 1 193 0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 8
+ 116              		@ frame_needed = 1, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 80B4     		push	{r7}
+ 119              		.cfi_def_cfa_offset 4
+ 120              		.cfi_offset 7, -4
+ 121 0002 83B0     		sub	sp, sp, #12
+ 122              		.cfi_def_cfa_offset 16
+ 123 0004 00AF     		add	r7, sp, #0
+ 124              		.cfi_def_cfa_register 7
+ 194:Source\portable\GCC\ARM_CM3/port.c **** volatile uint32_t ulDummy = 0UL;
+ 125              		.loc 1 194 0
+ 126 0006 0023     		movs	r3, #0
+ 127 0008 3B60     		str	r3, [r7]
+ 128              	.LBB12:
+ 129              	.LBB13:
+ 130              		.file 2 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+   1:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*
+   2:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FreeRTOS Kernel V10.3.1
+   3:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
+   4:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+   5:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Permission is hereby granted, free of charge, to any person obtaining a copy of
+   6:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * this software and associated documentation files (the "Software"), to deal in
+   7:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * the Software without restriction, including without limitation the rights to
+   8:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+   9:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * the Software, and to permit persons to whom the Software is furnished to do so,
+  10:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * subject to the following conditions:
+  11:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  12:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * The above copyright notice and this permission notice shall be included in all
+  13:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * copies or substantial portions of the Software.
+  14:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  15:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+  17:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+  18:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 7
+
+
+  19:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+  20:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  21:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  22:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * http://www.FreeRTOS.org
+  23:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * http://aws.amazon.com/freertos
+  24:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  25:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * 1 tab == 4 spaces!
+  26:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  */
+  27:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  28:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  29:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef PORTMACRO_H
+  30:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define PORTMACRO_H
+  31:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  32:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef __cplusplus
+  33:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern "C" {
+  34:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+  35:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  36:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------
+  37:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Port specific definitions.
+  38:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  39:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
+  40:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * given hardware and compiler.
+  41:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+  42:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * These settings should not be altered.
+  43:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *-----------------------------------------------------------
+  44:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  */
+  45:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  46:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Type definitions. */
+  47:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portCHAR		char
+  48:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portFLOAT		float
+  49:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portDOUBLE		double
+  50:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portLONG		long
+  51:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSHORT		short
+  52:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSTACK_TYPE	uint32_t
+  53:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portBASE_TYPE	long
+  54:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  55:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef portSTACK_TYPE StackType_t;
+  56:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef long BaseType_t;
+  57:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef unsigned long UBaseType_t;
+  58:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  59:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
+  60:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	typedef uint16_t TickType_t;
+  61:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffff
+  62:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #else
+  63:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	typedef uint32_t TickType_t;
+  64:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portMAX_DELAY ( TickType_t ) 0xffffffffUL
+  65:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  66:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* 32-bit tick type on a 32-bit architecture, so reads of the tick count do
+  67:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	not need to be guarded with a critical section. */
+  68:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portTICK_TYPE_IS_ATOMIC 1
+  69:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+  70:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  71:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  72:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Architecture specifics. */
+  73:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
+  74:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
+  75:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portBYTE_ALIGNMENT			8
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 8
+
+
+  76:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  77:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  78:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Scheduler utilities. */
+  79:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portYIELD() 															\
+  80:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {																				\
+  81:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Set a PendSV to request a context switch. */								\
+  82:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
+  83:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 																				\
+  84:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
+  85:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	within the specified behaviour for the architecture. */						\
+  86:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
+  87:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "isb" );													\
+  88:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
+  89:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  90:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
+  91:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
+  92:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portEND_SWITCHING_ISR( xSwitchRequired ) if( xSwitchRequired != pdFALSE ) portYIELD()
+  93:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
+  94:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+  95:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+  96:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Critical section management. */
+  97:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortEnterCritical( void );
+  98:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortExitCritical( void );
+  99:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
+ 100:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portCLEAR_INTERRUPT_MASK_FROM_ISR(x)	vPortSetBASEPRI(x)
+ 101:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portDISABLE_INTERRUPTS()				vPortRaiseBASEPRI()
+ 102:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portENABLE_INTERRUPTS()					vPortSetBASEPRI(0)
+ 103:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portENTER_CRITICAL()					vPortEnterCritical()
+ 104:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portEXIT_CRITICAL()						vPortExitCritical()
+ 105:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 106:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 107:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 108:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Task function macros as described on the FreeRTOS.org WEB site.  These are
+ 109:.\Source\portable\GCC\ARM_CM3/portmacro.h **** not necessary for to use this port.  They are defined so the common demo files
+ 110:.\Source\portable\GCC\ARM_CM3/portmacro.h **** (which build with all the ports) will build. */
+ 111:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTASK_FUNCTION_PROTO( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 112:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTASK_FUNCTION( vFunction, pvParameters ) void vFunction( void *pvParameters )
+ 113:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 114:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 115:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Tickless idle/low power functionality. */
+ 116:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
+ 117:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
+ 118:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portSUPPRESS_TICKS_AND_SLEEP( xExpectedIdleTime ) vPortSuppressTicksAndSleep( xExpectedIdl
+ 119:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+ 120:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 121:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 122:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Architecture specific optimisations. */
+ 123:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
+ 124:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define configUSE_PORT_OPTIMISED_TASK_SELECTION 1
+ 125:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+ 126:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 127:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #if configUSE_PORT_OPTIMISED_TASK_SELECTION == 1
+ 128:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 129:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Generic helper function. */
+ 130:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
+ 131:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
+ 132:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	uint8_t ucReturn;
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 9
+
+
+ 133:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 134:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
+ 135:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		return ucReturn;
+ 136:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	}
+ 137:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 138:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Check the configuration. */
+ 139:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
+ 140:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
+ 141:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#endif
+ 142:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 143:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
+ 144:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
+ 145:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
+ 146:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 147:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/*-----------------------------------------------------------*/
+ 148:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 149:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portGET_HIGHEST_PRIORITY( uxTopPriority, uxReadyPriorities ) uxTopPriority = ( 31UL - ( ui
+ 150:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 151:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
+ 152:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 153:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 154:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 155:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef configASSERT
+ 156:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	void vPortValidateInterruptPriority( void );
+ 157:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portASSERT_IF_INTERRUPT_PRIORITY_INVALID() 	vPortValidateInterruptPriority()
+ 158:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+ 159:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 160:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* portNOP() is not required by this port. */
+ 161:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portNOP()
+ 162:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 163:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portINLINE	__inline
+ 164:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 165:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef portFORCE_INLINE
+ 166:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portFORCE_INLINE inline __attribute__(( always_inline))
+ 167:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
+ 168:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 169:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 170:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 171:.\Source\portable\GCC\ARM_CM3/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
+ 172:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {
+ 173:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulCurrentInterrupt;
+ 174:.\Source\portable\GCC\ARM_CM3/portmacro.h **** BaseType_t xReturn;
+ 175:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 176:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Obtain the number of the currently executing interrupt. */
+ 177:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "mrs %0, ipsr" : "=r"( ulCurrentInterrupt ) :: "memory" );
+ 178:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 179:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	if( ulCurrentInterrupt == 0 )
+ 180:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
+ 181:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		xReturn = pdFALSE;
+ 182:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	}
+ 183:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	else
+ 184:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
+ 185:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		xReturn = pdTRUE;
+ 186:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	}
+ 187:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 188:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return xReturn;
+ 189:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 10
+
+
+ 190:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 191:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 192:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 193:.\Source\portable\GCC\ARM_CM3/portmacro.h **** portFORCE_INLINE static void vPortRaiseBASEPRI( void )
+ 194:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {
+ 195:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulNewBASEPRI;
+ 196:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 197:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
+ 131              		.loc 2 197 0
+ 132              		.syntax unified
+ 133              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 134 000a 4FF0A003 			mov r3, #160												
+ 135 000e 83F31188 		msr basepri, r3											
+ 136 0012 BFF36F8F 		isb														
+ 137 0016 BFF34F8F 		dsb														
+ 138              	
+ 139              	@ 0 "" 2
+ 140              		.thumb
+ 141              		.syntax unified
+ 142 001a 7B60     		str	r3, [r7, #4]
+ 143              	.LBE13:
+ 144              	.LBE12:
+ 195:Source\portable\GCC\ARM_CM3/port.c **** 
+ 196:Source\portable\GCC\ARM_CM3/port.c **** 	/* A function that implements a task must not exit or attempt to return to
+ 197:Source\portable\GCC\ARM_CM3/port.c **** 	its caller as there is nothing to return to.  If a task wants to exit it
+ 198:Source\portable\GCC\ARM_CM3/port.c **** 	should instead call vTaskDelete( NULL ).
+ 199:Source\portable\GCC\ARM_CM3/port.c **** 
+ 200:Source\portable\GCC\ARM_CM3/port.c **** 	Artificially force an assert() to be triggered if configASSERT() is
+ 201:Source\portable\GCC\ARM_CM3/port.c **** 	defined, then stop here so application writers can catch the error. */
+ 202:Source\portable\GCC\ARM_CM3/port.c **** 	configASSERT( uxCriticalNesting == ~0UL );
+ 203:Source\portable\GCC\ARM_CM3/port.c **** 	portDISABLE_INTERRUPTS();
+ 204:Source\portable\GCC\ARM_CM3/port.c **** 	while( ulDummy == 0 )
+ 145              		.loc 1 204 0
+ 146 001c 00BF     		nop
+ 147              	.L6:
+ 148              		.loc 1 204 0 is_stmt 0 discriminator 1
+ 149 001e 3B68     		ldr	r3, [r7]
+ 150 0020 002B     		cmp	r3, #0
+ 151 0022 FCD0     		beq	.L6
+ 205:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 206:Source\portable\GCC\ARM_CM3/port.c **** 		/* This file calls prvTaskExitError() after the scheduler has been
+ 207:Source\portable\GCC\ARM_CM3/port.c **** 		started to remove a compiler warning about the function being defined
+ 208:Source\portable\GCC\ARM_CM3/port.c **** 		but never called.  ulDummy is used purely to quieten other warnings
+ 209:Source\portable\GCC\ARM_CM3/port.c **** 		about code appearing after this function is called - making ulDummy
+ 210:Source\portable\GCC\ARM_CM3/port.c **** 		volatile makes the compiler think the function could return and
+ 211:Source\portable\GCC\ARM_CM3/port.c **** 		therefore not output an 'unreachable code' warning for code that appears
+ 212:Source\portable\GCC\ARM_CM3/port.c **** 		after it. */
+ 213:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 214:Source\portable\GCC\ARM_CM3/port.c **** }
+ 152              		.loc 1 214 0 is_stmt 1
+ 153 0024 00BF     		nop
+ 154 0026 0C37     		adds	r7, r7, #12
+ 155              		.cfi_def_cfa_offset 4
+ 156 0028 BD46     		mov	sp, r7
+ 157              		.cfi_def_cfa_register 13
+ 158              		@ sp needed
+ 159 002a 80BC     		pop	{r7}
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 11
+
+
+ 160              		.cfi_restore 7
+ 161              		.cfi_def_cfa_offset 0
+ 162 002c 7047     		bx	lr
+ 163              		.cfi_endproc
+ 164              	.LFE69:
+ 165              		.size	prvTaskExitError, .-prvTaskExitError
+ 166 002e 00BF     		.section	.text.vPortSVCHandler,"ax",%progbits
+ 167              		.align	2
+ 168              		.global	vPortSVCHandler
+ 169              		.thumb
+ 170              		.thumb_func
+ 171              		.type	vPortSVCHandler, %function
+ 172              	vPortSVCHandler:
+ 173              	.LFB70:
+ 215:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 216:Source\portable\GCC\ARM_CM3/port.c **** 
+ 217:Source\portable\GCC\ARM_CM3/port.c **** void vPortSVCHandler( void )
+ 218:Source\portable\GCC\ARM_CM3/port.c **** {
+ 174              		.loc 1 218 0
+ 175              		.cfi_startproc
+ 176              		@ Naked Function: prologue and epilogue provided by programmer.
+ 177              		@ args = 0, pretend = 0, frame = 0
+ 178              		@ frame_needed = 1, uses_anonymous_args = 0
+ 219:Source\portable\GCC\ARM_CM3/port.c **** 	__asm volatile (
+ 179              		.loc 1 219 0
+ 180              		.syntax unified
+ 181              	@ 219 "Source\portable\GCC\ARM_CM3\port.c" 1
+ 182 0000 074B     			ldr	r3, pxCurrentTCBConst2		
+ 183 0002 1968     		ldr r1, [r3]					
+ 184 0004 0868     		ldr r0, [r1]					
+ 185 0006 B0E8F00F 		ldmia r0!, {r4-r11}				
+ 186 000a 80F30988 		msr psp, r0						
+ 187 000e BFF36F8F 		isb								
+ 188 0012 4FF00000 		mov r0, #0 						
+ 189 0016 80F31188 		msr	basepri, r0					
+ 190 001a 4EF00D0E 		orr r14, #0xd					
+ 191 001e 7047     		bx r14							
+ 192              										
+ 193              		.align 4						
+ 194 0020 00000000 	pxCurrentTCBConst2: .word pxCurrentTCB				
+ 195              	
+ 196              	@ 0 "" 2
+ 220:Source\portable\GCC\ARM_CM3/port.c **** 					"	ldr	r3, pxCurrentTCBConst2		\n" /* Restore the context. */
+ 221:Source\portable\GCC\ARM_CM3/port.c **** 					"	ldr r1, [r3]					\n" /* Use pxCurrentTCBConst to get the pxCurrentTCB address. */
+ 222:Source\portable\GCC\ARM_CM3/port.c **** 					"	ldr r0, [r1]					\n" /* The first item in pxCurrentTCB is the task top of stack. */
+ 223:Source\portable\GCC\ARM_CM3/port.c **** 					"	ldmia r0!, {r4-r11}				\n" /* Pop the registers that are not automatically saved on exceptio
+ 224:Source\portable\GCC\ARM_CM3/port.c **** 					"	msr psp, r0						\n" /* Restore the task stack pointer. */
+ 225:Source\portable\GCC\ARM_CM3/port.c **** 					"	isb								\n"
+ 226:Source\portable\GCC\ARM_CM3/port.c **** 					"	mov r0, #0 						\n"
+ 227:Source\portable\GCC\ARM_CM3/port.c **** 					"	msr	basepri, r0					\n"
+ 228:Source\portable\GCC\ARM_CM3/port.c **** 					"	orr r14, #0xd					\n"
+ 229:Source\portable\GCC\ARM_CM3/port.c **** 					"	bx r14							\n"
+ 230:Source\portable\GCC\ARM_CM3/port.c **** 					"									\n"
+ 231:Source\portable\GCC\ARM_CM3/port.c **** 					"	.align 4						\n"
+ 232:Source\portable\GCC\ARM_CM3/port.c **** 					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
+ 233:Source\portable\GCC\ARM_CM3/port.c **** 				);
+ 234:Source\portable\GCC\ARM_CM3/port.c **** }
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 12
+
+
+ 197              		.loc 1 234 0
+ 198              		.thumb
+ 199              		.syntax unified
+ 200 0024 00BF     		nop
+ 201              		.cfi_endproc
+ 202              	.LFE70:
+ 203              		.size	vPortSVCHandler, .-vPortSVCHandler
+ 204 0026 00BF     		.section	.text.prvPortStartFirstTask,"ax",%progbits
+ 205              		.align	2
+ 206              		.thumb
+ 207              		.thumb_func
+ 208              		.type	prvPortStartFirstTask, %function
+ 209              	prvPortStartFirstTask:
+ 210              	.LFB71:
+ 235:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 236:Source\portable\GCC\ARM_CM3/port.c **** 
+ 237:Source\portable\GCC\ARM_CM3/port.c **** static void prvPortStartFirstTask( void )
+ 238:Source\portable\GCC\ARM_CM3/port.c **** {
+ 211              		.loc 1 238 0
+ 212              		.cfi_startproc
+ 213              		@ Naked Function: prologue and epilogue provided by programmer.
+ 214              		@ args = 0, pretend = 0, frame = 0
+ 215              		@ frame_needed = 1, uses_anonymous_args = 0
+ 239:Source\portable\GCC\ARM_CM3/port.c **** 	__asm volatile(
+ 216              		.loc 1 239 0
+ 217              		.syntax unified
+ 218              	@ 239 "Source\portable\GCC\ARM_CM3\port.c" 1
+ 219 0000 0648     		 ldr r0, =0xE000ED08 	
+ 220 0002 0068     	 ldr r0, [r0] 			
+ 221 0004 0068     	 ldr r0, [r0] 			
+ 222 0006 80F30888 	 msr msp, r0			
+ 223 000a 62B6     	 cpsie i				
+ 224 000c 61B6     	 cpsie f				
+ 225 000e BFF34F8F 	 dsb					
+ 226 0012 BFF36F8F 	 isb					
+ 227 0016 00DF     	 svc 0					
+ 228 0018 00BF     	 nop					
+ 229              	
+ 230              	@ 0 "" 2
+ 240:Source\portable\GCC\ARM_CM3/port.c **** 					" ldr r0, =0xE000ED08 	\n" /* Use the NVIC offset register to locate the stack. */
+ 241:Source\portable\GCC\ARM_CM3/port.c **** 					" ldr r0, [r0] 			\n"
+ 242:Source\portable\GCC\ARM_CM3/port.c **** 					" ldr r0, [r0] 			\n"
+ 243:Source\portable\GCC\ARM_CM3/port.c **** 					" msr msp, r0			\n" /* Set the msp back to the start of the stack. */
+ 244:Source\portable\GCC\ARM_CM3/port.c **** 					" cpsie i				\n" /* Globally enable interrupts. */
+ 245:Source\portable\GCC\ARM_CM3/port.c **** 					" cpsie f				\n"
+ 246:Source\portable\GCC\ARM_CM3/port.c **** 					" dsb					\n"
+ 247:Source\portable\GCC\ARM_CM3/port.c **** 					" isb					\n"
+ 248:Source\portable\GCC\ARM_CM3/port.c **** 					" svc 0					\n" /* System call to start first task. */
+ 249:Source\portable\GCC\ARM_CM3/port.c **** 					" nop					\n"
+ 250:Source\portable\GCC\ARM_CM3/port.c **** 				);
+ 251:Source\portable\GCC\ARM_CM3/port.c **** }
+ 231              		.loc 1 251 0
+ 232              		.thumb
+ 233              		.syntax unified
+ 234 001a 00BF     		nop
+ 235              		.cfi_endproc
+ 236              	.LFE71:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 13
+
+
+ 237              		.size	prvPortStartFirstTask, .-prvPortStartFirstTask
+ 238              		.section	.text.xPortStartScheduler,"ax",%progbits
+ 239              		.align	2
+ 240              		.global	xPortStartScheduler
+ 241              		.thumb
+ 242              		.thumb_func
+ 243              		.type	xPortStartScheduler, %function
+ 244              	xPortStartScheduler:
+ 245              	.LFB72:
+ 252:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 253:Source\portable\GCC\ARM_CM3/port.c **** 
+ 254:Source\portable\GCC\ARM_CM3/port.c **** /*
+ 255:Source\portable\GCC\ARM_CM3/port.c ****  * See header file for description.
+ 256:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 257:Source\portable\GCC\ARM_CM3/port.c **** BaseType_t xPortStartScheduler( void )
+ 258:Source\portable\GCC\ARM_CM3/port.c **** {
+ 246              		.loc 1 258 0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 1, uses_anonymous_args = 0
+ 250 0000 80B5     		push	{r7, lr}
+ 251              		.cfi_def_cfa_offset 8
+ 252              		.cfi_offset 7, -8
+ 253              		.cfi_offset 14, -4
+ 254 0002 00AF     		add	r7, sp, #0
+ 255              		.cfi_def_cfa_register 7
+ 259:Source\portable\GCC\ARM_CM3/port.c **** 	/* configMAX_SYSCALL_INTERRUPT_PRIORITY must not be set to 0.
+ 260:Source\portable\GCC\ARM_CM3/port.c **** 	See http://www.FreeRTOS.org/RTOS-Cortex-M3-M4.html */
+ 261:Source\portable\GCC\ARM_CM3/port.c **** 	configASSERT( configMAX_SYSCALL_INTERRUPT_PRIORITY );
+ 262:Source\portable\GCC\ARM_CM3/port.c **** 
+ 263:Source\portable\GCC\ARM_CM3/port.c **** 	#if( configASSERT_DEFINED == 1 )
+ 264:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 265:Source\portable\GCC\ARM_CM3/port.c **** 		volatile uint32_t ulOriginalPriority;
+ 266:Source\portable\GCC\ARM_CM3/port.c **** 		volatile uint8_t * const pucFirstUserPriorityRegister = ( volatile uint8_t * const ) ( portNVIC_I
+ 267:Source\portable\GCC\ARM_CM3/port.c **** 		volatile uint8_t ucMaxPriorityValue;
+ 268:Source\portable\GCC\ARM_CM3/port.c **** 
+ 269:Source\portable\GCC\ARM_CM3/port.c **** 		/* Determine the maximum priority from which ISR safe FreeRTOS API
+ 270:Source\portable\GCC\ARM_CM3/port.c **** 		functions can be called.  ISR safe functions are those that end in
+ 271:Source\portable\GCC\ARM_CM3/port.c **** 		"FromISR".  FreeRTOS maintains separate thread and ISR API functions to
+ 272:Source\portable\GCC\ARM_CM3/port.c **** 		ensure interrupt entry is as fast and simple as possible.
+ 273:Source\portable\GCC\ARM_CM3/port.c **** 
+ 274:Source\portable\GCC\ARM_CM3/port.c **** 		Save the interrupt priority value that is about to be clobbered. */
+ 275:Source\portable\GCC\ARM_CM3/port.c **** 		ulOriginalPriority = *pucFirstUserPriorityRegister;
+ 276:Source\portable\GCC\ARM_CM3/port.c **** 
+ 277:Source\portable\GCC\ARM_CM3/port.c **** 		/* Determine the number of priority bits available.  First write to all
+ 278:Source\portable\GCC\ARM_CM3/port.c **** 		possible bits. */
+ 279:Source\portable\GCC\ARM_CM3/port.c **** 		*pucFirstUserPriorityRegister = portMAX_8_BIT_VALUE;
+ 280:Source\portable\GCC\ARM_CM3/port.c **** 
+ 281:Source\portable\GCC\ARM_CM3/port.c **** 		/* Read the value back to see how many bits stuck. */
+ 282:Source\portable\GCC\ARM_CM3/port.c **** 		ucMaxPriorityValue = *pucFirstUserPriorityRegister;
+ 283:Source\portable\GCC\ARM_CM3/port.c **** 
+ 284:Source\portable\GCC\ARM_CM3/port.c **** 		/* Use the same mask on the maximum system call priority. */
+ 285:Source\portable\GCC\ARM_CM3/port.c **** 		ucMaxSysCallPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY & ucMaxPriorityValue;
+ 286:Source\portable\GCC\ARM_CM3/port.c **** 
+ 287:Source\portable\GCC\ARM_CM3/port.c **** 		/* Calculate the maximum acceptable priority group value for the number
+ 288:Source\portable\GCC\ARM_CM3/port.c **** 		of bits read back. */
+ 289:Source\portable\GCC\ARM_CM3/port.c **** 		ulMaxPRIGROUPValue = portMAX_PRIGROUP_BITS;
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 14
+
+
+ 290:Source\portable\GCC\ARM_CM3/port.c **** 		while( ( ucMaxPriorityValue & portTOP_BIT_OF_BYTE ) == portTOP_BIT_OF_BYTE )
+ 291:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 292:Source\portable\GCC\ARM_CM3/port.c **** 			ulMaxPRIGROUPValue--;
+ 293:Source\portable\GCC\ARM_CM3/port.c **** 			ucMaxPriorityValue <<= ( uint8_t ) 0x01;
+ 294:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 295:Source\portable\GCC\ARM_CM3/port.c **** 
+ 296:Source\portable\GCC\ARM_CM3/port.c **** 		#ifdef __NVIC_PRIO_BITS
+ 297:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 298:Source\portable\GCC\ARM_CM3/port.c **** 			/* Check the CMSIS configuration that defines the number of
+ 299:Source\portable\GCC\ARM_CM3/port.c **** 			priority bits matches the number of priority bits actually queried
+ 300:Source\portable\GCC\ARM_CM3/port.c **** 			from the hardware. */
+ 301:Source\portable\GCC\ARM_CM3/port.c **** 			configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == __NVIC_PRIO_BITS );
+ 302:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 303:Source\portable\GCC\ARM_CM3/port.c **** 		#endif
+ 304:Source\portable\GCC\ARM_CM3/port.c **** 
+ 305:Source\portable\GCC\ARM_CM3/port.c **** 		#ifdef configPRIO_BITS
+ 306:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 307:Source\portable\GCC\ARM_CM3/port.c **** 			/* Check the FreeRTOS configuration that defines the number of
+ 308:Source\portable\GCC\ARM_CM3/port.c **** 			priority bits matches the number of priority bits actually queried
+ 309:Source\portable\GCC\ARM_CM3/port.c **** 			from the hardware. */
+ 310:Source\portable\GCC\ARM_CM3/port.c **** 			configASSERT( ( portMAX_PRIGROUP_BITS - ulMaxPRIGROUPValue ) == configPRIO_BITS );
+ 311:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 312:Source\portable\GCC\ARM_CM3/port.c **** 		#endif
+ 313:Source\portable\GCC\ARM_CM3/port.c **** 
+ 314:Source\portable\GCC\ARM_CM3/port.c **** 		/* Shift the priority group value back to its position within the AIRCR
+ 315:Source\portable\GCC\ARM_CM3/port.c **** 		register. */
+ 316:Source\portable\GCC\ARM_CM3/port.c **** 		ulMaxPRIGROUPValue <<= portPRIGROUP_SHIFT;
+ 317:Source\portable\GCC\ARM_CM3/port.c **** 		ulMaxPRIGROUPValue &= portPRIORITY_GROUP_MASK;
+ 318:Source\portable\GCC\ARM_CM3/port.c **** 
+ 319:Source\portable\GCC\ARM_CM3/port.c **** 		/* Restore the clobbered interrupt priority register to its original
+ 320:Source\portable\GCC\ARM_CM3/port.c **** 		value. */
+ 321:Source\portable\GCC\ARM_CM3/port.c **** 		*pucFirstUserPriorityRegister = ulOriginalPriority;
+ 322:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 323:Source\portable\GCC\ARM_CM3/port.c **** 	#endif /* conifgASSERT_DEFINED */
+ 324:Source\portable\GCC\ARM_CM3/port.c **** 
+ 325:Source\portable\GCC\ARM_CM3/port.c **** 	/* Make PendSV and SysTick the lowest priority interrupts. */
+ 326:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_PENDSV_PRI;
+ 256              		.loc 1 326 0
+ 257 0004 0C4A     		ldr	r2, .L11
+ 258 0006 0C4B     		ldr	r3, .L11
+ 259 0008 1B68     		ldr	r3, [r3]
+ 260 000a 43F46003 		orr	r3, r3, #14680064
+ 261 000e 1360     		str	r3, [r2]
+ 327:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSPRI2_REG |= portNVIC_SYSTICK_PRI;
+ 262              		.loc 1 327 0
+ 263 0010 094A     		ldr	r2, .L11
+ 264 0012 094B     		ldr	r3, .L11
+ 265 0014 1B68     		ldr	r3, [r3]
+ 266 0016 43F06043 		orr	r3, r3, #-536870912
+ 267 001a 1360     		str	r3, [r2]
+ 328:Source\portable\GCC\ARM_CM3/port.c **** 
+ 329:Source\portable\GCC\ARM_CM3/port.c **** 	/* Start the timer that generates the tick ISR.  Interrupts are disabled
+ 330:Source\portable\GCC\ARM_CM3/port.c **** 	here already. */
+ 331:Source\portable\GCC\ARM_CM3/port.c **** 	vPortSetupTimerInterrupt();
+ 268              		.loc 1 331 0
+ 269 001c FFF7FEFF 		bl	vPortSetupTimerInterrupt
+ 332:Source\portable\GCC\ARM_CM3/port.c **** 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 15
+
+
+ 333:Source\portable\GCC\ARM_CM3/port.c **** 	/* Initialise the critical nesting count ready for the first task. */
+ 334:Source\portable\GCC\ARM_CM3/port.c **** 	uxCriticalNesting = 0;
+ 270              		.loc 1 334 0
+ 271 0020 064B     		ldr	r3, .L11+4
+ 272 0022 0022     		movs	r2, #0
+ 273 0024 1A60     		str	r2, [r3]
+ 335:Source\portable\GCC\ARM_CM3/port.c **** 
+ 336:Source\portable\GCC\ARM_CM3/port.c **** 	/* Start the first task. */
+ 337:Source\portable\GCC\ARM_CM3/port.c **** 	prvPortStartFirstTask();
+ 274              		.loc 1 337 0
+ 275 0026 FFF7FEFF 		bl	prvPortStartFirstTask
+ 338:Source\portable\GCC\ARM_CM3/port.c **** 
+ 339:Source\portable\GCC\ARM_CM3/port.c **** 	/* Should never get here as the tasks will now be executing!  Call the task
+ 340:Source\portable\GCC\ARM_CM3/port.c **** 	exit error function to prevent compiler warnings about a static function
+ 341:Source\portable\GCC\ARM_CM3/port.c **** 	not being called in the case that the application writer overrides this
+ 342:Source\portable\GCC\ARM_CM3/port.c **** 	functionality by defining configTASK_RETURN_ADDRESS.  Call
+ 343:Source\portable\GCC\ARM_CM3/port.c **** 	vTaskSwitchContext() so link time optimisation does not remove the
+ 344:Source\portable\GCC\ARM_CM3/port.c **** 	symbol. */
+ 345:Source\portable\GCC\ARM_CM3/port.c **** 	vTaskSwitchContext();
+ 276              		.loc 1 345 0
+ 277 002a FFF7FEFF 		bl	vTaskSwitchContext
+ 346:Source\portable\GCC\ARM_CM3/port.c **** 	prvTaskExitError();
+ 278              		.loc 1 346 0
+ 279 002e FFF7FEFF 		bl	prvTaskExitError
+ 347:Source\portable\GCC\ARM_CM3/port.c **** 
+ 348:Source\portable\GCC\ARM_CM3/port.c **** 	/* Should not get here! */
+ 349:Source\portable\GCC\ARM_CM3/port.c **** 	return 0;
+ 280              		.loc 1 349 0
+ 281 0032 0023     		movs	r3, #0
+ 350:Source\portable\GCC\ARM_CM3/port.c **** }
+ 282              		.loc 1 350 0
+ 283 0034 1846     		mov	r0, r3
+ 284 0036 80BD     		pop	{r7, pc}
+ 285              	.L12:
+ 286              		.align	2
+ 287              	.L11:
+ 288 0038 20ED00E0 		.word	-536810208
+ 289 003c 00000000 		.word	uxCriticalNesting
+ 290              		.cfi_endproc
+ 291              	.LFE72:
+ 292              		.size	xPortStartScheduler, .-xPortStartScheduler
+ 293              		.section	.text.vPortEndScheduler,"ax",%progbits
+ 294              		.align	2
+ 295              		.global	vPortEndScheduler
+ 296              		.thumb
+ 297              		.thumb_func
+ 298              		.type	vPortEndScheduler, %function
+ 299              	vPortEndScheduler:
+ 300              	.LFB73:
+ 351:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 352:Source\portable\GCC\ARM_CM3/port.c **** 
+ 353:Source\portable\GCC\ARM_CM3/port.c **** void vPortEndScheduler( void )
+ 354:Source\portable\GCC\ARM_CM3/port.c **** {
+ 301              		.loc 1 354 0
+ 302              		.cfi_startproc
+ 303              		@ args = 0, pretend = 0, frame = 0
+ 304              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 16
+
+
+ 305              		@ link register save eliminated.
+ 306 0000 80B4     		push	{r7}
+ 307              		.cfi_def_cfa_offset 4
+ 308              		.cfi_offset 7, -4
+ 309 0002 00AF     		add	r7, sp, #0
+ 310              		.cfi_def_cfa_register 7
+ 355:Source\portable\GCC\ARM_CM3/port.c **** 	/* Not implemented in ports where there is nothing to return to.
+ 356:Source\portable\GCC\ARM_CM3/port.c **** 	Artificially force an assert. */
+ 357:Source\portable\GCC\ARM_CM3/port.c **** 	configASSERT( uxCriticalNesting == 1000UL );
+ 358:Source\portable\GCC\ARM_CM3/port.c **** }
+ 311              		.loc 1 358 0
+ 312 0004 00BF     		nop
+ 313 0006 BD46     		mov	sp, r7
+ 314              		.cfi_def_cfa_register 13
+ 315              		@ sp needed
+ 316 0008 80BC     		pop	{r7}
+ 317              		.cfi_restore 7
+ 318              		.cfi_def_cfa_offset 0
+ 319 000a 7047     		bx	lr
+ 320              		.cfi_endproc
+ 321              	.LFE73:
+ 322              		.size	vPortEndScheduler, .-vPortEndScheduler
+ 323              		.section	.text.vPortEnterCritical,"ax",%progbits
+ 324              		.align	2
+ 325              		.global	vPortEnterCritical
+ 326              		.thumb
+ 327              		.thumb_func
+ 328              		.type	vPortEnterCritical, %function
+ 329              	vPortEnterCritical:
+ 330              	.LFB74:
+ 359:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 360:Source\portable\GCC\ARM_CM3/port.c **** 
+ 361:Source\portable\GCC\ARM_CM3/port.c **** void vPortEnterCritical( void )
+ 362:Source\portable\GCC\ARM_CM3/port.c **** {
+ 331              		.loc 1 362 0
+ 332              		.cfi_startproc
+ 333              		@ args = 0, pretend = 0, frame = 8
+ 334              		@ frame_needed = 1, uses_anonymous_args = 0
+ 335              		@ link register save eliminated.
+ 336 0000 80B4     		push	{r7}
+ 337              		.cfi_def_cfa_offset 4
+ 338              		.cfi_offset 7, -4
+ 339 0002 83B0     		sub	sp, sp, #12
+ 340              		.cfi_def_cfa_offset 16
+ 341 0004 00AF     		add	r7, sp, #0
+ 342              		.cfi_def_cfa_register 7
+ 343              	.LBB14:
+ 344              	.LBB15:
+ 345              		.loc 2 197 0
+ 346              		.syntax unified
+ 347              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 348 0006 4FF0A003 			mov r3, #160												
+ 349 000a 83F31188 		msr basepri, r3											
+ 350 000e BFF36F8F 		isb														
+ 351 0012 BFF34F8F 		dsb														
+ 352              	
+ 353              	@ 0 "" 2
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 17
+
+
+ 354              		.thumb
+ 355              		.syntax unified
+ 356 0016 7B60     		str	r3, [r7, #4]
+ 357              	.LBE15:
+ 358              	.LBE14:
+ 363:Source\portable\GCC\ARM_CM3/port.c **** 	portDISABLE_INTERRUPTS();
+ 364:Source\portable\GCC\ARM_CM3/port.c **** 	uxCriticalNesting++;
+ 359              		.loc 1 364 0
+ 360 0018 044B     		ldr	r3, .L15
+ 361 001a 1B68     		ldr	r3, [r3]
+ 362 001c 0133     		adds	r3, r3, #1
+ 363 001e 034A     		ldr	r2, .L15
+ 364 0020 1360     		str	r3, [r2]
+ 365:Source\portable\GCC\ARM_CM3/port.c **** 
+ 366:Source\portable\GCC\ARM_CM3/port.c **** 	/* This is not the interrupt safe version of the enter critical function so
+ 367:Source\portable\GCC\ARM_CM3/port.c **** 	assert() if it is being called from an interrupt context.  Only API
+ 368:Source\portable\GCC\ARM_CM3/port.c **** 	functions that end in "FromISR" can be used in an interrupt.  Only assert if
+ 369:Source\portable\GCC\ARM_CM3/port.c **** 	the critical nesting count is 1 to protect against recursive calls if the
+ 370:Source\portable\GCC\ARM_CM3/port.c **** 	assert function also uses a critical section. */
+ 371:Source\portable\GCC\ARM_CM3/port.c **** 	if( uxCriticalNesting == 1 )
+ 372:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 373:Source\portable\GCC\ARM_CM3/port.c **** 		configASSERT( ( portNVIC_INT_CTRL_REG & portVECTACTIVE_MASK ) == 0 );
+ 374:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 375:Source\portable\GCC\ARM_CM3/port.c **** }
+ 365              		.loc 1 375 0
+ 366 0022 00BF     		nop
+ 367 0024 0C37     		adds	r7, r7, #12
+ 368              		.cfi_def_cfa_offset 4
+ 369 0026 BD46     		mov	sp, r7
+ 370              		.cfi_def_cfa_register 13
+ 371              		@ sp needed
+ 372 0028 80BC     		pop	{r7}
+ 373              		.cfi_restore 7
+ 374              		.cfi_def_cfa_offset 0
+ 375 002a 7047     		bx	lr
+ 376              	.L16:
+ 377              		.align	2
+ 378              	.L15:
+ 379 002c 00000000 		.word	uxCriticalNesting
+ 380              		.cfi_endproc
+ 381              	.LFE74:
+ 382              		.size	vPortEnterCritical, .-vPortEnterCritical
+ 383              		.section	.text.vPortExitCritical,"ax",%progbits
+ 384              		.align	2
+ 385              		.global	vPortExitCritical
+ 386              		.thumb
+ 387              		.thumb_func
+ 388              		.type	vPortExitCritical, %function
+ 389              	vPortExitCritical:
+ 390              	.LFB75:
+ 376:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 377:Source\portable\GCC\ARM_CM3/port.c **** 
+ 378:Source\portable\GCC\ARM_CM3/port.c **** void vPortExitCritical( void )
+ 379:Source\portable\GCC\ARM_CM3/port.c **** {
+ 391              		.loc 1 379 0
+ 392              		.cfi_startproc
+ 393              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 18
+
+
+ 394              		@ frame_needed = 1, uses_anonymous_args = 0
+ 395              		@ link register save eliminated.
+ 396 0000 80B4     		push	{r7}
+ 397              		.cfi_def_cfa_offset 4
+ 398              		.cfi_offset 7, -4
+ 399 0002 83B0     		sub	sp, sp, #12
+ 400              		.cfi_def_cfa_offset 16
+ 401 0004 00AF     		add	r7, sp, #0
+ 402              		.cfi_def_cfa_register 7
+ 380:Source\portable\GCC\ARM_CM3/port.c **** 	configASSERT( uxCriticalNesting );
+ 381:Source\portable\GCC\ARM_CM3/port.c **** 	uxCriticalNesting--;
+ 403              		.loc 1 381 0
+ 404 0006 094B     		ldr	r3, .L20
+ 405 0008 1B68     		ldr	r3, [r3]
+ 406 000a 013B     		subs	r3, r3, #1
+ 407 000c 074A     		ldr	r2, .L20
+ 408 000e 1360     		str	r3, [r2]
+ 382:Source\portable\GCC\ARM_CM3/port.c **** 	if( uxCriticalNesting == 0 )
+ 409              		.loc 1 382 0
+ 410 0010 064B     		ldr	r3, .L20
+ 411 0012 1B68     		ldr	r3, [r3]
+ 412 0014 002B     		cmp	r3, #0
+ 413 0016 04D1     		bne	.L19
+ 414 0018 0023     		movs	r3, #0
+ 415 001a 7B60     		str	r3, [r7, #4]
+ 416              	.LBB16:
+ 417              	.LBB17:
+ 198:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	(
+ 199:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	mov %0, %1												\n" \
+ 200:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	msr basepri, %0											\n" \
+ 201:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	isb														\n" \
+ 202:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	dsb														\n" \
+ 203:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
+ 204:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	);
+ 205:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
+ 206:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 207:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ 208:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 209:.\Source\portable\GCC\ARM_CM3/portmacro.h **** portFORCE_INLINE static uint32_t ulPortRaiseBASEPRI( void )
+ 210:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {
+ 211:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulOriginalBASEPRI, ulNewBASEPRI;
+ 212:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 213:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
+ 214:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	(
+ 215:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	mrs %0, basepri											\n" \
+ 216:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	mov %1, %2												\n" \
+ 217:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	msr basepri, %1											\n" \
+ 218:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	isb														\n" \
+ 219:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	dsb														\n" \
+ 220:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		:"=r" (ulOriginalBASEPRI), "=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "
+ 221:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	);
+ 222:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 223:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* This return will not be reached but is necessary to prevent compiler
+ 224:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	warnings. */
+ 225:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return ulOriginalBASEPRI;
+ 226:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
+ 227:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 19
+
+
+ 228:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ 229:.\Source\portable\GCC\ARM_CM3/portmacro.h **** portFORCE_INLINE static void vPortSetBASEPRI( uint32_t ulNewMaskValue )
+ 230:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {
+ 231:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
+ 418              		.loc 2 231 0
+ 419 001c 7B68     		ldr	r3, [r7, #4]
+ 420              		.syntax unified
+ 421              	@ 231 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 422 001e 83F31188 			msr basepri, r3	
+ 423              	@ 0 "" 2
+ 424              		.thumb
+ 425              		.syntax unified
+ 426              	.L19:
+ 427              	.LBE17:
+ 428              	.LBE16:
+ 383:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 384:Source\portable\GCC\ARM_CM3/port.c **** 		portENABLE_INTERRUPTS();
+ 385:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 386:Source\portable\GCC\ARM_CM3/port.c **** }
+ 429              		.loc 1 386 0
+ 430 0022 00BF     		nop
+ 431 0024 0C37     		adds	r7, r7, #12
+ 432              		.cfi_def_cfa_offset 4
+ 433 0026 BD46     		mov	sp, r7
+ 434              		.cfi_def_cfa_register 13
+ 435              		@ sp needed
+ 436 0028 80BC     		pop	{r7}
+ 437              		.cfi_restore 7
+ 438              		.cfi_def_cfa_offset 0
+ 439 002a 7047     		bx	lr
+ 440              	.L21:
+ 441              		.align	2
+ 442              	.L20:
+ 443 002c 00000000 		.word	uxCriticalNesting
+ 444              		.cfi_endproc
+ 445              	.LFE75:
+ 446              		.size	vPortExitCritical, .-vPortExitCritical
+ 447              		.section	.text.xPortPendSVHandler,"ax",%progbits
+ 448              		.align	2
+ 449              		.global	xPortPendSVHandler
+ 450              		.thumb
+ 451              		.thumb_func
+ 452              		.type	xPortPendSVHandler, %function
+ 453              	xPortPendSVHandler:
+ 454              	.LFB76:
+ 387:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 388:Source\portable\GCC\ARM_CM3/port.c **** 
+ 389:Source\portable\GCC\ARM_CM3/port.c **** void xPortPendSVHandler( void )
+ 390:Source\portable\GCC\ARM_CM3/port.c **** {
+ 455              		.loc 1 390 0
+ 456              		.cfi_startproc
+ 457              		@ Naked Function: prologue and epilogue provided by programmer.
+ 458              		@ args = 0, pretend = 0, frame = 0
+ 459              		@ frame_needed = 1, uses_anonymous_args = 0
+ 391:Source\portable\GCC\ARM_CM3/port.c **** 	/* This is a naked function. */
+ 392:Source\portable\GCC\ARM_CM3/port.c **** 
+ 393:Source\portable\GCC\ARM_CM3/port.c **** 	__asm volatile
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 20
+
+
+ 460              		.loc 1 393 0
+ 461              		.syntax unified
+ 462              	@ 393 "Source\portable\GCC\ARM_CM3\port.c" 1
+ 463 0000 EFF30980 			mrs r0, psp							
+ 464 0004 BFF36F8F 		isb									
+ 465              											
+ 466 0008 0D4B     		ldr	r3, pxCurrentTCBConst			
+ 467 000a 1A68     		ldr	r2, [r3]						
+ 468              											
+ 469 000c 20E9F00F 		stmdb r0!, {r4-r11}					
+ 470 0010 1060     		str r0, [r2]						
+ 471              											
+ 472 0012 2DE90840 		stmdb sp!, {r3, r14}				
+ 473 0016 4FF0A000 		mov r0, #160							
+ 474 001a 80F31188 		msr basepri, r0						
+ 475 001e FFF7FEFF 		bl vTaskSwitchContext				
+ 476 0022 4FF00000 		mov r0, #0							
+ 477 0026 80F31188 		msr basepri, r0						
+ 478 002a BDE80840 		ldmia sp!, {r3, r14}				
+ 479              											
+ 480 002e 1968     		ldr r1, [r3]						
+ 481 0030 0868     		ldr r0, [r1]						
+ 482 0032 B0E8F00F 		ldmia r0!, {r4-r11}					
+ 483 0036 80F30988 		msr psp, r0							
+ 484 003a BFF36F8F 		isb									
+ 485 003e 7047     		bx r14								
+ 486              											
+ 487              		.align 4							
+ 488 0040 00000000 	pxCurrentTCBConst: .word pxCurrentTCB	
+ 489              	
+ 490              	@ 0 "" 2
+ 394:Source\portable\GCC\ARM_CM3/port.c **** 	(
+ 395:Source\portable\GCC\ARM_CM3/port.c **** 	"	mrs r0, psp							\n"
+ 396:Source\portable\GCC\ARM_CM3/port.c **** 	"	isb									\n"
+ 397:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n"
+ 398:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldr	r3, pxCurrentTCBConst			\n" /* Get the location of the current TCB. */
+ 399:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldr	r2, [r3]						\n"
+ 400:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n"
+ 401:Source\portable\GCC\ARM_CM3/port.c **** 	"	stmdb r0!, {r4-r11}					\n" /* Save the remaining registers. */
+ 402:Source\portable\GCC\ARM_CM3/port.c **** 	"	str r0, [r2]						\n" /* Save the new top of stack into the first member of the TCB. */
+ 403:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n"
+ 404:Source\portable\GCC\ARM_CM3/port.c **** 	"	stmdb sp!, {r3, r14}				\n"
+ 405:Source\portable\GCC\ARM_CM3/port.c **** 	"	mov r0, %0							\n"
+ 406:Source\portable\GCC\ARM_CM3/port.c **** 	"	msr basepri, r0						\n"
+ 407:Source\portable\GCC\ARM_CM3/port.c **** 	"	bl vTaskSwitchContext				\n"
+ 408:Source\portable\GCC\ARM_CM3/port.c **** 	"	mov r0, #0							\n"
+ 409:Source\portable\GCC\ARM_CM3/port.c **** 	"	msr basepri, r0						\n"
+ 410:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldmia sp!, {r3, r14}				\n"
+ 411:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n" /* Restore the context, including the critical nesting count. */
+ 412:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldr r1, [r3]						\n"
+ 413:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldr r0, [r1]						\n" /* The first item in pxCurrentTCB is the task top of stack. */
+ 414:Source\portable\GCC\ARM_CM3/port.c **** 	"	ldmia r0!, {r4-r11}					\n" /* Pop the registers. */
+ 415:Source\portable\GCC\ARM_CM3/port.c **** 	"	msr psp, r0							\n"
+ 416:Source\portable\GCC\ARM_CM3/port.c **** 	"	isb									\n"
+ 417:Source\portable\GCC\ARM_CM3/port.c **** 	"	bx r14								\n"
+ 418:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n"
+ 419:Source\portable\GCC\ARM_CM3/port.c **** 	"	.align 4							\n"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 21
+
+
+ 420:Source\portable\GCC\ARM_CM3/port.c **** 	"pxCurrentTCBConst: .word pxCurrentTCB	\n"
+ 421:Source\portable\GCC\ARM_CM3/port.c **** 	::"i"(configMAX_SYSCALL_INTERRUPT_PRIORITY)
+ 422:Source\portable\GCC\ARM_CM3/port.c **** 	);
+ 423:Source\portable\GCC\ARM_CM3/port.c **** }
+ 491              		.loc 1 423 0
+ 492              		.thumb
+ 493              		.syntax unified
+ 494 0044 00BF     		nop
+ 495              		.cfi_endproc
+ 496              	.LFE76:
+ 497              		.size	xPortPendSVHandler, .-xPortPendSVHandler
+ 498 0046 00BF     		.section	.text.xPortSysTickHandler,"ax",%progbits
+ 499              		.align	2
+ 500              		.global	xPortSysTickHandler
+ 501              		.thumb
+ 502              		.thumb_func
+ 503              		.type	xPortSysTickHandler, %function
+ 504              	xPortSysTickHandler:
+ 505              	.LFB77:
+ 424:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 425:Source\portable\GCC\ARM_CM3/port.c **** 
+ 426:Source\portable\GCC\ARM_CM3/port.c **** void xPortSysTickHandler( void )
+ 427:Source\portable\GCC\ARM_CM3/port.c **** {
+ 506              		.loc 1 427 0
+ 507              		.cfi_startproc
+ 508              		@ args = 0, pretend = 0, frame = 8
+ 509              		@ frame_needed = 1, uses_anonymous_args = 0
+ 510 0000 80B5     		push	{r7, lr}
+ 511              		.cfi_def_cfa_offset 8
+ 512              		.cfi_offset 7, -8
+ 513              		.cfi_offset 14, -4
+ 514 0002 82B0     		sub	sp, sp, #8
+ 515              		.cfi_def_cfa_offset 16
+ 516 0004 00AF     		add	r7, sp, #0
+ 517              		.cfi_def_cfa_register 7
+ 518              	.LBB18:
+ 519              	.LBB19:
+ 197:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	(
+ 520              		.loc 2 197 0
+ 521              		.syntax unified
+ 522              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 523 0006 4FF0A003 			mov r3, #160												
+ 524 000a 83F31188 		msr basepri, r3											
+ 525 000e BFF36F8F 		isb														
+ 526 0012 BFF34F8F 		dsb														
+ 527              	
+ 528              	@ 0 "" 2
+ 529              		.thumb
+ 530              		.syntax unified
+ 531 0016 3B60     		str	r3, [r7]
+ 532              	.LBE19:
+ 533              	.LBE18:
+ 428:Source\portable\GCC\ARM_CM3/port.c **** 	/* The SysTick runs at the lowest interrupt priority, so when this interrupt
+ 429:Source\portable\GCC\ARM_CM3/port.c **** 	executes all interrupts must be unmasked.  There is therefore no need to
+ 430:Source\portable\GCC\ARM_CM3/port.c **** 	save and then restore the interrupt mask value as its value is already
+ 431:Source\portable\GCC\ARM_CM3/port.c **** 	known. */
+ 432:Source\portable\GCC\ARM_CM3/port.c **** 	portDISABLE_INTERRUPTS();
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 22
+
+
+ 433:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 434:Source\portable\GCC\ARM_CM3/port.c **** 		/* Increment the RTOS tick. */
+ 435:Source\portable\GCC\ARM_CM3/port.c **** 		if( xTaskIncrementTick() != pdFALSE )
+ 534              		.loc 1 435 0
+ 535 0018 FFF7FEFF 		bl	xTaskIncrementTick
+ 536 001c 0346     		mov	r3, r0
+ 537 001e 002B     		cmp	r3, #0
+ 538 0020 03D0     		beq	.L24
+ 436:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 437:Source\portable\GCC\ARM_CM3/port.c **** 			/* A context switch is required.  Context switching is performed in
+ 438:Source\portable\GCC\ARM_CM3/port.c **** 			the PendSV interrupt.  Pend the PendSV interrupt. */
+ 439:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;
+ 539              		.loc 1 439 0
+ 540 0022 064B     		ldr	r3, .L25
+ 541 0024 4FF08052 		mov	r2, #268435456
+ 542 0028 1A60     		str	r2, [r3]
+ 543              	.L24:
+ 544 002a 0023     		movs	r3, #0
+ 545 002c 7B60     		str	r3, [r7, #4]
+ 546              	.LBB20:
+ 547              	.LBB21:
+ 548              		.loc 2 231 0
+ 549 002e 7B68     		ldr	r3, [r7, #4]
+ 550              		.syntax unified
+ 551              	@ 231 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 552 0030 83F31188 			msr basepri, r3	
+ 553              	@ 0 "" 2
+ 554              		.thumb
+ 555              		.syntax unified
+ 556              	.LBE21:
+ 557              	.LBE20:
+ 440:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 441:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 442:Source\portable\GCC\ARM_CM3/port.c **** 	portENABLE_INTERRUPTS();
+ 443:Source\portable\GCC\ARM_CM3/port.c **** }
+ 558              		.loc 1 443 0
+ 559 0034 00BF     		nop
+ 560 0036 0837     		adds	r7, r7, #8
+ 561              		.cfi_def_cfa_offset 8
+ 562 0038 BD46     		mov	sp, r7
+ 563              		.cfi_def_cfa_register 13
+ 564              		@ sp needed
+ 565 003a 80BD     		pop	{r7, pc}
+ 566              	.L26:
+ 567              		.align	2
+ 568              	.L25:
+ 569 003c 04ED00E0 		.word	-536810236
+ 570              		.cfi_endproc
+ 571              	.LFE77:
+ 572              		.size	xPortSysTickHandler, .-xPortSysTickHandler
+ 573              		.section	.text.vPortSetupTimerInterrupt,"ax",%progbits
+ 574              		.align	2
+ 575              		.weak	vPortSetupTimerInterrupt
+ 576              		.thumb
+ 577              		.thumb_func
+ 578              		.type	vPortSetupTimerInterrupt, %function
+ 579              	vPortSetupTimerInterrupt:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 23
+
+
+ 580              	.LFB78:
+ 444:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 445:Source\portable\GCC\ARM_CM3/port.c **** 
+ 446:Source\portable\GCC\ARM_CM3/port.c **** #if( configUSE_TICKLESS_IDLE == 1 )
+ 447:Source\portable\GCC\ARM_CM3/port.c **** 
+ 448:Source\portable\GCC\ARM_CM3/port.c **** 	__attribute__((weak)) void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
+ 449:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 450:Source\portable\GCC\ARM_CM3/port.c **** 	uint32_t ulReloadValue, ulCompleteTickPeriods, ulCompletedSysTickDecrements;
+ 451:Source\portable\GCC\ARM_CM3/port.c **** 	TickType_t xModifiableIdleTime;
+ 452:Source\portable\GCC\ARM_CM3/port.c **** 
+ 453:Source\portable\GCC\ARM_CM3/port.c **** 		/* Make sure the SysTick reload value does not overflow the counter. */
+ 454:Source\portable\GCC\ARM_CM3/port.c **** 		if( xExpectedIdleTime > xMaximumPossibleSuppressedTicks )
+ 455:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 456:Source\portable\GCC\ARM_CM3/port.c **** 			xExpectedIdleTime = xMaximumPossibleSuppressedTicks;
+ 457:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 458:Source\portable\GCC\ARM_CM3/port.c **** 
+ 459:Source\portable\GCC\ARM_CM3/port.c **** 		/* Stop the SysTick momentarily.  The time the SysTick is stopped for
+ 460:Source\portable\GCC\ARM_CM3/port.c **** 		is accounted for as best it can be, but using the tickless mode will
+ 461:Source\portable\GCC\ARM_CM3/port.c **** 		inevitably result in some tiny drift of the time maintained by the
+ 462:Source\portable\GCC\ARM_CM3/port.c **** 		kernel with respect to calendar time. */
+ 463:Source\portable\GCC\ARM_CM3/port.c **** 		portNVIC_SYSTICK_CTRL_REG &= ~portNVIC_SYSTICK_ENABLE_BIT;
+ 464:Source\portable\GCC\ARM_CM3/port.c **** 
+ 465:Source\portable\GCC\ARM_CM3/port.c **** 		/* Calculate the reload value required to wait xExpectedIdleTime
+ 466:Source\portable\GCC\ARM_CM3/port.c **** 		tick periods.  -1 is used because this code will execute part way
+ 467:Source\portable\GCC\ARM_CM3/port.c **** 		through one of the tick periods. */
+ 468:Source\portable\GCC\ARM_CM3/port.c **** 		ulReloadValue = portNVIC_SYSTICK_CURRENT_VALUE_REG + ( ulTimerCountsForOneTick * ( xExpectedIdleT
+ 469:Source\portable\GCC\ARM_CM3/port.c **** 		if( ulReloadValue > ulStoppedTimerCompensation )
+ 470:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 471:Source\portable\GCC\ARM_CM3/port.c **** 			ulReloadValue -= ulStoppedTimerCompensation;
+ 472:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 473:Source\portable\GCC\ARM_CM3/port.c **** 
+ 474:Source\portable\GCC\ARM_CM3/port.c **** 		/* Enter a critical section but don't use the taskENTER_CRITICAL()
+ 475:Source\portable\GCC\ARM_CM3/port.c **** 		method as that will mask interrupts that should exit sleep mode. */
+ 476:Source\portable\GCC\ARM_CM3/port.c **** 		__asm volatile( "cpsid i" ::: "memory" );
+ 477:Source\portable\GCC\ARM_CM3/port.c **** 		__asm volatile( "dsb" );
+ 478:Source\portable\GCC\ARM_CM3/port.c **** 		__asm volatile( "isb" );
+ 479:Source\portable\GCC\ARM_CM3/port.c **** 
+ 480:Source\portable\GCC\ARM_CM3/port.c **** 		/* If a context switch is pending or a task is waiting for the scheduler
+ 481:Source\portable\GCC\ARM_CM3/port.c **** 		to be unsuspended then abandon the low power entry. */
+ 482:Source\portable\GCC\ARM_CM3/port.c **** 		if( eTaskConfirmSleepModeStatus() == eAbortSleep )
+ 483:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 484:Source\portable\GCC\ARM_CM3/port.c **** 			/* Restart from whatever is left in the count register to complete
+ 485:Source\portable\GCC\ARM_CM3/port.c **** 			this tick period. */
+ 486:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_LOAD_REG = portNVIC_SYSTICK_CURRENT_VALUE_REG;
+ 487:Source\portable\GCC\ARM_CM3/port.c **** 
+ 488:Source\portable\GCC\ARM_CM3/port.c **** 			/* Restart SysTick. */
+ 489:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 490:Source\portable\GCC\ARM_CM3/port.c **** 
+ 491:Source\portable\GCC\ARM_CM3/port.c **** 			/* Reset the reload register to the value required for normal tick
+ 492:Source\portable\GCC\ARM_CM3/port.c **** 			periods. */
+ 493:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+ 494:Source\portable\GCC\ARM_CM3/port.c **** 
+ 495:Source\portable\GCC\ARM_CM3/port.c **** 			/* Re-enable interrupts - see comments above the cpsid instruction()
+ 496:Source\portable\GCC\ARM_CM3/port.c **** 			above. */
+ 497:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 498:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 499:Source\portable\GCC\ARM_CM3/port.c **** 		else
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 24
+
+
+ 500:Source\portable\GCC\ARM_CM3/port.c **** 		{
+ 501:Source\portable\GCC\ARM_CM3/port.c **** 			/* Set the new reload value. */
+ 502:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulReloadValue;
+ 503:Source\portable\GCC\ARM_CM3/port.c **** 
+ 504:Source\portable\GCC\ARM_CM3/port.c **** 			/* Clear the SysTick count flag and set the count value back to
+ 505:Source\portable\GCC\ARM_CM3/port.c **** 			zero. */
+ 506:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 507:Source\portable\GCC\ARM_CM3/port.c **** 
+ 508:Source\portable\GCC\ARM_CM3/port.c **** 			/* Restart SysTick. */
+ 509:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 510:Source\portable\GCC\ARM_CM3/port.c **** 
+ 511:Source\portable\GCC\ARM_CM3/port.c **** 			/* Sleep until something happens.  configPRE_SLEEP_PROCESSING() can
+ 512:Source\portable\GCC\ARM_CM3/port.c **** 			set its parameter to 0 to indicate that its implementation contains
+ 513:Source\portable\GCC\ARM_CM3/port.c **** 			its own wait for interrupt or wait for event instruction, and so wfi
+ 514:Source\portable\GCC\ARM_CM3/port.c **** 			should not be executed again.  However, the original expected idle
+ 515:Source\portable\GCC\ARM_CM3/port.c **** 			time variable must remain unmodified, so a copy is taken. */
+ 516:Source\portable\GCC\ARM_CM3/port.c **** 			xModifiableIdleTime = xExpectedIdleTime;
+ 517:Source\portable\GCC\ARM_CM3/port.c **** 			configPRE_SLEEP_PROCESSING( xModifiableIdleTime );
+ 518:Source\portable\GCC\ARM_CM3/port.c **** 			if( xModifiableIdleTime > 0 )
+ 519:Source\portable\GCC\ARM_CM3/port.c **** 			{
+ 520:Source\portable\GCC\ARM_CM3/port.c **** 				__asm volatile( "dsb" ::: "memory" );
+ 521:Source\portable\GCC\ARM_CM3/port.c **** 				__asm volatile( "wfi" );
+ 522:Source\portable\GCC\ARM_CM3/port.c **** 				__asm volatile( "isb" );
+ 523:Source\portable\GCC\ARM_CM3/port.c **** 			}
+ 524:Source\portable\GCC\ARM_CM3/port.c **** 			configPOST_SLEEP_PROCESSING( xExpectedIdleTime );
+ 525:Source\portable\GCC\ARM_CM3/port.c **** 
+ 526:Source\portable\GCC\ARM_CM3/port.c **** 			/* Re-enable interrupts to allow the interrupt that brought the MCU
+ 527:Source\portable\GCC\ARM_CM3/port.c **** 			out of sleep mode to execute immediately.  see comments above
+ 528:Source\portable\GCC\ARM_CM3/port.c **** 			__disable_interrupt() call above. */
+ 529:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 530:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "dsb" );
+ 531:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "isb" );
+ 532:Source\portable\GCC\ARM_CM3/port.c **** 
+ 533:Source\portable\GCC\ARM_CM3/port.c **** 			/* Disable interrupts again because the clock is about to be stopped
+ 534:Source\portable\GCC\ARM_CM3/port.c **** 			and interrupts that execute while the clock is stopped will increase
+ 535:Source\portable\GCC\ARM_CM3/port.c **** 			any slippage between the time maintained by the RTOS and calendar
+ 536:Source\portable\GCC\ARM_CM3/port.c **** 			time. */
+ 537:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "cpsid i" ::: "memory" );
+ 538:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "dsb" );
+ 539:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "isb" );
+ 540:Source\portable\GCC\ARM_CM3/port.c **** 
+ 541:Source\portable\GCC\ARM_CM3/port.c **** 			/* Disable the SysTick clock without reading the
+ 542:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CTRL_REG register to ensure the
+ 543:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_COUNT_FLAG_BIT is not cleared if it is set.  Again,
+ 544:Source\portable\GCC\ARM_CM3/port.c **** 			the time the SysTick is stopped for is accounted for as best it can
+ 545:Source\portable\GCC\ARM_CM3/port.c **** 			be, but using the tickless mode will inevitably result in some tiny
+ 546:Source\portable\GCC\ARM_CM3/port.c **** 			drift of the time maintained by the kernel with respect to calendar
+ 547:Source\portable\GCC\ARM_CM3/port.c **** 			time*/
+ 548:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT );
+ 549:Source\portable\GCC\ARM_CM3/port.c **** 
+ 550:Source\portable\GCC\ARM_CM3/port.c **** 			/* Determine if the SysTick clock has already counted to zero and
+ 551:Source\portable\GCC\ARM_CM3/port.c **** 			been set back to the current reload value (the reload back being
+ 552:Source\portable\GCC\ARM_CM3/port.c **** 			correct for the entire expected idle time) or if the SysTick is yet
+ 553:Source\portable\GCC\ARM_CM3/port.c **** 			to count to zero (in which case an interrupt other than the SysTick
+ 554:Source\portable\GCC\ARM_CM3/port.c **** 			must have brought the system out of sleep mode). */
+ 555:Source\portable\GCC\ARM_CM3/port.c **** 			if( ( portNVIC_SYSTICK_CTRL_REG & portNVIC_SYSTICK_COUNT_FLAG_BIT ) != 0 )
+ 556:Source\portable\GCC\ARM_CM3/port.c **** 			{
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 25
+
+
+ 557:Source\portable\GCC\ARM_CM3/port.c **** 				uint32_t ulCalculatedLoadValue;
+ 558:Source\portable\GCC\ARM_CM3/port.c **** 
+ 559:Source\portable\GCC\ARM_CM3/port.c **** 				/* The tick interrupt is already pending, and the SysTick count
+ 560:Source\portable\GCC\ARM_CM3/port.c **** 				reloaded with ulReloadValue.  Reset the
+ 561:Source\portable\GCC\ARM_CM3/port.c **** 				portNVIC_SYSTICK_LOAD_REG with whatever remains of this tick
+ 562:Source\portable\GCC\ARM_CM3/port.c **** 				period. */
+ 563:Source\portable\GCC\ARM_CM3/port.c **** 				ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL ) - ( ulReloadValue - portNVIC_SYSTICK_
+ 564:Source\portable\GCC\ARM_CM3/port.c **** 
+ 565:Source\portable\GCC\ARM_CM3/port.c **** 				/* Don't allow a tiny value, or values that have somehow
+ 566:Source\portable\GCC\ARM_CM3/port.c **** 				underflowed because the post sleep hook did something
+ 567:Source\portable\GCC\ARM_CM3/port.c **** 				that took too long. */
+ 568:Source\portable\GCC\ARM_CM3/port.c **** 				if( ( ulCalculatedLoadValue < ulStoppedTimerCompensation ) || ( ulCalculatedLoadValue > ulTimer
+ 569:Source\portable\GCC\ARM_CM3/port.c **** 				{
+ 570:Source\portable\GCC\ARM_CM3/port.c **** 					ulCalculatedLoadValue = ( ulTimerCountsForOneTick - 1UL );
+ 571:Source\portable\GCC\ARM_CM3/port.c **** 				}
+ 572:Source\portable\GCC\ARM_CM3/port.c **** 
+ 573:Source\portable\GCC\ARM_CM3/port.c **** 				portNVIC_SYSTICK_LOAD_REG = ulCalculatedLoadValue;
+ 574:Source\portable\GCC\ARM_CM3/port.c **** 
+ 575:Source\portable\GCC\ARM_CM3/port.c **** 				/* As the pending tick will be processed as soon as this
+ 576:Source\portable\GCC\ARM_CM3/port.c **** 				function exits, the tick value maintained by the tick is stepped
+ 577:Source\portable\GCC\ARM_CM3/port.c **** 				forward by one less than the time spent waiting. */
+ 578:Source\portable\GCC\ARM_CM3/port.c **** 				ulCompleteTickPeriods = xExpectedIdleTime - 1UL;
+ 579:Source\portable\GCC\ARM_CM3/port.c **** 			}
+ 580:Source\portable\GCC\ARM_CM3/port.c **** 			else
+ 581:Source\portable\GCC\ARM_CM3/port.c **** 			{
+ 582:Source\portable\GCC\ARM_CM3/port.c **** 				/* Something other than the tick interrupt ended the sleep.
+ 583:Source\portable\GCC\ARM_CM3/port.c **** 				Work out how long the sleep lasted rounded to complete tick
+ 584:Source\portable\GCC\ARM_CM3/port.c **** 				periods (not the ulReload value which accounted for part
+ 585:Source\portable\GCC\ARM_CM3/port.c **** 				ticks). */
+ 586:Source\portable\GCC\ARM_CM3/port.c **** 				ulCompletedSysTickDecrements = ( xExpectedIdleTime * ulTimerCountsForOneTick ) - portNVIC_SYSTI
+ 587:Source\portable\GCC\ARM_CM3/port.c **** 
+ 588:Source\portable\GCC\ARM_CM3/port.c **** 				/* How many complete tick periods passed while the processor
+ 589:Source\portable\GCC\ARM_CM3/port.c **** 				was waiting? */
+ 590:Source\portable\GCC\ARM_CM3/port.c **** 				ulCompleteTickPeriods = ulCompletedSysTickDecrements / ulTimerCountsForOneTick;
+ 591:Source\portable\GCC\ARM_CM3/port.c **** 
+ 592:Source\portable\GCC\ARM_CM3/port.c **** 				/* The reload value is set to whatever fraction of a single tick
+ 593:Source\portable\GCC\ARM_CM3/port.c **** 				period remains. */
+ 594:Source\portable\GCC\ARM_CM3/port.c **** 				portNVIC_SYSTICK_LOAD_REG = ( ( ulCompleteTickPeriods + 1UL ) * ulTimerCountsForOneTick ) - ulC
+ 595:Source\portable\GCC\ARM_CM3/port.c **** 			}
+ 596:Source\portable\GCC\ARM_CM3/port.c **** 
+ 597:Source\portable\GCC\ARM_CM3/port.c **** 			/* Restart SysTick so it runs from portNVIC_SYSTICK_LOAD_REG
+ 598:Source\portable\GCC\ARM_CM3/port.c **** 			again, then set portNVIC_SYSTICK_LOAD_REG back to its standard
+ 599:Source\portable\GCC\ARM_CM3/port.c **** 			value. */
+ 600:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 601:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_CTRL_REG |= portNVIC_SYSTICK_ENABLE_BIT;
+ 602:Source\portable\GCC\ARM_CM3/port.c **** 			vTaskStepTick( ulCompleteTickPeriods );
+ 603:Source\portable\GCC\ARM_CM3/port.c **** 			portNVIC_SYSTICK_LOAD_REG = ulTimerCountsForOneTick - 1UL;
+ 604:Source\portable\GCC\ARM_CM3/port.c **** 
+ 605:Source\portable\GCC\ARM_CM3/port.c **** 			/* Exit with interrupts enabled. */
+ 606:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
+ 607:Source\portable\GCC\ARM_CM3/port.c **** 		}
+ 608:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 609:Source\portable\GCC\ARM_CM3/port.c **** 
+ 610:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configUSE_TICKLESS_IDLE */
+ 611:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
+ 612:Source\portable\GCC\ARM_CM3/port.c **** 
+ 613:Source\portable\GCC\ARM_CM3/port.c **** /*
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 26
+
+
+ 614:Source\portable\GCC\ARM_CM3/port.c ****  * Setup the systick timer to generate the tick interrupts at the required
+ 615:Source\portable\GCC\ARM_CM3/port.c ****  * frequency.
+ 616:Source\portable\GCC\ARM_CM3/port.c ****  */
+ 617:Source\portable\GCC\ARM_CM3/port.c **** __attribute__(( weak )) void vPortSetupTimerInterrupt( void )
+ 618:Source\portable\GCC\ARM_CM3/port.c **** {
+ 581              		.loc 1 618 0
+ 582              		.cfi_startproc
+ 583              		@ args = 0, pretend = 0, frame = 0
+ 584              		@ frame_needed = 1, uses_anonymous_args = 0
+ 585              		@ link register save eliminated.
+ 586 0000 80B4     		push	{r7}
+ 587              		.cfi_def_cfa_offset 4
+ 588              		.cfi_offset 7, -4
+ 589 0002 00AF     		add	r7, sp, #0
+ 590              		.cfi_def_cfa_register 7
+ 619:Source\portable\GCC\ARM_CM3/port.c **** 	/* Calculate the constants required to configure the tick interrupt. */
+ 620:Source\portable\GCC\ARM_CM3/port.c **** 	#if( configUSE_TICKLESS_IDLE == 1 )
+ 621:Source\portable\GCC\ARM_CM3/port.c **** 	{
+ 622:Source\portable\GCC\ARM_CM3/port.c **** 		ulTimerCountsForOneTick = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ );
+ 623:Source\portable\GCC\ARM_CM3/port.c **** 		xMaximumPossibleSuppressedTicks = portMAX_24_BIT_NUMBER / ulTimerCountsForOneTick;
+ 624:Source\portable\GCC\ARM_CM3/port.c **** 		ulStoppedTimerCompensation = portMISSED_COUNTS_FACTOR / ( configCPU_CLOCK_HZ / configSYSTICK_CLOC
+ 625:Source\portable\GCC\ARM_CM3/port.c **** 	}
+ 626:Source\portable\GCC\ARM_CM3/port.c **** 	#endif /* configUSE_TICKLESS_IDLE */
+ 627:Source\portable\GCC\ARM_CM3/port.c **** 
+ 628:Source\portable\GCC\ARM_CM3/port.c **** 	/* Stop and clear the SysTick. */
+ 629:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSTICK_CTRL_REG = 0UL;
+ 591              		.loc 1 629 0
+ 592 0004 084B     		ldr	r3, .L28
+ 593 0006 0022     		movs	r2, #0
+ 594 0008 1A60     		str	r2, [r3]
+ 630:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSTICK_CURRENT_VALUE_REG = 0UL;
+ 595              		.loc 1 630 0
+ 596 000a 084B     		ldr	r3, .L28+4
+ 597 000c 0022     		movs	r2, #0
+ 598 000e 1A60     		str	r2, [r3]
+ 631:Source\portable\GCC\ARM_CM3/port.c **** 
+ 632:Source\portable\GCC\ARM_CM3/port.c **** 	/* Configure SysTick to interrupt at the requested rate. */
+ 633:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSTICK_LOAD_REG = ( configSYSTICK_CLOCK_HZ / configTICK_RATE_HZ ) - 1UL;
+ 599              		.loc 1 633 0
+ 600 0010 074B     		ldr	r3, .L28+8
+ 601 0012 45F6BF52 		movw	r2, #23999
+ 602 0016 1A60     		str	r2, [r3]
+ 634:Source\portable\GCC\ARM_CM3/port.c **** 	portNVIC_SYSTICK_CTRL_REG = ( portNVIC_SYSTICK_CLK_BIT | portNVIC_SYSTICK_INT_BIT | portNVIC_SYSTI
+ 603              		.loc 1 634 0
+ 604 0018 034B     		ldr	r3, .L28
+ 605 001a 0722     		movs	r2, #7
+ 606 001c 1A60     		str	r2, [r3]
+ 635:Source\portable\GCC\ARM_CM3/port.c **** }
+ 607              		.loc 1 635 0
+ 608 001e 00BF     		nop
+ 609 0020 BD46     		mov	sp, r7
+ 610              		.cfi_def_cfa_register 13
+ 611              		@ sp needed
+ 612 0022 80BC     		pop	{r7}
+ 613              		.cfi_restore 7
+ 614              		.cfi_def_cfa_offset 0
+ 615 0024 7047     		bx	lr
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 27
+
+
+ 616              	.L29:
+ 617 0026 00BF     		.align	2
+ 618              	.L28:
+ 619 0028 10E000E0 		.word	-536813552
+ 620 002c 18E000E0 		.word	-536813544
+ 621 0030 14E000E0 		.word	-536813548
+ 622              		.cfi_endproc
+ 623              	.LFE78:
+ 624              		.size	vPortSetupTimerInterrupt, .-vPortSetupTimerInterrupt
+ 625              		.text
+ 626              	.Letext0:
+ 627              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 628              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 629              		.file 5 ".\\Source\\include/projdefs.h"
+ 630              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 631              		.section	.debug_info,"",%progbits
+ 632              	.Ldebug_info0:
+ 633 0000 17030000 		.4byte	0x317
+ 634 0004 0400     		.2byte	0x4
+ 635 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 636 000a 04       		.byte	0x4
+ 637 000b 01       		.uleb128 0x1
+ 638 000c 12000000 		.4byte	.LASF37
+ 639 0010 0C       		.byte	0xc
+ 640 0011 D5020000 		.4byte	.LASF38
+ 641 0015 FD000000 		.4byte	.LASF39
+ 642 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 643 001d 00000000 		.4byte	0
+ 644 0021 00000000 		.4byte	.Ldebug_line0
+ 645 0025 02       		.uleb128 0x2
+ 646 0026 04       		.byte	0x4
+ 647 0027 05       		.byte	0x5
+ 648 0028 696E7400 		.ascii	"int\000"
+ 649 002c 03       		.uleb128 0x3
+ 650 002d 04       		.byte	0x4
+ 651 002e 07       		.byte	0x7
+ 652 002f F1010000 		.4byte	.LASF0
+ 653 0033 03       		.uleb128 0x3
+ 654 0034 08       		.byte	0x8
+ 655 0035 05       		.byte	0x5
+ 656 0036 67020000 		.4byte	.LASF1
+ 657 003a 03       		.uleb128 0x3
+ 658 003b 08       		.byte	0x8
+ 659 003c 04       		.byte	0x4
+ 660 003d 0E030000 		.4byte	.LASF2
+ 661 0041 03       		.uleb128 0x3
+ 662 0042 01       		.byte	0x1
+ 663 0043 06       		.byte	0x6
+ 664 0044 1A030000 		.4byte	.LASF3
+ 665 0048 03       		.uleb128 0x3
+ 666 0049 01       		.byte	0x1
+ 667 004a 08       		.byte	0x8
+ 668 004b 61010000 		.4byte	.LASF4
+ 669 004f 03       		.uleb128 0x3
+ 670 0050 02       		.byte	0x2
+ 671 0051 05       		.byte	0x5
+ 672 0052 A1020000 		.4byte	.LASF5
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 28
+
+
+ 673 0056 03       		.uleb128 0x3
+ 674 0057 02       		.byte	0x2
+ 675 0058 07       		.byte	0x7
+ 676 0059 8C010000 		.4byte	.LASF6
+ 677 005d 04       		.uleb128 0x4
+ 678 005e C4000000 		.4byte	.LASF8
+ 679 0062 03       		.byte	0x3
+ 680 0063 3F       		.byte	0x3f
+ 681 0064 68000000 		.4byte	0x68
+ 682 0068 03       		.uleb128 0x3
+ 683 0069 04       		.byte	0x4
+ 684 006a 05       		.byte	0x5
+ 685 006b CE000000 		.4byte	.LASF7
+ 686 006f 04       		.uleb128 0x4
+ 687 0070 6F010000 		.4byte	.LASF9
+ 688 0074 03       		.byte	0x3
+ 689 0075 41       		.byte	0x41
+ 690 0076 7A000000 		.4byte	0x7a
+ 691 007a 03       		.uleb128 0x3
+ 692 007b 04       		.byte	0x4
+ 693 007c 07       		.byte	0x7
+ 694 007d 7A010000 		.4byte	.LASF10
+ 695 0081 03       		.uleb128 0x3
+ 696 0082 08       		.byte	0x8
+ 697 0083 07       		.byte	0x7
+ 698 0084 0B020000 		.4byte	.LASF11
+ 699 0088 04       		.uleb128 0x4
+ 700 0089 4B010000 		.4byte	.LASF12
+ 701 008d 04       		.byte	0x4
+ 702 008e 2C       		.byte	0x2c
+ 703 008f 5D000000 		.4byte	0x5d
+ 704 0093 04       		.uleb128 0x4
+ 705 0094 BD020000 		.4byte	.LASF13
+ 706 0098 04       		.byte	0x4
+ 707 0099 30       		.byte	0x30
+ 708 009a 6F000000 		.4byte	0x6f
+ 709 009e 03       		.uleb128 0x3
+ 710 009f 04       		.byte	0x4
+ 711 00a0 04       		.byte	0x4
+ 712 00a1 53010000 		.4byte	.LASF14
+ 713 00a5 03       		.uleb128 0x3
+ 714 00a6 08       		.byte	0x8
+ 715 00a7 04       		.byte	0x4
+ 716 00a8 AC010000 		.4byte	.LASF15
+ 717 00ac 03       		.uleb128 0x3
+ 718 00ad 01       		.byte	0x1
+ 719 00ae 08       		.byte	0x8
+ 720 00af 75020000 		.4byte	.LASF16
+ 721 00b3 03       		.uleb128 0x3
+ 722 00b4 04       		.byte	0x4
+ 723 00b5 07       		.byte	0x7
+ 724 00b6 5E020000 		.4byte	.LASF17
+ 725 00ba 05       		.uleb128 0x5
+ 726 00bb 04       		.byte	0x4
+ 727 00bc 06       		.uleb128 0x6
+ 728 00bd 93000000 		.4byte	0x93
+ 729 00c1 04       		.uleb128 0x4
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 29
+
+
+ 730 00c2 3C010000 		.4byte	.LASF18
+ 731 00c6 05       		.byte	0x5
+ 732 00c7 23       		.byte	0x23
+ 733 00c8 CC000000 		.4byte	0xcc
+ 734 00cc 07       		.uleb128 0x7
+ 735 00cd 04       		.byte	0x4
+ 736 00ce D2000000 		.4byte	0xd2
+ 737 00d2 08       		.uleb128 0x8
+ 738 00d3 DD000000 		.4byte	0xdd
+ 739 00d7 09       		.uleb128 0x9
+ 740 00d8 BA000000 		.4byte	0xba
+ 741 00dc 00       		.byte	0
+ 742 00dd 04       		.uleb128 0x4
+ 743 00de 7A020000 		.4byte	.LASF19
+ 744 00e2 02       		.byte	0x2
+ 745 00e3 37       		.byte	0x37
+ 746 00e4 93000000 		.4byte	0x93
+ 747 00e8 04       		.uleb128 0x4
+ 748 00e9 96020000 		.4byte	.LASF20
+ 749 00ed 02       		.byte	0x2
+ 750 00ee 38       		.byte	0x38
+ 751 00ef 68000000 		.4byte	0x68
+ 752 00f3 04       		.uleb128 0x4
+ 753 00f4 3A030000 		.4byte	.LASF21
+ 754 00f8 02       		.byte	0x2
+ 755 00f9 39       		.byte	0x39
+ 756 00fa 7A000000 		.4byte	0x7a
+ 757 00fe 04       		.uleb128 0x4
+ 758 00ff B9000000 		.4byte	.LASF22
+ 759 0103 02       		.byte	0x2
+ 760 0104 3F       		.byte	0x3f
+ 761 0105 93000000 		.4byte	0x93
+ 762 0109 07       		.uleb128 0x7
+ 763 010a 04       		.byte	0x4
+ 764 010b DD000000 		.4byte	0xdd
+ 765 010f 0A       		.uleb128 0xa
+ 766 0110 22020000 		.4byte	.LASF23
+ 767 0114 02       		.byte	0x2
+ 768 0115 C1       		.byte	0xc1
+ 769 0116 03       		.byte	0x3
+ 770 0117 27010000 		.4byte	0x127
+ 771 011b 0B       		.uleb128 0xb
+ 772 011c B3010000 		.4byte	.LASF40
+ 773 0120 02       		.byte	0x2
+ 774 0121 C3       		.byte	0xc3
+ 775 0122 93000000 		.4byte	0x93
+ 776 0126 00       		.byte	0
+ 777 0127 0A       		.uleb128 0xa
+ 778 0128 CD010000 		.4byte	.LASF24
+ 779 012c 02       		.byte	0x2
+ 780 012d E5       		.byte	0xe5
+ 781 012e 03       		.byte	0x3
+ 782 012f 3F010000 		.4byte	0x13f
+ 783 0133 0C       		.uleb128 0xc
+ 784 0134 C6020000 		.4byte	.LASF41
+ 785 0138 02       		.byte	0x2
+ 786 0139 E5       		.byte	0xe5
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 30
+
+
+ 787 013a 93000000 		.4byte	0x93
+ 788 013e 00       		.byte	0
+ 789 013f 0D       		.uleb128 0xd
+ 790 0140 46030000 		.4byte	.LASF42
+ 791 0144 01       		.byte	0x1
+ 792 0145 AE       		.byte	0xae
+ 793 0146 09010000 		.4byte	0x109
+ 794 014a 00000000 		.4byte	.LFB68
+ 795 014e 58000000 		.4byte	.LFE68-.LFB68
+ 796 0152 01       		.uleb128 0x1
+ 797 0153 9C       		.byte	0x9c
+ 798 0154 83010000 		.4byte	0x183
+ 799 0158 0E       		.uleb128 0xe
+ 800 0159 FE010000 		.4byte	.LASF25
+ 801 015d 01       		.byte	0x1
+ 802 015e AE       		.byte	0xae
+ 803 015f 09010000 		.4byte	0x109
+ 804 0163 02       		.uleb128 0x2
+ 805 0164 91       		.byte	0x91
+ 806 0165 74       		.sleb128 -12
+ 807 0166 0E       		.uleb128 0xe
+ 808 0167 A0000000 		.4byte	.LASF26
+ 809 016b 01       		.byte	0x1
+ 810 016c AE       		.byte	0xae
+ 811 016d C1000000 		.4byte	0xc1
+ 812 0171 02       		.uleb128 0x2
+ 813 0172 91       		.byte	0x91
+ 814 0173 70       		.sleb128 -16
+ 815 0174 0E       		.uleb128 0xe
+ 816 0175 C0010000 		.4byte	.LASF27
+ 817 0179 01       		.byte	0x1
+ 818 017a AE       		.byte	0xae
+ 819 017b BA000000 		.4byte	0xba
+ 820 017f 02       		.uleb128 0x2
+ 821 0180 91       		.byte	0x91
+ 822 0181 6C       		.sleb128 -20
+ 823 0182 00       		.byte	0
+ 824 0183 0F       		.uleb128 0xf
+ 825 0184 34020000 		.4byte	.LASF43
+ 826 0188 01       		.byte	0x1
+ 827 0189 C0       		.byte	0xc0
+ 828 018a 00000000 		.4byte	.LFB69
+ 829 018e 2E000000 		.4byte	.LFE69-.LFB69
+ 830 0192 01       		.uleb128 0x1
+ 831 0193 9C       		.byte	0x9c
+ 832 0194 C9010000 		.4byte	0x1c9
+ 833 0198 10       		.uleb128 0x10
+ 834 0199 59010000 		.4byte	.LASF35
+ 835 019d 01       		.byte	0x1
+ 836 019e C2       		.byte	0xc2
+ 837 019f BC000000 		.4byte	0xbc
+ 838 01a3 02       		.uleb128 0x2
+ 839 01a4 91       		.byte	0x91
+ 840 01a5 70       		.sleb128 -16
+ 841 01a6 11       		.uleb128 0x11
+ 842 01a7 0F010000 		.4byte	0x10f
+ 843 01ab 0A000000 		.4byte	.LBB12
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 31
+
+
+ 844 01af 12000000 		.4byte	.LBE12-.LBB12
+ 845 01b3 01       		.byte	0x1
+ 846 01b4 CB       		.byte	0xcb
+ 847 01b5 12       		.uleb128 0x12
+ 848 01b6 0A000000 		.4byte	.LBB13
+ 849 01ba 12000000 		.4byte	.LBE13-.LBB13
+ 850 01be 13       		.uleb128 0x13
+ 851 01bf 1B010000 		.4byte	0x11b
+ 852 01c3 02       		.uleb128 0x2
+ 853 01c4 91       		.byte	0x91
+ 854 01c5 74       		.sleb128 -12
+ 855 01c6 00       		.byte	0
+ 856 01c7 00       		.byte	0
+ 857 01c8 00       		.byte	0
+ 858 01c9 14       		.uleb128 0x14
+ 859 01ca 86020000 		.4byte	.LASF28
+ 860 01ce 01       		.byte	0x1
+ 861 01cf D9       		.byte	0xd9
+ 862 01d0 00000000 		.4byte	.LFB70
+ 863 01d4 26000000 		.4byte	.LFE70-.LFB70
+ 864 01d8 01       		.uleb128 0x1
+ 865 01d9 9C       		.byte	0x9c
+ 866 01da 15       		.uleb128 0x15
+ 867 01db F8020000 		.4byte	.LASF44
+ 868 01df 01       		.byte	0x1
+ 869 01e0 ED       		.byte	0xed
+ 870 01e1 00000000 		.4byte	.LFB71
+ 871 01e5 1C000000 		.4byte	.LFE71-.LFB71
+ 872 01e9 01       		.uleb128 0x1
+ 873 01ea 9C       		.byte	0x9c
+ 874 01eb 16       		.uleb128 0x16
+ 875 01ec 26030000 		.4byte	.LASF45
+ 876 01f0 01       		.byte	0x1
+ 877 01f1 0101     		.2byte	0x101
+ 878 01f3 E8000000 		.4byte	0xe8
+ 879 01f7 00000000 		.4byte	.LFB72
+ 880 01fb 40000000 		.4byte	.LFE72-.LFB72
+ 881 01ff 01       		.uleb128 0x1
+ 882 0200 9C       		.byte	0x9c
+ 883 0201 17       		.uleb128 0x17
+ 884 0202 A7000000 		.4byte	.LASF29
+ 885 0206 01       		.byte	0x1
+ 886 0207 6101     		.2byte	0x161
+ 887 0209 00000000 		.4byte	.LFB73
+ 888 020d 0C000000 		.4byte	.LFE73-.LFB73
+ 889 0211 01       		.uleb128 0x1
+ 890 0212 9C       		.byte	0x9c
+ 891 0213 18       		.uleb128 0x18
+ 892 0214 D7000000 		.4byte	.LASF30
+ 893 0218 01       		.byte	0x1
+ 894 0219 6901     		.2byte	0x169
+ 895 021b 00000000 		.4byte	.LFB74
+ 896 021f 30000000 		.4byte	.LFE74-.LFB74
+ 897 0223 01       		.uleb128 0x1
+ 898 0224 9C       		.byte	0x9c
+ 899 0225 4D020000 		.4byte	0x24d
+ 900 0229 19       		.uleb128 0x19
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 32
+
+
+ 901 022a 0F010000 		.4byte	0x10f
+ 902 022e 06000000 		.4byte	.LBB14
+ 903 0232 12000000 		.4byte	.LBE14-.LBB14
+ 904 0236 01       		.byte	0x1
+ 905 0237 6B01     		.2byte	0x16b
+ 906 0239 12       		.uleb128 0x12
+ 907 023a 06000000 		.4byte	.LBB15
+ 908 023e 12000000 		.4byte	.LBE15-.LBB15
+ 909 0242 13       		.uleb128 0x13
+ 910 0243 1B010000 		.4byte	0x11b
+ 911 0247 02       		.uleb128 0x2
+ 912 0248 91       		.byte	0x91
+ 913 0249 74       		.sleb128 -12
+ 914 024a 00       		.byte	0
+ 915 024b 00       		.byte	0
+ 916 024c 00       		.byte	0
+ 917 024d 18       		.uleb128 0x18
+ 918 024e AB020000 		.4byte	.LASF31
+ 919 0252 01       		.byte	0x1
+ 920 0253 7A01     		.2byte	0x17a
+ 921 0255 00000000 		.4byte	.LFB75
+ 922 0259 30000000 		.4byte	.LFE75-.LFB75
+ 923 025d 01       		.uleb128 0x1
+ 924 025e 9C       		.byte	0x9c
+ 925 025f 7D020000 		.4byte	0x27d
+ 926 0263 19       		.uleb128 0x19
+ 927 0264 27010000 		.4byte	0x127
+ 928 0268 1C000000 		.4byte	.LBB16
+ 929 026c 06000000 		.4byte	.LBE16-.LBB16
+ 930 0270 01       		.byte	0x1
+ 931 0271 8001     		.2byte	0x180
+ 932 0273 1A       		.uleb128 0x1a
+ 933 0274 33010000 		.4byte	0x133
+ 934 0278 02       		.uleb128 0x2
+ 935 0279 91       		.byte	0x91
+ 936 027a 74       		.sleb128 -12
+ 937 027b 00       		.byte	0
+ 938 027c 00       		.byte	0
+ 939 027d 17       		.uleb128 0x17
+ 940 027e EA000000 		.4byte	.LASF32
+ 941 0282 01       		.byte	0x1
+ 942 0283 8501     		.2byte	0x185
+ 943 0285 00000000 		.4byte	.LFB76
+ 944 0289 46000000 		.4byte	.LFE76-.LFB76
+ 945 028d 01       		.uleb128 0x1
+ 946 028e 9C       		.byte	0x9c
+ 947 028f 1B       		.uleb128 0x1b
+ 948 0290 DD010000 		.4byte	.LASF33
+ 949 0294 01       		.byte	0x1
+ 950 0295 AA01     		.2byte	0x1aa
+ 951 0297 00000000 		.4byte	.LFB77
+ 952 029b 40000000 		.4byte	.LFE77-.LFB77
+ 953 029f 01       		.uleb128 0x1
+ 954 02a0 9C       		.byte	0x9c
+ 955 02a1 E6020000 		.4byte	0x2e6
+ 956 02a5 1C       		.uleb128 0x1c
+ 957 02a6 0F010000 		.4byte	0x10f
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 33
+
+
+ 958 02aa 06000000 		.4byte	.LBB18
+ 959 02ae 12000000 		.4byte	.LBE18-.LBB18
+ 960 02b2 01       		.byte	0x1
+ 961 02b3 B001     		.2byte	0x1b0
+ 962 02b5 CC020000 		.4byte	0x2cc
+ 963 02b9 12       		.uleb128 0x12
+ 964 02ba 06000000 		.4byte	.LBB19
+ 965 02be 12000000 		.4byte	.LBE19-.LBB19
+ 966 02c2 13       		.uleb128 0x13
+ 967 02c3 1B010000 		.4byte	0x11b
+ 968 02c7 02       		.uleb128 0x2
+ 969 02c8 91       		.byte	0x91
+ 970 02c9 70       		.sleb128 -16
+ 971 02ca 00       		.byte	0
+ 972 02cb 00       		.byte	0
+ 973 02cc 19       		.uleb128 0x19
+ 974 02cd 27010000 		.4byte	0x127
+ 975 02d1 2E000000 		.4byte	.LBB20
+ 976 02d5 06000000 		.4byte	.LBE20-.LBB20
+ 977 02d9 01       		.byte	0x1
+ 978 02da BA01     		.2byte	0x1ba
+ 979 02dc 1A       		.uleb128 0x1a
+ 980 02dd 33010000 		.4byte	0x133
+ 981 02e1 02       		.uleb128 0x2
+ 982 02e2 91       		.byte	0x91
+ 983 02e3 74       		.sleb128 -12
+ 984 02e4 00       		.byte	0
+ 985 02e5 00       		.byte	0
+ 986 02e6 17       		.uleb128 0x17
+ 987 02e7 45020000 		.4byte	.LASF34
+ 988 02eb 01       		.byte	0x1
+ 989 02ec 6902     		.2byte	0x269
+ 990 02ee 00000000 		.4byte	.LFB78
+ 991 02f2 34000000 		.4byte	.LFE78-.LFB78
+ 992 02f6 01       		.uleb128 0x1
+ 993 02f7 9C       		.byte	0x9c
+ 994 02f8 10       		.uleb128 0x10
+ 995 02f9 00000000 		.4byte	.LASF36
+ 996 02fd 01       		.byte	0x1
+ 997 02fe 85       		.byte	0x85
+ 998 02ff F3000000 		.4byte	0xf3
+ 999 0303 05       		.uleb128 0x5
+ 1000 0304 03       		.byte	0x3
+ 1001 0305 00000000 		.4byte	uxCriticalNesting
+ 1002 0309 1D       		.uleb128 0x1d
+ 1003 030a 9F010000 		.4byte	.LASF46
+ 1004 030e 06       		.byte	0x6
+ 1005 030f 1207     		.2byte	0x712
+ 1006 0311 15030000 		.4byte	0x315
+ 1007 0315 06       		.uleb128 0x6
+ 1008 0316 88000000 		.4byte	0x88
+ 1009 031a 00       		.byte	0
+ 1010              		.section	.debug_abbrev,"",%progbits
+ 1011              	.Ldebug_abbrev0:
+ 1012 0000 01       		.uleb128 0x1
+ 1013 0001 11       		.uleb128 0x11
+ 1014 0002 01       		.byte	0x1
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 34
+
+
+ 1015 0003 25       		.uleb128 0x25
+ 1016 0004 0E       		.uleb128 0xe
+ 1017 0005 13       		.uleb128 0x13
+ 1018 0006 0B       		.uleb128 0xb
+ 1019 0007 03       		.uleb128 0x3
+ 1020 0008 0E       		.uleb128 0xe
+ 1021 0009 1B       		.uleb128 0x1b
+ 1022 000a 0E       		.uleb128 0xe
+ 1023 000b 55       		.uleb128 0x55
+ 1024 000c 17       		.uleb128 0x17
+ 1025 000d 11       		.uleb128 0x11
+ 1026 000e 01       		.uleb128 0x1
+ 1027 000f 10       		.uleb128 0x10
+ 1028 0010 17       		.uleb128 0x17
+ 1029 0011 00       		.byte	0
+ 1030 0012 00       		.byte	0
+ 1031 0013 02       		.uleb128 0x2
+ 1032 0014 24       		.uleb128 0x24
+ 1033 0015 00       		.byte	0
+ 1034 0016 0B       		.uleb128 0xb
+ 1035 0017 0B       		.uleb128 0xb
+ 1036 0018 3E       		.uleb128 0x3e
+ 1037 0019 0B       		.uleb128 0xb
+ 1038 001a 03       		.uleb128 0x3
+ 1039 001b 08       		.uleb128 0x8
+ 1040 001c 00       		.byte	0
+ 1041 001d 00       		.byte	0
+ 1042 001e 03       		.uleb128 0x3
+ 1043 001f 24       		.uleb128 0x24
+ 1044 0020 00       		.byte	0
+ 1045 0021 0B       		.uleb128 0xb
+ 1046 0022 0B       		.uleb128 0xb
+ 1047 0023 3E       		.uleb128 0x3e
+ 1048 0024 0B       		.uleb128 0xb
+ 1049 0025 03       		.uleb128 0x3
+ 1050 0026 0E       		.uleb128 0xe
+ 1051 0027 00       		.byte	0
+ 1052 0028 00       		.byte	0
+ 1053 0029 04       		.uleb128 0x4
+ 1054 002a 16       		.uleb128 0x16
+ 1055 002b 00       		.byte	0
+ 1056 002c 03       		.uleb128 0x3
+ 1057 002d 0E       		.uleb128 0xe
+ 1058 002e 3A       		.uleb128 0x3a
+ 1059 002f 0B       		.uleb128 0xb
+ 1060 0030 3B       		.uleb128 0x3b
+ 1061 0031 0B       		.uleb128 0xb
+ 1062 0032 49       		.uleb128 0x49
+ 1063 0033 13       		.uleb128 0x13
+ 1064 0034 00       		.byte	0
+ 1065 0035 00       		.byte	0
+ 1066 0036 05       		.uleb128 0x5
+ 1067 0037 0F       		.uleb128 0xf
+ 1068 0038 00       		.byte	0
+ 1069 0039 0B       		.uleb128 0xb
+ 1070 003a 0B       		.uleb128 0xb
+ 1071 003b 00       		.byte	0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 35
+
+
+ 1072 003c 00       		.byte	0
+ 1073 003d 06       		.uleb128 0x6
+ 1074 003e 35       		.uleb128 0x35
+ 1075 003f 00       		.byte	0
+ 1076 0040 49       		.uleb128 0x49
+ 1077 0041 13       		.uleb128 0x13
+ 1078 0042 00       		.byte	0
+ 1079 0043 00       		.byte	0
+ 1080 0044 07       		.uleb128 0x7
+ 1081 0045 0F       		.uleb128 0xf
+ 1082 0046 00       		.byte	0
+ 1083 0047 0B       		.uleb128 0xb
+ 1084 0048 0B       		.uleb128 0xb
+ 1085 0049 49       		.uleb128 0x49
+ 1086 004a 13       		.uleb128 0x13
+ 1087 004b 00       		.byte	0
+ 1088 004c 00       		.byte	0
+ 1089 004d 08       		.uleb128 0x8
+ 1090 004e 15       		.uleb128 0x15
+ 1091 004f 01       		.byte	0x1
+ 1092 0050 27       		.uleb128 0x27
+ 1093 0051 19       		.uleb128 0x19
+ 1094 0052 01       		.uleb128 0x1
+ 1095 0053 13       		.uleb128 0x13
+ 1096 0054 00       		.byte	0
+ 1097 0055 00       		.byte	0
+ 1098 0056 09       		.uleb128 0x9
+ 1099 0057 05       		.uleb128 0x5
+ 1100 0058 00       		.byte	0
+ 1101 0059 49       		.uleb128 0x49
+ 1102 005a 13       		.uleb128 0x13
+ 1103 005b 00       		.byte	0
+ 1104 005c 00       		.byte	0
+ 1105 005d 0A       		.uleb128 0xa
+ 1106 005e 2E       		.uleb128 0x2e
+ 1107 005f 01       		.byte	0x1
+ 1108 0060 03       		.uleb128 0x3
+ 1109 0061 0E       		.uleb128 0xe
+ 1110 0062 3A       		.uleb128 0x3a
+ 1111 0063 0B       		.uleb128 0xb
+ 1112 0064 3B       		.uleb128 0x3b
+ 1113 0065 0B       		.uleb128 0xb
+ 1114 0066 27       		.uleb128 0x27
+ 1115 0067 19       		.uleb128 0x19
+ 1116 0068 20       		.uleb128 0x20
+ 1117 0069 0B       		.uleb128 0xb
+ 1118 006a 01       		.uleb128 0x1
+ 1119 006b 13       		.uleb128 0x13
+ 1120 006c 00       		.byte	0
+ 1121 006d 00       		.byte	0
+ 1122 006e 0B       		.uleb128 0xb
+ 1123 006f 34       		.uleb128 0x34
+ 1124 0070 00       		.byte	0
+ 1125 0071 03       		.uleb128 0x3
+ 1126 0072 0E       		.uleb128 0xe
+ 1127 0073 3A       		.uleb128 0x3a
+ 1128 0074 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 36
+
+
+ 1129 0075 3B       		.uleb128 0x3b
+ 1130 0076 0B       		.uleb128 0xb
+ 1131 0077 49       		.uleb128 0x49
+ 1132 0078 13       		.uleb128 0x13
+ 1133 0079 00       		.byte	0
+ 1134 007a 00       		.byte	0
+ 1135 007b 0C       		.uleb128 0xc
+ 1136 007c 05       		.uleb128 0x5
+ 1137 007d 00       		.byte	0
+ 1138 007e 03       		.uleb128 0x3
+ 1139 007f 0E       		.uleb128 0xe
+ 1140 0080 3A       		.uleb128 0x3a
+ 1141 0081 0B       		.uleb128 0xb
+ 1142 0082 3B       		.uleb128 0x3b
+ 1143 0083 0B       		.uleb128 0xb
+ 1144 0084 49       		.uleb128 0x49
+ 1145 0085 13       		.uleb128 0x13
+ 1146 0086 00       		.byte	0
+ 1147 0087 00       		.byte	0
+ 1148 0088 0D       		.uleb128 0xd
+ 1149 0089 2E       		.uleb128 0x2e
+ 1150 008a 01       		.byte	0x1
+ 1151 008b 3F       		.uleb128 0x3f
+ 1152 008c 19       		.uleb128 0x19
+ 1153 008d 03       		.uleb128 0x3
+ 1154 008e 0E       		.uleb128 0xe
+ 1155 008f 3A       		.uleb128 0x3a
+ 1156 0090 0B       		.uleb128 0xb
+ 1157 0091 3B       		.uleb128 0x3b
+ 1158 0092 0B       		.uleb128 0xb
+ 1159 0093 27       		.uleb128 0x27
+ 1160 0094 19       		.uleb128 0x19
+ 1161 0095 49       		.uleb128 0x49
+ 1162 0096 13       		.uleb128 0x13
+ 1163 0097 11       		.uleb128 0x11
+ 1164 0098 01       		.uleb128 0x1
+ 1165 0099 12       		.uleb128 0x12
+ 1166 009a 06       		.uleb128 0x6
+ 1167 009b 40       		.uleb128 0x40
+ 1168 009c 18       		.uleb128 0x18
+ 1169 009d 9742     		.uleb128 0x2117
+ 1170 009f 19       		.uleb128 0x19
+ 1171 00a0 01       		.uleb128 0x1
+ 1172 00a1 13       		.uleb128 0x13
+ 1173 00a2 00       		.byte	0
+ 1174 00a3 00       		.byte	0
+ 1175 00a4 0E       		.uleb128 0xe
+ 1176 00a5 05       		.uleb128 0x5
+ 1177 00a6 00       		.byte	0
+ 1178 00a7 03       		.uleb128 0x3
+ 1179 00a8 0E       		.uleb128 0xe
+ 1180 00a9 3A       		.uleb128 0x3a
+ 1181 00aa 0B       		.uleb128 0xb
+ 1182 00ab 3B       		.uleb128 0x3b
+ 1183 00ac 0B       		.uleb128 0xb
+ 1184 00ad 49       		.uleb128 0x49
+ 1185 00ae 13       		.uleb128 0x13
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 37
+
+
+ 1186 00af 02       		.uleb128 0x2
+ 1187 00b0 18       		.uleb128 0x18
+ 1188 00b1 00       		.byte	0
+ 1189 00b2 00       		.byte	0
+ 1190 00b3 0F       		.uleb128 0xf
+ 1191 00b4 2E       		.uleb128 0x2e
+ 1192 00b5 01       		.byte	0x1
+ 1193 00b6 03       		.uleb128 0x3
+ 1194 00b7 0E       		.uleb128 0xe
+ 1195 00b8 3A       		.uleb128 0x3a
+ 1196 00b9 0B       		.uleb128 0xb
+ 1197 00ba 3B       		.uleb128 0x3b
+ 1198 00bb 0B       		.uleb128 0xb
+ 1199 00bc 27       		.uleb128 0x27
+ 1200 00bd 19       		.uleb128 0x19
+ 1201 00be 11       		.uleb128 0x11
+ 1202 00bf 01       		.uleb128 0x1
+ 1203 00c0 12       		.uleb128 0x12
+ 1204 00c1 06       		.uleb128 0x6
+ 1205 00c2 40       		.uleb128 0x40
+ 1206 00c3 18       		.uleb128 0x18
+ 1207 00c4 9742     		.uleb128 0x2117
+ 1208 00c6 19       		.uleb128 0x19
+ 1209 00c7 01       		.uleb128 0x1
+ 1210 00c8 13       		.uleb128 0x13
+ 1211 00c9 00       		.byte	0
+ 1212 00ca 00       		.byte	0
+ 1213 00cb 10       		.uleb128 0x10
+ 1214 00cc 34       		.uleb128 0x34
+ 1215 00cd 00       		.byte	0
+ 1216 00ce 03       		.uleb128 0x3
+ 1217 00cf 0E       		.uleb128 0xe
+ 1218 00d0 3A       		.uleb128 0x3a
+ 1219 00d1 0B       		.uleb128 0xb
+ 1220 00d2 3B       		.uleb128 0x3b
+ 1221 00d3 0B       		.uleb128 0xb
+ 1222 00d4 49       		.uleb128 0x49
+ 1223 00d5 13       		.uleb128 0x13
+ 1224 00d6 02       		.uleb128 0x2
+ 1225 00d7 18       		.uleb128 0x18
+ 1226 00d8 00       		.byte	0
+ 1227 00d9 00       		.byte	0
+ 1228 00da 11       		.uleb128 0x11
+ 1229 00db 1D       		.uleb128 0x1d
+ 1230 00dc 01       		.byte	0x1
+ 1231 00dd 31       		.uleb128 0x31
+ 1232 00de 13       		.uleb128 0x13
+ 1233 00df 11       		.uleb128 0x11
+ 1234 00e0 01       		.uleb128 0x1
+ 1235 00e1 12       		.uleb128 0x12
+ 1236 00e2 06       		.uleb128 0x6
+ 1237 00e3 58       		.uleb128 0x58
+ 1238 00e4 0B       		.uleb128 0xb
+ 1239 00e5 59       		.uleb128 0x59
+ 1240 00e6 0B       		.uleb128 0xb
+ 1241 00e7 00       		.byte	0
+ 1242 00e8 00       		.byte	0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 38
+
+
+ 1243 00e9 12       		.uleb128 0x12
+ 1244 00ea 0B       		.uleb128 0xb
+ 1245 00eb 01       		.byte	0x1
+ 1246 00ec 11       		.uleb128 0x11
+ 1247 00ed 01       		.uleb128 0x1
+ 1248 00ee 12       		.uleb128 0x12
+ 1249 00ef 06       		.uleb128 0x6
+ 1250 00f0 00       		.byte	0
+ 1251 00f1 00       		.byte	0
+ 1252 00f2 13       		.uleb128 0x13
+ 1253 00f3 34       		.uleb128 0x34
+ 1254 00f4 00       		.byte	0
+ 1255 00f5 31       		.uleb128 0x31
+ 1256 00f6 13       		.uleb128 0x13
+ 1257 00f7 02       		.uleb128 0x2
+ 1258 00f8 18       		.uleb128 0x18
+ 1259 00f9 00       		.byte	0
+ 1260 00fa 00       		.byte	0
+ 1261 00fb 14       		.uleb128 0x14
+ 1262 00fc 2E       		.uleb128 0x2e
+ 1263 00fd 00       		.byte	0
+ 1264 00fe 3F       		.uleb128 0x3f
+ 1265 00ff 19       		.uleb128 0x19
+ 1266 0100 03       		.uleb128 0x3
+ 1267 0101 0E       		.uleb128 0xe
+ 1268 0102 3A       		.uleb128 0x3a
+ 1269 0103 0B       		.uleb128 0xb
+ 1270 0104 3B       		.uleb128 0x3b
+ 1271 0105 0B       		.uleb128 0xb
+ 1272 0106 27       		.uleb128 0x27
+ 1273 0107 19       		.uleb128 0x19
+ 1274 0108 11       		.uleb128 0x11
+ 1275 0109 01       		.uleb128 0x1
+ 1276 010a 12       		.uleb128 0x12
+ 1277 010b 06       		.uleb128 0x6
+ 1278 010c 40       		.uleb128 0x40
+ 1279 010d 18       		.uleb128 0x18
+ 1280 010e 9742     		.uleb128 0x2117
+ 1281 0110 19       		.uleb128 0x19
+ 1282 0111 00       		.byte	0
+ 1283 0112 00       		.byte	0
+ 1284 0113 15       		.uleb128 0x15
+ 1285 0114 2E       		.uleb128 0x2e
+ 1286 0115 00       		.byte	0
+ 1287 0116 03       		.uleb128 0x3
+ 1288 0117 0E       		.uleb128 0xe
+ 1289 0118 3A       		.uleb128 0x3a
+ 1290 0119 0B       		.uleb128 0xb
+ 1291 011a 3B       		.uleb128 0x3b
+ 1292 011b 0B       		.uleb128 0xb
+ 1293 011c 27       		.uleb128 0x27
+ 1294 011d 19       		.uleb128 0x19
+ 1295 011e 11       		.uleb128 0x11
+ 1296 011f 01       		.uleb128 0x1
+ 1297 0120 12       		.uleb128 0x12
+ 1298 0121 06       		.uleb128 0x6
+ 1299 0122 40       		.uleb128 0x40
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 39
+
+
+ 1300 0123 18       		.uleb128 0x18
+ 1301 0124 9742     		.uleb128 0x2117
+ 1302 0126 19       		.uleb128 0x19
+ 1303 0127 00       		.byte	0
+ 1304 0128 00       		.byte	0
+ 1305 0129 16       		.uleb128 0x16
+ 1306 012a 2E       		.uleb128 0x2e
+ 1307 012b 00       		.byte	0
+ 1308 012c 3F       		.uleb128 0x3f
+ 1309 012d 19       		.uleb128 0x19
+ 1310 012e 03       		.uleb128 0x3
+ 1311 012f 0E       		.uleb128 0xe
+ 1312 0130 3A       		.uleb128 0x3a
+ 1313 0131 0B       		.uleb128 0xb
+ 1314 0132 3B       		.uleb128 0x3b
+ 1315 0133 05       		.uleb128 0x5
+ 1316 0134 27       		.uleb128 0x27
+ 1317 0135 19       		.uleb128 0x19
+ 1318 0136 49       		.uleb128 0x49
+ 1319 0137 13       		.uleb128 0x13
+ 1320 0138 11       		.uleb128 0x11
+ 1321 0139 01       		.uleb128 0x1
+ 1322 013a 12       		.uleb128 0x12
+ 1323 013b 06       		.uleb128 0x6
+ 1324 013c 40       		.uleb128 0x40
+ 1325 013d 18       		.uleb128 0x18
+ 1326 013e 9642     		.uleb128 0x2116
+ 1327 0140 19       		.uleb128 0x19
+ 1328 0141 00       		.byte	0
+ 1329 0142 00       		.byte	0
+ 1330 0143 17       		.uleb128 0x17
+ 1331 0144 2E       		.uleb128 0x2e
+ 1332 0145 00       		.byte	0
+ 1333 0146 3F       		.uleb128 0x3f
+ 1334 0147 19       		.uleb128 0x19
+ 1335 0148 03       		.uleb128 0x3
+ 1336 0149 0E       		.uleb128 0xe
+ 1337 014a 3A       		.uleb128 0x3a
+ 1338 014b 0B       		.uleb128 0xb
+ 1339 014c 3B       		.uleb128 0x3b
+ 1340 014d 05       		.uleb128 0x5
+ 1341 014e 27       		.uleb128 0x27
+ 1342 014f 19       		.uleb128 0x19
+ 1343 0150 11       		.uleb128 0x11
+ 1344 0151 01       		.uleb128 0x1
+ 1345 0152 12       		.uleb128 0x12
+ 1346 0153 06       		.uleb128 0x6
+ 1347 0154 40       		.uleb128 0x40
+ 1348 0155 18       		.uleb128 0x18
+ 1349 0156 9742     		.uleb128 0x2117
+ 1350 0158 19       		.uleb128 0x19
+ 1351 0159 00       		.byte	0
+ 1352 015a 00       		.byte	0
+ 1353 015b 18       		.uleb128 0x18
+ 1354 015c 2E       		.uleb128 0x2e
+ 1355 015d 01       		.byte	0x1
+ 1356 015e 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 40
+
+
+ 1357 015f 19       		.uleb128 0x19
+ 1358 0160 03       		.uleb128 0x3
+ 1359 0161 0E       		.uleb128 0xe
+ 1360 0162 3A       		.uleb128 0x3a
+ 1361 0163 0B       		.uleb128 0xb
+ 1362 0164 3B       		.uleb128 0x3b
+ 1363 0165 05       		.uleb128 0x5
+ 1364 0166 27       		.uleb128 0x27
+ 1365 0167 19       		.uleb128 0x19
+ 1366 0168 11       		.uleb128 0x11
+ 1367 0169 01       		.uleb128 0x1
+ 1368 016a 12       		.uleb128 0x12
+ 1369 016b 06       		.uleb128 0x6
+ 1370 016c 40       		.uleb128 0x40
+ 1371 016d 18       		.uleb128 0x18
+ 1372 016e 9742     		.uleb128 0x2117
+ 1373 0170 19       		.uleb128 0x19
+ 1374 0171 01       		.uleb128 0x1
+ 1375 0172 13       		.uleb128 0x13
+ 1376 0173 00       		.byte	0
+ 1377 0174 00       		.byte	0
+ 1378 0175 19       		.uleb128 0x19
+ 1379 0176 1D       		.uleb128 0x1d
+ 1380 0177 01       		.byte	0x1
+ 1381 0178 31       		.uleb128 0x31
+ 1382 0179 13       		.uleb128 0x13
+ 1383 017a 11       		.uleb128 0x11
+ 1384 017b 01       		.uleb128 0x1
+ 1385 017c 12       		.uleb128 0x12
+ 1386 017d 06       		.uleb128 0x6
+ 1387 017e 58       		.uleb128 0x58
+ 1388 017f 0B       		.uleb128 0xb
+ 1389 0180 59       		.uleb128 0x59
+ 1390 0181 05       		.uleb128 0x5
+ 1391 0182 00       		.byte	0
+ 1392 0183 00       		.byte	0
+ 1393 0184 1A       		.uleb128 0x1a
+ 1394 0185 05       		.uleb128 0x5
+ 1395 0186 00       		.byte	0
+ 1396 0187 31       		.uleb128 0x31
+ 1397 0188 13       		.uleb128 0x13
+ 1398 0189 02       		.uleb128 0x2
+ 1399 018a 18       		.uleb128 0x18
+ 1400 018b 00       		.byte	0
+ 1401 018c 00       		.byte	0
+ 1402 018d 1B       		.uleb128 0x1b
+ 1403 018e 2E       		.uleb128 0x2e
+ 1404 018f 01       		.byte	0x1
+ 1405 0190 3F       		.uleb128 0x3f
+ 1406 0191 19       		.uleb128 0x19
+ 1407 0192 03       		.uleb128 0x3
+ 1408 0193 0E       		.uleb128 0xe
+ 1409 0194 3A       		.uleb128 0x3a
+ 1410 0195 0B       		.uleb128 0xb
+ 1411 0196 3B       		.uleb128 0x3b
+ 1412 0197 05       		.uleb128 0x5
+ 1413 0198 27       		.uleb128 0x27
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 41
+
+
+ 1414 0199 19       		.uleb128 0x19
+ 1415 019a 11       		.uleb128 0x11
+ 1416 019b 01       		.uleb128 0x1
+ 1417 019c 12       		.uleb128 0x12
+ 1418 019d 06       		.uleb128 0x6
+ 1419 019e 40       		.uleb128 0x40
+ 1420 019f 18       		.uleb128 0x18
+ 1421 01a0 9642     		.uleb128 0x2116
+ 1422 01a2 19       		.uleb128 0x19
+ 1423 01a3 01       		.uleb128 0x1
+ 1424 01a4 13       		.uleb128 0x13
+ 1425 01a5 00       		.byte	0
+ 1426 01a6 00       		.byte	0
+ 1427 01a7 1C       		.uleb128 0x1c
+ 1428 01a8 1D       		.uleb128 0x1d
+ 1429 01a9 01       		.byte	0x1
+ 1430 01aa 31       		.uleb128 0x31
+ 1431 01ab 13       		.uleb128 0x13
+ 1432 01ac 11       		.uleb128 0x11
+ 1433 01ad 01       		.uleb128 0x1
+ 1434 01ae 12       		.uleb128 0x12
+ 1435 01af 06       		.uleb128 0x6
+ 1436 01b0 58       		.uleb128 0x58
+ 1437 01b1 0B       		.uleb128 0xb
+ 1438 01b2 59       		.uleb128 0x59
+ 1439 01b3 05       		.uleb128 0x5
+ 1440 01b4 01       		.uleb128 0x1
+ 1441 01b5 13       		.uleb128 0x13
+ 1442 01b6 00       		.byte	0
+ 1443 01b7 00       		.byte	0
+ 1444 01b8 1D       		.uleb128 0x1d
+ 1445 01b9 34       		.uleb128 0x34
+ 1446 01ba 00       		.byte	0
+ 1447 01bb 03       		.uleb128 0x3
+ 1448 01bc 0E       		.uleb128 0xe
+ 1449 01bd 3A       		.uleb128 0x3a
+ 1450 01be 0B       		.uleb128 0xb
+ 1451 01bf 3B       		.uleb128 0x3b
+ 1452 01c0 05       		.uleb128 0x5
+ 1453 01c1 49       		.uleb128 0x49
+ 1454 01c2 13       		.uleb128 0x13
+ 1455 01c3 3F       		.uleb128 0x3f
+ 1456 01c4 19       		.uleb128 0x19
+ 1457 01c5 3C       		.uleb128 0x3c
+ 1458 01c6 19       		.uleb128 0x19
+ 1459 01c7 00       		.byte	0
+ 1460 01c8 00       		.byte	0
+ 1461 01c9 00       		.byte	0
+ 1462              		.section	.debug_aranges,"",%progbits
+ 1463 0000 6C000000 		.4byte	0x6c
+ 1464 0004 0200     		.2byte	0x2
+ 1465 0006 00000000 		.4byte	.Ldebug_info0
+ 1466 000a 04       		.byte	0x4
+ 1467 000b 00       		.byte	0
+ 1468 000c 0000     		.2byte	0
+ 1469 000e 0000     		.2byte	0
+ 1470 0010 00000000 		.4byte	.LFB68
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 42
+
+
+ 1471 0014 58000000 		.4byte	.LFE68-.LFB68
+ 1472 0018 00000000 		.4byte	.LFB69
+ 1473 001c 2E000000 		.4byte	.LFE69-.LFB69
+ 1474 0020 00000000 		.4byte	.LFB70
+ 1475 0024 26000000 		.4byte	.LFE70-.LFB70
+ 1476 0028 00000000 		.4byte	.LFB71
+ 1477 002c 1C000000 		.4byte	.LFE71-.LFB71
+ 1478 0030 00000000 		.4byte	.LFB72
+ 1479 0034 40000000 		.4byte	.LFE72-.LFB72
+ 1480 0038 00000000 		.4byte	.LFB73
+ 1481 003c 0C000000 		.4byte	.LFE73-.LFB73
+ 1482 0040 00000000 		.4byte	.LFB74
+ 1483 0044 30000000 		.4byte	.LFE74-.LFB74
+ 1484 0048 00000000 		.4byte	.LFB75
+ 1485 004c 30000000 		.4byte	.LFE75-.LFB75
+ 1486 0050 00000000 		.4byte	.LFB76
+ 1487 0054 46000000 		.4byte	.LFE76-.LFB76
+ 1488 0058 00000000 		.4byte	.LFB77
+ 1489 005c 40000000 		.4byte	.LFE77-.LFB77
+ 1490 0060 00000000 		.4byte	.LFB78
+ 1491 0064 34000000 		.4byte	.LFE78-.LFB78
+ 1492 0068 00000000 		.4byte	0
+ 1493 006c 00000000 		.4byte	0
+ 1494              		.section	.debug_ranges,"",%progbits
+ 1495              	.Ldebug_ranges0:
+ 1496 0000 00000000 		.4byte	.LFB68
+ 1497 0004 58000000 		.4byte	.LFE68
+ 1498 0008 00000000 		.4byte	.LFB69
+ 1499 000c 2E000000 		.4byte	.LFE69
+ 1500 0010 00000000 		.4byte	.LFB70
+ 1501 0014 26000000 		.4byte	.LFE70
+ 1502 0018 00000000 		.4byte	.LFB71
+ 1503 001c 1C000000 		.4byte	.LFE71
+ 1504 0020 00000000 		.4byte	.LFB72
+ 1505 0024 40000000 		.4byte	.LFE72
+ 1506 0028 00000000 		.4byte	.LFB73
+ 1507 002c 0C000000 		.4byte	.LFE73
+ 1508 0030 00000000 		.4byte	.LFB74
+ 1509 0034 30000000 		.4byte	.LFE74
+ 1510 0038 00000000 		.4byte	.LFB75
+ 1511 003c 30000000 		.4byte	.LFE75
+ 1512 0040 00000000 		.4byte	.LFB76
+ 1513 0044 46000000 		.4byte	.LFE76
+ 1514 0048 00000000 		.4byte	.LFB77
+ 1515 004c 40000000 		.4byte	.LFE77
+ 1516 0050 00000000 		.4byte	.LFB78
+ 1517 0054 34000000 		.4byte	.LFE78
+ 1518 0058 00000000 		.4byte	0
+ 1519 005c 00000000 		.4byte	0
+ 1520              		.section	.debug_line,"",%progbits
+ 1521              	.Ldebug_line0:
+ 1522 0000 D2020000 		.section	.debug_str,"MS",%progbits,1
+ 1522      0200A701 
+ 1522      00000201 
+ 1522      FB0E0D00 
+ 1522      01010101 
+ 1523              	.LASF36:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 43
+
+
+ 1524 0000 75784372 		.ascii	"uxCriticalNesting\000"
+ 1524      69746963 
+ 1524      616C4E65 
+ 1524      7374696E 
+ 1524      6700
+ 1525              	.LASF37:
+ 1526 0012 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1526      43313120 
+ 1526      352E342E 
+ 1526      31203230 
+ 1526      31363036 
+ 1527 0045 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1527      20726576 
+ 1527      6973696F 
+ 1527      6E203233 
+ 1527      37373135 
+ 1528 0078 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1528      66756E63 
+ 1528      74696F6E 
+ 1528      2D736563 
+ 1528      74696F6E 
+ 1529              	.LASF26:
+ 1530 00a0 7078436F 		.ascii	"pxCode\000"
+ 1530      646500
+ 1531              	.LASF29:
+ 1532 00a7 76506F72 		.ascii	"vPortEndScheduler\000"
+ 1532      74456E64 
+ 1532      53636865 
+ 1532      64756C65 
+ 1532      7200
+ 1533              	.LASF22:
+ 1534 00b9 5469636B 		.ascii	"TickType_t\000"
+ 1534      54797065 
+ 1534      5F7400
+ 1535              	.LASF8:
+ 1536 00c4 5F5F696E 		.ascii	"__int32_t\000"
+ 1536      7433325F 
+ 1536      7400
+ 1537              	.LASF7:
+ 1538 00ce 6C6F6E67 		.ascii	"long int\000"
+ 1538      20696E74 
+ 1538      00
+ 1539              	.LASF30:
+ 1540 00d7 76506F72 		.ascii	"vPortEnterCritical\000"
+ 1540      74456E74 
+ 1540      65724372 
+ 1540      69746963 
+ 1540      616C00
+ 1541              	.LASF32:
+ 1542 00ea 78506F72 		.ascii	"xPortPendSVHandler\000"
+ 1542      7450656E 
+ 1542      64535648 
+ 1542      616E646C 
+ 1542      657200
+ 1543              	.LASF39:
+ 1544 00fd 433A5C43 		.ascii	"C:\\Code\\PSoCProjector\\RTOS_TEMPLATE-master\\Test"
+ 1544      6F64655C 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 44
+
+
+ 1544      50536F43 
+ 1544      50726F6A 
+ 1544      6563746F 
+ 1545 012c 4C656765 		.ascii	"LegePlads.cydsn\000"
+ 1545      506C6164 
+ 1545      732E6379 
+ 1545      64736E00 
+ 1546              	.LASF18:
+ 1547 013c 5461736B 		.ascii	"TaskFunction_t\000"
+ 1547      46756E63 
+ 1547      74696F6E 
+ 1547      5F7400
+ 1548              	.LASF12:
+ 1549 014b 696E7433 		.ascii	"int32_t\000"
+ 1549      325F7400 
+ 1550              	.LASF14:
+ 1551 0153 666C6F61 		.ascii	"float\000"
+ 1551      7400
+ 1552              	.LASF35:
+ 1553 0159 756C4475 		.ascii	"ulDummy\000"
+ 1553      6D6D7900 
+ 1554              	.LASF4:
+ 1555 0161 756E7369 		.ascii	"unsigned char\000"
+ 1555      676E6564 
+ 1555      20636861 
+ 1555      7200
+ 1556              	.LASF9:
+ 1557 016f 5F5F7569 		.ascii	"__uint32_t\000"
+ 1557      6E743332 
+ 1557      5F7400
+ 1558              	.LASF10:
+ 1559 017a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1559      20756E73 
+ 1559      69676E65 
+ 1559      6420696E 
+ 1559      7400
+ 1560              	.LASF6:
+ 1561 018c 73686F72 		.ascii	"short unsigned int\000"
+ 1561      7420756E 
+ 1561      7369676E 
+ 1561      65642069 
+ 1561      6E7400
+ 1562              	.LASF46:
+ 1563 019f 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1563      52784275 
+ 1563      66666572 
+ 1563      00
+ 1564              	.LASF15:
+ 1565 01ac 646F7562 		.ascii	"double\000"
+ 1565      6C6500
+ 1566              	.LASF40:
+ 1567 01b3 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 1567      77424153 
+ 1567      45505249 
+ 1567      00
+ 1568              	.LASF27:
+ 1569 01c0 70765061 		.ascii	"pvParameters\000"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 45
+
+
+ 1569      72616D65 
+ 1569      74657273 
+ 1569      00
+ 1570              	.LASF24:
+ 1571 01cd 76506F72 		.ascii	"vPortSetBASEPRI\000"
+ 1571      74536574 
+ 1571      42415345 
+ 1571      50524900 
+ 1572              	.LASF33:
+ 1573 01dd 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 1573      74537973 
+ 1573      5469636B 
+ 1573      48616E64 
+ 1573      6C657200 
+ 1574              	.LASF0:
+ 1575 01f1 756E7369 		.ascii	"unsigned int\000"
+ 1575      676E6564 
+ 1575      20696E74 
+ 1575      00
+ 1576              	.LASF25:
+ 1577 01fe 7078546F 		.ascii	"pxTopOfStack\000"
+ 1577      704F6653 
+ 1577      7461636B 
+ 1577      00
+ 1578              	.LASF11:
+ 1579 020b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1579      206C6F6E 
+ 1579      6720756E 
+ 1579      7369676E 
+ 1579      65642069 
+ 1580              	.LASF23:
+ 1581 0222 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
+ 1581      74526169 
+ 1581      73654241 
+ 1581      53455052 
+ 1581      4900
+ 1582              	.LASF43:
+ 1583 0234 70727654 		.ascii	"prvTaskExitError\000"
+ 1583      61736B45 
+ 1583      78697445 
+ 1583      72726F72 
+ 1583      00
+ 1584              	.LASF34:
+ 1585 0245 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
+ 1585      74536574 
+ 1585      75705469 
+ 1585      6D657249 
+ 1585      6E746572 
+ 1586              	.LASF17:
+ 1587 025e 73697A65 		.ascii	"sizetype\000"
+ 1587      74797065 
+ 1587      00
+ 1588              	.LASF1:
+ 1589 0267 6C6F6E67 		.ascii	"long long int\000"
+ 1589      206C6F6E 
+ 1589      6720696E 
+ 1589      7400
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 46
+
+
+ 1590              	.LASF16:
+ 1591 0275 63686172 		.ascii	"char\000"
+ 1591      00
+ 1592              	.LASF19:
+ 1593 027a 53746163 		.ascii	"StackType_t\000"
+ 1593      6B547970 
+ 1593      655F7400 
+ 1594              	.LASF28:
+ 1595 0286 76506F72 		.ascii	"vPortSVCHandler\000"
+ 1595      74535643 
+ 1595      48616E64 
+ 1595      6C657200 
+ 1596              	.LASF20:
+ 1597 0296 42617365 		.ascii	"BaseType_t\000"
+ 1597      54797065 
+ 1597      5F7400
+ 1598              	.LASF5:
+ 1599 02a1 73686F72 		.ascii	"short int\000"
+ 1599      7420696E 
+ 1599      7400
+ 1600              	.LASF31:
+ 1601 02ab 76506F72 		.ascii	"vPortExitCritical\000"
+ 1601      74457869 
+ 1601      74437269 
+ 1601      74696361 
+ 1601      6C00
+ 1602              	.LASF13:
+ 1603 02bd 75696E74 		.ascii	"uint32_t\000"
+ 1603      33325F74 
+ 1603      00
+ 1604              	.LASF41:
+ 1605 02c6 756C4E65 		.ascii	"ulNewMaskValue\000"
+ 1605      774D6173 
+ 1605      6B56616C 
+ 1605      756500
+ 1606              	.LASF38:
+ 1607 02d5 536F7572 		.ascii	"Source\\portable\\GCC\\ARM_CM3\\port.c\000"
+ 1607      63655C70 
+ 1607      6F727461 
+ 1607      626C655C 
+ 1607      4743435C 
+ 1608              	.LASF44:
+ 1609 02f8 70727650 		.ascii	"prvPortStartFirstTask\000"
+ 1609      6F727453 
+ 1609      74617274 
+ 1609      46697273 
+ 1609      74546173 
+ 1610              	.LASF2:
+ 1611 030e 6C6F6E67 		.ascii	"long double\000"
+ 1611      20646F75 
+ 1611      626C6500 
+ 1612              	.LASF3:
+ 1613 031a 7369676E 		.ascii	"signed char\000"
+ 1613      65642063 
+ 1613      68617200 
+ 1614              	.LASF45:
+ 1615 0326 78506F72 		.ascii	"xPortStartScheduler\000"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccLpXNbs.s 			page 47
+
+
+ 1615      74537461 
+ 1615      72745363 
+ 1615      68656475 
+ 1615      6C657200 
+ 1616              	.LASF21:
+ 1617 033a 55426173 		.ascii	"UBaseType_t\000"
+ 1617      65547970 
+ 1617      655F7400 
+ 1618              	.LASF42:
+ 1619 0346 7078506F 		.ascii	"pxPortInitialiseStack\000"
+ 1619      7274496E 
+ 1619      69746961 
+ 1619      6C697365 
+ 1619      53746163 
+ 1620              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
