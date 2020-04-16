@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: PWM_PERISTALTISK.c
+* File Name: PWM_PERISTALTISK_1.c
 * Version 3.30
 *
 * Description:
@@ -21,19 +21,19 @@
 * the software package with which this file was provided.
 ********************************************************************************/
 
-#include "PWM_PERISTALTISK.h"
+#include "PWM_PERISTALTISK_1.h"
 
 /* Error message for removed <resource> through optimization */
-#ifdef PWM_PERISTALTISK_PWMUDB_genblk1_ctrlreg__REMOVED
+#ifdef PWM_PERISTALTISK_1_PWMUDB_genblk1_ctrlreg__REMOVED
     #error PWM_v3_30 detected with a constant 0 for the enable or \
          constant 1 for reset. This will prevent the component from operating.
-#endif /* PWM_PERISTALTISK_PWMUDB_genblk1_ctrlreg__REMOVED */
+#endif /* PWM_PERISTALTISK_1_PWMUDB_genblk1_ctrlreg__REMOVED */
 
-uint8 PWM_PERISTALTISK_initVar = 0u;
+uint8 PWM_PERISTALTISK_1_initVar = 0u;
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_Start
+* Function Name: PWM_PERISTALTISK_1_Start
 ********************************************************************************
 *
 * Summary:
@@ -48,31 +48,31 @@ uint8 PWM_PERISTALTISK_initVar = 0u;
 *  None
 *
 * Global variables:
-*  PWM_PERISTALTISK_initVar: Is modified when this function is called for the
+*  PWM_PERISTALTISK_1_initVar: Is modified when this function is called for the
 *   first time. Is used to ensure that initialization happens only once.
 *
 *******************************************************************************/
-void PWM_PERISTALTISK_Start(void) 
+void PWM_PERISTALTISK_1_Start(void) 
 {
     /* If not Initialized then initialize all required hardware and software */
-    if(PWM_PERISTALTISK_initVar == 0u)
+    if(PWM_PERISTALTISK_1_initVar == 0u)
     {
-        PWM_PERISTALTISK_Init();
-        PWM_PERISTALTISK_initVar = 1u;
+        PWM_PERISTALTISK_1_Init();
+        PWM_PERISTALTISK_1_initVar = 1u;
     }
-    PWM_PERISTALTISK_Enable();
+    PWM_PERISTALTISK_1_Enable();
 
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_Init
+* Function Name: PWM_PERISTALTISK_1_Init
 ********************************************************************************
 *
 * Summary:
 *  Initialize component's parameters to the parameters set by user in the
 *  customizer of the component placed onto schematic. Usually called in
-*  PWM_PERISTALTISK_Start().
+*  PWM_PERISTALTISK_1_Start().
 *
 * Parameters:
 *  None
@@ -81,106 +81,106 @@ void PWM_PERISTALTISK_Start(void)
 *  None
 *
 *******************************************************************************/
-void PWM_PERISTALTISK_Init(void) 
+void PWM_PERISTALTISK_1_Init(void) 
 {
-    #if (PWM_PERISTALTISK_UsingFixedFunction || PWM_PERISTALTISK_UseControl)
+    #if (PWM_PERISTALTISK_1_UsingFixedFunction || PWM_PERISTALTISK_1_UseControl)
         uint8 ctrl;
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction || PWM_PERISTALTISK_UseControl) */
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction || PWM_PERISTALTISK_1_UseControl) */
 
-    #if(!PWM_PERISTALTISK_UsingFixedFunction)
-        #if(PWM_PERISTALTISK_UseStatus)
+    #if(!PWM_PERISTALTISK_1_UsingFixedFunction)
+        #if(PWM_PERISTALTISK_1_UseStatus)
             /* Interrupt State Backup for Critical Region*/
-            uint8 PWM_PERISTALTISK_interruptState;
-        #endif /* (PWM_PERISTALTISK_UseStatus) */
-    #endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+            uint8 PWM_PERISTALTISK_1_interruptState;
+        #endif /* (PWM_PERISTALTISK_1_UseStatus) */
+    #endif /* (!PWM_PERISTALTISK_1_UsingFixedFunction) */
 
-    #if (PWM_PERISTALTISK_UsingFixedFunction)
+    #if (PWM_PERISTALTISK_1_UsingFixedFunction)
         /* You are allowed to write the compare value (FF only) */
-        PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CFG0_MODE;
-        #if (PWM_PERISTALTISK_DeadBand2_4)
-            PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CFG0_DB;
-        #endif /* (PWM_PERISTALTISK_DeadBand2_4) */
+        PWM_PERISTALTISK_1_CONTROL |= PWM_PERISTALTISK_1_CFG0_MODE;
+        #if (PWM_PERISTALTISK_1_DeadBand2_4)
+            PWM_PERISTALTISK_1_CONTROL |= PWM_PERISTALTISK_1_CFG0_DB;
+        #endif /* (PWM_PERISTALTISK_1_DeadBand2_4) */
 
-        ctrl = PWM_PERISTALTISK_CONTROL3 & ((uint8 )(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK));
-        PWM_PERISTALTISK_CONTROL3 = ctrl | PWM_PERISTALTISK_DEFAULT_COMPARE1_MODE;
+        ctrl = PWM_PERISTALTISK_1_CONTROL3 & ((uint8 )(~PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK));
+        PWM_PERISTALTISK_1_CONTROL3 = ctrl | PWM_PERISTALTISK_1_DEFAULT_COMPARE1_MODE;
 
          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
-        PWM_PERISTALTISK_RT1 &= ((uint8)(~PWM_PERISTALTISK_RT1_MASK));
-        PWM_PERISTALTISK_RT1 |= PWM_PERISTALTISK_SYNC;
+        PWM_PERISTALTISK_1_RT1 &= ((uint8)(~PWM_PERISTALTISK_1_RT1_MASK));
+        PWM_PERISTALTISK_1_RT1 |= PWM_PERISTALTISK_1_SYNC;
 
         /*Enable DSI Sync all all inputs of the PWM*/
-        PWM_PERISTALTISK_RT1 &= ((uint8)(~PWM_PERISTALTISK_SYNCDSI_MASK));
-        PWM_PERISTALTISK_RT1 |= PWM_PERISTALTISK_SYNCDSI_EN;
+        PWM_PERISTALTISK_1_RT1 &= ((uint8)(~PWM_PERISTALTISK_1_SYNCDSI_MASK));
+        PWM_PERISTALTISK_1_RT1 |= PWM_PERISTALTISK_1_SYNCDSI_EN;
 
-    #elif (PWM_PERISTALTISK_UseControl)
+    #elif (PWM_PERISTALTISK_1_UseControl)
         /* Set the default compare mode defined in the parameter */
-        ctrl = PWM_PERISTALTISK_CONTROL & ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)) &
-                ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK));
-        PWM_PERISTALTISK_CONTROL = ctrl | PWM_PERISTALTISK_DEFAULT_COMPARE2_MODE |
-                                   PWM_PERISTALTISK_DEFAULT_COMPARE1_MODE;
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+        ctrl = PWM_PERISTALTISK_1_CONTROL & ((uint8)(~PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK)) &
+                ((uint8)(~PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK));
+        PWM_PERISTALTISK_1_CONTROL = ctrl | PWM_PERISTALTISK_1_DEFAULT_COMPARE2_MODE |
+                                   PWM_PERISTALTISK_1_DEFAULT_COMPARE1_MODE;
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 
-    #if (!PWM_PERISTALTISK_UsingFixedFunction)
-        #if (PWM_PERISTALTISK_Resolution == 8)
+    #if (!PWM_PERISTALTISK_1_UsingFixedFunction)
+        #if (PWM_PERISTALTISK_1_Resolution == 8)
             /* Set FIFO 0 to 1 byte register for period*/
-            PWM_PERISTALTISK_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
-        #else /* (PWM_PERISTALTISK_Resolution == 16)*/
+            PWM_PERISTALTISK_1_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_1_AUX_CTRL_FIFO0_CLR);
+        #else /* (PWM_PERISTALTISK_1_Resolution == 16)*/
             /* Set FIFO 0 to 1 byte register for period */
-            PWM_PERISTALTISK_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
-            PWM_PERISTALTISK_AUX_CONTROLDP1 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
-        #endif /* (PWM_PERISTALTISK_Resolution == 8) */
+            PWM_PERISTALTISK_1_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_1_AUX_CTRL_FIFO0_CLR);
+            PWM_PERISTALTISK_1_AUX_CONTROLDP1 |= (PWM_PERISTALTISK_1_AUX_CTRL_FIFO0_CLR);
+        #endif /* (PWM_PERISTALTISK_1_Resolution == 8) */
 
-        PWM_PERISTALTISK_WriteCounter(PWM_PERISTALTISK_INIT_PERIOD_VALUE);
-    #endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+        PWM_PERISTALTISK_1_WriteCounter(PWM_PERISTALTISK_1_INIT_PERIOD_VALUE);
+    #endif /* (!PWM_PERISTALTISK_1_UsingFixedFunction) */
 
-    PWM_PERISTALTISK_WritePeriod(PWM_PERISTALTISK_INIT_PERIOD_VALUE);
+    PWM_PERISTALTISK_1_WritePeriod(PWM_PERISTALTISK_1_INIT_PERIOD_VALUE);
 
-        #if (PWM_PERISTALTISK_UseOneCompareMode)
-            PWM_PERISTALTISK_WriteCompare(PWM_PERISTALTISK_INIT_COMPARE_VALUE1);
+        #if (PWM_PERISTALTISK_1_UseOneCompareMode)
+            PWM_PERISTALTISK_1_WriteCompare(PWM_PERISTALTISK_1_INIT_COMPARE_VALUE1);
         #else
-            PWM_PERISTALTISK_WriteCompare1(PWM_PERISTALTISK_INIT_COMPARE_VALUE1);
-            PWM_PERISTALTISK_WriteCompare2(PWM_PERISTALTISK_INIT_COMPARE_VALUE2);
-        #endif /* (PWM_PERISTALTISK_UseOneCompareMode) */
+            PWM_PERISTALTISK_1_WriteCompare1(PWM_PERISTALTISK_1_INIT_COMPARE_VALUE1);
+            PWM_PERISTALTISK_1_WriteCompare2(PWM_PERISTALTISK_1_INIT_COMPARE_VALUE2);
+        #endif /* (PWM_PERISTALTISK_1_UseOneCompareMode) */
 
-        #if (PWM_PERISTALTISK_KillModeMinTime)
-            PWM_PERISTALTISK_WriteKillTime(PWM_PERISTALTISK_MinimumKillTime);
-        #endif /* (PWM_PERISTALTISK_KillModeMinTime) */
+        #if (PWM_PERISTALTISK_1_KillModeMinTime)
+            PWM_PERISTALTISK_1_WriteKillTime(PWM_PERISTALTISK_1_MinimumKillTime);
+        #endif /* (PWM_PERISTALTISK_1_KillModeMinTime) */
 
-        #if (PWM_PERISTALTISK_DeadBandUsed)
-            PWM_PERISTALTISK_WriteDeadTime(PWM_PERISTALTISK_INIT_DEAD_TIME);
-        #endif /* (PWM_PERISTALTISK_DeadBandUsed) */
+        #if (PWM_PERISTALTISK_1_DeadBandUsed)
+            PWM_PERISTALTISK_1_WriteDeadTime(PWM_PERISTALTISK_1_INIT_DEAD_TIME);
+        #endif /* (PWM_PERISTALTISK_1_DeadBandUsed) */
 
-    #if (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction)
-        PWM_PERISTALTISK_SetInterruptMode(PWM_PERISTALTISK_INIT_INTERRUPTS_MODE);
-    #endif /* (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction) */
+    #if (PWM_PERISTALTISK_1_UseStatus || PWM_PERISTALTISK_1_UsingFixedFunction)
+        PWM_PERISTALTISK_1_SetInterruptMode(PWM_PERISTALTISK_1_INIT_INTERRUPTS_MODE);
+    #endif /* (PWM_PERISTALTISK_1_UseStatus || PWM_PERISTALTISK_1_UsingFixedFunction) */
 
-    #if (PWM_PERISTALTISK_UsingFixedFunction)
+    #if (PWM_PERISTALTISK_1_UsingFixedFunction)
         /* Globally Enable the Fixed Function Block chosen */
-        PWM_PERISTALTISK_GLOBAL_ENABLE |= PWM_PERISTALTISK_BLOCK_EN_MASK;
+        PWM_PERISTALTISK_1_GLOBAL_ENABLE |= PWM_PERISTALTISK_1_BLOCK_EN_MASK;
         /* Set the Interrupt source to come from the status register */
-        PWM_PERISTALTISK_CONTROL2 |= PWM_PERISTALTISK_CTRL2_IRQ_SEL;
+        PWM_PERISTALTISK_1_CONTROL2 |= PWM_PERISTALTISK_1_CTRL2_IRQ_SEL;
     #else
-        #if(PWM_PERISTALTISK_UseStatus)
+        #if(PWM_PERISTALTISK_1_UseStatus)
 
             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
             /* Enter Critical Region*/
-            PWM_PERISTALTISK_interruptState = CyEnterCriticalSection();
+            PWM_PERISTALTISK_1_interruptState = CyEnterCriticalSection();
             /* Use the interrupt output of the status register for IRQ output */
-            PWM_PERISTALTISK_STATUS_AUX_CTRL |= PWM_PERISTALTISK_STATUS_ACTL_INT_EN_MASK;
+            PWM_PERISTALTISK_1_STATUS_AUX_CTRL |= PWM_PERISTALTISK_1_STATUS_ACTL_INT_EN_MASK;
 
              /* Exit Critical Region*/
-            CyExitCriticalSection(PWM_PERISTALTISK_interruptState);
+            CyExitCriticalSection(PWM_PERISTALTISK_1_interruptState);
 
-            /* Clear the FIFO to enable the PWM_PERISTALTISK_STATUS_FIFOFULL
+            /* Clear the FIFO to enable the PWM_PERISTALTISK_1_STATUS_FIFOFULL
                    bit to be set on FIFO full. */
-            PWM_PERISTALTISK_ClearFIFO();
-        #endif /* (PWM_PERISTALTISK_UseStatus) */
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            PWM_PERISTALTISK_1_ClearFIFO();
+        #endif /* (PWM_PERISTALTISK_1_UseStatus) */
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_Enable
+* Function Name: PWM_PERISTALTISK_1_Enable
 ********************************************************************************
 *
 * Summary:
@@ -196,23 +196,23 @@ void PWM_PERISTALTISK_Init(void)
 *  This works only if software enable mode is chosen
 *
 *******************************************************************************/
-void PWM_PERISTALTISK_Enable(void) 
+void PWM_PERISTALTISK_1_Enable(void) 
 {
     /* Globally Enable the Fixed Function Block chosen */
-    #if (PWM_PERISTALTISK_UsingFixedFunction)
-        PWM_PERISTALTISK_GLOBAL_ENABLE |= PWM_PERISTALTISK_BLOCK_EN_MASK;
-        PWM_PERISTALTISK_GLOBAL_STBY_ENABLE |= PWM_PERISTALTISK_BLOCK_STBY_EN_MASK;
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+    #if (PWM_PERISTALTISK_1_UsingFixedFunction)
+        PWM_PERISTALTISK_1_GLOBAL_ENABLE |= PWM_PERISTALTISK_1_BLOCK_EN_MASK;
+        PWM_PERISTALTISK_1_GLOBAL_STBY_ENABLE |= PWM_PERISTALTISK_1_BLOCK_STBY_EN_MASK;
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 
     /* Enable the PWM from the control register  */
-    #if (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction)
-        PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CTRL_ENABLE;
-    #endif /* (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction) */
+    #if (PWM_PERISTALTISK_1_UseControl || PWM_PERISTALTISK_1_UsingFixedFunction)
+        PWM_PERISTALTISK_1_CONTROL |= PWM_PERISTALTISK_1_CTRL_ENABLE;
+    #endif /* (PWM_PERISTALTISK_1_UseControl || PWM_PERISTALTISK_1_UsingFixedFunction) */
 }
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_Stop
+* Function Name: PWM_PERISTALTISK_1_Stop
 ********************************************************************************
 *
 * Summary:
@@ -230,25 +230,25 @@ void PWM_PERISTALTISK_Enable(void)
 *  has no effect on the operation of the PWM
 *
 *******************************************************************************/
-void PWM_PERISTALTISK_Stop(void) 
+void PWM_PERISTALTISK_1_Stop(void) 
 {
-    #if (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction)
-        PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_ENABLE));
-    #endif /* (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction) */
+    #if (PWM_PERISTALTISK_1_UseControl || PWM_PERISTALTISK_1_UsingFixedFunction)
+        PWM_PERISTALTISK_1_CONTROL &= ((uint8)(~PWM_PERISTALTISK_1_CTRL_ENABLE));
+    #endif /* (PWM_PERISTALTISK_1_UseControl || PWM_PERISTALTISK_1_UsingFixedFunction) */
 
     /* Globally disable the Fixed Function Block chosen */
-    #if (PWM_PERISTALTISK_UsingFixedFunction)
-        PWM_PERISTALTISK_GLOBAL_ENABLE &= ((uint8)(~PWM_PERISTALTISK_BLOCK_EN_MASK));
-        PWM_PERISTALTISK_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_PERISTALTISK_BLOCK_STBY_EN_MASK));
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+    #if (PWM_PERISTALTISK_1_UsingFixedFunction)
+        PWM_PERISTALTISK_1_GLOBAL_ENABLE &= ((uint8)(~PWM_PERISTALTISK_1_BLOCK_EN_MASK));
+        PWM_PERISTALTISK_1_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_PERISTALTISK_1_BLOCK_STBY_EN_MASK));
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 }
 
-#if (PWM_PERISTALTISK_UseOneCompareMode)
-    #if (PWM_PERISTALTISK_CompareMode1SW)
+#if (PWM_PERISTALTISK_1_UseOneCompareMode)
+    #if (PWM_PERISTALTISK_1_CompareMode1SW)
 
 
         /*******************************************************************************
-        * Function Name: PWM_PERISTALTISK_SetCompareMode
+        * Function Name: PWM_PERISTALTISK_1_SetCompareMode
         ********************************************************************************
         *
         * Summary:
@@ -263,53 +263,53 @@ void PWM_PERISTALTISK_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_PERISTALTISK_SetCompareMode(uint8 comparemode) 
+        void PWM_PERISTALTISK_1_SetCompareMode(uint8 comparemode) 
         {
-            #if(PWM_PERISTALTISK_UsingFixedFunction)
+            #if(PWM_PERISTALTISK_1_UsingFixedFunction)
 
-                #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
-                    uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT));
+                #if(0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT)
+                    uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT));
                 #else
                     uint8 comparemodemasked = comparemode;
-                #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+                #endif /* (0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT) */
 
-                PWM_PERISTALTISK_CONTROL3 &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK)); /*Clear Existing Data */
-                PWM_PERISTALTISK_CONTROL3 |= comparemodemasked;
+                PWM_PERISTALTISK_1_CONTROL3 &= ((uint8)(~PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK)); /*Clear Existing Data */
+                PWM_PERISTALTISK_1_CONTROL3 |= comparemodemasked;
 
-            #elif (PWM_PERISTALTISK_UseControl)
+            #elif (PWM_PERISTALTISK_1_UseControl)
 
-                #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
-                    uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)) &
-                                                PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+                #if(0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT)
+                    uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT)) &
+                                                PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK;
                 #else
-                    uint8 comparemode1masked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
-                #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+                    uint8 comparemode1masked = comparemode & PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK;
+                #endif /* (0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT) */
 
-                #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)
-                    uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)) &
-                                               PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+                #if(0 != PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT)
+                    uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT)) &
+                                               PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK;
                 #else
-                    uint8 comparemode2masked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
-                #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT) */
+                    uint8 comparemode2masked = comparemode & PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK;
+                #endif /* (0 != PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT) */
 
                 /*Clear existing mode */
-                PWM_PERISTALTISK_CONTROL &= ((uint8)(~(PWM_PERISTALTISK_CTRL_CMPMODE1_MASK |
-                                            PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)));
-                PWM_PERISTALTISK_CONTROL |= (comparemode1masked | comparemode2masked);
+                PWM_PERISTALTISK_1_CONTROL &= ((uint8)(~(PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK |
+                                            PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK)));
+                PWM_PERISTALTISK_1_CONTROL |= (comparemode1masked | comparemode2masked);
 
             #else
                 uint8 temp = comparemode;
-            #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
         }
-    #endif /* PWM_PERISTALTISK_CompareMode1SW */
+    #endif /* PWM_PERISTALTISK_1_CompareMode1SW */
 
 #else /* UseOneCompareMode */
 
-    #if (PWM_PERISTALTISK_CompareMode1SW)
+    #if (PWM_PERISTALTISK_1_CompareMode1SW)
 
 
         /*******************************************************************************
-        * Function Name: PWM_PERISTALTISK_SetCompareMode1
+        * Function Name: PWM_PERISTALTISK_1_SetCompareMode1
         ********************************************************************************
         *
         * Summary:
@@ -323,27 +323,27 @@ void PWM_PERISTALTISK_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_PERISTALTISK_SetCompareMode1(uint8 comparemode) 
+        void PWM_PERISTALTISK_1_SetCompareMode1(uint8 comparemode) 
         {
-            #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
-                uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)) &
-                                           PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+            #if(0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT)
+                uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT)) &
+                                           PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK;
             #else
-                uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
-            #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+                uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK;
+            #endif /* (0 != PWM_PERISTALTISK_1_CTRL_CMPMODE1_SHIFT) */
 
-            #if (PWM_PERISTALTISK_UseControl)
-                PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK)); /*Clear existing mode */
-                PWM_PERISTALTISK_CONTROL |= comparemodemasked;
-            #endif /* (PWM_PERISTALTISK_UseControl) */
+            #if (PWM_PERISTALTISK_1_UseControl)
+                PWM_PERISTALTISK_1_CONTROL &= ((uint8)(~PWM_PERISTALTISK_1_CTRL_CMPMODE1_MASK)); /*Clear existing mode */
+                PWM_PERISTALTISK_1_CONTROL |= comparemodemasked;
+            #endif /* (PWM_PERISTALTISK_1_UseControl) */
         }
-    #endif /* PWM_PERISTALTISK_CompareMode1SW */
+    #endif /* PWM_PERISTALTISK_1_CompareMode1SW */
 
-#if (PWM_PERISTALTISK_CompareMode2SW)
+#if (PWM_PERISTALTISK_1_CompareMode2SW)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_SetCompareMode2
+    * Function Name: PWM_PERISTALTISK_1_SetCompareMode2
     ********************************************************************************
     *
     * Summary:
@@ -357,31 +357,31 @@ void PWM_PERISTALTISK_Stop(void)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_SetCompareMode2(uint8 comparemode) 
+    void PWM_PERISTALTISK_1_SetCompareMode2(uint8 comparemode) 
     {
 
-        #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)
-            uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)) &
-                                                 PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+        #if(0 != PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT)
+            uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT)) &
+                                                 PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK;
         #else
-            uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
-        #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT) */
+            uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK;
+        #endif /* (0 != PWM_PERISTALTISK_1_CTRL_CMPMODE2_SHIFT) */
 
-        #if (PWM_PERISTALTISK_UseControl)
-            PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
-            PWM_PERISTALTISK_CONTROL |= comparemodemasked;
-        #endif /* (PWM_PERISTALTISK_UseControl) */
+        #if (PWM_PERISTALTISK_1_UseControl)
+            PWM_PERISTALTISK_1_CONTROL &= ((uint8)(~PWM_PERISTALTISK_1_CTRL_CMPMODE2_MASK)); /*Clear existing mode */
+            PWM_PERISTALTISK_1_CONTROL |= comparemodemasked;
+        #endif /* (PWM_PERISTALTISK_1_UseControl) */
     }
-    #endif /*PWM_PERISTALTISK_CompareMode2SW */
+    #endif /*PWM_PERISTALTISK_1_CompareMode2SW */
 
 #endif /* UseOneCompareMode */
 
 
-#if (!PWM_PERISTALTISK_UsingFixedFunction)
+#if (!PWM_PERISTALTISK_1_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteCounter
+    * Function Name: PWM_PERISTALTISK_1_WriteCounter
     ********************************************************************************
     *
     * Summary:
@@ -400,15 +400,15 @@ void PWM_PERISTALTISK_Stop(void)
     *  The PWM Period will be reloaded when a counter value will be a zero
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteCounter(uint8 counter) \
+    void PWM_PERISTALTISK_1_WriteCounter(uint8 counter) \
                                        
     {
-        CY_SET_REG8(PWM_PERISTALTISK_COUNTER_LSB_PTR, counter);
+        CY_SET_REG8(PWM_PERISTALTISK_1_COUNTER_LSB_PTR, counter);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadCounter
+    * Function Name: PWM_PERISTALTISK_1_ReadCounter
     ********************************************************************************
     *
     * Summary:
@@ -422,22 +422,22 @@ void PWM_PERISTALTISK_Stop(void)
     *  The current value of the counter.
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadCounter(void) 
+    uint8 PWM_PERISTALTISK_1_ReadCounter(void) 
     {
         /* Force capture by reading Accumulator */
         /* Must first do a software capture to be able to read the counter */
         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-          (void)CY_GET_REG8(PWM_PERISTALTISK_COUNTERCAP_LSB_PTR_8BIT);
+          (void)CY_GET_REG8(PWM_PERISTALTISK_1_COUNTERCAP_LSB_PTR_8BIT);
 
         /* Read the data from the FIFO */
-        return (CY_GET_REG8(PWM_PERISTALTISK_CAPTURE_LSB_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_CAPTURE_LSB_PTR));
     }
 
-    #if (PWM_PERISTALTISK_UseStatus)
+    #if (PWM_PERISTALTISK_1_UseStatus)
 
 
         /*******************************************************************************
-        * Function Name: PWM_PERISTALTISK_ClearFIFO
+        * Function Name: PWM_PERISTALTISK_1_ClearFIFO
         ********************************************************************************
         *
         * Summary:
@@ -450,21 +450,21 @@ void PWM_PERISTALTISK_Stop(void)
         *  None
         *
         *******************************************************************************/
-        void PWM_PERISTALTISK_ClearFIFO(void) 
+        void PWM_PERISTALTISK_1_ClearFIFO(void) 
         {
-            while(0u != (PWM_PERISTALTISK_ReadStatusRegister() & PWM_PERISTALTISK_STATUS_FIFONEMPTY))
+            while(0u != (PWM_PERISTALTISK_1_ReadStatusRegister() & PWM_PERISTALTISK_1_STATUS_FIFONEMPTY))
             {
-                (void)PWM_PERISTALTISK_ReadCapture();
+                (void)PWM_PERISTALTISK_1_ReadCapture();
             }
         }
 
-    #endif /* PWM_PERISTALTISK_UseStatus */
+    #endif /* PWM_PERISTALTISK_1_UseStatus */
 
-#endif /* !PWM_PERISTALTISK_UsingFixedFunction */
+#endif /* !PWM_PERISTALTISK_1_UsingFixedFunction */
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_WritePeriod
+* Function Name: PWM_PERISTALTISK_1_WritePeriod
 ********************************************************************************
 *
 * Summary:
@@ -479,20 +479,20 @@ void PWM_PERISTALTISK_Stop(void)
 *  None
 *
 *******************************************************************************/
-void PWM_PERISTALTISK_WritePeriod(uint8 period) 
+void PWM_PERISTALTISK_1_WritePeriod(uint8 period) 
 {
-    #if(PWM_PERISTALTISK_UsingFixedFunction)
-        CY_SET_REG16(PWM_PERISTALTISK_PERIOD_LSB_PTR, (uint16)period);
+    #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+        CY_SET_REG16(PWM_PERISTALTISK_1_PERIOD_LSB_PTR, (uint16)period);
     #else
-        CY_SET_REG8(PWM_PERISTALTISK_PERIOD_LSB_PTR, period);
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+        CY_SET_REG8(PWM_PERISTALTISK_1_PERIOD_LSB_PTR, period);
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 }
 
-#if (PWM_PERISTALTISK_UseOneCompareMode)
+#if (PWM_PERISTALTISK_1_UseOneCompareMode)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteCompare
+    * Function Name: PWM_PERISTALTISK_1_WriteCompare
     ********************************************************************************
     *
     * Summary:
@@ -513,22 +513,22 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  Dither Mode, Center Aligned Mode or One Output Mode
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteCompare(uint8 compare) \
+    void PWM_PERISTALTISK_1_WriteCompare(uint8 compare) \
                                        
     {
-        #if(PWM_PERISTALTISK_UsingFixedFunction)
-            CY_SET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR, (uint16)compare);
+        #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+            CY_SET_REG16(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR, (uint16)compare);
         #else
-            CY_SET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR, compare);
-        #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            CY_SET_REG8(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR, compare);
+        #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 
-        #if (PWM_PERISTALTISK_PWMMode == PWM_PERISTALTISK__B_PWM__DITHER)
-            #if(PWM_PERISTALTISK_UsingFixedFunction)
-                CY_SET_REG16(PWM_PERISTALTISK_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+        #if (PWM_PERISTALTISK_1_PWMMode == PWM_PERISTALTISK_1__B_PWM__DITHER)
+            #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+                CY_SET_REG16(PWM_PERISTALTISK_1_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
             #else
-                CY_SET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR, (compare + 1u));
-            #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
-        #endif /* (PWM_PERISTALTISK_PWMMode == PWM_PERISTALTISK__B_PWM__DITHER) */
+                CY_SET_REG8(PWM_PERISTALTISK_1_COMPARE2_LSB_PTR, (compare + 1u));
+            #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
+        #endif /* (PWM_PERISTALTISK_1_PWMMode == PWM_PERISTALTISK_1__B_PWM__DITHER) */
     }
 
 
@@ -536,7 +536,7 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteCompare1
+    * Function Name: PWM_PERISTALTISK_1_WriteCompare1
     ********************************************************************************
     *
     * Summary:
@@ -552,19 +552,19 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteCompare1(uint8 compare) \
+    void PWM_PERISTALTISK_1_WriteCompare1(uint8 compare) \
                                         
     {
-        #if(PWM_PERISTALTISK_UsingFixedFunction)
-            CY_SET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR, (uint16)compare);
+        #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+            CY_SET_REG16(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR, (uint16)compare);
         #else
-            CY_SET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR, compare);
-        #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            CY_SET_REG8(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR, compare);
+        #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteCompare2
+    * Function Name: PWM_PERISTALTISK_1_WriteCompare2
     ********************************************************************************
     *
     * Summary:
@@ -581,22 +581,22 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteCompare2(uint8 compare) \
+    void PWM_PERISTALTISK_1_WriteCompare2(uint8 compare) \
                                         
     {
-        #if(PWM_PERISTALTISK_UsingFixedFunction)
-            CY_SET_REG16(PWM_PERISTALTISK_COMPARE2_LSB_PTR, compare);
+        #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+            CY_SET_REG16(PWM_PERISTALTISK_1_COMPARE2_LSB_PTR, compare);
         #else
-            CY_SET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR, compare);
-        #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            CY_SET_REG8(PWM_PERISTALTISK_1_COMPARE2_LSB_PTR, compare);
+        #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
     }
 #endif /* UseOneCompareMode */
 
-#if (PWM_PERISTALTISK_DeadBandUsed)
+#if (PWM_PERISTALTISK_1_DeadBandUsed)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteDeadTime
+    * Function Name: PWM_PERISTALTISK_1_WriteDeadTime
     ********************************************************************************
     *
     * Summary:
@@ -609,30 +609,30 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteDeadTime(uint8 deadtime) 
+    void PWM_PERISTALTISK_1_WriteDeadTime(uint8 deadtime) 
     {
         /* If using the Dead Band 1-255 mode then just write the register */
-        #if(!PWM_PERISTALTISK_DeadBand2_4)
-            CY_SET_REG8(PWM_PERISTALTISK_DEADBAND_COUNT_PTR, deadtime);
+        #if(!PWM_PERISTALTISK_1_DeadBand2_4)
+            CY_SET_REG8(PWM_PERISTALTISK_1_DEADBAND_COUNT_PTR, deadtime);
         #else
             /* Otherwise the data has to be masked and offset */
             /* Clear existing data */
-            PWM_PERISTALTISK_DEADBAND_COUNT &= ((uint8)(~PWM_PERISTALTISK_DEADBAND_COUNT_MASK));
+            PWM_PERISTALTISK_1_DEADBAND_COUNT &= ((uint8)(~PWM_PERISTALTISK_1_DEADBAND_COUNT_MASK));
 
             /* Set new dead time */
-            #if(PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT)
-                PWM_PERISTALTISK_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT)) &
-                                                    PWM_PERISTALTISK_DEADBAND_COUNT_MASK;
+            #if(PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT)
+                PWM_PERISTALTISK_1_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT)) &
+                                                    PWM_PERISTALTISK_1_DEADBAND_COUNT_MASK;
             #else
-                PWM_PERISTALTISK_DEADBAND_COUNT |= deadtime & PWM_PERISTALTISK_DEADBAND_COUNT_MASK;
-            #endif /* (PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT) */
+                PWM_PERISTALTISK_1_DEADBAND_COUNT |= deadtime & PWM_PERISTALTISK_1_DEADBAND_COUNT_MASK;
+            #endif /* (PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT) */
 
-        #endif /* (!PWM_PERISTALTISK_DeadBand2_4) */
+        #endif /* (!PWM_PERISTALTISK_1_DeadBand2_4) */
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadDeadTime
+    * Function Name: PWM_PERISTALTISK_1_ReadDeadTime
     ********************************************************************************
     *
     * Summary:
@@ -645,29 +645,29 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  Dead Band Counts
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadDeadTime(void) 
+    uint8 PWM_PERISTALTISK_1_ReadDeadTime(void) 
     {
         /* If using the Dead Band 1-255 mode then just read the register */
-        #if(!PWM_PERISTALTISK_DeadBand2_4)
-            return (CY_GET_REG8(PWM_PERISTALTISK_DEADBAND_COUNT_PTR));
+        #if(!PWM_PERISTALTISK_1_DeadBand2_4)
+            return (CY_GET_REG8(PWM_PERISTALTISK_1_DEADBAND_COUNT_PTR));
         #else
 
             /* Otherwise the data has to be masked and offset */
-            #if(PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT)
-                return ((uint8)(((uint8)(PWM_PERISTALTISK_DEADBAND_COUNT & PWM_PERISTALTISK_DEADBAND_COUNT_MASK)) >>
-                                                                           PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT));
+            #if(PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT)
+                return ((uint8)(((uint8)(PWM_PERISTALTISK_1_DEADBAND_COUNT & PWM_PERISTALTISK_1_DEADBAND_COUNT_MASK)) >>
+                                                                           PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT));
             #else
-                return (PWM_PERISTALTISK_DEADBAND_COUNT & PWM_PERISTALTISK_DEADBAND_COUNT_MASK);
-            #endif /* (PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT) */
-        #endif /* (!PWM_PERISTALTISK_DeadBand2_4) */
+                return (PWM_PERISTALTISK_1_DEADBAND_COUNT & PWM_PERISTALTISK_1_DEADBAND_COUNT_MASK);
+            #endif /* (PWM_PERISTALTISK_1_DEADBAND_COUNT_SHIFT) */
+        #endif /* (!PWM_PERISTALTISK_1_DeadBand2_4) */
     }
 #endif /* DeadBandUsed */
 
-#if (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction)
+#if (PWM_PERISTALTISK_1_UseStatus || PWM_PERISTALTISK_1_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_SetInterruptMode
+    * Function Name: PWM_PERISTALTISK_1_SetInterruptMode
     ********************************************************************************
     *
     * Summary:
@@ -681,14 +681,14 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_SetInterruptMode(uint8 interruptMode) 
+    void PWM_PERISTALTISK_1_SetInterruptMode(uint8 interruptMode) 
     {
-        CY_SET_REG8(PWM_PERISTALTISK_STATUS_MASK_PTR, interruptMode);
+        CY_SET_REG8(PWM_PERISTALTISK_1_STATUS_MASK_PTR, interruptMode);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadStatusRegister
+    * Function Name: PWM_PERISTALTISK_1_ReadStatusRegister
     ********************************************************************************
     *
     * Summary:
@@ -708,19 +708,19 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  [0]   : Compare output 1
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadStatusRegister(void) 
+    uint8 PWM_PERISTALTISK_1_ReadStatusRegister(void) 
     {
-        return (CY_GET_REG8(PWM_PERISTALTISK_STATUS_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_STATUS_PTR));
     }
 
-#endif /* (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction) */
+#endif /* (PWM_PERISTALTISK_1_UseStatus || PWM_PERISTALTISK_1_UsingFixedFunction) */
 
 
-#if (PWM_PERISTALTISK_UseControl)
+#if (PWM_PERISTALTISK_1_UseControl)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadControlRegister
+    * Function Name: PWM_PERISTALTISK_1_ReadControlRegister
     ********************************************************************************
     *
     * Summary:
@@ -734,17 +734,17 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  uint8 : Current control register value
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadControlRegister(void) 
+    uint8 PWM_PERISTALTISK_1_ReadControlRegister(void) 
     {
         uint8 result;
 
-        result = CY_GET_REG8(PWM_PERISTALTISK_CONTROL_PTR);
+        result = CY_GET_REG8(PWM_PERISTALTISK_1_CONTROL_PTR);
         return (result);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteControlRegister
+    * Function Name: PWM_PERISTALTISK_1_WriteControlRegister
     ********************************************************************************
     *
     * Summary:
@@ -762,19 +762,19 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteControlRegister(uint8 control) 
+    void PWM_PERISTALTISK_1_WriteControlRegister(uint8 control) 
     {
-        CY_SET_REG8(PWM_PERISTALTISK_CONTROL_PTR, control);
+        CY_SET_REG8(PWM_PERISTALTISK_1_CONTROL_PTR, control);
     }
 
-#endif /* (PWM_PERISTALTISK_UseControl) */
+#endif /* (PWM_PERISTALTISK_1_UseControl) */
 
 
-#if (!PWM_PERISTALTISK_UsingFixedFunction)
+#if (!PWM_PERISTALTISK_1_UsingFixedFunction)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadCapture
+    * Function Name: PWM_PERISTALTISK_1_ReadCapture
     ********************************************************************************
     *
     * Summary:
@@ -787,19 +787,19 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  uint8/uint16: The current capture value
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadCapture(void) 
+    uint8 PWM_PERISTALTISK_1_ReadCapture(void) 
     {
-        return (CY_GET_REG8(PWM_PERISTALTISK_CAPTURE_LSB_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_CAPTURE_LSB_PTR));
     }
 
-#endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+#endif /* (!PWM_PERISTALTISK_1_UsingFixedFunction) */
 
 
-#if (PWM_PERISTALTISK_UseOneCompareMode)
+#if (PWM_PERISTALTISK_1_UseOneCompareMode)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadCompare
+    * Function Name: PWM_PERISTALTISK_1_ReadCompare
     ********************************************************************************
     *
     * Summary:
@@ -813,20 +813,20 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  uint8/uint16: Current compare value
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadCompare(void) 
+    uint8 PWM_PERISTALTISK_1_ReadCompare(void) 
     {
-        #if(PWM_PERISTALTISK_UsingFixedFunction)
-            return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
+        #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+            return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR));
         #else
-            return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
-        #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+            return (CY_GET_REG8(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR));
+        #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
     }
 
 #else
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadCompare1
+    * Function Name: PWM_PERISTALTISK_1_ReadCompare1
     ********************************************************************************
     *
     * Summary:
@@ -839,14 +839,14 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  uint8/uint16: Current compare value.
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadCompare1(void) 
+    uint8 PWM_PERISTALTISK_1_ReadCompare1(void) 
     {
-        return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_COMPARE1_LSB_PTR));
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadCompare2
+    * Function Name: PWM_PERISTALTISK_1_ReadCompare2
     ********************************************************************************
     *
     * Summary:
@@ -859,16 +859,16 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
     *  uint8/uint16: Current compare value.
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadCompare2(void) 
+    uint8 PWM_PERISTALTISK_1_ReadCompare2(void) 
     {
-        return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_COMPARE2_LSB_PTR));
     }
 
-#endif /* (PWM_PERISTALTISK_UseOneCompareMode) */
+#endif /* (PWM_PERISTALTISK_1_UseOneCompareMode) */
 
 
 /*******************************************************************************
-* Function Name: PWM_PERISTALTISK_ReadPeriod
+* Function Name: PWM_PERISTALTISK_1_ReadPeriod
 ********************************************************************************
 *
 * Summary:
@@ -881,20 +881,20 @@ void PWM_PERISTALTISK_WritePeriod(uint8 period)
 *  uint8/16: Period value
 *
 *******************************************************************************/
-uint8 PWM_PERISTALTISK_ReadPeriod(void) 
+uint8 PWM_PERISTALTISK_1_ReadPeriod(void) 
 {
-    #if(PWM_PERISTALTISK_UsingFixedFunction)
-        return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_PERIOD_LSB_PTR));
+    #if(PWM_PERISTALTISK_1_UsingFixedFunction)
+        return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_1_PERIOD_LSB_PTR));
     #else
-        return (CY_GET_REG8(PWM_PERISTALTISK_PERIOD_LSB_PTR));
-    #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_PERIOD_LSB_PTR));
+    #endif /* (PWM_PERISTALTISK_1_UsingFixedFunction) */
 }
 
-#if ( PWM_PERISTALTISK_KillModeMinTime)
+#if ( PWM_PERISTALTISK_1_KillModeMinTime)
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_WriteKillTime
+    * Function Name: PWM_PERISTALTISK_1_WriteKillTime
     ********************************************************************************
     *
     * Summary:
@@ -908,14 +908,14 @@ uint8 PWM_PERISTALTISK_ReadPeriod(void)
     *  None
     *
     *******************************************************************************/
-    void PWM_PERISTALTISK_WriteKillTime(uint8 killtime) 
+    void PWM_PERISTALTISK_1_WriteKillTime(uint8 killtime) 
     {
-        CY_SET_REG8(PWM_PERISTALTISK_KILLMODEMINTIME_PTR, killtime);
+        CY_SET_REG8(PWM_PERISTALTISK_1_KILLMODEMINTIME_PTR, killtime);
     }
 
 
     /*******************************************************************************
-    * Function Name: PWM_PERISTALTISK_ReadKillTime
+    * Function Name: PWM_PERISTALTISK_1_ReadKillTime
     ********************************************************************************
     *
     * Summary:
@@ -929,11 +929,11 @@ uint8 PWM_PERISTALTISK_ReadPeriod(void)
     *  uint8: The current Minimum Time kill counts
     *
     *******************************************************************************/
-    uint8 PWM_PERISTALTISK_ReadKillTime(void) 
+    uint8 PWM_PERISTALTISK_1_ReadKillTime(void) 
     {
-        return (CY_GET_REG8(PWM_PERISTALTISK_KILLMODEMINTIME_PTR));
+        return (CY_GET_REG8(PWM_PERISTALTISK_1_KILLMODEMINTIME_PTR));
     }
 
-#endif /* ( PWM_PERISTALTISK_KillModeMinTime) */
+#endif /* ( PWM_PERISTALTISK_1_KillModeMinTime) */
 
 /* [] END OF FILE */

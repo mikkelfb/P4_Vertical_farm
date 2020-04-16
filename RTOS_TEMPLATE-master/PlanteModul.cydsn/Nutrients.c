@@ -19,20 +19,25 @@
 
 
 
-QueueHandle_t xQueueNutrientPump;
+QueueHandle_t xQueueNutrientPump[3];
 
 const uint8 MAX_SPEED = 6;
 const uint8 STOP_SPEED = 19;
+static const uint8 pcTextForNutrientPump[3] = {0, 1, 2};
 
 
 void vNutrientsInit() {
     /*  The queue is created to hold a maximum of 1 value, each of which is
         large enough to hold a variable at the size of Bool. */
-    xQueueNutrientPump = xQueueCreate( 1, sizeof( _Bool ) );
+    xQueueNutrientPump[0] = xQueueCreate( 1, sizeof( _Bool ) );
+    xQueueNutrientPump[1] = xQueueCreate( 1, sizeof( _Bool ) );
+    xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
-    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, NULL, 2, NULL); 
+    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 2, NULL);
+    xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
+    xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
@@ -45,20 +50,53 @@ void vNutrientsInit() {
 
 
 
-void vTaskNutrientPump() {
+void vTaskNutrientPump( void *pvParameters ) {
     _Bool bState;
     BaseType_t xStatus;
+    uint8 *piNutrientPump;
+    
+    piNutrientPump = ( uint8 * ) pvParameters;
     
     for(;;) {
-        xStatus = xQueueReceive( xQueueNutrientPump, &bState, portMAX_DELAY );
+        switch (*piNutrientPump) {
+            case 0:
+                xStatus = xQueueReceive( xQueueNutrientPump[0], &bState, portMAX_DELAY );
         
-        if (xStatus == pdPASS) {
-            if (bState) {
-                PWM_PERISTALTISK_WriteCompare1(MAX_SPEED);
-            } else {
-                PWM_PERISTALTISK_WriteCompare1(STOP_SPEED);
-            }
+                if (xStatus == pdPASS) {
+                    if (bState) {
+                        PWM_PERISTALTISK_1_WriteCompare1(MAX_SPEED);
+                    } else {
+                        PWM_PERISTALTISK_1_WriteCompare1(STOP_SPEED);
+                    }
+                }
+                break;
+            
+            case 1:
+                xStatus = xQueueReceive( xQueueNutrientPump[1], &bState, portMAX_DELAY );
+        
+                if (xStatus == pdPASS) {
+                    if (bState) {
+                        PWM_PERISTALTISK_1_WriteCompare2(MAX_SPEED);
+                    } else {
+                        PWM_PERISTALTISK_1_WriteCompare2(STOP_SPEED);
+                    }
+                }
+                break;
+                
+            case 2:
+                xStatus = xQueueReceive( xQueueNutrientPump[2], &bState, portMAX_DELAY );
+        
+                if (xStatus == pdPASS) {
+                    if (bState) {
+                        PWM_PERISTALTISK_2_WriteCompare(MAX_SPEED);
+                    } else {
+                        PWM_PERISTALTISK_2_WriteCompare(STOP_SPEED);
+                    }
+                }
+                break;
         }
+            
+
         
     }
    
@@ -88,18 +126,25 @@ void vTestTaskInit(){
 
 
 void vTestTaskNutrientPump() {
-    _Bool bTestState = 1;
-    const TickType_t xDelay500ms = pdMS_TO_TICKS( 500 );
+    _Bool bTestState1 = 1;
+    _Bool bTestState2 = 0;
+    const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
     
     for(;;) {
-        if(bTestState == 1)
-            bTestState = 0;
-        else
-            bTestState = 1;
+        if(bTestState1 == 1) {
+            bTestState1 = 0;
+            bTestState2 = 1;
+        }
+        else {
+            bTestState1 = 1;
+            bTestState2 = 0;
+        }
         
-        xQueueSendToBack(xQueueNutrientPump, &bTestState, portMAX_DELAY);
+        xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
+        xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
+        xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
         
-        vTaskDelay(xDelay500ms);
+        vTaskDelay(xDelayms);
     }
     
 

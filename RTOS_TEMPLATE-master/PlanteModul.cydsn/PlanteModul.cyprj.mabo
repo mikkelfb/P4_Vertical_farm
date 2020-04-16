@@ -212,6 +212,15 @@
 <v>Generated_Source\PSoC5\PWM_PERISTALTISK.c</v>
 <v>Generated_Source\PSoC5\PWM_PERISTALTISK.h</v>
 <v>Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_1.c</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_1.h</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_2.c</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_2.h</v>
+<v>Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c</v>
+<v>Generated_Source\PSoC5\Pin_3_aliases.h</v>
+<v>Generated_Source\PSoC5\Pin_3.c</v>
+<v>Generated_Source\PSoC5\Pin_3.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -221,9 +230,9 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="132315042646116335" />
+<deps_time v="132315174416373104" />
 <top_block v="TopDesign" />
-<last_generation v="1" />
+<last_generation v="3" />
 <pdl_path v="" />
 <sw_packages />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
@@ -317,33 +326,60 @@
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\CySpc.c" />
-<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK.o">
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_1.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.c" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.c" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC5\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
-<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.c" />
-<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
-<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_PM.o">
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.c" />
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_1_PM.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
 <dep name=".\Generated_Source\PSoC5\cyfitter.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 </file>
-<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c" />
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_2.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.c" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.c" />
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_2_PM.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\Pin_1.o">
 <dep name=".\Generated_Source\PSoC5\Pin_1.c" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
@@ -371,6 +407,19 @@
 <file name=".\Generated_Source\PSoC5\Pin_2.c" />
 <file name=".\Generated_Source\PSoC5\Pin_2.h" />
 <file name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\Pin_3.o">
+<dep name=".\Generated_Source\PSoC5\Pin_3.c" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Pin_3.c" />
+<file name=".\Generated_Source\PSoC5\Pin_3.h" />
+<file name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\cyPm.o">
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
@@ -422,6 +471,70 @@
 <dep name=".\Generated_Source\PSoC5\cyutils.c" />
 </file>
 <file name=".\Generated_Source\PSoC5\cyutils.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\Nutrients.o">
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Source\portable\GCC\ARM_CM3\portmacro.h" />
+<dep name=".\Source\include\FreeRTOS.h" />
+<dep name=".\Source\include\deprecated_definitions.h" />
+<dep name=".\Source\include\list.h" />
+<dep name=".\Source\include\mpu_wrappers.h" />
+<dep name=".\Source\include\portable.h" />
+<dep name=".\Source\include\projdefs.h" />
+<dep name=".\Source\include\queue.h" />
+<dep name=".\Source\include\task.h" />
+<dep name=".\Source\portable\GCC\ARM_CM3\portmacro.h" />
+<dep name=".\FreeRTOSConfig.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_1.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_2.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Nutrients.c" />
+<dep name=".\Nutrients.h" />
+<dep name=".\device.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<file name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
+<file name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<file name=".\Generated_Source\PSoC5\core_cm3.h" />
+<file name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<file name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<file name=".\Generated_Source\PSoC5\project.h" />
+<file name=".\Source\portable\GCC\ARM_CM3\portmacro.h" />
+<file name=".\Source\include\FreeRTOS.h" />
+<file name=".\Source\include\deprecated_definitions.h" />
+<file name=".\Source\include\list.h" />
+<file name=".\Source\include\mpu_wrappers.h" />
+<file name=".\Source\include\portable.h" />
+<file name=".\Source\include\projdefs.h" />
+<file name=".\Source\include\queue.h" />
+<file name=".\Source\include\task.h" />
+<file name=".\FreeRTOSConfig.h" />
+<file name=".\Nutrients.c" />
+<file name=".\Nutrients.h" />
+<file name=".\device.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\list.o">
 <dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
@@ -444,11 +557,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -460,23 +576,7 @@
 <dep name=".\Source\list.c" />
 <dep name=".\device.h" />
 </file>
-<file name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
-<file name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
-<file name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
-<file name=".\Generated_Source\PSoC5\core_cm3.h" />
-<file name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
-<file name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
-<file name=".\Generated_Source\PSoC5\project.h" />
-<file name=".\Source\portable\GCC\ARM_CM3\portmacro.h" />
-<file name=".\Source\include\FreeRTOS.h" />
-<file name=".\Source\include\deprecated_definitions.h" />
-<file name=".\Source\include\list.h" />
-<file name=".\Source\include\mpu_wrappers.h" />
-<file name=".\Source\include\portable.h" />
-<file name=".\Source\include\projdefs.h" />
-<file name=".\FreeRTOSConfig.h" />
 <file name=".\Source\list.c" />
-<file name=".\device.h" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o">
 <dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
 <dep name=".\Generated_Source\PSoC5\cmsis_compiler.h" />
@@ -505,11 +605,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -523,9 +626,7 @@
 </file>
 <file name=".\Source\include\event_groups.h" />
 <file name=".\Source\include\mpu_prototypes.h" />
-<file name=".\Source\include\queue.h" />
 <file name=".\Source\include\stream_buffer.h" />
-<file name=".\Source\include\task.h" />
 <file name=".\Source\include\timers.h" />
 <file name=".\Source\portable\Common\mpu_wrappers.c" />
 <file name=".\CortexM3\ARM_GCC_541\Debug\port.o">
@@ -551,11 +652,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -591,11 +695,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -632,11 +739,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -673,11 +783,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -715,11 +828,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -758,11 +874,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -800,11 +919,14 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_1_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2.h" />
 <dep name=".\Generated_Source\PSoC5\Pin_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3.h" />
+<dep name=".\Generated_Source\PSoC5\Pin_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\cyPm.h" />
 <dep name=".\Generated_Source\PSoC5\cy_em_eeprom.h" />
 <dep name=".\Generated_Source\PSoC5\cydevice.h" />
@@ -813,6 +935,7 @@
 <dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
 <dep name=".\Generated_Source\PSoC5\cypins.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Nutrients.h" />
 <dep name=".\device.h" />
 <dep name=".\main.c" />
 </file>
@@ -828,6 +951,33 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.c" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.c" />
+<file name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_PM.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c" />
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
@@ -845,6 +995,7 @@
 <dep name=".\CortexM3\ARM_GCC_541\Debug\port.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\heap_2.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\main.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\Nutrients.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\cymetadata.o" />
@@ -860,8 +1011,11 @@
 <dep name=".\CortexM3\ARM_GCC_541\Debug\Clock_1.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\Pin_2.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\Pin_1.o" />
-<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK.o" />
-<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_1.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_1_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_2.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\PWM_PERISTALTISK_2_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_541\Debug\Pin_3.o" />
 <dep name=".\CortexM3\ARM_GCC_541\Debug\PlanteModul.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_541\Debug\CyComponentLibrary.a" />
 </file>
@@ -901,6 +1055,12 @@
 <name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
 <name_val_pair name="C:\Users\mabo\Documents\AAU_EIT\4-semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\CortexM3\ARM_GCC_541\Debug\PlanteModul.hex" v="-mcpu=cortex-m3 -mthumb -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections -g -ffunction-sections -O0 -ffat-lto-objects" />
+<name_val_pair name="Nutrients.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK_1.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK_2.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
+<name_val_pair name="Generated_Source\PSoC5\Pin_3.c" v="-mcpu=cortex-m3 -mthumb -I.\Source\include -I.\Source\portable\GCC\ARM_CM3 -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -Wall -ffunction-sections -ffat-lto-objects -O0" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\mabo\AppData\Local\Cypress Semiconductor\PSoC Creator\4.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p C:\Users\mabo\Documents\AAU_EIT\4-semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cyprj -d CY8C5888LTI-LP097 -s C:\Users\mabo\Documents\AAU_EIT\4-semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -909,7 +1069,7 @@
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
 <link_deps_times>
-<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="132315042781006468" />
+<name_val_pair name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" v="132315174560192261" />
 </link_deps_times>
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 1
 
 
    1              		.syntax unified
@@ -19,21 +19,15 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.rodata
+  19              		.section	.text.main,"ax",%progbits
   20              		.align	2
-  21              	.LC0:
-  22 0000 74657374 		.ascii	"test PWM\000"
-  22      2050574D 
-  22      00
-  23              		.section	.text.main,"ax",%progbits
-  24              		.align	2
-  25              		.global	main
-  26              		.thumb
-  27              		.thumb_func
-  28              		.type	main, %function
-  29              	main:
-  30              	.LFB68:
-  31              		.file 1 "main.c"
+  21              		.global	main
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB68:
+  27              		.file 1 "main.c"
    1:main.c        **** /*
    2:main.c        ****  * FreeRTOS Kernel V10.3.1
    3:main.c        ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
@@ -58,288 +52,195 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
   22:main.c        ****  * http://www.FreeRTOS.org
   23:main.c        ****  * http://aws.amazon.com/freertos
   24:main.c        ****  *
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 2
-
-
   25:main.c        ****  * 1 tab == 4 spaces!
   26:main.c        ****  */
   27:main.c        **** 
   28:main.c        **** #include <device.h>
   29:main.c        **** 
   30:main.c        **** /* RTOS includes. */
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 2
+
+
   31:main.c        **** #include "FreeRTOS.h"
   32:main.c        **** #include "task.h"
   33:main.c        **** #include "queue.h"
   34:main.c        **** #include "semphr.h"
   35:main.c        **** 
-  36:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
-  37:main.c        **** tick hook. */
-  38:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
-  39:main.c        **** #define mainCOM_LED							( 3 )
-  40:main.c        **** 
-  41:main.c        **** /* The number of nano seconds between each processor clock. */
-  42:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
-  43:main.c        **** 
-  44:main.c        **** /*
-  45:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
-  46:main.c        ****  */
-  47:main.c        **** static void prvHardwareSetup( void );
-  48:main.c        **** /*---------------------------------------------------------------------------*/
-  49:main.c        **** 
-  50:main.c        **** void vTaskPWMTesk(void *pvParameter);
-  51:main.c        **** 
-  52:main.c        **** 
-  53:main.c        **** int main( void )
-  54:main.c        **** {
-  32              		.loc 1 54 0
-  33              		.cfi_startproc
-  34              		@ args = 0, pretend = 0, frame = 0
-  35              		@ frame_needed = 1, uses_anonymous_args = 0
-  36 0000 80B5     		push	{r7, lr}
-  37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 7, -8
-  39              		.cfi_offset 14, -4
-  40 0002 82B0     		sub	sp, sp, #8
-  41              		.cfi_def_cfa_offset 16
-  42 0004 02AF     		add	r7, sp, #8
-  43              		.cfi_def_cfa 7, 8
-  55:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  56:main.c        **** 	prvHardwareSetup();
-  44              		.loc 1 56 0
-  45 0006 FFF7FEFF 		bl	prvHardwareSetup
-  57:main.c        ****     
-  58:main.c        ****     xTaskCreate(vTaskPWMTesk, "test PWM" , 1000 , NULL , 3 , NULL);
-  46              		.loc 1 58 0
-  47 000a 0023     		movs	r3, #0
-  48 000c 0193     		str	r3, [sp, #4]
-  49 000e 0323     		movs	r3, #3
-  50 0010 0093     		str	r3, [sp]
-  51 0012 0023     		movs	r3, #0
-  52 0014 4FF47A72 		mov	r2, #1000
-  53 0018 0349     		ldr	r1, .L3
-  54 001a 0448     		ldr	r0, .L3+4
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 3
-
-
-  55 001c FFF7FEFF 		bl	xTaskCreate
+  36:main.c        **** /* Plantemodul includes */
+  37:main.c        **** #include "Nutrients.h"
+  38:main.c        **** 
+  39:main.c        **** 
+  40:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
+  41:main.c        **** tick hook. */
+  42:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
+  43:main.c        **** #define mainCOM_LED							( 3 )
+  44:main.c        **** 
+  45:main.c        **** /* The number of nano seconds between each processor clock. */
+  46:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
+  47:main.c        **** 
+  48:main.c        **** /*
+  49:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
+  50:main.c        ****  */
+  51:main.c        **** static void prvHardwareSetup( void );
+  52:main.c        **** /*---------------------------------------------------------------------------*/
+  53:main.c        **** 
+  54:main.c        **** 
+  55:main.c        **** int main( void )
+  56:main.c        **** {
+  28              		.loc 1 56 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 00AF     		add	r7, sp, #0
+  37              		.cfi_def_cfa_register 7
+  57:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  58:main.c        **** 	prvHardwareSetup();
+  38              		.loc 1 58 0
+  39 0004 FFF7FEFF 		bl	prvHardwareSetup
   59:main.c        ****     
-  60:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
-  61:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
-  62:main.c        **** 	vTaskStartScheduler();
-  56              		.loc 1 62 0
-  57 0020 FFF7FEFF 		bl	vTaskStartScheduler
-  58              	.L2:
-  63:main.c        **** 
-  64:main.c        ****     
-  65:main.c        ****     
-  66:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
-  67:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
-  68:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
-  69:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
-  70:main.c        **** 	for( ;; );
-  59              		.loc 1 70 0 discriminator 1
-  60 0024 FEE7     		b	.L2
-  61              	.L4:
-  62 0026 00BF     		.align	2
-  63              	.L3:
-  64 0028 00000000 		.word	.LC0
-  65 002c 00000000 		.word	vTaskPWMTesk
-  66              		.cfi_endproc
-  67              	.LFE68:
-  68              		.size	main, .-main
-  69              		.section	.text.vTaskPWMTesk,"ax",%progbits
-  70              		.align	2
-  71              		.global	vTaskPWMTesk
-  72              		.thumb
-  73              		.thumb_func
-  74              		.type	vTaskPWMTesk, %function
-  75              	vTaskPWMTesk:
-  76              	.LFB69:
-  71:main.c        **** }
-  72:main.c        **** /*---------------------------------------------------------------------------*/
-  73:main.c        **** void vTaskPWMTesk(void *pvParameter){
-  77              		.loc 1 73 0
-  78              		.cfi_startproc
-  79              		@ args = 0, pretend = 0, frame = 24
-  80              		@ frame_needed = 1, uses_anonymous_args = 0
-  81 0000 80B5     		push	{r7, lr}
-  82              		.cfi_def_cfa_offset 8
-  83              		.cfi_offset 7, -8
-  84              		.cfi_offset 14, -4
-  85 0002 86B0     		sub	sp, sp, #24
-  86              		.cfi_def_cfa_offset 32
-  87 0004 00AF     		add	r7, sp, #0
-  88              		.cfi_def_cfa_register 7
-  89 0006 7860     		str	r0, [r7, #4]
-  74:main.c        ****     const TickType_t xDelay500ms = pdMS_TO_TICKS( 500 );
-  90              		.loc 1 74 0
-  91 0008 4FF4FA73 		mov	r3, #500
-  92 000c 3B61     		str	r3, [r7, #16]
-  75:main.c        ****     const uint8 max_speed = 6;
-  93              		.loc 1 75 0
-  94 000e 0623     		movs	r3, #6
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 4
+  60:main.c        ****     vNutrientsInit(); //initialize Nutrients control task and parameteres
+  40              		.loc 1 60 0
+  41 0008 FFF7FEFF 		bl	vNutrientsInit
+  61:main.c        ****      
+  62:main.c        ****     
+  63:main.c        ****     
+  64:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
+  65:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
+  66:main.c        **** 	vTaskStartScheduler();
+  42              		.loc 1 66 0
+  43 000c FFF7FEFF 		bl	vTaskStartScheduler
+  44              	.L2:
+  67:main.c        **** 
+  68:main.c        ****     
+  69:main.c        ****     
+  70:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 3
 
 
-  95 0010 FB73     		strb	r3, [r7, #15]
-  76:main.c        ****     const uint8 stop_speed = 19;
-  96              		.loc 1 76 0
-  97 0012 1323     		movs	r3, #19
-  98 0014 BB73     		strb	r3, [r7, #14]
-  77:main.c        ****     int status = 1;
-  99              		.loc 1 77 0
- 100 0016 0123     		movs	r3, #1
- 101 0018 7B61     		str	r3, [r7, #20]
- 102              	.L8:
-  78:main.c        ****     
-  79:main.c        ****     for(;;){
-  80:main.c        ****         if(status == 1){
- 103              		.loc 1 80 0
- 104 001a 7B69     		ldr	r3, [r7, #20]
- 105 001c 012B     		cmp	r3, #1
- 106 001e 06D1     		bne	.L6
-  81:main.c        ****             PWM_PERISTALTISK_WriteCompare1(max_speed);
- 107              		.loc 1 81 0
- 108 0020 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 109 0022 1846     		mov	r0, r3
- 110 0024 FFF7FEFF 		bl	PWM_PERISTALTISK_WriteCompare1
-  82:main.c        ****             status = 0;
- 111              		.loc 1 82 0
- 112 0028 0023     		movs	r3, #0
- 113 002a 7B61     		str	r3, [r7, #20]
- 114 002c 05E0     		b	.L7
- 115              	.L6:
-  83:main.c        ****         }
-  84:main.c        ****         else{
-  85:main.c        ****             PWM_PERISTALTISK_WriteCompare1(stop_speed);
- 116              		.loc 1 85 0
- 117 002e BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
- 118 0030 1846     		mov	r0, r3
- 119 0032 FFF7FEFF 		bl	PWM_PERISTALTISK_WriteCompare1
-  86:main.c        ****             status = 1;
- 120              		.loc 1 86 0
- 121 0036 0123     		movs	r3, #1
- 122 0038 7B61     		str	r3, [r7, #20]
- 123              	.L7:
-  87:main.c        ****         }
-  88:main.c        **** 
-  89:main.c        ****         vTaskDelay(xDelay500ms);
- 124              		.loc 1 89 0
- 125 003a 3869     		ldr	r0, [r7, #16]
- 126 003c FFF7FEFF 		bl	vTaskDelay
-  90:main.c        ****     }
- 127              		.loc 1 90 0
- 128 0040 EBE7     		b	.L8
- 129              		.cfi_endproc
- 130              	.LFE69:
- 131              		.size	vTaskPWMTesk, .-vTaskPWMTesk
- 132 0042 00BF     		.section	.text.prvHardwareSetup,"ax",%progbits
- 133              		.align	2
- 134              		.thumb
- 135              		.thumb_func
- 136              		.type	prvHardwareSetup, %function
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 5
+  71:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
+  72:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
+  73:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
+  74:main.c        **** 	for( ;; );
+  45              		.loc 1 74 0 discriminator 1
+  46 0010 FEE7     		b	.L2
+  47              		.cfi_endproc
+  48              	.LFE68:
+  49              		.size	main, .-main
+  50 0012 00BF     		.section	.text.prvHardwareSetup,"ax",%progbits
+  51              		.align	2
+  52              		.thumb
+  53              		.thumb_func
+  54              		.type	prvHardwareSetup, %function
+  55              	prvHardwareSetup:
+  56              	.LFB69:
+  75:main.c        **** }
+  76:main.c        **** /*---------------------------------------------------------------------------*/
+  77:main.c        **** 
+  78:main.c        **** 
+  79:main.c        **** 
+  80:main.c        **** 
+  81:main.c        **** 
+  82:main.c        **** void prvHardwareSetup( void )
+  83:main.c        **** {
+  57              		.loc 1 83 0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 1, uses_anonymous_args = 0
+  61 0000 80B5     		push	{r7, lr}
+  62              		.cfi_def_cfa_offset 8
+  63              		.cfi_offset 7, -8
+  64              		.cfi_offset 14, -4
+  65 0002 00AF     		add	r7, sp, #0
+  66              		.cfi_def_cfa_register 7
+  84:main.c        **** /* Port layer functions that need to be copied into the vector table. */
+  85:main.c        **** extern void xPortPendSVHandler( void );
+  86:main.c        **** extern void xPortSysTickHandler( void );
+  87:main.c        **** extern void vPortSVCHandler( void );
+  88:main.c        **** extern cyisraddress CyRamVectors[];
+  89:main.c        **** 
+  90:main.c        **** 
+  91:main.c        **** 
+  92:main.c        **** 	/* Install the OS Interrupt Handlers. */
+  93:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
+  67              		.loc 1 93 0
+  68 0004 074B     		ldr	r3, .L4
+  69 0006 084A     		ldr	r2, .L4+4
+  70 0008 DA62     		str	r2, [r3, #44]
+  94:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
+  71              		.loc 1 94 0
+  72 000a 064B     		ldr	r3, .L4
+  73 000c 074A     		ldr	r2, .L4+8
+  74 000e 9A63     		str	r2, [r3, #56]
+  95:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
+  75              		.loc 1 95 0
+  76 0010 044B     		ldr	r3, .L4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 4
 
 
- 137              	prvHardwareSetup:
- 138              	.LFB70:
-  91:main.c        **** }
-  92:main.c        **** 
-  93:main.c        **** 
-  94:main.c        **** 
-  95:main.c        **** 
+  77 0012 074A     		ldr	r2, .L4+12
+  78 0014 DA63     		str	r2, [r3, #60]
   96:main.c        **** 
-  97:main.c        **** 
-  98:main.c        **** void prvHardwareSetup( void )
-  99:main.c        **** {
- 139              		.loc 1 99 0
- 140              		.cfi_startproc
- 141              		@ args = 0, pretend = 0, frame = 0
- 142              		@ frame_needed = 1, uses_anonymous_args = 0
- 143 0000 80B5     		push	{r7, lr}
- 144              		.cfi_def_cfa_offset 8
- 145              		.cfi_offset 7, -8
- 146              		.cfi_offset 14, -4
- 147 0002 00AF     		add	r7, sp, #0
- 148              		.cfi_def_cfa_register 7
- 100:main.c        **** /* Port layer functions that need to be copied into the vector table. */
- 101:main.c        **** extern void xPortPendSVHandler( void );
- 102:main.c        **** extern void xPortSysTickHandler( void );
- 103:main.c        **** extern void vPortSVCHandler( void );
- 104:main.c        **** extern cyisraddress CyRamVectors[];
+  97:main.c        ****     
+  98:main.c        **** 	/* Start-up the peripherals. */
+  99:main.c        ****     
+ 100:main.c        ****     
+ 101:main.c        ****     PWM_PERISTALTISK_1_Start(); //start PWM module 1
+  79              		.loc 1 101 0
+  80 0016 FFF7FEFF 		bl	PWM_PERISTALTISK_1_Start
+ 102:main.c        ****     PWM_PERISTALTISK_2_Start(); //start PWM module 2
+  81              		.loc 1 102 0
+  82 001a FFF7FEFF 		bl	PWM_PERISTALTISK_2_Start
+ 103:main.c        **** }
+  83              		.loc 1 103 0
+  84 001e 00BF     		nop
+  85 0020 80BD     		pop	{r7, pc}
+  86              	.L5:
+  87 0022 00BF     		.align	2
+  88              	.L4:
+  89 0024 00000000 		.word	CyRamVectors
+  90 0028 00000000 		.word	vPortSVCHandler
+  91 002c 00000000 		.word	xPortPendSVHandler
+  92 0030 00000000 		.word	xPortSysTickHandler
+  93              		.cfi_endproc
+  94              	.LFE69:
+  95              		.size	prvHardwareSetup, .-prvHardwareSetup
+  96              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
+  97              		.align	2
+  98              		.global	vApplicationStackOverflowHook
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.type	vApplicationStackOverflowHook, %function
+ 102              	vApplicationStackOverflowHook:
+ 103              	.LFB70:
+ 104:main.c        **** /*---------------------------------------------------------------------------*/
  105:main.c        **** 
  106:main.c        **** 
- 107:main.c        **** 
- 108:main.c        **** 	/* Install the OS Interrupt Handlers. */
- 109:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
- 149              		.loc 1 109 0
- 150 0004 064B     		ldr	r3, .L10
- 151 0006 074A     		ldr	r2, .L10+4
- 152 0008 DA62     		str	r2, [r3, #44]
- 110:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
- 153              		.loc 1 110 0
- 154 000a 054B     		ldr	r3, .L10
- 155 000c 064A     		ldr	r2, .L10+8
- 156 000e 9A63     		str	r2, [r3, #56]
- 111:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
- 157              		.loc 1 111 0
- 158 0010 034B     		ldr	r3, .L10
- 159 0012 064A     		ldr	r2, .L10+12
- 160 0014 DA63     		str	r2, [r3, #60]
- 112:main.c        **** 
- 113:main.c        ****     
- 114:main.c        **** 	/* Start-up the peripherals. */
- 115:main.c        ****     PWM_PERISTALTISK_Start();
- 161              		.loc 1 115 0
- 162 0016 FFF7FEFF 		bl	PWM_PERISTALTISK_Start
- 116:main.c        **** 
- 117:main.c        **** }
- 163              		.loc 1 117 0
- 164 001a 00BF     		nop
- 165 001c 80BD     		pop	{r7, pc}
- 166              	.L11:
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 6
+ 107:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+ 108:main.c        **** {
+ 104              		.loc 1 108 0
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 16
+ 107              		@ frame_needed = 1, uses_anonymous_args = 0
+ 108              		@ link register save eliminated.
+ 109 0000 80B4     		push	{r7}
+ 110              		.cfi_def_cfa_offset 4
+ 111              		.cfi_offset 7, -4
+ 112 0002 85B0     		sub	sp, sp, #20
+ 113              		.cfi_def_cfa_offset 24
+ 114 0004 00AF     		add	r7, sp, #0
+ 115              		.cfi_def_cfa_register 7
+ 116 0006 7860     		str	r0, [r7, #4]
+ 117 0008 3960     		str	r1, [r7]
+ 118              	.LBB6:
+ 119              	.LBB7:
+ 120              		.file 2 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 5
 
 
- 167 001e 00BF     		.align	2
- 168              	.L10:
- 169 0020 00000000 		.word	CyRamVectors
- 170 0024 00000000 		.word	vPortSVCHandler
- 171 0028 00000000 		.word	xPortPendSVHandler
- 172 002c 00000000 		.word	xPortSysTickHandler
- 173              		.cfi_endproc
- 174              	.LFE70:
- 175              		.size	prvHardwareSetup, .-prvHardwareSetup
- 176              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
- 177              		.align	2
- 178              		.global	vApplicationStackOverflowHook
- 179              		.thumb
- 180              		.thumb_func
- 181              		.type	vApplicationStackOverflowHook, %function
- 182              	vApplicationStackOverflowHook:
- 183              	.LFB71:
- 118:main.c        **** /*---------------------------------------------------------------------------*/
- 119:main.c        **** 
- 120:main.c        **** 
- 121:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
- 122:main.c        **** {
- 184              		.loc 1 122 0
- 185              		.cfi_startproc
- 186              		@ args = 0, pretend = 0, frame = 16
- 187              		@ frame_needed = 1, uses_anonymous_args = 0
- 188              		@ link register save eliminated.
- 189 0000 80B4     		push	{r7}
- 190              		.cfi_def_cfa_offset 4
- 191              		.cfi_offset 7, -4
- 192 0002 85B0     		sub	sp, sp, #20
- 193              		.cfi_def_cfa_offset 24
- 194 0004 00AF     		add	r7, sp, #0
- 195              		.cfi_def_cfa_register 7
- 196 0006 7860     		str	r0, [r7, #4]
- 197 0008 3960     		str	r1, [r7]
- 198              	.LBB6:
- 199              	.LBB7:
- 200              		.file 2 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
    1:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*
    2:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FreeRTOS Kernel V10.3.1
    3:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
@@ -358,9 +259,6 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
   16:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
   17:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
   18:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 7
-
-
   19:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
   20:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   21:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
@@ -400,6 +298,9 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
   55:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef portSTACK_TYPE StackType_t;
   56:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef long BaseType_t;
   57:.\Source\portable\GCC\ARM_CM3/portmacro.h **** typedef unsigned long UBaseType_t;
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 6
+
+
   58:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   59:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #if( configUSE_16_BIT_TICKS == 1 )
   60:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	typedef uint16_t TickType_t;
@@ -418,9 +319,6 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
   73:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
   74:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
   75:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portBYTE_ALIGNMENT			8
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 8
-
-
   76:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
   77:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   78:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Scheduler utilities. */
@@ -460,6 +358,9 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
  112:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTASK_FUNCTION( vFunction, pvParameters ) void vFunction( void *pvParameters )
  113:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
  114:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 7
+
+
  115:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Tickless idle/low power functionality. */
  116:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef portSUPPRESS_TICKS_AND_SLEEP
  117:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	extern void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime );
@@ -478,9 +379,6 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
  130:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
  131:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
  132:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	uint8_t ucReturn;
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 9
-
-
  133:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  134:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		__asm volatile ( "clz %0, %1" : "=r" ( ucReturn ) : "r" ( ulBitmap ) : "memory" );
  135:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		return ucReturn;
@@ -520,6 +418,9 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
  169:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
  170:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  171:.\Source\portable\GCC\ARM_CM3/portmacro.h **** portFORCE_INLINE static BaseType_t xPortIsInsideInterrupt( void )
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 8
+
+
  172:.\Source\portable\GCC\ARM_CM3/portmacro.h **** {
  173:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulCurrentInterrupt;
  174:.\Source\portable\GCC\ARM_CM3/portmacro.h **** BaseType_t xReturn;
@@ -538,9 +439,6 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
  187:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  188:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return xReturn;
  189:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 10
-
-
  190:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  191:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
  192:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -549,1089 +447,925 @@ ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
  195:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulNewBASEPRI;
  196:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  197:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
- 201              		.loc 2 197 0
- 202              		.syntax unified
- 203              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
- 204 000a 4FF0A003 			mov r3, #160												
- 205 000e 83F31188 		msr basepri, r3											
- 206 0012 BFF36F8F 		isb														
- 207 0016 BFF34F8F 		dsb														
- 208              	
- 209              	@ 0 "" 2
- 210              		.thumb
- 211              		.syntax unified
- 212 001a FB60     		str	r3, [r7, #12]
- 213              	.L13:
- 214              	.LBE7:
- 215              	.LBE6:
- 123:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
- 124:main.c        **** 	taskDISABLE_INTERRUPTS();
- 125:main.c        **** 	for( ;; );
- 216              		.loc 1 125 0 discriminator 1
- 217 001c FEE7     		b	.L13
- 218              		.cfi_endproc
- 219              	.LFE71:
- 220              		.size	vApplicationStackOverflowHook, .-vApplicationStackOverflowHook
- 221 001e 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
- 222              		.align	2
- 223              		.global	vApplicationMallocFailedHook
- 224              		.thumb
- 225              		.thumb_func
- 226              		.type	vApplicationMallocFailedHook, %function
- 227              	vApplicationMallocFailedHook:
- 228              	.LFB72:
- 126:main.c        **** }
- 127:main.c        **** /*---------------------------------------------------------------------------*/
- 128:main.c        **** 
- 129:main.c        **** void vApplicationMallocFailedHook( void )
- 130:main.c        **** {
- 229              		.loc 1 130 0
- 230              		.cfi_startproc
- 231              		@ args = 0, pretend = 0, frame = 8
- 232              		@ frame_needed = 1, uses_anonymous_args = 0
- 233              		@ link register save eliminated.
- 234 0000 80B4     		push	{r7}
- 235              		.cfi_def_cfa_offset 4
- 236              		.cfi_offset 7, -4
- 237 0002 83B0     		sub	sp, sp, #12
- 238              		.cfi_def_cfa_offset 16
- 239 0004 00AF     		add	r7, sp, #0
- 240              		.cfi_def_cfa_register 7
- 241              	.LBB8:
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 11
+ 121              		.loc 2 197 0
+ 122              		.syntax unified
+ 123              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 124 000a 4FF0A003 			mov r3, #160												
+ 125 000e 83F31188 		msr basepri, r3											
+ 126 0012 BFF36F8F 		isb														
+ 127 0016 BFF34F8F 		dsb														
+ 128              	
+ 129              	@ 0 "" 2
+ 130              		.thumb
+ 131              		.syntax unified
+ 132 001a FB60     		str	r3, [r7, #12]
+ 133              	.L7:
+ 134              	.LBE7:
+ 135              	.LBE6:
+ 109:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
+ 110:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 111:main.c        **** 	for( ;; );
+ 136              		.loc 1 111 0 discriminator 1
+ 137 001c FEE7     		b	.L7
+ 138              		.cfi_endproc
+ 139              	.LFE70:
+ 140              		.size	vApplicationStackOverflowHook, .-vApplicationStackOverflowHook
+ 141 001e 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
+ 142              		.align	2
+ 143              		.global	vApplicationMallocFailedHook
+ 144              		.thumb
+ 145              		.thumb_func
+ 146              		.type	vApplicationMallocFailedHook, %function
+ 147              	vApplicationMallocFailedHook:
+ 148              	.LFB71:
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 9
 
 
- 242              	.LBB9:
- 243              		.loc 2 197 0
- 244              		.syntax unified
- 245              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
- 246 0006 4FF0A003 			mov r3, #160												
- 247 000a 83F31188 		msr basepri, r3											
- 248 000e BFF36F8F 		isb														
- 249 0012 BFF34F8F 		dsb														
- 250              	
- 251              	@ 0 "" 2
- 252              		.thumb
- 253              		.syntax unified
- 254 0016 7B60     		str	r3, [r7, #4]
- 255              	.L15:
- 256              	.LBE9:
- 257              	.LBE8:
- 131:main.c        **** 	/* The heap space has been execeeded. */
- 132:main.c        **** 	taskDISABLE_INTERRUPTS();
- 133:main.c        **** 	for( ;; );
- 258              		.loc 1 133 0 discriminator 1
- 259 0018 FEE7     		b	.L15
- 260              		.cfi_endproc
- 261              	.LFE72:
- 262              		.size	vApplicationMallocFailedHook, .-vApplicationMallocFailedHook
- 263 001a 00BF     		.text
- 264              	.Letext0:
- 265              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 266              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 267              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
- 268              		.file 6 ".\\Source\\include/task.h"
- 269              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
- 270              		.section	.debug_info,"",%progbits
- 271              	.Ldebug_info0:
- 272 0000 7B020000 		.4byte	0x27b
- 273 0004 0400     		.2byte	0x4
- 274 0006 00000000 		.4byte	.Ldebug_abbrev0
- 275 000a 04       		.byte	0x4
- 276 000b 01       		.uleb128 0x1
- 277 000c 00000000 		.4byte	.LASF37
- 278 0010 0C       		.byte	0xc
- 279 0011 0E020000 		.4byte	.LASF38
- 280 0015 2A020000 		.4byte	.LASF39
- 281 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 282 001d 00000000 		.4byte	0
- 283 0021 00000000 		.4byte	.Ldebug_line0
- 284 0025 02       		.uleb128 0x2
- 285 0026 01       		.byte	0x1
- 286 0027 06       		.byte	0x6
- 287 0028 E1020000 		.4byte	.LASF0
- 288 002c 02       		.uleb128 0x2
- 289 002d 01       		.byte	0x1
- 290 002e 08       		.byte	0x8
- 291 002f FC000000 		.4byte	.LASF1
- 292 0033 02       		.uleb128 0x2
- 293 0034 02       		.byte	0x2
- 294 0035 05       		.byte	0x5
- 295 0036 94020000 		.4byte	.LASF2
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 12
+ 112:main.c        **** }
+ 113:main.c        **** /*---------------------------------------------------------------------------*/
+ 114:main.c        **** 
+ 115:main.c        **** void vApplicationMallocFailedHook( void )
+ 116:main.c        **** {
+ 149              		.loc 1 116 0
+ 150              		.cfi_startproc
+ 151              		@ args = 0, pretend = 0, frame = 8
+ 152              		@ frame_needed = 1, uses_anonymous_args = 0
+ 153              		@ link register save eliminated.
+ 154 0000 80B4     		push	{r7}
+ 155              		.cfi_def_cfa_offset 4
+ 156              		.cfi_offset 7, -4
+ 157 0002 83B0     		sub	sp, sp, #12
+ 158              		.cfi_def_cfa_offset 16
+ 159 0004 00AF     		add	r7, sp, #0
+ 160              		.cfi_def_cfa_register 7
+ 161              	.LBB8:
+ 162              	.LBB9:
+ 163              		.loc 2 197 0
+ 164              		.syntax unified
+ 165              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 166 0006 4FF0A003 			mov r3, #160												
+ 167 000a 83F31188 		msr basepri, r3											
+ 168 000e BFF36F8F 		isb														
+ 169 0012 BFF34F8F 		dsb														
+ 170              	
+ 171              	@ 0 "" 2
+ 172              		.thumb
+ 173              		.syntax unified
+ 174 0016 7B60     		str	r3, [r7, #4]
+ 175              	.L9:
+ 176              	.LBE9:
+ 177              	.LBE8:
+ 117:main.c        **** 	/* The heap space has been execeeded. */
+ 118:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 119:main.c        **** 	for( ;; );
+ 178              		.loc 1 119 0 discriminator 1
+ 179 0018 FEE7     		b	.L9
+ 180              		.cfi_endproc
+ 181              	.LFE71:
+ 182              		.size	vApplicationMallocFailedHook, .-vApplicationMallocFailedHook
+ 183 001a 00BF     		.text
+ 184              	.Letext0:
+ 185              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 186              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 187              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 188              		.file 6 ".\\Source\\include/task.h"
+ 189              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 190              		.section	.debug_info,"",%progbits
+ 191              	.Ldebug_info0:
+ 192 0000 FC010000 		.4byte	0x1fc
+ 193 0004 0400     		.2byte	0x4
+ 194 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 195 000a 04       		.byte	0x4
+ 196 000b 01       		.uleb128 0x1
+ 197 000c 00000000 		.4byte	.LASF29
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 10
 
 
- 296 003a 02       		.uleb128 0x2
- 297 003b 02       		.byte	0x2
- 298 003c 07       		.byte	0x7
- 299 003d 27010000 		.4byte	.LASF3
- 300 0041 03       		.uleb128 0x3
- 301 0042 99000000 		.4byte	.LASF5
- 302 0046 03       		.byte	0x3
- 303 0047 3F       		.byte	0x3f
- 304 0048 4C000000 		.4byte	0x4c
- 305 004c 02       		.uleb128 0x2
- 306 004d 04       		.byte	0x4
- 307 004e 05       		.byte	0x5
- 308 004f C5020000 		.4byte	.LASF4
- 309 0053 03       		.uleb128 0x3
- 310 0054 0A010000 		.4byte	.LASF6
- 311 0058 03       		.byte	0x3
- 312 0059 41       		.byte	0x41
- 313 005a 5E000000 		.4byte	0x5e
- 314 005e 02       		.uleb128 0x2
- 315 005f 04       		.byte	0x4
- 316 0060 07       		.byte	0x7
- 317 0061 15010000 		.4byte	.LASF7
- 318 0065 02       		.uleb128 0x2
- 319 0066 08       		.byte	0x8
- 320 0067 05       		.byte	0x5
- 321 0068 00020000 		.4byte	.LASF8
- 322 006c 02       		.uleb128 0x2
- 323 006d 08       		.byte	0x8
- 324 006e 07       		.byte	0x7
- 325 006f AE010000 		.4byte	.LASF9
- 326 0073 04       		.uleb128 0x4
- 327 0074 04       		.byte	0x4
- 328 0075 05       		.byte	0x5
- 329 0076 696E7400 		.ascii	"int\000"
- 330 007a 02       		.uleb128 0x2
- 331 007b 04       		.byte	0x4
- 332 007c 07       		.byte	0x7
- 333 007d 95010000 		.4byte	.LASF10
- 334 0081 03       		.uleb128 0x3
- 335 0082 EF010000 		.4byte	.LASF11
- 336 0086 04       		.byte	0x4
- 337 0087 2C       		.byte	0x2c
- 338 0088 41000000 		.4byte	0x41
- 339 008c 03       		.uleb128 0x3
- 340 008d BC020000 		.4byte	.LASF12
- 341 0091 04       		.byte	0x4
- 342 0092 30       		.byte	0x30
- 343 0093 53000000 		.4byte	0x53
- 344 0097 05       		.uleb128 0x5
- 345 0098 A9020000 		.4byte	.LASF13
- 346 009c 05       		.byte	0x5
- 347 009d E401     		.2byte	0x1e4
- 348 009f 2C000000 		.4byte	0x2c
- 349 00a3 02       		.uleb128 0x2
- 350 00a4 04       		.byte	0x4
- 351 00a5 04       		.byte	0x4
- 352 00a6 EB000000 		.4byte	.LASF14
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 13
+ 198 0010 0C       		.byte	0xc
+ 199 0011 C9010000 		.4byte	.LASF30
+ 200 0015 E5010000 		.4byte	.LASF31
+ 201 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 202 001d 00000000 		.4byte	0
+ 203 0021 00000000 		.4byte	.Ldebug_line0
+ 204 0025 02       		.uleb128 0x2
+ 205 0026 01       		.byte	0x1
+ 206 0027 06       		.byte	0x6
+ 207 0028 8F020000 		.4byte	.LASF0
+ 208 002c 02       		.uleb128 0x2
+ 209 002d 01       		.byte	0x1
+ 210 002e 08       		.byte	0x8
+ 211 002f D0000000 		.4byte	.LASF1
+ 212 0033 02       		.uleb128 0x2
+ 213 0034 02       		.byte	0x2
+ 214 0035 05       		.byte	0x5
+ 215 0036 4F020000 		.4byte	.LASF2
+ 216 003a 02       		.uleb128 0x2
+ 217 003b 02       		.byte	0x2
+ 218 003c 07       		.byte	0x7
+ 219 003d FB000000 		.4byte	.LASF3
+ 220 0041 03       		.uleb128 0x3
+ 221 0042 9B000000 		.4byte	.LASF5
+ 222 0046 03       		.byte	0x3
+ 223 0047 3F       		.byte	0x3f
+ 224 0048 4C000000 		.4byte	0x4c
+ 225 004c 02       		.uleb128 0x2
+ 226 004d 04       		.byte	0x4
+ 227 004e 05       		.byte	0x5
+ 228 004f 7A020000 		.4byte	.LASF4
+ 229 0053 03       		.uleb128 0x3
+ 230 0054 DE000000 		.4byte	.LASF6
+ 231 0058 03       		.byte	0x3
+ 232 0059 41       		.byte	0x41
+ 233 005a 5E000000 		.4byte	0x5e
+ 234 005e 02       		.uleb128 0x2
+ 235 005f 04       		.byte	0x4
+ 236 0060 07       		.byte	0x7
+ 237 0061 E9000000 		.4byte	.LASF7
+ 238 0065 02       		.uleb128 0x2
+ 239 0066 08       		.byte	0x8
+ 240 0067 05       		.byte	0x5
+ 241 0068 BB010000 		.4byte	.LASF8
+ 242 006c 02       		.uleb128 0x2
+ 243 006d 08       		.byte	0x8
+ 244 006e 07       		.byte	0x7
+ 245 006f 69010000 		.4byte	.LASF9
+ 246 0073 04       		.uleb128 0x4
+ 247 0074 04       		.byte	0x4
+ 248 0075 05       		.byte	0x5
+ 249 0076 696E7400 		.ascii	"int\000"
+ 250 007a 02       		.uleb128 0x2
+ 251 007b 04       		.byte	0x4
+ 252 007c 07       		.byte	0x7
+ 253 007d 5C010000 		.4byte	.LASF10
+ 254 0081 03       		.uleb128 0x3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 11
 
 
- 353 00aa 02       		.uleb128 0x2
- 354 00ab 08       		.byte	0x8
- 355 00ac 04       		.byte	0x4
- 356 00ad 47010000 		.4byte	.LASF15
- 357 00b1 02       		.uleb128 0x2
- 358 00b2 01       		.byte	0x1
- 359 00b3 08       		.byte	0x8
- 360 00b4 15020000 		.4byte	.LASF16
- 361 00b8 05       		.uleb128 0x5
- 362 00b9 C5010000 		.4byte	.LASF17
- 363 00bd 05       		.byte	0x5
- 364 00be A002     		.2byte	0x2a0
- 365 00c0 C4000000 		.4byte	0xc4
- 366 00c4 06       		.uleb128 0x6
- 367 00c5 04       		.byte	0x4
- 368 00c6 CA000000 		.4byte	0xca
- 369 00ca 07       		.uleb128 0x7
- 370 00cb 02       		.uleb128 0x2
- 371 00cc 08       		.byte	0x8
- 372 00cd 04       		.byte	0x4
- 373 00ce D5020000 		.4byte	.LASF18
- 374 00d2 02       		.uleb128 0x2
- 375 00d3 04       		.byte	0x4
- 376 00d4 07       		.byte	0x7
- 377 00d5 F7010000 		.4byte	.LASF19
- 378 00d9 08       		.uleb128 0x8
- 379 00da 04       		.byte	0x4
- 380 00db 06       		.uleb128 0x6
- 381 00dc 04       		.byte	0x4
- 382 00dd B1000000 		.4byte	0xb1
- 383 00e1 03       		.uleb128 0x3
- 384 00e2 8E000000 		.4byte	.LASF20
- 385 00e6 02       		.byte	0x2
- 386 00e7 3F       		.byte	0x3f
- 387 00e8 8C000000 		.4byte	0x8c
- 388 00ec 03       		.uleb128 0x3
- 389 00ed AF020000 		.4byte	.LASF21
- 390 00f1 06       		.byte	0x6
- 391 00f2 46       		.byte	0x46
- 392 00f3 F7000000 		.4byte	0xf7
- 393 00f7 06       		.uleb128 0x6
- 394 00f8 04       		.byte	0x4
- 395 00f9 FD000000 		.4byte	0xfd
- 396 00fd 09       		.uleb128 0x9
- 397 00fe 68010000 		.4byte	.LASF40
- 398 0102 0A       		.uleb128 0xa
- 399 0103 B0000000 		.4byte	.LASF41
- 400 0107 02       		.byte	0x2
- 401 0108 C1       		.byte	0xc1
- 402 0109 03       		.byte	0x3
- 403 010a 1A010000 		.4byte	0x11a
- 404 010e 0B       		.uleb128 0xb
- 405 010f 5B010000 		.4byte	.LASF42
- 406 0113 02       		.byte	0x2
- 407 0114 C3       		.byte	0xc3
- 408 0115 8C000000 		.4byte	0x8c
- 409 0119 00       		.byte	0
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 14
+ 255 0082 AA010000 		.4byte	.LASF11
+ 256 0086 04       		.byte	0x4
+ 257 0087 2C       		.byte	0x2c
+ 258 0088 41000000 		.4byte	0x41
+ 259 008c 03       		.uleb128 0x3
+ 260 008d 71020000 		.4byte	.LASF12
+ 261 0091 04       		.byte	0x4
+ 262 0092 30       		.byte	0x30
+ 263 0093 53000000 		.4byte	0x53
+ 264 0097 02       		.uleb128 0x2
+ 265 0098 04       		.byte	0x4
+ 266 0099 04       		.byte	0x4
+ 267 009a CA000000 		.4byte	.LASF13
+ 268 009e 02       		.uleb128 0x2
+ 269 009f 08       		.byte	0x8
+ 270 00a0 04       		.byte	0x4
+ 271 00a1 1B010000 		.4byte	.LASF14
+ 272 00a5 02       		.uleb128 0x2
+ 273 00a6 01       		.byte	0x1
+ 274 00a7 08       		.byte	0x8
+ 275 00a8 D0010000 		.4byte	.LASF15
+ 276 00ac 05       		.uleb128 0x5
+ 277 00ad 80010000 		.4byte	.LASF16
+ 278 00b1 05       		.byte	0x5
+ 279 00b2 A002     		.2byte	0x2a0
+ 280 00b4 B8000000 		.4byte	0xb8
+ 281 00b8 06       		.uleb128 0x6
+ 282 00b9 04       		.byte	0x4
+ 283 00ba BE000000 		.4byte	0xbe
+ 284 00be 07       		.uleb128 0x7
+ 285 00bf 02       		.uleb128 0x2
+ 286 00c0 08       		.byte	0x8
+ 287 00c1 04       		.byte	0x4
+ 288 00c2 83020000 		.4byte	.LASF17
+ 289 00c6 02       		.uleb128 0x2
+ 290 00c7 04       		.byte	0x4
+ 291 00c8 07       		.byte	0x7
+ 292 00c9 B2010000 		.4byte	.LASF18
+ 293 00cd 06       		.uleb128 0x6
+ 294 00ce 04       		.byte	0x4
+ 295 00cf A5000000 		.4byte	0xa5
+ 296 00d3 03       		.uleb128 0x3
+ 297 00d4 64020000 		.4byte	.LASF19
+ 298 00d8 06       		.byte	0x6
+ 299 00d9 46       		.byte	0x46
+ 300 00da DE000000 		.4byte	0xde
+ 301 00de 06       		.uleb128 0x6
+ 302 00df 04       		.byte	0x4
+ 303 00e0 E4000000 		.4byte	0xe4
+ 304 00e4 08       		.uleb128 0x8
+ 305 00e5 2F010000 		.4byte	.LASF32
+ 306 00e9 09       		.uleb128 0x9
+ 307 00ea A5000000 		.4byte	.LASF33
+ 308 00ee 02       		.byte	0x2
+ 309 00ef C1       		.byte	0xc1
+ 310 00f0 03       		.byte	0x3
+ 311 00f1 01010000 		.4byte	0x101
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 12
 
 
- 410 011a 0C       		.uleb128 0xc
- 411 011b 7C010000 		.4byte	.LASF43
- 412 011f 01       		.byte	0x1
- 413 0120 35       		.byte	0x35
- 414 0121 73000000 		.4byte	0x73
- 415 0125 00000000 		.4byte	.LFB68
- 416 0129 30000000 		.4byte	.LFE68-.LFB68
- 417 012d 01       		.uleb128 0x1
- 418 012e 9C       		.byte	0x9c
- 419 012f 0D       		.uleb128 0xd
- 420 0130 A3000000 		.4byte	.LASF29
- 421 0134 01       		.byte	0x1
- 422 0135 49       		.byte	0x49
- 423 0136 00000000 		.4byte	.LFB69
- 424 013a 42000000 		.4byte	.LFE69-.LFB69
- 425 013e 01       		.uleb128 0x1
- 426 013f 9C       		.byte	0x9c
- 427 0140 8B010000 		.4byte	0x18b
- 428 0144 0E       		.uleb128 0xe
- 429 0145 C2000000 		.4byte	.LASF31
- 430 0149 01       		.byte	0x1
- 431 014a 49       		.byte	0x49
- 432 014b D9000000 		.4byte	0xd9
- 433 014f 02       		.uleb128 0x2
- 434 0150 91       		.byte	0x91
- 435 0151 64       		.sleb128 -28
- 436 0152 0F       		.uleb128 0xf
- 437 0153 A2010000 		.4byte	.LASF22
- 438 0157 01       		.byte	0x1
- 439 0158 4A       		.byte	0x4a
- 440 0159 8B010000 		.4byte	0x18b
- 441 015d 02       		.uleb128 0x2
- 442 015e 91       		.byte	0x91
- 443 015f 70       		.sleb128 -16
- 444 0160 0F       		.uleb128 0xf
- 445 0161 E1000000 		.4byte	.LASF23
- 446 0165 01       		.byte	0x1
- 447 0166 4B       		.byte	0x4b
- 448 0167 90010000 		.4byte	0x190
- 449 016b 02       		.uleb128 0x2
- 450 016c 91       		.byte	0x91
- 451 016d 6F       		.sleb128 -17
- 452 016e 0F       		.uleb128 0xf
- 453 016f F1000000 		.4byte	.LASF24
- 454 0173 01       		.byte	0x1
- 455 0174 4C       		.byte	0x4c
- 456 0175 90010000 		.4byte	0x190
- 457 0179 02       		.uleb128 0x2
- 458 017a 91       		.byte	0x91
- 459 017b 6E       		.sleb128 -18
- 460 017c 0F       		.uleb128 0xf
- 461 017d CE020000 		.4byte	.LASF25
- 462 0181 01       		.byte	0x1
- 463 0182 4D       		.byte	0x4d
- 464 0183 73000000 		.4byte	0x73
- 465 0187 02       		.uleb128 0x2
- 466 0188 91       		.byte	0x91
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 15
+ 312 00f5 0A       		.uleb128 0xa
+ 313 00f6 22010000 		.4byte	.LASF34
+ 314 00fa 02       		.byte	0x2
+ 315 00fb C3       		.byte	0xc3
+ 316 00fc 8C000000 		.4byte	0x8c
+ 317 0100 00       		.byte	0
+ 318 0101 0B       		.uleb128 0xb
+ 319 0102 43010000 		.4byte	.LASF35
+ 320 0106 01       		.byte	0x1
+ 321 0107 37       		.byte	0x37
+ 322 0108 73000000 		.4byte	0x73
+ 323 010c 00000000 		.4byte	.LFB68
+ 324 0110 12000000 		.4byte	.LFE68-.LFB68
+ 325 0114 01       		.uleb128 0x1
+ 326 0115 9C       		.byte	0x9c
+ 327 0116 0C       		.uleb128 0xc
+ 328 0117 B9020000 		.4byte	.LASF36
+ 329 011b 01       		.byte	0x1
+ 330 011c 52       		.byte	0x52
+ 331 011d 00000000 		.4byte	.LFB69
+ 332 0121 34000000 		.4byte	.LFE69-.LFB69
+ 333 0125 01       		.uleb128 0x1
+ 334 0126 9C       		.byte	0x9c
+ 335 0127 4C010000 		.4byte	0x14c
+ 336 012b 0D       		.uleb128 0xd
+ 337 012c B7000000 		.4byte	.LASF20
+ 338 0130 01       		.byte	0x1
+ 339 0131 55       		.byte	0x55
+ 340 0132 0D       		.uleb128 0xd
+ 341 0133 48010000 		.4byte	.LASF21
+ 342 0137 01       		.byte	0x1
+ 343 0138 56       		.byte	0x56
+ 344 0139 0D       		.uleb128 0xd
+ 345 013a D5010000 		.4byte	.LASF22
+ 346 013e 01       		.byte	0x1
+ 347 013f 57       		.byte	0x57
+ 348 0140 0E       		.uleb128 0xe
+ 349 0141 8E000000 		.4byte	.LASF27
+ 350 0145 01       		.byte	0x1
+ 351 0146 58       		.byte	0x58
+ 352 0147 4C010000 		.4byte	0x14c
+ 353 014b 00       		.byte	0
+ 354 014c 0F       		.uleb128 0xf
+ 355 014d AC000000 		.4byte	0xac
+ 356 0151 57010000 		.4byte	0x157
+ 357 0155 10       		.uleb128 0x10
+ 358 0156 00       		.byte	0
+ 359 0157 11       		.uleb128 0x11
+ 360 0158 9B020000 		.4byte	.LASF25
+ 361 015c 01       		.byte	0x1
+ 362 015d 6B       		.byte	0x6b
+ 363 015e 00000000 		.4byte	.LFB70
+ 364 0162 1E000000 		.4byte	.LFE70-.LFB70
+ 365 0166 01       		.uleb128 0x1
+ 366 0167 9C       		.byte	0x9c
+ 367 0168 AB010000 		.4byte	0x1ab
+ 368 016c 12       		.uleb128 0x12
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 13
 
 
- 467 0189 74       		.sleb128 -12
- 468 018a 00       		.byte	0
- 469 018b 10       		.uleb128 0x10
- 470 018c E1000000 		.4byte	0xe1
- 471 0190 10       		.uleb128 0x10
- 472 0191 97000000 		.4byte	0x97
- 473 0195 11       		.uleb128 0x11
- 474 0196 0B030000 		.4byte	.LASF44
- 475 019a 01       		.byte	0x1
- 476 019b 62       		.byte	0x62
- 477 019c 00000000 		.4byte	.LFB70
- 478 01a0 30000000 		.4byte	.LFE70-.LFB70
- 479 01a4 01       		.uleb128 0x1
- 480 01a5 9C       		.byte	0x9c
- 481 01a6 CB010000 		.4byte	0x1cb
- 482 01aa 12       		.uleb128 0x12
- 483 01ab CE000000 		.4byte	.LASF26
- 484 01af 01       		.byte	0x1
- 485 01b0 65       		.byte	0x65
- 486 01b1 12       		.uleb128 0x12
- 487 01b2 81010000 		.4byte	.LASF27
- 488 01b6 01       		.byte	0x1
- 489 01b7 66       		.byte	0x66
- 490 01b8 12       		.uleb128 0x12
- 491 01b9 1A020000 		.4byte	.LASF28
- 492 01bd 01       		.byte	0x1
- 493 01be 67       		.byte	0x67
- 494 01bf 13       		.uleb128 0x13
- 495 01c0 4E010000 		.4byte	.LASF35
- 496 01c4 01       		.byte	0x1
- 497 01c5 68       		.byte	0x68
- 498 01c6 CB010000 		.4byte	0x1cb
- 499 01ca 00       		.byte	0
- 500 01cb 14       		.uleb128 0x14
- 501 01cc B8000000 		.4byte	0xb8
- 502 01d0 D6010000 		.4byte	0x1d6
- 503 01d4 15       		.uleb128 0x15
- 504 01d5 00       		.byte	0
- 505 01d6 16       		.uleb128 0x16
- 506 01d7 ED020000 		.4byte	.LASF30
- 507 01db 01       		.byte	0x1
- 508 01dc 79       		.byte	0x79
- 509 01dd 00000000 		.4byte	.LFB71
- 510 01e1 1E000000 		.4byte	.LFE71-.LFB71
- 511 01e5 01       		.uleb128 0x1
- 512 01e6 9C       		.byte	0x9c
- 513 01e7 2A020000 		.4byte	0x22a
- 514 01eb 0E       		.uleb128 0xe
- 515 01ec 8D020000 		.4byte	.LASF32
- 516 01f0 01       		.byte	0x1
- 517 01f1 79       		.byte	0x79
- 518 01f2 EC000000 		.4byte	0xec
- 519 01f6 02       		.uleb128 0x2
- 520 01f7 91       		.byte	0x91
- 521 01f8 6C       		.sleb128 -20
- 522 01f9 0E       		.uleb128 0xe
- 523 01fa 9E020000 		.4byte	.LASF33
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 16
+ 369 016d 48020000 		.4byte	.LASF23
+ 370 0171 01       		.byte	0x1
+ 371 0172 6B       		.byte	0x6b
+ 372 0173 D3000000 		.4byte	0xd3
+ 373 0177 02       		.uleb128 0x2
+ 374 0178 91       		.byte	0x91
+ 375 0179 6C       		.sleb128 -20
+ 376 017a 12       		.uleb128 0x12
+ 377 017b 59020000 		.4byte	.LASF24
+ 378 017f 01       		.byte	0x1
+ 379 0180 6B       		.byte	0x6b
+ 380 0181 CD000000 		.4byte	0xcd
+ 381 0185 02       		.uleb128 0x2
+ 382 0186 91       		.byte	0x91
+ 383 0187 68       		.sleb128 -24
+ 384 0188 13       		.uleb128 0x13
+ 385 0189 E9000000 		.4byte	0xe9
+ 386 018d 0A000000 		.4byte	.LBB6
+ 387 0191 12000000 		.4byte	.LBE6-.LBB6
+ 388 0195 01       		.byte	0x1
+ 389 0196 6E       		.byte	0x6e
+ 390 0197 14       		.uleb128 0x14
+ 391 0198 0A000000 		.4byte	.LBB7
+ 392 019c 12000000 		.4byte	.LBE7-.LBB7
+ 393 01a0 15       		.uleb128 0x15
+ 394 01a1 F5000000 		.4byte	0xf5
+ 395 01a5 02       		.uleb128 0x2
+ 396 01a6 91       		.byte	0x91
+ 397 01a7 74       		.sleb128 -12
+ 398 01a8 00       		.byte	0
+ 399 01a9 00       		.byte	0
+ 400 01aa 00       		.byte	0
+ 401 01ab 11       		.uleb128 0x11
+ 402 01ac 8D010000 		.4byte	.LASF26
+ 403 01b0 01       		.byte	0x1
+ 404 01b1 73       		.byte	0x73
+ 405 01b2 00000000 		.4byte	.LFB71
+ 406 01b6 1A000000 		.4byte	.LFE71-.LFB71
+ 407 01ba 01       		.uleb128 0x1
+ 408 01bb 9C       		.byte	0x9c
+ 409 01bc E3010000 		.4byte	0x1e3
+ 410 01c0 13       		.uleb128 0x13
+ 411 01c1 E9000000 		.4byte	0xe9
+ 412 01c5 06000000 		.4byte	.LBB8
+ 413 01c9 12000000 		.4byte	.LBE8-.LBB8
+ 414 01cd 01       		.byte	0x1
+ 415 01ce 76       		.byte	0x76
+ 416 01cf 14       		.uleb128 0x14
+ 417 01d0 06000000 		.4byte	.LBB9
+ 418 01d4 12000000 		.4byte	.LBE9-.LBB9
+ 419 01d8 15       		.uleb128 0x15
+ 420 01d9 F5000000 		.4byte	0xf5
+ 421 01dd 02       		.uleb128 0x2
+ 422 01de 91       		.byte	0x91
+ 423 01df 74       		.sleb128 -12
+ 424 01e0 00       		.byte	0
+ 425 01e1 00       		.byte	0
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 14
 
 
- 524 01fe 01       		.byte	0x1
- 525 01ff 79       		.byte	0x79
- 526 0200 DB000000 		.4byte	0xdb
- 527 0204 02       		.uleb128 0x2
- 528 0205 91       		.byte	0x91
- 529 0206 68       		.sleb128 -24
- 530 0207 17       		.uleb128 0x17
- 531 0208 02010000 		.4byte	0x102
- 532 020c 0A000000 		.4byte	.LBB6
- 533 0210 12000000 		.4byte	.LBE6-.LBB6
- 534 0214 01       		.byte	0x1
- 535 0215 7C       		.byte	0x7c
- 536 0216 18       		.uleb128 0x18
- 537 0217 0A000000 		.4byte	.LBB7
- 538 021b 12000000 		.4byte	.LBE7-.LBB7
- 539 021f 19       		.uleb128 0x19
- 540 0220 0E010000 		.4byte	0x10e
- 541 0224 02       		.uleb128 0x2
- 542 0225 91       		.byte	0x91
- 543 0226 74       		.sleb128 -12
- 544 0227 00       		.byte	0
- 545 0228 00       		.byte	0
- 546 0229 00       		.byte	0
- 547 022a 16       		.uleb128 0x16
- 548 022b D2010000 		.4byte	.LASF34
- 549 022f 01       		.byte	0x1
- 550 0230 81       		.byte	0x81
- 551 0231 00000000 		.4byte	.LFB72
- 552 0235 1A000000 		.4byte	.LFE72-.LFB72
- 553 0239 01       		.uleb128 0x1
- 554 023a 9C       		.byte	0x9c
- 555 023b 62020000 		.4byte	0x262
- 556 023f 17       		.uleb128 0x17
- 557 0240 02010000 		.4byte	0x102
- 558 0244 06000000 		.4byte	.LBB8
- 559 0248 12000000 		.4byte	.LBE8-.LBB8
- 560 024c 01       		.byte	0x1
- 561 024d 84       		.byte	0x84
- 562 024e 18       		.uleb128 0x18
- 563 024f 06000000 		.4byte	.LBB9
- 564 0253 12000000 		.4byte	.LBE9-.LBB9
- 565 0257 19       		.uleb128 0x19
- 566 0258 0E010000 		.4byte	0x10e
- 567 025c 02       		.uleb128 0x2
- 568 025d 91       		.byte	0x91
- 569 025e 74       		.sleb128 -12
- 570 025f 00       		.byte	0
- 571 0260 00       		.byte	0
- 572 0261 00       		.byte	0
- 573 0262 1A       		.uleb128 0x1a
- 574 0263 3A010000 		.4byte	.LASF36
- 575 0267 07       		.byte	0x7
- 576 0268 1207     		.2byte	0x712
- 577 026a 6E020000 		.4byte	0x26e
- 578 026e 1B       		.uleb128 0x1b
- 579 026f 81000000 		.4byte	0x81
- 580 0273 13       		.uleb128 0x13
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 17
+ 426 01e2 00       		.byte	0
+ 427 01e3 16       		.uleb128 0x16
+ 428 01e4 0E010000 		.4byte	.LASF28
+ 429 01e8 07       		.byte	0x7
+ 430 01e9 1207     		.2byte	0x712
+ 431 01eb EF010000 		.4byte	0x1ef
+ 432 01ef 17       		.uleb128 0x17
+ 433 01f0 81000000 		.4byte	0x81
+ 434 01f4 0E       		.uleb128 0xe
+ 435 01f5 8E000000 		.4byte	.LASF27
+ 436 01f9 01       		.byte	0x1
+ 437 01fa 58       		.byte	0x58
+ 438 01fb 4C010000 		.4byte	0x14c
+ 439 01ff 00       		.byte	0
+ 440              		.section	.debug_abbrev,"",%progbits
+ 441              	.Ldebug_abbrev0:
+ 442 0000 01       		.uleb128 0x1
+ 443 0001 11       		.uleb128 0x11
+ 444 0002 01       		.byte	0x1
+ 445 0003 25       		.uleb128 0x25
+ 446 0004 0E       		.uleb128 0xe
+ 447 0005 13       		.uleb128 0x13
+ 448 0006 0B       		.uleb128 0xb
+ 449 0007 03       		.uleb128 0x3
+ 450 0008 0E       		.uleb128 0xe
+ 451 0009 1B       		.uleb128 0x1b
+ 452 000a 0E       		.uleb128 0xe
+ 453 000b 55       		.uleb128 0x55
+ 454 000c 17       		.uleb128 0x17
+ 455 000d 11       		.uleb128 0x11
+ 456 000e 01       		.uleb128 0x1
+ 457 000f 10       		.uleb128 0x10
+ 458 0010 17       		.uleb128 0x17
+ 459 0011 00       		.byte	0
+ 460 0012 00       		.byte	0
+ 461 0013 02       		.uleb128 0x2
+ 462 0014 24       		.uleb128 0x24
+ 463 0015 00       		.byte	0
+ 464 0016 0B       		.uleb128 0xb
+ 465 0017 0B       		.uleb128 0xb
+ 466 0018 3E       		.uleb128 0x3e
+ 467 0019 0B       		.uleb128 0xb
+ 468 001a 03       		.uleb128 0x3
+ 469 001b 0E       		.uleb128 0xe
+ 470 001c 00       		.byte	0
+ 471 001d 00       		.byte	0
+ 472 001e 03       		.uleb128 0x3
+ 473 001f 16       		.uleb128 0x16
+ 474 0020 00       		.byte	0
+ 475 0021 03       		.uleb128 0x3
+ 476 0022 0E       		.uleb128 0xe
+ 477 0023 3A       		.uleb128 0x3a
+ 478 0024 0B       		.uleb128 0xb
+ 479 0025 3B       		.uleb128 0x3b
+ 480 0026 0B       		.uleb128 0xb
+ 481 0027 49       		.uleb128 0x49
+ 482 0028 13       		.uleb128 0x13
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 15
 
 
- 581 0274 4E010000 		.4byte	.LASF35
- 582 0278 01       		.byte	0x1
- 583 0279 68       		.byte	0x68
- 584 027a CB010000 		.4byte	0x1cb
- 585 027e 00       		.byte	0
- 586              		.section	.debug_abbrev,"",%progbits
- 587              	.Ldebug_abbrev0:
- 588 0000 01       		.uleb128 0x1
- 589 0001 11       		.uleb128 0x11
- 590 0002 01       		.byte	0x1
- 591 0003 25       		.uleb128 0x25
- 592 0004 0E       		.uleb128 0xe
- 593 0005 13       		.uleb128 0x13
- 594 0006 0B       		.uleb128 0xb
- 595 0007 03       		.uleb128 0x3
- 596 0008 0E       		.uleb128 0xe
- 597 0009 1B       		.uleb128 0x1b
- 598 000a 0E       		.uleb128 0xe
- 599 000b 55       		.uleb128 0x55
- 600 000c 17       		.uleb128 0x17
- 601 000d 11       		.uleb128 0x11
- 602 000e 01       		.uleb128 0x1
- 603 000f 10       		.uleb128 0x10
- 604 0010 17       		.uleb128 0x17
- 605 0011 00       		.byte	0
- 606 0012 00       		.byte	0
- 607 0013 02       		.uleb128 0x2
- 608 0014 24       		.uleb128 0x24
- 609 0015 00       		.byte	0
- 610 0016 0B       		.uleb128 0xb
- 611 0017 0B       		.uleb128 0xb
- 612 0018 3E       		.uleb128 0x3e
- 613 0019 0B       		.uleb128 0xb
- 614 001a 03       		.uleb128 0x3
- 615 001b 0E       		.uleb128 0xe
- 616 001c 00       		.byte	0
- 617 001d 00       		.byte	0
- 618 001e 03       		.uleb128 0x3
- 619 001f 16       		.uleb128 0x16
- 620 0020 00       		.byte	0
- 621 0021 03       		.uleb128 0x3
- 622 0022 0E       		.uleb128 0xe
- 623 0023 3A       		.uleb128 0x3a
- 624 0024 0B       		.uleb128 0xb
- 625 0025 3B       		.uleb128 0x3b
- 626 0026 0B       		.uleb128 0xb
- 627 0027 49       		.uleb128 0x49
- 628 0028 13       		.uleb128 0x13
- 629 0029 00       		.byte	0
- 630 002a 00       		.byte	0
- 631 002b 04       		.uleb128 0x4
- 632 002c 24       		.uleb128 0x24
- 633 002d 00       		.byte	0
- 634 002e 0B       		.uleb128 0xb
- 635 002f 0B       		.uleb128 0xb
- 636 0030 3E       		.uleb128 0x3e
- 637 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 18
+ 483 0029 00       		.byte	0
+ 484 002a 00       		.byte	0
+ 485 002b 04       		.uleb128 0x4
+ 486 002c 24       		.uleb128 0x24
+ 487 002d 00       		.byte	0
+ 488 002e 0B       		.uleb128 0xb
+ 489 002f 0B       		.uleb128 0xb
+ 490 0030 3E       		.uleb128 0x3e
+ 491 0031 0B       		.uleb128 0xb
+ 492 0032 03       		.uleb128 0x3
+ 493 0033 08       		.uleb128 0x8
+ 494 0034 00       		.byte	0
+ 495 0035 00       		.byte	0
+ 496 0036 05       		.uleb128 0x5
+ 497 0037 16       		.uleb128 0x16
+ 498 0038 00       		.byte	0
+ 499 0039 03       		.uleb128 0x3
+ 500 003a 0E       		.uleb128 0xe
+ 501 003b 3A       		.uleb128 0x3a
+ 502 003c 0B       		.uleb128 0xb
+ 503 003d 3B       		.uleb128 0x3b
+ 504 003e 05       		.uleb128 0x5
+ 505 003f 49       		.uleb128 0x49
+ 506 0040 13       		.uleb128 0x13
+ 507 0041 00       		.byte	0
+ 508 0042 00       		.byte	0
+ 509 0043 06       		.uleb128 0x6
+ 510 0044 0F       		.uleb128 0xf
+ 511 0045 00       		.byte	0
+ 512 0046 0B       		.uleb128 0xb
+ 513 0047 0B       		.uleb128 0xb
+ 514 0048 49       		.uleb128 0x49
+ 515 0049 13       		.uleb128 0x13
+ 516 004a 00       		.byte	0
+ 517 004b 00       		.byte	0
+ 518 004c 07       		.uleb128 0x7
+ 519 004d 15       		.uleb128 0x15
+ 520 004e 00       		.byte	0
+ 521 004f 27       		.uleb128 0x27
+ 522 0050 19       		.uleb128 0x19
+ 523 0051 00       		.byte	0
+ 524 0052 00       		.byte	0
+ 525 0053 08       		.uleb128 0x8
+ 526 0054 13       		.uleb128 0x13
+ 527 0055 00       		.byte	0
+ 528 0056 03       		.uleb128 0x3
+ 529 0057 0E       		.uleb128 0xe
+ 530 0058 3C       		.uleb128 0x3c
+ 531 0059 19       		.uleb128 0x19
+ 532 005a 00       		.byte	0
+ 533 005b 00       		.byte	0
+ 534 005c 09       		.uleb128 0x9
+ 535 005d 2E       		.uleb128 0x2e
+ 536 005e 01       		.byte	0x1
+ 537 005f 03       		.uleb128 0x3
+ 538 0060 0E       		.uleb128 0xe
+ 539 0061 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 16
 
 
- 638 0032 03       		.uleb128 0x3
- 639 0033 08       		.uleb128 0x8
- 640 0034 00       		.byte	0
- 641 0035 00       		.byte	0
- 642 0036 05       		.uleb128 0x5
- 643 0037 16       		.uleb128 0x16
- 644 0038 00       		.byte	0
- 645 0039 03       		.uleb128 0x3
- 646 003a 0E       		.uleb128 0xe
- 647 003b 3A       		.uleb128 0x3a
- 648 003c 0B       		.uleb128 0xb
- 649 003d 3B       		.uleb128 0x3b
- 650 003e 05       		.uleb128 0x5
- 651 003f 49       		.uleb128 0x49
- 652 0040 13       		.uleb128 0x13
- 653 0041 00       		.byte	0
- 654 0042 00       		.byte	0
- 655 0043 06       		.uleb128 0x6
- 656 0044 0F       		.uleb128 0xf
- 657 0045 00       		.byte	0
- 658 0046 0B       		.uleb128 0xb
- 659 0047 0B       		.uleb128 0xb
- 660 0048 49       		.uleb128 0x49
- 661 0049 13       		.uleb128 0x13
- 662 004a 00       		.byte	0
- 663 004b 00       		.byte	0
- 664 004c 07       		.uleb128 0x7
- 665 004d 15       		.uleb128 0x15
- 666 004e 00       		.byte	0
- 667 004f 27       		.uleb128 0x27
- 668 0050 19       		.uleb128 0x19
- 669 0051 00       		.byte	0
- 670 0052 00       		.byte	0
- 671 0053 08       		.uleb128 0x8
- 672 0054 0F       		.uleb128 0xf
- 673 0055 00       		.byte	0
- 674 0056 0B       		.uleb128 0xb
- 675 0057 0B       		.uleb128 0xb
- 676 0058 00       		.byte	0
- 677 0059 00       		.byte	0
- 678 005a 09       		.uleb128 0x9
- 679 005b 13       		.uleb128 0x13
- 680 005c 00       		.byte	0
- 681 005d 03       		.uleb128 0x3
- 682 005e 0E       		.uleb128 0xe
- 683 005f 3C       		.uleb128 0x3c
- 684 0060 19       		.uleb128 0x19
- 685 0061 00       		.byte	0
- 686 0062 00       		.byte	0
- 687 0063 0A       		.uleb128 0xa
- 688 0064 2E       		.uleb128 0x2e
- 689 0065 01       		.byte	0x1
- 690 0066 03       		.uleb128 0x3
- 691 0067 0E       		.uleb128 0xe
- 692 0068 3A       		.uleb128 0x3a
- 693 0069 0B       		.uleb128 0xb
- 694 006a 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 19
+ 540 0062 0B       		.uleb128 0xb
+ 541 0063 3B       		.uleb128 0x3b
+ 542 0064 0B       		.uleb128 0xb
+ 543 0065 27       		.uleb128 0x27
+ 544 0066 19       		.uleb128 0x19
+ 545 0067 20       		.uleb128 0x20
+ 546 0068 0B       		.uleb128 0xb
+ 547 0069 01       		.uleb128 0x1
+ 548 006a 13       		.uleb128 0x13
+ 549 006b 00       		.byte	0
+ 550 006c 00       		.byte	0
+ 551 006d 0A       		.uleb128 0xa
+ 552 006e 34       		.uleb128 0x34
+ 553 006f 00       		.byte	0
+ 554 0070 03       		.uleb128 0x3
+ 555 0071 0E       		.uleb128 0xe
+ 556 0072 3A       		.uleb128 0x3a
+ 557 0073 0B       		.uleb128 0xb
+ 558 0074 3B       		.uleb128 0x3b
+ 559 0075 0B       		.uleb128 0xb
+ 560 0076 49       		.uleb128 0x49
+ 561 0077 13       		.uleb128 0x13
+ 562 0078 00       		.byte	0
+ 563 0079 00       		.byte	0
+ 564 007a 0B       		.uleb128 0xb
+ 565 007b 2E       		.uleb128 0x2e
+ 566 007c 00       		.byte	0
+ 567 007d 3F       		.uleb128 0x3f
+ 568 007e 19       		.uleb128 0x19
+ 569 007f 03       		.uleb128 0x3
+ 570 0080 0E       		.uleb128 0xe
+ 571 0081 3A       		.uleb128 0x3a
+ 572 0082 0B       		.uleb128 0xb
+ 573 0083 3B       		.uleb128 0x3b
+ 574 0084 0B       		.uleb128 0xb
+ 575 0085 27       		.uleb128 0x27
+ 576 0086 19       		.uleb128 0x19
+ 577 0087 49       		.uleb128 0x49
+ 578 0088 13       		.uleb128 0x13
+ 579 0089 11       		.uleb128 0x11
+ 580 008a 01       		.uleb128 0x1
+ 581 008b 12       		.uleb128 0x12
+ 582 008c 06       		.uleb128 0x6
+ 583 008d 40       		.uleb128 0x40
+ 584 008e 18       		.uleb128 0x18
+ 585 008f 9642     		.uleb128 0x2116
+ 586 0091 19       		.uleb128 0x19
+ 587 0092 00       		.byte	0
+ 588 0093 00       		.byte	0
+ 589 0094 0C       		.uleb128 0xc
+ 590 0095 2E       		.uleb128 0x2e
+ 591 0096 01       		.byte	0x1
+ 592 0097 03       		.uleb128 0x3
+ 593 0098 0E       		.uleb128 0xe
+ 594 0099 3A       		.uleb128 0x3a
+ 595 009a 0B       		.uleb128 0xb
+ 596 009b 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 17
 
 
- 695 006b 0B       		.uleb128 0xb
- 696 006c 27       		.uleb128 0x27
- 697 006d 19       		.uleb128 0x19
- 698 006e 20       		.uleb128 0x20
- 699 006f 0B       		.uleb128 0xb
- 700 0070 01       		.uleb128 0x1
- 701 0071 13       		.uleb128 0x13
- 702 0072 00       		.byte	0
- 703 0073 00       		.byte	0
- 704 0074 0B       		.uleb128 0xb
- 705 0075 34       		.uleb128 0x34
- 706 0076 00       		.byte	0
- 707 0077 03       		.uleb128 0x3
- 708 0078 0E       		.uleb128 0xe
- 709 0079 3A       		.uleb128 0x3a
- 710 007a 0B       		.uleb128 0xb
- 711 007b 3B       		.uleb128 0x3b
- 712 007c 0B       		.uleb128 0xb
- 713 007d 49       		.uleb128 0x49
- 714 007e 13       		.uleb128 0x13
- 715 007f 00       		.byte	0
- 716 0080 00       		.byte	0
- 717 0081 0C       		.uleb128 0xc
- 718 0082 2E       		.uleb128 0x2e
- 719 0083 00       		.byte	0
- 720 0084 3F       		.uleb128 0x3f
- 721 0085 19       		.uleb128 0x19
- 722 0086 03       		.uleb128 0x3
- 723 0087 0E       		.uleb128 0xe
- 724 0088 3A       		.uleb128 0x3a
- 725 0089 0B       		.uleb128 0xb
- 726 008a 3B       		.uleb128 0x3b
- 727 008b 0B       		.uleb128 0xb
- 728 008c 27       		.uleb128 0x27
- 729 008d 19       		.uleb128 0x19
- 730 008e 49       		.uleb128 0x49
- 731 008f 13       		.uleb128 0x13
- 732 0090 11       		.uleb128 0x11
- 733 0091 01       		.uleb128 0x1
- 734 0092 12       		.uleb128 0x12
- 735 0093 06       		.uleb128 0x6
- 736 0094 40       		.uleb128 0x40
- 737 0095 18       		.uleb128 0x18
- 738 0096 9642     		.uleb128 0x2116
- 739 0098 19       		.uleb128 0x19
- 740 0099 00       		.byte	0
- 741 009a 00       		.byte	0
- 742 009b 0D       		.uleb128 0xd
- 743 009c 2E       		.uleb128 0x2e
- 744 009d 01       		.byte	0x1
- 745 009e 3F       		.uleb128 0x3f
- 746 009f 19       		.uleb128 0x19
- 747 00a0 03       		.uleb128 0x3
- 748 00a1 0E       		.uleb128 0xe
- 749 00a2 3A       		.uleb128 0x3a
- 750 00a3 0B       		.uleb128 0xb
- 751 00a4 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 20
+ 597 009c 0B       		.uleb128 0xb
+ 598 009d 27       		.uleb128 0x27
+ 599 009e 19       		.uleb128 0x19
+ 600 009f 11       		.uleb128 0x11
+ 601 00a0 01       		.uleb128 0x1
+ 602 00a1 12       		.uleb128 0x12
+ 603 00a2 06       		.uleb128 0x6
+ 604 00a3 40       		.uleb128 0x40
+ 605 00a4 18       		.uleb128 0x18
+ 606 00a5 9642     		.uleb128 0x2116
+ 607 00a7 19       		.uleb128 0x19
+ 608 00a8 01       		.uleb128 0x1
+ 609 00a9 13       		.uleb128 0x13
+ 610 00aa 00       		.byte	0
+ 611 00ab 00       		.byte	0
+ 612 00ac 0D       		.uleb128 0xd
+ 613 00ad 2E       		.uleb128 0x2e
+ 614 00ae 00       		.byte	0
+ 615 00af 3F       		.uleb128 0x3f
+ 616 00b0 19       		.uleb128 0x19
+ 617 00b1 03       		.uleb128 0x3
+ 618 00b2 0E       		.uleb128 0xe
+ 619 00b3 3A       		.uleb128 0x3a
+ 620 00b4 0B       		.uleb128 0xb
+ 621 00b5 3B       		.uleb128 0x3b
+ 622 00b6 0B       		.uleb128 0xb
+ 623 00b7 27       		.uleb128 0x27
+ 624 00b8 19       		.uleb128 0x19
+ 625 00b9 3C       		.uleb128 0x3c
+ 626 00ba 19       		.uleb128 0x19
+ 627 00bb 00       		.byte	0
+ 628 00bc 00       		.byte	0
+ 629 00bd 0E       		.uleb128 0xe
+ 630 00be 34       		.uleb128 0x34
+ 631 00bf 00       		.byte	0
+ 632 00c0 03       		.uleb128 0x3
+ 633 00c1 0E       		.uleb128 0xe
+ 634 00c2 3A       		.uleb128 0x3a
+ 635 00c3 0B       		.uleb128 0xb
+ 636 00c4 3B       		.uleb128 0x3b
+ 637 00c5 0B       		.uleb128 0xb
+ 638 00c6 49       		.uleb128 0x49
+ 639 00c7 13       		.uleb128 0x13
+ 640 00c8 3F       		.uleb128 0x3f
+ 641 00c9 19       		.uleb128 0x19
+ 642 00ca 3C       		.uleb128 0x3c
+ 643 00cb 19       		.uleb128 0x19
+ 644 00cc 00       		.byte	0
+ 645 00cd 00       		.byte	0
+ 646 00ce 0F       		.uleb128 0xf
+ 647 00cf 01       		.uleb128 0x1
+ 648 00d0 01       		.byte	0x1
+ 649 00d1 49       		.uleb128 0x49
+ 650 00d2 13       		.uleb128 0x13
+ 651 00d3 01       		.uleb128 0x1
+ 652 00d4 13       		.uleb128 0x13
+ 653 00d5 00       		.byte	0
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 18
 
 
- 752 00a5 0B       		.uleb128 0xb
- 753 00a6 27       		.uleb128 0x27
- 754 00a7 19       		.uleb128 0x19
- 755 00a8 11       		.uleb128 0x11
- 756 00a9 01       		.uleb128 0x1
- 757 00aa 12       		.uleb128 0x12
- 758 00ab 06       		.uleb128 0x6
- 759 00ac 40       		.uleb128 0x40
- 760 00ad 18       		.uleb128 0x18
- 761 00ae 9642     		.uleb128 0x2116
- 762 00b0 19       		.uleb128 0x19
- 763 00b1 01       		.uleb128 0x1
- 764 00b2 13       		.uleb128 0x13
- 765 00b3 00       		.byte	0
- 766 00b4 00       		.byte	0
- 767 00b5 0E       		.uleb128 0xe
- 768 00b6 05       		.uleb128 0x5
- 769 00b7 00       		.byte	0
- 770 00b8 03       		.uleb128 0x3
- 771 00b9 0E       		.uleb128 0xe
- 772 00ba 3A       		.uleb128 0x3a
- 773 00bb 0B       		.uleb128 0xb
- 774 00bc 3B       		.uleb128 0x3b
- 775 00bd 0B       		.uleb128 0xb
- 776 00be 49       		.uleb128 0x49
- 777 00bf 13       		.uleb128 0x13
- 778 00c0 02       		.uleb128 0x2
- 779 00c1 18       		.uleb128 0x18
- 780 00c2 00       		.byte	0
- 781 00c3 00       		.byte	0
- 782 00c4 0F       		.uleb128 0xf
- 783 00c5 34       		.uleb128 0x34
- 784 00c6 00       		.byte	0
- 785 00c7 03       		.uleb128 0x3
- 786 00c8 0E       		.uleb128 0xe
- 787 00c9 3A       		.uleb128 0x3a
- 788 00ca 0B       		.uleb128 0xb
- 789 00cb 3B       		.uleb128 0x3b
- 790 00cc 0B       		.uleb128 0xb
- 791 00cd 49       		.uleb128 0x49
- 792 00ce 13       		.uleb128 0x13
- 793 00cf 02       		.uleb128 0x2
- 794 00d0 18       		.uleb128 0x18
- 795 00d1 00       		.byte	0
- 796 00d2 00       		.byte	0
- 797 00d3 10       		.uleb128 0x10
- 798 00d4 26       		.uleb128 0x26
- 799 00d5 00       		.byte	0
- 800 00d6 49       		.uleb128 0x49
- 801 00d7 13       		.uleb128 0x13
- 802 00d8 00       		.byte	0
- 803 00d9 00       		.byte	0
- 804 00da 11       		.uleb128 0x11
- 805 00db 2E       		.uleb128 0x2e
- 806 00dc 01       		.byte	0x1
- 807 00dd 03       		.uleb128 0x3
- 808 00de 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 21
+ 654 00d6 00       		.byte	0
+ 655 00d7 10       		.uleb128 0x10
+ 656 00d8 21       		.uleb128 0x21
+ 657 00d9 00       		.byte	0
+ 658 00da 00       		.byte	0
+ 659 00db 00       		.byte	0
+ 660 00dc 11       		.uleb128 0x11
+ 661 00dd 2E       		.uleb128 0x2e
+ 662 00de 01       		.byte	0x1
+ 663 00df 3F       		.uleb128 0x3f
+ 664 00e0 19       		.uleb128 0x19
+ 665 00e1 03       		.uleb128 0x3
+ 666 00e2 0E       		.uleb128 0xe
+ 667 00e3 3A       		.uleb128 0x3a
+ 668 00e4 0B       		.uleb128 0xb
+ 669 00e5 3B       		.uleb128 0x3b
+ 670 00e6 0B       		.uleb128 0xb
+ 671 00e7 27       		.uleb128 0x27
+ 672 00e8 19       		.uleb128 0x19
+ 673 00e9 11       		.uleb128 0x11
+ 674 00ea 01       		.uleb128 0x1
+ 675 00eb 12       		.uleb128 0x12
+ 676 00ec 06       		.uleb128 0x6
+ 677 00ed 40       		.uleb128 0x40
+ 678 00ee 18       		.uleb128 0x18
+ 679 00ef 9742     		.uleb128 0x2117
+ 680 00f1 19       		.uleb128 0x19
+ 681 00f2 01       		.uleb128 0x1
+ 682 00f3 13       		.uleb128 0x13
+ 683 00f4 00       		.byte	0
+ 684 00f5 00       		.byte	0
+ 685 00f6 12       		.uleb128 0x12
+ 686 00f7 05       		.uleb128 0x5
+ 687 00f8 00       		.byte	0
+ 688 00f9 03       		.uleb128 0x3
+ 689 00fa 0E       		.uleb128 0xe
+ 690 00fb 3A       		.uleb128 0x3a
+ 691 00fc 0B       		.uleb128 0xb
+ 692 00fd 3B       		.uleb128 0x3b
+ 693 00fe 0B       		.uleb128 0xb
+ 694 00ff 49       		.uleb128 0x49
+ 695 0100 13       		.uleb128 0x13
+ 696 0101 02       		.uleb128 0x2
+ 697 0102 18       		.uleb128 0x18
+ 698 0103 00       		.byte	0
+ 699 0104 00       		.byte	0
+ 700 0105 13       		.uleb128 0x13
+ 701 0106 1D       		.uleb128 0x1d
+ 702 0107 01       		.byte	0x1
+ 703 0108 31       		.uleb128 0x31
+ 704 0109 13       		.uleb128 0x13
+ 705 010a 11       		.uleb128 0x11
+ 706 010b 01       		.uleb128 0x1
+ 707 010c 12       		.uleb128 0x12
+ 708 010d 06       		.uleb128 0x6
+ 709 010e 58       		.uleb128 0x58
+ 710 010f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 19
 
 
- 809 00df 3A       		.uleb128 0x3a
- 810 00e0 0B       		.uleb128 0xb
- 811 00e1 3B       		.uleb128 0x3b
- 812 00e2 0B       		.uleb128 0xb
- 813 00e3 27       		.uleb128 0x27
- 814 00e4 19       		.uleb128 0x19
- 815 00e5 11       		.uleb128 0x11
- 816 00e6 01       		.uleb128 0x1
- 817 00e7 12       		.uleb128 0x12
- 818 00e8 06       		.uleb128 0x6
- 819 00e9 40       		.uleb128 0x40
- 820 00ea 18       		.uleb128 0x18
- 821 00eb 9642     		.uleb128 0x2116
- 822 00ed 19       		.uleb128 0x19
- 823 00ee 01       		.uleb128 0x1
- 824 00ef 13       		.uleb128 0x13
- 825 00f0 00       		.byte	0
- 826 00f1 00       		.byte	0
- 827 00f2 12       		.uleb128 0x12
- 828 00f3 2E       		.uleb128 0x2e
- 829 00f4 00       		.byte	0
- 830 00f5 3F       		.uleb128 0x3f
- 831 00f6 19       		.uleb128 0x19
- 832 00f7 03       		.uleb128 0x3
- 833 00f8 0E       		.uleb128 0xe
- 834 00f9 3A       		.uleb128 0x3a
- 835 00fa 0B       		.uleb128 0xb
- 836 00fb 3B       		.uleb128 0x3b
- 837 00fc 0B       		.uleb128 0xb
- 838 00fd 27       		.uleb128 0x27
- 839 00fe 19       		.uleb128 0x19
- 840 00ff 3C       		.uleb128 0x3c
- 841 0100 19       		.uleb128 0x19
- 842 0101 00       		.byte	0
- 843 0102 00       		.byte	0
- 844 0103 13       		.uleb128 0x13
- 845 0104 34       		.uleb128 0x34
- 846 0105 00       		.byte	0
- 847 0106 03       		.uleb128 0x3
- 848 0107 0E       		.uleb128 0xe
- 849 0108 3A       		.uleb128 0x3a
- 850 0109 0B       		.uleb128 0xb
- 851 010a 3B       		.uleb128 0x3b
- 852 010b 0B       		.uleb128 0xb
- 853 010c 49       		.uleb128 0x49
- 854 010d 13       		.uleb128 0x13
- 855 010e 3F       		.uleb128 0x3f
- 856 010f 19       		.uleb128 0x19
- 857 0110 3C       		.uleb128 0x3c
- 858 0111 19       		.uleb128 0x19
- 859 0112 00       		.byte	0
- 860 0113 00       		.byte	0
- 861 0114 14       		.uleb128 0x14
- 862 0115 01       		.uleb128 0x1
- 863 0116 01       		.byte	0x1
- 864 0117 49       		.uleb128 0x49
- 865 0118 13       		.uleb128 0x13
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 22
+ 711 0110 59       		.uleb128 0x59
+ 712 0111 0B       		.uleb128 0xb
+ 713 0112 00       		.byte	0
+ 714 0113 00       		.byte	0
+ 715 0114 14       		.uleb128 0x14
+ 716 0115 0B       		.uleb128 0xb
+ 717 0116 01       		.byte	0x1
+ 718 0117 11       		.uleb128 0x11
+ 719 0118 01       		.uleb128 0x1
+ 720 0119 12       		.uleb128 0x12
+ 721 011a 06       		.uleb128 0x6
+ 722 011b 00       		.byte	0
+ 723 011c 00       		.byte	0
+ 724 011d 15       		.uleb128 0x15
+ 725 011e 34       		.uleb128 0x34
+ 726 011f 00       		.byte	0
+ 727 0120 31       		.uleb128 0x31
+ 728 0121 13       		.uleb128 0x13
+ 729 0122 02       		.uleb128 0x2
+ 730 0123 18       		.uleb128 0x18
+ 731 0124 00       		.byte	0
+ 732 0125 00       		.byte	0
+ 733 0126 16       		.uleb128 0x16
+ 734 0127 34       		.uleb128 0x34
+ 735 0128 00       		.byte	0
+ 736 0129 03       		.uleb128 0x3
+ 737 012a 0E       		.uleb128 0xe
+ 738 012b 3A       		.uleb128 0x3a
+ 739 012c 0B       		.uleb128 0xb
+ 740 012d 3B       		.uleb128 0x3b
+ 741 012e 05       		.uleb128 0x5
+ 742 012f 49       		.uleb128 0x49
+ 743 0130 13       		.uleb128 0x13
+ 744 0131 3F       		.uleb128 0x3f
+ 745 0132 19       		.uleb128 0x19
+ 746 0133 3C       		.uleb128 0x3c
+ 747 0134 19       		.uleb128 0x19
+ 748 0135 00       		.byte	0
+ 749 0136 00       		.byte	0
+ 750 0137 17       		.uleb128 0x17
+ 751 0138 35       		.uleb128 0x35
+ 752 0139 00       		.byte	0
+ 753 013a 49       		.uleb128 0x49
+ 754 013b 13       		.uleb128 0x13
+ 755 013c 00       		.byte	0
+ 756 013d 00       		.byte	0
+ 757 013e 00       		.byte	0
+ 758              		.section	.debug_aranges,"",%progbits
+ 759 0000 34000000 		.4byte	0x34
+ 760 0004 0200     		.2byte	0x2
+ 761 0006 00000000 		.4byte	.Ldebug_info0
+ 762 000a 04       		.byte	0x4
+ 763 000b 00       		.byte	0
+ 764 000c 0000     		.2byte	0
+ 765 000e 0000     		.2byte	0
+ 766 0010 00000000 		.4byte	.LFB68
+ 767 0014 12000000 		.4byte	.LFE68-.LFB68
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 20
 
 
- 866 0119 01       		.uleb128 0x1
- 867 011a 13       		.uleb128 0x13
- 868 011b 00       		.byte	0
- 869 011c 00       		.byte	0
- 870 011d 15       		.uleb128 0x15
- 871 011e 21       		.uleb128 0x21
- 872 011f 00       		.byte	0
- 873 0120 00       		.byte	0
- 874 0121 00       		.byte	0
- 875 0122 16       		.uleb128 0x16
- 876 0123 2E       		.uleb128 0x2e
- 877 0124 01       		.byte	0x1
- 878 0125 3F       		.uleb128 0x3f
- 879 0126 19       		.uleb128 0x19
- 880 0127 03       		.uleb128 0x3
- 881 0128 0E       		.uleb128 0xe
- 882 0129 3A       		.uleb128 0x3a
- 883 012a 0B       		.uleb128 0xb
- 884 012b 3B       		.uleb128 0x3b
- 885 012c 0B       		.uleb128 0xb
- 886 012d 27       		.uleb128 0x27
- 887 012e 19       		.uleb128 0x19
- 888 012f 11       		.uleb128 0x11
- 889 0130 01       		.uleb128 0x1
- 890 0131 12       		.uleb128 0x12
- 891 0132 06       		.uleb128 0x6
- 892 0133 40       		.uleb128 0x40
- 893 0134 18       		.uleb128 0x18
- 894 0135 9742     		.uleb128 0x2117
- 895 0137 19       		.uleb128 0x19
- 896 0138 01       		.uleb128 0x1
- 897 0139 13       		.uleb128 0x13
- 898 013a 00       		.byte	0
- 899 013b 00       		.byte	0
- 900 013c 17       		.uleb128 0x17
- 901 013d 1D       		.uleb128 0x1d
- 902 013e 01       		.byte	0x1
- 903 013f 31       		.uleb128 0x31
- 904 0140 13       		.uleb128 0x13
- 905 0141 11       		.uleb128 0x11
- 906 0142 01       		.uleb128 0x1
- 907 0143 12       		.uleb128 0x12
- 908 0144 06       		.uleb128 0x6
- 909 0145 58       		.uleb128 0x58
- 910 0146 0B       		.uleb128 0xb
- 911 0147 59       		.uleb128 0x59
- 912 0148 0B       		.uleb128 0xb
- 913 0149 00       		.byte	0
- 914 014a 00       		.byte	0
- 915 014b 18       		.uleb128 0x18
- 916 014c 0B       		.uleb128 0xb
- 917 014d 01       		.byte	0x1
- 918 014e 11       		.uleb128 0x11
- 919 014f 01       		.uleb128 0x1
- 920 0150 12       		.uleb128 0x12
- 921 0151 06       		.uleb128 0x6
- 922 0152 00       		.byte	0
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 23
+ 768 0018 00000000 		.4byte	.LFB69
+ 769 001c 34000000 		.4byte	.LFE69-.LFB69
+ 770 0020 00000000 		.4byte	.LFB70
+ 771 0024 1E000000 		.4byte	.LFE70-.LFB70
+ 772 0028 00000000 		.4byte	.LFB71
+ 773 002c 1A000000 		.4byte	.LFE71-.LFB71
+ 774 0030 00000000 		.4byte	0
+ 775 0034 00000000 		.4byte	0
+ 776              		.section	.debug_ranges,"",%progbits
+ 777              	.Ldebug_ranges0:
+ 778 0000 00000000 		.4byte	.LFB68
+ 779 0004 12000000 		.4byte	.LFE68
+ 780 0008 00000000 		.4byte	.LFB69
+ 781 000c 34000000 		.4byte	.LFE69
+ 782 0010 00000000 		.4byte	.LFB70
+ 783 0014 1E000000 		.4byte	.LFE70
+ 784 0018 00000000 		.4byte	.LFB71
+ 785 001c 1A000000 		.4byte	.LFE71
+ 786 0020 00000000 		.4byte	0
+ 787 0024 00000000 		.4byte	0
+ 788              		.section	.debug_line,"",%progbits
+ 789              	.Ldebug_line0:
+ 790 0000 09020000 		.section	.debug_str,"MS",%progbits,1
+ 790      02009401 
+ 790      00000201 
+ 790      FB0E0D00 
+ 790      01010101 
+ 791              	.LASF29:
+ 792 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 792      43313120 
+ 792      352E342E 
+ 792      31203230 
+ 792      31363036 
+ 793 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 793      20726576 
+ 793      6973696F 
+ 793      6E203233 
+ 793      37373135 
+ 794 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 794      66756E63 
+ 794      74696F6E 
+ 794      2D736563 
+ 794      74696F6E 
+ 795              	.LASF27:
+ 796 008e 43795261 		.ascii	"CyRamVectors\000"
+ 796      6D566563 
+ 796      746F7273 
+ 796      00
+ 797              	.LASF5:
+ 798 009b 5F5F696E 		.ascii	"__int32_t\000"
+ 798      7433325F 
+ 798      7400
+ 799              	.LASF33:
+ 800 00a5 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
+ 800      74526169 
+ 800      73654241 
+ 800      53455052 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 21
 
 
- 923 0153 00       		.byte	0
- 924 0154 19       		.uleb128 0x19
- 925 0155 34       		.uleb128 0x34
- 926 0156 00       		.byte	0
- 927 0157 31       		.uleb128 0x31
- 928 0158 13       		.uleb128 0x13
- 929 0159 02       		.uleb128 0x2
- 930 015a 18       		.uleb128 0x18
- 931 015b 00       		.byte	0
- 932 015c 00       		.byte	0
- 933 015d 1A       		.uleb128 0x1a
- 934 015e 34       		.uleb128 0x34
- 935 015f 00       		.byte	0
- 936 0160 03       		.uleb128 0x3
- 937 0161 0E       		.uleb128 0xe
- 938 0162 3A       		.uleb128 0x3a
- 939 0163 0B       		.uleb128 0xb
- 940 0164 3B       		.uleb128 0x3b
- 941 0165 05       		.uleb128 0x5
- 942 0166 49       		.uleb128 0x49
- 943 0167 13       		.uleb128 0x13
- 944 0168 3F       		.uleb128 0x3f
- 945 0169 19       		.uleb128 0x19
- 946 016a 3C       		.uleb128 0x3c
- 947 016b 19       		.uleb128 0x19
- 948 016c 00       		.byte	0
- 949 016d 00       		.byte	0
- 950 016e 1B       		.uleb128 0x1b
- 951 016f 35       		.uleb128 0x35
- 952 0170 00       		.byte	0
- 953 0171 49       		.uleb128 0x49
- 954 0172 13       		.uleb128 0x13
- 955 0173 00       		.byte	0
- 956 0174 00       		.byte	0
- 957 0175 00       		.byte	0
- 958              		.section	.debug_aranges,"",%progbits
- 959 0000 3C000000 		.4byte	0x3c
- 960 0004 0200     		.2byte	0x2
- 961 0006 00000000 		.4byte	.Ldebug_info0
- 962 000a 04       		.byte	0x4
- 963 000b 00       		.byte	0
- 964 000c 0000     		.2byte	0
- 965 000e 0000     		.2byte	0
- 966 0010 00000000 		.4byte	.LFB68
- 967 0014 30000000 		.4byte	.LFE68-.LFB68
- 968 0018 00000000 		.4byte	.LFB69
- 969 001c 42000000 		.4byte	.LFE69-.LFB69
- 970 0020 00000000 		.4byte	.LFB70
- 971 0024 30000000 		.4byte	.LFE70-.LFB70
- 972 0028 00000000 		.4byte	.LFB71
- 973 002c 1E000000 		.4byte	.LFE71-.LFB71
- 974 0030 00000000 		.4byte	.LFB72
- 975 0034 1A000000 		.4byte	.LFE72-.LFB72
- 976 0038 00000000 		.4byte	0
- 977 003c 00000000 		.4byte	0
- 978              		.section	.debug_ranges,"",%progbits
- 979              	.Ldebug_ranges0:
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 24
+ 800      4900
+ 801              	.LASF20:
+ 802 00b7 78506F72 		.ascii	"xPortPendSVHandler\000"
+ 802      7450656E 
+ 802      64535648 
+ 802      616E646C 
+ 802      657200
+ 803              	.LASF13:
+ 804 00ca 666C6F61 		.ascii	"float\000"
+ 804      7400
+ 805              	.LASF1:
+ 806 00d0 756E7369 		.ascii	"unsigned char\000"
+ 806      676E6564 
+ 806      20636861 
+ 806      7200
+ 807              	.LASF6:
+ 808 00de 5F5F7569 		.ascii	"__uint32_t\000"
+ 808      6E743332 
+ 808      5F7400
+ 809              	.LASF7:
+ 810 00e9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 810      20756E73 
+ 810      69676E65 
+ 810      6420696E 
+ 810      7400
+ 811              	.LASF3:
+ 812 00fb 73686F72 		.ascii	"short unsigned int\000"
+ 812      7420756E 
+ 812      7369676E 
+ 812      65642069 
+ 812      6E7400
+ 813              	.LASF28:
+ 814 010e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 814      52784275 
+ 814      66666572 
+ 814      00
+ 815              	.LASF14:
+ 816 011b 646F7562 		.ascii	"double\000"
+ 816      6C6500
+ 817              	.LASF34:
+ 818 0122 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 818      77424153 
+ 818      45505249 
+ 818      00
+ 819              	.LASF32:
+ 820 012f 74736B54 		.ascii	"tskTaskControlBlock\000"
+ 820      61736B43 
+ 820      6F6E7472 
+ 820      6F6C426C 
+ 820      6F636B00 
+ 821              	.LASF35:
+ 822 0143 6D61696E 		.ascii	"main\000"
+ 822      00
+ 823              	.LASF21:
+ 824 0148 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 824      74537973 
+ 824      5469636B 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 22
 
 
- 980 0000 00000000 		.4byte	.LFB68
- 981 0004 30000000 		.4byte	.LFE68
- 982 0008 00000000 		.4byte	.LFB69
- 983 000c 42000000 		.4byte	.LFE69
- 984 0010 00000000 		.4byte	.LFB70
- 985 0014 30000000 		.4byte	.LFE70
- 986 0018 00000000 		.4byte	.LFB71
- 987 001c 1E000000 		.4byte	.LFE71
- 988 0020 00000000 		.4byte	.LFB72
- 989 0024 1A000000 		.4byte	.LFE72
- 990 0028 00000000 		.4byte	0
- 991 002c 00000000 		.4byte	0
- 992              		.section	.debug_line,"",%progbits
- 993              	.Ldebug_line0:
- 994 0000 22020000 		.section	.debug_str,"MS",%progbits,1
- 994      02009401 
- 994      00000201 
- 994      FB0E0D00 
- 994      01010101 
- 995              	.LASF37:
- 996 0000 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 996      43313120 
- 996      352E342E 
- 996      31203230 
- 996      31363036 
- 997 0033 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 997      20726576 
- 997      6973696F 
- 997      6E203233 
- 997      37373135 
- 998 0066 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 998      66756E63 
- 998      74696F6E 
- 998      2D736563 
- 998      74696F6E 
- 999              	.LASF20:
- 1000 008e 5469636B 		.ascii	"TickType_t\000"
- 1000      54797065 
- 1000      5F7400
- 1001              	.LASF5:
- 1002 0099 5F5F696E 		.ascii	"__int32_t\000"
- 1002      7433325F 
- 1002      7400
- 1003              	.LASF29:
- 1004 00a3 76546173 		.ascii	"vTaskPWMTesk\000"
- 1004      6B50574D 
- 1004      5465736B 
- 1004      00
- 1005              	.LASF41:
- 1006 00b0 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
- 1006      74526169 
- 1006      73654241 
- 1006      53455052 
- 1006      4900
- 1007              	.LASF31:
- 1008 00c2 70765061 		.ascii	"pvParameter\000"
- 1008      72616D65 
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 25
+ 824      48616E64 
+ 824      6C657200 
+ 825              	.LASF10:
+ 826 015c 756E7369 		.ascii	"unsigned int\000"
+ 826      676E6564 
+ 826      20696E74 
+ 826      00
+ 827              	.LASF9:
+ 828 0169 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 828      206C6F6E 
+ 828      6720756E 
+ 828      7369676E 
+ 828      65642069 
+ 829              	.LASF16:
+ 830 0180 63796973 		.ascii	"cyisraddress\000"
+ 830      72616464 
+ 830      72657373 
+ 830      00
+ 831              	.LASF26:
+ 832 018d 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 832      6C696361 
+ 832      74696F6E 
+ 832      4D616C6C 
+ 832      6F634661 
+ 833              	.LASF11:
+ 834 01aa 696E7433 		.ascii	"int32_t\000"
+ 834      325F7400 
+ 835              	.LASF18:
+ 836 01b2 73697A65 		.ascii	"sizetype\000"
+ 836      74797065 
+ 836      00
+ 837              	.LASF8:
+ 838 01bb 6C6F6E67 		.ascii	"long long int\000"
+ 838      206C6F6E 
+ 838      6720696E 
+ 838      7400
+ 839              	.LASF30:
+ 840 01c9 6D61696E 		.ascii	"main.c\000"
+ 840      2E6300
+ 841              	.LASF15:
+ 842 01d0 63686172 		.ascii	"char\000"
+ 842      00
+ 843              	.LASF22:
+ 844 01d5 76506F72 		.ascii	"vPortSVCHandler\000"
+ 844      74535643 
+ 844      48616E64 
+ 844      6C657200 
+ 845              	.LASF31:
+ 846 01e5 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
+ 846      73657273 
+ 846      5C6D6162 
+ 846      6F5C446F 
+ 846      63756D65 
+ 847 0212 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
+ 847      74696361 
+ 847      6C5F6661 
+ 847      726D5C52 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccGjZ5Ob.s 			page 23
 
 
- 1008      74657200 
- 1009              	.LASF26:
- 1010 00ce 78506F72 		.ascii	"xPortPendSVHandler\000"
- 1010      7450656E 
- 1010      64535648 
- 1010      616E646C 
- 1010      657200
- 1011              	.LASF23:
- 1012 00e1 6D61785F 		.ascii	"max_speed\000"
- 1012      73706565 
- 1012      6400
- 1013              	.LASF14:
- 1014 00eb 666C6F61 		.ascii	"float\000"
- 1014      7400
- 1015              	.LASF24:
- 1016 00f1 73746F70 		.ascii	"stop_speed\000"
- 1016      5F737065 
- 1016      656400
- 1017              	.LASF1:
- 1018 00fc 756E7369 		.ascii	"unsigned char\000"
- 1018      676E6564 
- 1018      20636861 
- 1018      7200
- 1019              	.LASF6:
- 1020 010a 5F5F7569 		.ascii	"__uint32_t\000"
- 1020      6E743332 
- 1020      5F7400
- 1021              	.LASF7:
- 1022 0115 6C6F6E67 		.ascii	"long unsigned int\000"
- 1022      20756E73 
- 1022      69676E65 
- 1022      6420696E 
- 1022      7400
- 1023              	.LASF3:
- 1024 0127 73686F72 		.ascii	"short unsigned int\000"
- 1024      7420756E 
- 1024      7369676E 
- 1024      65642069 
- 1024      6E7400
- 1025              	.LASF36:
- 1026 013a 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1026      52784275 
- 1026      66666572 
- 1026      00
- 1027              	.LASF15:
- 1028 0147 646F7562 		.ascii	"double\000"
- 1028      6C6500
- 1029              	.LASF35:
- 1030 014e 43795261 		.ascii	"CyRamVectors\000"
- 1030      6D566563 
- 1030      746F7273 
- 1030      00
- 1031              	.LASF42:
- 1032 015b 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 1032      77424153 
- 1032      45505249 
- 1032      00
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 26
-
-
- 1033              	.LASF40:
- 1034 0168 74736B54 		.ascii	"tskTaskControlBlock\000"
- 1034      61736B43 
- 1034      6F6E7472 
- 1034      6F6C426C 
- 1034      6F636B00 
- 1035              	.LASF43:
- 1036 017c 6D61696E 		.ascii	"main\000"
- 1036      00
- 1037              	.LASF27:
- 1038 0181 78506F72 		.ascii	"xPortSysTickHandler\000"
- 1038      74537973 
- 1038      5469636B 
- 1038      48616E64 
- 1038      6C657200 
- 1039              	.LASF10:
- 1040 0195 756E7369 		.ascii	"unsigned int\000"
- 1040      676E6564 
- 1040      20696E74 
- 1040      00
- 1041              	.LASF22:
- 1042 01a2 7844656C 		.ascii	"xDelay500ms\000"
- 1042      61793530 
- 1042      306D7300 
- 1043              	.LASF9:
- 1044 01ae 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1044      206C6F6E 
- 1044      6720756E 
- 1044      7369676E 
- 1044      65642069 
- 1045              	.LASF17:
- 1046 01c5 63796973 		.ascii	"cyisraddress\000"
- 1046      72616464 
- 1046      72657373 
- 1046      00
- 1047              	.LASF34:
- 1048 01d2 76417070 		.ascii	"vApplicationMallocFailedHook\000"
- 1048      6C696361 
- 1048      74696F6E 
- 1048      4D616C6C 
- 1048      6F634661 
- 1049              	.LASF11:
- 1050 01ef 696E7433 		.ascii	"int32_t\000"
- 1050      325F7400 
- 1051              	.LASF19:
- 1052 01f7 73697A65 		.ascii	"sizetype\000"
- 1052      74797065 
- 1052      00
- 1053              	.LASF8:
- 1054 0200 6C6F6E67 		.ascii	"long long int\000"
- 1054      206C6F6E 
- 1054      6720696E 
- 1054      7400
- 1055              	.LASF38:
- 1056 020e 6D61696E 		.ascii	"main.c\000"
- 1056      2E6300
- 1057              	.LASF16:
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 27
-
-
- 1058 0215 63686172 		.ascii	"char\000"
- 1058      00
- 1059              	.LASF28:
- 1060 021a 76506F72 		.ascii	"vPortSVCHandler\000"
- 1060      74535643 
- 1060      48616E64 
- 1060      6C657200 
- 1061              	.LASF39:
- 1062 022a 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
- 1062      73657273 
- 1062      5C6D6162 
- 1062      6F5C446F 
- 1062      63756D65 
- 1063 0257 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
- 1063      74696361 
- 1063      6C5F6661 
- 1063      726D5C52 
- 1063      544F535F 
- 1064 0288 7964736E 		.ascii	"ydsn\000"
- 1064      00
- 1065              	.LASF32:
- 1066 028d 70785461 		.ascii	"pxTask\000"
- 1066      736B00
- 1067              	.LASF2:
- 1068 0294 73686F72 		.ascii	"short int\000"
- 1068      7420696E 
- 1068      7400
- 1069              	.LASF33:
- 1070 029e 70635461 		.ascii	"pcTaskName\000"
- 1070      736B4E61 
- 1070      6D6500
- 1071              	.LASF13:
- 1072 02a9 75696E74 		.ascii	"uint8\000"
- 1072      3800
- 1073              	.LASF21:
- 1074 02af 5461736B 		.ascii	"TaskHandle_t\000"
- 1074      48616E64 
- 1074      6C655F74 
- 1074      00
- 1075              	.LASF12:
- 1076 02bc 75696E74 		.ascii	"uint32_t\000"
- 1076      33325F74 
- 1076      00
- 1077              	.LASF4:
- 1078 02c5 6C6F6E67 		.ascii	"long int\000"
- 1078      20696E74 
- 1078      00
- 1079              	.LASF25:
- 1080 02ce 73746174 		.ascii	"status\000"
- 1080      757300
- 1081              	.LASF18:
- 1082 02d5 6C6F6E67 		.ascii	"long double\000"
- 1082      20646F75 
- 1082      626C6500 
- 1083              	.LASF0:
- 1084 02e1 7369676E 		.ascii	"signed char\000"
- 1084      65642063 
-ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 28
-
-
- 1084      68617200 
- 1085              	.LASF30:
- 1086 02ed 76417070 		.ascii	"vApplicationStackOverflowHook\000"
- 1086      6C696361 
- 1086      74696F6E 
- 1086      53746163 
- 1086      6B4F7665 
- 1087              	.LASF44:
- 1088 030b 70727648 		.ascii	"prvHardwareSetup\000"
- 1088      61726477 
- 1088      61726553 
- 1088      65747570 
- 1088      00
- 1089              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 847      544F535F 
+ 848 0243 7964736E 		.ascii	"ydsn\000"
+ 848      00
+ 849              	.LASF23:
+ 850 0248 70785461 		.ascii	"pxTask\000"
+ 850      736B00
+ 851              	.LASF2:
+ 852 024f 73686F72 		.ascii	"short int\000"
+ 852      7420696E 
+ 852      7400
+ 853              	.LASF24:
+ 854 0259 70635461 		.ascii	"pcTaskName\000"
+ 854      736B4E61 
+ 854      6D6500
+ 855              	.LASF19:
+ 856 0264 5461736B 		.ascii	"TaskHandle_t\000"
+ 856      48616E64 
+ 856      6C655F74 
+ 856      00
+ 857              	.LASF12:
+ 858 0271 75696E74 		.ascii	"uint32_t\000"
+ 858      33325F74 
+ 858      00
+ 859              	.LASF4:
+ 860 027a 6C6F6E67 		.ascii	"long int\000"
+ 860      20696E74 
+ 860      00
+ 861              	.LASF17:
+ 862 0283 6C6F6E67 		.ascii	"long double\000"
+ 862      20646F75 
+ 862      626C6500 
+ 863              	.LASF0:
+ 864 028f 7369676E 		.ascii	"signed char\000"
+ 864      65642063 
+ 864      68617200 
+ 865              	.LASF25:
+ 866 029b 76417070 		.ascii	"vApplicationStackOverflowHook\000"
+ 866      6C696361 
+ 866      74696F6E 
+ 866      53746163 
+ 866      6B4F7665 
+ 867              	.LASF36:
+ 868 02b9 70727648 		.ascii	"prvHardwareSetup\000"
+ 868      61726477 
+ 868      61726553 
+ 868      65747570 
+ 868      00
+ 869              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
