@@ -47,6 +47,7 @@ tick hook. */
 static void prvHardwareSetup( void );
 /*---------------------------------------------------------------------------*/
 
+void vTaskPWMTesk(void *pvParameter);
 
 
 int main( void )
@@ -54,6 +55,7 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
+    xTaskCreate(vTaskPWMTesk, "test PWM" , 1000 , NULL , 3 , NULL);
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */
@@ -68,6 +70,27 @@ int main( void )
 	for( ;; );
 }
 /*---------------------------------------------------------------------------*/
+void vTaskPWMTesk(void *pvParameter){
+    const TickType_t xDelay500ms = pdMS_TO_TICKS( 500 );
+    const uint8 max_speed = 6;
+    const uint8 stop_speed = 19;
+    int status = 1;
+    
+    for(;;){
+        if(status == 1){
+            PWM_PERISTALTISK_WriteCompare1(max_speed);
+            status = 0;
+        }
+        else{
+            PWM_PERISTALTISK_WriteCompare1(stop_speed);
+            status = 1;
+        }
+
+        vTaskDelay(xDelay500ms);
+    }
+}
+
+
 
 
 
@@ -88,11 +111,8 @@ extern cyisraddress CyRamVectors[];
 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
 
     
-    /*Starting I2C module*/
-    I2C_Start();
 	/* Start-up the peripherals. */
-    
-
+    PWM_PERISTALTISK_Start();
 
 }
 /*---------------------------------------------------------------------------*/

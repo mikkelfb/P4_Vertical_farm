@@ -25,8 +25,8 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="TestLegePlads" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" Version="5.90" Type="Normal">
-    <CMSIS_SVD_File>TestLegePlads.svd</CMSIS_SVD_File>
+  <Project Name="PlanteModul" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" Version="5.90" Type="Normal">
+    <CMSIS_SVD_File>PlanteModul.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
       <LinkerFile Toolchain="ARM GCC Generic">.\Generated_Source\PSoC5\cm3gcc.ld</LinkerFile>
@@ -34,8 +34,8 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">Source\list.c</File>
           <File BuildType="BUILD" Toolchain="">Source\queue.c</File>
@@ -44,7 +44,6 @@
           <File BuildType="BUILD" Toolchain="">Source\timers.c</File>
           <File BuildType="BUILD" Toolchain="">Source\portable\GCC\ARM_CM3\port.c</File>
           <File BuildType="BUILD" Toolchain="">Source\portable\MemMang\heap_2.c</File>
-          <File BuildType="BUILD" Toolchain="">i2cReaction.c</File>
           <File BuildType="BUILD" Toolchain="">FreeRTOSConfig.h</File>
           <File BuildType="BUILD" Toolchain="">device.h</File>
           <File BuildType="BUILD" Toolchain="">Source\include\deprecated_definitions.h</File>
@@ -66,12 +65,10 @@
           <File BuildType="BUILD" Toolchain="">Source\portable\Common\mpu_wrappers.c</File>
           <File BuildType="BUILD" Toolchain="">Source\portable\GCC\ARM_CM3\portmacro.h</File>
           <File BuildType="BUILD" Toolchain="">Source\include\atomic.h</File>
-          <File BuildType="BUILD" Toolchain="">i2cReaction.h</File>
-          <File BuildType="BUILD" Toolchain="">GlobalVariables.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cymetadata.c</File>
@@ -121,78 +118,63 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED0_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED0.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED0.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_SLAVE.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_MASTER.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED2.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED2.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED3_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED3.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LED3.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_PM.c</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Code\PSoCProjector\RTOS_TEMPLATE-master\TestLegePlads.cydsn" />
+        <Files Root="C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
     </Folders>
   </Project>

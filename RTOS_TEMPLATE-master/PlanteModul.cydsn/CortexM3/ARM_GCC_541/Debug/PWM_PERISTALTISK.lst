@@ -1,0 +1,2824 @@
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"PWM_PERISTALTISK.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	PWM_PERISTALTISK_initVar
+  20              		.bss
+  21              		.type	PWM_PERISTALTISK_initVar, %object
+  22              		.size	PWM_PERISTALTISK_initVar, 1
+  23              	PWM_PERISTALTISK_initVar:
+  24 0000 00       		.space	1
+  25              		.section	.text.PWM_PERISTALTISK_Start,"ax",%progbits
+  26              		.align	2
+  27              		.global	PWM_PERISTALTISK_Start
+  28              		.thumb
+  29              		.thumb_func
+  30              		.type	PWM_PERISTALTISK_Start, %function
+  31              	PWM_PERISTALTISK_Start:
+  32              	.LFB0:
+  33              		.file 1 "Generated_Source\\PSoC5\\PWM_PERISTALTISK.c"
+   1:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * File Name: PWM_PERISTALTISK.c
+   3:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Version 3.30
+   4:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+   5:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Description:
+   6:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  The PWM User Module consist of an 8 or 16-bit counter with two 8 or 16-bit
+   7:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  comparitors. Each instance of this user module is capable of generating
+   8:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  two PWM outputs with the same period. The pulse width is selectable between
+   9:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  1 and 255/65535. The period is selectable between 2 and 255/65536 clocks.
+  10:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  The compare value output may be configured to be active when the present
+  11:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  counter is less than or less than/equal to the compare value.
+  12:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  A terminal count output is also provided. It generates a pulse one clock
+  13:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  width wide when the counter is equal to zero.
+  14:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  15:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Note:
+  16:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  17:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************
+  18:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************/
+  23:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  24:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #include "PWM_PERISTALTISK.h"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 2
+
+
+  25:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  26:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /* Error message for removed <resource> through optimization */
+  27:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #ifdef PWM_PERISTALTISK_PWMUDB_genblk1_ctrlreg__REMOVED
+  28:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #error PWM_v3_30 detected with a constant 0 for the enable or \
+  29:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****          constant 1 for reset. This will prevent the component from operating.
+  30:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* PWM_PERISTALTISK_PWMUDB_genblk1_ctrlreg__REMOVED */
+  31:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  32:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** uint8 PWM_PERISTALTISK_initVar = 0u;
+  33:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  34:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  35:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+  36:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_Start
+  37:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+  38:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  39:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+  40:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  The start function initializes the pwm with the default values, the
+  41:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  enables the counter to begin counting.  It does not enable interrupts,
+  42:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  the EnableInt command should be called if interrupt generation is required.
+  43:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  44:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+  45:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+  46:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  47:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+  48:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+  49:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  50:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Global variables:
+  51:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  PWM_PERISTALTISK_initVar: Is modified when this function is called for the
+  52:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *   first time. Is used to ensure that initialization happens only once.
+  53:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  54:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+  55:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** void PWM_PERISTALTISK_Start(void) 
+  56:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+  34              		.loc 1 56 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38 0000 80B5     		push	{r7, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 00AF     		add	r7, sp, #0
+  43              		.cfi_def_cfa_register 7
+  57:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /* If not Initialized then initialize all required hardware and software */
+  58:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     if(PWM_PERISTALTISK_initVar == 0u)
+  44              		.loc 1 58 0
+  45 0004 064B     		ldr	r3, .L3
+  46 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  47 0008 002B     		cmp	r3, #0
+  48 000a 04D1     		bne	.L2
+  59:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+  60:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_Init();
+  49              		.loc 1 60 0
+  50 000c FFF7FEFF 		bl	PWM_PERISTALTISK_Init
+  61:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_initVar = 1u;
+  51              		.loc 1 61 0
+  52 0010 034B     		ldr	r3, .L3
+  53 0012 0122     		movs	r2, #1
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 3
+
+
+  54 0014 1A70     		strb	r2, [r3]
+  55              	.L2:
+  62:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+  63:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     PWM_PERISTALTISK_Enable();
+  56              		.loc 1 63 0
+  57 0016 FFF7FEFF 		bl	PWM_PERISTALTISK_Enable
+  64:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  65:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+  58              		.loc 1 65 0
+  59 001a 00BF     		nop
+  60 001c 80BD     		pop	{r7, pc}
+  61              	.L4:
+  62 001e 00BF     		.align	2
+  63              	.L3:
+  64 0020 00000000 		.word	PWM_PERISTALTISK_initVar
+  65              		.cfi_endproc
+  66              	.LFE0:
+  67              		.size	PWM_PERISTALTISK_Start, .-PWM_PERISTALTISK_Start
+  68              		.section	.text.PWM_PERISTALTISK_Init,"ax",%progbits
+  69              		.align	2
+  70              		.global	PWM_PERISTALTISK_Init
+  71              		.thumb
+  72              		.thumb_func
+  73              		.type	PWM_PERISTALTISK_Init, %function
+  74              	PWM_PERISTALTISK_Init:
+  75              	.LFB1:
+  66:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  67:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  68:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+  69:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_Init
+  70:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+  71:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  72:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+  73:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  Initialize component's parameters to the parameters set by user in the
+  74:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  customizer of the component placed onto schematic. Usually called in
+  75:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  PWM_PERISTALTISK_Start().
+  76:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  77:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+  78:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+  79:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  80:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+  81:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+  82:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+  83:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+  84:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** void PWM_PERISTALTISK_Init(void) 
+  85:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+  76              		.loc 1 85 0
+  77              		.cfi_startproc
+  78              		@ args = 0, pretend = 0, frame = 8
+  79              		@ frame_needed = 1, uses_anonymous_args = 0
+  80 0000 80B5     		push	{r7, lr}
+  81              		.cfi_def_cfa_offset 8
+  82              		.cfi_offset 7, -8
+  83              		.cfi_offset 14, -4
+  84 0002 82B0     		sub	sp, sp, #8
+  85              		.cfi_def_cfa_offset 16
+  86 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 4
+
+
+  87              		.cfi_def_cfa_register 7
+  86:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UsingFixedFunction || PWM_PERISTALTISK_UseControl)
+  87:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         uint8 ctrl;
+  88:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction || PWM_PERISTALTISK_UseControl) */
+  89:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  90:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if(!PWM_PERISTALTISK_UsingFixedFunction)
+  91:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UseStatus)
+  92:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Interrupt State Backup for Critical Region*/
+  93:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             uint8 PWM_PERISTALTISK_interruptState;
+  94:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UseStatus) */
+  95:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+  96:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+  97:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UsingFixedFunction)
+  98:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* You are allowed to write the compare value (FF only) */
+  99:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CFG0_MODE;
+ 100:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_DeadBand2_4)
+ 101:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CFG0_DB;
+ 102:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_DeadBand2_4) */
+ 103:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 104:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         ctrl = PWM_PERISTALTISK_CONTROL3 & ((uint8 )(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK));
+ 105:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL3 = ctrl | PWM_PERISTALTISK_DEFAULT_COMPARE1_MODE;
+ 106:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 107:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****          /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 108:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_RT1 &= ((uint8)(~PWM_PERISTALTISK_RT1_MASK));
+ 109:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_RT1 |= PWM_PERISTALTISK_SYNC;
+ 110:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 111:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /*Enable DSI Sync all all inputs of the PWM*/
+ 112:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_RT1 &= ((uint8)(~PWM_PERISTALTISK_SYNCDSI_MASK));
+ 113:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_RT1 |= PWM_PERISTALTISK_SYNCDSI_EN;
+ 114:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 115:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #elif (PWM_PERISTALTISK_UseControl)
+ 116:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Set the default compare mode defined in the parameter */
+ 117:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         ctrl = PWM_PERISTALTISK_CONTROL & ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)) &
+  88              		.loc 1 117 0
+  89 0006 1C4B     		ldr	r3, .L6
+  90 0008 1B78     		ldrb	r3, [r3]
+  91 000a DBB2     		uxtb	r3, r3
+  92 000c 23F03F03 		bic	r3, r3, #63
+  93 0010 FB71     		strb	r3, [r7, #7]
+ 118:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK));
+ 119:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL = ctrl | PWM_PERISTALTISK_DEFAULT_COMPARE2_MODE |
+  94              		.loc 1 119 0
+  95 0012 194A     		ldr	r2, .L6
+  96 0014 FB79     		ldrb	r3, [r7, #7]
+  97 0016 43F00903 		orr	r3, r3, #9
+  98 001a DBB2     		uxtb	r3, r3
+  99 001c 1370     		strb	r3, [r2]
+ 120:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                    PWM_PERISTALTISK_DEFAULT_COMPARE1_MODE;
+ 121:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 122:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 123:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (!PWM_PERISTALTISK_UsingFixedFunction)
+ 124:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_Resolution == 8)
+ 125:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Set FIFO 0 to 1 byte register for period*/
+ 126:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
+ 100              		.loc 1 126 0
+ 101 001e 174A     		ldr	r2, .L6+4
+ 102 0020 164B     		ldr	r3, .L6+4
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 5
+
+
+ 103 0022 1B78     		ldrb	r3, [r3]
+ 104 0024 DBB2     		uxtb	r3, r3
+ 105 0026 43F00103 		orr	r3, r3, #1
+ 106 002a DBB2     		uxtb	r3, r3
+ 107 002c 1370     		strb	r3, [r2]
+ 127:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else /* (PWM_PERISTALTISK_Resolution == 16)*/
+ 128:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Set FIFO 0 to 1 byte register for period */
+ 129:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_AUX_CONTROLDP0 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
+ 130:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_AUX_CONTROLDP1 |= (PWM_PERISTALTISK_AUX_CTRL_FIFO0_CLR);
+ 131:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_Resolution == 8) */
+ 132:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 133:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_WriteCounter(PWM_PERISTALTISK_INIT_PERIOD_VALUE);
+ 108              		.loc 1 133 0
+ 109 002e FF20     		movs	r0, #255
+ 110 0030 FFF7FEFF 		bl	PWM_PERISTALTISK_WriteCounter
+ 134:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+ 135:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 136:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     PWM_PERISTALTISK_WritePeriod(PWM_PERISTALTISK_INIT_PERIOD_VALUE);
+ 111              		.loc 1 136 0
+ 112 0034 FF20     		movs	r0, #255
+ 113 0036 FFF7FEFF 		bl	PWM_PERISTALTISK_WritePeriod
+ 137:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 138:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_UseOneCompareMode)
+ 139:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_WriteCompare(PWM_PERISTALTISK_INIT_COMPARE_VALUE1);
+ 140:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 141:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_WriteCompare1(PWM_PERISTALTISK_INIT_COMPARE_VALUE1);
+ 114              		.loc 1 141 0
+ 115 003a 0620     		movs	r0, #6
+ 116 003c FFF7FEFF 		bl	PWM_PERISTALTISK_WriteCompare1
+ 142:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_WriteCompare2(PWM_PERISTALTISK_INIT_COMPARE_VALUE2);
+ 117              		.loc 1 142 0
+ 118 0040 1320     		movs	r0, #19
+ 119 0042 FFF7FEFF 		bl	PWM_PERISTALTISK_WriteCompare2
+ 143:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UseOneCompareMode) */
+ 144:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 145:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_KillModeMinTime)
+ 146:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_WriteKillTime(PWM_PERISTALTISK_MinimumKillTime);
+ 147:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_KillModeMinTime) */
+ 148:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 149:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_DeadBandUsed)
+ 150:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_WriteDeadTime(PWM_PERISTALTISK_INIT_DEAD_TIME);
+ 151:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_DeadBandUsed) */
+ 152:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 153:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction)
+ 154:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_SetInterruptMode(PWM_PERISTALTISK_INIT_INTERRUPTS_MODE);
+ 120              		.loc 1 154 0
+ 121 0046 0020     		movs	r0, #0
+ 122 0048 FFF7FEFF 		bl	PWM_PERISTALTISK_SetInterruptMode
+ 155:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction) */
+ 156:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 157:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UsingFixedFunction)
+ 158:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Globally Enable the Fixed Function Block chosen */
+ 159:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_GLOBAL_ENABLE |= PWM_PERISTALTISK_BLOCK_EN_MASK;
+ 160:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Set the Interrupt source to come from the status register */
+ 161:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL2 |= PWM_PERISTALTISK_CTRL2_IRQ_SEL;
+ 162:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #else
+ 163:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UseStatus)
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 6
+
+
+ 164:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 165:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region cri
+ 166:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Enter Critical Region*/
+ 167:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_interruptState = CyEnterCriticalSection();
+ 123              		.loc 1 167 0
+ 124 004c FFF7FEFF 		bl	CyEnterCriticalSection
+ 125 0050 0346     		mov	r3, r0
+ 126 0052 BB71     		strb	r3, [r7, #6]
+ 168:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Use the interrupt output of the status register for IRQ output */
+ 169:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_STATUS_AUX_CTRL |= PWM_PERISTALTISK_STATUS_ACTL_INT_EN_MASK;
+ 127              		.loc 1 169 0
+ 128 0054 094A     		ldr	r2, .L6+4
+ 129 0056 094B     		ldr	r3, .L6+4
+ 130 0058 1B78     		ldrb	r3, [r3]
+ 131 005a DBB2     		uxtb	r3, r3
+ 132 005c 43F01003 		orr	r3, r3, #16
+ 133 0060 DBB2     		uxtb	r3, r3
+ 134 0062 1370     		strb	r3, [r2]
+ 170:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 171:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****              /* Exit Critical Region*/
+ 172:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CyExitCriticalSection(PWM_PERISTALTISK_interruptState);
+ 135              		.loc 1 172 0
+ 136 0064 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 137 0066 1846     		mov	r0, r3
+ 138 0068 FFF7FEFF 		bl	CyExitCriticalSection
+ 173:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 174:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Clear the FIFO to enable the PWM_PERISTALTISK_STATUS_FIFOFULL
+ 175:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                    bit to be set on FIFO full. */
+ 176:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_ClearFIFO();
+ 139              		.loc 1 176 0
+ 140 006c FFF7FEFF 		bl	PWM_PERISTALTISK_ClearFIFO
+ 177:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UseStatus) */
+ 178:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 179:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+ 141              		.loc 1 179 0
+ 142 0070 00BF     		nop
+ 143 0072 0837     		adds	r7, r7, #8
+ 144              		.cfi_def_cfa_offset 8
+ 145 0074 BD46     		mov	sp, r7
+ 146              		.cfi_def_cfa_register 13
+ 147              		@ sp needed
+ 148 0076 80BD     		pop	{r7, pc}
+ 149              	.L7:
+ 150              		.align	2
+ 151              	.L6:
+ 152 0078 7D640040 		.word	1073767549
+ 153 007c 9D640040 		.word	1073767581
+ 154              		.cfi_endproc
+ 155              	.LFE1:
+ 156              		.size	PWM_PERISTALTISK_Init, .-PWM_PERISTALTISK_Init
+ 157              		.section	.text.PWM_PERISTALTISK_Enable,"ax",%progbits
+ 158              		.align	2
+ 159              		.global	PWM_PERISTALTISK_Enable
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.type	PWM_PERISTALTISK_Enable, %function
+ 163              	PWM_PERISTALTISK_Enable:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 7
+
+
+ 164              	.LFB2:
+ 180:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 181:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 182:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+ 183:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_Enable
+ 184:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+ 185:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 186:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+ 187:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  Enables the PWM block operation
+ 188:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 189:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+ 190:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 191:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 192:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+ 193:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 194:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 195:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Side Effects:
+ 196:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  This works only if software enable mode is chosen
+ 197:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 198:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** void PWM_PERISTALTISK_Enable(void) 
+ 200:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+ 165              		.loc 1 200 0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 1, uses_anonymous_args = 0
+ 169              		@ link register save eliminated.
+ 170 0000 80B4     		push	{r7}
+ 171              		.cfi_def_cfa_offset 4
+ 172              		.cfi_offset 7, -4
+ 173 0002 00AF     		add	r7, sp, #0
+ 174              		.cfi_def_cfa_register 7
+ 201:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 202:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UsingFixedFunction)
+ 203:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_GLOBAL_ENABLE |= PWM_PERISTALTISK_BLOCK_EN_MASK;
+ 204:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_GLOBAL_STBY_ENABLE |= PWM_PERISTALTISK_BLOCK_STBY_EN_MASK;
+ 205:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 206:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 207:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /* Enable the PWM from the control register  */
+ 208:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction)
+ 209:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL |= PWM_PERISTALTISK_CTRL_ENABLE;
+ 175              		.loc 1 209 0
+ 176 0004 054A     		ldr	r2, .L9
+ 177 0006 054B     		ldr	r3, .L9
+ 178 0008 1B78     		ldrb	r3, [r3]
+ 179 000a DBB2     		uxtb	r3, r3
+ 180 000c 63F07F03 		orn	r3, r3, #127
+ 181 0010 DBB2     		uxtb	r3, r3
+ 182 0012 1370     		strb	r3, [r2]
+ 210:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction) */
+ 211:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+ 183              		.loc 1 211 0
+ 184 0014 00BF     		nop
+ 185 0016 BD46     		mov	sp, r7
+ 186              		.cfi_def_cfa_register 13
+ 187              		@ sp needed
+ 188 0018 80BC     		pop	{r7}
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 8
+
+
+ 189              		.cfi_restore 7
+ 190              		.cfi_def_cfa_offset 0
+ 191 001a 7047     		bx	lr
+ 192              	.L10:
+ 193              		.align	2
+ 194              	.L9:
+ 195 001c 7D640040 		.word	1073767549
+ 196              		.cfi_endproc
+ 197              	.LFE2:
+ 198              		.size	PWM_PERISTALTISK_Enable, .-PWM_PERISTALTISK_Enable
+ 199              		.section	.text.PWM_PERISTALTISK_Stop,"ax",%progbits
+ 200              		.align	2
+ 201              		.global	PWM_PERISTALTISK_Stop
+ 202              		.thumb
+ 203              		.thumb_func
+ 204              		.type	PWM_PERISTALTISK_Stop, %function
+ 205              	PWM_PERISTALTISK_Stop:
+ 206              	.LFB3:
+ 212:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 213:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 214:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+ 215:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_Stop
+ 216:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+ 217:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 218:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+ 219:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  The stop function halts the PWM, but does not change any modes or disable
+ 220:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  interrupts.
+ 221:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 222:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+ 223:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 224:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 225:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+ 226:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 227:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 228:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Side Effects:
+ 229:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  If the Enable mode is set to Hardware only then this function
+ 230:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  has no effect on the operation of the PWM
+ 231:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 232:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+ 233:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** void PWM_PERISTALTISK_Stop(void) 
+ 234:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+ 207              		.loc 1 234 0
+ 208              		.cfi_startproc
+ 209              		@ args = 0, pretend = 0, frame = 0
+ 210              		@ frame_needed = 1, uses_anonymous_args = 0
+ 211              		@ link register save eliminated.
+ 212 0000 80B4     		push	{r7}
+ 213              		.cfi_def_cfa_offset 4
+ 214              		.cfi_offset 7, -4
+ 215 0002 00AF     		add	r7, sp, #0
+ 216              		.cfi_def_cfa_register 7
+ 235:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction)
+ 236:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_ENABLE));
+ 217              		.loc 1 236 0
+ 218 0004 054A     		ldr	r2, .L12
+ 219 0006 054B     		ldr	r3, .L12
+ 220 0008 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 9
+
+
+ 221 000a DBB2     		uxtb	r3, r3
+ 222 000c 03F07F03 		and	r3, r3, #127
+ 223 0010 DBB2     		uxtb	r3, r3
+ 224 0012 1370     		strb	r3, [r2]
+ 237:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UseControl || PWM_PERISTALTISK_UsingFixedFunction) */
+ 238:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 239:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /* Globally disable the Fixed Function Block chosen */
+ 240:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UsingFixedFunction)
+ 241:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_GLOBAL_ENABLE &= ((uint8)(~PWM_PERISTALTISK_BLOCK_EN_MASK));
+ 242:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         PWM_PERISTALTISK_GLOBAL_STBY_ENABLE &= ((uint8)(~PWM_PERISTALTISK_BLOCK_STBY_EN_MASK));
+ 243:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 244:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+ 225              		.loc 1 244 0
+ 226 0014 00BF     		nop
+ 227 0016 BD46     		mov	sp, r7
+ 228              		.cfi_def_cfa_register 13
+ 229              		@ sp needed
+ 230 0018 80BC     		pop	{r7}
+ 231              		.cfi_restore 7
+ 232              		.cfi_def_cfa_offset 0
+ 233 001a 7047     		bx	lr
+ 234              	.L13:
+ 235              		.align	2
+ 236              	.L12:
+ 237 001c 7D640040 		.word	1073767549
+ 238              		.cfi_endproc
+ 239              	.LFE3:
+ 240              		.size	PWM_PERISTALTISK_Stop, .-PWM_PERISTALTISK_Stop
+ 241              		.section	.text.PWM_PERISTALTISK_WriteCounter,"ax",%progbits
+ 242              		.align	2
+ 243              		.global	PWM_PERISTALTISK_WriteCounter
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.type	PWM_PERISTALTISK_WriteCounter, %function
+ 247              	PWM_PERISTALTISK_WriteCounter:
+ 248              	.LFB4:
+ 245:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 246:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_UseOneCompareMode)
+ 247:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_CompareMode1SW)
+ 248:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 249:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 250:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /*******************************************************************************
+ 251:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Function Name: PWM_PERISTALTISK_SetCompareMode
+ 252:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         ********************************************************************************
+ 253:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 254:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Summary:
+ 255:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  This function writes the Compare Mode for the pwm output when in Dither mode,
+ 256:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  Center Align Mode or One Output Mode.
+ 257:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 258:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Parameters:
+ 259:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 260:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *                defined in the H file as input arguments.
+ 261:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 262:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Return:
+ 263:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  None
+ 264:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 265:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *******************************************************************************/
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 10
+
+
+ 266:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         void PWM_PERISTALTISK_SetCompareMode(uint8 comparemode) 
+ 267:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         {
+ 268:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 269:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 270:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
+ 271:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_
+ 272:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #else
+ 273:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemodemasked = comparemode;
+ 274:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+ 275:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 276:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL3 &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK)); /*Cle
+ 277:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL3 |= comparemodemasked;
+ 278:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 279:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #elif (PWM_PERISTALTISK_UseControl)
+ 280:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 281:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
+ 282:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemode1masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL
+ 283:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                                 PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+ 284:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #else
+ 285:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemode1masked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+ 286:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+ 287:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 288:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)
+ 289:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemode2masked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL
+ 290:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                                PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+ 291:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #else
+ 292:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                     uint8 comparemode2masked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+ 293:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT) */
+ 294:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 295:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 /*Clear existing mode */
+ 296:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL &= ((uint8)(~(PWM_PERISTALTISK_CTRL_CMPMODE1_MASK |
+ 297:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                             PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)));
+ 298:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL |= (comparemode1masked | comparemode2masked);
+ 299:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 300:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #else
+ 301:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 uint8 temp = comparemode;
+ 302:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 303:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         }
+ 304:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* PWM_PERISTALTISK_CompareMode1SW */
+ 305:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 306:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #else /* UseOneCompareMode */
+ 307:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 308:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_CompareMode1SW)
+ 309:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 310:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 311:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /*******************************************************************************
+ 312:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Function Name: PWM_PERISTALTISK_SetCompareMode1
+ 313:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         ********************************************************************************
+ 314:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 315:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Summary:
+ 316:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  This function writes the Compare Mode for the pwm or pwm1 output
+ 317:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 318:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Parameters:
+ 319:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 320:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *                defined in the H file as input arguments.
+ 321:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 322:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Return:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 11
+
+
+ 323:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  None
+ 324:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 325:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *******************************************************************************/
+ 326:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         void PWM_PERISTALTISK_SetCompareMode1(uint8 comparemode) 
+ 327:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         {
+ 328:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT)
+ 329:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPM
+ 330:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                            PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+ 331:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #else
+ 332:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE1_MASK;
+ 333:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE1_SHIFT) */
+ 334:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 335:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if (PWM_PERISTALTISK_UseControl)
+ 336:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE1_MASK)); /*Clea
+ 337:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_CONTROL |= comparemodemasked;
+ 338:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (PWM_PERISTALTISK_UseControl) */
+ 339:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         }
+ 340:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* PWM_PERISTALTISK_CompareMode1SW */
+ 341:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 342:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_CompareMode2SW)
+ 343:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 344:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 345:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 346:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_SetCompareMode2
+ 347:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 348:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 349:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 350:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function writes the Compare Mode for the pwm or pwm2 output
+ 351:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 352:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 353:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  comparemode:  The new compare mode for the PWM output. Use the compare types
+ 354:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *                defined in the H file as input arguments.
+ 355:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 356:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 357:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 358:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 359:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 360:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_SetCompareMode2(uint8 comparemode) 
+ 361:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 362:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 363:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT)
+ 364:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             uint8 comparemodemasked = ((uint8)((uint8)comparemode << PWM_PERISTALTISK_CTRL_CMPMODE2
+ 365:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                                  PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+ 366:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 367:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             uint8 comparemodemasked = comparemode & PWM_PERISTALTISK_CTRL_CMPMODE2_MASK;
+ 368:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (0 != PWM_PERISTALTISK_CTRL_CMPMODE2_SHIFT) */
+ 369:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 370:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_UseControl)
+ 371:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_CONTROL &= ((uint8)(~PWM_PERISTALTISK_CTRL_CMPMODE2_MASK)); /*Clear ex
+ 372:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_CONTROL |= comparemodemasked;
+ 373:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UseControl) */
+ 374:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 375:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /*PWM_PERISTALTISK_CompareMode2SW */
+ 376:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 377:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* UseOneCompareMode */
+ 378:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 379:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 12
+
+
+ 380:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (!PWM_PERISTALTISK_UsingFixedFunction)
+ 381:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 382:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 383:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 384:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteCounter
+ 385:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 386:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 387:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 388:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Writes a new counter value directly to the counter register. This will be
+ 389:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  implemented for that currently running period and only that period. This API
+ 390:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  is valid only for UDB implementation and not available for fixed function
+ 391:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  PWM implementation.
+ 392:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 393:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 394:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  counter:  The period new period counter value.
+ 395:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 396:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 397:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 398:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 399:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Side Effects:
+ 400:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  The PWM Period will be reloaded when a counter value will be a zero
+ 401:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 402:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 403:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteCounter(uint8 counter) \
+ 404:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                        
+ 405:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 249              		.loc 1 405 0
+ 250              		.cfi_startproc
+ 251              		@ args = 0, pretend = 0, frame = 8
+ 252              		@ frame_needed = 1, uses_anonymous_args = 0
+ 253              		@ link register save eliminated.
+ 254 0000 80B4     		push	{r7}
+ 255              		.cfi_def_cfa_offset 4
+ 256              		.cfi_offset 7, -4
+ 257 0002 83B0     		sub	sp, sp, #12
+ 258              		.cfi_def_cfa_offset 16
+ 259 0004 00AF     		add	r7, sp, #0
+ 260              		.cfi_def_cfa_register 7
+ 261 0006 0346     		mov	r3, r0
+ 262 0008 FB71     		strb	r3, [r7, #7]
+ 406:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         CY_SET_REG8(PWM_PERISTALTISK_COUNTER_LSB_PTR, counter);
+ 263              		.loc 1 406 0
+ 264 000a 044A     		ldr	r2, .L15
+ 265 000c FB79     		ldrb	r3, [r7, #7]
+ 266 000e 1370     		strb	r3, [r2]
+ 407:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 267              		.loc 1 407 0
+ 268 0010 00BF     		nop
+ 269 0012 0C37     		adds	r7, r7, #12
+ 270              		.cfi_def_cfa_offset 4
+ 271 0014 BD46     		mov	sp, r7
+ 272              		.cfi_def_cfa_register 13
+ 273              		@ sp needed
+ 274 0016 80BC     		pop	{r7}
+ 275              		.cfi_restore 7
+ 276              		.cfi_def_cfa_offset 0
+ 277 0018 7047     		bx	lr
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 13
+
+
+ 278              	.L16:
+ 279 001a 00BF     		.align	2
+ 280              	.L15:
+ 281 001c 0D640040 		.word	1073767437
+ 282              		.cfi_endproc
+ 283              	.LFE4:
+ 284              		.size	PWM_PERISTALTISK_WriteCounter, .-PWM_PERISTALTISK_WriteCounter
+ 285              		.section	.text.PWM_PERISTALTISK_ReadCounter,"ax",%progbits
+ 286              		.align	2
+ 287              		.global	PWM_PERISTALTISK_ReadCounter
+ 288              		.thumb
+ 289              		.thumb_func
+ 290              		.type	PWM_PERISTALTISK_ReadCounter, %function
+ 291              	PWM_PERISTALTISK_ReadCounter:
+ 292              	.LFB5:
+ 408:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 409:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 410:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 411:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadCounter
+ 412:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 413:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 414:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 415:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function returns the current value of the counter.  It doesn't matter
+ 416:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  if the counter is enabled or running.
+ 417:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 418:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 419:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 420:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 421:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 422:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  The current value of the counter.
+ 423:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 424:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 425:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadCounter(void) 
+ 426:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 293              		.loc 1 426 0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 0
+ 296              		@ frame_needed = 1, uses_anonymous_args = 0
+ 297              		@ link register save eliminated.
+ 298 0000 80B4     		push	{r7}
+ 299              		.cfi_def_cfa_offset 4
+ 300              		.cfi_offset 7, -4
+ 301 0002 00AF     		add	r7, sp, #0
+ 302              		.cfi_def_cfa_register 7
+ 427:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Force capture by reading Accumulator */
+ 428:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Must first do a software capture to be able to read the counter */
+ 429:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 430:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****           (void)CY_GET_REG8(PWM_PERISTALTISK_COUNTERCAP_LSB_PTR_8BIT);
+ 303              		.loc 1 430 0
+ 304 0004 044B     		ldr	r3, .L19
+ 305 0006 1B78     		ldrb	r3, [r3]
+ 431:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 432:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* Read the data from the FIFO */
+ 433:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_CAPTURE_LSB_PTR));
+ 306              		.loc 1 433 0
+ 307 0008 044B     		ldr	r3, .L19+4
+ 308 000a 1B78     		ldrb	r3, [r3]
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 14
+
+
+ 309 000c DBB2     		uxtb	r3, r3
+ 434:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 310              		.loc 1 434 0
+ 311 000e 1846     		mov	r0, r3
+ 312 0010 BD46     		mov	sp, r7
+ 313              		.cfi_def_cfa_register 13
+ 314              		@ sp needed
+ 315 0012 80BC     		pop	{r7}
+ 316              		.cfi_restore 7
+ 317              		.cfi_def_cfa_offset 0
+ 318 0014 7047     		bx	lr
+ 319              	.L20:
+ 320 0016 00BF     		.align	2
+ 321              	.L19:
+ 322 0018 1D640040 		.word	1073767453
+ 323 001c 5D640040 		.word	1073767517
+ 324              		.cfi_endproc
+ 325              	.LFE5:
+ 326              		.size	PWM_PERISTALTISK_ReadCounter, .-PWM_PERISTALTISK_ReadCounter
+ 327              		.section	.text.PWM_PERISTALTISK_ClearFIFO,"ax",%progbits
+ 328              		.align	2
+ 329              		.global	PWM_PERISTALTISK_ClearFIFO
+ 330              		.thumb
+ 331              		.thumb_func
+ 332              		.type	PWM_PERISTALTISK_ClearFIFO, %function
+ 333              	PWM_PERISTALTISK_ClearFIFO:
+ 334              	.LFB6:
+ 435:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 436:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if (PWM_PERISTALTISK_UseStatus)
+ 437:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 438:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 439:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /*******************************************************************************
+ 440:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Function Name: PWM_PERISTALTISK_ClearFIFO
+ 441:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         ********************************************************************************
+ 442:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 443:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Summary:
+ 444:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  This function clears all capture data from the capture FIFO
+ 445:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 446:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Parameters:
+ 447:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  None
+ 448:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 449:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         * Return:
+ 450:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *  None
+ 451:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *
+ 452:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         *******************************************************************************/
+ 453:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         void PWM_PERISTALTISK_ClearFIFO(void) 
+ 454:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         {
+ 335              		.loc 1 454 0
+ 336              		.cfi_startproc
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 1, uses_anonymous_args = 0
+ 339 0000 80B5     		push	{r7, lr}
+ 340              		.cfi_def_cfa_offset 8
+ 341              		.cfi_offset 7, -8
+ 342              		.cfi_offset 14, -4
+ 343 0002 00AF     		add	r7, sp, #0
+ 344              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 15
+
+
+ 455:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             while(0u != (PWM_PERISTALTISK_ReadStatusRegister() & PWM_PERISTALTISK_STATUS_FIFONEMPTY
+ 345              		.loc 1 455 0
+ 346 0004 01E0     		b	.L22
+ 347              	.L23:
+ 456:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             {
+ 457:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 (void)PWM_PERISTALTISK_ReadCapture();
+ 348              		.loc 1 457 0
+ 349 0006 FFF7FEFF 		bl	PWM_PERISTALTISK_ReadCapture
+ 350              	.L22:
+ 455:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             while(0u != (PWM_PERISTALTISK_ReadStatusRegister() & PWM_PERISTALTISK_STATUS_FIFONEMPTY
+ 351              		.loc 1 455 0
+ 352 000a FFF7FEFF 		bl	PWM_PERISTALTISK_ReadStatusRegister
+ 353 000e 0346     		mov	r3, r0
+ 354 0010 03F01003 		and	r3, r3, #16
+ 355 0014 002B     		cmp	r3, #0
+ 356 0016 F6D1     		bne	.L23
+ 458:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             }
+ 459:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         }
+ 357              		.loc 1 459 0
+ 358 0018 00BF     		nop
+ 359 001a 80BD     		pop	{r7, pc}
+ 360              		.cfi_endproc
+ 361              	.LFE6:
+ 362              		.size	PWM_PERISTALTISK_ClearFIFO, .-PWM_PERISTALTISK_ClearFIFO
+ 363              		.section	.text.PWM_PERISTALTISK_WritePeriod,"ax",%progbits
+ 364              		.align	2
+ 365              		.global	PWM_PERISTALTISK_WritePeriod
+ 366              		.thumb
+ 367              		.thumb_func
+ 368              		.type	PWM_PERISTALTISK_WritePeriod, %function
+ 369              	PWM_PERISTALTISK_WritePeriod:
+ 370              	.LFB7:
+ 460:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 461:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* PWM_PERISTALTISK_UseStatus */
+ 462:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 463:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* !PWM_PERISTALTISK_UsingFixedFunction */
+ 464:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 465:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 466:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_WritePeriod
+ 468:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+ 469:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 470:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+ 471:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  This function is used to change the period of the counter.  The new period
+ 472:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  will be loaded the next time terminal count is detected.
+ 473:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 474:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+ 475:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  period:  Period value. May be between 1 and (2^Resolution)-1.  A value of 0
+ 476:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *           will result in the counter remaining at zero.
+ 477:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 478:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+ 479:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 480:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 481:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+ 482:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** void PWM_PERISTALTISK_WritePeriod(uint8 period) 
+ 483:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+ 371              		.loc 1 483 0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 16
+
+
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 8
+ 374              		@ frame_needed = 1, uses_anonymous_args = 0
+ 375              		@ link register save eliminated.
+ 376 0000 80B4     		push	{r7}
+ 377              		.cfi_def_cfa_offset 4
+ 378              		.cfi_offset 7, -4
+ 379 0002 83B0     		sub	sp, sp, #12
+ 380              		.cfi_def_cfa_offset 16
+ 381 0004 00AF     		add	r7, sp, #0
+ 382              		.cfi_def_cfa_register 7
+ 383 0006 0346     		mov	r3, r0
+ 384 0008 FB71     		strb	r3, [r7, #7]
+ 484:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 485:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         CY_SET_REG16(PWM_PERISTALTISK_PERIOD_LSB_PTR, (uint16)period);
+ 486:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #else
+ 487:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         CY_SET_REG8(PWM_PERISTALTISK_PERIOD_LSB_PTR, period);
+ 385              		.loc 1 487 0
+ 386 000a 044A     		ldr	r2, .L25
+ 387 000c FB79     		ldrb	r3, [r7, #7]
+ 388 000e 1370     		strb	r3, [r2]
+ 488:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 489:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+ 389              		.loc 1 489 0
+ 390 0010 00BF     		nop
+ 391 0012 0C37     		adds	r7, r7, #12
+ 392              		.cfi_def_cfa_offset 4
+ 393 0014 BD46     		mov	sp, r7
+ 394              		.cfi_def_cfa_register 13
+ 395              		@ sp needed
+ 396 0016 80BC     		pop	{r7}
+ 397              		.cfi_restore 7
+ 398              		.cfi_def_cfa_offset 0
+ 399 0018 7047     		bx	lr
+ 400              	.L26:
+ 401 001a 00BF     		.align	2
+ 402              	.L25:
+ 403 001c 4D640040 		.word	1073767501
+ 404              		.cfi_endproc
+ 405              	.LFE7:
+ 406              		.size	PWM_PERISTALTISK_WritePeriod, .-PWM_PERISTALTISK_WritePeriod
+ 407              		.section	.text.PWM_PERISTALTISK_WriteCompare1,"ax",%progbits
+ 408              		.align	2
+ 409              		.global	PWM_PERISTALTISK_WriteCompare1
+ 410              		.thumb
+ 411              		.thumb_func
+ 412              		.type	PWM_PERISTALTISK_WriteCompare1, %function
+ 413              	PWM_PERISTALTISK_WriteCompare1:
+ 414              	.LFB8:
+ 490:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 491:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_UseOneCompareMode)
+ 492:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 493:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 494:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 495:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteCompare
+ 496:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 497:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 17
+
+
+ 498:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 499:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This funtion is used to change the compare1 value when the PWM is in Dither
+ 500:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  mode. The compare output will reflect the new value on the next UDB clock.
+ 501:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  The compare output will be driven high when the present counter value is
+ 502:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  compared to the compare value based on the compare mode defined in
+ 503:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Dither Mode.
+ 504:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 505:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 506:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  compare:  New compare value.
+ 507:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 508:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 509:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 510:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 511:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Side Effects:
+ 512:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function is only available if the PWM mode parameter is set to
+ 513:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Dither Mode, Center Aligned Mode or One Output Mode
+ 514:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 515:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 516:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteCompare(uint8 compare) \
+ 517:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                        
+ 518:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 519:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 520:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR, (uint16)compare);
+ 521:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 522:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR, compare);
+ 523:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 524:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 525:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if (PWM_PERISTALTISK_PWMMode == PWM_PERISTALTISK__B_PWM__DITHER)
+ 526:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 527:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 CY_SET_REG16(PWM_PERISTALTISK_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
+ 528:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #else
+ 529:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 CY_SET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR, (compare + 1u));
+ 530:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 531:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_PWMMode == PWM_PERISTALTISK__B_PWM__DITHER) */
+ 532:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 533:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 534:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 535:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #else
+ 536:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 537:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 538:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 539:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteCompare1
+ 540:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 541:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 542:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 543:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This funtion is used to change the compare1 value.  The compare output will
+ 544:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  reflect the new value on the next UDB clock.  The compare output will be
+ 545:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  driven high when the present counter value is less than or less than or
+ 546:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  equal to the compare register, depending on the mode.
+ 547:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 548:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 549:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  compare:  New compare value.
+ 550:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 551:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 552:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 553:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 554:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 18
+
+
+ 555:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteCompare1(uint8 compare) \
+ 556:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                         
+ 557:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 415              		.loc 1 557 0
+ 416              		.cfi_startproc
+ 417              		@ args = 0, pretend = 0, frame = 8
+ 418              		@ frame_needed = 1, uses_anonymous_args = 0
+ 419              		@ link register save eliminated.
+ 420 0000 80B4     		push	{r7}
+ 421              		.cfi_def_cfa_offset 4
+ 422              		.cfi_offset 7, -4
+ 423 0002 83B0     		sub	sp, sp, #12
+ 424              		.cfi_def_cfa_offset 16
+ 425 0004 00AF     		add	r7, sp, #0
+ 426              		.cfi_def_cfa_register 7
+ 427 0006 0346     		mov	r3, r0
+ 428 0008 FB71     		strb	r3, [r7, #7]
+ 558:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 559:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR, (uint16)compare);
+ 560:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 561:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR, compare);
+ 429              		.loc 1 561 0
+ 430 000a 044A     		ldr	r2, .L28
+ 431 000c FB79     		ldrb	r3, [r7, #7]
+ 432 000e 1370     		strb	r3, [r2]
+ 562:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 563:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 433              		.loc 1 563 0
+ 434 0010 00BF     		nop
+ 435 0012 0C37     		adds	r7, r7, #12
+ 436              		.cfi_def_cfa_offset 4
+ 437 0014 BD46     		mov	sp, r7
+ 438              		.cfi_def_cfa_register 13
+ 439              		@ sp needed
+ 440 0016 80BC     		pop	{r7}
+ 441              		.cfi_restore 7
+ 442              		.cfi_def_cfa_offset 0
+ 443 0018 7047     		bx	lr
+ 444              	.L29:
+ 445 001a 00BF     		.align	2
+ 446              	.L28:
+ 447 001c 2D640040 		.word	1073767469
+ 448              		.cfi_endproc
+ 449              	.LFE8:
+ 450              		.size	PWM_PERISTALTISK_WriteCompare1, .-PWM_PERISTALTISK_WriteCompare1
+ 451              		.section	.text.PWM_PERISTALTISK_WriteCompare2,"ax",%progbits
+ 452              		.align	2
+ 453              		.global	PWM_PERISTALTISK_WriteCompare2
+ 454              		.thumb
+ 455              		.thumb_func
+ 456              		.type	PWM_PERISTALTISK_WriteCompare2, %function
+ 457              	PWM_PERISTALTISK_WriteCompare2:
+ 458              	.LFB9:
+ 564:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 565:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 566:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 567:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteCompare2
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 19
+
+
+ 568:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 569:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 570:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 571:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This funtion is used to change the compare value, for compare1 output.
+ 572:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  The compare output will reflect the new value on the next UDB clock.
+ 573:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  The compare output will be driven high when the present counter value is
+ 574:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  less than or less than or equal to the compare register, depending on the
+ 575:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  mode.
+ 576:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 577:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 578:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  compare:  New compare value.
+ 579:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 580:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 581:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 582:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 583:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 584:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteCompare2(uint8 compare) \
+ 585:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                         
+ 586:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 459              		.loc 1 586 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 8
+ 462              		@ frame_needed = 1, uses_anonymous_args = 0
+ 463              		@ link register save eliminated.
+ 464 0000 80B4     		push	{r7}
+ 465              		.cfi_def_cfa_offset 4
+ 466              		.cfi_offset 7, -4
+ 467 0002 83B0     		sub	sp, sp, #12
+ 468              		.cfi_def_cfa_offset 16
+ 469 0004 00AF     		add	r7, sp, #0
+ 470              		.cfi_def_cfa_register 7
+ 471 0006 0346     		mov	r3, r0
+ 472 0008 FB71     		strb	r3, [r7, #7]
+ 587:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 588:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG16(PWM_PERISTALTISK_COMPARE2_LSB_PTR, compare);
+ 589:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 590:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR, compare);
+ 473              		.loc 1 590 0
+ 474 000a 044A     		ldr	r2, .L31
+ 475 000c FB79     		ldrb	r3, [r7, #7]
+ 476 000e 1370     		strb	r3, [r2]
+ 591:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 592:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 477              		.loc 1 592 0
+ 478 0010 00BF     		nop
+ 479 0012 0C37     		adds	r7, r7, #12
+ 480              		.cfi_def_cfa_offset 4
+ 481 0014 BD46     		mov	sp, r7
+ 482              		.cfi_def_cfa_register 13
+ 483              		@ sp needed
+ 484 0016 80BC     		pop	{r7}
+ 485              		.cfi_restore 7
+ 486              		.cfi_def_cfa_offset 0
+ 487 0018 7047     		bx	lr
+ 488              	.L32:
+ 489 001a 00BF     		.align	2
+ 490              	.L31:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 20
+
+
+ 491 001c 3D640040 		.word	1073767485
+ 492              		.cfi_endproc
+ 493              	.LFE9:
+ 494              		.size	PWM_PERISTALTISK_WriteCompare2, .-PWM_PERISTALTISK_WriteCompare2
+ 495              		.section	.text.PWM_PERISTALTISK_SetInterruptMode,"ax",%progbits
+ 496              		.align	2
+ 497              		.global	PWM_PERISTALTISK_SetInterruptMode
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.type	PWM_PERISTALTISK_SetInterruptMode, %function
+ 501              	PWM_PERISTALTISK_SetInterruptMode:
+ 502              	.LFB10:
+ 593:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* UseOneCompareMode */
+ 594:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 595:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_DeadBandUsed)
+ 596:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 597:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 598:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 599:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteDeadTime
+ 600:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 601:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 602:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 603:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function writes the dead-band counts to the corresponding register
+ 604:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 605:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 606:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  deadtime:  Number of counts for dead time
+ 607:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 608:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 609:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 610:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 611:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 612:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteDeadTime(uint8 deadtime) 
+ 613:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 614:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* If using the Dead Band 1-255 mode then just write the register */
+ 615:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(!PWM_PERISTALTISK_DeadBand2_4)
+ 616:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             CY_SET_REG8(PWM_PERISTALTISK_DEADBAND_COUNT_PTR, deadtime);
+ 617:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 618:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Otherwise the data has to be masked and offset */
+ 619:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Clear existing data */
+ 620:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             PWM_PERISTALTISK_DEADBAND_COUNT &= ((uint8)(~PWM_PERISTALTISK_DEADBAND_COUNT_MASK));
+ 621:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 622:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Set new dead time */
+ 623:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if(PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT)
+ 624:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_DEADBAND_COUNT |= ((uint8)((uint8)deadtime << PWM_PERISTALTISK_DEA
+ 625:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                                     PWM_PERISTALTISK_DEADBAND_COUNT_MASK;
+ 626:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #else
+ 627:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 PWM_PERISTALTISK_DEADBAND_COUNT |= deadtime & PWM_PERISTALTISK_DEADBAND_COUNT_MASK;
+ 628:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT) */
+ 629:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 630:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (!PWM_PERISTALTISK_DeadBand2_4) */
+ 631:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 632:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 633:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 634:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 635:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadDeadTime
+ 636:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 637:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 21
+
+
+ 638:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 639:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function reads the dead-band counts from the corresponding register
+ 640:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 641:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 642:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 643:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 644:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 645:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Dead Band Counts
+ 646:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 647:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 648:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadDeadTime(void) 
+ 649:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 650:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         /* If using the Dead Band 1-255 mode then just read the register */
+ 651:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(!PWM_PERISTALTISK_DeadBand2_4)
+ 652:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             return (CY_GET_REG8(PWM_PERISTALTISK_DEADBAND_COUNT_PTR));
+ 653:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 654:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 655:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             /* Otherwise the data has to be masked and offset */
+ 656:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #if(PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT)
+ 657:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 return ((uint8)(((uint8)(PWM_PERISTALTISK_DEADBAND_COUNT & PWM_PERISTALTISK_DEADBAN
+ 658:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                                                                            PWM_PERISTALTISK_DEADBAN
+ 659:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #else
+ 660:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****                 return (PWM_PERISTALTISK_DEADBAND_COUNT & PWM_PERISTALTISK_DEADBAND_COUNT_MASK);
+ 661:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             #endif /* (PWM_PERISTALTISK_DEADBAND_COUNT_SHIFT) */
+ 662:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (!PWM_PERISTALTISK_DeadBand2_4) */
+ 663:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 664:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* DeadBandUsed */
+ 665:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 666:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction)
+ 667:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 668:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 669:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 670:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_SetInterruptMode
+ 671:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 672:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 673:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 674:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function configures the interrupts mask control of theinterrupt
+ 675:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  source status register.
+ 676:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 677:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 678:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8 interruptMode: Bit field containing the interrupt sources enabled
+ 679:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 680:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 681:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 682:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 683:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 684:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_SetInterruptMode(uint8 interruptMode) 
+ 685:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 503              		.loc 1 685 0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 8
+ 506              		@ frame_needed = 1, uses_anonymous_args = 0
+ 507              		@ link register save eliminated.
+ 508 0000 80B4     		push	{r7}
+ 509              		.cfi_def_cfa_offset 4
+ 510              		.cfi_offset 7, -4
+ 511 0002 83B0     		sub	sp, sp, #12
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 22
+
+
+ 512              		.cfi_def_cfa_offset 16
+ 513 0004 00AF     		add	r7, sp, #0
+ 514              		.cfi_def_cfa_register 7
+ 515 0006 0346     		mov	r3, r0
+ 516 0008 FB71     		strb	r3, [r7, #7]
+ 686:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         CY_SET_REG8(PWM_PERISTALTISK_STATUS_MASK_PTR, interruptMode);
+ 517              		.loc 1 686 0
+ 518 000a 044A     		ldr	r2, .L34
+ 519 000c FB79     		ldrb	r3, [r7, #7]
+ 520 000e 1370     		strb	r3, [r2]
+ 687:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 521              		.loc 1 687 0
+ 522 0010 00BF     		nop
+ 523 0012 0C37     		adds	r7, r7, #12
+ 524              		.cfi_def_cfa_offset 4
+ 525 0014 BD46     		mov	sp, r7
+ 526              		.cfi_def_cfa_register 13
+ 527              		@ sp needed
+ 528 0016 80BC     		pop	{r7}
+ 529              		.cfi_restore 7
+ 530              		.cfi_def_cfa_offset 0
+ 531 0018 7047     		bx	lr
+ 532              	.L35:
+ 533 001a 00BF     		.align	2
+ 534              	.L34:
+ 535 001c 8D640040 		.word	1073767565
+ 536              		.cfi_endproc
+ 537              	.LFE10:
+ 538              		.size	PWM_PERISTALTISK_SetInterruptMode, .-PWM_PERISTALTISK_SetInterruptMode
+ 539              		.section	.text.PWM_PERISTALTISK_ReadStatusRegister,"ax",%progbits
+ 540              		.align	2
+ 541              		.global	PWM_PERISTALTISK_ReadStatusRegister
+ 542              		.thumb
+ 543              		.thumb_func
+ 544              		.type	PWM_PERISTALTISK_ReadStatusRegister, %function
+ 545              	PWM_PERISTALTISK_ReadStatusRegister:
+ 546              	.LFB11:
+ 688:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 689:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 690:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 691:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadStatusRegister
+ 692:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 693:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 694:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 695:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  This function returns the current state of the status register.
+ 696:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 697:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 698:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 699:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 700:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 701:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8 : Current status register value. The status register bits are:
+ 702:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [7:6] : Unused(0)
+ 703:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [5]   : Kill event output
+ 704:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [4]   : FIFO not empty
+ 705:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [3]   : FIFO full
+ 706:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [2]   : Terminal count
+ 707:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [1]   : Compare output 2
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 23
+
+
+ 708:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [0]   : Compare output 1
+ 709:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 710:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 711:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadStatusRegister(void) 
+ 712:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 547              		.loc 1 712 0
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 1, uses_anonymous_args = 0
+ 551              		@ link register save eliminated.
+ 552 0000 80B4     		push	{r7}
+ 553              		.cfi_def_cfa_offset 4
+ 554              		.cfi_offset 7, -4
+ 555 0002 00AF     		add	r7, sp, #0
+ 556              		.cfi_def_cfa_register 7
+ 713:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_STATUS_PTR));
+ 557              		.loc 1 713 0
+ 558 0004 034B     		ldr	r3, .L38
+ 559 0006 1B78     		ldrb	r3, [r3]
+ 560 0008 DBB2     		uxtb	r3, r3
+ 714:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 561              		.loc 1 714 0
+ 562 000a 1846     		mov	r0, r3
+ 563 000c BD46     		mov	sp, r7
+ 564              		.cfi_def_cfa_register 13
+ 565              		@ sp needed
+ 566 000e 80BC     		pop	{r7}
+ 567              		.cfi_restore 7
+ 568              		.cfi_def_cfa_offset 0
+ 569 0010 7047     		bx	lr
+ 570              	.L39:
+ 571 0012 00BF     		.align	2
+ 572              	.L38:
+ 573 0014 6D640040 		.word	1073767533
+ 574              		.cfi_endproc
+ 575              	.LFE11:
+ 576              		.size	PWM_PERISTALTISK_ReadStatusRegister, .-PWM_PERISTALTISK_ReadStatusRegister
+ 577              		.section	.text.PWM_PERISTALTISK_ReadControlRegister,"ax",%progbits
+ 578              		.align	2
+ 579              		.global	PWM_PERISTALTISK_ReadControlRegister
+ 580              		.thumb
+ 581              		.thumb_func
+ 582              		.type	PWM_PERISTALTISK_ReadControlRegister, %function
+ 583              	PWM_PERISTALTISK_ReadControlRegister:
+ 584              	.LFB12:
+ 715:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 716:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* (PWM_PERISTALTISK_UseStatus || PWM_PERISTALTISK_UsingFixedFunction) */
+ 717:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 718:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 719:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_UseControl)
+ 720:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 721:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 722:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 723:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadControlRegister
+ 724:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 725:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 726:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 24
+
+
+ 727:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Returns the current state of the control register. This API is available
+ 728:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  only if the control register is not removed.
+ 729:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 730:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 731:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 732:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 733:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 734:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8 : Current control register value
+ 735:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 736:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 737:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadControlRegister(void) 
+ 738:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 585              		.loc 1 738 0
+ 586              		.cfi_startproc
+ 587              		@ args = 0, pretend = 0, frame = 8
+ 588              		@ frame_needed = 1, uses_anonymous_args = 0
+ 589              		@ link register save eliminated.
+ 590 0000 80B4     		push	{r7}
+ 591              		.cfi_def_cfa_offset 4
+ 592              		.cfi_offset 7, -4
+ 593 0002 83B0     		sub	sp, sp, #12
+ 594              		.cfi_def_cfa_offset 16
+ 595 0004 00AF     		add	r7, sp, #0
+ 596              		.cfi_def_cfa_register 7
+ 739:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         uint8 result;
+ 740:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 741:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         result = CY_GET_REG8(PWM_PERISTALTISK_CONTROL_PTR);
+ 597              		.loc 1 741 0
+ 598 0006 044B     		ldr	r3, .L42
+ 599 0008 1B78     		ldrb	r3, [r3]
+ 600 000a FB71     		strb	r3, [r7, #7]
+ 742:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (result);
+ 601              		.loc 1 742 0
+ 602 000c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 743:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 603              		.loc 1 743 0
+ 604 000e 1846     		mov	r0, r3
+ 605 0010 0C37     		adds	r7, r7, #12
+ 606              		.cfi_def_cfa_offset 4
+ 607 0012 BD46     		mov	sp, r7
+ 608              		.cfi_def_cfa_register 13
+ 609              		@ sp needed
+ 610 0014 80BC     		pop	{r7}
+ 611              		.cfi_restore 7
+ 612              		.cfi_def_cfa_offset 0
+ 613 0016 7047     		bx	lr
+ 614              	.L43:
+ 615              		.align	2
+ 616              	.L42:
+ 617 0018 7D640040 		.word	1073767549
+ 618              		.cfi_endproc
+ 619              	.LFE12:
+ 620              		.size	PWM_PERISTALTISK_ReadControlRegister, .-PWM_PERISTALTISK_ReadControlRegister
+ 621              		.section	.text.PWM_PERISTALTISK_WriteControlRegister,"ax",%progbits
+ 622              		.align	2
+ 623              		.global	PWM_PERISTALTISK_WriteControlRegister
+ 624              		.thumb
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 25
+
+
+ 625              		.thumb_func
+ 626              		.type	PWM_PERISTALTISK_WriteControlRegister, %function
+ 627              	PWM_PERISTALTISK_WriteControlRegister:
+ 628              	.LFB13:
+ 744:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 745:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 746:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 747:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_WriteControlRegister
+ 748:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 749:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 750:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 751:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Sets the bit field of the control register. This API is available only if
+ 752:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  the control register is not removed.
+ 753:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 754:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 755:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8 control: Control register bit field, The status register bits are:
+ 756:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [7]   : PWM Enable
+ 757:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [6]   : Reset
+ 758:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [5:3] : Compare Mode2
+ 759:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  [2:0] : Compare Mode2
+ 760:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 761:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 762:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 763:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 764:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 765:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     void PWM_PERISTALTISK_WriteControlRegister(uint8 control) 
+ 766:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 629              		.loc 1 766 0
+ 630              		.cfi_startproc
+ 631              		@ args = 0, pretend = 0, frame = 8
+ 632              		@ frame_needed = 1, uses_anonymous_args = 0
+ 633              		@ link register save eliminated.
+ 634 0000 80B4     		push	{r7}
+ 635              		.cfi_def_cfa_offset 4
+ 636              		.cfi_offset 7, -4
+ 637 0002 83B0     		sub	sp, sp, #12
+ 638              		.cfi_def_cfa_offset 16
+ 639 0004 00AF     		add	r7, sp, #0
+ 640              		.cfi_def_cfa_register 7
+ 641 0006 0346     		mov	r3, r0
+ 642 0008 FB71     		strb	r3, [r7, #7]
+ 767:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         CY_SET_REG8(PWM_PERISTALTISK_CONTROL_PTR, control);
+ 643              		.loc 1 767 0
+ 644 000a 044A     		ldr	r2, .L45
+ 645 000c FB79     		ldrb	r3, [r7, #7]
+ 646 000e 1370     		strb	r3, [r2]
+ 768:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 647              		.loc 1 768 0
+ 648 0010 00BF     		nop
+ 649 0012 0C37     		adds	r7, r7, #12
+ 650              		.cfi_def_cfa_offset 4
+ 651 0014 BD46     		mov	sp, r7
+ 652              		.cfi_def_cfa_register 13
+ 653              		@ sp needed
+ 654 0016 80BC     		pop	{r7}
+ 655              		.cfi_restore 7
+ 656              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 26
+
+
+ 657 0018 7047     		bx	lr
+ 658              	.L46:
+ 659 001a 00BF     		.align	2
+ 660              	.L45:
+ 661 001c 7D640040 		.word	1073767549
+ 662              		.cfi_endproc
+ 663              	.LFE13:
+ 664              		.size	PWM_PERISTALTISK_WriteControlRegister, .-PWM_PERISTALTISK_WriteControlRegister
+ 665              		.section	.text.PWM_PERISTALTISK_ReadCapture,"ax",%progbits
+ 666              		.align	2
+ 667              		.global	PWM_PERISTALTISK_ReadCapture
+ 668              		.thumb
+ 669              		.thumb_func
+ 670              		.type	PWM_PERISTALTISK_ReadCapture, %function
+ 671              	PWM_PERISTALTISK_ReadCapture:
+ 672              	.LFB14:
+ 769:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 770:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* (PWM_PERISTALTISK_UseControl) */
+ 771:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 772:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 773:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (!PWM_PERISTALTISK_UsingFixedFunction)
+ 774:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 775:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 776:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 777:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadCapture
+ 778:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 779:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 780:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 781:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Reads the capture value from the capture FIFO.
+ 782:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 783:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 784:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 785:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 786:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 787:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8/uint16: The current capture value
+ 788:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 789:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 790:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadCapture(void) 
+ 791:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 673              		.loc 1 791 0
+ 674              		.cfi_startproc
+ 675              		@ args = 0, pretend = 0, frame = 0
+ 676              		@ frame_needed = 1, uses_anonymous_args = 0
+ 677              		@ link register save eliminated.
+ 678 0000 80B4     		push	{r7}
+ 679              		.cfi_def_cfa_offset 4
+ 680              		.cfi_offset 7, -4
+ 681 0002 00AF     		add	r7, sp, #0
+ 682              		.cfi_def_cfa_register 7
+ 792:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_CAPTURE_LSB_PTR));
+ 683              		.loc 1 792 0
+ 684 0004 034B     		ldr	r3, .L49
+ 685 0006 1B78     		ldrb	r3, [r3]
+ 686 0008 DBB2     		uxtb	r3, r3
+ 793:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 687              		.loc 1 793 0
+ 688 000a 1846     		mov	r0, r3
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 27
+
+
+ 689 000c BD46     		mov	sp, r7
+ 690              		.cfi_def_cfa_register 13
+ 691              		@ sp needed
+ 692 000e 80BC     		pop	{r7}
+ 693              		.cfi_restore 7
+ 694              		.cfi_def_cfa_offset 0
+ 695 0010 7047     		bx	lr
+ 696              	.L50:
+ 697 0012 00BF     		.align	2
+ 698              	.L49:
+ 699 0014 5D640040 		.word	1073767517
+ 700              		.cfi_endproc
+ 701              	.LFE14:
+ 702              		.size	PWM_PERISTALTISK_ReadCapture, .-PWM_PERISTALTISK_ReadCapture
+ 703              		.section	.text.PWM_PERISTALTISK_ReadCompare1,"ax",%progbits
+ 704              		.align	2
+ 705              		.global	PWM_PERISTALTISK_ReadCompare1
+ 706              		.thumb
+ 707              		.thumb_func
+ 708              		.type	PWM_PERISTALTISK_ReadCompare1, %function
+ 709              	PWM_PERISTALTISK_ReadCompare1:
+ 710              	.LFB15:
+ 794:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 795:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* (!PWM_PERISTALTISK_UsingFixedFunction) */
+ 796:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 797:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 798:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #if (PWM_PERISTALTISK_UseOneCompareMode)
+ 799:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 800:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 801:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 802:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadCompare
+ 803:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 804:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 805:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 806:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Reads the compare value for the compare output when the PWM Mode parameter is
+ 807:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  set to Dither mode, Center Aligned mode, or One Output mode.
+ 808:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 809:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 810:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 811:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 812:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 813:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8/uint16: Current compare value
+ 814:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 815:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 816:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadCompare(void) 
+ 817:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 818:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 819:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
+ 820:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #else
+ 821:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****             return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
+ 822:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 823:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 824:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 825:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #else
+ 826:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 827:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 828:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 28
+
+
+ 829:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadCompare1
+ 830:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 831:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 832:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 833:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Reads the compare value for the compare1 output.
+ 834:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 835:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 836:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 837:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 838:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 839:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8/uint16: Current compare value.
+ 840:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 841:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 842:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadCompare1(void) 
+ 843:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 711              		.loc 1 843 0
+ 712              		.cfi_startproc
+ 713              		@ args = 0, pretend = 0, frame = 0
+ 714              		@ frame_needed = 1, uses_anonymous_args = 0
+ 715              		@ link register save eliminated.
+ 716 0000 80B4     		push	{r7}
+ 717              		.cfi_def_cfa_offset 4
+ 718              		.cfi_offset 7, -4
+ 719 0002 00AF     		add	r7, sp, #0
+ 720              		.cfi_def_cfa_register 7
+ 844:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE1_LSB_PTR));
+ 721              		.loc 1 844 0
+ 722 0004 034B     		ldr	r3, .L53
+ 723 0006 1B78     		ldrb	r3, [r3]
+ 724 0008 DBB2     		uxtb	r3, r3
+ 845:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 725              		.loc 1 845 0
+ 726 000a 1846     		mov	r0, r3
+ 727 000c BD46     		mov	sp, r7
+ 728              		.cfi_def_cfa_register 13
+ 729              		@ sp needed
+ 730 000e 80BC     		pop	{r7}
+ 731              		.cfi_restore 7
+ 732              		.cfi_def_cfa_offset 0
+ 733 0010 7047     		bx	lr
+ 734              	.L54:
+ 735 0012 00BF     		.align	2
+ 736              	.L53:
+ 737 0014 2D640040 		.word	1073767469
+ 738              		.cfi_endproc
+ 739              	.LFE15:
+ 740              		.size	PWM_PERISTALTISK_ReadCompare1, .-PWM_PERISTALTISK_ReadCompare1
+ 741              		.section	.text.PWM_PERISTALTISK_ReadCompare2,"ax",%progbits
+ 742              		.align	2
+ 743              		.global	PWM_PERISTALTISK_ReadCompare2
+ 744              		.thumb
+ 745              		.thumb_func
+ 746              		.type	PWM_PERISTALTISK_ReadCompare2, %function
+ 747              	PWM_PERISTALTISK_ReadCompare2:
+ 748              	.LFB16:
+ 846:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 847:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 29
+
+
+ 848:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     /*******************************************************************************
+ 849:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Function Name: PWM_PERISTALTISK_ReadCompare2
+ 850:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     ********************************************************************************
+ 851:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 852:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Summary:
+ 853:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  Reads the compare value for the compare2 output.
+ 854:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 855:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Parameters:
+ 856:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  None
+ 857:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 858:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     * Return:
+ 859:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *  uint8/uint16: Current compare value.
+ 860:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *
+ 861:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     *******************************************************************************/
+ 862:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     uint8 PWM_PERISTALTISK_ReadCompare2(void) 
+ 863:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     {
+ 749              		.loc 1 863 0
+ 750              		.cfi_startproc
+ 751              		@ args = 0, pretend = 0, frame = 0
+ 752              		@ frame_needed = 1, uses_anonymous_args = 0
+ 753              		@ link register save eliminated.
+ 754 0000 80B4     		push	{r7}
+ 755              		.cfi_def_cfa_offset 4
+ 756              		.cfi_offset 7, -4
+ 757 0002 00AF     		add	r7, sp, #0
+ 758              		.cfi_def_cfa_register 7
+ 864:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_COMPARE2_LSB_PTR));
+ 759              		.loc 1 864 0
+ 760 0004 034B     		ldr	r3, .L57
+ 761 0006 1B78     		ldrb	r3, [r3]
+ 762 0008 DBB2     		uxtb	r3, r3
+ 865:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     }
+ 763              		.loc 1 865 0
+ 764 000a 1846     		mov	r0, r3
+ 765 000c BD46     		mov	sp, r7
+ 766              		.cfi_def_cfa_register 13
+ 767              		@ sp needed
+ 768 000e 80BC     		pop	{r7}
+ 769              		.cfi_restore 7
+ 770              		.cfi_def_cfa_offset 0
+ 771 0010 7047     		bx	lr
+ 772              	.L58:
+ 773 0012 00BF     		.align	2
+ 774              	.L57:
+ 775 0014 3D640040 		.word	1073767485
+ 776              		.cfi_endproc
+ 777              	.LFE16:
+ 778              		.size	PWM_PERISTALTISK_ReadCompare2, .-PWM_PERISTALTISK_ReadCompare2
+ 779              		.section	.text.PWM_PERISTALTISK_ReadPeriod,"ax",%progbits
+ 780              		.align	2
+ 781              		.global	PWM_PERISTALTISK_ReadPeriod
+ 782              		.thumb
+ 783              		.thumb_func
+ 784              		.type	PWM_PERISTALTISK_ReadPeriod, %function
+ 785              	PWM_PERISTALTISK_ReadPeriod:
+ 786              	.LFB17:
+ 866:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 30
+
+
+ 867:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** #endif /* (PWM_PERISTALTISK_UseOneCompareMode) */
+ 868:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 869:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** 
+ 870:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** /*******************************************************************************
+ 871:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Function Name: PWM_PERISTALTISK_ReadPeriod
+ 872:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** ********************************************************************************
+ 873:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 874:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Summary:
+ 875:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  Reads the period value used by the PWM hardware.
+ 876:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 877:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Parameters:
+ 878:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  None
+ 879:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 880:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** * Return:
+ 881:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *  uint8/16: Period value
+ 882:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *
+ 883:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** *******************************************************************************/
+ 884:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** uint8 PWM_PERISTALTISK_ReadPeriod(void) 
+ 885:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** {
+ 787              		.loc 1 885 0
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 0
+ 790              		@ frame_needed = 1, uses_anonymous_args = 0
+ 791              		@ link register save eliminated.
+ 792 0000 80B4     		push	{r7}
+ 793              		.cfi_def_cfa_offset 4
+ 794              		.cfi_offset 7, -4
+ 795 0002 00AF     		add	r7, sp, #0
+ 796              		.cfi_def_cfa_register 7
+ 886:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #if(PWM_PERISTALTISK_UsingFixedFunction)
+ 887:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return ((uint8)CY_GET_REG16(PWM_PERISTALTISK_PERIOD_LSB_PTR));
+ 888:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #else
+ 889:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****         return (CY_GET_REG8(PWM_PERISTALTISK_PERIOD_LSB_PTR));
+ 797              		.loc 1 889 0
+ 798 0004 034B     		ldr	r3, .L61
+ 799 0006 1B78     		ldrb	r3, [r3]
+ 800 0008 DBB2     		uxtb	r3, r3
+ 890:Generated_Source\PSoC5/PWM_PERISTALTISK.c ****     #endif /* (PWM_PERISTALTISK_UsingFixedFunction) */
+ 891:Generated_Source\PSoC5/PWM_PERISTALTISK.c **** }
+ 801              		.loc 1 891 0
+ 802 000a 1846     		mov	r0, r3
+ 803 000c BD46     		mov	sp, r7
+ 804              		.cfi_def_cfa_register 13
+ 805              		@ sp needed
+ 806 000e 80BC     		pop	{r7}
+ 807              		.cfi_restore 7
+ 808              		.cfi_def_cfa_offset 0
+ 809 0010 7047     		bx	lr
+ 810              	.L62:
+ 811 0012 00BF     		.align	2
+ 812              	.L61:
+ 813 0014 4D640040 		.word	1073767501
+ 814              		.cfi_endproc
+ 815              	.LFE17:
+ 816              		.size	PWM_PERISTALTISK_ReadPeriod, .-PWM_PERISTALTISK_ReadPeriod
+ 817              		.text
+ 818              	.Letext0:
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 31
+
+
+ 819              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 820              		.section	.debug_info,"",%progbits
+ 821              	.Ldebug_info0:
+ 822 0000 C2020000 		.4byte	0x2c2
+ 823 0004 0400     		.2byte	0x4
+ 824 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 825 000a 04       		.byte	0x4
+ 826 000b 01       		.uleb128 0x1
+ 827 000c 3D000000 		.4byte	.LASF41
+ 828 0010 0C       		.byte	0xc
+ 829 0011 92030000 		.4byte	.LASF42
+ 830 0015 83010000 		.4byte	.LASF43
+ 831 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 832 001d 00000000 		.4byte	0
+ 833 0021 00000000 		.4byte	.Ldebug_line0
+ 834 0025 02       		.uleb128 0x2
+ 835 0026 01       		.byte	0x1
+ 836 0027 06       		.byte	0x6
+ 837 0028 0A040000 		.4byte	.LASF0
+ 838 002c 02       		.uleb128 0x2
+ 839 002d 01       		.byte	0x1
+ 840 002e 08       		.byte	0x8
+ 841 002f E4010000 		.4byte	.LASF1
+ 842 0033 02       		.uleb128 0x2
+ 843 0034 02       		.byte	0x2
+ 844 0035 05       		.byte	0x5
+ 845 0036 BC030000 		.4byte	.LASF2
+ 846 003a 02       		.uleb128 0x2
+ 847 003b 02       		.byte	0x2
+ 848 003c 07       		.byte	0x7
+ 849 003d 20010000 		.4byte	.LASF3
+ 850 0041 02       		.uleb128 0x2
+ 851 0042 04       		.byte	0x4
+ 852 0043 05       		.byte	0x5
+ 853 0044 CC030000 		.4byte	.LASF4
+ 854 0048 02       		.uleb128 0x2
+ 855 0049 04       		.byte	0x4
+ 856 004a 07       		.byte	0x7
+ 857 004b 14020000 		.4byte	.LASF5
+ 858 004f 02       		.uleb128 0x2
+ 859 0050 08       		.byte	0x8
+ 860 0051 05       		.byte	0x5
+ 861 0052 76030000 		.4byte	.LASF6
+ 862 0056 02       		.uleb128 0x2
+ 863 0057 08       		.byte	0x8
+ 864 0058 07       		.byte	0x7
+ 865 0059 BB020000 		.4byte	.LASF7
+ 866 005d 03       		.uleb128 0x3
+ 867 005e 04       		.byte	0x4
+ 868 005f 05       		.byte	0x5
+ 869 0060 696E7400 		.ascii	"int\000"
+ 870 0064 02       		.uleb128 0x2
+ 871 0065 04       		.byte	0x4
+ 872 0066 07       		.byte	0x7
+ 873 0067 91020000 		.4byte	.LASF8
+ 874 006b 04       		.uleb128 0x4
+ 875 006c C6030000 		.4byte	.LASF12
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 32
+
+
+ 876 0070 02       		.byte	0x2
+ 877 0071 E401     		.2byte	0x1e4
+ 878 0073 2C000000 		.4byte	0x2c
+ 879 0077 02       		.uleb128 0x2
+ 880 0078 04       		.byte	0x4
+ 881 0079 04       		.byte	0x4
+ 882 007a 75010000 		.4byte	.LASF9
+ 883 007e 02       		.uleb128 0x2
+ 884 007f 08       		.byte	0x8
+ 885 0080 04       		.byte	0x4
+ 886 0081 8A020000 		.4byte	.LASF10
+ 887 0085 02       		.uleb128 0x2
+ 888 0086 01       		.byte	0x1
+ 889 0087 08       		.byte	0x8
+ 890 0088 D5030000 		.4byte	.LASF11
+ 891 008c 04       		.uleb128 0x4
+ 892 008d 0F020000 		.4byte	.LASF13
+ 893 0091 02       		.byte	0x2
+ 894 0092 8E02     		.2byte	0x28e
+ 895 0094 98000000 		.4byte	0x98
+ 896 0098 05       		.uleb128 0x5
+ 897 0099 6B000000 		.4byte	0x6b
+ 898 009d 02       		.uleb128 0x2
+ 899 009e 08       		.byte	0x8
+ 900 009f 04       		.byte	0x4
+ 901 00a0 DA030000 		.4byte	.LASF14
+ 902 00a4 02       		.uleb128 0x2
+ 903 00a5 04       		.byte	0x4
+ 904 00a6 07       		.byte	0x7
+ 905 00a7 37030000 		.4byte	.LASF15
+ 906 00ab 06       		.uleb128 0x6
+ 907 00ac 1E040000 		.4byte	.LASF18
+ 908 00b0 01       		.byte	0x1
+ 909 00b1 37       		.byte	0x37
+ 910 00b2 00000000 		.4byte	.LFB0
+ 911 00b6 24000000 		.4byte	.LFE0-.LFB0
+ 912 00ba 01       		.uleb128 0x1
+ 913 00bb 9C       		.byte	0x9c
+ 914 00bc 07       		.uleb128 0x7
+ 915 00bd CB000000 		.4byte	.LASF21
+ 916 00c1 01       		.byte	0x1
+ 917 00c2 54       		.byte	0x54
+ 918 00c3 00000000 		.4byte	.LFB1
+ 919 00c7 80000000 		.4byte	.LFE1-.LFB1
+ 920 00cb 01       		.uleb128 0x1
+ 921 00cc 9C       		.byte	0x9c
+ 922 00cd EE000000 		.4byte	0xee
+ 923 00d1 08       		.uleb128 0x8
+ 924 00d2 32030000 		.4byte	.LASF16
+ 925 00d6 01       		.byte	0x1
+ 926 00d7 57       		.byte	0x57
+ 927 00d8 6B000000 		.4byte	0x6b
+ 928 00dc 02       		.uleb128 0x2
+ 929 00dd 91       		.byte	0x91
+ 930 00de 77       		.sleb128 -9
+ 931 00df 08       		.uleb128 0x8
+ 932 00e0 40030000 		.4byte	.LASF17
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 33
+
+
+ 933 00e4 01       		.byte	0x1
+ 934 00e5 5D       		.byte	0x5d
+ 935 00e6 6B000000 		.4byte	0x6b
+ 936 00ea 02       		.uleb128 0x2
+ 937 00eb 91       		.byte	0x91
+ 938 00ec 76       		.sleb128 -10
+ 939 00ed 00       		.byte	0
+ 940 00ee 09       		.uleb128 0x9
+ 941 00ef 00000000 		.4byte	.LASF19
+ 942 00f3 01       		.byte	0x1
+ 943 00f4 C7       		.byte	0xc7
+ 944 00f5 00000000 		.4byte	.LFB2
+ 945 00f9 20000000 		.4byte	.LFE2-.LFB2
+ 946 00fd 01       		.uleb128 0x1
+ 947 00fe 9C       		.byte	0x9c
+ 948 00ff 09       		.uleb128 0x9
+ 949 0100 60030000 		.4byte	.LASF20
+ 950 0104 01       		.byte	0x1
+ 951 0105 E9       		.byte	0xe9
+ 952 0106 00000000 		.4byte	.LFB3
+ 953 010a 20000000 		.4byte	.LFE3-.LFB3
+ 954 010e 01       		.uleb128 0x1
+ 955 010f 9C       		.byte	0x9c
+ 956 0110 0A       		.uleb128 0xa
+ 957 0111 C6010000 		.4byte	.LASF22
+ 958 0115 01       		.byte	0x1
+ 959 0116 9301     		.2byte	0x193
+ 960 0118 00000000 		.4byte	.LFB4
+ 961 011c 20000000 		.4byte	.LFE4-.LFB4
+ 962 0120 01       		.uleb128 0x1
+ 963 0121 9C       		.byte	0x9c
+ 964 0122 36010000 		.4byte	0x136
+ 965 0126 0B       		.uleb128 0xb
+ 966 0127 7B010000 		.4byte	.LASF25
+ 967 012b 01       		.byte	0x1
+ 968 012c 9301     		.2byte	0x193
+ 969 012e 6B000000 		.4byte	0x6b
+ 970 0132 02       		.uleb128 0x2
+ 971 0133 91       		.byte	0x91
+ 972 0134 77       		.sleb128 -9
+ 973 0135 00       		.byte	0
+ 974 0136 0C       		.uleb128 0xc
+ 975 0137 D2020000 		.4byte	.LASF32
+ 976 013b 01       		.byte	0x1
+ 977 013c A901     		.2byte	0x1a9
+ 978 013e 6B000000 		.4byte	0x6b
+ 979 0142 00000000 		.4byte	.LFB5
+ 980 0146 20000000 		.4byte	.LFE5-.LFB5
+ 981 014a 01       		.uleb128 0x1
+ 982 014b 9C       		.byte	0x9c
+ 983 014c 0D       		.uleb128 0xd
+ 984 014d 6F020000 		.4byte	.LASF23
+ 985 0151 01       		.byte	0x1
+ 986 0152 C501     		.2byte	0x1c5
+ 987 0154 00000000 		.4byte	.LFB6
+ 988 0158 1C000000 		.4byte	.LFE6-.LFB6
+ 989 015c 01       		.uleb128 0x1
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 34
+
+
+ 990 015d 9C       		.byte	0x9c
+ 991 015e 0A       		.uleb128 0xa
+ 992 015f 9E020000 		.4byte	.LASF24
+ 993 0163 01       		.byte	0x1
+ 994 0164 E201     		.2byte	0x1e2
+ 995 0166 00000000 		.4byte	.LFB7
+ 996 016a 20000000 		.4byte	.LFE7-.LFB7
+ 997 016e 01       		.uleb128 0x1
+ 998 016f 9C       		.byte	0x9c
+ 999 0170 84010000 		.4byte	0x184
+ 1000 0174 0B       		.uleb128 0xb
+ 1001 0175 19010000 		.4byte	.LASF26
+ 1002 0179 01       		.byte	0x1
+ 1003 017a E201     		.2byte	0x1e2
+ 1004 017c 6B000000 		.4byte	0x6b
+ 1005 0180 02       		.uleb128 0x2
+ 1006 0181 91       		.byte	0x91
+ 1007 0182 77       		.sleb128 -9
+ 1008 0183 00       		.byte	0
+ 1009 0184 0A       		.uleb128 0xa
+ 1010 0185 FA000000 		.4byte	.LASF27
+ 1011 0189 01       		.byte	0x1
+ 1012 018a 2B02     		.2byte	0x22b
+ 1013 018c 00000000 		.4byte	.LFB8
+ 1014 0190 20000000 		.4byte	.LFE8-.LFB8
+ 1015 0194 01       		.uleb128 0x1
+ 1016 0195 9C       		.byte	0x9c
+ 1017 0196 AA010000 		.4byte	0x1aa
+ 1018 019a 0B       		.uleb128 0xb
+ 1019 019b 16040000 		.4byte	.LASF28
+ 1020 019f 01       		.byte	0x1
+ 1021 01a0 2B02     		.2byte	0x22b
+ 1022 01a2 6B000000 		.4byte	0x6b
+ 1023 01a6 02       		.uleb128 0x2
+ 1024 01a7 91       		.byte	0x91
+ 1025 01a8 77       		.sleb128 -9
+ 1026 01a9 00       		.byte	0
+ 1027 01aa 0A       		.uleb128 0xa
+ 1028 01ab 26020000 		.4byte	.LASF29
+ 1029 01af 01       		.byte	0x1
+ 1030 01b0 4802     		.2byte	0x248
+ 1031 01b2 00000000 		.4byte	.LFB9
+ 1032 01b6 20000000 		.4byte	.LFE9-.LFB9
+ 1033 01ba 01       		.uleb128 0x1
+ 1034 01bb 9C       		.byte	0x9c
+ 1035 01bc D0010000 		.4byte	0x1d0
+ 1036 01c0 0B       		.uleb128 0xb
+ 1037 01c1 16040000 		.4byte	.LASF28
+ 1038 01c5 01       		.byte	0x1
+ 1039 01c6 4802     		.2byte	0x248
+ 1040 01c8 6B000000 		.4byte	0x6b
+ 1041 01cc 02       		.uleb128 0x2
+ 1042 01cd 91       		.byte	0x91
+ 1043 01ce 77       		.sleb128 -9
+ 1044 01cf 00       		.byte	0
+ 1045 01d0 0A       		.uleb128 0xa
+ 1046 01d1 4D020000 		.4byte	.LASF30
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 35
+
+
+ 1047 01d5 01       		.byte	0x1
+ 1048 01d6 AC02     		.2byte	0x2ac
+ 1049 01d8 00000000 		.4byte	.LFB10
+ 1050 01dc 20000000 		.4byte	.LFE10-.LFB10
+ 1051 01e0 01       		.uleb128 0x1
+ 1052 01e1 9C       		.byte	0x9c
+ 1053 01e2 F6010000 		.4byte	0x1f6
+ 1054 01e6 0B       		.uleb128 0xb
+ 1055 01e7 84030000 		.4byte	.LASF31
+ 1056 01eb 01       		.byte	0x1
+ 1057 01ec AC02     		.2byte	0x2ac
+ 1058 01ee 6B000000 		.4byte	0x6b
+ 1059 01f2 02       		.uleb128 0x2
+ 1060 01f3 91       		.byte	0x91
+ 1061 01f4 77       		.sleb128 -9
+ 1062 01f5 00       		.byte	0
+ 1063 01f6 0C       		.uleb128 0xc
+ 1064 01f7 E6030000 		.4byte	.LASF33
+ 1065 01fb 01       		.byte	0x1
+ 1066 01fc C702     		.2byte	0x2c7
+ 1067 01fe 6B000000 		.4byte	0x6b
+ 1068 0202 00000000 		.4byte	.LFB11
+ 1069 0206 18000000 		.4byte	.LFE11-.LFB11
+ 1070 020a 01       		.uleb128 0x1
+ 1071 020b 9C       		.byte	0x9c
+ 1072 020c 0E       		.uleb128 0xe
+ 1073 020d 18000000 		.4byte	.LASF44
+ 1074 0211 01       		.byte	0x1
+ 1075 0212 E102     		.2byte	0x2e1
+ 1076 0214 6B000000 		.4byte	0x6b
+ 1077 0218 00000000 		.4byte	.LFB12
+ 1078 021c 1C000000 		.4byte	.LFE12-.LFB12
+ 1079 0220 01       		.uleb128 0x1
+ 1080 0221 9C       		.byte	0x9c
+ 1081 0222 36020000 		.4byte	0x236
+ 1082 0226 0F       		.uleb128 0xf
+ 1083 0227 EF020000 		.4byte	.LASF34
+ 1084 022b 01       		.byte	0x1
+ 1085 022c E302     		.2byte	0x2e3
+ 1086 022e 6B000000 		.4byte	0x6b
+ 1087 0232 02       		.uleb128 0x2
+ 1088 0233 91       		.byte	0x91
+ 1089 0234 77       		.sleb128 -9
+ 1090 0235 00       		.byte	0
+ 1091 0236 0A       		.uleb128 0xa
+ 1092 0237 4F010000 		.4byte	.LASF35
+ 1093 023b 01       		.byte	0x1
+ 1094 023c FD02     		.2byte	0x2fd
+ 1095 023e 00000000 		.4byte	.LFB13
+ 1096 0242 20000000 		.4byte	.LFE13-.LFB13
+ 1097 0246 01       		.uleb128 0x1
+ 1098 0247 9C       		.byte	0x9c
+ 1099 0248 5C020000 		.4byte	0x25c
+ 1100 024c 0B       		.uleb128 0xb
+ 1101 024d 45020000 		.4byte	.LASF36
+ 1102 0251 01       		.byte	0x1
+ 1103 0252 FD02     		.2byte	0x2fd
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 36
+
+
+ 1104 0254 6B000000 		.4byte	0x6b
+ 1105 0258 02       		.uleb128 0x2
+ 1106 0259 91       		.byte	0x91
+ 1107 025a 77       		.sleb128 -9
+ 1108 025b 00       		.byte	0
+ 1109 025c 0C       		.uleb128 0xc
+ 1110 025d F2010000 		.4byte	.LASF37
+ 1111 0261 01       		.byte	0x1
+ 1112 0262 1603     		.2byte	0x316
+ 1113 0264 6B000000 		.4byte	0x6b
+ 1114 0268 00000000 		.4byte	.LFB14
+ 1115 026c 18000000 		.4byte	.LFE14-.LFB14
+ 1116 0270 01       		.uleb128 0x1
+ 1117 0271 9C       		.byte	0x9c
+ 1118 0272 0C       		.uleb128 0xc
+ 1119 0273 F6020000 		.4byte	.LASF38
+ 1120 0277 01       		.byte	0x1
+ 1121 0278 4A03     		.2byte	0x34a
+ 1122 027a 6B000000 		.4byte	0x6b
+ 1123 027e 00000000 		.4byte	.LFB15
+ 1124 0282 18000000 		.4byte	.LFE15-.LFB15
+ 1125 0286 01       		.uleb128 0x1
+ 1126 0287 9C       		.byte	0x9c
+ 1127 0288 0C       		.uleb128 0xc
+ 1128 0289 14030000 		.4byte	.LASF39
+ 1129 028d 01       		.byte	0x1
+ 1130 028e 5E03     		.2byte	0x35e
+ 1131 0290 6B000000 		.4byte	0x6b
+ 1132 0294 00000000 		.4byte	.LFB16
+ 1133 0298 18000000 		.4byte	.LFE16-.LFB16
+ 1134 029c 01       		.uleb128 0x1
+ 1135 029d 9C       		.byte	0x9c
+ 1136 029e 0C       		.uleb128 0xc
+ 1137 029f 33010000 		.4byte	.LASF40
+ 1138 02a3 01       		.byte	0x1
+ 1139 02a4 7403     		.2byte	0x374
+ 1140 02a6 6B000000 		.4byte	0x6b
+ 1141 02aa 00000000 		.4byte	.LFB17
+ 1142 02ae 18000000 		.4byte	.LFE17-.LFB17
+ 1143 02b2 01       		.uleb128 0x1
+ 1144 02b3 9C       		.byte	0x9c
+ 1145 02b4 10       		.uleb128 0x10
+ 1146 02b5 E1000000 		.4byte	.LASF45
+ 1147 02b9 01       		.byte	0x1
+ 1148 02ba 20       		.byte	0x20
+ 1149 02bb 6B000000 		.4byte	0x6b
+ 1150 02bf 05       		.uleb128 0x5
+ 1151 02c0 03       		.byte	0x3
+ 1152 02c1 00000000 		.4byte	PWM_PERISTALTISK_initVar
+ 1153 02c5 00       		.byte	0
+ 1154              		.section	.debug_abbrev,"",%progbits
+ 1155              	.Ldebug_abbrev0:
+ 1156 0000 01       		.uleb128 0x1
+ 1157 0001 11       		.uleb128 0x11
+ 1158 0002 01       		.byte	0x1
+ 1159 0003 25       		.uleb128 0x25
+ 1160 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 37
+
+
+ 1161 0005 13       		.uleb128 0x13
+ 1162 0006 0B       		.uleb128 0xb
+ 1163 0007 03       		.uleb128 0x3
+ 1164 0008 0E       		.uleb128 0xe
+ 1165 0009 1B       		.uleb128 0x1b
+ 1166 000a 0E       		.uleb128 0xe
+ 1167 000b 55       		.uleb128 0x55
+ 1168 000c 17       		.uleb128 0x17
+ 1169 000d 11       		.uleb128 0x11
+ 1170 000e 01       		.uleb128 0x1
+ 1171 000f 10       		.uleb128 0x10
+ 1172 0010 17       		.uleb128 0x17
+ 1173 0011 00       		.byte	0
+ 1174 0012 00       		.byte	0
+ 1175 0013 02       		.uleb128 0x2
+ 1176 0014 24       		.uleb128 0x24
+ 1177 0015 00       		.byte	0
+ 1178 0016 0B       		.uleb128 0xb
+ 1179 0017 0B       		.uleb128 0xb
+ 1180 0018 3E       		.uleb128 0x3e
+ 1181 0019 0B       		.uleb128 0xb
+ 1182 001a 03       		.uleb128 0x3
+ 1183 001b 0E       		.uleb128 0xe
+ 1184 001c 00       		.byte	0
+ 1185 001d 00       		.byte	0
+ 1186 001e 03       		.uleb128 0x3
+ 1187 001f 24       		.uleb128 0x24
+ 1188 0020 00       		.byte	0
+ 1189 0021 0B       		.uleb128 0xb
+ 1190 0022 0B       		.uleb128 0xb
+ 1191 0023 3E       		.uleb128 0x3e
+ 1192 0024 0B       		.uleb128 0xb
+ 1193 0025 03       		.uleb128 0x3
+ 1194 0026 08       		.uleb128 0x8
+ 1195 0027 00       		.byte	0
+ 1196 0028 00       		.byte	0
+ 1197 0029 04       		.uleb128 0x4
+ 1198 002a 16       		.uleb128 0x16
+ 1199 002b 00       		.byte	0
+ 1200 002c 03       		.uleb128 0x3
+ 1201 002d 0E       		.uleb128 0xe
+ 1202 002e 3A       		.uleb128 0x3a
+ 1203 002f 0B       		.uleb128 0xb
+ 1204 0030 3B       		.uleb128 0x3b
+ 1205 0031 05       		.uleb128 0x5
+ 1206 0032 49       		.uleb128 0x49
+ 1207 0033 13       		.uleb128 0x13
+ 1208 0034 00       		.byte	0
+ 1209 0035 00       		.byte	0
+ 1210 0036 05       		.uleb128 0x5
+ 1211 0037 35       		.uleb128 0x35
+ 1212 0038 00       		.byte	0
+ 1213 0039 49       		.uleb128 0x49
+ 1214 003a 13       		.uleb128 0x13
+ 1215 003b 00       		.byte	0
+ 1216 003c 00       		.byte	0
+ 1217 003d 06       		.uleb128 0x6
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 38
+
+
+ 1218 003e 2E       		.uleb128 0x2e
+ 1219 003f 00       		.byte	0
+ 1220 0040 3F       		.uleb128 0x3f
+ 1221 0041 19       		.uleb128 0x19
+ 1222 0042 03       		.uleb128 0x3
+ 1223 0043 0E       		.uleb128 0xe
+ 1224 0044 3A       		.uleb128 0x3a
+ 1225 0045 0B       		.uleb128 0xb
+ 1226 0046 3B       		.uleb128 0x3b
+ 1227 0047 0B       		.uleb128 0xb
+ 1228 0048 27       		.uleb128 0x27
+ 1229 0049 19       		.uleb128 0x19
+ 1230 004a 11       		.uleb128 0x11
+ 1231 004b 01       		.uleb128 0x1
+ 1232 004c 12       		.uleb128 0x12
+ 1233 004d 06       		.uleb128 0x6
+ 1234 004e 40       		.uleb128 0x40
+ 1235 004f 18       		.uleb128 0x18
+ 1236 0050 9642     		.uleb128 0x2116
+ 1237 0052 19       		.uleb128 0x19
+ 1238 0053 00       		.byte	0
+ 1239 0054 00       		.byte	0
+ 1240 0055 07       		.uleb128 0x7
+ 1241 0056 2E       		.uleb128 0x2e
+ 1242 0057 01       		.byte	0x1
+ 1243 0058 3F       		.uleb128 0x3f
+ 1244 0059 19       		.uleb128 0x19
+ 1245 005a 03       		.uleb128 0x3
+ 1246 005b 0E       		.uleb128 0xe
+ 1247 005c 3A       		.uleb128 0x3a
+ 1248 005d 0B       		.uleb128 0xb
+ 1249 005e 3B       		.uleb128 0x3b
+ 1250 005f 0B       		.uleb128 0xb
+ 1251 0060 27       		.uleb128 0x27
+ 1252 0061 19       		.uleb128 0x19
+ 1253 0062 11       		.uleb128 0x11
+ 1254 0063 01       		.uleb128 0x1
+ 1255 0064 12       		.uleb128 0x12
+ 1256 0065 06       		.uleb128 0x6
+ 1257 0066 40       		.uleb128 0x40
+ 1258 0067 18       		.uleb128 0x18
+ 1259 0068 9642     		.uleb128 0x2116
+ 1260 006a 19       		.uleb128 0x19
+ 1261 006b 01       		.uleb128 0x1
+ 1262 006c 13       		.uleb128 0x13
+ 1263 006d 00       		.byte	0
+ 1264 006e 00       		.byte	0
+ 1265 006f 08       		.uleb128 0x8
+ 1266 0070 34       		.uleb128 0x34
+ 1267 0071 00       		.byte	0
+ 1268 0072 03       		.uleb128 0x3
+ 1269 0073 0E       		.uleb128 0xe
+ 1270 0074 3A       		.uleb128 0x3a
+ 1271 0075 0B       		.uleb128 0xb
+ 1272 0076 3B       		.uleb128 0x3b
+ 1273 0077 0B       		.uleb128 0xb
+ 1274 0078 49       		.uleb128 0x49
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 39
+
+
+ 1275 0079 13       		.uleb128 0x13
+ 1276 007a 02       		.uleb128 0x2
+ 1277 007b 18       		.uleb128 0x18
+ 1278 007c 00       		.byte	0
+ 1279 007d 00       		.byte	0
+ 1280 007e 09       		.uleb128 0x9
+ 1281 007f 2E       		.uleb128 0x2e
+ 1282 0080 00       		.byte	0
+ 1283 0081 3F       		.uleb128 0x3f
+ 1284 0082 19       		.uleb128 0x19
+ 1285 0083 03       		.uleb128 0x3
+ 1286 0084 0E       		.uleb128 0xe
+ 1287 0085 3A       		.uleb128 0x3a
+ 1288 0086 0B       		.uleb128 0xb
+ 1289 0087 3B       		.uleb128 0x3b
+ 1290 0088 0B       		.uleb128 0xb
+ 1291 0089 27       		.uleb128 0x27
+ 1292 008a 19       		.uleb128 0x19
+ 1293 008b 11       		.uleb128 0x11
+ 1294 008c 01       		.uleb128 0x1
+ 1295 008d 12       		.uleb128 0x12
+ 1296 008e 06       		.uleb128 0x6
+ 1297 008f 40       		.uleb128 0x40
+ 1298 0090 18       		.uleb128 0x18
+ 1299 0091 9742     		.uleb128 0x2117
+ 1300 0093 19       		.uleb128 0x19
+ 1301 0094 00       		.byte	0
+ 1302 0095 00       		.byte	0
+ 1303 0096 0A       		.uleb128 0xa
+ 1304 0097 2E       		.uleb128 0x2e
+ 1305 0098 01       		.byte	0x1
+ 1306 0099 3F       		.uleb128 0x3f
+ 1307 009a 19       		.uleb128 0x19
+ 1308 009b 03       		.uleb128 0x3
+ 1309 009c 0E       		.uleb128 0xe
+ 1310 009d 3A       		.uleb128 0x3a
+ 1311 009e 0B       		.uleb128 0xb
+ 1312 009f 3B       		.uleb128 0x3b
+ 1313 00a0 05       		.uleb128 0x5
+ 1314 00a1 27       		.uleb128 0x27
+ 1315 00a2 19       		.uleb128 0x19
+ 1316 00a3 11       		.uleb128 0x11
+ 1317 00a4 01       		.uleb128 0x1
+ 1318 00a5 12       		.uleb128 0x12
+ 1319 00a6 06       		.uleb128 0x6
+ 1320 00a7 40       		.uleb128 0x40
+ 1321 00a8 18       		.uleb128 0x18
+ 1322 00a9 9742     		.uleb128 0x2117
+ 1323 00ab 19       		.uleb128 0x19
+ 1324 00ac 01       		.uleb128 0x1
+ 1325 00ad 13       		.uleb128 0x13
+ 1326 00ae 00       		.byte	0
+ 1327 00af 00       		.byte	0
+ 1328 00b0 0B       		.uleb128 0xb
+ 1329 00b1 05       		.uleb128 0x5
+ 1330 00b2 00       		.byte	0
+ 1331 00b3 03       		.uleb128 0x3
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 40
+
+
+ 1332 00b4 0E       		.uleb128 0xe
+ 1333 00b5 3A       		.uleb128 0x3a
+ 1334 00b6 0B       		.uleb128 0xb
+ 1335 00b7 3B       		.uleb128 0x3b
+ 1336 00b8 05       		.uleb128 0x5
+ 1337 00b9 49       		.uleb128 0x49
+ 1338 00ba 13       		.uleb128 0x13
+ 1339 00bb 02       		.uleb128 0x2
+ 1340 00bc 18       		.uleb128 0x18
+ 1341 00bd 00       		.byte	0
+ 1342 00be 00       		.byte	0
+ 1343 00bf 0C       		.uleb128 0xc
+ 1344 00c0 2E       		.uleb128 0x2e
+ 1345 00c1 00       		.byte	0
+ 1346 00c2 3F       		.uleb128 0x3f
+ 1347 00c3 19       		.uleb128 0x19
+ 1348 00c4 03       		.uleb128 0x3
+ 1349 00c5 0E       		.uleb128 0xe
+ 1350 00c6 3A       		.uleb128 0x3a
+ 1351 00c7 0B       		.uleb128 0xb
+ 1352 00c8 3B       		.uleb128 0x3b
+ 1353 00c9 05       		.uleb128 0x5
+ 1354 00ca 27       		.uleb128 0x27
+ 1355 00cb 19       		.uleb128 0x19
+ 1356 00cc 49       		.uleb128 0x49
+ 1357 00cd 13       		.uleb128 0x13
+ 1358 00ce 11       		.uleb128 0x11
+ 1359 00cf 01       		.uleb128 0x1
+ 1360 00d0 12       		.uleb128 0x12
+ 1361 00d1 06       		.uleb128 0x6
+ 1362 00d2 40       		.uleb128 0x40
+ 1363 00d3 18       		.uleb128 0x18
+ 1364 00d4 9742     		.uleb128 0x2117
+ 1365 00d6 19       		.uleb128 0x19
+ 1366 00d7 00       		.byte	0
+ 1367 00d8 00       		.byte	0
+ 1368 00d9 0D       		.uleb128 0xd
+ 1369 00da 2E       		.uleb128 0x2e
+ 1370 00db 00       		.byte	0
+ 1371 00dc 3F       		.uleb128 0x3f
+ 1372 00dd 19       		.uleb128 0x19
+ 1373 00de 03       		.uleb128 0x3
+ 1374 00df 0E       		.uleb128 0xe
+ 1375 00e0 3A       		.uleb128 0x3a
+ 1376 00e1 0B       		.uleb128 0xb
+ 1377 00e2 3B       		.uleb128 0x3b
+ 1378 00e3 05       		.uleb128 0x5
+ 1379 00e4 27       		.uleb128 0x27
+ 1380 00e5 19       		.uleb128 0x19
+ 1381 00e6 11       		.uleb128 0x11
+ 1382 00e7 01       		.uleb128 0x1
+ 1383 00e8 12       		.uleb128 0x12
+ 1384 00e9 06       		.uleb128 0x6
+ 1385 00ea 40       		.uleb128 0x40
+ 1386 00eb 18       		.uleb128 0x18
+ 1387 00ec 9642     		.uleb128 0x2116
+ 1388 00ee 19       		.uleb128 0x19
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 41
+
+
+ 1389 00ef 00       		.byte	0
+ 1390 00f0 00       		.byte	0
+ 1391 00f1 0E       		.uleb128 0xe
+ 1392 00f2 2E       		.uleb128 0x2e
+ 1393 00f3 01       		.byte	0x1
+ 1394 00f4 3F       		.uleb128 0x3f
+ 1395 00f5 19       		.uleb128 0x19
+ 1396 00f6 03       		.uleb128 0x3
+ 1397 00f7 0E       		.uleb128 0xe
+ 1398 00f8 3A       		.uleb128 0x3a
+ 1399 00f9 0B       		.uleb128 0xb
+ 1400 00fa 3B       		.uleb128 0x3b
+ 1401 00fb 05       		.uleb128 0x5
+ 1402 00fc 27       		.uleb128 0x27
+ 1403 00fd 19       		.uleb128 0x19
+ 1404 00fe 49       		.uleb128 0x49
+ 1405 00ff 13       		.uleb128 0x13
+ 1406 0100 11       		.uleb128 0x11
+ 1407 0101 01       		.uleb128 0x1
+ 1408 0102 12       		.uleb128 0x12
+ 1409 0103 06       		.uleb128 0x6
+ 1410 0104 40       		.uleb128 0x40
+ 1411 0105 18       		.uleb128 0x18
+ 1412 0106 9742     		.uleb128 0x2117
+ 1413 0108 19       		.uleb128 0x19
+ 1414 0109 01       		.uleb128 0x1
+ 1415 010a 13       		.uleb128 0x13
+ 1416 010b 00       		.byte	0
+ 1417 010c 00       		.byte	0
+ 1418 010d 0F       		.uleb128 0xf
+ 1419 010e 34       		.uleb128 0x34
+ 1420 010f 00       		.byte	0
+ 1421 0110 03       		.uleb128 0x3
+ 1422 0111 0E       		.uleb128 0xe
+ 1423 0112 3A       		.uleb128 0x3a
+ 1424 0113 0B       		.uleb128 0xb
+ 1425 0114 3B       		.uleb128 0x3b
+ 1426 0115 05       		.uleb128 0x5
+ 1427 0116 49       		.uleb128 0x49
+ 1428 0117 13       		.uleb128 0x13
+ 1429 0118 02       		.uleb128 0x2
+ 1430 0119 18       		.uleb128 0x18
+ 1431 011a 00       		.byte	0
+ 1432 011b 00       		.byte	0
+ 1433 011c 10       		.uleb128 0x10
+ 1434 011d 34       		.uleb128 0x34
+ 1435 011e 00       		.byte	0
+ 1436 011f 03       		.uleb128 0x3
+ 1437 0120 0E       		.uleb128 0xe
+ 1438 0121 3A       		.uleb128 0x3a
+ 1439 0122 0B       		.uleb128 0xb
+ 1440 0123 3B       		.uleb128 0x3b
+ 1441 0124 0B       		.uleb128 0xb
+ 1442 0125 49       		.uleb128 0x49
+ 1443 0126 13       		.uleb128 0x13
+ 1444 0127 3F       		.uleb128 0x3f
+ 1445 0128 19       		.uleb128 0x19
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 42
+
+
+ 1446 0129 02       		.uleb128 0x2
+ 1447 012a 18       		.uleb128 0x18
+ 1448 012b 00       		.byte	0
+ 1449 012c 00       		.byte	0
+ 1450 012d 00       		.byte	0
+ 1451              		.section	.debug_aranges,"",%progbits
+ 1452 0000 A4000000 		.4byte	0xa4
+ 1453 0004 0200     		.2byte	0x2
+ 1454 0006 00000000 		.4byte	.Ldebug_info0
+ 1455 000a 04       		.byte	0x4
+ 1456 000b 00       		.byte	0
+ 1457 000c 0000     		.2byte	0
+ 1458 000e 0000     		.2byte	0
+ 1459 0010 00000000 		.4byte	.LFB0
+ 1460 0014 24000000 		.4byte	.LFE0-.LFB0
+ 1461 0018 00000000 		.4byte	.LFB1
+ 1462 001c 80000000 		.4byte	.LFE1-.LFB1
+ 1463 0020 00000000 		.4byte	.LFB2
+ 1464 0024 20000000 		.4byte	.LFE2-.LFB2
+ 1465 0028 00000000 		.4byte	.LFB3
+ 1466 002c 20000000 		.4byte	.LFE3-.LFB3
+ 1467 0030 00000000 		.4byte	.LFB4
+ 1468 0034 20000000 		.4byte	.LFE4-.LFB4
+ 1469 0038 00000000 		.4byte	.LFB5
+ 1470 003c 20000000 		.4byte	.LFE5-.LFB5
+ 1471 0040 00000000 		.4byte	.LFB6
+ 1472 0044 1C000000 		.4byte	.LFE6-.LFB6
+ 1473 0048 00000000 		.4byte	.LFB7
+ 1474 004c 20000000 		.4byte	.LFE7-.LFB7
+ 1475 0050 00000000 		.4byte	.LFB8
+ 1476 0054 20000000 		.4byte	.LFE8-.LFB8
+ 1477 0058 00000000 		.4byte	.LFB9
+ 1478 005c 20000000 		.4byte	.LFE9-.LFB9
+ 1479 0060 00000000 		.4byte	.LFB10
+ 1480 0064 20000000 		.4byte	.LFE10-.LFB10
+ 1481 0068 00000000 		.4byte	.LFB11
+ 1482 006c 18000000 		.4byte	.LFE11-.LFB11
+ 1483 0070 00000000 		.4byte	.LFB12
+ 1484 0074 1C000000 		.4byte	.LFE12-.LFB12
+ 1485 0078 00000000 		.4byte	.LFB13
+ 1486 007c 20000000 		.4byte	.LFE13-.LFB13
+ 1487 0080 00000000 		.4byte	.LFB14
+ 1488 0084 18000000 		.4byte	.LFE14-.LFB14
+ 1489 0088 00000000 		.4byte	.LFB15
+ 1490 008c 18000000 		.4byte	.LFE15-.LFB15
+ 1491 0090 00000000 		.4byte	.LFB16
+ 1492 0094 18000000 		.4byte	.LFE16-.LFB16
+ 1493 0098 00000000 		.4byte	.LFB17
+ 1494 009c 18000000 		.4byte	.LFE17-.LFB17
+ 1495 00a0 00000000 		.4byte	0
+ 1496 00a4 00000000 		.4byte	0
+ 1497              		.section	.debug_ranges,"",%progbits
+ 1498              	.Ldebug_ranges0:
+ 1499 0000 00000000 		.4byte	.LFB0
+ 1500 0004 24000000 		.4byte	.LFE0
+ 1501 0008 00000000 		.4byte	.LFB1
+ 1502 000c 80000000 		.4byte	.LFE1
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 43
+
+
+ 1503 0010 00000000 		.4byte	.LFB2
+ 1504 0014 20000000 		.4byte	.LFE2
+ 1505 0018 00000000 		.4byte	.LFB3
+ 1506 001c 20000000 		.4byte	.LFE3
+ 1507 0020 00000000 		.4byte	.LFB4
+ 1508 0024 20000000 		.4byte	.LFE4
+ 1509 0028 00000000 		.4byte	.LFB5
+ 1510 002c 20000000 		.4byte	.LFE5
+ 1511 0030 00000000 		.4byte	.LFB6
+ 1512 0034 1C000000 		.4byte	.LFE6
+ 1513 0038 00000000 		.4byte	.LFB7
+ 1514 003c 20000000 		.4byte	.LFE7
+ 1515 0040 00000000 		.4byte	.LFB8
+ 1516 0044 20000000 		.4byte	.LFE8
+ 1517 0048 00000000 		.4byte	.LFB9
+ 1518 004c 20000000 		.4byte	.LFE9
+ 1519 0050 00000000 		.4byte	.LFB10
+ 1520 0054 20000000 		.4byte	.LFE10
+ 1521 0058 00000000 		.4byte	.LFB11
+ 1522 005c 18000000 		.4byte	.LFE11
+ 1523 0060 00000000 		.4byte	.LFB12
+ 1524 0064 1C000000 		.4byte	.LFE12
+ 1525 0068 00000000 		.4byte	.LFB13
+ 1526 006c 20000000 		.4byte	.LFE13
+ 1527 0070 00000000 		.4byte	.LFB14
+ 1528 0074 18000000 		.4byte	.LFE14
+ 1529 0078 00000000 		.4byte	.LFB15
+ 1530 007c 18000000 		.4byte	.LFE15
+ 1531 0080 00000000 		.4byte	.LFB16
+ 1532 0084 18000000 		.4byte	.LFE16
+ 1533 0088 00000000 		.4byte	.LFB17
+ 1534 008c 18000000 		.4byte	.LFE17
+ 1535 0090 00000000 		.4byte	0
+ 1536 0094 00000000 		.4byte	0
+ 1537              		.section	.debug_line,"",%progbits
+ 1538              	.Ldebug_line0:
+ 1539 0000 B0010000 		.section	.debug_str,"MS",%progbits,1
+ 1539      02004D00 
+ 1539      00000201 
+ 1539      FB0E0D00 
+ 1539      01010101 
+ 1540              	.LASF19:
+ 1541 0000 50574D5F 		.ascii	"PWM_PERISTALTISK_Enable\000"
+ 1541      50455249 
+ 1541      5354414C 
+ 1541      5449534B 
+ 1541      5F456E61 
+ 1542              	.LASF44:
+ 1543 0018 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadControlRegister\000"
+ 1543      50455249 
+ 1543      5354414C 
+ 1543      5449534B 
+ 1543      5F526561 
+ 1544              	.LASF41:
+ 1545 003d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1545      43313120 
+ 1545      352E342E 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 44
+
+
+ 1545      31203230 
+ 1545      31363036 
+ 1546 0070 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1546      20726576 
+ 1546      6973696F 
+ 1546      6E203233 
+ 1546      37373135 
+ 1547 00a3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1547      66756E63 
+ 1547      74696F6E 
+ 1547      2D736563 
+ 1547      74696F6E 
+ 1548              	.LASF21:
+ 1549 00cb 50574D5F 		.ascii	"PWM_PERISTALTISK_Init\000"
+ 1549      50455249 
+ 1549      5354414C 
+ 1549      5449534B 
+ 1549      5F496E69 
+ 1550              	.LASF45:
+ 1551 00e1 50574D5F 		.ascii	"PWM_PERISTALTISK_initVar\000"
+ 1551      50455249 
+ 1551      5354414C 
+ 1551      5449534B 
+ 1551      5F696E69 
+ 1552              	.LASF27:
+ 1553 00fa 50574D5F 		.ascii	"PWM_PERISTALTISK_WriteCompare1\000"
+ 1553      50455249 
+ 1553      5354414C 
+ 1553      5449534B 
+ 1553      5F577269 
+ 1554              	.LASF26:
+ 1555 0119 70657269 		.ascii	"period\000"
+ 1555      6F6400
+ 1556              	.LASF3:
+ 1557 0120 73686F72 		.ascii	"short unsigned int\000"
+ 1557      7420756E 
+ 1557      7369676E 
+ 1557      65642069 
+ 1557      6E7400
+ 1558              	.LASF40:
+ 1559 0133 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadPeriod\000"
+ 1559      50455249 
+ 1559      5354414C 
+ 1559      5449534B 
+ 1559      5F526561 
+ 1560              	.LASF35:
+ 1561 014f 50574D5F 		.ascii	"PWM_PERISTALTISK_WriteControlRegister\000"
+ 1561      50455249 
+ 1561      5354414C 
+ 1561      5449534B 
+ 1561      5F577269 
+ 1562              	.LASF9:
+ 1563 0175 666C6F61 		.ascii	"float\000"
+ 1563      7400
+ 1564              	.LASF25:
+ 1565 017b 636F756E 		.ascii	"counter\000"
+ 1565      74657200 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 45
+
+
+ 1566              	.LASF43:
+ 1567 0183 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
+ 1567      6F64655C 
+ 1567      50345C50 
+ 1567      345F5665 
+ 1567      72746963 
+ 1568 01b2 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
+ 1568      616E7465 
+ 1568      4D6F6475 
+ 1568      6C2E6379 
+ 1568      64736E00 
+ 1569              	.LASF22:
+ 1570 01c6 50574D5F 		.ascii	"PWM_PERISTALTISK_WriteCounter\000"
+ 1570      50455249 
+ 1570      5354414C 
+ 1570      5449534B 
+ 1570      5F577269 
+ 1571              	.LASF1:
+ 1572 01e4 756E7369 		.ascii	"unsigned char\000"
+ 1572      676E6564 
+ 1572      20636861 
+ 1572      7200
+ 1573              	.LASF37:
+ 1574 01f2 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadCapture\000"
+ 1574      50455249 
+ 1574      5354414C 
+ 1574      5449534B 
+ 1574      5F526561 
+ 1575              	.LASF13:
+ 1576 020f 72656738 		.ascii	"reg8\000"
+ 1576      00
+ 1577              	.LASF5:
+ 1578 0214 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1578      20756E73 
+ 1578      69676E65 
+ 1578      6420696E 
+ 1578      7400
+ 1579              	.LASF29:
+ 1580 0226 50574D5F 		.ascii	"PWM_PERISTALTISK_WriteCompare2\000"
+ 1580      50455249 
+ 1580      5354414C 
+ 1580      5449534B 
+ 1580      5F577269 
+ 1581              	.LASF36:
+ 1582 0245 636F6E74 		.ascii	"control\000"
+ 1582      726F6C00 
+ 1583              	.LASF30:
+ 1584 024d 50574D5F 		.ascii	"PWM_PERISTALTISK_SetInterruptMode\000"
+ 1584      50455249 
+ 1584      5354414C 
+ 1584      5449534B 
+ 1584      5F536574 
+ 1585              	.LASF23:
+ 1586 026f 50574D5F 		.ascii	"PWM_PERISTALTISK_ClearFIFO\000"
+ 1586      50455249 
+ 1586      5354414C 
+ 1586      5449534B 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 46
+
+
+ 1586      5F436C65 
+ 1587              	.LASF10:
+ 1588 028a 646F7562 		.ascii	"double\000"
+ 1588      6C6500
+ 1589              	.LASF8:
+ 1590 0291 756E7369 		.ascii	"unsigned int\000"
+ 1590      676E6564 
+ 1590      20696E74 
+ 1590      00
+ 1591              	.LASF24:
+ 1592 029e 50574D5F 		.ascii	"PWM_PERISTALTISK_WritePeriod\000"
+ 1592      50455249 
+ 1592      5354414C 
+ 1592      5449534B 
+ 1592      5F577269 
+ 1593              	.LASF7:
+ 1594 02bb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1594      206C6F6E 
+ 1594      6720756E 
+ 1594      7369676E 
+ 1594      65642069 
+ 1595              	.LASF32:
+ 1596 02d2 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadCounter\000"
+ 1596      50455249 
+ 1596      5354414C 
+ 1596      5449534B 
+ 1596      5F526561 
+ 1597              	.LASF34:
+ 1598 02ef 72657375 		.ascii	"result\000"
+ 1598      6C7400
+ 1599              	.LASF38:
+ 1600 02f6 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadCompare1\000"
+ 1600      50455249 
+ 1600      5354414C 
+ 1600      5449534B 
+ 1600      5F526561 
+ 1601              	.LASF39:
+ 1602 0314 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadCompare2\000"
+ 1602      50455249 
+ 1602      5354414C 
+ 1602      5449534B 
+ 1602      5F526561 
+ 1603              	.LASF16:
+ 1604 0332 6374726C 		.ascii	"ctrl\000"
+ 1604      00
+ 1605              	.LASF15:
+ 1606 0337 73697A65 		.ascii	"sizetype\000"
+ 1606      74797065 
+ 1606      00
+ 1607              	.LASF17:
+ 1608 0340 50574D5F 		.ascii	"PWM_PERISTALTISK_interruptState\000"
+ 1608      50455249 
+ 1608      5354414C 
+ 1608      5449534B 
+ 1608      5F696E74 
+ 1609              	.LASF20:
+ 1610 0360 50574D5F 		.ascii	"PWM_PERISTALTISK_Stop\000"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 47
+
+
+ 1610      50455249 
+ 1610      5354414C 
+ 1610      5449534B 
+ 1610      5F53746F 
+ 1611              	.LASF6:
+ 1612 0376 6C6F6E67 		.ascii	"long long int\000"
+ 1612      206C6F6E 
+ 1612      6720696E 
+ 1612      7400
+ 1613              	.LASF31:
+ 1614 0384 696E7465 		.ascii	"interruptMode\000"
+ 1614      72727570 
+ 1614      744D6F64 
+ 1614      6500
+ 1615              	.LASF42:
+ 1616 0392 47656E65 		.ascii	"Generated_Source\\PSoC5\\PWM_PERISTALTISK.c\000"
+ 1616      72617465 
+ 1616      645F536F 
+ 1616      75726365 
+ 1616      5C50536F 
+ 1617              	.LASF2:
+ 1618 03bc 73686F72 		.ascii	"short int\000"
+ 1618      7420696E 
+ 1618      7400
+ 1619              	.LASF12:
+ 1620 03c6 75696E74 		.ascii	"uint8\000"
+ 1620      3800
+ 1621              	.LASF4:
+ 1622 03cc 6C6F6E67 		.ascii	"long int\000"
+ 1622      20696E74 
+ 1622      00
+ 1623              	.LASF11:
+ 1624 03d5 63686172 		.ascii	"char\000"
+ 1624      00
+ 1625              	.LASF14:
+ 1626 03da 6C6F6E67 		.ascii	"long double\000"
+ 1626      20646F75 
+ 1626      626C6500 
+ 1627              	.LASF33:
+ 1628 03e6 50574D5F 		.ascii	"PWM_PERISTALTISK_ReadStatusRegister\000"
+ 1628      50455249 
+ 1628      5354414C 
+ 1628      5449534B 
+ 1628      5F526561 
+ 1629              	.LASF0:
+ 1630 040a 7369676E 		.ascii	"signed char\000"
+ 1630      65642063 
+ 1630      68617200 
+ 1631              	.LASF28:
+ 1632 0416 636F6D70 		.ascii	"compare\000"
+ 1632      61726500 
+ 1633              	.LASF18:
+ 1634 041e 50574D5F 		.ascii	"PWM_PERISTALTISK_Start\000"
+ 1634      50455249 
+ 1634      5354414C 
+ 1634      5449534B 
+ 1634      5F537461 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\cckTuTG2.s 			page 48
+
+
+ 1635              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
