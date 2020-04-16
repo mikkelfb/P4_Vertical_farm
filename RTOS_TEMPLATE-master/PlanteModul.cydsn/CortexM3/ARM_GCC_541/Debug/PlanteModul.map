@@ -1225,7 +1225,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x7fc5
+.debug_info     0x00000000     0x7fe5
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x2e8 .\CortexM3\ARM_GCC_541\Debug\list.o
  .debug_info    0x000002e8     0x10e2 .\CortexM3\ARM_GCC_541\Debug\queue.o
@@ -1242,9 +1242,9 @@ END GROUP
  .debug_info    0x0000602a      0xe51 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
  .debug_info    0x00006e7b      0x57a .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
  .debug_info    0x000073f5      0x2c6 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK.o)
- .debug_info    0x000076bb       0x91 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
- .debug_info    0x0000774c      0x3b9 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
- .debug_info    0x00007b05      0x4c0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
+ .debug_info    0x000076bb       0xb1 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
+ .debug_info    0x0000776c      0x3b9 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+ .debug_info    0x00007b25      0x4c0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x19df
  *(.debug_abbrev)
@@ -1311,42 +1311,42 @@ END GROUP
  .debug_frame   0x00003670       0x28 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .debug_frame   0x00003698       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
 
-.debug_str      0x00000000     0x3256
+.debug_str      0x00000000     0x3276
  *(.debug_str)
- .debug_str     0x00000000      0x2a0 .\CortexM3\ARM_GCC_541\Debug\list.o
-                                0x2fc (size before relaxing)
- .debug_str     0x000002a0      0x52a .\CortexM3\ARM_GCC_541\Debug\queue.o
-                                0x91d (size before relaxing)
- .debug_str     0x000007ca      0x346 .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
-                                0x762 (size before relaxing)
- .debug_str     0x00000b10      0x967 .\CortexM3\ARM_GCC_541\Debug\tasks.o
-                                0xf0c (size before relaxing)
- .debug_str     0x00001477       0x10 .\CortexM3\ARM_GCC_541\Debug\timers.o
-                                0x1ab (size before relaxing)
- .debug_str     0x00001487      0x11c .\CortexM3\ARM_GCC_541\Debug\port.o
-                                0x360 (size before relaxing)
- .debug_str     0x000015a3      0x130 .\CortexM3\ARM_GCC_541\Debug\heap_2.o
-                                0x364 (size before relaxing)
- .debug_str     0x000016d3       0x9c .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x2fc (size before relaxing)
- .debug_str     0x0000176f      0x75c .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
-                                0xdae (size before relaxing)
- .debug_str     0x00001ecb      0x16e .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x304 (size before relaxing)
- .debug_str     0x00002039       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
-                                0x1e5 (size before relaxing)
- .debug_str     0x000020ae      0x109 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                                0x2d8 (size before relaxing)
- .debug_str     0x000021b7      0x7fd .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
-                                0x9eb (size before relaxing)
- .debug_str     0x000029b4      0x371 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
-                                0x544 (size before relaxing)
- .debug_str     0x00002d25      0x2ae .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK.o)
-                                0x435 (size before relaxing)
- .debug_str     0x00002fd3      0x156 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
-                                0x308 (size before relaxing)
- .debug_str     0x00003129      0x12d .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
-                                0x302 (size before relaxing)
+ .debug_str     0x00000000      0x2c0 .\CortexM3\ARM_GCC_541\Debug\list.o
+                                0x31c (size before relaxing)
+ .debug_str     0x000002c0      0x52a .\CortexM3\ARM_GCC_541\Debug\queue.o
+                                0x93d (size before relaxing)
+ .debug_str     0x000007ea      0x346 .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
+                                0x782 (size before relaxing)
+ .debug_str     0x00000b30      0x967 .\CortexM3\ARM_GCC_541\Debug\tasks.o
+                                0xf2c (size before relaxing)
+ .debug_str     0x00001497       0x10 .\CortexM3\ARM_GCC_541\Debug\timers.o
+                                0x1cb (size before relaxing)
+ .debug_str     0x000014a7      0x11c .\CortexM3\ARM_GCC_541\Debug\port.o
+                                0x380 (size before relaxing)
+ .debug_str     0x000015c3      0x130 .\CortexM3\ARM_GCC_541\Debug\heap_2.o
+                                0x384 (size before relaxing)
+ .debug_str     0x000016f3       0x9c .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x31c (size before relaxing)
+ .debug_str     0x0000178f      0x75c .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
+                                0xdce (size before relaxing)
+ .debug_str     0x00001eeb      0x16e .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x324 (size before relaxing)
+ .debug_str     0x00002059       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x205 (size before relaxing)
+ .debug_str     0x000020ce      0x109 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x2f8 (size before relaxing)
+ .debug_str     0x000021d7      0x7fd .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
+                                0xa0b (size before relaxing)
+ .debug_str     0x000029d4      0x371 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
+                                0x564 (size before relaxing)
+ .debug_str     0x00002d45      0x2ae .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK.o)
+                                0x455 (size before relaxing)
+ .debug_str     0x00002ff3      0x156 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+                                0x328 (size before relaxing)
+ .debug_str     0x00003149      0x12d .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
+                                0x322 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
@@ -1471,4 +1471,4 @@ END GROUP
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\Code\P4\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\CortexM3\ARM_GCC_541\Debug\PlanteModul.elf elf32-littlearm)
+OUTPUT(C:\Users\mabo\Documents\AAU_EIT\4-semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\CortexM3\ARM_GCC_541\Debug\PlanteModul.elf elf32-littlearm)

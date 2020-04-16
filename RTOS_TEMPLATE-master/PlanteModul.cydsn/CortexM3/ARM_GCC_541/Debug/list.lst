@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
   28:Source/list.c **** 
   29:Source/list.c **** #include <stdlib.h>
   30:Source/list.c **** #include "FreeRTOS.h"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 2
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 2
 
 
   31:Source/list.c **** #include "list.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
   53:Source/list.c **** 	pxList->uxNumberOfItems = ( UBaseType_t ) 0U;
   60              		.loc 1 53 0
   61 002e 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 3
 
 
   62 0030 0022     		movs	r2, #0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
   67:Source/list.c **** 	/* Write known values into the list item if
   68:Source/list.c **** 	configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES is set to 1. */
   69:Source/list.c **** 	listSET_FIRST_LIST_ITEM_INTEGRITY_CHECK_VALUE( pxItem );
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 4
 
 
   70:Source/list.c **** 	listSET_SECOND_LIST_ITEM_INTEGRITY_CHECK_VALUE( pxItem );
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
   84:Source/list.c **** 	/* Insert a new list item into pxList, but rather than sort the list,
   85:Source/list.c **** 	makes the new list item the last item to be removed by a call to
   86:Source/list.c **** 	listGET_OWNER_OF_NEXT_ENTRY(). */
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 5
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 5
 
 
   87:Source/list.c **** 	pxNewListItem->pxNext = pxIndex;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  183              	.LFE70:
  184              		.size	vListInsertEnd, .-vListInsertEnd
  185 0046 00BF     		.section	.text.vListInsert,"ax",%progbits
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 6
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 6
 
 
  186              		.align	2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  216 0018 7B68     		ldr	r3, [r7, #4]
  217 001a 1B69     		ldr	r3, [r3, #16]
  218 001c FB60     		str	r3, [r7, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 7
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 7
 
 
  219 001e 0CE0     		b	.L6
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  240              		.loc 1 157 0 is_stmt 1
  241 003a FB68     		ldr	r3, [r7, #12]
  242 003c 5A68     		ldr	r2, [r3, #4]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 8
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 8
 
 
  243 003e 3B68     		ldr	r3, [r7]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  287              		.type	uxListRemove, %function
  288              	uxListRemove:
  289              	.LFB72:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 9
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 9
 
 
  168:Source/list.c **** /*-----------------------------------------------------------*/
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  326 002c 7B68     		ldr	r3, [r7, #4]
  327 002e 9A68     		ldr	r2, [r3, #8]
  328 0030 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 10
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 10
 
 
  329 0032 5A60     		str	r2, [r3, #4]
@@ -598,17 +598,17 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  372 000c 0B000000 		.4byte	.LASF44
  373 0010 0C       		.byte	0xc
  374 0011 D1000000 		.4byte	.LASF45
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 11
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 11
 
 
- 375 0015 09010000 		.4byte	.LASF46
+ 375 0015 36020000 		.4byte	.LASF46
  376 0019 00000000 		.4byte	.Ldebug_ranges0+0
  377 001d 00000000 		.4byte	0
  378 0021 00000000 		.4byte	.Ldebug_line0
  379 0025 02       		.uleb128 0x2
  380 0026 04       		.byte	0x4
  381 0027 07       		.byte	0x7
- 382 0028 E6010000 		.4byte	.LASF0
+ 382 0028 A3010000 		.4byte	.LASF0
  383 002c 03       		.uleb128 0x3
  384 002d 04       		.byte	0x4
  385 002e 05       		.byte	0x5
@@ -616,27 +616,27 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  387 0033 02       		.uleb128 0x2
  388 0034 08       		.byte	0x8
  389 0035 05       		.byte	0x5
- 390 0036 66020000 		.4byte	.LASF1
+ 390 0036 23020000 		.4byte	.LASF1
  391 003a 02       		.uleb128 0x2
  392 003b 08       		.byte	0x8
  393 003c 04       		.byte	0x4
- 394 003d 3E020000 		.4byte	.LASF2
+ 394 003d FB010000 		.4byte	.LASF2
  395 0041 02       		.uleb128 0x2
  396 0042 01       		.byte	0x1
  397 0043 06       		.byte	0x6
- 398 0044 BD020000 		.4byte	.LASF3
+ 398 0044 DD020000 		.4byte	.LASF3
  399 0048 02       		.uleb128 0x2
  400 0049 01       		.byte	0x1
  401 004a 08       		.byte	0x8
- 402 004b 4C010000 		.4byte	.LASF4
+ 402 004b 09010000 		.4byte	.LASF4
  403 004f 02       		.uleb128 0x2
  404 0050 02       		.byte	0x2
  405 0051 05       		.byte	0x5
- 406 0052 84020000 		.4byte	.LASF5
+ 406 0052 A4020000 		.4byte	.LASF5
  407 0056 02       		.uleb128 0x2
  408 0057 02       		.byte	0x2
  409 0058 07       		.byte	0x7
- 410 0059 53020000 		.4byte	.LASF6
+ 410 0059 10020000 		.4byte	.LASF6
  411 005d 04       		.uleb128 0x4
  412 005e BC000000 		.4byte	.LASF8
  413 0062 02       		.byte	0x2
@@ -645,40 +645,40 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  416 0068 02       		.uleb128 0x2
  417 0069 04       		.byte	0x4
  418 006a 05       		.byte	0x5
- 419 006b 97020000 		.4byte	.LASF7
+ 419 006b B7020000 		.4byte	.LASF7
  420 006f 04       		.uleb128 0x4
- 421 0070 B5010000 		.4byte	.LASF9
+ 421 0070 72010000 		.4byte	.LASF9
  422 0074 02       		.byte	0x2
  423 0075 41       		.byte	0x41
  424 0076 7A000000 		.4byte	0x7a
  425 007a 02       		.uleb128 0x2
  426 007b 04       		.byte	0x4
  427 007c 07       		.byte	0x7
- 428 007d 5A010000 		.4byte	.LASF10
+ 428 007d 17010000 		.4byte	.LASF10
  429 0081 02       		.uleb128 0x2
  430 0082 08       		.byte	0x8
  431 0083 07       		.byte	0x7
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 12
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 12
 
 
- 432 0084 15020000 		.4byte	.LASF11
+ 432 0084 D2010000 		.4byte	.LASF11
  433 0088 02       		.uleb128 0x2
  434 0089 04       		.byte	0x4
  435 008a 07       		.byte	0x7
- 436 008b 4A020000 		.4byte	.LASF12
+ 436 008b 07020000 		.4byte	.LASF12
  437 008f 05       		.uleb128 0x5
  438 0090 04       		.byte	0x4
  439 0091 02       		.uleb128 0x2
  440 0092 01       		.byte	0x1
  441 0093 08       		.byte	0x8
- 442 0094 74020000 		.4byte	.LASF13
+ 442 0094 31020000 		.4byte	.LASF13
  443 0098 04       		.uleb128 0x4
  444 0099 FB000000 		.4byte	.LASF14
  445 009d 03       		.byte	0x3
  446 009e 2C       		.byte	0x2c
  447 009f 5D000000 		.4byte	0x5d
  448 00a3 04       		.uleb128 0x4
- 449 00a4 8E020000 		.4byte	.LASF15
+ 449 00a4 AE020000 		.4byte	.LASF15
  450 00a8 03       		.byte	0x3
  451 00a9 30       		.byte	0x30
  452 00aa 6F000000 		.4byte	0x6f
@@ -689,9 +689,9 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  457 00b5 02       		.uleb128 0x2
  458 00b6 08       		.byte	0x8
  459 00b7 04       		.byte	0x4
- 460 00b8 AE010000 		.4byte	.LASF17
+ 460 00b8 6B010000 		.4byte	.LASF17
  461 00bc 04       		.uleb128 0x4
- 462 00bd D6020000 		.4byte	.LASF18
+ 462 00bd F6020000 		.4byte	.LASF18
  463 00c1 04       		.byte	0x4
  464 00c2 39       		.byte	0x39
  465 00c3 7A000000 		.4byte	0x7a
@@ -713,16 +713,16 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  481 00e5 C7000000 		.4byte	0xc7
  482 00e9 00       		.byte	0
  483 00ea 07       		.uleb128 0x7
- 484 00eb DF010000 		.4byte	.LASF21
+ 484 00eb 9C010000 		.4byte	.LASF21
  485 00ef 05       		.byte	0x5
  486 00f0 90       		.byte	0x90
  487 00f1 1B010000 		.4byte	0x11b
  488 00f5 04       		.byte	0x4
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 13
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 13
 
 
  489 00f6 07       		.uleb128 0x7
- 490 00f7 7B010000 		.4byte	.LASF22
+ 490 00f7 38010000 		.4byte	.LASF22
  491 00fb 05       		.byte	0x5
  492 00fc 91       		.byte	0x91
  493 00fd 1B010000 		.4byte	0x11b
@@ -744,13 +744,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  509 011c 04       		.byte	0x4
  510 011d D2000000 		.4byte	0xd2
  511 0121 06       		.uleb128 0x6
- 512 0122 D0020000 		.4byte	.LASF26
+ 512 0122 F0020000 		.4byte	.LASF26
  513 0126 14       		.byte	0x14
  514 0127 05       		.byte	0x5
  515 0128 A4       		.byte	0xa4
  516 0129 52010000 		.4byte	0x152
  517 012d 07       		.uleb128 0x7
- 518 012e C0010000 		.4byte	.LASF27
+ 518 012e 7D010000 		.4byte	.LASF27
  519 0132 05       		.byte	0x5
  520 0133 A7       		.byte	0xa7
  521 0134 9F010000 		.4byte	0x19f
@@ -772,13 +772,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  537 0153 04       		.byte	0x4
  538 0154 21010000 		.4byte	0x121
  539 0158 04       		.uleb128 0x4
- 540 0159 33020000 		.4byte	.LASF30
+ 540 0159 F0010000 		.4byte	.LASF30
  541 015d 05       		.byte	0x5
  542 015e 96       		.byte	0x96
  543 015f D2000000 		.4byte	0xd2
  544 0163 06       		.uleb128 0x6
- 545 0164 AD020000 		.4byte	.LASF31
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 14
+ 545 0164 CD020000 		.4byte	.LASF31
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 14
 
 
  546 0168 0C       		.byte	0xc
@@ -792,13 +792,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  554 0176 C7000000 		.4byte	0xc7
  555 017a 00       		.byte	0
  556 017b 07       		.uleb128 0x7
- 557 017c DF010000 		.4byte	.LASF21
+ 557 017c 9C010000 		.4byte	.LASF21
  558 0180 05       		.byte	0x5
  559 0181 9C       		.byte	0x9c
  560 0182 1B010000 		.4byte	0x11b
  561 0186 04       		.byte	0x4
  562 0187 07       		.uleb128 0x7
- 563 0188 7B010000 		.4byte	.LASF22
+ 563 0188 38010000 		.4byte	.LASF22
  564 018c 05       		.byte	0x5
  565 018d 9D       		.byte	0x9d
  566 018e 1B010000 		.4byte	0x11b
@@ -815,12 +815,12 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  577 01a5 04       		.byte	0x4
  578 01a6 58010000 		.4byte	0x158
  579 01aa 04       		.uleb128 0x4
- 580 01ab A7010000 		.4byte	.LASF33
+ 580 01ab 64010000 		.4byte	.LASF33
  581 01af 05       		.byte	0x5
  582 01b0 AB       		.byte	0xab
  583 01b1 21010000 		.4byte	0x121
  584 01b5 0A       		.uleb128 0xa
- 585 01b6 F3010000 		.4byte	.LASF34
+ 585 01b6 B0010000 		.4byte	.LASF34
  586 01ba 01       		.byte	0x1
  587 01bb 25       		.byte	0x25
  588 01bc 00000000 		.4byte	.LFB68
@@ -829,7 +829,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  591 01c5 9C       		.byte	0x9c
  592 01c6 D9010000 		.4byte	0x1d9
  593 01ca 0B       		.uleb128 0xb
- 594 01cb C9020000 		.4byte	.LASF36
+ 594 01cb E9020000 		.4byte	.LASF36
  595 01cf 01       		.byte	0x1
  596 01d0 25       		.byte	0x25
  597 01d1 DF010000 		.4byte	0x1df
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  600 01d7 74       		.sleb128 -12
  601 01d8 00       		.byte	0
  602 01d9 08       		.uleb128 0x8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 15
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 15
 
 
  603 01da 04       		.byte	0x4
@@ -846,7 +846,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  605 01df 0C       		.uleb128 0xc
  606 01e0 D9010000 		.4byte	0x1d9
  607 01e4 0A       		.uleb128 0xa
- 608 01e5 93010000 		.4byte	.LASF35
+ 608 01e5 50010000 		.4byte	.LASF35
  609 01e9 01       		.byte	0x1
  610 01ea 3E       		.byte	0x3e
  611 01eb 00000000 		.4byte	.LFB69
@@ -855,7 +855,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  614 01f4 9C       		.byte	0x9c
  615 01f5 08020000 		.4byte	0x208
  616 01f9 0B       		.uleb128 0xb
- 617 01fa 2C020000 		.4byte	.LASF37
+ 617 01fa E9010000 		.4byte	.LASF37
  618 01fe 01       		.byte	0x1
  619 01ff 3E       		.byte	0x3e
  620 0200 08020000 		.4byte	0x208
@@ -866,7 +866,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  625 0208 0C       		.uleb128 0xc
  626 0209 A4010000 		.4byte	0x1a4
  627 020d 0A       		.uleb128 0xa
- 628 020e D0010000 		.4byte	.LASF38
+ 628 020e 8D010000 		.4byte	.LASF38
  629 0212 01       		.byte	0x1
  630 0213 4A       		.byte	0x4a
  631 0214 00000000 		.4byte	.LFB70
@@ -875,7 +875,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  634 021d 9C       		.byte	0x9c
  635 021e 4D020000 		.4byte	0x24d
  636 0222 0B       		.uleb128 0xb
- 637 0223 C9020000 		.4byte	.LASF36
+ 637 0223 E9020000 		.4byte	.LASF36
  638 0227 01       		.byte	0x1
  639 0228 4A       		.byte	0x4a
  640 0229 DF010000 		.4byte	0x1df
@@ -883,7 +883,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  642 022e 91       		.byte	0x91
  643 022f 6C       		.sleb128 -20
  644 0230 0B       		.uleb128 0xb
- 645 0231 E2020000 		.4byte	.LASF39
+ 645 0231 02030000 		.4byte	.LASF39
  646 0235 01       		.byte	0x1
  647 0236 4A       		.byte	0x4a
  648 0237 08020000 		.4byte	0x208
@@ -898,12 +898,12 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  657 0249 02       		.uleb128 0x2
  658 024a 91       		.byte	0x91
  659 024b 74       		.sleb128 -12
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 16
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 16
 
 
  660 024c 00       		.byte	0
  661 024d 0A       		.uleb128 0xa
- 662 024e F0020000 		.4byte	.LASF40
+ 662 024e 10030000 		.4byte	.LASF40
  663 0252 01       		.byte	0x1
  664 0253 67       		.byte	0x67
  665 0254 00000000 		.4byte	.LFB71
@@ -912,7 +912,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  668 025d 9C       		.byte	0x9c
  669 025e 9B020000 		.4byte	0x29b
  670 0262 0B       		.uleb128 0xb
- 671 0263 C9020000 		.4byte	.LASF36
+ 671 0263 E9020000 		.4byte	.LASF36
  672 0267 01       		.byte	0x1
  673 0268 67       		.byte	0x67
  674 0269 DF010000 		.4byte	0x1df
@@ -920,7 +920,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  676 026e 91       		.byte	0x91
  677 026f 6C       		.sleb128 -20
  678 0270 0B       		.uleb128 0xb
- 679 0271 E2020000 		.4byte	.LASF39
+ 679 0271 02030000 		.4byte	.LASF39
  680 0275 01       		.byte	0x1
  681 0276 67       		.byte	0x67
  682 0277 08020000 		.4byte	0x208
@@ -928,7 +928,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  684 027c 91       		.byte	0x91
  685 027d 68       		.sleb128 -24
  686 027e 0D       		.uleb128 0xd
- 687 027f 79020000 		.4byte	.LASF41
+ 687 027f 99020000 		.4byte	.LASF41
  688 0283 01       		.byte	0x1
  689 0284 69       		.byte	0x69
  690 0285 A4010000 		.4byte	0x1a4
@@ -936,7 +936,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  692 028a 91       		.byte	0x91
  693 028b 74       		.sleb128 -12
  694 028c 0D       		.uleb128 0xd
- 695 028d 03020000 		.4byte	.LASF42
+ 695 028d C0010000 		.4byte	.LASF42
  696 0291 01       		.byte	0x1
  697 0292 6A       		.byte	0x6a
  698 0293 9B020000 		.4byte	0x29b
@@ -947,7 +947,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  703 029b 0C       		.uleb128 0xc
  704 029c C7000000 		.4byte	0xc7
  705 02a0 0E       		.uleb128 0xe
- 706 02a1 A0020000 		.4byte	.LASF47
+ 706 02a1 C0020000 		.4byte	.LASF47
  707 02a5 01       		.byte	0x1
  708 02a6 AA       		.byte	0xaa
  709 02a7 BC000000 		.4byte	0xbc
@@ -957,8 +957,8 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  713 02b4 9C       		.byte	0x9c
  714 02b5 D6020000 		.4byte	0x2d6
  715 02b9 0B       		.uleb128 0xb
- 716 02ba 6C010000 		.4byte	.LASF43
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 17
+ 716 02ba 29010000 		.4byte	.LASF43
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 17
 
 
  717 02be 01       		.byte	0x1
@@ -968,7 +968,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  721 02c5 91       		.byte	0x91
  722 02c6 6C       		.sleb128 -20
  723 02c7 0D       		.uleb128 0xd
- 724 02c8 C9020000 		.4byte	.LASF36
+ 724 02c8 E9020000 		.4byte	.LASF36
  725 02cc 01       		.byte	0x1
  726 02cd AE       		.byte	0xae
  727 02ce DF010000 		.4byte	0x1df
@@ -977,7 +977,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  730 02d4 74       		.sleb128 -12
  731 02d5 00       		.byte	0
  732 02d6 0F       		.uleb128 0xf
- 733 02d7 86010000 		.4byte	.LASF48
+ 733 02d7 43010000 		.4byte	.LASF48
  734 02db 06       		.byte	0x6
  735 02dc 1207     		.2byte	0x712
  736 02de E2020000 		.4byte	0x2e2
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  771 001d 00       		.byte	0
  772 001e 03       		.uleb128 0x3
  773 001f 24       		.uleb128 0x24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 18
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 18
 
 
  774 0020 00       		.byte	0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  828 0056 13       		.uleb128 0x13
  829 0057 38       		.uleb128 0x38
  830 0058 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 19
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 19
 
 
  831 0059 00       		.byte	0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  885 0090 02       		.uleb128 0x2
  886 0091 18       		.uleb128 0x18
  887 0092 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 20
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 20
 
 
  888 0093 00       		.byte	0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  942 00ca 0E       		.uleb128 0xe
  943 00cb 3A       		.uleb128 0x3a
  944 00cc 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 21
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 21
 
 
  945 00cd 3B       		.uleb128 0x3b
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  994      54797065 
  994      5F7400
  995              	.LASF44:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 22
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 22
 
 
  996 000b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
@@ -1318,178 +1318,180 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 1
  1019              	.LASF16:
  1020 0103 666C6F61 		.ascii	"float\000"
  1020      7400
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 23
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 23
 
 
- 1021              	.LASF46:
- 1022 0109 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
- 1022      6F64655C 
- 1022      50345C50 
- 1022      345F5665 
- 1022      72746963 
- 1023 0138 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
- 1023      616E7465 
- 1023      4D6F6475 
- 1023      6C2E6379 
- 1023      64736E00 
- 1024              	.LASF4:
- 1025 014c 756E7369 		.ascii	"unsigned char\000"
- 1025      676E6564 
- 1025      20636861 
- 1025      7200
- 1026              	.LASF10:
- 1027 015a 6C6F6E67 		.ascii	"long unsigned int\000"
- 1027      20756E73 
- 1027      69676E65 
- 1027      6420696E 
- 1027      7400
- 1028              	.LASF43:
- 1029 016c 70784974 		.ascii	"pxItemToRemove\000"
- 1029      656D546F 
- 1029      52656D6F 
- 1029      766500
- 1030              	.LASF22:
- 1031 017b 70785072 		.ascii	"pxPrevious\000"
- 1031      6576696F 
- 1031      757300
- 1032              	.LASF48:
- 1033 0186 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1033      52784275 
- 1033      66666572 
- 1033      00
- 1034              	.LASF35:
- 1035 0193 764C6973 		.ascii	"vListInitialiseItem\000"
- 1035      74496E69 
- 1035      7469616C 
- 1035      69736549 
- 1035      74656D00 
- 1036              	.LASF33:
- 1037 01a7 4C697374 		.ascii	"List_t\000"
- 1037      5F7400
- 1038              	.LASF17:
- 1039 01ae 646F7562 		.ascii	"double\000"
- 1039      6C6500
- 1040              	.LASF9:
- 1041 01b5 5F5F7569 		.ascii	"__uint32_t\000"
- 1041      6E743332 
- 1041      5F7400
- 1042              	.LASF27:
- 1043 01c0 75784E75 		.ascii	"uxNumberOfItems\000"
- 1043      6D626572 
- 1043      4F664974 
- 1043      656D7300 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 24
+ 1021              	.LASF4:
+ 1022 0109 756E7369 		.ascii	"unsigned char\000"
+ 1022      676E6564 
+ 1022      20636861 
+ 1022      7200
+ 1023              	.LASF10:
+ 1024 0117 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1024      20756E73 
+ 1024      69676E65 
+ 1024      6420696E 
+ 1024      7400
+ 1025              	.LASF43:
+ 1026 0129 70784974 		.ascii	"pxItemToRemove\000"
+ 1026      656D546F 
+ 1026      52656D6F 
+ 1026      766500
+ 1027              	.LASF22:
+ 1028 0138 70785072 		.ascii	"pxPrevious\000"
+ 1028      6576696F 
+ 1028      757300
+ 1029              	.LASF48:
+ 1030 0143 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1030      52784275 
+ 1030      66666572 
+ 1030      00
+ 1031              	.LASF35:
+ 1032 0150 764C6973 		.ascii	"vListInitialiseItem\000"
+ 1032      74496E69 
+ 1032      7469616C 
+ 1032      69736549 
+ 1032      74656D00 
+ 1033              	.LASF33:
+ 1034 0164 4C697374 		.ascii	"List_t\000"
+ 1034      5F7400
+ 1035              	.LASF17:
+ 1036 016b 646F7562 		.ascii	"double\000"
+ 1036      6C6500
+ 1037              	.LASF9:
+ 1038 0172 5F5F7569 		.ascii	"__uint32_t\000"
+ 1038      6E743332 
+ 1038      5F7400
+ 1039              	.LASF27:
+ 1040 017d 75784E75 		.ascii	"uxNumberOfItems\000"
+ 1040      6D626572 
+ 1040      4F664974 
+ 1040      656D7300 
+ 1041              	.LASF38:
+ 1042 018d 764C6973 		.ascii	"vListInsertEnd\000"
+ 1042      74496E73 
+ 1042      65727445 
+ 1042      6E6400
+ 1043              	.LASF21:
+ 1044 019c 70784E65 		.ascii	"pxNext\000"
+ 1044      787400
+ 1045              	.LASF0:
+ 1046 01a3 756E7369 		.ascii	"unsigned int\000"
+ 1046      676E6564 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 24
 
 
- 1044              	.LASF38:
- 1045 01d0 764C6973 		.ascii	"vListInsertEnd\000"
- 1045      74496E73 
- 1045      65727445 
- 1045      6E6400
- 1046              	.LASF21:
- 1047 01df 70784E65 		.ascii	"pxNext\000"
- 1047      787400
- 1048              	.LASF0:
- 1049 01e6 756E7369 		.ascii	"unsigned int\000"
- 1049      676E6564 
- 1049      20696E74 
- 1049      00
- 1050              	.LASF34:
- 1051 01f3 764C6973 		.ascii	"vListInitialise\000"
- 1051      74496E69 
- 1051      7469616C 
- 1051      69736500 
- 1052              	.LASF42:
- 1053 0203 7856616C 		.ascii	"xValueOfInsertion\000"
- 1053      75654F66 
- 1053      496E7365 
- 1053      7274696F 
- 1053      6E00
- 1054              	.LASF11:
- 1055 0215 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1055      206C6F6E 
- 1055      6720756E 
- 1055      7369676E 
- 1055      65642069 
- 1056              	.LASF37:
- 1057 022c 70784974 		.ascii	"pxItem\000"
- 1057      656D00
- 1058              	.LASF30:
- 1059 0233 4C697374 		.ascii	"ListItem_t\000"
- 1059      4974656D 
- 1059      5F7400
- 1060              	.LASF2:
- 1061 023e 6C6F6E67 		.ascii	"long double\000"
- 1061      20646F75 
- 1061      626C6500 
- 1062              	.LASF12:
- 1063 024a 73697A65 		.ascii	"sizetype\000"
- 1063      74797065 
- 1063      00
- 1064              	.LASF6:
- 1065 0253 73686F72 		.ascii	"short unsigned int\000"
- 1065      7420756E 
- 1065      7369676E 
- 1065      65642069 
- 1065      6E7400
- 1066              	.LASF1:
- 1067 0266 6C6F6E67 		.ascii	"long long int\000"
- 1067      206C6F6E 
- 1067      6720696E 
- 1067      7400
- 1068              	.LASF13:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccRvGdwo.s 			page 25
+ 1046      20696E74 
+ 1046      00
+ 1047              	.LASF34:
+ 1048 01b0 764C6973 		.ascii	"vListInitialise\000"
+ 1048      74496E69 
+ 1048      7469616C 
+ 1048      69736500 
+ 1049              	.LASF42:
+ 1050 01c0 7856616C 		.ascii	"xValueOfInsertion\000"
+ 1050      75654F66 
+ 1050      496E7365 
+ 1050      7274696F 
+ 1050      6E00
+ 1051              	.LASF11:
+ 1052 01d2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1052      206C6F6E 
+ 1052      6720756E 
+ 1052      7369676E 
+ 1052      65642069 
+ 1053              	.LASF37:
+ 1054 01e9 70784974 		.ascii	"pxItem\000"
+ 1054      656D00
+ 1055              	.LASF30:
+ 1056 01f0 4C697374 		.ascii	"ListItem_t\000"
+ 1056      4974656D 
+ 1056      5F7400
+ 1057              	.LASF2:
+ 1058 01fb 6C6F6E67 		.ascii	"long double\000"
+ 1058      20646F75 
+ 1058      626C6500 
+ 1059              	.LASF12:
+ 1060 0207 73697A65 		.ascii	"sizetype\000"
+ 1060      74797065 
+ 1060      00
+ 1061              	.LASF6:
+ 1062 0210 73686F72 		.ascii	"short unsigned int\000"
+ 1062      7420756E 
+ 1062      7369676E 
+ 1062      65642069 
+ 1062      6E7400
+ 1063              	.LASF1:
+ 1064 0223 6C6F6E67 		.ascii	"long long int\000"
+ 1064      206C6F6E 
+ 1064      6720696E 
+ 1064      7400
+ 1065              	.LASF13:
+ 1066 0231 63686172 		.ascii	"char\000"
+ 1066      00
+ 1067              	.LASF46:
+ 1068 0236 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
+ 1068      73657273 
+ 1068      5C6D6162 
+ 1068      6F5C446F 
+ 1068      63756D65 
+ 1069 0263 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
+ 1069      74696361 
+ 1069      6C5F6661 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\ccD8gxVo.s 			page 25
 
 
- 1069 0274 63686172 		.ascii	"char\000"
- 1069      00
- 1070              	.LASF41:
- 1071 0279 70784974 		.ascii	"pxIterator\000"
- 1071      65726174 
- 1071      6F7200
- 1072              	.LASF5:
- 1073 0284 73686F72 		.ascii	"short int\000"
- 1073      7420696E 
- 1073      7400
- 1074              	.LASF15:
- 1075 028e 75696E74 		.ascii	"uint32_t\000"
- 1075      33325F74 
- 1075      00
- 1076              	.LASF7:
- 1077 0297 6C6F6E67 		.ascii	"long int\000"
- 1077      20696E74 
- 1077      00
- 1078              	.LASF47:
- 1079 02a0 75784C69 		.ascii	"uxListRemove\000"
- 1079      73745265 
- 1079      6D6F7665 
- 1079      00
- 1080              	.LASF31:
- 1081 02ad 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
- 1081      495F4C49 
- 1081      53545F49 
- 1081      54454D00 
- 1082              	.LASF3:
- 1083 02bd 7369676E 		.ascii	"signed char\000"
- 1083      65642063 
- 1083      68617200 
- 1084              	.LASF36:
- 1085 02c9 70784C69 		.ascii	"pxList\000"
- 1085      737400
- 1086              	.LASF26:
- 1087 02d0 784C4953 		.ascii	"xLIST\000"
- 1087      5400
- 1088              	.LASF18:
- 1089 02d6 55426173 		.ascii	"UBaseType_t\000"
- 1089      65547970 
- 1089      655F7400 
- 1090              	.LASF39:
- 1091 02e2 70784E65 		.ascii	"pxNewListItem\000"
- 1091      774C6973 
- 1091      74497465 
- 1091      6D00
- 1092              	.LASF40:
- 1093 02f0 764C6973 		.ascii	"vListInsert\000"
- 1093      74496E73 
- 1093      65727400 
- 1094              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1069      726D5C52 
+ 1069      544F535F 
+ 1070 0294 7964736E 		.ascii	"ydsn\000"
+ 1070      00
+ 1071              	.LASF41:
+ 1072 0299 70784974 		.ascii	"pxIterator\000"
+ 1072      65726174 
+ 1072      6F7200
+ 1073              	.LASF5:
+ 1074 02a4 73686F72 		.ascii	"short int\000"
+ 1074      7420696E 
+ 1074      7400
+ 1075              	.LASF15:
+ 1076 02ae 75696E74 		.ascii	"uint32_t\000"
+ 1076      33325F74 
+ 1076      00
+ 1077              	.LASF7:
+ 1078 02b7 6C6F6E67 		.ascii	"long int\000"
+ 1078      20696E74 
+ 1078      00
+ 1079              	.LASF47:
+ 1080 02c0 75784C69 		.ascii	"uxListRemove\000"
+ 1080      73745265 
+ 1080      6D6F7665 
+ 1080      00
+ 1081              	.LASF31:
+ 1082 02cd 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
+ 1082      495F4C49 
+ 1082      53545F49 
+ 1082      54454D00 
+ 1083              	.LASF3:
+ 1084 02dd 7369676E 		.ascii	"signed char\000"
+ 1084      65642063 
+ 1084      68617200 
+ 1085              	.LASF36:
+ 1086 02e9 70784C69 		.ascii	"pxList\000"
+ 1086      737400
+ 1087              	.LASF26:
+ 1088 02f0 784C4953 		.ascii	"xLIST\000"
+ 1088      5400
+ 1089              	.LASF18:
+ 1090 02f6 55426173 		.ascii	"UBaseType_t\000"
+ 1090      65547970 
+ 1090      655F7400 
+ 1091              	.LASF39:
+ 1092 0302 70784E65 		.ascii	"pxNewListItem\000"
+ 1092      774C6973 
+ 1092      74497465 
+ 1092      6D00
+ 1093              	.LASF40:
+ 1094 0310 764C6973 		.ascii	"vListInsert\000"
+ 1094      74496E73 
+ 1094      65727400 
+ 1095              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

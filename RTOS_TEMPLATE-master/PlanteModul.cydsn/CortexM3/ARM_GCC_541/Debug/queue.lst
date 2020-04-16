@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
   27:Source/queue.c **** 
   28:Source/queue.c **** #include <stdlib.h>
   29:Source/queue.c **** #include <string.h>
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 2
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 2
 
 
   30:Source/queue.c **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
   84:Source/queue.c **** #if( configUSE_PREEMPTION == 0 )
   85:Source/queue.c **** 	/* If the cooperative scheduler is being used then a yield should not be
   86:Source/queue.c **** 	performed just because a higher priority task has been woken. */
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 3
 
 
   87:Source/queue.c **** 	#define queueYIELD_IF_USING_PREEMPTION()
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  141:Source/queue.c ****  * queue structures.  It has no other purpose so is an optional component.
  142:Source/queue.c ****  */
  143:Source/queue.c **** #if ( configQUEUE_REGISTRY_SIZE > 0 )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 4
 
 
  144:Source/queue.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  198:Source/queue.c ****  */
  199:Source/queue.c **** static void prvCopyDataFromQueue( Queue_t * const pxQueue, void * const pvBuffer ) PRIVILEGED_FUNCT
  200:Source/queue.c **** 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 5
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 5
 
 
  201:Source/queue.c **** #if ( configUSE_QUEUE_SETS == 1 )
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  255:Source/queue.c **** BaseType_t xQueueGenericReset( QueueHandle_t xQueue, BaseType_t xNewQueue )
  256:Source/queue.c **** {
   29              		.loc 1 256 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 6
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 6
 
 
   30              		.cfi_startproc
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
   74 0040 F968     		ldr	r1, [r7, #12]
   75 0042 096C     		ldr	r1, [r1, #64]
   76 0044 01FB03F3 		mul	r3, r1, r3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 7
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 7
 
 
   77 0048 1A44     		add	r2, r2, r3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  116              		.thumb
  117              		.syntax unified
  118 008c 09E0     		b	.L3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 8
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 8
 
 
  119              	.L2:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  149              		.size	xQueueGenericReset, .-xQueueGenericReset
  150              		.section	.text.xQueueGenericCreate,"ax",%progbits
  151              		.align	2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 9
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 9
 
 
  152              		.global	xQueueGenericCreate
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  354:Source/queue.c **** 		else
  355:Source/queue.c **** 		{
  356:Source/queue.c **** 			traceQUEUE_CREATE_FAILED( ucQueueType );
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 10
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 10
 
 
  357:Source/queue.c **** 			mtCOVERAGE_TEST_MARKER();
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  390:Source/queue.c **** 		pxNewQueue = ( Queue_t * ) pvPortMalloc( sizeof( Queue_t ) + xQueueSizeInBytes ); /*lint !e9087 !
  179              		.loc 1 390 0
  180 0018 FB69     		ldr	r3, [r7, #28]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 11
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 11
 
 
  181 001a 4833     		adds	r3, r3, #72
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  208              		.loc 1 417 0
  209 0048 1846     		mov	r0, r3
  210 004a 2037     		adds	r7, r7, #32
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 12
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 12
 
 
  211              		.cfi_def_cfa_offset 8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  248 0016 BA69     		ldr	r2, [r7, #24]
  249 0018 1A60     		str	r2, [r3]
  250 001a 02E0     		b	.L12
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 13
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 13
 
 
  251              	.L11:
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  278              	.LFE70:
  279              		.size	prvInitialiseNewQueue, .-prvInitialiseNewQueue
  280 003e 00BF     		.section	.text.prvInitialiseMutex,"ax",%progbits
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 14
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 14
 
 
  281              		.align	2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  481:Source/queue.c **** 
  482:Source/queue.c **** 			/* Start with the semaphore in the expected state. */
  483:Source/queue.c **** 			( void ) xQueueGenericSend( pxNewQueue, NULL, ( TickType_t ) 0U, queueSEND_TO_BACK );
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 15
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 15
 
 
  316              		.loc 1 483 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  498:Source/queue.c **** 	QueueHandle_t xNewQueue;
  499:Source/queue.c **** 	const UBaseType_t uxMutexLength = ( UBaseType_t ) 1, uxMutexSize = ( UBaseType_t ) 0;
  356              		.loc 1 499 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 16
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 16
 
 
  357 000a 0123     		movs	r3, #1
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  519:Source/queue.c **** 		( void ) ucQueueType;
  520:Source/queue.c **** 
  521:Source/queue.c **** 		xNewQueue = xQueueGenericCreateStatic( uxMutexLength, uxMutexSize, NULL, pxStaticQueue, ucQueueTy
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 17
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 17
 
 
  522:Source/queue.c **** 		prvInitialiseMutex( ( Queue_t * ) xNewQueue );
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  576:Source/queue.c **** 		else
  577:Source/queue.c **** 		{
  578:Source/queue.c **** 			pxReturn = NULL;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 18
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 18
 
 
  579:Source/queue.c **** 		}
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  609:Source/queue.c **** 			there can only be one, no mutual exclusion is required to modify the
  610:Source/queue.c **** 			uxRecursiveCallCount member. */
  611:Source/queue.c **** 			( pxMutex->u.xSemaphore.uxRecursiveCallCount )--;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 19
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 19
 
 
  416              		.loc 1 611 0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  637:Source/queue.c **** 	}
  445              		.loc 1 637 0
  446 0044 1846     		mov	r0, r3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 20
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 20
 
 
  447 0046 1437     		adds	r7, r7, #20
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  482              		.loc 1 656 0
  483 000e BB68     		ldr	r3, [r7, #8]
  484 0010 9C68     		ldr	r4, [r3, #8]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 21
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 21
 
 
  485 0012 FFF7FEFF 		bl	xTaskGetCurrentTaskHandle
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  517 0046 FB68     		ldr	r3, [r7, #12]
  679:Source/queue.c **** 	}
  518              		.loc 1 679 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 22
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 22
 
 
  519 0048 1846     		mov	r0, r3
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  537              		.loc 1 715 0
  538              		.cfi_startproc
  539              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 23
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 23
 
 
  540              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  574              		@ sp needed
  575 002a 80BD     		pop	{r7, pc}
  576              		.cfi_endproc
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 24
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 24
 
 
  577              	.LFE75:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  757:Source/queue.c **** 	allow return statements within the function itself.  This is done in the
  758:Source/queue.c **** 	interest of execution time efficiency. */
  759:Source/queue.c **** 	for( ;; )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 25
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 25
 
 
  760:Source/queue.c **** 	{
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  800:Source/queue.c **** 						/* If there was a task waiting for data to arrive on the
  801:Source/queue.c **** 						queue then unblock it now. */
  802:Source/queue.c **** 						if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 26
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 26
 
 
  803:Source/queue.c **** 						{
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  641 004c 002B     		cmp	r3, #0
  642 004e 13D0     		beq	.L34
  840:Source/queue.c **** 						{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 27
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 27
 
 
  841:Source/queue.c **** 							/* The unblocked task has a priority higher than
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  862:Source/queue.c **** 						mtCOVERAGE_TEST_MARKER();
  863:Source/queue.c **** 					}
  864:Source/queue.c **** 				}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 28
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 28
 
 
  865:Source/queue.c **** 				#endif /* configUSE_QUEUE_SETS */
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  891:Source/queue.c **** 				{
  892:Source/queue.c **** 					/* Entry time was already set. */
  893:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 29
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 29
 
 
  894:Source/queue.c **** 				}
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  743 00f2 386A     		ldr	r0, [r7, #32]
  744 00f4 FFF7FEFF 		bl	prvIsQueueFull
  745 00f8 0346     		mov	r3, r0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 30
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 30
 
 
  746 00fa 002B     		cmp	r3, #0
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  931:Source/queue.c **** 			{
  932:Source/queue.c **** 				/* Try again. */
  933:Source/queue.c **** 				prvUnlockQueue( pxQueue );
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 31
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 31
 
 
  778              		.loc 1 933 0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  950:Source/queue.c **** BaseType_t xQueueGenericSendFromISR( QueueHandle_t xQueue, const void * const pvItemToQueue, BaseTy
  951:Source/queue.c **** {
  816              		.loc 1 951 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 32
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 32
 
 
  817              		.cfi_startproc
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
   31:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   32:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef __cplusplus
   33:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern "C" {
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 33
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 33
 
 
   34:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
   88:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
   89:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   90:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portNVIC_INT_CTRL_REG		( * ( ( volatile uint32_t * ) 0xe000ed04 ) )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 34
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 34
 
 
   91:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portNVIC_PENDSVSET_BIT		( 1UL << 28UL )
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  145:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
  146:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  147:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/*-----------------------------------------------------------*/
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 35
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 35
 
 
  148:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  202:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	dsb														\n" \
  203:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
  204:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	);
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 36
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 36
 
 
  205:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  970:Source/queue.c **** 	system call	interrupt priority.  FreeRTOS maintains a separate interrupt
  971:Source/queue.c **** 	safe API to ensure interrupt entry is as fast and as simple as possible.
  972:Source/queue.c **** 	More information (albeit Cortex-M specific) is provided on the following
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 37
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 37
 
 
  973:Source/queue.c **** 	link: http://www.freertos.org/RTOS-Cortex-M3-M4.html */
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  999:Source/queue.c **** 			if( cTxLock == queueUNLOCKED )
  884              		.loc 1 999 0
  885 0058 97F91F30 		ldrsb	r3, [r7, #31]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 38
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 38
 
 
  886 005c B3F1FF3F 		cmp	r3, #-1
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1052:Source/queue.c **** 						}
 1053:Source/queue.c **** 						else
 1054:Source/queue.c **** 						{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 39
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 39
 
 
 1055:Source/queue.c **** 							mtCOVERAGE_TEST_MARKER();
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1086:Source/queue.c **** 					/* Not used in this path. */
 1087:Source/queue.c **** 					( void ) uxPreviousMessagesWaiting;
 1088:Source/queue.c **** 				}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 40
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 40
 
 
 1089:Source/queue.c **** 				#endif /* configUSE_QUEUE_SETS */
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  943              	.LBE26:
 1104:Source/queue.c **** 		}
 1105:Source/queue.c **** 	}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 41
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 41
 
 
 1106:Source/queue.c **** 	portCLEAR_INTERRUPT_MASK_FROM_ISR( uxSavedInterruptStatus );
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  986              	@ 213 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
  987 000e EFF31182 			mrs r2, basepri											
  988 0012 4FF0A003 		mov r3, #160												
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 42
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 42
 
 
  989 0016 83F31188 		msr basepri, r3											
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1005              		.loc 1 1153 0
  1006 002a 3B6A     		ldr	r3, [r7, #32]
  1007 002c 9B6B     		ldr	r3, [r3, #56]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 43
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 43
 
 
  1008 002e 7B61     		str	r3, [r7, #20]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1187:Source/queue.c **** 								*pxHigherPriorityTaskWoken = pdTRUE;
 1188:Source/queue.c **** 							}
 1189:Source/queue.c **** 							else
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 44
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 44
 
 
 1190:Source/queue.c **** 							{
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1041 006a 0DD0     		beq	.L61
 1232:Source/queue.c **** 						{
 1233:Source/queue.c **** 							/* The task waiting has a higher priority so record that a
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 45
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 45
 
 
 1234:Source/queue.c **** 							context	switch is required. */
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1264:Source/queue.c **** 		}
 1265:Source/queue.c **** 		else
 1266:Source/queue.c **** 		{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 46
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 46
 
 
 1267:Source/queue.c **** 			traceQUEUE_SEND_FROM_ISR_FAILED( pxQueue );
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1108              		@ args = 0, pretend = 0, frame = 40
  1109              		@ frame_needed = 1, uses_anonymous_args = 0
  1110 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 47
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 47
 
 
  1111              		.cfi_def_cfa_offset 8
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1309:Source/queue.c **** 			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
  1135              		.loc 1 1309 0
  1136 001e FB69     		ldr	r3, [r7, #28]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 48
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 48
 
 
  1137 0020 002B     		cmp	r3, #0
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1326:Source/queue.c **** 					{
 1327:Source/queue.c **** 						mtCOVERAGE_TEST_MARKER();
 1328:Source/queue.c **** 					}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 49
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 49
 
 
 1329:Source/queue.c **** 				}
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1354:Source/queue.c **** 				}
 1355:Source/queue.c **** 				else
 1356:Source/queue.c **** 				{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 50
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 50
 
 
 1357:Source/queue.c **** 					/* Entry time was already set. */
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1373:Source/queue.c **** 			/* The timeout has not expired.  If the queue is still empty place
 1374:Source/queue.c **** 			the task on the list of tasks waiting to receive from the queue. */
 1375:Source/queue.c **** 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 51
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 51
 
 
  1242              		.loc 1 1375 0
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1278              		.loc 1 1393 0
  1279 0112 386A     		ldr	r0, [r7, #32]
  1280 0114 FFF7FEFF 		bl	prvUnlockQueue
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 52
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 52
 
 
 1394:Source/queue.c **** 				( void ) xTaskResumeAll();
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1313              		.size	xQueueReceive, .-xQueueReceive
  1314              		.section	.text.xQueueSemaphoreTake,"ax",%progbits
  1315              		.align	2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 53
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 53
 
 
  1316              		.global	xQueueSemaphoreTake
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1440:Source/queue.c **** 	#endif
 1441:Source/queue.c **** 
 1442:Source/queue.c **** 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 54
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 54
 
 
 1443:Source/queue.c **** 	/*lint -save -e904 This function relaxes the coding standard somewhat to allow return
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1372              	.L82:
 1471:Source/queue.c **** 					}
 1472:Source/queue.c **** 					else
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 55
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 55
 
 
 1473:Source/queue.c **** 					{
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1498:Source/queue.c **** 				return pdPASS;
  1402              		.loc 1 1498 0
  1403 006c 0123     		movs	r3, #1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 56
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 56
 
 
  1404 006e 89E0     		b	.L96
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1528:Source/queue.c **** 					/* Entry time was already set. */
 1529:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
 1530:Source/queue.c **** 				}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 57
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 57
 
 
 1531:Source/queue.c **** 			}
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1547:Source/queue.c **** 			queue being empty is equivalent to the semaphore count being 0. */
 1548:Source/queue.c **** 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
  1467              		.loc 1 1548 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 58
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 58
 
 
  1468 00e2 F869     		ldr	r0, [r7, #28]
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1499              		.loc 1 1571 0
  1500 011e FFF7FEFF 		bl	xTaskResumeAll
  1501 0122 0346     		mov	r3, r0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 59
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 59
 
 
  1502 0124 002B     		cmp	r3, #0
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1597:Source/queue.c **** 			queue being empty is equivalent to the semaphore count being 0. */
 1598:Source/queue.c **** 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
  1531              		.loc 1 1598 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 60
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 60
 
 
  1532 0152 F869     		ldr	r0, [r7, #28]
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1559 0182 0023     		movs	r3, #0
  1560              	.L96:
 1626:Source/queue.c **** 			}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 61
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 61
 
 
 1627:Source/queue.c **** 			else
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1640:Source/queue.c **** int8_t *pcOriginalReadPosition;
 1641:Source/queue.c **** Queue_t * const pxQueue = xQueue;
  1602              		.loc 1 1641 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 62
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 62
 
 
  1603 0010 FB68     		ldr	r3, [r7, #12]
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1622 002a B968     		ldr	r1, [r7, #8]
  1623 002c 386A     		ldr	r0, [r7, #32]
  1624 002e FFF7FEFF 		bl	prvCopyDataFromQueue
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 63
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 63
 
 
 1677:Source/queue.c **** 				traceQUEUE_PEEK( pxQueue );
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1700:Source/queue.c **** 
 1701:Source/queue.c **** 				taskEXIT_CRITICAL();
  1656              		.loc 1 1701 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 64
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 64
 
 
  1657 0060 FFF7FEFF 		bl	vPortExitCritical
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1728:Source/queue.c **** 		}
 1729:Source/queue.c **** 		taskEXIT_CRITICAL();
  1685              		.loc 1 1729 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 65
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 65
 
 
  1686 008a FFF7FEFF 		bl	vPortExitCritical
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1727 00e2 002B     		cmp	r3, #0
  1728 00e4 17D0     		beq	.L108
 1743:Source/queue.c **** 			{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 66
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 66
 
 
 1744:Source/queue.c **** 				traceBLOCKING_ON_QUEUE_PEEK( pxQueue );
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1765              	.L107:
 1762:Source/queue.c **** 			}
 1763:Source/queue.c **** 		}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 67
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 67
 
 
 1764:Source/queue.c **** 		else
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1801              	xQueueReceiveFromISR:
  1802              	.LFB82:
 1783:Source/queue.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 68
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 68
 
 
 1784:Source/queue.c **** 
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1798:Source/queue.c **** 	FreeRTOS API functions.  If configASSERT() is defined in FreeRTOSConfig.h
 1799:Source/queue.c **** 	then portASSERT_IF_INTERRUPT_PRIORITY_INVALID() will result in an assertion
 1800:Source/queue.c **** 	failure if a FreeRTOS API function is called from an interrupt that has been
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 69
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 69
 
 
 1801:Source/queue.c **** 	assigned a priority above the configured maximum system call priority.
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1867 0050 97F91B30 		ldrsb	r3, [r7, #27]
  1868 0054 B3F1FF3F 		cmp	r3, #-1
  1869 0058 12D1     		bne	.L118
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 70
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 70
 
 
 1829:Source/queue.c **** 			{
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1893              		.loc 1 1859 0
  1894 0080 FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
  1895 0082 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 71
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 71
 
 
  1896 0084 DBB2     		uxtb	r3, r3
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1936              		.cfi_endproc
  1937              	.LFE82:
  1938              		.size	xQueueReceiveFromISR, .-xQueueReceiveFromISR
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 72
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 72
 
 
  1939              		.section	.text.xQueuePeekFromISR,"ax",%progbits
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  1983              	.LBE44:
 1882:Source/queue.c **** 
 1883:Source/queue.c **** 	configASSERT( pxQueue );
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 73
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 73
 
 
 1884:Source/queue.c **** 	configASSERT( !( ( pvBuffer == NULL ) && ( pxQueue->uxItemSize != ( UBaseType_t ) 0U ) ) );
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2005 0048 7B62     		str	r3, [r7, #36]
  2006 004a 01E0     		b	.L125
  2007              	.L124:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 74
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 74
 
 
 1917:Source/queue.c **** 		}
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2047              		.loc 1 1931 0
  2048              		.cfi_startproc
  2049              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 75
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 75
 
 
  2050              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 1947:Source/queue.c **** {
  2089              		.loc 1 1947 0
  2090              		.cfi_startproc
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 76
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 76
 
 
  2091              		@ args = 0, pretend = 0, frame = 16
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2132              		.thumb
  2133              		.thumb_func
  2134              		.type	uxQueueMessagesWaitingFromISR, %function
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 77
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 77
 
 
  2135              	uxQueueMessagesWaitingFromISR:
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2177              		.thumb_func
  2178              		.type	vQueueDelete, %function
  2179              	vQueueDelete:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 78
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 78
 
 
  2180              	.LFB87:
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2004:Source/queue.c **** 			mtCOVERAGE_TEST_MARKER();
 2005:Source/queue.c **** 		}
 2006:Source/queue.c **** 	}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 79
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 79
 
 
 2007:Source/queue.c **** 	#else
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2043:Source/queue.c **** 
 2044:Source/queue.c **** #endif /* configUSE_TRACE_FACILITY */
 2045:Source/queue.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 80
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 80
 
 
 2046:Source/queue.c **** 
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2252 0022 FB68     		ldr	r3, [r7, #12]
 2069:Source/queue.c **** 	}
  2253              		.loc 1 2069 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 81
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 81
 
 
  2254 0024 1846     		mov	r0, r3
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2082:Source/queue.c **** 
 2083:Source/queue.c **** 	if( pxQueue->uxItemSize == ( UBaseType_t ) 0 )
  2296              		.loc 1 2083 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 82
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 82
 
 
  2297 0016 FB68     		ldr	r3, [r7, #12]
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2331 0050 FB68     		ldr	r3, [r7, #12]
  2332 0052 5A68     		ldr	r2, [r3, #4]
  2333 0054 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 83
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 83
 
 
  2334 0056 1B6C     		ldr	r3, [r3, #64]
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2374 009c 9A42     		cmp	r2, r3
  2375 009e 07D2     		bcs	.L142
 2118:Source/queue.c **** 		{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 84
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 84
 
 
 2119:Source/queue.c **** 			pxQueue->u.xQueue.pcReadFrom = ( pxQueue->u.xQueue.pcTail - pxQueue->uxItemSize );
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2401 00c4 5A1C     		adds	r2, r3, #1
  2402 00c6 FB68     		ldr	r3, [r7, #12]
  2403 00c8 9A63     		str	r2, [r3, #56]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 85
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 85
 
 
 2148:Source/queue.c **** 
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2448 001a 1A44     		add	r2, r2, r3
  2449 001c 7B68     		ldr	r3, [r7, #4]
  2450 001e DA60     		str	r2, [r3, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 86
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 86
 
 
 2158:Source/queue.c **** 		if( pxQueue->u.xQueue.pcReadFrom >= pxQueue->u.xQueue.pcTail ) /*lint !e946 MISRA exception justi
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2172:Source/queue.c **** {
  2491              		.loc 1 2172 0
  2492              		.cfi_startproc
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 87
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 87
 
 
  2493              		@ args = 0, pretend = 0, frame = 16
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2206:Source/queue.c **** 					/* Tasks that are removed from the event list will get
 2207:Source/queue.c **** 					added to the pending ready list as the scheduler is still
 2208:Source/queue.c **** 					suspended. */
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 88
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 88
 
 
 2209:Source/queue.c **** 					if( listLIST_IS_EMPTY( &( pxQueue->xTasksWaitingToReceive ) ) == pdFALSE )
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2247:Source/queue.c **** 					break;
 2248:Source/queue.c **** 				}
 2249:Source/queue.c **** 			}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 89
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 89
 
 
 2250:Source/queue.c **** 			#endif /* configUSE_QUEUE_SETS */
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2565 0064 002B     		cmp	r3, #0
  2566 0066 12D0     		beq	.L160
 2267:Source/queue.c **** 			{
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 90
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 90
 
 
 2268:Source/queue.c **** 				if( xTaskRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2288:Source/queue.c **** }
  2600              		.loc 1 2288 0
  2601 009c 00BF     		nop
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 91
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 91
 
 
  2602 009e 1037     		adds	r7, r7, #16
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2302:Source/queue.c **** 		{
 2303:Source/queue.c **** 			xReturn = pdFALSE;
  2643              		.loc 1 2303 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 92
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 92
 
 
  2644 001a 0023     		movs	r3, #0
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2316:Source/queue.c **** 
 2317:Source/queue.c **** 	configASSERT( pxQueue );
 2318:Source/queue.c **** 	if( pxQueue->uxMessagesWaiting == ( UBaseType_t ) 0 )
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 93
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 93
 
 
  2686              		.loc 1 2318 0
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2726              		@ frame_needed = 1, uses_anonymous_args = 0
  2727 0000 80B5     		push	{r7, lr}
  2728              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 94
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 94
 
 
  2729              		.cfi_offset 7, -8
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2766              		.cfi_endproc
  2767              	.LFE94:
  2768              		.size	prvIsQueueFull, .-prvIsQueueFull
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 95
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 95
 
 
  2769              		.section	.text.xQueueIsQueueFullFromISR,"ax",%progbits
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2808              	.L175:
 2365:Source/queue.c **** 	}
 2366:Source/queue.c **** 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 96
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 96
 
 
 2367:Source/queue.c **** 	return xReturn;
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2397:Source/queue.c **** 					portENABLE_INTERRUPTS();
 2398:Source/queue.c **** 					return errQUEUE_FULL;
 2399:Source/queue.c **** 				}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 97
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 97
 
 
 2400:Source/queue.c **** 			}
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2454:Source/queue.c **** 
 2455:Source/queue.c **** 		/* If the queue is already empty we may have to block.  A critical section
 2456:Source/queue.c **** 		is required to prevent an interrupt adding something to the queue
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 98
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 98
 
 
 2457:Source/queue.c **** 		between the check to see if the queue is empty and blocking on the queue. */
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2511:Source/queue.c **** 					if( xCoRoutineRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
 2512:Source/queue.c **** 					{
 2513:Source/queue.c **** 						xReturn = errQUEUE_YIELD;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 99
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 99
 
 
 2514:Source/queue.c **** 					}
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2568:Source/queue.c **** 				}
 2569:Source/queue.c **** 			}
 2570:Source/queue.c **** 			else
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 100
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 100
 
 
 2571:Source/queue.c **** 			{
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2625:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
 2626:Source/queue.c **** 				}
 2627:Source/queue.c **** 			}
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 101
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 101
 
 
 2628:Source/queue.c **** 			else
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2657:Source/queue.c **** 			{
 2658:Source/queue.c **** 				/* Store the information on this queue. */
 2659:Source/queue.c **** 				xQueueRegistry[ ux ].pcQueueName = pcQueueName;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 102
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 102
 
 
  2858              		.loc 1 2659 0
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2899              	.LFE96:
  2900              		.size	vQueueAddToRegistry, .-vQueueAddToRegistry
  2901              		.section	.text.pcQueueGetName,"ax",%progbits
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 103
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 103
 
 
  2902              		.align	2
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
 2688:Source/queue.c **** 				pcReturn = xQueueRegistry[ ux ].pcQueueName;
  2939              		.loc 1 2688 0
  2940 0022 094A     		ldr	r2, .L190
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 104
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 104
 
 
  2941 0024 FB68     		ldr	r3, [r7, #12]
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  2983              	vQueueUnregisterQueue:
  2984              	.LFB98:
 2699:Source/queue.c **** 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 105
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 105
 
 
 2700:Source/queue.c **** #endif /* configQUEUE_REGISTRY_SIZE */
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3017              		.loc 1 2721 0
  3018 0028 084A     		ldr	r2, .L197
  3019 002a FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 106
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 106
 
 
  3020 002c DB00     		lsls	r3, r3, #3
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3063              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
  3064              		.section	.debug_info,"",%progbits
  3065              	.Ldebug_info0:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 107
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 107
 
 
  3066 0000 DE100000 		.4byte	0x10de
@@ -6368,13 +6368,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3070 000b 01       		.uleb128 0x1
  3071 000c 05010000 		.4byte	.LASF140
  3072 0010 0C       		.byte	0xc
- 3073 0011 6D020000 		.4byte	.LASF141
- 3074 0015 1D020000 		.4byte	.LASF142
+ 3073 0011 2A020000 		.4byte	.LASF141
+ 3074 0015 7B070000 		.4byte	.LASF142
  3075 0019 00000000 		.4byte	.Ldebug_ranges0+0
  3076 001d 00000000 		.4byte	0
  3077 0021 00000000 		.4byte	.Ldebug_line0
  3078 0025 02       		.uleb128 0x2
- 3079 0026 D4030000 		.4byte	.LASF3
+ 3079 0026 91030000 		.4byte	.LASF3
  3080 002a 03       		.byte	0x3
  3081 002b D8       		.byte	0xd8
  3082 002c 30000000 		.4byte	0x30
@@ -6389,40 +6389,40 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3091 003e 03       		.uleb128 0x3
  3092 003f 08       		.byte	0x8
  3093 0040 05       		.byte	0x5
- 3094 0041 83050000 		.4byte	.LASF1
+ 3094 0041 40050000 		.4byte	.LASF1
  3095 0045 03       		.uleb128 0x3
  3096 0046 08       		.byte	0x8
  3097 0047 04       		.byte	0x4
- 3098 0048 B3060000 		.4byte	.LASF2
+ 3098 0048 70060000 		.4byte	.LASF2
  3099 004c 02       		.uleb128 0x2
- 3100 004d 9C060000 		.4byte	.LASF4
+ 3100 004d 59060000 		.4byte	.LASF4
  3101 0051 04       		.byte	0x4
  3102 0052 1B       		.byte	0x1b
  3103 0053 57000000 		.4byte	0x57
  3104 0057 03       		.uleb128 0x3
  3105 0058 01       		.byte	0x1
  3106 0059 06       		.byte	0x6
- 3107 005a B3080000 		.4byte	.LASF5
+ 3107 005a D3080000 		.4byte	.LASF5
  3108 005e 02       		.uleb128 0x2
- 3109 005f AC070000 		.4byte	.LASF6
+ 3109 005f 69070000 		.4byte	.LASF6
  3110 0063 04       		.byte	0x4
  3111 0064 1D       		.byte	0x1d
  3112 0065 69000000 		.4byte	0x69
  3113 0069 03       		.uleb128 0x3
  3114 006a 01       		.byte	0x1
  3115 006b 08       		.byte	0x8
- 3116 006c 14080000 		.4byte	.LASF7
+ 3116 006c 34080000 		.4byte	.LASF7
  3117 0070 03       		.uleb128 0x3
  3118 0071 02       		.byte	0x2
  3119 0072 05       		.byte	0x5
- 3120 0073 2A070000 		.4byte	.LASF8
+ 3120 0073 E7060000 		.4byte	.LASF8
  3121 0077 03       		.uleb128 0x3
  3122 0078 02       		.byte	0x2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 108
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 108
 
 
  3123 0079 07       		.byte	0x7
- 3124 007a BF080000 		.4byte	.LASF9
+ 3124 007a DF080000 		.4byte	.LASF9
  3125 007e 02       		.uleb128 0x2
  3126 007f DC000000 		.4byte	.LASF10
  3127 0083 04       		.byte	0x4
@@ -6431,30 +6431,30 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3130 0089 03       		.uleb128 0x3
  3131 008a 04       		.byte	0x4
  3132 008b 05       		.byte	0x5
- 3133 008c 3F070000 		.4byte	.LASF11
+ 3133 008c FC060000 		.4byte	.LASF11
  3134 0090 02       		.uleb128 0x2
- 3135 0091 22080000 		.4byte	.LASF12
+ 3135 0091 42080000 		.4byte	.LASF12
  3136 0095 04       		.byte	0x4
  3137 0096 41       		.byte	0x41
  3138 0097 9B000000 		.4byte	0x9b
  3139 009b 03       		.uleb128 0x3
  3140 009c 04       		.byte	0x4
  3141 009d 07       		.byte	0x7
- 3142 009e CF070000 		.4byte	.LASF13
+ 3142 009e EF070000 		.4byte	.LASF13
  3143 00a2 03       		.uleb128 0x3
  3144 00a3 08       		.byte	0x8
  3145 00a4 07       		.byte	0x7
- 3146 00a5 24030000 		.4byte	.LASF14
+ 3146 00a5 E1020000 		.4byte	.LASF14
  3147 00a9 03       		.uleb128 0x3
  3148 00aa 04       		.byte	0x4
  3149 00ab 07       		.byte	0x7
- 3150 00ac C6070000 		.4byte	.LASF15
+ 3150 00ac E6070000 		.4byte	.LASF15
  3151 00b0 05       		.uleb128 0x5
  3152 00b1 04       		.byte	0x4
  3153 00b2 03       		.uleb128 0x3
  3154 00b3 01       		.byte	0x1
  3155 00b4 08       		.byte	0x8
- 3156 00b5 84040000 		.4byte	.LASF16
+ 3156 00b5 41040000 		.4byte	.LASF16
  3157 00b9 06       		.uleb128 0x6
  3158 00ba 04       		.byte	0x4
  3159 00bb BF000000 		.4byte	0xbf
@@ -6465,48 +6465,48 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3164 00c6 CA000000 		.4byte	0xca
  3165 00ca 08       		.uleb128 0x8
  3166 00cb 02       		.uleb128 0x2
- 3167 00cc D3020000 		.4byte	.LASF17
+ 3167 00cc 90020000 		.4byte	.LASF17
  3168 00d0 05       		.byte	0x5
  3169 00d1 14       		.byte	0x14
  3170 00d2 4C000000 		.4byte	0x4c
  3171 00d6 02       		.uleb128 0x2
- 3172 00d7 2F050000 		.4byte	.LASF18
+ 3172 00d7 EC040000 		.4byte	.LASF18
  3173 00db 05       		.byte	0x5
  3174 00dc 18       		.byte	0x18
  3175 00dd 5E000000 		.4byte	0x5e
  3176 00e1 02       		.uleb128 0x2
- 3177 00e2 E1070000 		.4byte	.LASF19
+ 3177 00e2 01080000 		.4byte	.LASF19
  3178 00e6 05       		.byte	0x5
  3179 00e7 2C       		.byte	0x2c
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 109
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 109
 
 
  3180 00e8 7E000000 		.4byte	0x7e
  3181 00ec 02       		.uleb128 0x2
- 3182 00ed CA020000 		.4byte	.LASF20
+ 3182 00ed 87020000 		.4byte	.LASF20
  3183 00f1 05       		.byte	0x5
  3184 00f2 30       		.byte	0x30
  3185 00f3 90000000 		.4byte	0x90
  3186 00f7 03       		.uleb128 0x3
  3187 00f8 04       		.byte	0x4
  3188 00f9 04       		.byte	0x4
- 3189 00fa 0E030000 		.4byte	.LASF21
+ 3189 00fa CB020000 		.4byte	.LASF21
  3190 00fe 03       		.uleb128 0x3
  3191 00ff 08       		.byte	0x8
  3192 0100 04       		.byte	0x4
- 3193 0101 E6080000 		.4byte	.LASF22
+ 3193 0101 06090000 		.4byte	.LASF22
  3194 0105 02       		.uleb128 0x2
- 3195 0106 A4050000 		.4byte	.LASF23
+ 3195 0106 61050000 		.4byte	.LASF23
  3196 010a 02       		.byte	0x2
  3197 010b 38       		.byte	0x38
  3198 010c 89000000 		.4byte	0x89
  3199 0110 02       		.uleb128 0x2
- 3200 0111 BE040000 		.4byte	.LASF24
+ 3200 0111 7B040000 		.4byte	.LASF24
  3201 0115 02       		.byte	0x2
  3202 0116 39       		.byte	0x39
  3203 0117 9B000000 		.4byte	0x9b
  3204 011b 02       		.uleb128 0x2
- 3205 011c 91060000 		.4byte	.LASF25
+ 3205 011c 4E060000 		.4byte	.LASF25
  3206 0120 02       		.byte	0x2
  3207 0121 3F       		.byte	0x3f
  3208 0122 EC000000 		.4byte	0xec
@@ -6520,34 +6520,34 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3216 0133 8C       		.byte	0x8c
  3217 0134 75010000 		.4byte	0x175
  3218 0138 0A       		.uleb128 0xa
- 3219 0139 34070000 		.4byte	.LASF26
+ 3219 0139 F1060000 		.4byte	.LASF26
  3220 013d 06       		.byte	0x6
  3221 013e 8F       		.byte	0x8f
  3222 013f 1B010000 		.4byte	0x11b
  3223 0143 00       		.byte	0
  3224 0144 0A       		.uleb128 0xa
- 3225 0145 EA050000 		.4byte	.LASF27
+ 3225 0145 A7050000 		.4byte	.LASF27
  3226 0149 06       		.byte	0x6
  3227 014a 90       		.byte	0x90
  3228 014b 75010000 		.4byte	0x175
  3229 014f 04       		.byte	0x4
  3230 0150 0A       		.uleb128 0xa
- 3231 0151 79030000 		.4byte	.LASF28
+ 3231 0151 36030000 		.4byte	.LASF28
  3232 0155 06       		.byte	0x6
  3233 0156 91       		.byte	0x91
  3234 0157 75010000 		.4byte	0x175
  3235 015b 08       		.byte	0x8
  3236 015c 0A       		.uleb128 0xa
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 110
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 110
 
 
- 3237 015d 4F080000 		.4byte	.LASF29
+ 3237 015d 6F080000 		.4byte	.LASF29
  3238 0161 06       		.byte	0x6
  3239 0162 92       		.byte	0x92
  3240 0163 B0000000 		.4byte	0xb0
  3241 0167 0C       		.byte	0xc
  3242 0168 0A       		.uleb128 0xa
- 3243 0169 ED060000 		.4byte	.LASF30
+ 3243 0169 AA060000 		.4byte	.LASF30
  3244 016d 06       		.byte	0x6
  3245 016e 93       		.byte	0x93
  3246 016f AC010000 		.4byte	0x1ac
@@ -6557,7 +6557,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3250 0176 04       		.byte	0x4
  3251 0177 2C010000 		.4byte	0x12c
  3252 017b 09       		.uleb128 0x9
- 3253 017c 08040000 		.4byte	.LASF32
+ 3253 017c C5030000 		.4byte	.LASF32
  3254 0180 14       		.byte	0x14
  3255 0181 06       		.byte	0x6
  3256 0182 A4       		.byte	0xa4
@@ -6575,7 +6575,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3268 019a FE010000 		.4byte	0x1fe
  3269 019e 04       		.byte	0x4
  3270 019f 0A       		.uleb128 0xa
- 3271 01a0 F9040000 		.4byte	.LASF35
+ 3271 01a0 B6040000 		.4byte	.LASF35
  3272 01a4 06       		.byte	0x6
  3273 01a5 A9       		.byte	0xa9
  3274 01a6 EE010000 		.4byte	0x1ee
@@ -6585,40 +6585,40 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3278 01ad 04       		.byte	0x4
  3279 01ae 7B010000 		.4byte	0x17b
  3280 01b2 02       		.uleb128 0x2
- 3281 01b3 89040000 		.4byte	.LASF36
+ 3281 01b3 46040000 		.4byte	.LASF36
  3282 01b7 06       		.byte	0x6
  3283 01b8 96       		.byte	0x96
  3284 01b9 2C010000 		.4byte	0x12c
  3285 01bd 09       		.uleb128 0x9
- 3286 01be F8030000 		.4byte	.LASF37
+ 3286 01be B5030000 		.4byte	.LASF37
  3287 01c2 0C       		.byte	0xc
  3288 01c3 06       		.byte	0x6
  3289 01c4 98       		.byte	0x98
  3290 01c5 EE010000 		.4byte	0x1ee
  3291 01c9 0A       		.uleb128 0xa
- 3292 01ca 34070000 		.4byte	.LASF26
+ 3292 01ca F1060000 		.4byte	.LASF26
  3293 01ce 06       		.byte	0x6
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 111
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 111
 
 
  3294 01cf 9B       		.byte	0x9b
  3295 01d0 1B010000 		.4byte	0x11b
  3296 01d4 00       		.byte	0
  3297 01d5 0A       		.uleb128 0xa
- 3298 01d6 EA050000 		.4byte	.LASF27
+ 3298 01d6 A7050000 		.4byte	.LASF27
  3299 01da 06       		.byte	0x6
  3300 01db 9C       		.byte	0x9c
  3301 01dc 75010000 		.4byte	0x175
  3302 01e0 04       		.byte	0x4
  3303 01e1 0A       		.uleb128 0xa
- 3304 01e2 79030000 		.4byte	.LASF28
+ 3304 01e2 36030000 		.4byte	.LASF28
  3305 01e6 06       		.byte	0x6
  3306 01e7 9D       		.byte	0x9d
  3307 01e8 75010000 		.4byte	0x175
  3308 01ec 08       		.byte	0x8
  3309 01ed 00       		.byte	0
  3310 01ee 02       		.uleb128 0x2
- 3311 01ef 20050000 		.4byte	.LASF38
+ 3311 01ef DD040000 		.4byte	.LASF38
  3312 01f3 06       		.byte	0x6
  3313 01f4 9F       		.byte	0x9f
  3314 01f5 BD010000 		.4byte	0x1bd
@@ -6628,12 +6628,12 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3318 01ff 04       		.byte	0x4
  3319 0200 B2010000 		.4byte	0x1b2
  3320 0204 02       		.uleb128 0x2
- 3321 0205 6F060000 		.4byte	.LASF39
+ 3321 0205 2C060000 		.4byte	.LASF39
  3322 0209 06       		.byte	0x6
  3323 020a AB       		.byte	0xab
  3324 020b 7B010000 		.4byte	0x17b
  3325 020f 02       		.uleb128 0x2
- 3326 0210 27060000 		.4byte	.LASF40
+ 3326 0210 E4050000 		.4byte	.LASF40
  3327 0214 07       		.byte	0x7
  3328 0215 46       		.byte	0x46
  3329 0216 1A020000 		.4byte	0x21a
@@ -6655,22 +6655,22 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3345 0238 05010000 		.4byte	0x105
  3346 023c 00       		.byte	0
  3347 023d 0A       		.uleb128 0xa
- 3348 023e C6050000 		.4byte	.LASF43
+ 3348 023e 83050000 		.4byte	.LASF43
  3349 0242 07       		.byte	0x7
  3350 0243 69       		.byte	0x69
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 112
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 112
 
 
  3351 0244 1B010000 		.4byte	0x11b
  3352 0248 04       		.byte	0x4
  3353 0249 00       		.byte	0
  3354 024a 02       		.uleb128 0x2
- 3355 024b 06060000 		.4byte	.LASF44
+ 3355 024b C3050000 		.4byte	.LASF44
  3356 024f 07       		.byte	0x7
  3357 0250 6A       		.byte	0x6a
  3358 0251 25020000 		.4byte	0x225
  3359 0255 02       		.uleb128 0x2
- 3360 0256 EB040000 		.4byte	.LASF45
+ 3360 0256 A8040000 		.4byte	.LASF45
  3361 025a 08       		.byte	0x8
  3362 025b 30       		.byte	0x30
  3363 025c 60020000 		.4byte	0x260
@@ -6678,19 +6678,19 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3365 0261 04       		.byte	0x4
  3366 0262 66020000 		.4byte	0x266
  3367 0266 09       		.uleb128 0x9
- 3368 0267 14030000 		.4byte	.LASF46
+ 3368 0267 D1020000 		.4byte	.LASF46
  3369 026b 48       		.byte	0x48
  3370 026c 01       		.byte	0x1
  3371 026d 61       		.byte	0x61
  3372 026e E9020000 		.4byte	0x2e9
  3373 0272 0A       		.uleb128 0xa
- 3374 0273 57080000 		.4byte	.LASF47
+ 3374 0273 77080000 		.4byte	.LASF47
  3375 0277 01       		.byte	0x1
  3376 0278 63       		.byte	0x63
  3377 0279 0E030000 		.4byte	0x30e
  3378 027d 00       		.byte	0
  3379 027e 0A       		.uleb128 0xa
- 3380 027f 87060000 		.4byte	.LASF48
+ 3380 027f 44060000 		.4byte	.LASF48
  3381 0283 01       		.byte	0x1
  3382 0284 64       		.byte	0x64
  3383 0285 0E030000 		.4byte	0x30e
@@ -6714,28 +6714,28 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3401 02a7 04020000 		.4byte	0x204
  3402 02ab 24       		.byte	0x24
  3403 02ac 0A       		.uleb128 0xa
- 3404 02ad 84030000 		.4byte	.LASF51
+ 3404 02ad 41030000 		.4byte	.LASF51
  3405 02b1 01       		.byte	0x1
  3406 02b2 6F       		.byte	0x6f
  3407 02b3 F9010000 		.4byte	0x1f9
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 113
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 113
 
 
  3408 02b7 38       		.byte	0x38
  3409 02b8 0A       		.uleb128 0xa
- 3410 02b9 21070000 		.4byte	.LASF52
+ 3410 02b9 DE060000 		.4byte	.LASF52
  3411 02bd 01       		.byte	0x1
  3412 02be 70       		.byte	0x70
  3413 02bf 10010000 		.4byte	0x110
  3414 02c3 3C       		.byte	0x3c
  3415 02c4 0A       		.uleb128 0xa
- 3416 02c5 5C040000 		.4byte	.LASF53
+ 3416 02c5 19040000 		.4byte	.LASF53
  3417 02c9 01       		.byte	0x1
  3418 02ca 71       		.byte	0x71
  3419 02cb 10010000 		.4byte	0x110
  3420 02cf 40       		.byte	0x40
  3421 02d0 0A       		.uleb128 0xa
- 3422 02d1 F7080000 		.4byte	.LASF54
+ 3422 02d1 17090000 		.4byte	.LASF54
  3423 02d5 01       		.byte	0x1
  3424 02d6 73       		.byte	0x73
  3425 02d7 6E030000 		.4byte	0x36e
@@ -6748,19 +6748,19 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3432 02e7 45       		.byte	0x45
  3433 02e8 00       		.byte	0
  3434 02e9 09       		.uleb128 0x9
- 3435 02ea A3040000 		.4byte	.LASF56
+ 3435 02ea 60040000 		.4byte	.LASF56
  3436 02ee 08       		.byte	0x8
  3437 02ef 01       		.byte	0x1
  3438 02f0 43       		.byte	0x43
  3439 02f1 0E030000 		.4byte	0x30e
  3440 02f5 0A       		.uleb128 0xa
- 3441 02f6 A5070000 		.4byte	.LASF57
+ 3441 02f6 62070000 		.4byte	.LASF57
  3442 02fa 01       		.byte	0x1
  3443 02fb 45       		.byte	0x45
  3444 02fc 0E030000 		.4byte	0x30e
  3445 0300 00       		.byte	0
  3446 0301 0A       		.uleb128 0xa
- 3447 0302 7C020000 		.4byte	.LASF58
+ 3447 0302 39020000 		.4byte	.LASF58
  3448 0306 01       		.byte	0x1
  3449 0307 46       		.byte	0x46
  3450 0308 0E030000 		.4byte	0x30e
@@ -6770,7 +6770,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3454 030f 04       		.byte	0x4
  3455 0310 CB000000 		.4byte	0xcb
  3456 0314 02       		.uleb128 0x2
- 3457 0315 08070000 		.4byte	.LASF59
+ 3457 0315 C5060000 		.4byte	.LASF59
  3458 0319 01       		.byte	0x1
  3459 031a 47       		.byte	0x47
  3460 031b E9020000 		.4byte	0x2e9
@@ -6778,13 +6778,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3462 0320 10000000 		.4byte	.LASF60
  3463 0324 08       		.byte	0x8
  3464 0325 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 114
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 114
 
 
  3465 0326 49       		.byte	0x49
  3466 0327 44030000 		.4byte	0x344
  3467 032b 0A       		.uleb128 0xa
- 3468 032c D9080000 		.4byte	.LASF61
+ 3468 032c F9080000 		.4byte	.LASF61
  3469 0330 01       		.byte	0x1
  3470 0331 4B       		.byte	0x4b
  3471 0332 0F020000 		.4byte	0x20f
@@ -6807,12 +6807,12 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3488 0352 66       		.byte	0x66
  3489 0353 6E030000 		.4byte	0x36e
  3490 0357 0F       		.uleb128 0xf
- 3491 0358 07030000 		.4byte	.LASF64
+ 3491 0358 C4020000 		.4byte	.LASF64
  3492 035c 01       		.byte	0x1
  3493 035d 68       		.byte	0x68
  3494 035e 14030000 		.4byte	0x314
  3495 0362 0F       		.uleb128 0xf
- 3496 0363 96030000 		.4byte	.LASF65
+ 3496 0363 53030000 		.4byte	.LASF65
  3497 0367 01       		.byte	0x1
  3498 0368 69       		.byte	0x69
  3499 0369 44030000 		.4byte	0x344
@@ -6820,7 +6820,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3501 036e 0B       		.uleb128 0xb
  3502 036f CB000000 		.4byte	0xcb
  3503 0373 02       		.uleb128 0x2
- 3504 0374 D2080000 		.4byte	.LASF66
+ 3504 0374 F2080000 		.4byte	.LASF66
  3505 0378 01       		.byte	0x1
  3506 0379 83       		.byte	0x83
  3507 037a 66020000 		.4byte	0x266
@@ -6836,23 +6836,23 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3517 0390 94       		.byte	0x94
  3518 0391 AE030000 		.4byte	0x3ae
  3519 0395 0A       		.uleb128 0xa
- 3520 0396 EC030000 		.4byte	.LASF69
+ 3520 0396 A9030000 		.4byte	.LASF69
  3521 039a 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 115
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 115
 
 
  3522 039b 96       		.byte	0x96
  3523 039c B9000000 		.4byte	0xb9
  3524 03a0 00       		.byte	0
  3525 03a1 0A       		.uleb128 0xa
- 3526 03a2 E4030000 		.4byte	.LASF70
+ 3526 03a2 A1030000 		.4byte	.LASF70
  3527 03a6 01       		.byte	0x1
  3528 03a7 97       		.byte	0x97
  3529 03a8 55020000 		.4byte	0x255
  3530 03ac 04       		.byte	0x4
  3531 03ad 00       		.byte	0
  3532 03ae 02       		.uleb128 0x2
- 3533 03af 37050000 		.4byte	.LASF71
+ 3533 03af F4040000 		.4byte	.LASF71
  3534 03b3 01       		.byte	0x1
  3535 03b4 98       		.byte	0x98
  3536 03b5 89030000 		.4byte	0x389
@@ -6862,50 +6862,50 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3540 03bf 9D       		.byte	0x9d
  3541 03c0 AE030000 		.4byte	0x3ae
  3542 03c4 10       		.uleb128 0x10
- 3543 03c5 70050000 		.4byte	.LASF144
+ 3543 03c5 2D050000 		.4byte	.LASF144
  3544 03c9 02       		.byte	0x2
  3545 03ca D1       		.byte	0xd1
  3546 03cb EC000000 		.4byte	0xec
  3547 03cf 03       		.byte	0x3
  3548 03d0 EB030000 		.4byte	0x3eb
  3549 03d4 11       		.uleb128 0x11
- 3550 03d5 F5020000 		.4byte	.LASF73
+ 3550 03d5 B2020000 		.4byte	.LASF73
  3551 03d9 02       		.byte	0x2
  3552 03da D3       		.byte	0xd3
  3553 03db EC000000 		.4byte	0xec
  3554 03df 11       		.uleb128 0x11
- 3555 03e0 B1040000 		.4byte	.LASF74
+ 3555 03e0 6E040000 		.4byte	.LASF74
  3556 03e4 02       		.byte	0x2
  3557 03e5 D3       		.byte	0xd3
  3558 03e6 EC000000 		.4byte	0xec
  3559 03ea 00       		.byte	0
  3560 03eb 12       		.uleb128 0x12
- 3561 03ec 27040000 		.4byte	.LASF145
+ 3561 03ec E4030000 		.4byte	.LASF145
  3562 03f0 02       		.byte	0x2
  3563 03f1 E5       		.byte	0xe5
  3564 03f2 03       		.byte	0x3
  3565 03f3 03040000 		.4byte	0x403
  3566 03f7 13       		.uleb128 0x13
- 3567 03f8 34060000 		.4byte	.LASF146
+ 3567 03f8 F1050000 		.4byte	.LASF146
  3568 03fc 02       		.byte	0x2
  3569 03fd E5       		.byte	0xe5
  3570 03fe EC000000 		.4byte	0xec
  3571 0402 00       		.byte	0
  3572 0403 14       		.uleb128 0x14
- 3573 0404 86080000 		.4byte	.LASF76
+ 3573 0404 A6080000 		.4byte	.LASF76
  3574 0408 01       		.byte	0x1
  3575 0409 FF       		.byte	0xff
  3576 040a 05010000 		.4byte	0x105
  3577 040e 00000000 		.4byte	.LFB68
  3578 0412 B4000000 		.4byte	.LFE68-.LFB68
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 116
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 116
 
 
  3579 0416 01       		.uleb128 0x1
  3580 0417 9C       		.byte	0x9c
  3581 0418 48040000 		.4byte	0x448
  3582 041c 15       		.uleb128 0x15
- 3583 041d 07030000 		.4byte	.LASF64
+ 3583 041d C4020000 		.4byte	.LASF64
  3584 0421 01       		.byte	0x1
  3585 0422 FF       		.byte	0xff
  3586 0423 55020000 		.4byte	0x255
@@ -6913,7 +6913,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3588 0428 91       		.byte	0x91
  3589 0429 6C       		.sleb128 -20
  3590 042a 15       		.uleb128 0x15
- 3591 042b F1050000 		.4byte	.LASF75
+ 3591 042b AE050000 		.4byte	.LASF75
  3592 042f 01       		.byte	0x1
  3593 0430 FF       		.byte	0xff
  3594 0431 05010000 		.4byte	0x105
@@ -6921,7 +6921,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3596 0436 91       		.byte	0x91
  3597 0437 68       		.sleb128 -24
  3598 0438 16       		.uleb128 0x16
- 3599 0439 B6070000 		.4byte	.LASF80
+ 3599 0439 73070000 		.4byte	.LASF80
  3600 043d 01       		.byte	0x1
  3601 043e 0101     		.2byte	0x101
  3602 0440 4E040000 		.4byte	0x44e
@@ -6935,7 +6935,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3610 044e 07       		.uleb128 0x7
  3611 044f 48040000 		.4byte	0x448
  3612 0453 17       		.uleb128 0x17
- 3613 0454 4A050000 		.4byte	.LASF77
+ 3613 0454 07050000 		.4byte	.LASF77
  3614 0458 01       		.byte	0x1
  3615 0459 7001     		.2byte	0x170
  3616 045b 55020000 		.4byte	0x255
@@ -6945,7 +6945,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3620 0468 9C       		.byte	0x9c
  3621 0469 C8040000 		.4byte	0x4c8
  3622 046d 18       		.uleb128 0x18
- 3623 046e A5060000 		.4byte	.LASF78
+ 3623 046e 62060000 		.4byte	.LASF78
  3624 0472 01       		.byte	0x1
  3625 0473 7001     		.2byte	0x170
  3626 0475 C8040000 		.4byte	0x4c8
@@ -6953,18 +6953,18 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3628 047a 91       		.byte	0x91
  3629 047b 64       		.sleb128 -28
  3630 047c 18       		.uleb128 0x18
- 3631 047d 5C040000 		.4byte	.LASF53
+ 3631 047d 19040000 		.4byte	.LASF53
  3632 0481 01       		.byte	0x1
  3633 0482 7001     		.2byte	0x170
  3634 0484 C8040000 		.4byte	0x4c8
  3635 0488 02       		.uleb128 0x2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 117
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 117
 
 
  3636 0489 91       		.byte	0x91
  3637 048a 60       		.sleb128 -32
  3638 048b 18       		.uleb128 0x18
- 3639 048c 63060000 		.4byte	.LASF79
+ 3639 048c 20060000 		.4byte	.LASF79
  3640 0490 01       		.byte	0x1
  3641 0491 7001     		.2byte	0x170
  3642 0493 CD040000 		.4byte	0x4cd
@@ -6980,7 +6980,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3652 04a7 91       		.byte	0x91
  3653 04a8 70       		.sleb128 -16
  3654 04a9 16       		.uleb128 0x16
- 3655 04aa 55070000 		.4byte	.LASF82
+ 3655 04aa 12070000 		.4byte	.LASF82
  3656 04ae 01       		.byte	0x1
  3657 04af 7301     		.2byte	0x173
  3658 04b1 25000000 		.4byte	0x25
@@ -6988,7 +6988,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3660 04b6 91       		.byte	0x91
  3661 04b7 74       		.sleb128 -12
  3662 04b8 16       		.uleb128 0x16
- 3663 04b9 AF050000 		.4byte	.LASF83
+ 3663 04b9 6C050000 		.4byte	.LASF83
  3664 04bd 01       		.byte	0x1
  3665 04be 7401     		.2byte	0x174
  3666 04c0 26010000 		.4byte	0x126
@@ -7001,7 +7001,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3673 04cd 07       		.uleb128 0x7
  3674 04ce D6000000 		.4byte	0xd6
  3675 04d2 19       		.uleb128 0x19
- 3676 04d3 B4020000 		.4byte	.LASF84
+ 3676 04d3 71020000 		.4byte	.LASF84
  3677 04d7 01       		.byte	0x1
  3678 04d8 A601     		.2byte	0x1a6
  3679 04da 00000000 		.4byte	.LFB70
@@ -7010,7 +7010,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3682 04e3 9C       		.byte	0x9c
  3683 04e4 34050000 		.4byte	0x534
  3684 04e8 18       		.uleb128 0x18
- 3685 04e9 A5060000 		.4byte	.LASF78
+ 3685 04e9 62060000 		.4byte	.LASF78
  3686 04ed 01       		.byte	0x1
  3687 04ee A601     		.2byte	0x1a6
  3688 04f0 C8040000 		.4byte	0x4c8
@@ -7018,10 +7018,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3690 04f5 91       		.byte	0x91
  3691 04f6 74       		.sleb128 -12
  3692 04f7 18       		.uleb128 0x18
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 118
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 118
 
 
- 3693 04f8 5C040000 		.4byte	.LASF53
+ 3693 04f8 19040000 		.4byte	.LASF53
  3694 04fc 01       		.byte	0x1
  3695 04fd A601     		.2byte	0x1a6
  3696 04ff C8040000 		.4byte	0x4c8
@@ -7029,7 +7029,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3698 0504 91       		.byte	0x91
  3699 0505 70       		.sleb128 -16
  3700 0506 18       		.uleb128 0x18
- 3701 0507 AF050000 		.4byte	.LASF83
+ 3701 0507 6C050000 		.4byte	.LASF83
  3702 050b 01       		.byte	0x1
  3703 050c A601     		.2byte	0x1a6
  3704 050e 26010000 		.4byte	0x126
@@ -7037,7 +7037,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3706 0513 91       		.byte	0x91
  3707 0514 6C       		.sleb128 -20
  3708 0515 18       		.uleb128 0x18
- 3709 0516 63060000 		.4byte	.LASF79
+ 3709 0516 20060000 		.4byte	.LASF79
  3710 051a 01       		.byte	0x1
  3711 051b A601     		.2byte	0x1a6
  3712 051d CD040000 		.4byte	0x4cd
@@ -7054,7 +7054,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3723 0532 00       		.sleb128 0
  3724 0533 00       		.byte	0
  3725 0534 19       		.uleb128 0x19
- 3726 0535 91050000 		.4byte	.LASF85
+ 3726 0535 4E050000 		.4byte	.LASF85
  3727 0539 01       		.byte	0x1
  3728 053a D201     		.2byte	0x1d2
  3729 053c 00000000 		.4byte	.LFB71
@@ -7072,20 +7072,20 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3741 0558 74       		.sleb128 -12
  3742 0559 00       		.byte	0
  3743 055a 17       		.uleb128 0x17
- 3744 055b 5E050000 		.4byte	.LASF86
+ 3744 055b 1B050000 		.4byte	.LASF86
  3745 055f 01       		.byte	0x1
  3746 0560 F001     		.2byte	0x1f0
  3747 0562 55020000 		.4byte	0x255
  3748 0566 00000000 		.4byte	.LFB72
  3749 056a 30000000 		.4byte	.LFE72-.LFB72
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 119
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 119
 
 
  3750 056e 01       		.uleb128 0x1
  3751 056f 9C       		.byte	0x9c
  3752 0570 B1050000 		.4byte	0x5b1
  3753 0574 18       		.uleb128 0x18
- 3754 0575 63060000 		.4byte	.LASF79
+ 3754 0575 20060000 		.4byte	.LASF79
  3755 0579 01       		.byte	0x1
  3756 057a F001     		.2byte	0x1f0
  3757 057c CD040000 		.4byte	0x4cd
@@ -7093,7 +7093,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3759 0581 91       		.byte	0x91
  3760 0582 67       		.sleb128 -25
  3761 0583 16       		.uleb128 0x16
- 3762 0584 F1050000 		.4byte	.LASF75
+ 3762 0584 AE050000 		.4byte	.LASF75
  3763 0588 01       		.byte	0x1
  3764 0589 F201     		.2byte	0x1f2
  3765 058b 55020000 		.4byte	0x255
@@ -7101,7 +7101,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3767 0590 91       		.byte	0x91
  3768 0591 6C       		.sleb128 -20
  3769 0592 16       		.uleb128 0x16
- 3770 0593 76040000 		.4byte	.LASF87
+ 3770 0593 33040000 		.4byte	.LASF87
  3771 0597 01       		.byte	0x1
  3772 0598 F301     		.2byte	0x1f3
  3773 059a C8040000 		.4byte	0x4c8
@@ -7109,7 +7109,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3775 059f 91       		.byte	0x91
  3776 05a0 74       		.sleb128 -12
  3777 05a1 16       		.uleb128 0x16
- 3778 05a2 DA020000 		.4byte	.LASF88
+ 3778 05a2 97020000 		.4byte	.LASF88
  3779 05a6 01       		.byte	0x1
  3780 05a7 F301     		.2byte	0x1f3
  3781 05a9 C8040000 		.4byte	0x4c8
@@ -7118,7 +7118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3784 05af 70       		.sleb128 -16
  3785 05b0 00       		.byte	0
  3786 05b1 17       		.uleb128 0x17
- 3787 05b2 5E080000 		.4byte	.LASF89
+ 3787 05b2 7E080000 		.4byte	.LASF89
  3788 05b6 01       		.byte	0x1
  3789 05b7 4D02     		.2byte	0x24d
  3790 05b9 05010000 		.4byte	0x105
@@ -7128,7 +7128,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3794 05c6 9C       		.byte	0x9c
  3795 05c7 F9050000 		.4byte	0x5f9
  3796 05cb 18       		.uleb128 0x18
- 3797 05cc BF050000 		.4byte	.LASF90
+ 3797 05cc 7C050000 		.4byte	.LASF90
  3798 05d0 01       		.byte	0x1
  3799 05d1 4D02     		.2byte	0x24d
  3800 05d3 55020000 		.4byte	0x255
@@ -7136,9 +7136,9 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3802 05d8 91       		.byte	0x91
  3803 05d9 64       		.sleb128 -28
  3804 05da 16       		.uleb128 0x16
- 3805 05db BE070000 		.4byte	.LASF91
+ 3805 05db DE070000 		.4byte	.LASF91
  3806 05df 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 120
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 120
 
 
  3807 05e0 4F02     		.2byte	0x24f
@@ -7156,7 +7156,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3819 05f7 68       		.sleb128 -24
  3820 05f8 00       		.byte	0
  3821 05f9 17       		.uleb128 0x17
- 3822 05fa D4060000 		.4byte	.LASF93
+ 3822 05fa 91060000 		.4byte	.LASF93
  3823 05fe 01       		.byte	0x1
  3824 05ff 8402     		.2byte	0x284
  3825 0601 05010000 		.4byte	0x105
@@ -7166,7 +7166,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3829 060e 9C       		.byte	0x9c
  3830 060f 50060000 		.4byte	0x650
  3831 0613 18       		.uleb128 0x18
- 3832 0614 BF050000 		.4byte	.LASF90
+ 3832 0614 7C050000 		.4byte	.LASF90
  3833 0618 01       		.byte	0x1
  3834 0619 8402     		.2byte	0x284
  3835 061b 55020000 		.4byte	0x255
@@ -7174,7 +7174,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3837 0620 91       		.byte	0x91
  3838 0621 64       		.sleb128 -28
  3839 0622 18       		.uleb128 0x18
- 3840 0623 42080000 		.4byte	.LASF94
+ 3840 0623 62080000 		.4byte	.LASF94
  3841 0627 01       		.byte	0x1
  3842 0628 8402     		.2byte	0x284
  3843 062a 1B010000 		.4byte	0x11b
@@ -7182,7 +7182,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3845 062f 91       		.byte	0x91
  3846 0630 60       		.sleb128 -32
  3847 0631 16       		.uleb128 0x16
- 3848 0632 BE070000 		.4byte	.LASF91
+ 3848 0632 DE070000 		.4byte	.LASF91
  3849 0636 01       		.byte	0x1
  3850 0637 8602     		.2byte	0x286
  3851 0639 05010000 		.4byte	0x105
@@ -7198,11 +7198,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3861 064d 91       		.byte	0x91
  3862 064e 68       		.sleb128 -24
  3863 064f 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 121
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 121
 
 
  3864 0650 17       		.uleb128 0x17
- 3865 0651 FF080000 		.4byte	.LASF95
+ 3865 0651 1F090000 		.4byte	.LASF95
  3866 0655 01       		.byte	0x1
  3867 0656 CA02     		.2byte	0x2ca
  3868 0658 55020000 		.4byte	0x255
@@ -7212,7 +7212,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3872 0665 9C       		.byte	0x9c
  3873 0666 98060000 		.4byte	0x698
  3874 066a 18       		.uleb128 0x18
- 3875 066b FB050000 		.4byte	.LASF96
+ 3875 066b B8050000 		.4byte	.LASF96
  3876 066f 01       		.byte	0x1
  3877 0670 CA02     		.2byte	0x2ca
  3878 0672 C8040000 		.4byte	0x4c8
@@ -7220,7 +7220,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3880 0677 91       		.byte	0x91
  3881 0678 6C       		.sleb128 -20
  3882 0679 18       		.uleb128 0x18
- 3883 067a 67040000 		.4byte	.LASF97
+ 3883 067a 24040000 		.4byte	.LASF97
  3884 067e 01       		.byte	0x1
  3885 067f CA02     		.2byte	0x2ca
  3886 0681 C8040000 		.4byte	0x4c8
@@ -7228,7 +7228,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3888 0686 91       		.byte	0x91
  3889 0687 68       		.sleb128 -24
  3890 0688 16       		.uleb128 0x16
- 3891 0689 E4030000 		.4byte	.LASF70
+ 3891 0689 A1030000 		.4byte	.LASF70
  3892 068d 01       		.byte	0x1
  3893 068e CC02     		.2byte	0x2cc
  3894 0690 55020000 		.4byte	0x255
@@ -7237,7 +7237,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3897 0696 74       		.sleb128 -12
  3898 0697 00       		.byte	0
  3899 0698 17       		.uleb128 0x17
- 3900 0699 4A040000 		.4byte	.LASF98
+ 3900 0699 07040000 		.4byte	.LASF98
  3901 069d 01       		.byte	0x1
  3902 069e E402     		.2byte	0x2e4
  3903 06a0 05010000 		.4byte	0x105
@@ -7247,7 +7247,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3907 06ad 9C       		.byte	0x9c
  3908 06ae 2B070000 		.4byte	0x72b
  3909 06b2 18       		.uleb128 0x18
- 3910 06b3 07030000 		.4byte	.LASF64
+ 3910 06b3 C4020000 		.4byte	.LASF64
  3911 06b7 01       		.byte	0x1
  3912 06b8 E402     		.2byte	0x2e4
  3913 06ba 55020000 		.4byte	0x255
@@ -7255,10 +7255,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3915 06bf 91       		.byte	0x91
  3916 06c0 5C       		.sleb128 -36
  3917 06c1 18       		.uleb128 0x18
- 3918 06c2 67070000 		.4byte	.LASF99
+ 3918 06c2 24070000 		.4byte	.LASF99
  3919 06c6 01       		.byte	0x1
  3920 06c7 E402     		.2byte	0x2e4
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 122
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 122
 
 
  3921 06c9 2B070000 		.4byte	0x72b
@@ -7266,7 +7266,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3923 06ce 91       		.byte	0x91
  3924 06cf 58       		.sleb128 -40
  3925 06d0 18       		.uleb128 0x18
- 3926 06d1 42080000 		.4byte	.LASF94
+ 3926 06d1 62080000 		.4byte	.LASF94
  3927 06d5 01       		.byte	0x1
  3928 06d6 E402     		.2byte	0x2e4
  3929 06d8 1B010000 		.4byte	0x11b
@@ -7282,7 +7282,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3939 06ec 91       		.byte	0x91
  3940 06ed 50       		.sleb128 -48
  3941 06ee 16       		.uleb128 0x16
- 3942 06ef C6030000 		.4byte	.LASF101
+ 3942 06ef 83030000 		.4byte	.LASF101
  3943 06f3 01       		.byte	0x1
  3944 06f4 E602     		.2byte	0x2e6
  3945 06f6 05010000 		.4byte	0x105
@@ -7290,7 +7290,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3947 06fb 91       		.byte	0x91
  3948 06fc 74       		.sleb128 -12
  3949 06fd 16       		.uleb128 0x16
- 3950 06fe E6020000 		.4byte	.LASF102
+ 3950 06fe A3020000 		.4byte	.LASF102
  3951 0702 01       		.byte	0x1
  3952 0703 E602     		.2byte	0x2e6
  3953 0705 05010000 		.4byte	0x105
@@ -7298,7 +7298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3955 070a 91       		.byte	0x91
  3956 070b 6C       		.sleb128 -20
  3957 070c 16       		.uleb128 0x16
- 3958 070d DB030000 		.4byte	.LASF103
+ 3958 070d 98030000 		.4byte	.LASF103
  3959 0711 01       		.byte	0x1
  3960 0712 E702     		.2byte	0x2e7
  3961 0714 4A020000 		.4byte	0x24a
@@ -7306,7 +7306,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3963 0719 91       		.byte	0x91
  3964 071a 64       		.sleb128 -28
  3965 071b 16       		.uleb128 0x16
- 3966 071c B6070000 		.4byte	.LASF80
+ 3966 071c 73070000 		.4byte	.LASF80
  3967 0720 01       		.byte	0x1
  3968 0721 E802     		.2byte	0x2e8
  3969 0723 4E040000 		.4byte	0x44e
@@ -7318,11 +7318,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3975 072c C4000000 		.4byte	0xc4
  3976 0730 07       		.uleb128 0x7
  3977 0731 05010000 		.4byte	0x105
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 123
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 123
 
 
  3978 0735 17       		.uleb128 0x17
- 3979 0736 0E040000 		.4byte	.LASF104
+ 3979 0736 CB030000 		.4byte	.LASF104
  3980 073a 01       		.byte	0x1
  3981 073b B603     		.2byte	0x3b6
  3982 073d 05010000 		.4byte	0x105
@@ -7332,7 +7332,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3986 074a 9C       		.byte	0x9c
  3987 074b 2D080000 		.4byte	0x82d
  3988 074f 18       		.uleb128 0x18
- 3989 0750 07030000 		.4byte	.LASF64
+ 3989 0750 C4020000 		.4byte	.LASF64
  3990 0754 01       		.byte	0x1
  3991 0755 B603     		.2byte	0x3b6
  3992 0757 55020000 		.4byte	0x255
@@ -7340,7 +7340,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  3994 075c 91       		.byte	0x91
  3995 075d 54       		.sleb128 -44
  3996 075e 18       		.uleb128 0x18
- 3997 075f 67070000 		.4byte	.LASF99
+ 3997 075f 24070000 		.4byte	.LASF99
  3998 0763 01       		.byte	0x1
  3999 0764 B603     		.2byte	0x3b6
  4000 0766 2B070000 		.4byte	0x72b
@@ -7364,7 +7364,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4018 0789 91       		.byte	0x91
  4019 078a 48       		.sleb128 -56
  4020 078b 16       		.uleb128 0x16
- 4021 078c BE070000 		.4byte	.LASF91
+ 4021 078c DE070000 		.4byte	.LASF91
  4022 0790 01       		.byte	0x1
  4023 0791 B803     		.2byte	0x3b8
  4024 0793 05010000 		.4byte	0x105
@@ -7372,18 +7372,18 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4026 0798 91       		.byte	0x91
  4027 0799 74       		.sleb128 -12
  4028 079a 16       		.uleb128 0x16
- 4029 079b 9D020000 		.4byte	.LASF106
+ 4029 079b 5A020000 		.4byte	.LASF106
  4030 079f 01       		.byte	0x1
  4031 07a0 B903     		.2byte	0x3b9
  4032 07a2 10010000 		.4byte	0x110
  4033 07a6 02       		.uleb128 0x2
  4034 07a7 91       		.byte	0x91
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 124
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 124
 
 
  4035 07a8 68       		.sleb128 -24
  4036 07a9 16       		.uleb128 0x16
- 4037 07aa B6070000 		.4byte	.LASF80
+ 4037 07aa 73070000 		.4byte	.LASF80
  4038 07ae 01       		.byte	0x1
  4039 07af BA03     		.2byte	0x3ba
  4040 07b1 4E040000 		.4byte	0x44e
@@ -7425,7 +7425,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4076 0801 91       		.byte	0x91
  4077 0802 67       		.sleb128 -25
  4078 0803 16       		.uleb128 0x16
- 4079 0804 A1030000 		.4byte	.LASF107
+ 4079 0804 5E030000 		.4byte	.LASF107
  4080 0808 01       		.byte	0x1
  4081 0809 DA03     		.2byte	0x3da
  4082 080b C8040000 		.4byte	0x4c8
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4089 0818 A4000000 		.4byte	.LBB26
  4090 081c 06000000 		.4byte	.LBE26-.LBB26
  4091 0820 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 125
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 125
 
 
  4092 0821 5204     		.2byte	0x452
@@ -7457,7 +7457,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4105 0838 07       		.uleb128 0x7
  4106 0839 CB000000 		.4byte	0xcb
  4107 083d 17       		.uleb128 0x17
- 4108 083e CA040000 		.4byte	.LASF108
+ 4108 083e 87040000 		.4byte	.LASF108
  4109 0842 01       		.byte	0x1
  4110 0843 5804     		.2byte	0x458
  4111 0845 05010000 		.4byte	0x105
@@ -7467,7 +7467,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4115 0852 9C       		.byte	0x9c
  4116 0853 21090000 		.4byte	0x921
  4117 0857 18       		.uleb128 0x18
- 4118 0858 07030000 		.4byte	.LASF64
+ 4118 0858 C4020000 		.4byte	.LASF64
  4119 085c 01       		.byte	0x1
  4120 085d 5804     		.2byte	0x458
  4121 085f 55020000 		.4byte	0x255
@@ -7483,7 +7483,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4131 0873 91       		.byte	0x91
  4132 0874 50       		.sleb128 -48
  4133 0875 16       		.uleb128 0x16
- 4134 0876 BE070000 		.4byte	.LASF91
+ 4134 0876 DE070000 		.4byte	.LASF91
  4135 087a 01       		.byte	0x1
  4136 087b 5A04     		.2byte	0x45a
  4137 087d 05010000 		.4byte	0x105
@@ -7491,18 +7491,18 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4139 0882 91       		.byte	0x91
  4140 0883 74       		.sleb128 -12
  4141 0884 16       		.uleb128 0x16
- 4142 0885 9D020000 		.4byte	.LASF106
+ 4142 0885 5A020000 		.4byte	.LASF106
  4143 0889 01       		.byte	0x1
  4144 088a 5B04     		.2byte	0x45b
  4145 088c 10010000 		.4byte	0x110
  4146 0890 02       		.uleb128 0x2
  4147 0891 91       		.byte	0x91
  4148 0892 68       		.sleb128 -24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 126
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 126
 
 
  4149 0893 16       		.uleb128 0x16
- 4150 0894 B6070000 		.4byte	.LASF80
+ 4150 0894 73070000 		.4byte	.LASF80
  4151 0898 01       		.byte	0x1
  4152 0899 5C04     		.2byte	0x45c
  4153 089b 4E040000 		.4byte	0x44e
@@ -7536,7 +7536,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4181 08d6 6C000000 		.4byte	.LBE30-.LBB30
  4182 08da 07090000 		.4byte	0x907
  4183 08de 16       		.uleb128 0x16
- 4184 08df 84030000 		.4byte	.LASF51
+ 4184 08df 41030000 		.4byte	.LASF51
  4185 08e3 01       		.byte	0x1
  4186 08e4 8104     		.2byte	0x481
  4187 08e6 C8040000 		.4byte	0x4c8
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4203 0906 00       		.byte	0
  4204 0907 1E       		.uleb128 0x1e
  4205 0908 EB030000 		.4byte	0x3eb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 127
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 127
 
 
  4206 090c 96000000 		.4byte	.LBB32
@@ -7583,7 +7583,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4225 0936 9C       		.byte	0x9c
  4226 0937 AF090000 		.4byte	0x9af
  4227 093b 18       		.uleb128 0x18
- 4228 093c 07030000 		.4byte	.LASF64
+ 4228 093c C4020000 		.4byte	.LASF64
  4229 0940 01       		.byte	0x1
  4230 0941 FD04     		.2byte	0x4fd
  4231 0943 55020000 		.4byte	0x255
@@ -7591,7 +7591,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4233 0948 91       		.byte	0x91
  4234 0949 5C       		.sleb128 -36
  4235 094a 18       		.uleb128 0x18
- 4236 094b 4B030000 		.4byte	.LASF110
+ 4236 094b 08030000 		.4byte	.LASF110
  4237 094f 01       		.byte	0x1
  4238 0950 FD04     		.2byte	0x4fd
  4239 0952 AF090000 		.4byte	0x9af
@@ -7599,7 +7599,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4241 0957 91       		.byte	0x91
  4242 0958 58       		.sleb128 -40
  4243 0959 18       		.uleb128 0x18
- 4244 095a 42080000 		.4byte	.LASF94
+ 4244 095a 62080000 		.4byte	.LASF94
  4245 095e 01       		.byte	0x1
  4246 095f FD04     		.2byte	0x4fd
  4247 0961 1B010000 		.4byte	0x11b
@@ -7607,7 +7607,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4249 0966 91       		.byte	0x91
  4250 0967 54       		.sleb128 -44
  4251 0968 16       		.uleb128 0x16
- 4252 0969 C6030000 		.4byte	.LASF101
+ 4252 0969 83030000 		.4byte	.LASF101
  4253 096d 01       		.byte	0x1
  4254 096e FF04     		.2byte	0x4ff
  4255 0970 05010000 		.4byte	0x105
@@ -7615,10 +7615,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4257 0975 91       		.byte	0x91
  4258 0976 74       		.sleb128 -12
  4259 0977 16       		.uleb128 0x16
- 4260 0978 DB030000 		.4byte	.LASF103
+ 4260 0978 98030000 		.4byte	.LASF103
  4261 097c 01       		.byte	0x1
  4262 097d 0005     		.2byte	0x500
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 128
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 128
 
 
  4263 097f 4A020000 		.4byte	0x24a
@@ -7626,7 +7626,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4265 0984 91       		.byte	0x91
  4266 0985 64       		.sleb128 -28
  4267 0986 16       		.uleb128 0x16
- 4268 0987 B6070000 		.4byte	.LASF80
+ 4268 0987 73070000 		.4byte	.LASF80
  4269 098b 01       		.byte	0x1
  4270 098c 0105     		.2byte	0x501
  4271 098e 4E040000 		.4byte	0x44e
@@ -7637,7 +7637,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4276 0996 18000000 		.4byte	.LBB34
  4277 099a 6E000000 		.4byte	.LBE34-.LBB34
  4278 099e 16       		.uleb128 0x16
- 4279 099f 84030000 		.4byte	.LASF51
+ 4279 099f 41030000 		.4byte	.LASF51
  4280 09a3 01       		.byte	0x1
  4281 09a4 1905     		.2byte	0x519
  4282 09a6 C8040000 		.4byte	0x4c8
@@ -7659,7 +7659,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4298 09c9 9C       		.byte	0x9c
  4299 09ca 5F0A0000 		.4byte	0xa5f
  4300 09ce 18       		.uleb128 0x18
- 4301 09cf 07030000 		.4byte	.LASF64
+ 4301 09cf C4020000 		.4byte	.LASF64
  4302 09d3 01       		.byte	0x1
  4303 09d4 8A05     		.2byte	0x58a
  4304 09d6 55020000 		.4byte	0x255
@@ -7667,7 +7667,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4306 09db 91       		.byte	0x91
  4307 09dc 54       		.sleb128 -44
  4308 09dd 18       		.uleb128 0x18
- 4309 09de 42080000 		.4byte	.LASF94
+ 4309 09de 62080000 		.4byte	.LASF94
  4310 09e2 01       		.byte	0x1
  4311 09e3 8A05     		.2byte	0x58a
  4312 09e5 1B010000 		.4byte	0x11b
@@ -7675,10 +7675,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4314 09ea 91       		.byte	0x91
  4315 09eb 50       		.sleb128 -48
  4316 09ec 16       		.uleb128 0x16
- 4317 09ed C6030000 		.4byte	.LASF101
+ 4317 09ed 83030000 		.4byte	.LASF101
  4318 09f1 01       		.byte	0x1
  4319 09f2 8C05     		.2byte	0x58c
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 129
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 129
 
 
  4320 09f4 05010000 		.4byte	0x105
@@ -7686,7 +7686,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4322 09f9 91       		.byte	0x91
  4323 09fa 74       		.sleb128 -12
  4324 09fb 16       		.uleb128 0x16
- 4325 09fc DB030000 		.4byte	.LASF103
+ 4325 09fc 98030000 		.4byte	.LASF103
  4326 0a00 01       		.byte	0x1
  4327 0a01 8D05     		.2byte	0x58d
  4328 0a03 4A020000 		.4byte	0x24a
@@ -7694,7 +7694,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4330 0a08 91       		.byte	0x91
  4331 0a09 5C       		.sleb128 -36
  4332 0a0a 16       		.uleb128 0x16
- 4333 0a0b B6070000 		.4byte	.LASF80
+ 4333 0a0b 73070000 		.4byte	.LASF80
  4334 0a0f 01       		.byte	0x1
  4335 0a10 8E05     		.2byte	0x58e
  4336 0a12 4E040000 		.4byte	0x44e
@@ -7702,7 +7702,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4338 0a17 91       		.byte	0x91
  4339 0a18 6C       		.sleb128 -20
  4340 0a19 16       		.uleb128 0x16
- 4341 0a1a BF060000 		.4byte	.LASF112
+ 4341 0a1a 7C060000 		.4byte	.LASF112
  4342 0a1e 01       		.byte	0x1
  4343 0a1f 9105     		.2byte	0x591
  4344 0a21 05010000 		.4byte	0x105
@@ -7714,7 +7714,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4350 0a2d 78000000 		.4byte	.LBE35-.LBB35
  4351 0a31 450A0000 		.4byte	0xa45
  4352 0a35 16       		.uleb128 0x16
- 4353 0a36 76060000 		.4byte	.LASF113
+ 4353 0a36 33060000 		.4byte	.LASF113
  4354 0a3a 01       		.byte	0x1
  4355 0a3b AC05     		.2byte	0x5ac
  4356 0a3d C8040000 		.4byte	0x4c8
@@ -7726,7 +7726,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4362 0a46 6A010000 		.4byte	.LBB36
  4363 0a4a 14000000 		.4byte	.LBE36-.LBB36
  4364 0a4e 16       		.uleb128 0x16
- 4365 0a4f FB070000 		.4byte	.LASF114
+ 4365 0a4f 1B080000 		.4byte	.LASF114
  4366 0a53 01       		.byte	0x1
  4367 0a54 4906     		.2byte	0x649
  4368 0a56 10010000 		.4byte	0x110
@@ -7736,9 +7736,9 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4372 0a5d 00       		.byte	0
  4373 0a5e 00       		.byte	0
  4374 0a5f 17       		.uleb128 0x17
- 4375 0a60 BB030000 		.4byte	.LASF115
+ 4375 0a60 78030000 		.4byte	.LASF115
  4376 0a64 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 130
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 130
 
 
  4377 0a65 6406     		.2byte	0x664
@@ -7749,7 +7749,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4382 0a74 9C       		.byte	0x9c
  4383 0a75 FC0A0000 		.4byte	0xafc
  4384 0a79 18       		.uleb128 0x18
- 4385 0a7a 07030000 		.4byte	.LASF64
+ 4385 0a7a C4020000 		.4byte	.LASF64
  4386 0a7e 01       		.byte	0x1
  4387 0a7f 6406     		.2byte	0x664
  4388 0a81 55020000 		.4byte	0x255
@@ -7757,7 +7757,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4390 0a86 91       		.byte	0x91
  4391 0a87 5C       		.sleb128 -36
  4392 0a88 18       		.uleb128 0x18
- 4393 0a89 4B030000 		.4byte	.LASF110
+ 4393 0a89 08030000 		.4byte	.LASF110
  4394 0a8d 01       		.byte	0x1
  4395 0a8e 6406     		.2byte	0x664
  4396 0a90 AF090000 		.4byte	0x9af
@@ -7765,7 +7765,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4398 0a95 91       		.byte	0x91
  4399 0a96 58       		.sleb128 -40
  4400 0a97 18       		.uleb128 0x18
- 4401 0a98 42080000 		.4byte	.LASF94
+ 4401 0a98 62080000 		.4byte	.LASF94
  4402 0a9c 01       		.byte	0x1
  4403 0a9d 6406     		.2byte	0x664
  4404 0a9f 1B010000 		.4byte	0x11b
@@ -7773,7 +7773,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4406 0aa4 91       		.byte	0x91
  4407 0aa5 54       		.sleb128 -44
  4408 0aa6 16       		.uleb128 0x16
- 4409 0aa7 C6030000 		.4byte	.LASF101
+ 4409 0aa7 83030000 		.4byte	.LASF101
  4410 0aab 01       		.byte	0x1
  4411 0aac 6606     		.2byte	0x666
  4412 0aae 05010000 		.4byte	0x105
@@ -7781,7 +7781,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4414 0ab3 91       		.byte	0x91
  4415 0ab4 74       		.sleb128 -12
  4416 0ab5 16       		.uleb128 0x16
- 4417 0ab6 DB030000 		.4byte	.LASF103
+ 4417 0ab6 98030000 		.4byte	.LASF103
  4418 0aba 01       		.byte	0x1
  4419 0abb 6706     		.2byte	0x667
  4420 0abd 4A020000 		.4byte	0x24a
@@ -7789,7 +7789,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4422 0ac2 91       		.byte	0x91
  4423 0ac3 60       		.sleb128 -32
  4424 0ac4 16       		.uleb128 0x16
- 4425 0ac5 10060000 		.4byte	.LASF116
+ 4425 0ac5 CD050000 		.4byte	.LASF116
  4426 0ac9 01       		.byte	0x1
  4427 0aca 6806     		.2byte	0x668
  4428 0acc 0E030000 		.4byte	0x30e
@@ -7797,8 +7797,8 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4430 0ad1 91       		.byte	0x91
  4431 0ad2 68       		.sleb128 -24
  4432 0ad3 16       		.uleb128 0x16
- 4433 0ad4 B6070000 		.4byte	.LASF80
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 131
+ 4433 0ad4 73070000 		.4byte	.LASF80
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 131
 
 
  4434 0ad8 01       		.byte	0x1
@@ -7811,7 +7811,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4441 0ae3 18000000 		.4byte	.LBB37
  4442 0ae7 72000000 		.4byte	.LBE37-.LBB37
  4443 0aeb 16       		.uleb128 0x16
- 4444 0aec 84030000 		.4byte	.LASF51
+ 4444 0aec 41030000 		.4byte	.LASF51
  4445 0af0 01       		.byte	0x1
  4446 0af1 8106     		.2byte	0x681
  4447 0af3 C8040000 		.4byte	0x4c8
@@ -7831,7 +7831,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4461 0b11 9C       		.byte	0x9c
  4462 0b12 EF0B0000 		.4byte	0xbef
  4463 0b16 18       		.uleb128 0x18
- 4464 0b17 07030000 		.4byte	.LASF64
+ 4464 0b17 C4020000 		.4byte	.LASF64
  4465 0b1b 01       		.byte	0x1
  4466 0b1c F906     		.2byte	0x6f9
  4467 0b1e 55020000 		.4byte	0x255
@@ -7839,7 +7839,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4469 0b23 91       		.byte	0x91
  4470 0b24 54       		.sleb128 -44
  4471 0b25 18       		.uleb128 0x18
- 4472 0b26 4B030000 		.4byte	.LASF110
+ 4472 0b26 08030000 		.4byte	.LASF110
  4473 0b2a 01       		.byte	0x1
  4474 0b2b F906     		.2byte	0x6f9
  4475 0b2d AF090000 		.4byte	0x9af
@@ -7855,10 +7855,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4485 0b41 91       		.byte	0x91
  4486 0b42 4C       		.sleb128 -52
  4487 0b43 16       		.uleb128 0x16
- 4488 0b44 BE070000 		.4byte	.LASF91
+ 4488 0b44 DE070000 		.4byte	.LASF91
  4489 0b48 01       		.byte	0x1
  4490 0b49 FB06     		.2byte	0x6fb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 132
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 132
 
 
  4491 0b4b 05010000 		.4byte	0x105
@@ -7866,7 +7866,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4493 0b50 91       		.byte	0x91
  4494 0b51 74       		.sleb128 -12
  4495 0b52 16       		.uleb128 0x16
- 4496 0b53 9D020000 		.4byte	.LASF106
+ 4496 0b53 5A020000 		.4byte	.LASF106
  4497 0b57 01       		.byte	0x1
  4498 0b58 FC06     		.2byte	0x6fc
  4499 0b5a 10010000 		.4byte	0x110
@@ -7874,7 +7874,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4501 0b5f 91       		.byte	0x91
  4502 0b60 68       		.sleb128 -24
  4503 0b61 16       		.uleb128 0x16
- 4504 0b62 B6070000 		.4byte	.LASF80
+ 4504 0b62 73070000 		.4byte	.LASF80
  4505 0b66 01       		.byte	0x1
  4506 0b67 FD06     		.2byte	0x6fd
  4507 0b69 4E040000 		.4byte	0x44e
@@ -7908,7 +7908,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4535 0ba4 70000000 		.4byte	.LBE40-.LBB40
  4536 0ba8 D50B0000 		.4byte	0xbd5
  4537 0bac 16       		.uleb128 0x16
- 4538 0bad 84030000 		.4byte	.LASF51
+ 4538 0bad 41030000 		.4byte	.LASF51
  4539 0bb1 01       		.byte	0x1
  4540 0bb2 1407     		.2byte	0x714
  4541 0bb4 C8040000 		.4byte	0x4c8
@@ -7918,11 +7918,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4545 0bbb 1B       		.uleb128 0x1b
  4546 0bbc 38000000 		.4byte	.LBB41
  4547 0bc0 5A000000 		.4byte	.LBE41-.LBB41
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 133
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 133
 
 
  4548 0bc4 16       		.uleb128 0x16
- 4549 0bc5 F7080000 		.4byte	.LASF54
+ 4549 0bc5 17090000 		.4byte	.LASF54
  4550 0bc9 01       		.byte	0x1
  4551 0bca 1907     		.2byte	0x719
  4552 0bcc 38080000 		.4byte	0x838
@@ -7945,7 +7945,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4569 0bed 00       		.byte	0
  4570 0bee 00       		.byte	0
  4571 0bef 17       		.uleb128 0x17
- 4572 0bf0 E9070000 		.4byte	.LASF118
+ 4572 0bf0 09080000 		.4byte	.LASF118
  4573 0bf4 01       		.byte	0x1
  4574 0bf5 5407     		.2byte	0x754
  4575 0bf7 05010000 		.4byte	0x105
@@ -7955,7 +7955,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4579 0c04 9C       		.byte	0x9c
  4580 0c05 AC0C0000 		.4byte	0xcac
  4581 0c09 18       		.uleb128 0x18
- 4582 0c0a 07030000 		.4byte	.LASF64
+ 4582 0c0a C4020000 		.4byte	.LASF64
  4583 0c0e 01       		.byte	0x1
  4584 0c0f 5407     		.2byte	0x754
  4585 0c11 55020000 		.4byte	0x255
@@ -7963,7 +7963,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4587 0c16 91       		.byte	0x91
  4588 0c17 54       		.sleb128 -44
  4589 0c18 18       		.uleb128 0x18
- 4590 0c19 4B030000 		.4byte	.LASF110
+ 4590 0c19 08030000 		.4byte	.LASF110
  4591 0c1d 01       		.byte	0x1
  4592 0c1e 5407     		.2byte	0x754
  4593 0c20 AF090000 		.4byte	0x9af
@@ -7971,18 +7971,18 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4595 0c25 91       		.byte	0x91
  4596 0c26 50       		.sleb128 -48
  4597 0c27 16       		.uleb128 0x16
- 4598 0c28 BE070000 		.4byte	.LASF91
+ 4598 0c28 DE070000 		.4byte	.LASF91
  4599 0c2c 01       		.byte	0x1
  4600 0c2d 5607     		.2byte	0x756
  4601 0c2f 05010000 		.4byte	0x105
  4602 0c33 02       		.uleb128 0x2
  4603 0c34 91       		.byte	0x91
  4604 0c35 74       		.sleb128 -12
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 134
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 134
 
 
  4605 0c36 16       		.uleb128 0x16
- 4606 0c37 9D020000 		.4byte	.LASF106
+ 4606 0c37 5A020000 		.4byte	.LASF106
  4607 0c3b 01       		.byte	0x1
  4608 0c3c 5707     		.2byte	0x757
  4609 0c3e 10010000 		.4byte	0x110
@@ -7990,7 +7990,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4611 0c43 91       		.byte	0x91
  4612 0c44 68       		.sleb128 -24
  4613 0c45 16       		.uleb128 0x16
- 4614 0c46 10060000 		.4byte	.LASF116
+ 4614 0c46 CD050000 		.4byte	.LASF116
  4615 0c4a 01       		.byte	0x1
  4616 0c4b 5807     		.2byte	0x758
  4617 0c4d 0E030000 		.4byte	0x30e
@@ -7998,7 +7998,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4619 0c52 91       		.byte	0x91
  4620 0c53 64       		.sleb128 -28
  4621 0c54 16       		.uleb128 0x16
- 4622 0c55 B6070000 		.4byte	.LASF80
+ 4622 0c55 73070000 		.4byte	.LASF80
  4623 0c59 01       		.byte	0x1
  4624 0c5a 5907     		.2byte	0x759
  4625 0c5c 4E040000 		.4byte	0x44e
@@ -8038,13 +8038,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4659 0ca7 02       		.uleb128 0x2
  4660 0ca8 91       		.byte	0x91
  4661 0ca9 6C       		.sleb128 -20
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 135
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 135
 
 
  4662 0caa 00       		.byte	0
  4663 0cab 00       		.byte	0
  4664 0cac 17       		.uleb128 0x17
- 4665 0cad 8E070000 		.4byte	.LASF119
+ 4665 0cad 4B070000 		.4byte	.LASF119
  4666 0cb1 01       		.byte	0x1
  4667 0cb2 8A07     		.2byte	0x78a
  4668 0cb4 10010000 		.4byte	0x110
@@ -8054,7 +8054,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4672 0cc1 9C       		.byte	0x9c
  4673 0cc2 E50C0000 		.4byte	0xce5
  4674 0cc6 18       		.uleb128 0x18
- 4675 0cc7 07030000 		.4byte	.LASF64
+ 4675 0cc7 C4020000 		.4byte	.LASF64
  4676 0ccb 01       		.byte	0x1
  4677 0ccc 8A07     		.2byte	0x78a
  4678 0cce E50C0000 		.4byte	0xce5
@@ -8083,7 +8083,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4701 0cff 9C       		.byte	0x9c
  4702 0d00 320D0000 		.4byte	0xd32
  4703 0d04 18       		.uleb128 0x18
- 4704 0d05 07030000 		.4byte	.LASF64
+ 4704 0d05 C4020000 		.4byte	.LASF64
  4705 0d09 01       		.byte	0x1
  4706 0d0a 9A07     		.2byte	0x79a
  4707 0d0c E50C0000 		.4byte	0xce5
@@ -8098,11 +8098,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4716 0d1f 02       		.uleb128 0x2
  4717 0d20 91       		.byte	0x91
  4718 0d21 70       		.sleb128 -16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 136
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 136
 
 
  4719 0d22 16       		.uleb128 0x16
- 4720 0d23 B6070000 		.4byte	.LASF80
+ 4720 0d23 73070000 		.4byte	.LASF80
  4721 0d27 01       		.byte	0x1
  4722 0d28 9D07     		.2byte	0x79d
  4723 0d2a 4E040000 		.4byte	0x44e
@@ -8111,7 +8111,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4726 0d30 74       		.sleb128 -12
  4727 0d31 00       		.byte	0
  4728 0d32 20       		.uleb128 0x20
- 4729 0d33 02050000 		.4byte	.LASF122
+ 4729 0d33 BF040000 		.4byte	.LASF122
  4730 0d37 01       		.byte	0x1
  4731 0d38 AB07     		.2byte	0x7ab
  4732 0d3a 10010000 		.4byte	0x110
@@ -8121,7 +8121,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4736 0d47 9C       		.byte	0x9c
  4737 0d48 7A0D0000 		.4byte	0xd7a
  4738 0d4c 18       		.uleb128 0x18
- 4739 0d4d 07030000 		.4byte	.LASF64
+ 4739 0d4d C4020000 		.4byte	.LASF64
  4740 0d51 01       		.byte	0x1
  4741 0d52 AB07     		.2byte	0x7ab
  4742 0d54 E50C0000 		.4byte	0xce5
@@ -8137,7 +8137,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4752 0d68 91       		.byte	0x91
  4753 0d69 70       		.sleb128 -16
  4754 0d6a 16       		.uleb128 0x16
- 4755 0d6b B6070000 		.4byte	.LASF80
+ 4755 0d6b 73070000 		.4byte	.LASF80
  4756 0d6f 01       		.byte	0x1
  4757 0d70 AE07     		.2byte	0x7ae
  4758 0d72 4E040000 		.4byte	0x44e
@@ -8146,7 +8146,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4761 0d78 74       		.sleb128 -12
  4762 0d79 00       		.byte	0
  4763 0d7a 21       		.uleb128 0x21
- 4764 0d7b 60020000 		.4byte	.LASF133
+ 4764 0d7b 1D020000 		.4byte	.LASF133
  4765 0d7f 01       		.byte	0x1
  4766 0d80 B707     		.2byte	0x7b7
  4767 0d82 00000000 		.4byte	.LFB87
@@ -8155,10 +8155,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4770 0d8b 9C       		.byte	0x9c
  4771 0d8c AF0D0000 		.4byte	0xdaf
  4772 0d90 18       		.uleb128 0x18
- 4773 0d91 07030000 		.4byte	.LASF64
+ 4773 0d91 C4020000 		.4byte	.LASF64
  4774 0d95 01       		.byte	0x1
  4775 0d96 B707     		.2byte	0x7b7
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 137
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 137
 
 
  4776 0d98 55020000 		.4byte	0x255
@@ -8166,7 +8166,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4778 0d9d 91       		.byte	0x91
  4779 0d9e 6C       		.sleb128 -20
  4780 0d9f 16       		.uleb128 0x16
- 4781 0da0 B6070000 		.4byte	.LASF80
+ 4781 0da0 73070000 		.4byte	.LASF80
  4782 0da4 01       		.byte	0x1
  4783 0da5 B907     		.2byte	0x7b9
  4784 0da7 4E040000 		.4byte	0x44e
@@ -8175,7 +8175,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4787 0dad 74       		.sleb128 -12
  4788 0dae 00       		.byte	0
  4789 0daf 22       		.uleb128 0x22
- 4790 0db0 54030000 		.4byte	.LASF124
+ 4790 0db0 11030000 		.4byte	.LASF124
  4791 0db4 01       		.byte	0x1
  4792 0db5 0108     		.2byte	0x801
  4793 0db7 10010000 		.4byte	0x110
@@ -8185,7 +8185,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4797 0dc4 9C       		.byte	0x9c
  4798 0dc5 E80D0000 		.4byte	0xde8
  4799 0dc9 18       		.uleb128 0x18
- 4800 0dca B6070000 		.4byte	.LASF80
+ 4800 0dca 73070000 		.4byte	.LASF80
  4801 0dce 01       		.byte	0x1
  4802 0dcf 0108     		.2byte	0x801
  4803 0dd1 F30D0000 		.4byte	0xdf3
@@ -8193,7 +8193,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4805 0dd6 91       		.byte	0x91
  4806 0dd7 6C       		.sleb128 -20
  4807 0dd8 16       		.uleb128 0x16
- 4808 0dd9 43060000 		.4byte	.LASF123
+ 4808 0dd9 00060000 		.4byte	.LASF123
  4809 0ddd 01       		.byte	0x1
  4810 0dde 0308     		.2byte	0x803
  4811 0de0 10010000 		.4byte	0x110
@@ -8209,7 +8209,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4821 0df3 07       		.uleb128 0x7
  4822 0df4 E80D0000 		.4byte	0xde8
  4823 0df8 23       		.uleb128 0x23
- 4824 0df9 37040000 		.4byte	.LASF125
+ 4824 0df9 F4030000 		.4byte	.LASF125
  4825 0dfd 01       		.byte	0x1
  4826 0dfe 1A08     		.2byte	0x81a
  4827 0e00 05010000 		.4byte	0x105
@@ -8218,11 +8218,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4830 0e0c 01       		.uleb128 0x1
  4831 0e0d 9C       		.byte	0x9c
  4832 0e0e 5E0E0000 		.4byte	0xe5e
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 138
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 138
 
 
  4833 0e12 18       		.uleb128 0x18
- 4834 0e13 B6070000 		.4byte	.LASF80
+ 4834 0e13 73070000 		.4byte	.LASF80
  4835 0e17 01       		.byte	0x1
  4836 0e18 1A08     		.2byte	0x81a
  4837 0e1a 4E040000 		.4byte	0x44e
@@ -8230,7 +8230,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4839 0e1f 91       		.byte	0x91
  4840 0e20 6C       		.sleb128 -20
  4841 0e21 18       		.uleb128 0x18
- 4842 0e22 67070000 		.4byte	.LASF99
+ 4842 0e22 24070000 		.4byte	.LASF99
  4843 0e26 01       		.byte	0x1
  4844 0e27 1A08     		.2byte	0x81a
  4845 0e29 C4000000 		.4byte	0xc4
@@ -8238,7 +8238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4847 0e2e 91       		.byte	0x91
  4848 0e2f 68       		.sleb128 -24
  4849 0e30 18       		.uleb128 0x18
- 4850 0e31 ED080000 		.4byte	.LASF126
+ 4850 0e31 0D090000 		.4byte	.LASF126
  4851 0e35 01       		.byte	0x1
  4852 0e36 1A08     		.2byte	0x81a
  4853 0e38 30070000 		.4byte	0x730
@@ -8246,7 +8246,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4855 0e3d 91       		.byte	0x91
  4856 0e3e 64       		.sleb128 -28
  4857 0e3f 16       		.uleb128 0x16
- 4858 0e40 BE070000 		.4byte	.LASF91
+ 4858 0e40 DE070000 		.4byte	.LASF91
  4859 0e44 01       		.byte	0x1
  4860 0e45 1C08     		.2byte	0x81c
  4861 0e47 05010000 		.4byte	0x105
@@ -8254,7 +8254,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4863 0e4c 91       		.byte	0x91
  4864 0e4d 74       		.sleb128 -12
  4865 0e4e 16       		.uleb128 0x16
- 4866 0e4f 84030000 		.4byte	.LASF51
+ 4866 0e4f 41030000 		.4byte	.LASF51
  4867 0e53 01       		.byte	0x1
  4868 0e54 1D08     		.2byte	0x81d
  4869 0e56 10010000 		.4byte	0x110
@@ -8263,7 +8263,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4872 0e5c 70       		.sleb128 -16
  4873 0e5d 00       		.byte	0
  4874 0e5e 19       		.uleb128 0x19
- 4875 0e5f 2D080000 		.4byte	.LASF127
+ 4875 0e5f 4D080000 		.4byte	.LASF127
  4876 0e63 01       		.byte	0x1
  4877 0e64 6908     		.2byte	0x869
  4878 0e66 00000000 		.4byte	.LFB90
@@ -8272,18 +8272,18 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4881 0e6f 9C       		.byte	0x9c
  4882 0e70 930E0000 		.4byte	0xe93
  4883 0e74 18       		.uleb128 0x18
- 4884 0e75 B6070000 		.4byte	.LASF80
+ 4884 0e75 73070000 		.4byte	.LASF80
  4885 0e79 01       		.byte	0x1
  4886 0e7a 6908     		.2byte	0x869
  4887 0e7c 4E040000 		.4byte	0x44e
  4888 0e80 02       		.uleb128 0x2
  4889 0e81 91       		.byte	0x91
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 139
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 139
 
 
  4890 0e82 74       		.sleb128 -12
  4891 0e83 18       		.uleb128 0x18
- 4892 0e84 4B030000 		.4byte	.LASF110
+ 4892 0e84 08030000 		.4byte	.LASF110
  4893 0e88 01       		.byte	0x1
  4894 0e89 6908     		.2byte	0x869
  4895 0e8b AF090000 		.4byte	0x9af
@@ -8292,7 +8292,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4898 0e91 70       		.sleb128 -16
  4899 0e92 00       		.byte	0
  4900 0e93 19       		.uleb128 0x19
- 4901 0e94 77080000 		.4byte	.LASF128
+ 4901 0e94 97080000 		.4byte	.LASF128
  4902 0e98 01       		.byte	0x1
  4903 0e99 7B08     		.2byte	0x87b
  4904 0e9b 00000000 		.4byte	.LFB91
@@ -8301,7 +8301,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4907 0ea4 9C       		.byte	0x9c
  4908 0ea5 EF0E0000 		.4byte	0xeef
  4909 0ea9 18       		.uleb128 0x18
- 4910 0eaa B6070000 		.4byte	.LASF80
+ 4910 0eaa 73070000 		.4byte	.LASF80
  4911 0eae 01       		.byte	0x1
  4912 0eaf 7B08     		.2byte	0x87b
  4913 0eb1 4E040000 		.4byte	0x44e
@@ -8325,7 +8325,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4931 0ed6 56000000 		.4byte	.LBB49
  4932 0eda 42000000 		.4byte	.LBE49-.LBB49
  4933 0ede 16       		.uleb128 0x16
- 4934 0edf F7080000 		.4byte	.LASF54
+ 4934 0edf 17090000 		.4byte	.LASF54
  4935 0ee3 01       		.byte	0x1
  4936 0ee4 D608     		.2byte	0x8d6
  4937 0ee6 CB000000 		.4byte	0xcb
@@ -8335,10 +8335,10 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4941 0eed 00       		.byte	0
  4942 0eee 00       		.byte	0
  4943 0eef 23       		.uleb128 0x23
- 4944 0ef0 3B030000 		.4byte	.LASF129
+ 4944 0ef0 F8020000 		.4byte	.LASF129
  4945 0ef4 01       		.byte	0x1
  4946 0ef5 F308     		.2byte	0x8f3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 140
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 140
 
 
  4947 0ef7 05010000 		.4byte	0x105
@@ -8348,7 +8348,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4951 0f04 9C       		.byte	0x9c
  4952 0f05 280F0000 		.4byte	0xf28
  4953 0f09 18       		.uleb128 0x18
- 4954 0f0a B6070000 		.4byte	.LASF80
+ 4954 0f0a 73070000 		.4byte	.LASF80
  4955 0f0e 01       		.byte	0x1
  4956 0f0f F308     		.2byte	0x8f3
  4957 0f11 E80D0000 		.4byte	0xde8
@@ -8356,7 +8356,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4959 0f16 91       		.byte	0x91
  4960 0f17 6C       		.sleb128 -20
  4961 0f18 16       		.uleb128 0x16
- 4962 0f19 BE070000 		.4byte	.LASF91
+ 4962 0f19 DE070000 		.4byte	.LASF91
  4963 0f1d 01       		.byte	0x1
  4964 0f1e F508     		.2byte	0x8f5
  4965 0f20 05010000 		.4byte	0x105
@@ -8365,7 +8365,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4968 0f26 74       		.sleb128 -12
  4969 0f27 00       		.byte	0
  4970 0f28 20       		.uleb128 0x20
- 4971 0f29 99080000 		.4byte	.LASF130
+ 4971 0f29 B9080000 		.4byte	.LASF130
  4972 0f2d 01       		.byte	0x1
  4973 0f2e 0809     		.2byte	0x908
  4974 0f30 05010000 		.4byte	0x105
@@ -8375,7 +8375,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4978 0f3d 9C       		.byte	0x9c
  4979 0f3e 700F0000 		.4byte	0xf70
  4980 0f42 18       		.uleb128 0x18
- 4981 0f43 07030000 		.4byte	.LASF64
+ 4981 0f43 C4020000 		.4byte	.LASF64
  4982 0f47 01       		.byte	0x1
  4983 0f48 0809     		.2byte	0x908
  4984 0f4a E50C0000 		.4byte	0xce5
@@ -8383,7 +8383,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4986 0f4f 91       		.byte	0x91
  4987 0f50 6C       		.sleb128 -20
  4988 0f51 16       		.uleb128 0x16
- 4989 0f52 BE070000 		.4byte	.LASF91
+ 4989 0f52 DE070000 		.4byte	.LASF91
  4990 0f56 01       		.byte	0x1
  4991 0f57 0A09     		.2byte	0x90a
  4992 0f59 05010000 		.4byte	0x105
@@ -8391,19 +8391,19 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  4994 0f5e 91       		.byte	0x91
  4995 0f5f 74       		.sleb128 -12
  4996 0f60 16       		.uleb128 0x16
- 4997 0f61 B6070000 		.4byte	.LASF80
+ 4997 0f61 73070000 		.4byte	.LASF80
  4998 0f65 01       		.byte	0x1
  4999 0f66 0B09     		.2byte	0x90b
  5000 0f68 4E040000 		.4byte	0x44e
  5001 0f6c 02       		.uleb128 0x2
  5002 0f6d 91       		.byte	0x91
  5003 0f6e 70       		.sleb128 -16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 141
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 141
 
 
  5004 0f6f 00       		.byte	0
  5005 0f70 23       		.uleb128 0x23
- 5006 0f71 94040000 		.4byte	.LASF131
+ 5006 0f71 51040000 		.4byte	.LASF131
  5007 0f75 01       		.byte	0x1
  5008 0f76 1B09     		.2byte	0x91b
  5009 0f78 05010000 		.4byte	0x105
@@ -8413,7 +8413,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5013 0f85 9C       		.byte	0x9c
  5014 0f86 A90F0000 		.4byte	0xfa9
  5015 0f8a 18       		.uleb128 0x18
- 5016 0f8b B6070000 		.4byte	.LASF80
+ 5016 0f8b 73070000 		.4byte	.LASF80
  5017 0f8f 01       		.byte	0x1
  5018 0f90 1B09     		.2byte	0x91b
  5019 0f92 E80D0000 		.4byte	0xde8
@@ -8421,7 +8421,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5021 0f97 91       		.byte	0x91
  5022 0f98 6C       		.sleb128 -20
  5023 0f99 16       		.uleb128 0x16
- 5024 0f9a BE070000 		.4byte	.LASF91
+ 5024 0f9a DE070000 		.4byte	.LASF91
  5025 0f9e 01       		.byte	0x1
  5026 0f9f 1D09     		.2byte	0x91d
  5027 0fa1 05010000 		.4byte	0x105
@@ -8430,7 +8430,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5030 0fa7 74       		.sleb128 -12
  5031 0fa8 00       		.byte	0
  5032 0fa9 20       		.uleb128 0x20
- 5033 0faa 75070000 		.4byte	.LASF132
+ 5033 0faa 32070000 		.4byte	.LASF132
  5034 0fae 01       		.byte	0x1
  5035 0faf 3009     		.2byte	0x930
  5036 0fb1 05010000 		.4byte	0x105
@@ -8440,7 +8440,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5040 0fbe 9C       		.byte	0x9c
  5041 0fbf F10F0000 		.4byte	0xff1
  5042 0fc3 18       		.uleb128 0x18
- 5043 0fc4 07030000 		.4byte	.LASF64
+ 5043 0fc4 C4020000 		.4byte	.LASF64
  5044 0fc8 01       		.byte	0x1
  5045 0fc9 3009     		.2byte	0x930
  5046 0fcb E50C0000 		.4byte	0xce5
@@ -8448,7 +8448,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5048 0fd0 91       		.byte	0x91
  5049 0fd1 6C       		.sleb128 -20
  5050 0fd2 16       		.uleb128 0x16
- 5051 0fd3 BE070000 		.4byte	.LASF91
+ 5051 0fd3 DE070000 		.4byte	.LASF91
  5052 0fd7 01       		.byte	0x1
  5053 0fd8 3209     		.2byte	0x932
  5054 0fda 05010000 		.4byte	0x105
@@ -8456,9 +8456,9 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5056 0fdf 91       		.byte	0x91
  5057 0fe0 74       		.sleb128 -12
  5058 0fe1 16       		.uleb128 0x16
- 5059 0fe2 B6070000 		.4byte	.LASF80
+ 5059 0fe2 73070000 		.4byte	.LASF80
  5060 0fe6 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 142
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 142
 
 
  5061 0fe7 3309     		.2byte	0x933
@@ -8468,7 +8468,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5065 0fef 70       		.sleb128 -16
  5066 0ff0 00       		.byte	0
  5067 0ff1 24       		.uleb128 0x24
- 5068 0ff2 D6050000 		.4byte	.LASF134
+ 5068 0ff2 93050000 		.4byte	.LASF134
  5069 0ff6 01       		.byte	0x1
  5070 0ff7 580A     		.2byte	0xa58
  5071 0ff9 00000000 		.4byte	.LFB96
@@ -8477,7 +8477,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5074 1002 9C       		.byte	0x9c
  5075 1003 34100000 		.4byte	0x1034
  5076 1007 18       		.uleb128 0x18
- 5077 1008 07030000 		.4byte	.LASF64
+ 5077 1008 C4020000 		.4byte	.LASF64
  5078 100c 01       		.byte	0x1
  5079 100d 580A     		.2byte	0xa58
  5080 100f 55020000 		.4byte	0x255
@@ -8485,7 +8485,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5082 1014 91       		.byte	0x91
  5083 1015 6C       		.sleb128 -20
  5084 1016 18       		.uleb128 0x18
- 5085 1017 EC030000 		.4byte	.LASF69
+ 5085 1017 A9030000 		.4byte	.LASF69
  5086 101b 01       		.byte	0x1
  5087 101c 580A     		.2byte	0xa58
  5088 101e B9000000 		.4byte	0xb9
@@ -8502,7 +8502,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5099 1032 74       		.sleb128 -12
  5100 1033 00       		.byte	0
  5101 1034 20       		.uleb128 0x20
- 5102 1035 F9060000 		.4byte	.LASF135
+ 5102 1035 B6060000 		.4byte	.LASF135
  5103 1039 01       		.byte	0x1
  5104 103a 750A     		.2byte	0xa75
  5105 103c B9000000 		.4byte	0xb9
@@ -8512,13 +8512,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5109 1049 9C       		.byte	0x9c
  5110 104a 7B100000 		.4byte	0x107b
  5111 104e 18       		.uleb128 0x18
- 5112 104f 07030000 		.4byte	.LASF64
+ 5112 104f C4020000 		.4byte	.LASF64
  5113 1053 01       		.byte	0x1
  5114 1054 750A     		.2byte	0xa75
  5115 1056 55020000 		.4byte	0x255
  5116 105a 02       		.uleb128 0x2
  5117 105b 91       		.byte	0x91
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 143
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 143
 
 
  5118 105c 6C       		.sleb128 -20
@@ -8531,7 +8531,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5125 1069 91       		.byte	0x91
  5126 106a 74       		.sleb128 -12
  5127 106b 16       		.uleb128 0x16
- 5128 106c 18070000 		.4byte	.LASF136
+ 5128 106c D5060000 		.4byte	.LASF136
  5129 1070 01       		.byte	0x1
  5130 1071 780A     		.2byte	0xa78
  5131 1073 B9000000 		.4byte	0xb9
@@ -8540,7 +8540,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5134 1079 70       		.sleb128 -16
  5135 107a 00       		.byte	0
  5136 107b 24       		.uleb128 0x24
- 5137 107c 87020000 		.4byte	.LASF137
+ 5137 107c 44020000 		.4byte	.LASF137
  5138 1080 01       		.byte	0x1
  5139 1081 910A     		.2byte	0xa91
  5140 1083 00000000 		.4byte	.LFB98
@@ -8549,7 +8549,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5143 108c 9C       		.byte	0x9c
  5144 108d AF100000 		.4byte	0x10af
  5145 1091 18       		.uleb128 0x18
- 5146 1092 07030000 		.4byte	.LASF64
+ 5146 1092 C4020000 		.4byte	.LASF64
  5147 1096 01       		.byte	0x1
  5148 1097 910A     		.2byte	0xa91
  5149 1099 55020000 		.4byte	0x255
@@ -8566,7 +8566,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5160 10ad 74       		.sleb128 -12
  5161 10ae 00       		.byte	0
  5162 10af 26       		.uleb128 0x26
- 5163 10b0 48070000 		.4byte	.LASF138
+ 5163 10b0 05070000 		.4byte	.LASF138
  5164 10b4 09       		.byte	0x9
  5165 10b5 1207     		.2byte	0x712
  5166 10b7 BB100000 		.4byte	0x10bb
@@ -8578,12 +8578,12 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5172 10c9 28       		.uleb128 0x28
  5173 10ca A9000000 		.4byte	0xa9
  5174 10ce 09       		.byte	0x9
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 144
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 144
 
 
  5175 10cf 00       		.byte	0
  5176 10d0 29       		.uleb128 0x29
- 5177 10d1 DC040000 		.4byte	.LASF139
+ 5177 10d1 99040000 		.4byte	.LASF139
  5178 10d5 01       		.byte	0x1
  5179 10d6 A2       		.byte	0xa2
  5180 10d7 C0100000 		.4byte	0x10c0
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5229 002a 00       		.byte	0
  5230 002b 04       		.uleb128 0x4
  5231 002c 24       		.uleb128 0x24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 145
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 145
 
 
  5232 002d 00       		.byte	0
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5286 0063 00       		.byte	0
  5287 0064 03       		.uleb128 0x3
  5288 0065 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 146
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 146
 
 
  5289 0066 3A       		.uleb128 0x3a
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5343 009c 0F       		.uleb128 0xf
  5344 009d 0D       		.uleb128 0xd
  5345 009e 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 147
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 147
 
 
  5346 009f 03       		.uleb128 0x3
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5400 00d5 0B       		.uleb128 0xb
  5401 00d6 01       		.uleb128 0x1
  5402 00d7 13       		.uleb128 0x13
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 148
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 148
 
 
  5403 00d8 00       		.byte	0
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5457 010f 18       		.uleb128 0x18
  5458 0110 00       		.byte	0
  5459 0111 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 149
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 149
 
 
  5460 0112 16       		.uleb128 0x16
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5514 0149 18       		.uleb128 0x18
  5515 014a 00       		.byte	0
  5516 014b 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 150
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 150
 
 
  5517 014c 19       		.uleb128 0x19
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5571 0183 02       		.uleb128 0x2
  5572 0184 18       		.uleb128 0x18
  5573 0185 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 151
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 151
 
 
  5574 0186 00       		.byte	0
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5628 01bc 06       		.uleb128 0x6
  5629 01bd 40       		.uleb128 0x40
  5630 01be 18       		.uleb128 0x18
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 152
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 152
 
 
  5631 01bf 9742     		.uleb128 0x2117
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5685 01f8 00       		.byte	0
  5686 01f9 00       		.byte	0
  5687 01fa 23       		.uleb128 0x23
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 153
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 153
 
 
  5688 01fb 2E       		.uleb128 0x2e
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5742 0233 3A       		.uleb128 0x3a
  5743 0234 0B       		.uleb128 0xb
  5744 0235 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 154
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 154
 
 
  5745 0236 05       		.uleb128 0x5
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5799 026c 19       		.uleb128 0x19
  5800 026d 02       		.uleb128 0x2
  5801 026e 18       		.uleb128 0x18
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 155
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 155
 
 
  5802 026f 00       		.byte	0
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5856 00bc D4000000 		.4byte	.LFE89-.LFB89
  5857 00c0 00000000 		.4byte	.LFB90
  5858 00c4 4C000000 		.4byte	.LFE90-.LFB90
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 156
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 156
 
 
  5859 00c8 00000000 		.4byte	.LFB91
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5913 0088 00000000 		.4byte	.LFB85
  5914 008c 2A000000 		.4byte	.LFE85
  5915 0090 00000000 		.4byte	.LFB86
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 157
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 157
 
 
  5916 0094 1E000000 		.4byte	.LFE86
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5953      615F7400 
  5954              	.LASF109:
  5955 0042 78517565 		.ascii	"xQueueReceive\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 158
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 158
 
 
  5955      75655265 
@@ -9478,7 +9478,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5978              	.LASF68:
  5979 00f1 51554555 		.ascii	"QUEUE_REGISTRY_ITEM\000"
  5979      455F5245 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 159
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 159
 
 
  5979      47495354 
@@ -9538,7 +9538,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  5999 0200 75785265 		.ascii	"uxReturn\000"
  5999      7475726E 
  5999      00
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 160
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 160
 
 
  6000              	.LASF72:
@@ -9547,603 +9547,605 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 1
  6001      69737472 
  6001      79497465 
  6001      6D5F7400 
- 6002              	.LASF142:
- 6003 021d 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
- 6003      6F64655C 
- 6003      50345C50 
- 6003      345F5665 
- 6003      72746963 
- 6004 024c 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
- 6004      616E7465 
- 6004      4D6F6475 
- 6004      6C2E6379 
- 6004      64736E00 
- 6005              	.LASF133:
- 6006 0260 76517565 		.ascii	"vQueueDelete\000"
- 6006      75654465 
- 6006      6C657465 
- 6006      00
- 6007              	.LASF141:
- 6008 026d 536F7572 		.ascii	"Source\\queue.c\000"
- 6008      63655C71 
- 6008      75657565 
- 6008      2E6300
- 6009              	.LASF58:
- 6010 027c 70635265 		.ascii	"pcReadFrom\000"
- 6010      61644672 
- 6010      6F6D00
- 6011              	.LASF137:
- 6012 0287 76517565 		.ascii	"vQueueUnregisterQueue\000"
- 6012      7565556E 
- 6012      72656769 
- 6012      73746572 
- 6012      51756575 
- 6013              	.LASF106:
- 6014 029d 75785361 		.ascii	"uxSavedInterruptStatus\000"
- 6014      76656449 
- 6014      6E746572 
- 6014      72757074 
- 6014      53746174 
- 6015              	.LASF84:
- 6016 02b4 70727649 		.ascii	"prvInitialiseNewQueue\000"
- 6016      6E697469 
- 6016      616C6973 
- 6016      654E6577 
- 6016      51756575 
- 6017              	.LASF20:
- 6018 02ca 75696E74 		.ascii	"uint32_t\000"
- 6018      33325F74 
- 6018      00
- 6019              	.LASF17:
- 6020 02d3 696E7438 		.ascii	"int8_t\000"
- 6020      5F7400
- 6021              	.LASF88:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 161
+ 6002              	.LASF133:
+ 6003 021d 76517565 		.ascii	"vQueueDelete\000"
+ 6003      75654465 
+ 6003      6C657465 
+ 6003      00
+ 6004              	.LASF141:
+ 6005 022a 536F7572 		.ascii	"Source\\queue.c\000"
+ 6005      63655C71 
+ 6005      75657565 
+ 6005      2E6300
+ 6006              	.LASF58:
+ 6007 0239 70635265 		.ascii	"pcReadFrom\000"
+ 6007      61644672 
+ 6007      6F6D00
+ 6008              	.LASF137:
+ 6009 0244 76517565 		.ascii	"vQueueUnregisterQueue\000"
+ 6009      7565556E 
+ 6009      72656769 
+ 6009      73746572 
+ 6009      51756575 
+ 6010              	.LASF106:
+ 6011 025a 75785361 		.ascii	"uxSavedInterruptStatus\000"
+ 6011      76656449 
+ 6011      6E746572 
+ 6011      72757074 
+ 6011      53746174 
+ 6012              	.LASF84:
+ 6013 0271 70727649 		.ascii	"prvInitialiseNewQueue\000"
+ 6013      6E697469 
+ 6013      616C6973 
+ 6013      654E6577 
+ 6013      51756575 
+ 6014              	.LASF20:
+ 6015 0287 75696E74 		.ascii	"uint32_t\000"
+ 6015      33325F74 
+ 6015      00
+ 6016              	.LASF17:
+ 6017 0290 696E7438 		.ascii	"int8_t\000"
+ 6017      5F7400
+ 6018              	.LASF88:
+ 6019 0297 75784D75 		.ascii	"uxMutexSize\000"
+ 6019      74657853 
+ 6019      697A6500 
+ 6020              	.LASF102:
+ 6021 02a3 78596965 		.ascii	"xYieldRequired\000"
+ 6021      6C645265 
+ 6021      71756972 
+ 6021      656400
+ 6022              	.LASF73:
+ 6023 02b2 756C4F72 		.ascii	"ulOriginalBASEPRI\000"
+ 6023      6967696E 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 161
 
 
- 6022 02da 75784D75 		.ascii	"uxMutexSize\000"
- 6022      74657853 
- 6022      697A6500 
- 6023              	.LASF102:
- 6024 02e6 78596965 		.ascii	"xYieldRequired\000"
- 6024      6C645265 
- 6024      71756972 
- 6024      656400
- 6025              	.LASF73:
- 6026 02f5 756C4F72 		.ascii	"ulOriginalBASEPRI\000"
- 6026      6967696E 
- 6026      616C4241 
- 6026      53455052 
- 6026      4900
- 6027              	.LASF64:
- 6028 0307 78517565 		.ascii	"xQueue\000"
- 6028      756500
- 6029              	.LASF21:
- 6030 030e 666C6F61 		.ascii	"float\000"
- 6030      7400
- 6031              	.LASF46:
- 6032 0314 51756575 		.ascii	"QueueDefinition\000"
- 6032      65446566 
- 6032      696E6974 
- 6032      696F6E00 
- 6033              	.LASF14:
- 6034 0324 6C6F6E67 		.ascii	"long long unsigned int\000"
- 6034      206C6F6E 
- 6034      6720756E 
- 6034      7369676E 
- 6034      65642069 
- 6035              	.LASF129:
- 6036 033b 70727649 		.ascii	"prvIsQueueEmpty\000"
- 6036      73517565 
- 6036      7565456D 
- 6036      70747900 
- 6037              	.LASF110:
- 6038 034b 70764275 		.ascii	"pvBuffer\000"
- 6038      66666572 
- 6038      00
- 6039              	.LASF124:
- 6040 0354 70727647 		.ascii	"prvGetDisinheritPriorityAfterTimeout\000"
- 6040      65744469 
- 6040      73696E68 
- 6040      65726974 
- 6040      5072696F 
- 6041              	.LASF28:
- 6042 0379 70785072 		.ascii	"pxPrevious\000"
- 6042      6576696F 
- 6042      757300
- 6043              	.LASF51:
- 6044 0384 75784D65 		.ascii	"uxMessagesWaiting\000"
- 6044      73736167 
- 6044      65735761 
- 6044      6974696E 
- 6044      6700
- 6045              	.LASF65:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 162
+ 6023      616C4241 
+ 6023      53455052 
+ 6023      4900
+ 6024              	.LASF64:
+ 6025 02c4 78517565 		.ascii	"xQueue\000"
+ 6025      756500
+ 6026              	.LASF21:
+ 6027 02cb 666C6F61 		.ascii	"float\000"
+ 6027      7400
+ 6028              	.LASF46:
+ 6029 02d1 51756575 		.ascii	"QueueDefinition\000"
+ 6029      65446566 
+ 6029      696E6974 
+ 6029      696F6E00 
+ 6030              	.LASF14:
+ 6031 02e1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 6031      206C6F6E 
+ 6031      6720756E 
+ 6031      7369676E 
+ 6031      65642069 
+ 6032              	.LASF129:
+ 6033 02f8 70727649 		.ascii	"prvIsQueueEmpty\000"
+ 6033      73517565 
+ 6033      7565456D 
+ 6033      70747900 
+ 6034              	.LASF110:
+ 6035 0308 70764275 		.ascii	"pvBuffer\000"
+ 6035      66666572 
+ 6035      00
+ 6036              	.LASF124:
+ 6037 0311 70727647 		.ascii	"prvGetDisinheritPriorityAfterTimeout\000"
+ 6037      65744469 
+ 6037      73696E68 
+ 6037      65726974 
+ 6037      5072696F 
+ 6038              	.LASF28:
+ 6039 0336 70785072 		.ascii	"pxPrevious\000"
+ 6039      6576696F 
+ 6039      757300
+ 6040              	.LASF51:
+ 6041 0341 75784D65 		.ascii	"uxMessagesWaiting\000"
+ 6041      73736167 
+ 6041      65735761 
+ 6041      6974696E 
+ 6041      6700
+ 6042              	.LASF65:
+ 6043 0353 7853656D 		.ascii	"xSemaphore\000"
+ 6043      6170686F 
+ 6043      726500
+ 6044              	.LASF107:
+ 6045 035e 75785072 		.ascii	"uxPreviousMessagesWaiting\000"
+ 6045      6576696F 
+ 6045      75734D65 
+ 6045      73736167 
+ 6045      65735761 
+ 6046              	.LASF115:
+ 6047 0378 78517565 		.ascii	"xQueuePeek\000"
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 162
 
 
- 6046 0396 7853656D 		.ascii	"xSemaphore\000"
- 6046      6170686F 
- 6046      726500
- 6047              	.LASF107:
- 6048 03a1 75785072 		.ascii	"uxPreviousMessagesWaiting\000"
- 6048      6576696F 
- 6048      75734D65 
- 6048      73736167 
- 6048      65735761 
- 6049              	.LASF115:
- 6050 03bb 78517565 		.ascii	"xQueuePeek\000"
- 6050      75655065 
- 6050      656B00
- 6051              	.LASF101:
- 6052 03c6 78456E74 		.ascii	"xEntryTimeSet\000"
- 6052      72795469 
- 6052      6D655365 
- 6052      7400
- 6053              	.LASF3:
- 6054 03d4 73697A65 		.ascii	"size_t\000"
- 6054      5F7400
- 6055              	.LASF103:
- 6056 03db 7854696D 		.ascii	"xTimeOut\000"
- 6056      654F7574 
- 6056      00
- 6057              	.LASF70:
- 6058 03e4 7848616E 		.ascii	"xHandle\000"
- 6058      646C6500 
- 6059              	.LASF69:
- 6060 03ec 70635175 		.ascii	"pcQueueName\000"
- 6060      6575654E 
- 6060      616D6500 
- 6061              	.LASF37:
- 6062 03f8 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
- 6062      495F4C49 
- 6062      53545F49 
- 6062      54454D00 
- 6063              	.LASF32:
- 6064 0408 784C4953 		.ascii	"xLIST\000"
- 6064      5400
- 6065              	.LASF104:
- 6066 040e 78517565 		.ascii	"xQueueGenericSendFromISR\000"
- 6066      75654765 
- 6066      6E657269 
- 6066      6353656E 
- 6066      6446726F 
- 6067              	.LASF145:
- 6068 0427 76506F72 		.ascii	"vPortSetBASEPRI\000"
- 6068      74536574 
- 6068      42415345 
- 6068      50524900 
- 6069              	.LASF125:
- 6070 0437 70727643 		.ascii	"prvCopyDataToQueue\000"
- 6070      6F707944 
- 6070      61746154 
- 6070      6F517565 
- 6070      756500
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 163
+ 6047      75655065 
+ 6047      656B00
+ 6048              	.LASF101:
+ 6049 0383 78456E74 		.ascii	"xEntryTimeSet\000"
+ 6049      72795469 
+ 6049      6D655365 
+ 6049      7400
+ 6050              	.LASF3:
+ 6051 0391 73697A65 		.ascii	"size_t\000"
+ 6051      5F7400
+ 6052              	.LASF103:
+ 6053 0398 7854696D 		.ascii	"xTimeOut\000"
+ 6053      654F7574 
+ 6053      00
+ 6054              	.LASF70:
+ 6055 03a1 7848616E 		.ascii	"xHandle\000"
+ 6055      646C6500 
+ 6056              	.LASF69:
+ 6057 03a9 70635175 		.ascii	"pcQueueName\000"
+ 6057      6575654E 
+ 6057      616D6500 
+ 6058              	.LASF37:
+ 6059 03b5 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
+ 6059      495F4C49 
+ 6059      53545F49 
+ 6059      54454D00 
+ 6060              	.LASF32:
+ 6061 03c5 784C4953 		.ascii	"xLIST\000"
+ 6061      5400
+ 6062              	.LASF104:
+ 6063 03cb 78517565 		.ascii	"xQueueGenericSendFromISR\000"
+ 6063      75654765 
+ 6063      6E657269 
+ 6063      6353656E 
+ 6063      6446726F 
+ 6064              	.LASF145:
+ 6065 03e4 76506F72 		.ascii	"vPortSetBASEPRI\000"
+ 6065      74536574 
+ 6065      42415345 
+ 6065      50524900 
+ 6066              	.LASF125:
+ 6067 03f4 70727643 		.ascii	"prvCopyDataToQueue\000"
+ 6067      6F707944 
+ 6067      61746154 
+ 6067      6F517565 
+ 6067      756500
+ 6068              	.LASF98:
+ 6069 0407 78517565 		.ascii	"xQueueGenericSend\000"
+ 6069      75654765 
+ 6069      6E657269 
+ 6069      6353656E 
+ 6069      6400
+ 6070              	.LASF53:
+ 6071 0419 75784974 		.ascii	"uxItemSize\000"
+ 6071      656D5369 
+ 6071      7A6500
+ 6072              	.LASF97:
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 163
 
 
- 6071              	.LASF98:
- 6072 044a 78517565 		.ascii	"xQueueGenericSend\000"
- 6072      75654765 
- 6072      6E657269 
- 6072      6353656E 
- 6072      6400
- 6073              	.LASF53:
- 6074 045c 75784974 		.ascii	"uxItemSize\000"
- 6074      656D5369 
- 6074      7A6500
- 6075              	.LASF97:
- 6076 0467 7578496E 		.ascii	"uxInitialCount\000"
- 6076      69746961 
- 6076      6C436F75 
- 6076      6E7400
- 6077              	.LASF87:
- 6078 0476 75784D75 		.ascii	"uxMutexLength\000"
- 6078      7465784C 
- 6078      656E6774 
- 6078      6800
- 6079              	.LASF16:
- 6080 0484 63686172 		.ascii	"char\000"
- 6080      00
- 6081              	.LASF36:
- 6082 0489 4C697374 		.ascii	"ListItem_t\000"
- 6082      4974656D 
- 6082      5F7400
- 6083              	.LASF131:
- 6084 0494 70727649 		.ascii	"prvIsQueueFull\000"
- 6084      73517565 
- 6084      75654675 
- 6084      6C6C00
- 6085              	.LASF56:
- 6086 04a3 51756575 		.ascii	"QueuePointers\000"
- 6086      65506F69 
- 6086      6E746572 
- 6086      7300
- 6087              	.LASF74:
- 6088 04b1 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 6088      77424153 
- 6088      45505249 
- 6088      00
- 6089              	.LASF24:
- 6090 04be 55426173 		.ascii	"UBaseType_t\000"
- 6090      65547970 
- 6090      655F7400 
- 6091              	.LASF108:
- 6092 04ca 78517565 		.ascii	"xQueueGiveFromISR\000"
- 6092      75654769 
- 6092      76654672 
- 6092      6F6D4953 
- 6092      5200
- 6093              	.LASF139:
- 6094 04dc 78517565 		.ascii	"xQueueRegistry\000"
- 6094      75655265 
- 6094      67697374 
- 6094      727900
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 164
+ 6073 0424 7578496E 		.ascii	"uxInitialCount\000"
+ 6073      69746961 
+ 6073      6C436F75 
+ 6073      6E7400
+ 6074              	.LASF87:
+ 6075 0433 75784D75 		.ascii	"uxMutexLength\000"
+ 6075      7465784C 
+ 6075      656E6774 
+ 6075      6800
+ 6076              	.LASF16:
+ 6077 0441 63686172 		.ascii	"char\000"
+ 6077      00
+ 6078              	.LASF36:
+ 6079 0446 4C697374 		.ascii	"ListItem_t\000"
+ 6079      4974656D 
+ 6079      5F7400
+ 6080              	.LASF131:
+ 6081 0451 70727649 		.ascii	"prvIsQueueFull\000"
+ 6081      73517565 
+ 6081      75654675 
+ 6081      6C6C00
+ 6082              	.LASF56:
+ 6083 0460 51756575 		.ascii	"QueuePointers\000"
+ 6083      65506F69 
+ 6083      6E746572 
+ 6083      7300
+ 6084              	.LASF74:
+ 6085 046e 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 6085      77424153 
+ 6085      45505249 
+ 6085      00
+ 6086              	.LASF24:
+ 6087 047b 55426173 		.ascii	"UBaseType_t\000"
+ 6087      65547970 
+ 6087      655F7400 
+ 6088              	.LASF108:
+ 6089 0487 78517565 		.ascii	"xQueueGiveFromISR\000"
+ 6089      75654769 
+ 6089      76654672 
+ 6089      6F6D4953 
+ 6089      5200
+ 6090              	.LASF139:
+ 6091 0499 78517565 		.ascii	"xQueueRegistry\000"
+ 6091      75655265 
+ 6091      67697374 
+ 6091      727900
+ 6092              	.LASF45:
+ 6093 04a8 51756575 		.ascii	"QueueHandle_t\000"
+ 6093      6548616E 
+ 6093      646C655F 
+ 6093      7400
+ 6094              	.LASF35:
+ 6095 04b6 784C6973 		.ascii	"xListEnd\000"
+ 6095      74456E64 
+ 6095      00
+ 6096              	.LASF122:
+ 6097 04bf 75785175 		.ascii	"uxQueueMessagesWaitingFromISR\000"
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 164
 
 
- 6095              	.LASF45:
- 6096 04eb 51756575 		.ascii	"QueueHandle_t\000"
- 6096      6548616E 
- 6096      646C655F 
- 6096      7400
- 6097              	.LASF35:
- 6098 04f9 784C6973 		.ascii	"xListEnd\000"
- 6098      74456E64 
- 6098      00
- 6099              	.LASF122:
- 6100 0502 75785175 		.ascii	"uxQueueMessagesWaitingFromISR\000"
- 6100      6575654D 
- 6100      65737361 
- 6100      67657357 
- 6100      61697469 
- 6101              	.LASF38:
- 6102 0520 4D696E69 		.ascii	"MiniListItem_t\000"
- 6102      4C697374 
- 6102      4974656D 
- 6102      5F7400
- 6103              	.LASF18:
- 6104 052f 75696E74 		.ascii	"uint8_t\000"
- 6104      385F7400 
- 6105              	.LASF71:
- 6106 0537 78517565 		.ascii	"xQueueRegistryItem\000"
- 6106      75655265 
- 6106      67697374 
- 6106      72794974 
- 6106      656D00
- 6107              	.LASF77:
- 6108 054a 78517565 		.ascii	"xQueueGenericCreate\000"
- 6108      75654765 
- 6108      6E657269 
- 6108      63437265 
- 6108      61746500 
- 6109              	.LASF86:
- 6110 055e 78517565 		.ascii	"xQueueCreateMutex\000"
- 6110      75654372 
- 6110      65617465 
- 6110      4D757465 
- 6110      7800
- 6111              	.LASF144:
- 6112 0570 756C506F 		.ascii	"ulPortRaiseBASEPRI\000"
- 6112      72745261 
- 6112      69736542 
- 6112      41534550 
- 6112      524900
- 6113              	.LASF1:
- 6114 0583 6C6F6E67 		.ascii	"long long int\000"
- 6114      206C6F6E 
- 6114      6720696E 
- 6114      7400
- 6115              	.LASF85:
- 6116 0591 70727649 		.ascii	"prvInitialiseMutex\000"
- 6116      6E697469 
- 6116      616C6973 
- 6116      654D7574 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 165
+ 6097      6575654D 
+ 6097      65737361 
+ 6097      67657357 
+ 6097      61697469 
+ 6098              	.LASF38:
+ 6099 04dd 4D696E69 		.ascii	"MiniListItem_t\000"
+ 6099      4C697374 
+ 6099      4974656D 
+ 6099      5F7400
+ 6100              	.LASF18:
+ 6101 04ec 75696E74 		.ascii	"uint8_t\000"
+ 6101      385F7400 
+ 6102              	.LASF71:
+ 6103 04f4 78517565 		.ascii	"xQueueRegistryItem\000"
+ 6103      75655265 
+ 6103      67697374 
+ 6103      72794974 
+ 6103      656D00
+ 6104              	.LASF77:
+ 6105 0507 78517565 		.ascii	"xQueueGenericCreate\000"
+ 6105      75654765 
+ 6105      6E657269 
+ 6105      63437265 
+ 6105      61746500 
+ 6106              	.LASF86:
+ 6107 051b 78517565 		.ascii	"xQueueCreateMutex\000"
+ 6107      75654372 
+ 6107      65617465 
+ 6107      4D757465 
+ 6107      7800
+ 6108              	.LASF144:
+ 6109 052d 756C506F 		.ascii	"ulPortRaiseBASEPRI\000"
+ 6109      72745261 
+ 6109      69736542 
+ 6109      41534550 
+ 6109      524900
+ 6110              	.LASF1:
+ 6111 0540 6C6F6E67 		.ascii	"long long int\000"
+ 6111      206C6F6E 
+ 6111      6720696E 
+ 6111      7400
+ 6112              	.LASF85:
+ 6113 054e 70727649 		.ascii	"prvInitialiseMutex\000"
+ 6113      6E697469 
+ 6113      616C6973 
+ 6113      654D7574 
+ 6113      657800
+ 6114              	.LASF23:
+ 6115 0561 42617365 		.ascii	"BaseType_t\000"
+ 6115      54797065 
+ 6115      5F7400
+ 6116              	.LASF83:
+ 6117 056c 70756351 		.ascii	"pucQueueStorage\000"
+ 6117      75657565 
+ 6117      53746F72 
+ 6117      61676500 
+ 6118              	.LASF90:
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 165
 
 
- 6116      657800
- 6117              	.LASF23:
- 6118 05a4 42617365 		.ascii	"BaseType_t\000"
- 6118      54797065 
- 6118      5F7400
- 6119              	.LASF83:
- 6120 05af 70756351 		.ascii	"pucQueueStorage\000"
- 6120      75657565 
- 6120      53746F72 
- 6120      61676500 
- 6121              	.LASF90:
- 6122 05bf 784D7574 		.ascii	"xMutex\000"
- 6122      657800
- 6123              	.LASF43:
- 6124 05c6 7854696D 		.ascii	"xTimeOnEntering\000"
- 6124      654F6E45 
- 6124      6E746572 
- 6124      696E6700 
- 6125              	.LASF134:
- 6126 05d6 76517565 		.ascii	"vQueueAddToRegistry\000"
- 6126      75654164 
- 6126      64546F52 
- 6126      65676973 
- 6126      74727900 
- 6127              	.LASF27:
- 6128 05ea 70784E65 		.ascii	"pxNext\000"
- 6128      787400
- 6129              	.LASF75:
- 6130 05f1 784E6577 		.ascii	"xNewQueue\000"
- 6130      51756575 
- 6130      6500
- 6131              	.LASF96:
- 6132 05fb 75784D61 		.ascii	"uxMaxCount\000"
- 6132      78436F75 
- 6132      6E7400
- 6133              	.LASF44:
- 6134 0606 54696D65 		.ascii	"TimeOut_t\000"
- 6134      4F75745F 
- 6134      7400
- 6135              	.LASF116:
- 6136 0610 70634F72 		.ascii	"pcOriginalReadPosition\000"
- 6136      6967696E 
- 6136      616C5265 
- 6136      6164506F 
- 6136      73697469 
- 6137              	.LASF40:
- 6138 0627 5461736B 		.ascii	"TaskHandle_t\000"
- 6138      48616E64 
- 6138      6C655F74 
- 6138      00
- 6139              	.LASF146:
- 6140 0634 756C4E65 		.ascii	"ulNewMaskValue\000"
- 6140      774D6173 
- 6140      6B56616C 
- 6140      756500
- 6141              	.LASF123:
- 6142 0643 75784869 		.ascii	"uxHighestPriorityOfWaitingTasks\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 166
+ 6119 057c 784D7574 		.ascii	"xMutex\000"
+ 6119      657800
+ 6120              	.LASF43:
+ 6121 0583 7854696D 		.ascii	"xTimeOnEntering\000"
+ 6121      654F6E45 
+ 6121      6E746572 
+ 6121      696E6700 
+ 6122              	.LASF134:
+ 6123 0593 76517565 		.ascii	"vQueueAddToRegistry\000"
+ 6123      75654164 
+ 6123      64546F52 
+ 6123      65676973 
+ 6123      74727900 
+ 6124              	.LASF27:
+ 6125 05a7 70784E65 		.ascii	"pxNext\000"
+ 6125      787400
+ 6126              	.LASF75:
+ 6127 05ae 784E6577 		.ascii	"xNewQueue\000"
+ 6127      51756575 
+ 6127      6500
+ 6128              	.LASF96:
+ 6129 05b8 75784D61 		.ascii	"uxMaxCount\000"
+ 6129      78436F75 
+ 6129      6E7400
+ 6130              	.LASF44:
+ 6131 05c3 54696D65 		.ascii	"TimeOut_t\000"
+ 6131      4F75745F 
+ 6131      7400
+ 6132              	.LASF116:
+ 6133 05cd 70634F72 		.ascii	"pcOriginalReadPosition\000"
+ 6133      6967696E 
+ 6133      616C5265 
+ 6133      6164506F 
+ 6133      73697469 
+ 6134              	.LASF40:
+ 6135 05e4 5461736B 		.ascii	"TaskHandle_t\000"
+ 6135      48616E64 
+ 6135      6C655F74 
+ 6135      00
+ 6136              	.LASF146:
+ 6137 05f1 756C4E65 		.ascii	"ulNewMaskValue\000"
+ 6137      774D6173 
+ 6137      6B56616C 
+ 6137      756500
+ 6138              	.LASF123:
+ 6139 0600 75784869 		.ascii	"uxHighestPriorityOfWaitingTasks\000"
+ 6139      67686573 
+ 6139      74507269 
+ 6139      6F726974 
+ 6139      794F6657 
+ 6140              	.LASF79:
+ 6141 0620 75635175 		.ascii	"ucQueueType\000"
+ 6141      65756554 
+ 6141      79706500 
+ 6142              	.LASF39:
+ 6143 062c 4C697374 		.ascii	"List_t\000"
+ 6143      5F7400
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 166
 
 
- 6142      67686573 
- 6142      74507269 
- 6142      6F726974 
- 6142      794F6657 
- 6143              	.LASF79:
- 6144 0663 75635175 		.ascii	"ucQueueType\000"
- 6144      65756554 
- 6144      79706500 
- 6145              	.LASF39:
- 6146 066f 4C697374 		.ascii	"List_t\000"
- 6146      5F7400
- 6147              	.LASF113:
- 6148 0676 75785365 		.ascii	"uxSemaphoreCount\000"
- 6148      6D617068 
- 6148      6F726543 
- 6148      6F756E74 
- 6148      00
- 6149              	.LASF48:
- 6150 0687 70635772 		.ascii	"pcWriteTo\000"
- 6150      69746554 
- 6150      6F00
- 6151              	.LASF25:
- 6152 0691 5469636B 		.ascii	"TickType_t\000"
- 6152      54797065 
- 6152      5F7400
- 6153              	.LASF4:
- 6154 069c 5F5F696E 		.ascii	"__int8_t\000"
- 6154      74385F74 
- 6154      00
- 6155              	.LASF78:
- 6156 06a5 75785175 		.ascii	"uxQueueLength\000"
- 6156      6575654C 
- 6156      656E6774 
- 6156      6800
- 6157              	.LASF2:
- 6158 06b3 6C6F6E67 		.ascii	"long double\000"
- 6158      20646F75 
- 6158      626C6500 
- 6159              	.LASF112:
- 6160 06bf 78496E68 		.ascii	"xInheritanceOccurred\000"
- 6160      65726974 
- 6160      616E6365 
- 6160      4F636375 
- 6160      72726564 
- 6161              	.LASF93:
- 6162 06d4 78517565 		.ascii	"xQueueTakeMutexRecursive\000"
- 6162      75655461 
- 6162      6B654D75 
- 6162      74657852 
- 6162      65637572 
- 6163              	.LASF30:
- 6164 06ed 7076436F 		.ascii	"pvContainer\000"
- 6164      6E746169 
- 6164      6E657200 
- 6165              	.LASF135:
- 6166 06f9 70635175 		.ascii	"pcQueueGetName\000"
- 6166      65756547 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 167
+ 6144              	.LASF113:
+ 6145 0633 75785365 		.ascii	"uxSemaphoreCount\000"
+ 6145      6D617068 
+ 6145      6F726543 
+ 6145      6F756E74 
+ 6145      00
+ 6146              	.LASF48:
+ 6147 0644 70635772 		.ascii	"pcWriteTo\000"
+ 6147      69746554 
+ 6147      6F00
+ 6148              	.LASF25:
+ 6149 064e 5469636B 		.ascii	"TickType_t\000"
+ 6149      54797065 
+ 6149      5F7400
+ 6150              	.LASF4:
+ 6151 0659 5F5F696E 		.ascii	"__int8_t\000"
+ 6151      74385F74 
+ 6151      00
+ 6152              	.LASF78:
+ 6153 0662 75785175 		.ascii	"uxQueueLength\000"
+ 6153      6575654C 
+ 6153      656E6774 
+ 6153      6800
+ 6154              	.LASF2:
+ 6155 0670 6C6F6E67 		.ascii	"long double\000"
+ 6155      20646F75 
+ 6155      626C6500 
+ 6156              	.LASF112:
+ 6157 067c 78496E68 		.ascii	"xInheritanceOccurred\000"
+ 6157      65726974 
+ 6157      616E6365 
+ 6157      4F636375 
+ 6157      72726564 
+ 6158              	.LASF93:
+ 6159 0691 78517565 		.ascii	"xQueueTakeMutexRecursive\000"
+ 6159      75655461 
+ 6159      6B654D75 
+ 6159      74657852 
+ 6159      65637572 
+ 6160              	.LASF30:
+ 6161 06aa 7076436F 		.ascii	"pvContainer\000"
+ 6161      6E746169 
+ 6161      6E657200 
+ 6162              	.LASF135:
+ 6163 06b6 70635175 		.ascii	"pcQueueGetName\000"
+ 6163      65756547 
+ 6163      65744E61 
+ 6163      6D6500
+ 6164              	.LASF59:
+ 6165 06c5 51756575 		.ascii	"QueuePointers_t\000"
+ 6165      65506F69 
+ 6165      6E746572 
+ 6165      735F7400 
+ 6166              	.LASF136:
+ 6167 06d5 70635265 		.ascii	"pcReturn\000"
+ 6167      7475726E 
+ 6167      00
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 167
 
 
- 6166      65744E61 
- 6166      6D6500
- 6167              	.LASF59:
- 6168 0708 51756575 		.ascii	"QueuePointers_t\000"
- 6168      65506F69 
- 6168      6E746572 
- 6168      735F7400 
- 6169              	.LASF136:
- 6170 0718 70635265 		.ascii	"pcReturn\000"
- 6170      7475726E 
- 6170      00
- 6171              	.LASF52:
- 6172 0721 75784C65 		.ascii	"uxLength\000"
- 6172      6E677468 
- 6172      00
- 6173              	.LASF8:
- 6174 072a 73686F72 		.ascii	"short int\000"
- 6174      7420696E 
- 6174      7400
- 6175              	.LASF26:
- 6176 0734 78497465 		.ascii	"xItemValue\000"
- 6176      6D56616C 
- 6176      756500
- 6177              	.LASF11:
- 6178 073f 6C6F6E67 		.ascii	"long int\000"
- 6178      20696E74 
- 6178      00
- 6179              	.LASF138:
- 6180 0748 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 6180      52784275 
- 6180      66666572 
- 6180      00
- 6181              	.LASF82:
- 6182 0755 78517565 		.ascii	"xQueueSizeInBytes\000"
- 6182      75655369 
- 6182      7A65496E 
- 6182      42797465 
- 6182      7300
- 6183              	.LASF99:
- 6184 0767 70764974 		.ascii	"pvItemToQueue\000"
- 6184      656D546F 
- 6184      51756575 
- 6184      6500
- 6185              	.LASF132:
- 6186 0775 78517565 		.ascii	"xQueueIsQueueFullFromISR\000"
- 6186      75654973 
- 6186      51756575 
- 6186      6546756C 
- 6186      6C46726F 
- 6187              	.LASF119:
- 6188 078e 75785175 		.ascii	"uxQueueMessagesWaiting\000"
- 6188      6575654D 
- 6188      65737361 
- 6188      67657357 
- 6188      61697469 
- 6189              	.LASF57:
- 6190 07a5 70635461 		.ascii	"pcTail\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 168
+ 6168              	.LASF52:
+ 6169 06de 75784C65 		.ascii	"uxLength\000"
+ 6169      6E677468 
+ 6169      00
+ 6170              	.LASF8:
+ 6171 06e7 73686F72 		.ascii	"short int\000"
+ 6171      7420696E 
+ 6171      7400
+ 6172              	.LASF26:
+ 6173 06f1 78497465 		.ascii	"xItemValue\000"
+ 6173      6D56616C 
+ 6173      756500
+ 6174              	.LASF11:
+ 6175 06fc 6C6F6E67 		.ascii	"long int\000"
+ 6175      20696E74 
+ 6175      00
+ 6176              	.LASF138:
+ 6177 0705 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 6177      52784275 
+ 6177      66666572 
+ 6177      00
+ 6178              	.LASF82:
+ 6179 0712 78517565 		.ascii	"xQueueSizeInBytes\000"
+ 6179      75655369 
+ 6179      7A65496E 
+ 6179      42797465 
+ 6179      7300
+ 6180              	.LASF99:
+ 6181 0724 70764974 		.ascii	"pvItemToQueue\000"
+ 6181      656D546F 
+ 6181      51756575 
+ 6181      6500
+ 6182              	.LASF132:
+ 6183 0732 78517565 		.ascii	"xQueueIsQueueFullFromISR\000"
+ 6183      75654973 
+ 6183      51756575 
+ 6183      6546756C 
+ 6183      6C46726F 
+ 6184              	.LASF119:
+ 6185 074b 75785175 		.ascii	"uxQueueMessagesWaiting\000"
+ 6185      6575654D 
+ 6185      65737361 
+ 6185      67657357 
+ 6185      61697469 
+ 6186              	.LASF57:
+ 6187 0762 70635461 		.ascii	"pcTail\000"
+ 6187      696C00
+ 6188              	.LASF6:
+ 6189 0769 5F5F7569 		.ascii	"__uint8_t\000"
+ 6189      6E74385F 
+ 6189      7400
+ 6190              	.LASF80:
+ 6191 0773 70785175 		.ascii	"pxQueue\000"
+ 6191      65756500 
+ 6192              	.LASF142:
+ 6193 077b 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
+ 6193      73657273 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 168
 
 
- 6190      696C00
- 6191              	.LASF6:
- 6192 07ac 5F5F7569 		.ascii	"__uint8_t\000"
- 6192      6E74385F 
- 6192      7400
- 6193              	.LASF80:
- 6194 07b6 70785175 		.ascii	"pxQueue\000"
- 6194      65756500 
- 6195              	.LASF91:
- 6196 07be 78526574 		.ascii	"xReturn\000"
- 6196      75726E00 
- 6197              	.LASF15:
- 6198 07c6 73697A65 		.ascii	"sizetype\000"
- 6198      74797065 
- 6198      00
- 6199              	.LASF13:
- 6200 07cf 6C6F6E67 		.ascii	"long unsigned int\000"
- 6200      20756E73 
- 6200      69676E65 
- 6200      6420696E 
- 6200      7400
- 6201              	.LASF19:
- 6202 07e1 696E7433 		.ascii	"int32_t\000"
- 6202      325F7400 
- 6203              	.LASF118:
- 6204 07e9 78517565 		.ascii	"xQueuePeekFromISR\000"
- 6204      75655065 
- 6204      656B4672 
- 6204      6F6D4953 
- 6204      5200
- 6205              	.LASF114:
- 6206 07fb 75784869 		.ascii	"uxHighestWaitingPriority\000"
- 6206      67686573 
- 6206      74576169 
- 6206      74696E67 
- 6206      5072696F 
- 6207              	.LASF7:
- 6208 0814 756E7369 		.ascii	"unsigned char\000"
- 6208      676E6564 
- 6208      20636861 
- 6208      7200
- 6209              	.LASF12:
- 6210 0822 5F5F7569 		.ascii	"__uint32_t\000"
- 6210      6E743332 
- 6210      5F7400
- 6211              	.LASF127:
- 6212 082d 70727643 		.ascii	"prvCopyDataFromQueue\000"
- 6212      6F707944 
- 6212      61746146 
- 6212      726F6D51 
- 6212      75657565 
- 6213              	.LASF94:
- 6214 0842 78546963 		.ascii	"xTicksToWait\000"
- 6214      6B73546F 
- 6214      57616974 
- 6214      00
- 6215              	.LASF29:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 169
+ 6193      5C6D6162 
+ 6193      6F5C446F 
+ 6193      63756D65 
+ 6194 07a8 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
+ 6194      74696361 
+ 6194      6C5F6661 
+ 6194      726D5C52 
+ 6194      544F535F 
+ 6195 07d9 7964736E 		.ascii	"ydsn\000"
+ 6195      00
+ 6196              	.LASF91:
+ 6197 07de 78526574 		.ascii	"xReturn\000"
+ 6197      75726E00 
+ 6198              	.LASF15:
+ 6199 07e6 73697A65 		.ascii	"sizetype\000"
+ 6199      74797065 
+ 6199      00
+ 6200              	.LASF13:
+ 6201 07ef 6C6F6E67 		.ascii	"long unsigned int\000"
+ 6201      20756E73 
+ 6201      69676E65 
+ 6201      6420696E 
+ 6201      7400
+ 6202              	.LASF19:
+ 6203 0801 696E7433 		.ascii	"int32_t\000"
+ 6203      325F7400 
+ 6204              	.LASF118:
+ 6205 0809 78517565 		.ascii	"xQueuePeekFromISR\000"
+ 6205      75655065 
+ 6205      656B4672 
+ 6205      6F6D4953 
+ 6205      5200
+ 6206              	.LASF114:
+ 6207 081b 75784869 		.ascii	"uxHighestWaitingPriority\000"
+ 6207      67686573 
+ 6207      74576169 
+ 6207      74696E67 
+ 6207      5072696F 
+ 6208              	.LASF7:
+ 6209 0834 756E7369 		.ascii	"unsigned char\000"
+ 6209      676E6564 
+ 6209      20636861 
+ 6209      7200
+ 6210              	.LASF12:
+ 6211 0842 5F5F7569 		.ascii	"__uint32_t\000"
+ 6211      6E743332 
+ 6211      5F7400
+ 6212              	.LASF127:
+ 6213 084d 70727643 		.ascii	"prvCopyDataFromQueue\000"
+ 6213      6F707944 
+ 6213      61746146 
+ 6213      726F6D51 
+ 6213      75657565 
+ 6214              	.LASF94:
+ 6215 0862 78546963 		.ascii	"xTicksToWait\000"
+ 6215      6B73546F 
+ 6215      57616974 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 169
 
 
- 6216 084f 70764F77 		.ascii	"pvOwner\000"
- 6216      6E657200 
- 6217              	.LASF47:
- 6218 0857 70634865 		.ascii	"pcHead\000"
- 6218      616400
- 6219              	.LASF89:
- 6220 085e 78517565 		.ascii	"xQueueGiveMutexRecursive\000"
- 6220      75654769 
- 6220      76654D75 
- 6220      74657852 
- 6220      65637572 
- 6221              	.LASF128:
- 6222 0877 70727655 		.ascii	"prvUnlockQueue\000"
- 6222      6E6C6F63 
- 6222      6B517565 
- 6222      756500
- 6223              	.LASF76:
- 6224 0886 78517565 		.ascii	"xQueueGenericReset\000"
- 6224      75654765 
- 6224      6E657269 
- 6224      63526573 
- 6224      657400
- 6225              	.LASF130:
- 6226 0899 78517565 		.ascii	"xQueueIsQueueEmptyFromISR\000"
- 6226      75654973 
- 6226      51756575 
- 6226      65456D70 
- 6226      74794672 
- 6227              	.LASF5:
- 6228 08b3 7369676E 		.ascii	"signed char\000"
- 6228      65642063 
- 6228      68617200 
- 6229              	.LASF9:
- 6230 08bf 73686F72 		.ascii	"short unsigned int\000"
- 6230      7420756E 
- 6230      7369676E 
- 6230      65642069 
- 6230      6E7400
- 6231              	.LASF66:
- 6232 08d2 78515545 		.ascii	"xQUEUE\000"
- 6232      554500
- 6233              	.LASF61:
- 6234 08d9 784D7574 		.ascii	"xMutexHolder\000"
- 6234      6578486F 
- 6234      6C646572 
- 6234      00
- 6235              	.LASF22:
- 6236 08e6 646F7562 		.ascii	"double\000"
- 6236      6C6500
- 6237              	.LASF126:
- 6238 08ed 78506F73 		.ascii	"xPosition\000"
- 6238      6974696F 
- 6238      6E00
- 6239              	.LASF54:
- 6240 08f7 6352784C 		.ascii	"cRxLock\000"
- 6240      6F636B00 
- 6241              	.LASF95:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc9A0I5x.s 			page 170
+ 6215      00
+ 6216              	.LASF29:
+ 6217 086f 70764F77 		.ascii	"pvOwner\000"
+ 6217      6E657200 
+ 6218              	.LASF47:
+ 6219 0877 70634865 		.ascii	"pcHead\000"
+ 6219      616400
+ 6220              	.LASF89:
+ 6221 087e 78517565 		.ascii	"xQueueGiveMutexRecursive\000"
+ 6221      75654769 
+ 6221      76654D75 
+ 6221      74657852 
+ 6221      65637572 
+ 6222              	.LASF128:
+ 6223 0897 70727655 		.ascii	"prvUnlockQueue\000"
+ 6223      6E6C6F63 
+ 6223      6B517565 
+ 6223      756500
+ 6224              	.LASF76:
+ 6225 08a6 78517565 		.ascii	"xQueueGenericReset\000"
+ 6225      75654765 
+ 6225      6E657269 
+ 6225      63526573 
+ 6225      657400
+ 6226              	.LASF130:
+ 6227 08b9 78517565 		.ascii	"xQueueIsQueueEmptyFromISR\000"
+ 6227      75654973 
+ 6227      51756575 
+ 6227      65456D70 
+ 6227      74794672 
+ 6228              	.LASF5:
+ 6229 08d3 7369676E 		.ascii	"signed char\000"
+ 6229      65642063 
+ 6229      68617200 
+ 6230              	.LASF9:
+ 6231 08df 73686F72 		.ascii	"short unsigned int\000"
+ 6231      7420756E 
+ 6231      7369676E 
+ 6231      65642069 
+ 6231      6E7400
+ 6232              	.LASF66:
+ 6233 08f2 78515545 		.ascii	"xQUEUE\000"
+ 6233      554500
+ 6234              	.LASF61:
+ 6235 08f9 784D7574 		.ascii	"xMutexHolder\000"
+ 6235      6578486F 
+ 6235      6C646572 
+ 6235      00
+ 6236              	.LASF22:
+ 6237 0906 646F7562 		.ascii	"double\000"
+ 6237      6C6500
+ 6238              	.LASF126:
+ 6239 090d 78506F73 		.ascii	"xPosition\000"
+ 6239      6974696F 
+ 6239      6E00
+ 6240              	.LASF54:
+ 6241 0917 6352784C 		.ascii	"cRxLock\000"
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc4TvLgl.s 			page 170
 
 
- 6242 08ff 78517565 		.ascii	"xQueueCreateCountingSemaphore\000"
- 6242      75654372 
- 6242      65617465 
- 6242      436F756E 
- 6242      74696E67 
- 6243              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 6241      6F636B00 
+ 6242              	.LASF95:
+ 6243 091f 78517565 		.ascii	"xQueueCreateCountingSemaphore\000"
+ 6243      75654372 
+ 6243      65617465 
+ 6243      436F756E 
+ 6243      74696E67 
+ 6244              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
   22:main.c        ****  * http://www.FreeRTOS.org
   23:main.c        ****  * http://aws.amazon.com/freertos
   24:main.c        ****  *
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 2
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 2
 
 
   25:main.c        ****  * 1 tab == 4 spaces!
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
   52 0014 4FF47A72 		mov	r2, #1000
   53 0018 0349     		ldr	r1, .L3
   54 001a 0448     		ldr	r0, .L3+4
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 3
 
 
   55 001c FFF7FEFF 		bl	xTaskCreate
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
   75:main.c        ****     const uint8 max_speed = 6;
   93              		.loc 1 75 0
   94 000e 0623     		movs	r3, #6
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 4
 
 
   95 0010 FB73     		strb	r3, [r7, #15]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  134              		.thumb
  135              		.thumb_func
  136              		.type	prvHardwareSetup, %function
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 5
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 5
 
 
  137              	prvHardwareSetup:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  164 001a 00BF     		nop
  165 001c 80BD     		pop	{r7, pc}
  166              	.L11:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 6
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 6
 
 
  167 001e 00BF     		.align	2
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
   16:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
   17:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
   18:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 7
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 7
 
 
   19:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
   73:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
   74:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
   75:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portBYTE_ALIGNMENT			8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 8
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 8
 
 
   76:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  130:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
  131:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
  132:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	uint8_t ucReturn;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 9
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 9
 
 
  133:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  187:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  188:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return xReturn;
  189:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 10
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 10
 
 
  190:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  239 0004 00AF     		add	r7, sp, #0
  240              		.cfi_def_cfa_register 7
  241              	.LBB8:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 11
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 11
 
 
  242              	.LBB9:
@@ -641,30 +641,30 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  276 000b 01       		.uleb128 0x1
  277 000c 00000000 		.4byte	.LASF37
  278 0010 0C       		.byte	0xc
- 279 0011 51020000 		.4byte	.LASF38
- 280 0015 F1000000 		.4byte	.LASF39
+ 279 0011 0E020000 		.4byte	.LASF38
+ 280 0015 2A020000 		.4byte	.LASF39
  281 0019 00000000 		.4byte	.Ldebug_ranges0+0
  282 001d 00000000 		.4byte	0
  283 0021 00000000 		.4byte	.Ldebug_line0
  284 0025 02       		.uleb128 0x2
  285 0026 01       		.byte	0x1
  286 0027 06       		.byte	0x6
- 287 0028 C1020000 		.4byte	.LASF0
+ 287 0028 E1020000 		.4byte	.LASF0
  288 002c 02       		.uleb128 0x2
  289 002d 01       		.byte	0x1
  290 002e 08       		.byte	0x8
- 291 002f 3F010000 		.4byte	.LASF1
+ 291 002f FC000000 		.4byte	.LASF1
  292 0033 02       		.uleb128 0x2
  293 0034 02       		.byte	0x2
  294 0035 05       		.byte	0x5
- 295 0036 74020000 		.4byte	.LASF2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 12
+ 295 0036 94020000 		.4byte	.LASF2
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 12
 
 
  296 003a 02       		.uleb128 0x2
  297 003b 02       		.byte	0x2
  298 003c 07       		.byte	0x7
- 299 003d 6A010000 		.4byte	.LASF3
+ 299 003d 27010000 		.4byte	.LASF3
  300 0041 03       		.uleb128 0x3
  301 0042 99000000 		.4byte	.LASF5
  302 0046 03       		.byte	0x3
@@ -673,24 +673,24 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  305 004c 02       		.uleb128 0x2
  306 004d 04       		.byte	0x4
  307 004e 05       		.byte	0x5
- 308 004f A5020000 		.4byte	.LASF4
+ 308 004f C5020000 		.4byte	.LASF4
  309 0053 03       		.uleb128 0x3
- 310 0054 4D010000 		.4byte	.LASF6
+ 310 0054 0A010000 		.4byte	.LASF6
  311 0058 03       		.byte	0x3
  312 0059 41       		.byte	0x41
  313 005a 5E000000 		.4byte	0x5e
  314 005e 02       		.uleb128 0x2
  315 005f 04       		.byte	0x4
  316 0060 07       		.byte	0x7
- 317 0061 58010000 		.4byte	.LASF7
+ 317 0061 15010000 		.4byte	.LASF7
  318 0065 02       		.uleb128 0x2
  319 0066 08       		.byte	0x8
  320 0067 05       		.byte	0x5
- 321 0068 43020000 		.4byte	.LASF8
+ 321 0068 00020000 		.4byte	.LASF8
  322 006c 02       		.uleb128 0x2
  323 006d 08       		.byte	0x8
  324 006e 07       		.byte	0x7
- 325 006f F1010000 		.4byte	.LASF9
+ 325 006f AE010000 		.4byte	.LASF9
  326 0073 04       		.uleb128 0x4
  327 0074 04       		.byte	0x4
  328 0075 05       		.byte	0x5
@@ -698,19 +698,19 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  330 007a 02       		.uleb128 0x2
  331 007b 04       		.byte	0x4
  332 007c 07       		.byte	0x7
- 333 007d D8010000 		.4byte	.LASF10
+ 333 007d 95010000 		.4byte	.LASF10
  334 0081 03       		.uleb128 0x3
- 335 0082 32020000 		.4byte	.LASF11
+ 335 0082 EF010000 		.4byte	.LASF11
  336 0086 04       		.byte	0x4
  337 0087 2C       		.byte	0x2c
  338 0088 41000000 		.4byte	0x41
  339 008c 03       		.uleb128 0x3
- 340 008d 9C020000 		.4byte	.LASF12
+ 340 008d BC020000 		.4byte	.LASF12
  341 0091 04       		.byte	0x4
  342 0092 30       		.byte	0x30
  343 0093 53000000 		.4byte	0x53
  344 0097 05       		.uleb128 0x5
- 345 0098 89020000 		.4byte	.LASF13
+ 345 0098 A9020000 		.4byte	.LASF13
  346 009c 05       		.byte	0x5
  347 009d E401     		.2byte	0x1e4
  348 009f 2C000000 		.4byte	0x2c
@@ -718,19 +718,19 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  350 00a4 04       		.byte	0x4
  351 00a5 04       		.byte	0x4
  352 00a6 EB000000 		.4byte	.LASF14
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 13
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 13
 
 
  353 00aa 02       		.uleb128 0x2
  354 00ab 08       		.byte	0x8
  355 00ac 04       		.byte	0x4
- 356 00ad 8A010000 		.4byte	.LASF15
+ 356 00ad 47010000 		.4byte	.LASF15
  357 00b1 02       		.uleb128 0x2
  358 00b2 01       		.byte	0x1
  359 00b3 08       		.byte	0x8
- 360 00b4 58020000 		.4byte	.LASF16
+ 360 00b4 15020000 		.4byte	.LASF16
  361 00b8 05       		.uleb128 0x5
- 362 00b9 08020000 		.4byte	.LASF17
+ 362 00b9 C5010000 		.4byte	.LASF17
  363 00bd 05       		.byte	0x5
  364 00be A002     		.2byte	0x2a0
  365 00c0 C4000000 		.4byte	0xc4
@@ -741,11 +741,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  370 00cb 02       		.uleb128 0x2
  371 00cc 08       		.byte	0x8
  372 00cd 04       		.byte	0x4
- 373 00ce B5020000 		.4byte	.LASF18
+ 373 00ce D5020000 		.4byte	.LASF18
  374 00d2 02       		.uleb128 0x2
  375 00d3 04       		.byte	0x4
  376 00d4 07       		.byte	0x7
- 377 00d5 3A020000 		.4byte	.LASF19
+ 377 00d5 F7010000 		.4byte	.LASF19
  378 00d9 08       		.uleb128 0x8
  379 00da 04       		.byte	0x4
  380 00db 06       		.uleb128 0x6
@@ -757,7 +757,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  386 00e7 3F       		.byte	0x3f
  387 00e8 8C000000 		.4byte	0x8c
  388 00ec 03       		.uleb128 0x3
- 389 00ed 8F020000 		.4byte	.LASF21
+ 389 00ed AF020000 		.4byte	.LASF21
  390 00f1 06       		.byte	0x6
  391 00f2 46       		.byte	0x46
  392 00f3 F7000000 		.4byte	0xf7
@@ -765,7 +765,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  394 00f8 04       		.byte	0x4
  395 00f9 FD000000 		.4byte	0xfd
  396 00fd 09       		.uleb128 0x9
- 397 00fe AB010000 		.4byte	.LASF40
+ 397 00fe 68010000 		.4byte	.LASF40
  398 0102 0A       		.uleb128 0xa
  399 0103 B0000000 		.4byte	.LASF41
  400 0107 02       		.byte	0x2
@@ -773,16 +773,16 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  402 0109 03       		.byte	0x3
  403 010a 1A010000 		.4byte	0x11a
  404 010e 0B       		.uleb128 0xb
- 405 010f 9E010000 		.4byte	.LASF42
+ 405 010f 5B010000 		.4byte	.LASF42
  406 0113 02       		.byte	0x2
  407 0114 C3       		.byte	0xc3
  408 0115 8C000000 		.4byte	0x8c
  409 0119 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 14
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 14
 
 
  410 011a 0C       		.uleb128 0xc
- 411 011b BF010000 		.4byte	.LASF43
+ 411 011b 7C010000 		.4byte	.LASF43
  412 011f 01       		.byte	0x1
  413 0120 35       		.byte	0x35
  414 0121 73000000 		.4byte	0x73
@@ -808,7 +808,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  434 0150 91       		.byte	0x91
  435 0151 64       		.sleb128 -28
  436 0152 0F       		.uleb128 0xf
- 437 0153 E5010000 		.4byte	.LASF22
+ 437 0153 A2010000 		.4byte	.LASF22
  438 0157 01       		.byte	0x1
  439 0158 4A       		.byte	0x4a
  440 0159 8B010000 		.4byte	0x18b
@@ -824,7 +824,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  450 016c 91       		.byte	0x91
  451 016d 6F       		.sleb128 -17
  452 016e 0F       		.uleb128 0xf
- 453 016f 34010000 		.4byte	.LASF24
+ 453 016f F1000000 		.4byte	.LASF24
  454 0173 01       		.byte	0x1
  455 0174 4C       		.byte	0x4c
  456 0175 90010000 		.4byte	0x190
@@ -832,13 +832,13 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  458 017a 91       		.byte	0x91
  459 017b 6E       		.sleb128 -18
  460 017c 0F       		.uleb128 0xf
- 461 017d AE020000 		.4byte	.LASF25
+ 461 017d CE020000 		.4byte	.LASF25
  462 0181 01       		.byte	0x1
  463 0182 4D       		.byte	0x4d
  464 0183 73000000 		.4byte	0x73
  465 0187 02       		.uleb128 0x2
  466 0188 91       		.byte	0x91
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 15
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 15
 
 
  467 0189 74       		.sleb128 -12
@@ -848,7 +848,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  471 0190 10       		.uleb128 0x10
  472 0191 97000000 		.4byte	0x97
  473 0195 11       		.uleb128 0x11
- 474 0196 EB020000 		.4byte	.LASF44
+ 474 0196 0B030000 		.4byte	.LASF44
  475 019a 01       		.byte	0x1
  476 019b 62       		.byte	0x62
  477 019c 00000000 		.4byte	.LFB70
@@ -861,15 +861,15 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  484 01af 01       		.byte	0x1
  485 01b0 65       		.byte	0x65
  486 01b1 12       		.uleb128 0x12
- 487 01b2 C4010000 		.4byte	.LASF27
+ 487 01b2 81010000 		.4byte	.LASF27
  488 01b6 01       		.byte	0x1
  489 01b7 66       		.byte	0x66
  490 01b8 12       		.uleb128 0x12
- 491 01b9 5D020000 		.4byte	.LASF28
+ 491 01b9 1A020000 		.4byte	.LASF28
  492 01bd 01       		.byte	0x1
  493 01be 67       		.byte	0x67
  494 01bf 13       		.uleb128 0x13
- 495 01c0 91010000 		.4byte	.LASF35
+ 495 01c0 4E010000 		.4byte	.LASF35
  496 01c4 01       		.byte	0x1
  497 01c5 68       		.byte	0x68
  498 01c6 CB010000 		.4byte	0x1cb
@@ -880,7 +880,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  503 01d4 15       		.uleb128 0x15
  504 01d5 00       		.byte	0
  505 01d6 16       		.uleb128 0x16
- 506 01d7 CD020000 		.4byte	.LASF30
+ 506 01d7 ED020000 		.4byte	.LASF30
  507 01db 01       		.byte	0x1
  508 01dc 79       		.byte	0x79
  509 01dd 00000000 		.4byte	.LFB71
@@ -889,7 +889,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  512 01e6 9C       		.byte	0x9c
  513 01e7 2A020000 		.4byte	0x22a
  514 01eb 0E       		.uleb128 0xe
- 515 01ec 6D020000 		.4byte	.LASF32
+ 515 01ec 8D020000 		.4byte	.LASF32
  516 01f0 01       		.byte	0x1
  517 01f1 79       		.byte	0x79
  518 01f2 EC000000 		.4byte	0xec
@@ -897,8 +897,8 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  520 01f7 91       		.byte	0x91
  521 01f8 6C       		.sleb128 -20
  522 01f9 0E       		.uleb128 0xe
- 523 01fa 7E020000 		.4byte	.LASF33
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 16
+ 523 01fa 9E020000 		.4byte	.LASF33
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 16
 
 
  524 01fe 01       		.byte	0x1
@@ -925,7 +925,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  545 0228 00       		.byte	0
  546 0229 00       		.byte	0
  547 022a 16       		.uleb128 0x16
- 548 022b 15020000 		.4byte	.LASF34
+ 548 022b D2010000 		.4byte	.LASF34
  549 022f 01       		.byte	0x1
  550 0230 81       		.byte	0x81
  551 0231 00000000 		.4byte	.LFB72
@@ -951,17 +951,17 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  571 0260 00       		.byte	0
  572 0261 00       		.byte	0
  573 0262 1A       		.uleb128 0x1a
- 574 0263 7D010000 		.4byte	.LASF36
+ 574 0263 3A010000 		.4byte	.LASF36
  575 0267 07       		.byte	0x7
  576 0268 1207     		.2byte	0x712
  577 026a 6E020000 		.4byte	0x26e
  578 026e 1B       		.uleb128 0x1b
  579 026f 81000000 		.4byte	0x81
  580 0273 13       		.uleb128 0x13
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 17
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 17
 
 
- 581 0274 91010000 		.4byte	.LASF35
+ 581 0274 4E010000 		.4byte	.LASF35
  582 0278 01       		.byte	0x1
  583 0279 68       		.byte	0x68
  584 027a CB010000 		.4byte	0x1cb
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  635 002f 0B       		.uleb128 0xb
  636 0030 3E       		.uleb128 0x3e
  637 0031 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 18
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 18
 
 
  638 0032 03       		.uleb128 0x3
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  692 0068 3A       		.uleb128 0x3a
  693 0069 0B       		.uleb128 0xb
  694 006a 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 19
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 19
 
 
  695 006b 0B       		.uleb128 0xb
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  749 00a2 3A       		.uleb128 0x3a
  750 00a3 0B       		.uleb128 0xb
  751 00a4 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 20
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 20
 
 
  752 00a5 0B       		.uleb128 0xb
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  806 00dc 01       		.byte	0x1
  807 00dd 03       		.uleb128 0x3
  808 00de 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 21
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 21
 
 
  809 00df 3A       		.uleb128 0x3a
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  863 0116 01       		.byte	0x1
  864 0117 49       		.uleb128 0x49
  865 0118 13       		.uleb128 0x13
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 22
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 22
 
 
  866 0119 01       		.uleb128 0x1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  920 0150 12       		.uleb128 0x12
  921 0151 06       		.uleb128 0x6
  922 0152 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 23
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 23
 
 
  923 0153 00       		.byte	0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  977 003c 00000000 		.4byte	0
  978              		.section	.debug_ranges,"",%progbits
  979              	.Ldebug_ranges0:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 24
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 24
 
 
  980 0000 00000000 		.4byte	.LFB68
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  1007              	.LASF31:
  1008 00c2 70765061 		.ascii	"pvParameter\000"
  1008      72616D65 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 25
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 25
 
 
  1008      74657200 
@@ -1455,181 +1455,183 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 1
  1013              	.LASF14:
  1014 00eb 666C6F61 		.ascii	"float\000"
  1014      7400
- 1015              	.LASF39:
- 1016 00f1 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
- 1016      6F64655C 
- 1016      50345C50 
- 1016      345F5665 
- 1016      72746963 
- 1017 0120 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
- 1017      616E7465 
- 1017      4D6F6475 
- 1017      6C2E6379 
- 1017      64736E00 
- 1018              	.LASF24:
- 1019 0134 73746F70 		.ascii	"stop_speed\000"
- 1019      5F737065 
- 1019      656400
- 1020              	.LASF1:
- 1021 013f 756E7369 		.ascii	"unsigned char\000"
- 1021      676E6564 
- 1021      20636861 
- 1021      7200
- 1022              	.LASF6:
- 1023 014d 5F5F7569 		.ascii	"__uint32_t\000"
- 1023      6E743332 
- 1023      5F7400
- 1024              	.LASF7:
- 1025 0158 6C6F6E67 		.ascii	"long unsigned int\000"
- 1025      20756E73 
- 1025      69676E65 
- 1025      6420696E 
- 1025      7400
- 1026              	.LASF3:
- 1027 016a 73686F72 		.ascii	"short unsigned int\000"
- 1027      7420756E 
- 1027      7369676E 
- 1027      65642069 
- 1027      6E7400
- 1028              	.LASF36:
- 1029 017d 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1029      52784275 
- 1029      66666572 
- 1029      00
- 1030              	.LASF15:
- 1031 018a 646F7562 		.ascii	"double\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 26
+ 1015              	.LASF24:
+ 1016 00f1 73746F70 		.ascii	"stop_speed\000"
+ 1016      5F737065 
+ 1016      656400
+ 1017              	.LASF1:
+ 1018 00fc 756E7369 		.ascii	"unsigned char\000"
+ 1018      676E6564 
+ 1018      20636861 
+ 1018      7200
+ 1019              	.LASF6:
+ 1020 010a 5F5F7569 		.ascii	"__uint32_t\000"
+ 1020      6E743332 
+ 1020      5F7400
+ 1021              	.LASF7:
+ 1022 0115 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1022      20756E73 
+ 1022      69676E65 
+ 1022      6420696E 
+ 1022      7400
+ 1023              	.LASF3:
+ 1024 0127 73686F72 		.ascii	"short unsigned int\000"
+ 1024      7420756E 
+ 1024      7369676E 
+ 1024      65642069 
+ 1024      6E7400
+ 1025              	.LASF36:
+ 1026 013a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1026      52784275 
+ 1026      66666572 
+ 1026      00
+ 1027              	.LASF15:
+ 1028 0147 646F7562 		.ascii	"double\000"
+ 1028      6C6500
+ 1029              	.LASF35:
+ 1030 014e 43795261 		.ascii	"CyRamVectors\000"
+ 1030      6D566563 
+ 1030      746F7273 
+ 1030      00
+ 1031              	.LASF42:
+ 1032 015b 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 1032      77424153 
+ 1032      45505249 
+ 1032      00
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 26
 
 
- 1031      6C6500
- 1032              	.LASF35:
- 1033 0191 43795261 		.ascii	"CyRamVectors\000"
- 1033      6D566563 
- 1033      746F7273 
- 1033      00
- 1034              	.LASF42:
- 1035 019e 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 1035      77424153 
- 1035      45505249 
- 1035      00
- 1036              	.LASF40:
- 1037 01ab 74736B54 		.ascii	"tskTaskControlBlock\000"
- 1037      61736B43 
- 1037      6F6E7472 
- 1037      6F6C426C 
- 1037      6F636B00 
- 1038              	.LASF43:
- 1039 01bf 6D61696E 		.ascii	"main\000"
- 1039      00
- 1040              	.LASF27:
- 1041 01c4 78506F72 		.ascii	"xPortSysTickHandler\000"
- 1041      74537973 
- 1041      5469636B 
- 1041      48616E64 
- 1041      6C657200 
- 1042              	.LASF10:
- 1043 01d8 756E7369 		.ascii	"unsigned int\000"
- 1043      676E6564 
- 1043      20696E74 
- 1043      00
- 1044              	.LASF22:
- 1045 01e5 7844656C 		.ascii	"xDelay500ms\000"
- 1045      61793530 
- 1045      306D7300 
- 1046              	.LASF9:
- 1047 01f1 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1047      206C6F6E 
- 1047      6720756E 
- 1047      7369676E 
- 1047      65642069 
- 1048              	.LASF17:
- 1049 0208 63796973 		.ascii	"cyisraddress\000"
- 1049      72616464 
- 1049      72657373 
- 1049      00
- 1050              	.LASF34:
- 1051 0215 76417070 		.ascii	"vApplicationMallocFailedHook\000"
- 1051      6C696361 
- 1051      74696F6E 
- 1051      4D616C6C 
- 1051      6F634661 
- 1052              	.LASF11:
- 1053 0232 696E7433 		.ascii	"int32_t\000"
- 1053      325F7400 
- 1054              	.LASF19:
- 1055 023a 73697A65 		.ascii	"sizetype\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 27
+ 1033              	.LASF40:
+ 1034 0168 74736B54 		.ascii	"tskTaskControlBlock\000"
+ 1034      61736B43 
+ 1034      6F6E7472 
+ 1034      6F6C426C 
+ 1034      6F636B00 
+ 1035              	.LASF43:
+ 1036 017c 6D61696E 		.ascii	"main\000"
+ 1036      00
+ 1037              	.LASF27:
+ 1038 0181 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 1038      74537973 
+ 1038      5469636B 
+ 1038      48616E64 
+ 1038      6C657200 
+ 1039              	.LASF10:
+ 1040 0195 756E7369 		.ascii	"unsigned int\000"
+ 1040      676E6564 
+ 1040      20696E74 
+ 1040      00
+ 1041              	.LASF22:
+ 1042 01a2 7844656C 		.ascii	"xDelay500ms\000"
+ 1042      61793530 
+ 1042      306D7300 
+ 1043              	.LASF9:
+ 1044 01ae 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1044      206C6F6E 
+ 1044      6720756E 
+ 1044      7369676E 
+ 1044      65642069 
+ 1045              	.LASF17:
+ 1046 01c5 63796973 		.ascii	"cyisraddress\000"
+ 1046      72616464 
+ 1046      72657373 
+ 1046      00
+ 1047              	.LASF34:
+ 1048 01d2 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 1048      6C696361 
+ 1048      74696F6E 
+ 1048      4D616C6C 
+ 1048      6F634661 
+ 1049              	.LASF11:
+ 1050 01ef 696E7433 		.ascii	"int32_t\000"
+ 1050      325F7400 
+ 1051              	.LASF19:
+ 1052 01f7 73697A65 		.ascii	"sizetype\000"
+ 1052      74797065 
+ 1052      00
+ 1053              	.LASF8:
+ 1054 0200 6C6F6E67 		.ascii	"long long int\000"
+ 1054      206C6F6E 
+ 1054      6720696E 
+ 1054      7400
+ 1055              	.LASF38:
+ 1056 020e 6D61696E 		.ascii	"main.c\000"
+ 1056      2E6300
+ 1057              	.LASF16:
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 27
 
 
- 1055      74797065 
- 1055      00
- 1056              	.LASF8:
- 1057 0243 6C6F6E67 		.ascii	"long long int\000"
- 1057      206C6F6E 
- 1057      6720696E 
- 1057      7400
- 1058              	.LASF38:
- 1059 0251 6D61696E 		.ascii	"main.c\000"
- 1059      2E6300
- 1060              	.LASF16:
- 1061 0258 63686172 		.ascii	"char\000"
- 1061      00
- 1062              	.LASF28:
- 1063 025d 76506F72 		.ascii	"vPortSVCHandler\000"
- 1063      74535643 
- 1063      48616E64 
- 1063      6C657200 
- 1064              	.LASF32:
- 1065 026d 70785461 		.ascii	"pxTask\000"
- 1065      736B00
- 1066              	.LASF2:
- 1067 0274 73686F72 		.ascii	"short int\000"
- 1067      7420696E 
- 1067      7400
- 1068              	.LASF33:
- 1069 027e 70635461 		.ascii	"pcTaskName\000"
- 1069      736B4E61 
- 1069      6D6500
- 1070              	.LASF13:
- 1071 0289 75696E74 		.ascii	"uint8\000"
- 1071      3800
- 1072              	.LASF21:
- 1073 028f 5461736B 		.ascii	"TaskHandle_t\000"
- 1073      48616E64 
- 1073      6C655F74 
- 1073      00
- 1074              	.LASF12:
- 1075 029c 75696E74 		.ascii	"uint32_t\000"
- 1075      33325F74 
- 1075      00
- 1076              	.LASF4:
- 1077 02a5 6C6F6E67 		.ascii	"long int\000"
- 1077      20696E74 
- 1077      00
- 1078              	.LASF25:
- 1079 02ae 73746174 		.ascii	"status\000"
- 1079      757300
- 1080              	.LASF18:
- 1081 02b5 6C6F6E67 		.ascii	"long double\000"
- 1081      20646F75 
- 1081      626C6500 
- 1082              	.LASF0:
- 1083 02c1 7369676E 		.ascii	"signed char\000"
- 1083      65642063 
- 1083      68617200 
- 1084              	.LASF30:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cc2s2pXF.s 			page 28
+ 1058 0215 63686172 		.ascii	"char\000"
+ 1058      00
+ 1059              	.LASF28:
+ 1060 021a 76506F72 		.ascii	"vPortSVCHandler\000"
+ 1060      74535643 
+ 1060      48616E64 
+ 1060      6C657200 
+ 1061              	.LASF39:
+ 1062 022a 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
+ 1062      73657273 
+ 1062      5C6D6162 
+ 1062      6F5C446F 
+ 1062      63756D65 
+ 1063 0257 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
+ 1063      74696361 
+ 1063      6C5F6661 
+ 1063      726D5C52 
+ 1063      544F535F 
+ 1064 0288 7964736E 		.ascii	"ydsn\000"
+ 1064      00
+ 1065              	.LASF32:
+ 1066 028d 70785461 		.ascii	"pxTask\000"
+ 1066      736B00
+ 1067              	.LASF2:
+ 1068 0294 73686F72 		.ascii	"short int\000"
+ 1068      7420696E 
+ 1068      7400
+ 1069              	.LASF33:
+ 1070 029e 70635461 		.ascii	"pcTaskName\000"
+ 1070      736B4E61 
+ 1070      6D6500
+ 1071              	.LASF13:
+ 1072 02a9 75696E74 		.ascii	"uint8\000"
+ 1072      3800
+ 1073              	.LASF21:
+ 1074 02af 5461736B 		.ascii	"TaskHandle_t\000"
+ 1074      48616E64 
+ 1074      6C655F74 
+ 1074      00
+ 1075              	.LASF12:
+ 1076 02bc 75696E74 		.ascii	"uint32_t\000"
+ 1076      33325F74 
+ 1076      00
+ 1077              	.LASF4:
+ 1078 02c5 6C6F6E67 		.ascii	"long int\000"
+ 1078      20696E74 
+ 1078      00
+ 1079              	.LASF25:
+ 1080 02ce 73746174 		.ascii	"status\000"
+ 1080      757300
+ 1081              	.LASF18:
+ 1082 02d5 6C6F6E67 		.ascii	"long double\000"
+ 1082      20646F75 
+ 1082      626C6500 
+ 1083              	.LASF0:
+ 1084 02e1 7369676E 		.ascii	"signed char\000"
+ 1084      65642063 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc9Eiwlk.s 			page 28
 
 
- 1085 02cd 76417070 		.ascii	"vApplicationStackOverflowHook\000"
- 1085      6C696361 
- 1085      74696F6E 
- 1085      53746163 
- 1085      6B4F7665 
- 1086              	.LASF44:
- 1087 02eb 70727648 		.ascii	"prvHardwareSetup\000"
- 1087      61726477 
- 1087      61726553 
- 1087      65747570 
- 1087      00
- 1088              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1084      68617200 
+ 1085              	.LASF30:
+ 1086 02ed 76417070 		.ascii	"vApplicationStackOverflowHook\000"
+ 1086      6C696361 
+ 1086      74696F6E 
+ 1086      53746163 
+ 1086      6B4F7665 
+ 1087              	.LASF44:
+ 1088 030b 70727648 		.ascii	"prvHardwareSetup\000"
+ 1088      61726477 
+ 1088      61726553 
+ 1088      65747570 
+ 1088      00
+ 1089              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
