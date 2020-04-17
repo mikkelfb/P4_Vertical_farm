@@ -17,7 +17,13 @@
 #include "task.h"
 #include "queue.h"
 
+struct currentNutrients{
+    uint16  iPHvalue;
+    uint16  iECvalue;
+};
 
+const float fNeutralVoltage = 1500; //Voltage at pH 7, should be calibrated
+const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 
 QueueHandle_t xQueueNutrientPump[3];
 QueueHandle_t xQueuePHValue;
@@ -106,10 +112,11 @@ void vTaskNutrientPump( void *pvParameters ) {
 }
 
 void vTaskMeasurePH(){
-    uint16 iPHValue;
+    float fPHVoltage;
     const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
+    float fPHValue;
+    uint16 iMilliPHValue;
     _Bool bState = 0;
-    
     
     for(;;){
         if(bState == 0){
@@ -117,8 +124,10 @@ void vTaskMeasurePH(){
             bState = 1;
         }
         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
-            iPHValue = ADC_PH_GetResult16();
-            xQueueSendToBack(xQueuePHValue , &iPHValue , portMAX_DELAY);
+            fPHVoltage = (ADC_PH_GetResult16()) / 4096 * 3000; //calculate voltage from measured value
+            fPHValue = fCalculatePHValue(fPHVoltage);
+            iMilliPHValue = (uint16) fPHValue * 1000;
+            xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY);
             bState = 0;
             vTaskDelay(xDelayms);
         }
@@ -126,6 +135,11 @@ void vTaskMeasurePH(){
 }
 
 
+float fCalculatePHValue(float fPHVoltage){
+    float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500)/3.0 - (fAcidVoltage - 1500.00)/3.0); //calculate a in y = ax+b
+    float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500)/3.0; //calculate b in y = ax + b
+    return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
+}
 
 /* --- TEST TASK --- */
 
@@ -151,6 +165,7 @@ void vTestTaskUARTDataTransmit(){
     for(;;){
         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
         SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
+
         SW_UART_TEST_USB_PutString("\n");
     }
 }
@@ -171,13 +186,9 @@ void vTestTaskNutrientPump() {
             bTestState1 = 1;
             bTestState2 = 0;
         }
-        
         xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
-        
         vTaskDelay(xDelayms);
     }
-    
-
 }

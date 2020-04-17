@@ -14,9 +14,10 @@
 
 #ifndef NUTRIENTS_H 
     #define NUTRIENTS_H 
-
     #define NUTRIENTSTEST 1 //set this to 0 to disable Debug/test
     
+    
+
     
     /*
     This function initializes all of the nutrient tasks.
@@ -33,13 +34,27 @@
     void vTaskNutrientPump();
     
     
+    
+    
+    /* --- Functions and variables for pH --- */
+
+    
+
+    
+    
     /*
-    
-    
+    This task is for making measurements of the PH sensor.
+    @Param[out]: iPHValue the measure pH value.
     */
     void vTaskMeasurePH();
     
-    
+    /*
+    This task is for calculating the pH value from a measurement, 
+    uses the calibrated values fNeutralVoltage, fAcidVoltage
+    @Param[out]: float the calculated pHvalue from the voltage. 
+    @Param[in]: iPHVoltage the measured pH voltage. 
+    */
+    float fCalculatePHValue(float fPHVoltage);
     
     
     #if NUTRIENTSTEST == 1
@@ -70,7 +85,12 @@
         */
         void vTestTaskNutrientPump();
         
-        
+        /*
+        This function tests the vTaskMeasurePH by sending a 
+        Queue signal every 500ms alternating between 1 and 0.
+        @Param[out]: 
+	    @Param[in]: 
+        */
         void vTestTaskUARTDataTransmit();
     #endif
 #endif
