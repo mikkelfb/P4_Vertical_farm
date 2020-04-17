@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: Pin_3.h  
+* File Name: Pin_PERIPUMP_OUT_2.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_Pin_3_ALIASES_H) /* Pins Pin_3_ALIASES_H */
-#define CY_PINS_Pin_3_ALIASES_H
+#if !defined(CY_PINS_Pin_PERIPUMP_OUT_2_ALIASES_H) /* Pins Pin_PERIPUMP_OUT_2_ALIASES_H */
+#define CY_PINS_Pin_PERIPUMP_OUT_2_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define Pin_3_0			(Pin_3__0__PC)
-#define Pin_3_0_INTR	((uint16)((uint16)0x0001u << Pin_3__0__SHIFT))
+#define Pin_PERIPUMP_OUT_2_0			(Pin_PERIPUMP_OUT_2__0__PC)
+#define Pin_PERIPUMP_OUT_2_0_INTR	((uint16)((uint16)0x0001u << Pin_PERIPUMP_OUT_2__0__SHIFT))
 
-#define Pin_3_INTR_ALL	 ((uint16)(Pin_3_0_INTR))
+#define Pin_PERIPUMP_OUT_2_INTR_ALL	 ((uint16)(Pin_PERIPUMP_OUT_2_0_INTR))
 
-#endif /* End Pins Pin_3_ALIASES_H */
+#endif /* End Pins Pin_PERIPUMP_OUT_2_ALIASES_H */
 
 
 /* [] END OF FILE */

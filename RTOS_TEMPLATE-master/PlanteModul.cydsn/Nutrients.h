@@ -33,6 +33,14 @@
     void vTaskNutrientPump();
     
     
+    /*
+    
+    
+    */
+    void vTaskMeasurePH();
+    
+    
+    
     
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
@@ -61,5 +69,8 @@
 	    @Param[in]: 
         */
         void vTestTaskNutrientPump();
+        
+        
+        void vTestTaskUARTDataTransmit();
     #endif
 #endif

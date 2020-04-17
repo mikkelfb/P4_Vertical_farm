@@ -1,12 +1,13 @@
 -- Project:   PlanteModul
--- Generated: 04/16/2020 15:30:34
+-- Generated: 04/17/2020 11:34:41
 -- PSoC Creator  4.3
 
 ENTITY PlanteModul IS
     PORT(
-        Pin_2(0)_PAD : OUT std_ulogic;
-        Pin_1(0)_PAD : OUT std_ulogic;
-        Pin_3(0)_PAD : OUT std_ulogic);
+        Pin_PERIPUMP_OUT_2(0)_PAD : OUT std_ulogic;
+        Pin_PERIPUMP_OUT_1(0)_PAD : OUT std_ulogic;
+        Pin_PERIPUMP_OUT_3(0)_PAD : OUT std_ulogic;
+        \SW_UART_TEST_USB:tx(0)_PAD\ : OUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -35,11 +36,32 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE global_signal OF Net_111 : SIGNAL IS true;
     SIGNAL Net_111_local : bit;
     SIGNAL Net_158 : bit;
+    SIGNAL Net_212 : bit;
+    SIGNAL Net_215 : bit;
     SIGNAL Net_51 : bit;
     SIGNAL Net_66 : bit;
-    SIGNAL Pin_1(0)__PA : bit;
-    SIGNAL Pin_2(0)__PA : bit;
-    SIGNAL Pin_3(0)__PA : bit;
+    SIGNAL Pin_PERIPUMP_OUT_1(0)__PA : bit;
+    SIGNAL Pin_PERIPUMP_OUT_2(0)__PA : bit;
+    SIGNAL Pin_PERIPUMP_OUT_3(0)__PA : bit;
+    SIGNAL Pin_pH_in(0)__PA : bit;
+    SIGNAL \ADC_PH:Net_207_0\ : bit;
+    SIGNAL \ADC_PH:Net_207_10\ : bit;
+    SIGNAL \ADC_PH:Net_207_11\ : bit;
+    SIGNAL \ADC_PH:Net_207_1\ : bit;
+    SIGNAL \ADC_PH:Net_207_2\ : bit;
+    SIGNAL \ADC_PH:Net_207_3\ : bit;
+    SIGNAL \ADC_PH:Net_207_4\ : bit;
+    SIGNAL \ADC_PH:Net_207_5\ : bit;
+    SIGNAL \ADC_PH:Net_207_6\ : bit;
+    SIGNAL \ADC_PH:Net_207_7\ : bit;
+    SIGNAL \ADC_PH:Net_207_8\ : bit;
+    SIGNAL \ADC_PH:Net_207_9\ : bit;
+    SIGNAL \ADC_PH:Net_252\ : bit;
+    SIGNAL \ADC_PH:Net_381\ : bit;
+    SIGNAL \ADC_PH:Net_381_local\ : bit;
+    SIGNAL \ADC_PH:Net_385\ : bit;
+    ATTRIBUTE global_signal OF \ADC_PH:Net_385\ : SIGNAL IS true;
+    SIGNAL \ADC_PH:Net_385_local\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:cmp1_less\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:cmp2_less\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:control_0\ : bit;
@@ -73,20 +95,26 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL \PWM_PERISTALTISK_2:PWMUDB:status_2\ : bit;
     SIGNAL \PWM_PERISTALTISK_2:PWMUDB:status_3\ : bit;
     SIGNAL \PWM_PERISTALTISK_2:PWMUDB:tc_i\ : bit;
+    SIGNAL \\\SW_UART_TEST_USB:tx(0)\\__PA\ : bit;
     SIGNAL __ONE__ : bit;
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
-    SIGNAL tmpOE__Pin_2_net_0 : bit;
-    ATTRIBUTE POWER OF tmpOE__Pin_2_net_0 : SIGNAL IS true;
+    SIGNAL tmpOE__Pin_PERIPUMP_OUT_2_net_0 : bit;
+    ATTRIBUTE POWER OF tmpOE__Pin_PERIPUMP_OUT_2_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
     ATTRIBUTE GROUND OF zero : SIGNAL IS true;
-    ATTRIBUTE lib_model OF Pin_2(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Pin_2(0) : LABEL IS "P2[7]";
-    ATTRIBUTE lib_model OF Pin_1(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Pin_1(0) : LABEL IS "P2[6]";
-    ATTRIBUTE lib_model OF Pin_3(0) : LABEL IS "iocell3";
-    ATTRIBUTE Location OF Pin_3(0) : LABEL IS "P0[4]";
+    SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
+    ATTRIBUTE lib_model OF Pin_PERIPUMP_OUT_2(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF Pin_PERIPUMP_OUT_2(0) : LABEL IS "P2[7]";
+    ATTRIBUTE lib_model OF Pin_PERIPUMP_OUT_1(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Pin_PERIPUMP_OUT_1(0) : LABEL IS "P2[6]";
+    ATTRIBUTE lib_model OF Pin_PERIPUMP_OUT_3(0) : LABEL IS "iocell3";
+    ATTRIBUTE Location OF Pin_PERIPUMP_OUT_3(0) : LABEL IS "P0[4]";
+    ATTRIBUTE lib_model OF Pin_pH_in(0) : LABEL IS "iocell4";
+    ATTRIBUTE Location OF Pin_pH_in(0) : LABEL IS "P0[3]";
+    ATTRIBUTE lib_model OF \SW_UART_TEST_USB:tx(0)\ : LABEL IS "iocell5";
+    ATTRIBUTE Location OF \SW_UART_TEST_USB:tx(0)\ : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_2:PWMUDB:status_2\ : LABEL IS "macrocell2";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
@@ -95,6 +123,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_2:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_2:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell2";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell2";
+    ATTRIBUTE Location OF \ADC_PH:ADC_SAR\ : LABEL IS "F(SAR,0)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\ : LABEL IS "macrocell3";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare1\ : LABEL IS "macrocell4";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare2\ : LABEL IS "macrocell5";
@@ -304,6 +333,11 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE udb_chain OF datapathcell : COMPONENT IS "ce0i,ce0,cl0i,cl0,z0i,z0,ff0i,ff0,ce1i,ce1,cl1i,cl1,z1i,z1,ff1i,ff1,cap0i,cap0,cap1i,cap1,ci,co_msb,sir,sol_msb,cfbi,cfbo,sil,sor,cmsbi,cmsbo";
     ATTRIBUTE chain_lsb OF datapathcell : COMPONENT IS "ce0i,cl0i,z0i,ff0i,ce1i,cl1i,z1i,ff1i,cap0i,cap1i,ci,sir,cfbi,sor,cmsbo";
     ATTRIBUTE chain_msb OF datapathcell : COMPONENT IS "ce0,cl0,z0,ff0,ce1,cl1,z1,ff1,cap0,cap1,co_msb,sol_msb,cfbo,sil,cmsbi";
+    COMPONENT interrupt
+        PORT (
+            interrupt : IN std_ulogic;
+            clock : IN std_ulogic);
+    END COMPONENT;
     COMPONENT iocell
         PORT (
             oe : IN std_ulogic;
@@ -386,6 +420,36 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE udb_chain OF macrocell : COMPONENT IS "cin,cout";
     ATTRIBUTE chain_lsb OF macrocell : COMPONENT IS "cin";
     ATTRIBUTE chain_msb OF macrocell : COMPONENT IS "cout";
+    COMPONENT sarcell
+        PORT (
+            clock : IN std_ulogic;
+            pump_clock : IN std_ulogic;
+            clk_udb : IN std_ulogic;
+            sof_udb : IN std_ulogic;
+            vp_ctl_udb_0 : IN std_ulogic;
+            vp_ctl_udb_1 : IN std_ulogic;
+            vp_ctl_udb_2 : IN std_ulogic;
+            vp_ctl_udb_3 : IN std_ulogic;
+            vn_ctl_udb_0 : IN std_ulogic;
+            vn_ctl_udb_1 : IN std_ulogic;
+            vn_ctl_udb_2 : IN std_ulogic;
+            vn_ctl_udb_3 : IN std_ulogic;
+            data_out_udb_0 : OUT std_ulogic;
+            data_out_udb_1 : OUT std_ulogic;
+            data_out_udb_2 : OUT std_ulogic;
+            data_out_udb_3 : OUT std_ulogic;
+            data_out_udb_4 : OUT std_ulogic;
+            data_out_udb_5 : OUT std_ulogic;
+            data_out_udb_6 : OUT std_ulogic;
+            data_out_udb_7 : OUT std_ulogic;
+            data_out_udb_8 : OUT std_ulogic;
+            data_out_udb_9 : OUT std_ulogic;
+            data_out_udb_10 : OUT std_ulogic;
+            data_out_udb_11 : OUT std_ulogic;
+            eof_udb : OUT std_ulogic;
+            irq : OUT std_ulogic;
+            next : OUT std_ulogic);
+    END COMPONENT;
     COMPONENT statusicell
         PORT (
             status_0 : IN std_ulogic;
@@ -420,10 +484,15 @@ BEGIN
             clk_bus => ClockBlock_BUS_CLK_local,
             dsi_clkin_div => open,
             dsi_glb_div => open,
+            aclk_glb_0 => \ADC_PH:Net_385\,
+            aclk_0 => \ADC_PH:Net_385_local\,
+            clk_a_dig_glb_0 => \ADC_PH:Net_381\,
+            clk_a_dig_0 => \ADC_PH:Net_381_local\,
             dclk_glb_0 => Net_111,
-            dclk_0 => Net_111_local);
+            dclk_0 => Net_111_local,
+            aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
-    Pin_2:logicalport
+    Pin_PERIPUMP_OUT_2:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -494,20 +563,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_2(0):iocell
+    Pin_PERIPUMP_OUT_2(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_2",
+            logicalport => "Pin_PERIPUMP_OUT_2",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_2(0)__PA,
+            pa_out => Pin_PERIPUMP_OUT_2(0)__PA,
             oe => open,
             pin_input => Net_66,
-            pad_out => Pin_2(0)_PAD,
-            pad_in => Pin_2(0)_PAD,
+            pad_out => Pin_PERIPUMP_OUT_2(0)_PAD,
+            pad_in => Pin_PERIPUMP_OUT_2(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -515,7 +584,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_1:logicalport
+    Pin_PERIPUMP_OUT_1:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -586,20 +655,20 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_1(0):iocell
+    Pin_PERIPUMP_OUT_1(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_1",
+            logicalport => "Pin_PERIPUMP_OUT_1",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_1(0)__PA,
+            pa_out => Pin_PERIPUMP_OUT_1(0)__PA,
             oe => open,
             pin_input => Net_51,
-            pad_out => Pin_1(0)_PAD,
-            pad_in => Pin_1(0)_PAD,
+            pad_out => Pin_PERIPUMP_OUT_1(0)_PAD,
+            pad_in => Pin_PERIPUMP_OUT_1(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -607,7 +676,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Pin_3:logicalport
+    Pin_PERIPUMP_OUT_3:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -678,20 +747,199 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Pin_3(0):iocell
+    Pin_PERIPUMP_OUT_3(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Pin_3",
+            logicalport => "Pin_PERIPUMP_OUT_3",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Pin_3(0)__PA,
+            pa_out => Pin_PERIPUMP_OUT_3(0)__PA,
             oe => open,
             pin_input => Net_158,
-            pad_out => Pin_3(0)_PAD,
-            pad_in => Pin_3(0)_PAD,
+            pad_out => Pin_PERIPUMP_OUT_3(0)_PAD,
+            pad_in => Pin_PERIPUMP_OUT_3(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Pin_pH_in:logicalport
+        GENERIC MAP(
+            drive_mode => "000",
+            ibuf_enabled => "0",
+            id => "77715107-f8d5-47e5-a629-0fb83101ac6b",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "A",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Pin_pH_in(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Pin_pH_in",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
+        PORT MAP(
+            pa_out => Pin_pH_in(0)__PA,
+            oe => open,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \SW_UART_TEST_USB:tx\:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "2a0b9517-442d-4fc2-bf57-10809f88f874/52f31aa9-2f0a-497d-9a1f-1424095e13e6",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    \SW_UART_TEST_USB:tx(0)\:iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "\SW_UART_TEST_USB:tx\",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => \\\SW_UART_TEST_USB:tx(0)\\__PA\,
+            oe => open,
+            pad_in => \SW_UART_TEST_USB:tx(0)_PAD\,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -867,6 +1115,45 @@ BEGIN
             z0_comb => \PWM_PERISTALTISK_2:PWMUDB:tc_i\,
             f1_blk_stat_comb => \PWM_PERISTALTISK_2:PWMUDB:status_3\,
             busclk => ClockBlock_BUS_CLK);
+
+    \ADC_PH:IRQ\:interrupt
+        GENERIC MAP(
+            int_type => "10",
+            is_nmi => 0)
+        PORT MAP(
+            interrupt => Net_212,
+            clock => ClockBlock_BUS_CLK);
+
+    \ADC_PH:ADC_SAR\:sarcell
+        GENERIC MAP(
+            cy_registers => "")
+        PORT MAP(
+            clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            pump_clock => \ClockBlock.aclk_glb_ff_0__sig\,
+            sof_udb => open,
+            vp_ctl_udb_3 => open,
+            vp_ctl_udb_2 => open,
+            vp_ctl_udb_1 => open,
+            vp_ctl_udb_0 => open,
+            vn_ctl_udb_3 => open,
+            vn_ctl_udb_2 => open,
+            vn_ctl_udb_1 => open,
+            vn_ctl_udb_0 => open,
+            irq => \ADC_PH:Net_252\,
+            next => Net_215,
+            data_out_udb_11 => \ADC_PH:Net_207_11\,
+            data_out_udb_10 => \ADC_PH:Net_207_10\,
+            data_out_udb_9 => \ADC_PH:Net_207_9\,
+            data_out_udb_8 => \ADC_PH:Net_207_8\,
+            data_out_udb_7 => \ADC_PH:Net_207_7\,
+            data_out_udb_6 => \ADC_PH:Net_207_6\,
+            data_out_udb_5 => \ADC_PH:Net_207_5\,
+            data_out_udb_4 => \ADC_PH:Net_207_4\,
+            data_out_udb_3 => \ADC_PH:Net_207_3\,
+            data_out_udb_2 => \ADC_PH:Net_207_2\,
+            data_out_udb_1 => \ADC_PH:Net_207_1\,
+            data_out_udb_0 => \ADC_PH:Net_207_0\,
+            eof_udb => Net_212);
 
     \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(

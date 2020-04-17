@@ -20,6 +20,8 @@
 
 
 QueueHandle_t xQueueNutrientPump[3];
+QueueHandle_t xQueuePHValue;
+
 
 const uint8 MAX_SPEED = 6;
 const uint8 STOP_SPEED = 19;
@@ -33,11 +35,16 @@ void vNutrientsInit() {
     xQueueNutrientPump[1] = xQueueCreate( 1, sizeof( _Bool ) );
     xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
     
+    xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
+    
+    
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
     xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 2, NULL);
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
+    
+    xTaskCreate(vTaskMeasurePH, "PH", 100 , NULL , 2 , NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
@@ -95,15 +102,28 @@ void vTaskNutrientPump( void *pvParameters ) {
                 }
                 break;
         }
-            
-
-        
     }
-   
-    
 }
 
-
+void vTaskMeasurePH(){
+    uint16 iPHValue;
+    const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
+    _Bool bState = 0;
+    
+    
+    for(;;){
+        if(bState == 0){
+            ADC_PH_StartConvert();
+            bState = 1;
+        }
+        else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
+            iPHValue = ADC_PH_GetResult16();
+            xQueueSendToBack(xQueuePHValue , &iPHValue , portMAX_DELAY);
+            bState = 0;
+            vTaskDelay(xDelayms);
+        }
+    }
+}
 
 
 
@@ -122,7 +142,18 @@ void vTaskNutrientPump( void *pvParameters ) {
 
 void vTestTaskInit(){
     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
+    xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
 }
+
+
+void vTestTaskUARTDataTransmit(){
+    uint16 iPHValueForPrint;
+    for(;;){
+        xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
+        SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
+    }
+}
+
 
 
 void vTestTaskNutrientPump() {
