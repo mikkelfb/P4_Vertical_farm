@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
   54 0017 00       		.align	2
   55              	.LC1:
   56 0018 50756D70 		.ascii	"Pump 2\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 2
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 2
 
 
   56      203200
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
   73 0000 80B5     		push	{r7, lr}
   74              		.cfi_def_cfa_offset 8
   75              		.cfi_offset 7, -8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 3
 
 
   76              		.cfi_offset 14, -4
@@ -135,7 +135,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
   84 000a 0120     		movs	r0, #1
   85 000c FFF7FEFF 		bl	xQueueGenericCreate
   86 0010 0246     		mov	r2, r0
-  87 0012 244B     		ldr	r3, .L2
+  87 0012 254B     		ldr	r3, .L2
   88 0014 1A60     		str	r2, [r3]
   41:Nutrients.c   ****     xQueueNutrientPump[1] = xQueueCreate( 1, sizeof( _Bool ) );
   89              		.loc 1 41 0
@@ -144,7 +144,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
   92 001a 0120     		movs	r0, #1
   93 001c FFF7FEFF 		bl	xQueueGenericCreate
   94 0020 0246     		mov	r2, r0
-  95 0022 204B     		ldr	r3, .L2
+  95 0022 214B     		ldr	r3, .L2
   96 0024 5A60     		str	r2, [r3, #4]
   42:Nutrients.c   ****     xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
   97              		.loc 1 42 0
@@ -153,7 +153,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  100 002a 0120     		movs	r0, #1
  101 002c FFF7FEFF 		bl	xQueueGenericCreate
  102 0030 0246     		mov	r2, r0
- 103 0032 1C4B     		ldr	r3, .L2
+ 103 0032 1D4B     		ldr	r3, .L2
  104 0034 9A60     		str	r2, [r3, #8]
   43:Nutrients.c   ****     
   44:Nutrients.c   ****     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
@@ -163,7 +163,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  108 003a 0120     		movs	r0, #1
  109 003c FFF7FEFF 		bl	xQueueGenericCreate
  110 0040 0246     		mov	r2, r0
- 111 0042 194B     		ldr	r3, .L2+4
+ 111 0042 1A4B     		ldr	r3, .L2+4
  112 0044 1A60     		str	r2, [r3]
   45:Nutrients.c   ****     
   46:Nutrients.c   ****     
@@ -175,82 +175,82 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  115 0048 0193     		str	r3, [sp, #4]
  116 004a 0223     		movs	r3, #2
  117 004c 0093     		str	r3, [sp]
- 118 004e 174B     		ldr	r3, .L2+8
+ 118 004e 184B     		ldr	r3, .L2+8
  119 0050 6422     		movs	r2, #100
- 120 0052 1749     		ldr	r1, .L2+12
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 4
+ 120 0052 1849     		ldr	r1, .L2+12
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 4
 
 
- 121 0054 1748     		ldr	r0, .L2+16
+ 121 0054 1848     		ldr	r0, .L2+16
  122 0056 FFF7FEFF 		bl	xTaskCreate
   50:Nutrients.c   ****     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
  123              		.loc 1 50 0
- 124 005a 174A     		ldr	r2, .L2+20
+ 124 005a 184A     		ldr	r2, .L2+20
  125 005c 0023     		movs	r3, #0
  126 005e 0193     		str	r3, [sp, #4]
  127 0060 0223     		movs	r3, #2
  128 0062 0093     		str	r3, [sp]
  129 0064 1346     		mov	r3, r2
  130 0066 6422     		movs	r2, #100
- 131 0068 1449     		ldr	r1, .L2+24
- 132 006a 1248     		ldr	r0, .L2+16
+ 131 0068 1549     		ldr	r1, .L2+24
+ 132 006a 1348     		ldr	r0, .L2+16
  133 006c FFF7FEFF 		bl	xTaskCreate
   51:Nutrients.c   ****     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
  134              		.loc 1 51 0
- 135 0070 134A     		ldr	r2, .L2+28
+ 135 0070 144A     		ldr	r2, .L2+28
  136 0072 0023     		movs	r3, #0
  137 0074 0193     		str	r3, [sp, #4]
  138 0076 0223     		movs	r3, #2
  139 0078 0093     		str	r3, [sp]
  140 007a 1346     		mov	r3, r2
  141 007c 6422     		movs	r2, #100
- 142 007e 0F49     		ldr	r1, .L2+24
- 143 0080 0C48     		ldr	r0, .L2+16
+ 142 007e 1049     		ldr	r1, .L2+24
+ 143 0080 0D48     		ldr	r0, .L2+16
  144 0082 FFF7FEFF 		bl	xTaskCreate
   52:Nutrients.c   ****     
-  53:Nutrients.c   ****     xTaskCreate(vTaskMeasurePH, "PH", 100 , NULL , 2 , NULL);
+  53:Nutrients.c   ****     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
  145              		.loc 1 53 0
  146 0086 0023     		movs	r3, #0
  147 0088 0193     		str	r3, [sp, #4]
  148 008a 0223     		movs	r3, #2
  149 008c 0093     		str	r3, [sp]
  150 008e 0023     		movs	r3, #0
- 151 0090 6422     		movs	r2, #100
- 152 0092 0C49     		ldr	r1, .L2+32
- 153 0094 0C48     		ldr	r0, .L2+36
- 154 0096 FFF7FEFF 		bl	xTaskCreate
+ 151 0090 4FF47A72 		mov	r2, #1000
+ 152 0094 0C49     		ldr	r1, .L2+32
+ 153 0096 0D48     		ldr	r0, .L2+36
+ 154 0098 FFF7FEFF 		bl	xTaskCreate
   54:Nutrients.c   ****     
   55:Nutrients.c   ****     /*Initialize test tasks*/
   56:Nutrients.c   ****     #if NUTRIENTSTEST == 1
   57:Nutrients.c   ****         vTestTaskInit();
  155              		.loc 1 57 0
- 156 009a FFF7FEFF 		bl	vTestTaskInit
+ 156 009c FFF7FEFF 		bl	vTestTaskInit
   58:Nutrients.c   ****     #endif
   59:Nutrients.c   ****     
   60:Nutrients.c   ****     
   61:Nutrients.c   **** }
  157              		.loc 1 61 0
- 158 009e 00BF     		nop
- 159 00a0 BD46     		mov	sp, r7
+ 158 00a0 00BF     		nop
+ 159 00a2 BD46     		mov	sp, r7
  160              		.cfi_def_cfa_register 13
  161              		@ sp needed
- 162 00a2 80BD     		pop	{r7, pc}
+ 162 00a4 80BD     		pop	{r7, pc}
  163              	.L3:
- 164              		.align	2
+ 164 00a6 00BF     		.align	2
  165              	.L2:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 5
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 5
 
 
- 166 00a4 00000000 		.word	xQueueNutrientPump
- 167 00a8 00000000 		.word	xQueuePHValue
- 168 00ac 0C000000 		.word	pcTextForNutrientPump
- 169 00b0 10000000 		.word	.LC0
- 170 00b4 00000000 		.word	vTaskNutrientPump
- 171 00b8 0D000000 		.word	pcTextForNutrientPump+1
- 172 00bc 18000000 		.word	.LC1
- 173 00c0 0E000000 		.word	pcTextForNutrientPump+2
- 174 00c4 20000000 		.word	.LC2
- 175 00c8 00000000 		.word	vTaskMeasurePH
+ 166 00a8 00000000 		.word	xQueueNutrientPump
+ 167 00ac 00000000 		.word	xQueuePHValue
+ 168 00b0 0C000000 		.word	pcTextForNutrientPump
+ 169 00b4 10000000 		.word	.LC0
+ 170 00b8 00000000 		.word	vTaskNutrientPump
+ 171 00bc 0D000000 		.word	pcTextForNutrientPump+1
+ 172 00c0 18000000 		.word	.LC1
+ 173 00c4 0E000000 		.word	pcTextForNutrientPump+2
+ 174 00c8 20000000 		.word	.LC2
+ 175 00cc 00000000 		.word	vTaskMeasurePH
  176              		.cfi_endproc
  177              	.LFE68:
  178              		.size	vNutrientsInit, .-vNutrientsInit
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  207 0010 012B     		cmp	r3, #1
  208 0012 1DD0     		beq	.L6
  209 0014 022B     		cmp	r3, #2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 6
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 6
 
 
  210 0016 35D0     		beq	.L7
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  249 005e FFF7FEFF 		bl	xQueueReceive
  250 0062 3861     		str	r0, [r7, #16]
   89:Nutrients.c   ****         
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 7
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 7
 
 
   90:Nutrients.c   ****                 if (xStatus == pdPASS) {
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  289              		.loc 1 104 0
  290 00a4 0623     		movs	r3, #6
  291 00a6 1846     		mov	r0, r3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 8
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 8
 
 
  292 00a8 FFF7FEFF 		bl	PWM_PERISTALTISK_2_WriteCompare
@@ -462,1685 +462,1698 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 1
  320              		.cfi_endproc
  321              	.LFE69:
  322              		.size	vTaskNutrientPump, .-vTaskNutrientPump
- 323              		.global	__aeabi_i2f
- 324              		.global	__aeabi_f2uiz
- 325              		.section	.text.vTaskMeasurePH,"ax",%progbits
- 326              		.align	2
- 327              		.global	vTaskMeasurePH
- 328              		.thumb
- 329              		.thumb_func
- 330              		.type	vTaskMeasurePH, %function
- 331              	vTaskMeasurePH:
- 332              	.LFB70:
+ 323              		.global	__aeabi_i2d
+ 324              		.global	__aeabi_ddiv
+ 325              		.global	__aeabi_dmul
+ 326              		.global	__aeabi_d2f
+ 327              		.global	__aeabi_f2uiz
+ 328              		.section	.text.vTaskMeasurePH,"ax",%progbits
+ 329              		.align	2
+ 330              		.global	vTaskMeasurePH
+ 331              		.thumb
+ 332              		.thumb_func
+ 333              		.type	vTaskMeasurePH, %function
+ 334              	vTaskMeasurePH:
+ 335              	.LFB70:
  112:Nutrients.c   **** }
  113:Nutrients.c   **** 
  114:Nutrients.c   **** void vTaskMeasurePH(){
- 333              		.loc 1 114 0
- 334              		.cfi_startproc
- 335              		@ args = 0, pretend = 0, frame = 24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 9
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 9
 
 
- 336              		@ frame_needed = 1, uses_anonymous_args = 0
- 337 0000 80B5     		push	{r7, lr}
- 338              		.cfi_def_cfa_offset 8
- 339              		.cfi_offset 7, -8
- 340              		.cfi_offset 14, -4
- 341 0002 86B0     		sub	sp, sp, #24
- 342              		.cfi_def_cfa_offset 32
- 343 0004 00AF     		add	r7, sp, #0
- 344              		.cfi_def_cfa_register 7
+ 336              		.loc 1 114 0
+ 337              		.cfi_startproc
+ 338              		@ args = 0, pretend = 0, frame = 24
+ 339              		@ frame_needed = 1, uses_anonymous_args = 0
+ 340 0000 90B5     		push	{r4, r7, lr}
+ 341              		.cfi_def_cfa_offset 12
+ 342              		.cfi_offset 4, -12
+ 343              		.cfi_offset 7, -8
+ 344              		.cfi_offset 14, -4
+ 345 0002 87B0     		sub	sp, sp, #28
+ 346              		.cfi_def_cfa_offset 40
+ 347 0004 00AF     		add	r7, sp, #0
+ 348              		.cfi_def_cfa_register 7
  115:Nutrients.c   ****     float fPHVoltage;
  116:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
- 345              		.loc 1 116 0
- 346 0006 4FF47A73 		mov	r3, #1000
- 347 000a 3B61     		str	r3, [r7, #16]
+ 349              		.loc 1 116 0
+ 350 0006 4FF47A73 		mov	r3, #1000
+ 351 000a 3B61     		str	r3, [r7, #16]
  117:Nutrients.c   ****     float fPHValue;
  118:Nutrients.c   ****     uint16 iMilliPHValue;
  119:Nutrients.c   ****     _Bool bState = 0;
- 348              		.loc 1 119 0
- 349 000c 0023     		movs	r3, #0
- 350 000e FB75     		strb	r3, [r7, #23]
- 351              	.L25:
+ 352              		.loc 1 119 0
+ 353 000c 0023     		movs	r3, #0
+ 354 000e FB75     		strb	r3, [r7, #23]
+ 355              	.L24:
  120:Nutrients.c   ****     
  121:Nutrients.c   ****     for(;;){
  122:Nutrients.c   ****         if(bState == 0){
- 352              		.loc 1 122 0
- 353 0010 FB7D     		ldrb	r3, [r7, #23]
- 354 0012 83F00103 		eor	r3, r3, #1
- 355 0016 DBB2     		uxtb	r3, r3
- 356 0018 002B     		cmp	r3, #0
- 357 001a 04D0     		beq	.L22
+ 356              		.loc 1 122 0
+ 357 0010 FB7D     		ldrb	r3, [r7, #23]
+ 358 0012 83F00103 		eor	r3, r3, #1
+ 359 0016 DBB2     		uxtb	r3, r3
+ 360 0018 002B     		cmp	r3, #0
+ 361 001a 04D0     		beq	.L22
  123:Nutrients.c   ****             ADC_PH_StartConvert();
- 358              		.loc 1 123 0
- 359 001c FFF7FEFF 		bl	ADC_PH_StartConvert
+ 362              		.loc 1 123 0
+ 363 001c FFF7FEFF 		bl	ADC_PH_StartConvert
  124:Nutrients.c   ****             bState = 1;
- 360              		.loc 1 124 0
- 361 0020 0123     		movs	r3, #1
- 362 0022 FB75     		strb	r3, [r7, #23]
- 363 0024 F4E7     		b	.L25
- 364              	.L22:
+ 364              		.loc 1 124 0
+ 365 0020 0123     		movs	r3, #1
+ 366 0022 FB75     		strb	r3, [r7, #23]
+ 367 0024 F4E7     		b	.L24
+ 368              	.L22:
  125:Nutrients.c   ****         }
  126:Nutrients.c   ****         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
- 365              		.loc 1 126 0
- 366 0026 0120     		movs	r0, #1
- 367 0028 FFF7FEFF 		bl	ADC_PH_IsEndConversion
- 368 002c 0346     		mov	r3, r0
- 369 002e 002B     		cmp	r3, #0
- 370 0030 EED0     		beq	.L25
- 371              		.loc 1 126 0 is_stmt 0 discriminator 1
- 372 0032 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
- 373 0034 002B     		cmp	r3, #0
- 374 0036 EBD0     		beq	.L25
- 127:Nutrients.c   ****             fPHVoltage = (ADC_PH_GetResult16()) / 4096 * 3000; //calculate voltage from measured va
- 375              		.loc 1 127 0 is_stmt 1
- 376 0038 FFF7FEFF 		bl	ADC_PH_GetResult16
- 377 003c 0346     		mov	r3, r0
- 378 003e 002B     		cmp	r3, #0
- 379 0040 01DA     		bge	.L24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 10
+ 369              		.loc 1 126 0
+ 370 0026 0120     		movs	r0, #1
+ 371 0028 FFF7FEFF 		bl	ADC_PH_IsEndConversion
+ 372 002c 0346     		mov	r3, r0
+ 373 002e 002B     		cmp	r3, #0
+ 374 0030 EED0     		beq	.L24
+ 375              		.loc 1 126 0 is_stmt 0 discriminator 1
+ 376 0032 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 377 0034 002B     		cmp	r3, #0
+ 378 0036 EBD0     		beq	.L24
+ 127:Nutrients.c   ****             fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; //calculate voltage from measu
+ 379              		.loc 1 127 0 is_stmt 1
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 10
 
 
- 380 0042 03F6FF73 		addw	r3, r3, #4095
- 381              	.L24:
- 382 0046 1B13     		asrs	r3, r3, #12
- 383 0048 1BB2     		sxth	r3, r3
- 384 004a 1A46     		mov	r2, r3
- 385 004c 40F6B833 		movw	r3, #3000
- 386 0050 03FB02F3 		mul	r3, r3, r2
- 387 0054 1846     		mov	r0, r3
- 388 0056 FFF7FEFF 		bl	__aeabi_i2f
- 389 005a 0346     		mov	r3, r0
- 390 005c FB60     		str	r3, [r7, #12]	@ float
+ 380 0038 FFF7FEFF 		bl	ADC_PH_GetResult16
+ 381 003c 0346     		mov	r3, r0
+ 382 003e 1846     		mov	r0, r3
+ 383 0040 FFF7FEFF 		bl	__aeabi_i2d
+ 384 0044 4FF00002 		mov	r2, #0
+ 385 0048 1B4B     		ldr	r3, .L25+8
+ 386 004a FFF7FEFF 		bl	__aeabi_ddiv
+ 387 004e 0346     		mov	r3, r0
+ 388 0050 0C46     		mov	r4, r1
+ 389 0052 1846     		mov	r0, r3
+ 390 0054 2146     		mov	r1, r4
+ 391 0056 16A3     		adr	r3, .L25
+ 392 0058 D3E90023 		ldrd	r2, [r3]
+ 393 005c FFF7FEFF 		bl	__aeabi_dmul
+ 394 0060 0346     		mov	r3, r0
+ 395 0062 0C46     		mov	r4, r1
+ 396 0064 1846     		mov	r0, r3
+ 397 0066 2146     		mov	r1, r4
+ 398 0068 FFF7FEFF 		bl	__aeabi_d2f
+ 399 006c 0346     		mov	r3, r0
+ 400 006e FB60     		str	r3, [r7, #12]	@ float
  128:Nutrients.c   ****             fPHValue = fCalculatePHValue(fPHVoltage);
- 391              		.loc 1 128 0
- 392 005e F868     		ldr	r0, [r7, #12]	@ float
- 393 0060 FFF7FEFF 		bl	fCalculatePHValue
- 394 0064 B860     		str	r0, [r7, #8]	@ float
+ 401              		.loc 1 128 0
+ 402 0070 F868     		ldr	r0, [r7, #12]	@ float
+ 403 0072 FFF7FEFF 		bl	fCalculatePHValue
+ 404 0076 B860     		str	r0, [r7, #8]	@ float
  129:Nutrients.c   ****             iMilliPHValue = (uint16) fPHValue * 1000;
- 395              		.loc 1 129 0
- 396 0066 B868     		ldr	r0, [r7, #8]	@ float
- 397 0068 FFF7FEFF 		bl	__aeabi_f2uiz
- 398 006c 0346     		mov	r3, r0
- 399 006e 9BB2     		uxth	r3, r3
- 400 0070 1A46     		mov	r2, r3	@ movhi
- 401 0072 5201     		lsls	r2, r2, #5
- 402 0074 D21A     		subs	r2, r2, r3
- 403 0076 9200     		lsls	r2, r2, #2
- 404 0078 1344     		add	r3, r3, r2
- 405 007a DB00     		lsls	r3, r3, #3
- 406 007c 9BB2     		uxth	r3, r3
- 407 007e FB80     		strh	r3, [r7, #6]	@ movhi
- 130:Nutrients.c   ****             xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY);
- 408              		.loc 1 130 0
- 409 0080 064B     		ldr	r3, .L26
- 410 0082 1868     		ldr	r0, [r3]
- 411 0084 B91D     		adds	r1, r7, #6
- 412 0086 0023     		movs	r3, #0
- 413 0088 4FF0FF32 		mov	r2, #-1
- 414 008c FFF7FEFF 		bl	xQueueGenericSend
- 131:Nutrients.c   ****             bState = 0;
- 415              		.loc 1 131 0
- 416 0090 0023     		movs	r3, #0
- 417 0092 FB75     		strb	r3, [r7, #23]
- 132:Nutrients.c   ****             vTaskDelay(xDelayms);
- 418              		.loc 1 132 0
- 419 0094 3869     		ldr	r0, [r7, #16]
- 420 0096 FFF7FEFF 		bl	vTaskDelay
- 133:Nutrients.c   ****         }
- 134:Nutrients.c   ****     }
- 421              		.loc 1 134 0
- 422 009a B9E7     		b	.L25
- 423              	.L27:
- 424              		.align	2
- 425              	.L26:
- 426 009c 00000000 		.word	xQueuePHValue
- 427              		.cfi_endproc
- 428              	.LFE70:
- 429              		.size	vTaskMeasurePH, .-vTaskMeasurePH
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 11
+ 405              		.loc 1 129 0
+ 406 0078 B868     		ldr	r0, [r7, #8]	@ float
+ 407 007a FFF7FEFF 		bl	__aeabi_f2uiz
+ 408 007e 0346     		mov	r3, r0
+ 409 0080 9BB2     		uxth	r3, r3
+ 410 0082 1A46     		mov	r2, r3	@ movhi
+ 411 0084 5201     		lsls	r2, r2, #5
+ 412 0086 D21A     		subs	r2, r2, r3
+ 413 0088 9200     		lsls	r2, r2, #2
+ 414 008a 1344     		add	r3, r3, r2
+ 415 008c DB00     		lsls	r3, r3, #3
+ 416 008e 9BB2     		uxth	r3, r3
+ 417 0090 FB80     		strh	r3, [r7, #6]	@ movhi
+ 130:Nutrients.c   ****             //iMilliPHValue = (uint16) fPHVoltage;
+ 131:Nutrients.c   ****             xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY);
+ 418              		.loc 1 131 0
+ 419 0092 0A4B     		ldr	r3, .L25+12
+ 420 0094 1868     		ldr	r0, [r3]
+ 421 0096 B91D     		adds	r1, r7, #6
+ 422 0098 0023     		movs	r3, #0
+ 423 009a 4FF0FF32 		mov	r2, #-1
+ 424 009e FFF7FEFF 		bl	xQueueGenericSend
+ 132:Nutrients.c   ****             bState = 0;
+ 425              		.loc 1 132 0
+ 426 00a2 0023     		movs	r3, #0
+ 427 00a4 FB75     		strb	r3, [r7, #23]
+ 133:Nutrients.c   ****             vTaskDelay(xDelayms);
+ 428              		.loc 1 133 0
+ 429 00a6 3869     		ldr	r0, [r7, #16]
+ 430 00a8 FFF7FEFF 		bl	vTaskDelay
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 11
 
 
- 430              		.global	__aeabi_fsub
- 431              		.global	__aeabi_f2d
- 432              		.global	__aeabi_ddiv
- 433              		.global	__aeabi_dsub
- 434              		.global	__aeabi_d2f
- 435              		.global	__aeabi_fmul
- 436              		.global	__aeabi_dmul
- 437              		.global	__aeabi_dadd
- 438              		.section	.text.fCalculatePHValue,"ax",%progbits
- 439              		.align	2
- 440              		.global	fCalculatePHValue
- 441              		.thumb
- 442              		.thumb_func
- 443              		.type	fCalculatePHValue, %function
- 444              	fCalculatePHValue:
- 445              	.LFB71:
- 135:Nutrients.c   **** }
- 136:Nutrients.c   **** 
+ 134:Nutrients.c   ****         }
+ 135:Nutrients.c   ****     }
+ 431              		.loc 1 135 0
+ 432 00ac B0E7     		b	.L24
+ 433              	.L26:
+ 434 00ae 00BF     		.align	3
+ 435              	.L25:
+ 436 00b0 00000000 		.word	0
+ 437 00b4 0070A740 		.word	1084715008
+ 438 00b8 0000B040 		.word	1085276160
+ 439 00bc 00000000 		.word	xQueuePHValue
+ 440              		.cfi_endproc
+ 441              	.LFE70:
+ 442              		.size	vTaskMeasurePH, .-vTaskMeasurePH
+ 443              		.global	__aeabi_fsub
+ 444              		.global	__aeabi_f2d
+ 445              		.global	__aeabi_dsub
+ 446              		.global	__aeabi_fmul
+ 447              		.global	__aeabi_dadd
+ 448              		.section	.text.fCalculatePHValue,"ax",%progbits
+ 449              		.align	2
+ 450              		.global	fCalculatePHValue
+ 451              		.thumb
+ 452              		.thumb_func
+ 453              		.type	fCalculatePHValue, %function
+ 454              	fCalculatePHValue:
+ 455              	.LFB71:
+ 136:Nutrients.c   **** }
  137:Nutrients.c   **** 
- 138:Nutrients.c   **** float fCalculatePHValue(float fPHVoltage){
- 446              		.loc 1 138 0
- 447              		.cfi_startproc
- 448              		@ args = 0, pretend = 0, frame = 16
- 449              		@ frame_needed = 1, uses_anonymous_args = 0
- 450 0000 B0B5     		push	{r4, r5, r7, lr}
- 451              		.cfi_def_cfa_offset 16
- 452              		.cfi_offset 4, -16
- 453              		.cfi_offset 5, -12
- 454              		.cfi_offset 7, -8
- 455              		.cfi_offset 14, -4
- 456 0002 84B0     		sub	sp, sp, #16
- 457              		.cfi_def_cfa_offset 32
- 458 0004 00AF     		add	r7, sp, #0
- 459              		.cfi_def_cfa_register 7
- 460 0006 7860     		str	r0, [r7, #4]	@ float
- 139:Nutrients.c   ****     float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500)/3.0 - (fAcidVoltage - 1500.00)/3.0); //ca
- 461              		.loc 1 139 0
- 462 0008 4B4B     		ldr	r3, .L30+8
- 463 000a 4B49     		ldr	r1, .L30+8
- 464 000c 1846     		mov	r0, r3
- 465 000e FFF7FEFF 		bl	__aeabi_fsub
- 466 0012 0346     		mov	r3, r0
- 467 0014 1846     		mov	r0, r3
- 468 0016 FFF7FEFF 		bl	__aeabi_f2d
- 469 001a 4FF00002 		mov	r2, #0
- 470 001e 474B     		ldr	r3, .L30+12
- 471 0020 FFF7FEFF 		bl	__aeabi_ddiv
- 472 0024 0346     		mov	r3, r0
- 473 0026 0C46     		mov	r4, r1
- 474 0028 2546     		mov	r5, r4
- 475 002a 1C46     		mov	r4, r3
- 476 002c 444B     		ldr	r3, .L30+16
- 477 002e 1846     		mov	r0, r3
- 478 0030 FFF7FEFF 		bl	__aeabi_f2d
- 479 0034 3EA3     		adr	r3, .L30
- 480 0036 D3E90023 		ldrd	r2, [r3]
- 481 003a FFF7FEFF 		bl	__aeabi_dsub
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 12
+ 138:Nutrients.c   **** 
+ 139:Nutrients.c   **** float fCalculatePHValue(float fPHVoltage){
+ 456              		.loc 1 139 0
+ 457              		.cfi_startproc
+ 458              		@ args = 0, pretend = 0, frame = 16
+ 459              		@ frame_needed = 1, uses_anonymous_args = 0
+ 460 0000 B0B5     		push	{r4, r5, r7, lr}
+ 461              		.cfi_def_cfa_offset 16
+ 462              		.cfi_offset 4, -16
+ 463              		.cfi_offset 5, -12
+ 464              		.cfi_offset 7, -8
+ 465              		.cfi_offset 14, -4
+ 466 0002 84B0     		sub	sp, sp, #16
+ 467              		.cfi_def_cfa_offset 32
+ 468 0004 00AF     		add	r7, sp, #0
+ 469              		.cfi_def_cfa_register 7
+ 470 0006 7860     		str	r0, [r7, #4]	@ float
+ 140:Nutrients.c   ****     float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500)/3.0 - (fAcidVoltage - 1500.00)/3.0); //ca
+ 471              		.loc 1 140 0
+ 472 0008 4B4B     		ldr	r3, .L29+8
+ 473 000a 4B49     		ldr	r1, .L29+8
+ 474 000c 1846     		mov	r0, r3
+ 475 000e FFF7FEFF 		bl	__aeabi_fsub
+ 476 0012 0346     		mov	r3, r0
+ 477 0014 1846     		mov	r0, r3
+ 478 0016 FFF7FEFF 		bl	__aeabi_f2d
+ 479 001a 4FF00002 		mov	r2, #0
+ 480 001e 474B     		ldr	r3, .L29+12
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 12
 
 
- 482 003e 0246     		mov	r2, r0
- 483 0040 0B46     		mov	r3, r1
- 484 0042 1046     		mov	r0, r2
- 485 0044 1946     		mov	r1, r3
- 486 0046 4FF00002 		mov	r2, #0
- 487 004a 3C4B     		ldr	r3, .L30+12
- 488 004c FFF7FEFF 		bl	__aeabi_ddiv
- 489 0050 0246     		mov	r2, r0
- 490 0052 0B46     		mov	r3, r1
- 491 0054 2046     		mov	r0, r4
- 492 0056 2946     		mov	r1, r5
- 493 0058 FFF7FEFF 		bl	__aeabi_dsub
- 494 005c 0346     		mov	r3, r0
- 495 005e 0C46     		mov	r4, r1
- 496 0060 1A46     		mov	r2, r3
- 497 0062 2346     		mov	r3, r4
- 498 0064 4FF00000 		mov	r0, #0
- 499 0068 3449     		ldr	r1, .L30+12
- 500 006a FFF7FEFF 		bl	__aeabi_ddiv
- 501 006e 0346     		mov	r3, r0
- 502 0070 0C46     		mov	r4, r1
- 503 0072 1846     		mov	r0, r3
- 504 0074 2146     		mov	r1, r4
- 505 0076 FFF7FEFF 		bl	__aeabi_d2f
- 506 007a 0346     		mov	r3, r0
- 507 007c FB60     		str	r3, [r7, #12]	@ float
- 140:Nutrients.c   ****     float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500)/3.0; //calculate b in y = ax + b
- 508              		.loc 1 140 0
- 509 007e 2E4B     		ldr	r3, .L30+8
- 510 0080 2D49     		ldr	r1, .L30+8
- 511 0082 1846     		mov	r0, r3
- 512 0084 FFF7FEFF 		bl	__aeabi_fsub
- 513 0088 0346     		mov	r3, r0
- 514 008a F968     		ldr	r1, [r7, #12]	@ float
- 515 008c 1846     		mov	r0, r3
- 516 008e FFF7FEFF 		bl	__aeabi_fmul
- 517 0092 0346     		mov	r3, r0
- 518 0094 1846     		mov	r0, r3
- 519 0096 FFF7FEFF 		bl	__aeabi_f2d
- 520 009a 4FF00002 		mov	r2, #0
- 521 009e 274B     		ldr	r3, .L30+12
- 522 00a0 FFF7FEFF 		bl	__aeabi_ddiv
- 523 00a4 0346     		mov	r3, r0
- 524 00a6 0C46     		mov	r4, r1
- 525 00a8 1A46     		mov	r2, r3
- 526 00aa 2346     		mov	r3, r4
- 527 00ac 4FF00000 		mov	r0, #0
- 528 00b0 2449     		ldr	r1, .L30+20
- 529 00b2 FFF7FEFF 		bl	__aeabi_dsub
- 530 00b6 0346     		mov	r3, r0
- 531 00b8 0C46     		mov	r4, r1
- 532 00ba 1846     		mov	r0, r3
- 533 00bc 2146     		mov	r1, r4
- 534 00be FFF7FEFF 		bl	__aeabi_d2f
- 535 00c2 0346     		mov	r3, r0
- 536 00c4 BB60     		str	r3, [r7, #8]	@ float
- 141:Nutrients.c   ****     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 13
+ 481 0020 FFF7FEFF 		bl	__aeabi_ddiv
+ 482 0024 0346     		mov	r3, r0
+ 483 0026 0C46     		mov	r4, r1
+ 484 0028 2546     		mov	r5, r4
+ 485 002a 1C46     		mov	r4, r3
+ 486 002c 444B     		ldr	r3, .L29+16
+ 487 002e 1846     		mov	r0, r3
+ 488 0030 FFF7FEFF 		bl	__aeabi_f2d
+ 489 0034 3EA3     		adr	r3, .L29
+ 490 0036 D3E90023 		ldrd	r2, [r3]
+ 491 003a FFF7FEFF 		bl	__aeabi_dsub
+ 492 003e 0246     		mov	r2, r0
+ 493 0040 0B46     		mov	r3, r1
+ 494 0042 1046     		mov	r0, r2
+ 495 0044 1946     		mov	r1, r3
+ 496 0046 4FF00002 		mov	r2, #0
+ 497 004a 3C4B     		ldr	r3, .L29+12
+ 498 004c FFF7FEFF 		bl	__aeabi_ddiv
+ 499 0050 0246     		mov	r2, r0
+ 500 0052 0B46     		mov	r3, r1
+ 501 0054 2046     		mov	r0, r4
+ 502 0056 2946     		mov	r1, r5
+ 503 0058 FFF7FEFF 		bl	__aeabi_dsub
+ 504 005c 0346     		mov	r3, r0
+ 505 005e 0C46     		mov	r4, r1
+ 506 0060 1A46     		mov	r2, r3
+ 507 0062 2346     		mov	r3, r4
+ 508 0064 4FF00000 		mov	r0, #0
+ 509 0068 3449     		ldr	r1, .L29+12
+ 510 006a FFF7FEFF 		bl	__aeabi_ddiv
+ 511 006e 0346     		mov	r3, r0
+ 512 0070 0C46     		mov	r4, r1
+ 513 0072 1846     		mov	r0, r3
+ 514 0074 2146     		mov	r1, r4
+ 515 0076 FFF7FEFF 		bl	__aeabi_d2f
+ 516 007a 0346     		mov	r3, r0
+ 517 007c FB60     		str	r3, [r7, #12]	@ float
+ 141:Nutrients.c   ****     float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500)/3.0; //calculate b in y = ax + b
+ 518              		.loc 1 141 0
+ 519 007e 2E4B     		ldr	r3, .L29+8
+ 520 0080 2D49     		ldr	r1, .L29+8
+ 521 0082 1846     		mov	r0, r3
+ 522 0084 FFF7FEFF 		bl	__aeabi_fsub
+ 523 0088 0346     		mov	r3, r0
+ 524 008a F968     		ldr	r1, [r7, #12]	@ float
+ 525 008c 1846     		mov	r0, r3
+ 526 008e FFF7FEFF 		bl	__aeabi_fmul
+ 527 0092 0346     		mov	r3, r0
+ 528 0094 1846     		mov	r0, r3
+ 529 0096 FFF7FEFF 		bl	__aeabi_f2d
+ 530 009a 4FF00002 		mov	r2, #0
+ 531 009e 274B     		ldr	r3, .L29+12
+ 532 00a0 FFF7FEFF 		bl	__aeabi_ddiv
+ 533 00a4 0346     		mov	r3, r0
+ 534 00a6 0C46     		mov	r4, r1
+ 535 00a8 1A46     		mov	r2, r3
+ 536 00aa 2346     		mov	r3, r4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 13
 
 
- 537              		.loc 1 141 0
- 538 00c6 F868     		ldr	r0, [r7, #12]	@ float
- 539 00c8 FFF7FEFF 		bl	__aeabi_f2d
- 540 00cc 0446     		mov	r4, r0
- 541 00ce 0D46     		mov	r5, r1
- 542 00d0 7868     		ldr	r0, [r7, #4]	@ float
- 543 00d2 FFF7FEFF 		bl	__aeabi_f2d
- 544 00d6 16A3     		adr	r3, .L30
- 545 00d8 D3E90023 		ldrd	r2, [r3]
- 546 00dc FFF7FEFF 		bl	__aeabi_dsub
- 547 00e0 0246     		mov	r2, r0
- 548 00e2 0B46     		mov	r3, r1
- 549 00e4 2046     		mov	r0, r4
- 550 00e6 2946     		mov	r1, r5
- 551 00e8 FFF7FEFF 		bl	__aeabi_dmul
- 552 00ec 0346     		mov	r3, r0
- 553 00ee 0C46     		mov	r4, r1
- 554 00f0 1846     		mov	r0, r3
- 555 00f2 2146     		mov	r1, r4
- 556 00f4 4FF00002 		mov	r2, #0
- 557 00f8 104B     		ldr	r3, .L30+12
- 558 00fa FFF7FEFF 		bl	__aeabi_ddiv
- 559 00fe 0346     		mov	r3, r0
- 560 0100 0C46     		mov	r4, r1
- 561 0102 2546     		mov	r5, r4
- 562 0104 1C46     		mov	r4, r3
- 563 0106 B868     		ldr	r0, [r7, #8]	@ float
- 564 0108 FFF7FEFF 		bl	__aeabi_f2d
- 565 010c 0246     		mov	r2, r0
- 566 010e 0B46     		mov	r3, r1
- 567 0110 2046     		mov	r0, r4
- 568 0112 2946     		mov	r1, r5
- 569 0114 FFF7FEFF 		bl	__aeabi_dadd
- 570 0118 0346     		mov	r3, r0
- 571 011a 0C46     		mov	r4, r1
- 572 011c 1846     		mov	r0, r3
- 573 011e 2146     		mov	r1, r4
- 574 0120 FFF7FEFF 		bl	__aeabi_d2f
- 575 0124 0346     		mov	r3, r0
- 142:Nutrients.c   **** }
- 576              		.loc 1 142 0
- 577 0126 1846     		mov	r0, r3
- 578 0128 1037     		adds	r7, r7, #16
- 579              		.cfi_def_cfa_offset 16
- 580 012a BD46     		mov	sp, r7
- 581              		.cfi_def_cfa_register 13
- 582              		@ sp needed
- 583 012c B0BD     		pop	{r4, r5, r7, pc}
- 584              	.L31:
- 585 012e 00BF     		.align	3
- 586              	.L30:
- 587 0130 00000000 		.word	0
- 588 0134 00709740 		.word	1083666432
- 589 0138 0080BB44 		.word	1153138688
- 590 013c 00000840 		.word	1074266112
- 591 0140 140EFE44 		.word	1157500436
- 592 0144 00001C40 		.word	1075576832
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 14
+ 537 00ac 4FF00000 		mov	r0, #0
+ 538 00b0 2449     		ldr	r1, .L29+20
+ 539 00b2 FFF7FEFF 		bl	__aeabi_dsub
+ 540 00b6 0346     		mov	r3, r0
+ 541 00b8 0C46     		mov	r4, r1
+ 542 00ba 1846     		mov	r0, r3
+ 543 00bc 2146     		mov	r1, r4
+ 544 00be FFF7FEFF 		bl	__aeabi_d2f
+ 545 00c2 0346     		mov	r3, r0
+ 546 00c4 BB60     		str	r3, [r7, #8]	@ float
+ 142:Nutrients.c   ****     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
+ 547              		.loc 1 142 0
+ 548 00c6 F868     		ldr	r0, [r7, #12]	@ float
+ 549 00c8 FFF7FEFF 		bl	__aeabi_f2d
+ 550 00cc 0446     		mov	r4, r0
+ 551 00ce 0D46     		mov	r5, r1
+ 552 00d0 7868     		ldr	r0, [r7, #4]	@ float
+ 553 00d2 FFF7FEFF 		bl	__aeabi_f2d
+ 554 00d6 16A3     		adr	r3, .L29
+ 555 00d8 D3E90023 		ldrd	r2, [r3]
+ 556 00dc FFF7FEFF 		bl	__aeabi_dsub
+ 557 00e0 0246     		mov	r2, r0
+ 558 00e2 0B46     		mov	r3, r1
+ 559 00e4 2046     		mov	r0, r4
+ 560 00e6 2946     		mov	r1, r5
+ 561 00e8 FFF7FEFF 		bl	__aeabi_dmul
+ 562 00ec 0346     		mov	r3, r0
+ 563 00ee 0C46     		mov	r4, r1
+ 564 00f0 1846     		mov	r0, r3
+ 565 00f2 2146     		mov	r1, r4
+ 566 00f4 4FF00002 		mov	r2, #0
+ 567 00f8 104B     		ldr	r3, .L29+12
+ 568 00fa FFF7FEFF 		bl	__aeabi_ddiv
+ 569 00fe 0346     		mov	r3, r0
+ 570 0100 0C46     		mov	r4, r1
+ 571 0102 2546     		mov	r5, r4
+ 572 0104 1C46     		mov	r4, r3
+ 573 0106 B868     		ldr	r0, [r7, #8]	@ float
+ 574 0108 FFF7FEFF 		bl	__aeabi_f2d
+ 575 010c 0246     		mov	r2, r0
+ 576 010e 0B46     		mov	r3, r1
+ 577 0110 2046     		mov	r0, r4
+ 578 0112 2946     		mov	r1, r5
+ 579 0114 FFF7FEFF 		bl	__aeabi_dadd
+ 580 0118 0346     		mov	r3, r0
+ 581 011a 0C46     		mov	r4, r1
+ 582 011c 1846     		mov	r0, r3
+ 583 011e 2146     		mov	r1, r4
+ 584 0120 FFF7FEFF 		bl	__aeabi_d2f
+ 585 0124 0346     		mov	r3, r0
+ 143:Nutrients.c   **** }
+ 586              		.loc 1 143 0
+ 587 0126 1846     		mov	r0, r3
+ 588 0128 1037     		adds	r7, r7, #16
+ 589              		.cfi_def_cfa_offset 16
+ 590 012a BD46     		mov	sp, r7
+ 591              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 14
 
 
- 593              		.cfi_endproc
- 594              	.LFE71:
- 595              		.size	fCalculatePHValue, .-fCalculatePHValue
- 596              		.section	.rodata
- 597 0023 00       		.align	2
- 598              	.LC3:
- 599 0024 54657374 		.ascii	"Test Pump 1\000"
- 599      2050756D 
- 599      70203100 
- 600              		.align	2
- 601              	.LC4:
- 602 0030 54657374 		.ascii	"Test PH print\000"
- 602      20504820 
- 602      7072696E 
- 602      7400
- 603              		.section	.text.vTestTaskInit,"ax",%progbits
- 604              		.align	2
- 605              		.global	vTestTaskInit
- 606              		.thumb
- 607              		.thumb_func
- 608              		.type	vTestTaskInit, %function
- 609              	vTestTaskInit:
- 610              	.LFB72:
- 143:Nutrients.c   **** 
- 144:Nutrients.c   **** /* --- TEST TASK --- */
- 145:Nutrients.c   **** 
- 146:Nutrients.c   **** /*
- 147:Nutrients.c   ****     Task for testing existing implementations.
- 148:Nutrients.c   **** 
- 149:Nutrients.c   ****     DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
- 150:Nutrients.c   ****     for your current implementation/testing
- 151:Nutrients.c   ****     
- 152:Nutrients.c   ****     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
- 153:Nutrients.c   **** 
- 154:Nutrients.c   ****     
- 155:Nutrients.c   **** */
- 156:Nutrients.c   **** 
- 157:Nutrients.c   **** void vTestTaskInit(){
- 611              		.loc 1 157 0
- 612              		.cfi_startproc
- 613              		@ args = 0, pretend = 0, frame = 0
- 614              		@ frame_needed = 1, uses_anonymous_args = 0
- 615 0000 80B5     		push	{r7, lr}
- 616              		.cfi_def_cfa_offset 8
- 617              		.cfi_offset 7, -8
- 618              		.cfi_offset 14, -4
- 619 0002 82B0     		sub	sp, sp, #8
- 620              		.cfi_def_cfa_offset 16
- 621 0004 02AF     		add	r7, sp, #8
- 622              		.cfi_def_cfa 7, 8
- 158:Nutrients.c   ****     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
- 623              		.loc 1 158 0
- 624 0006 0023     		movs	r3, #0
- 625 0008 0193     		str	r3, [sp, #4]
- 626 000a 0123     		movs	r3, #1
- 627 000c 0093     		str	r3, [sp]
- 628 000e 0023     		movs	r3, #0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 15
+ 592              		@ sp needed
+ 593 012c B0BD     		pop	{r4, r5, r7, pc}
+ 594              	.L30:
+ 595 012e 00BF     		.align	3
+ 596              	.L29:
+ 597 0130 00000000 		.word	0
+ 598 0134 00709740 		.word	1083666432
+ 599 0138 0080BB44 		.word	1153138688
+ 600 013c 00000840 		.word	1074266112
+ 601 0140 140EFE44 		.word	1157500436
+ 602 0144 00001C40 		.word	1075576832
+ 603              		.cfi_endproc
+ 604              	.LFE71:
+ 605              		.size	fCalculatePHValue, .-fCalculatePHValue
+ 606              		.section	.rodata
+ 607 0023 00       		.align	2
+ 608              	.LC3:
+ 609 0024 54657374 		.ascii	"Test Pump 1\000"
+ 609      2050756D 
+ 609      70203100 
+ 610              		.align	2
+ 611              	.LC4:
+ 612 0030 54657374 		.ascii	"Test PH print\000"
+ 612      20504820 
+ 612      7072696E 
+ 612      7400
+ 613              		.section	.text.vTestTaskInit,"ax",%progbits
+ 614              		.align	2
+ 615              		.global	vTestTaskInit
+ 616              		.thumb
+ 617              		.thumb_func
+ 618              		.type	vTestTaskInit, %function
+ 619              	vTestTaskInit:
+ 620              	.LFB72:
+ 144:Nutrients.c   **** 
+ 145:Nutrients.c   **** /* --- TEST TASK --- */
+ 146:Nutrients.c   **** 
+ 147:Nutrients.c   **** /*
+ 148:Nutrients.c   ****     Task for testing existing implementations.
+ 149:Nutrients.c   **** 
+ 150:Nutrients.c   ****     DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+ 151:Nutrients.c   ****     for your current implementation/testing
+ 152:Nutrients.c   ****     
+ 153:Nutrients.c   ****     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
+ 154:Nutrients.c   **** 
+ 155:Nutrients.c   ****     
+ 156:Nutrients.c   **** */
+ 157:Nutrients.c   **** 
+ 158:Nutrients.c   **** void vTestTaskInit(){
+ 621              		.loc 1 158 0
+ 622              		.cfi_startproc
+ 623              		@ args = 0, pretend = 0, frame = 0
+ 624              		@ frame_needed = 1, uses_anonymous_args = 0
+ 625 0000 80B5     		push	{r7, lr}
+ 626              		.cfi_def_cfa_offset 8
+ 627              		.cfi_offset 7, -8
+ 628              		.cfi_offset 14, -4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 15
 
 
- 629 0010 6422     		movs	r2, #100
- 630 0012 0849     		ldr	r1, .L33
- 631 0014 0848     		ldr	r0, .L33+4
- 632 0016 FFF7FEFF 		bl	xTaskCreate
- 159:Nutrients.c   ****     xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
+ 629 0002 82B0     		sub	sp, sp, #8
+ 630              		.cfi_def_cfa_offset 16
+ 631 0004 02AF     		add	r7, sp, #8
+ 632              		.cfi_def_cfa 7, 8
+ 159:Nutrients.c   ****     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
  633              		.loc 1 159 0
- 634 001a 0023     		movs	r3, #0
- 635 001c 0193     		str	r3, [sp, #4]
- 636 001e 0223     		movs	r3, #2
- 637 0020 0093     		str	r3, [sp]
- 638 0022 0023     		movs	r3, #0
- 639 0024 6422     		movs	r2, #100
- 640 0026 0549     		ldr	r1, .L33+8
- 641 0028 0548     		ldr	r0, .L33+12
- 642 002a FFF7FEFF 		bl	xTaskCreate
- 160:Nutrients.c   **** }
+ 634 0006 0023     		movs	r3, #0
+ 635 0008 0193     		str	r3, [sp, #4]
+ 636 000a 0123     		movs	r3, #1
+ 637 000c 0093     		str	r3, [sp]
+ 638 000e 0023     		movs	r3, #0
+ 639 0010 6422     		movs	r2, #100
+ 640 0012 0849     		ldr	r1, .L32
+ 641 0014 0848     		ldr	r0, .L32+4
+ 642 0016 FFF7FEFF 		bl	xTaskCreate
+ 160:Nutrients.c   ****     xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
  643              		.loc 1 160 0
- 644 002e 00BF     		nop
- 645 0030 BD46     		mov	sp, r7
- 646              		.cfi_def_cfa_register 13
- 647              		@ sp needed
- 648 0032 80BD     		pop	{r7, pc}
- 649              	.L34:
- 650              		.align	2
- 651              	.L33:
- 652 0034 24000000 		.word	.LC3
- 653 0038 00000000 		.word	vTestTaskNutrientPump
- 654 003c 30000000 		.word	.LC4
- 655 0040 00000000 		.word	vTestTaskUARTDataTransmit
- 656              		.cfi_endproc
- 657              	.LFE72:
- 658              		.size	vTestTaskInit, .-vTestTaskInit
- 659              		.section	.rodata
- 660 003e 0000     		.align	2
- 661              	.LC5:
- 662 0040 0A00     		.ascii	"\012\000"
- 663              		.section	.text.vTestTaskUARTDataTransmit,"ax",%progbits
- 664              		.align	2
- 665              		.global	vTestTaskUARTDataTransmit
- 666              		.thumb
- 667              		.thumb_func
- 668              		.type	vTestTaskUARTDataTransmit, %function
- 669              	vTestTaskUARTDataTransmit:
- 670              	.LFB73:
- 161:Nutrients.c   **** 
+ 644 001a 0023     		movs	r3, #0
+ 645 001c 0193     		str	r3, [sp, #4]
+ 646 001e 0223     		movs	r3, #2
+ 647 0020 0093     		str	r3, [sp]
+ 648 0022 0023     		movs	r3, #0
+ 649 0024 6422     		movs	r2, #100
+ 650 0026 0549     		ldr	r1, .L32+8
+ 651 0028 0548     		ldr	r0, .L32+12
+ 652 002a FFF7FEFF 		bl	xTaskCreate
+ 161:Nutrients.c   **** }
+ 653              		.loc 1 161 0
+ 654 002e 00BF     		nop
+ 655 0030 BD46     		mov	sp, r7
+ 656              		.cfi_def_cfa_register 13
+ 657              		@ sp needed
+ 658 0032 80BD     		pop	{r7, pc}
+ 659              	.L33:
+ 660              		.align	2
+ 661              	.L32:
+ 662 0034 24000000 		.word	.LC3
+ 663 0038 00000000 		.word	vTestTaskNutrientPump
+ 664 003c 30000000 		.word	.LC4
+ 665 0040 00000000 		.word	vTestTaskUARTDataTransmit
+ 666              		.cfi_endproc
+ 667              	.LFE72:
+ 668              		.size	vTestTaskInit, .-vTestTaskInit
+ 669              		.section	.rodata
+ 670 003e 0000     		.align	2
+ 671              	.LC5:
+ 672 0040 0A00     		.ascii	"\012\000"
+ 673              		.section	.text.vTestTaskUARTDataTransmit,"ax",%progbits
+ 674              		.align	2
+ 675              		.global	vTestTaskUARTDataTransmit
+ 676              		.thumb
+ 677              		.thumb_func
+ 678              		.type	vTestTaskUARTDataTransmit, %function
+ 679              	vTestTaskUARTDataTransmit:
+ 680              	.LFB73:
  162:Nutrients.c   **** 
- 163:Nutrients.c   **** void vTestTaskUARTDataTransmit(){
- 671              		.loc 1 163 0
- 672              		.cfi_startproc
- 673              		@ args = 0, pretend = 0, frame = 8
- 674              		@ frame_needed = 1, uses_anonymous_args = 0
- 675 0000 80B5     		push	{r7, lr}
- 676              		.cfi_def_cfa_offset 8
- 677              		.cfi_offset 7, -8
- 678              		.cfi_offset 14, -4
- 679 0002 82B0     		sub	sp, sp, #8
- 680              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 16
+ 163:Nutrients.c   **** 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 16
 
 
- 681 0004 00AF     		add	r7, sp, #0
- 682              		.cfi_def_cfa_register 7
- 683              	.L36:
- 164:Nutrients.c   ****     uint16 iPHValueForPrint;
- 165:Nutrients.c   ****     for(;;){
- 166:Nutrients.c   ****         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
- 684              		.loc 1 166 0 discriminator 1
- 685 0006 084B     		ldr	r3, .L37
- 686 0008 1B68     		ldr	r3, [r3]
- 687 000a B91D     		adds	r1, r7, #6
- 688 000c 4FF0FF32 		mov	r2, #-1
- 689 0010 1846     		mov	r0, r3
- 690 0012 FFF7FEFF 		bl	xQueueReceive
- 167:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
- 691              		.loc 1 167 0 discriminator 1
- 692 0016 FB88     		ldrh	r3, [r7, #6]
- 693 0018 1846     		mov	r0, r3
- 694 001a FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
- 168:Nutrients.c   **** 
- 169:Nutrients.c   ****         SW_UART_TEST_USB_PutString("\n");
- 695              		.loc 1 169 0 discriminator 1
- 696 001e 0348     		ldr	r0, .L37+4
- 697 0020 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
- 170:Nutrients.c   ****     }
- 698              		.loc 1 170 0 discriminator 1
- 699 0024 EFE7     		b	.L36
- 700              	.L38:
- 701 0026 00BF     		.align	2
- 702              	.L37:
- 703 0028 00000000 		.word	xQueuePHValue
- 704 002c 40000000 		.word	.LC5
- 705              		.cfi_endproc
- 706              	.LFE73:
- 707              		.size	vTestTaskUARTDataTransmit, .-vTestTaskUARTDataTransmit
- 708              		.section	.text.vTestTaskNutrientPump,"ax",%progbits
- 709              		.align	2
- 710              		.global	vTestTaskNutrientPump
- 711              		.thumb
- 712              		.thumb_func
- 713              		.type	vTestTaskNutrientPump, %function
- 714              	vTestTaskNutrientPump:
- 715              	.LFB74:
- 171:Nutrients.c   **** }
- 172:Nutrients.c   **** 
+ 164:Nutrients.c   **** void vTestTaskUARTDataTransmit(){
+ 681              		.loc 1 164 0
+ 682              		.cfi_startproc
+ 683              		@ args = 0, pretend = 0, frame = 8
+ 684              		@ frame_needed = 1, uses_anonymous_args = 0
+ 685 0000 80B5     		push	{r7, lr}
+ 686              		.cfi_def_cfa_offset 8
+ 687              		.cfi_offset 7, -8
+ 688              		.cfi_offset 14, -4
+ 689 0002 82B0     		sub	sp, sp, #8
+ 690              		.cfi_def_cfa_offset 16
+ 691 0004 00AF     		add	r7, sp, #0
+ 692              		.cfi_def_cfa_register 7
+ 693              	.L35:
+ 165:Nutrients.c   ****     uint16 iPHValueForPrint;
+ 166:Nutrients.c   ****     for(;;){
+ 167:Nutrients.c   ****         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
+ 694              		.loc 1 167 0 discriminator 1
+ 695 0006 084B     		ldr	r3, .L36
+ 696 0008 1B68     		ldr	r3, [r3]
+ 697 000a B91D     		adds	r1, r7, #6
+ 698 000c 4FF0FF32 		mov	r2, #-1
+ 699 0010 1846     		mov	r0, r3
+ 700 0012 FFF7FEFF 		bl	xQueueReceive
+ 168:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
+ 701              		.loc 1 168 0 discriminator 1
+ 702 0016 FB88     		ldrh	r3, [r7, #6]
+ 703 0018 1846     		mov	r0, r3
+ 704 001a FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+ 169:Nutrients.c   **** 
+ 170:Nutrients.c   ****         SW_UART_TEST_USB_PutString("\n");
+ 705              		.loc 1 170 0 discriminator 1
+ 706 001e 0348     		ldr	r0, .L36+4
+ 707 0020 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 171:Nutrients.c   ****     }
+ 708              		.loc 1 171 0 discriminator 1
+ 709 0024 EFE7     		b	.L35
+ 710              	.L37:
+ 711 0026 00BF     		.align	2
+ 712              	.L36:
+ 713 0028 00000000 		.word	xQueuePHValue
+ 714 002c 40000000 		.word	.LC5
+ 715              		.cfi_endproc
+ 716              	.LFE73:
+ 717              		.size	vTestTaskUARTDataTransmit, .-vTestTaskUARTDataTransmit
+ 718              		.section	.text.vTestTaskNutrientPump,"ax",%progbits
+ 719              		.align	2
+ 720              		.global	vTestTaskNutrientPump
+ 721              		.thumb
+ 722              		.thumb_func
+ 723              		.type	vTestTaskNutrientPump, %function
+ 724              	vTestTaskNutrientPump:
+ 725              	.LFB74:
+ 172:Nutrients.c   **** }
  173:Nutrients.c   **** 
  174:Nutrients.c   **** 
- 175:Nutrients.c   **** void vTestTaskNutrientPump() {
- 716              		.loc 1 175 0
- 717              		.cfi_startproc
- 718              		@ args = 0, pretend = 0, frame = 8
- 719              		@ frame_needed = 1, uses_anonymous_args = 0
- 720 0000 80B5     		push	{r7, lr}
- 721              		.cfi_def_cfa_offset 8
- 722              		.cfi_offset 7, -8
- 723              		.cfi_offset 14, -4
- 724 0002 82B0     		sub	sp, sp, #8
- 725              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 17
+ 175:Nutrients.c   **** 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 17
 
 
- 726 0004 00AF     		add	r7, sp, #0
- 727              		.cfi_def_cfa_register 7
- 176:Nutrients.c   ****     _Bool bTestState1 = 1;
- 728              		.loc 1 176 0
- 729 0006 0123     		movs	r3, #1
- 730 0008 FB70     		strb	r3, [r7, #3]
- 177:Nutrients.c   ****     _Bool bTestState2 = 0;
- 731              		.loc 1 177 0
- 732 000a 0023     		movs	r3, #0
- 733 000c BB70     		strb	r3, [r7, #2]
- 178:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
- 734              		.loc 1 178 0
- 735 000e C823     		movs	r3, #200
- 736 0010 7B60     		str	r3, [r7, #4]
- 737              	.L42:
- 179:Nutrients.c   ****     
- 180:Nutrients.c   ****     for(;;) {
- 181:Nutrients.c   ****         if(bTestState1 == 1) {
- 738              		.loc 1 181 0
- 739 0012 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
- 740 0014 002B     		cmp	r3, #0
- 741 0016 04D0     		beq	.L40
- 182:Nutrients.c   ****             bTestState1 = 0;
- 742              		.loc 1 182 0
- 743 0018 0023     		movs	r3, #0
- 744 001a FB70     		strb	r3, [r7, #3]
- 183:Nutrients.c   ****             bTestState2 = 1;
- 745              		.loc 1 183 0
- 746 001c 0123     		movs	r3, #1
- 747 001e BB70     		strb	r3, [r7, #2]
- 748 0020 03E0     		b	.L41
- 749              	.L40:
- 184:Nutrients.c   ****         }
- 185:Nutrients.c   ****         else {
- 186:Nutrients.c   ****             bTestState1 = 1;
- 750              		.loc 1 186 0
- 751 0022 0123     		movs	r3, #1
- 752 0024 FB70     		strb	r3, [r7, #3]
- 187:Nutrients.c   ****             bTestState2 = 0;
- 753              		.loc 1 187 0
- 754 0026 0023     		movs	r3, #0
- 755 0028 BB70     		strb	r3, [r7, #2]
- 756              	.L41:
- 188:Nutrients.c   ****         }
- 189:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
- 757              		.loc 1 189 0
- 758 002a 0E4B     		ldr	r3, .L43
- 759 002c 1868     		ldr	r0, [r3]
- 760 002e F91C     		adds	r1, r7, #3
- 761 0030 0023     		movs	r3, #0
- 762 0032 4FF0FF32 		mov	r2, #-1
- 763 0036 FFF7FEFF 		bl	xQueueGenericSend
- 190:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
- 764              		.loc 1 190 0
- 765 003a 0A4B     		ldr	r3, .L43
- 766 003c 5868     		ldr	r0, [r3, #4]
- 767 003e B91C     		adds	r1, r7, #2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 18
+ 176:Nutrients.c   **** void vTestTaskNutrientPump() {
+ 726              		.loc 1 176 0
+ 727              		.cfi_startproc
+ 728              		@ args = 0, pretend = 0, frame = 8
+ 729              		@ frame_needed = 1, uses_anonymous_args = 0
+ 730 0000 80B5     		push	{r7, lr}
+ 731              		.cfi_def_cfa_offset 8
+ 732              		.cfi_offset 7, -8
+ 733              		.cfi_offset 14, -4
+ 734 0002 82B0     		sub	sp, sp, #8
+ 735              		.cfi_def_cfa_offset 16
+ 736 0004 00AF     		add	r7, sp, #0
+ 737              		.cfi_def_cfa_register 7
+ 177:Nutrients.c   ****     _Bool bTestState1 = 1;
+ 738              		.loc 1 177 0
+ 739 0006 0123     		movs	r3, #1
+ 740 0008 FB70     		strb	r3, [r7, #3]
+ 178:Nutrients.c   ****     _Bool bTestState2 = 0;
+ 741              		.loc 1 178 0
+ 742 000a 0023     		movs	r3, #0
+ 743 000c BB70     		strb	r3, [r7, #2]
+ 179:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
+ 744              		.loc 1 179 0
+ 745 000e C823     		movs	r3, #200
+ 746 0010 7B60     		str	r3, [r7, #4]
+ 747              	.L41:
+ 180:Nutrients.c   ****     
+ 181:Nutrients.c   ****     for(;;) {
+ 182:Nutrients.c   ****         if(bTestState1 == 1) {
+ 748              		.loc 1 182 0
+ 749 0012 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 750 0014 002B     		cmp	r3, #0
+ 751 0016 04D0     		beq	.L39
+ 183:Nutrients.c   ****             bTestState1 = 0;
+ 752              		.loc 1 183 0
+ 753 0018 0023     		movs	r3, #0
+ 754 001a FB70     		strb	r3, [r7, #3]
+ 184:Nutrients.c   ****             bTestState2 = 1;
+ 755              		.loc 1 184 0
+ 756 001c 0123     		movs	r3, #1
+ 757 001e BB70     		strb	r3, [r7, #2]
+ 758 0020 03E0     		b	.L40
+ 759              	.L39:
+ 185:Nutrients.c   ****         }
+ 186:Nutrients.c   ****         else {
+ 187:Nutrients.c   ****             bTestState1 = 1;
+ 760              		.loc 1 187 0
+ 761 0022 0123     		movs	r3, #1
+ 762 0024 FB70     		strb	r3, [r7, #3]
+ 188:Nutrients.c   ****             bTestState2 = 0;
+ 763              		.loc 1 188 0
+ 764 0026 0023     		movs	r3, #0
+ 765 0028 BB70     		strb	r3, [r7, #2]
+ 766              	.L40:
+ 189:Nutrients.c   ****         }
+ 190:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
+ 767              		.loc 1 190 0
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 18
 
 
- 768 0040 0023     		movs	r3, #0
- 769 0042 4FF0FF32 		mov	r2, #-1
- 770 0046 FFF7FEFF 		bl	xQueueGenericSend
- 191:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
- 771              		.loc 1 191 0
- 772 004a 064B     		ldr	r3, .L43
- 773 004c 9868     		ldr	r0, [r3, #8]
- 774 004e F91C     		adds	r1, r7, #3
- 775 0050 0023     		movs	r3, #0
- 776 0052 4FF0FF32 		mov	r2, #-1
- 777 0056 FFF7FEFF 		bl	xQueueGenericSend
- 192:Nutrients.c   ****         vTaskDelay(xDelayms);
- 778              		.loc 1 192 0
- 779 005a 7868     		ldr	r0, [r7, #4]
- 780 005c FFF7FEFF 		bl	vTaskDelay
- 193:Nutrients.c   ****     }
- 781              		.loc 1 193 0
- 782 0060 D7E7     		b	.L42
- 783              	.L44:
- 784 0062 00BF     		.align	2
- 785              	.L43:
- 786 0064 00000000 		.word	xQueueNutrientPump
- 787              		.cfi_endproc
- 788              	.LFE74:
- 789              		.size	vTestTaskNutrientPump, .-vTestTaskNutrientPump
- 790              		.text
- 791              	.Letext0:
- 792              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 793              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 794              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 795              		.file 5 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
- 796              		.file 6 ".\\Source\\include/queue.h"
- 797              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
- 798              		.section	.debug_info,"",%progbits
- 799              	.Ldebug_info0:
- 800 0000 50030000 		.4byte	0x350
- 801 0004 0400     		.2byte	0x4
- 802 0006 00000000 		.4byte	.Ldebug_abbrev0
- 803 000a 04       		.byte	0x4
- 804 000b 01       		.uleb128 0x1
- 805 000c 0A000000 		.4byte	.LASF52
- 806 0010 0C       		.byte	0xc
- 807 0011 EE010000 		.4byte	.LASF53
- 808 0015 5D010000 		.4byte	.LASF54
- 809 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 810 001d 00000000 		.4byte	0
- 811 0021 00000000 		.4byte	.Ldebug_line0
- 812 0025 02       		.uleb128 0x2
- 813 0026 04       		.byte	0x4
- 814 0027 05       		.byte	0x5
- 815 0028 696E7400 		.ascii	"int\000"
- 816 002c 03       		.uleb128 0x3
- 817 002d 04       		.byte	0x4
- 818 002e 07       		.byte	0x7
- 819 002f 58020000 		.4byte	.LASF0
- 820 0033 03       		.uleb128 0x3
- 821 0034 08       		.byte	0x8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 19
+ 768 002a 0E4B     		ldr	r3, .L42
+ 769 002c 1868     		ldr	r0, [r3]
+ 770 002e F91C     		adds	r1, r7, #3
+ 771 0030 0023     		movs	r3, #0
+ 772 0032 4FF0FF32 		mov	r2, #-1
+ 773 0036 FFF7FEFF 		bl	xQueueGenericSend
+ 191:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
+ 774              		.loc 1 191 0
+ 775 003a 0A4B     		ldr	r3, .L42
+ 776 003c 5868     		ldr	r0, [r3, #4]
+ 777 003e B91C     		adds	r1, r7, #2
+ 778 0040 0023     		movs	r3, #0
+ 779 0042 4FF0FF32 		mov	r2, #-1
+ 780 0046 FFF7FEFF 		bl	xQueueGenericSend
+ 192:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
+ 781              		.loc 1 192 0
+ 782 004a 064B     		ldr	r3, .L42
+ 783 004c 9868     		ldr	r0, [r3, #8]
+ 784 004e F91C     		adds	r1, r7, #3
+ 785 0050 0023     		movs	r3, #0
+ 786 0052 4FF0FF32 		mov	r2, #-1
+ 787 0056 FFF7FEFF 		bl	xQueueGenericSend
+ 193:Nutrients.c   ****         vTaskDelay(xDelayms);
+ 788              		.loc 1 193 0
+ 789 005a 7868     		ldr	r0, [r7, #4]
+ 790 005c FFF7FEFF 		bl	vTaskDelay
+ 194:Nutrients.c   ****     }
+ 791              		.loc 1 194 0
+ 792 0060 D7E7     		b	.L41
+ 793              	.L43:
+ 794 0062 00BF     		.align	2
+ 795              	.L42:
+ 796 0064 00000000 		.word	xQueueNutrientPump
+ 797              		.cfi_endproc
+ 798              	.LFE74:
+ 799              		.size	vTestTaskNutrientPump, .-vTestTaskNutrientPump
+ 800              		.text
+ 801              	.Letext0:
+ 802              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 803              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 804              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 805              		.file 5 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 806              		.file 6 ".\\Source\\include/queue.h"
+ 807              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 808              		.section	.debug_info,"",%progbits
+ 809              	.Ldebug_info0:
+ 810 0000 50030000 		.4byte	0x350
+ 811 0004 0400     		.2byte	0x4
+ 812 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 813 000a 04       		.byte	0x4
+ 814 000b 01       		.uleb128 0x1
+ 815 000c 0A000000 		.4byte	.LASF52
+ 816 0010 0C       		.byte	0xc
+ 817 0011 AB010000 		.4byte	.LASF53
+ 818 0015 98020000 		.4byte	.LASF54
+ 819 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 820 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 19
 
 
- 822 0035 05       		.byte	0x5
- 823 0036 AD020000 		.4byte	.LASF1
- 824 003a 03       		.uleb128 0x3
- 825 003b 08       		.byte	0x8
- 826 003c 04       		.byte	0x4
- 827 003d 27030000 		.4byte	.LASF2
- 828 0041 03       		.uleb128 0x3
- 829 0042 01       		.byte	0x1
- 830 0043 06       		.byte	0x6
- 831 0044 3A030000 		.4byte	.LASF3
- 832 0048 04       		.uleb128 0x4
- 833 0049 00000000 		.4byte	.LASF7
- 834 004d 02       		.byte	0x2
- 835 004e 1D       		.byte	0x1d
- 836 004f 53000000 		.4byte	0x53
- 837 0053 03       		.uleb128 0x3
- 838 0054 01       		.byte	0x1
- 839 0055 08       		.byte	0x8
- 840 0056 AA010000 		.4byte	.LASF4
- 841 005a 03       		.uleb128 0x3
- 842 005b 02       		.byte	0x2
- 843 005c 05       		.byte	0x5
- 844 005d 2B020000 		.4byte	.LASF5
- 845 0061 03       		.uleb128 0x3
- 846 0062 02       		.byte	0x2
- 847 0063 07       		.byte	0x7
- 848 0064 DB010000 		.4byte	.LASF6
- 849 0068 04       		.uleb128 0x4
- 850 0069 D7000000 		.4byte	.LASF8
- 851 006d 02       		.byte	0x2
- 852 006e 3F       		.byte	0x3f
- 853 006f 73000000 		.4byte	0x73
- 854 0073 03       		.uleb128 0x3
- 855 0074 04       		.byte	0x4
- 856 0075 05       		.byte	0x5
- 857 0076 E1000000 		.4byte	.LASF9
- 858 007a 04       		.uleb128 0x4
- 859 007b 4C010000 		.4byte	.LASF10
- 860 007f 02       		.byte	0x2
- 861 0080 41       		.byte	0x41
- 862 0081 85000000 		.4byte	0x85
- 863 0085 03       		.uleb128 0x3
- 864 0086 04       		.byte	0x4
- 865 0087 07       		.byte	0x7
- 866 0088 C9010000 		.4byte	.LASF11
- 867 008c 03       		.uleb128 0x3
- 868 008d 08       		.byte	0x8
- 869 008e 07       		.byte	0x7
- 870 008f 6C020000 		.4byte	.LASF12
- 871 0093 04       		.uleb128 0x4
- 872 0094 83020000 		.4byte	.LASF13
- 873 0098 03       		.byte	0x3
- 874 0099 18       		.byte	0x18
- 875 009a 48000000 		.4byte	0x48
- 876 009e 04       		.uleb128 0x4
- 877 009f 93020000 		.4byte	.LASF14
- 878 00a3 03       		.byte	0x3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 20
+ 821 0021 00000000 		.4byte	.Ldebug_line0
+ 822 0025 02       		.uleb128 0x2
+ 823 0026 04       		.byte	0x4
+ 824 0027 05       		.byte	0x5
+ 825 0028 696E7400 		.ascii	"int\000"
+ 826 002c 03       		.uleb128 0x3
+ 827 002d 04       		.byte	0x4
+ 828 002e 07       		.byte	0x7
+ 829 002f 15020000 		.4byte	.LASF0
+ 830 0033 03       		.uleb128 0x3
+ 831 0034 08       		.byte	0x8
+ 832 0035 05       		.byte	0x5
+ 833 0036 6A020000 		.4byte	.LASF1
+ 834 003a 03       		.uleb128 0x3
+ 835 003b 08       		.byte	0x8
+ 836 003c 04       		.byte	0x4
+ 837 003d 47030000 		.4byte	.LASF2
+ 838 0041 03       		.uleb128 0x3
+ 839 0042 01       		.byte	0x1
+ 840 0043 06       		.byte	0x6
+ 841 0044 5A030000 		.4byte	.LASF3
+ 842 0048 04       		.uleb128 0x4
+ 843 0049 00000000 		.4byte	.LASF7
+ 844 004d 02       		.byte	0x2
+ 845 004e 1D       		.byte	0x1d
+ 846 004f 53000000 		.4byte	0x53
+ 847 0053 03       		.uleb128 0x3
+ 848 0054 01       		.byte	0x1
+ 849 0055 08       		.byte	0x8
+ 850 0056 67010000 		.4byte	.LASF4
+ 851 005a 03       		.uleb128 0x3
+ 852 005b 02       		.byte	0x2
+ 853 005c 05       		.byte	0x5
+ 854 005d E8010000 		.4byte	.LASF5
+ 855 0061 03       		.uleb128 0x3
+ 856 0062 02       		.byte	0x2
+ 857 0063 07       		.byte	0x7
+ 858 0064 98010000 		.4byte	.LASF6
+ 859 0068 04       		.uleb128 0x4
+ 860 0069 D7000000 		.4byte	.LASF8
+ 861 006d 02       		.byte	0x2
+ 862 006e 3F       		.byte	0x3f
+ 863 006f 73000000 		.4byte	0x73
+ 864 0073 03       		.uleb128 0x3
+ 865 0074 04       		.byte	0x4
+ 866 0075 05       		.byte	0x5
+ 867 0076 E1000000 		.4byte	.LASF9
+ 868 007a 04       		.uleb128 0x4
+ 869 007b 4C010000 		.4byte	.LASF10
+ 870 007f 02       		.byte	0x2
+ 871 0080 41       		.byte	0x41
+ 872 0081 85000000 		.4byte	0x85
+ 873 0085 03       		.uleb128 0x3
+ 874 0086 04       		.byte	0x4
+ 875 0087 07       		.byte	0x7
+ 876 0088 86010000 		.4byte	.LASF11
+ 877 008c 03       		.uleb128 0x3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 20
 
 
- 879 00a4 2C       		.byte	0x2c
- 880 00a5 68000000 		.4byte	0x68
- 881 00a9 04       		.uleb128 0x4
- 882 00aa 0F030000 		.4byte	.LASF15
- 883 00ae 03       		.byte	0x3
- 884 00af 30       		.byte	0x30
- 885 00b0 7A000000 		.4byte	0x7a
- 886 00b4 05       		.uleb128 0x5
- 887 00b5 F3020000 		.4byte	.LASF16
- 888 00b9 04       		.byte	0x4
- 889 00ba E401     		.2byte	0x1e4
- 890 00bc 53000000 		.4byte	0x53
- 891 00c0 05       		.uleb128 0x5
- 892 00c1 35020000 		.4byte	.LASF17
- 893 00c5 04       		.byte	0x4
- 894 00c6 E501     		.2byte	0x1e5
- 895 00c8 61000000 		.4byte	0x61
- 896 00cc 03       		.uleb128 0x3
- 897 00cd 04       		.byte	0x4
- 898 00ce 04       		.byte	0x4
- 899 00cf 57010000 		.4byte	.LASF18
- 900 00d3 03       		.uleb128 0x3
- 901 00d4 08       		.byte	0x8
- 902 00d5 04       		.byte	0x4
- 903 00d6 16020000 		.4byte	.LASF19
- 904 00da 03       		.uleb128 0x3
- 905 00db 01       		.byte	0x1
- 906 00dc 08       		.byte	0x8
- 907 00dd C9020000 		.4byte	.LASF20
- 908 00e1 03       		.uleb128 0x3
- 909 00e2 04       		.byte	0x4
- 910 00e3 07       		.byte	0x7
- 911 00e4 A4020000 		.4byte	.LASF21
- 912 00e8 06       		.uleb128 0x6
- 913 00e9 04       		.byte	0x4
- 914 00ea 04       		.uleb128 0x4
- 915 00eb 5A030000 		.4byte	.LASF22
- 916 00ef 05       		.byte	0x5
- 917 00f0 38       		.byte	0x38
- 918 00f1 73000000 		.4byte	0x73
- 919 00f5 04       		.uleb128 0x4
- 920 00f6 B7000000 		.4byte	.LASF23
- 921 00fa 05       		.byte	0x5
- 922 00fb 3F       		.byte	0x3f
- 923 00fc A9000000 		.4byte	0xa9
- 924 0100 04       		.uleb128 0x4
- 925 0101 F5000000 		.4byte	.LASF24
- 926 0105 06       		.byte	0x6
- 927 0106 30       		.byte	0x30
- 928 0107 0B010000 		.4byte	0x10b
- 929 010b 07       		.uleb128 0x7
- 930 010c 04       		.byte	0x4
- 931 010d 11010000 		.4byte	0x111
- 932 0111 08       		.uleb128 0x8
- 933 0112 3C020000 		.4byte	.LASF55
- 934 0116 09       		.uleb128 0x9
- 935 0117 07020000 		.4byte	.LASF36
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 21
+ 878 008d 08       		.byte	0x8
+ 879 008e 07       		.byte	0x7
+ 880 008f 29020000 		.4byte	.LASF12
+ 881 0093 04       		.uleb128 0x4
+ 882 0094 40020000 		.4byte	.LASF13
+ 883 0098 03       		.byte	0x3
+ 884 0099 18       		.byte	0x18
+ 885 009a 48000000 		.4byte	0x48
+ 886 009e 04       		.uleb128 0x4
+ 887 009f 50020000 		.4byte	.LASF14
+ 888 00a3 03       		.byte	0x3
+ 889 00a4 2C       		.byte	0x2c
+ 890 00a5 68000000 		.4byte	0x68
+ 891 00a9 04       		.uleb128 0x4
+ 892 00aa 2F030000 		.4byte	.LASF15
+ 893 00ae 03       		.byte	0x3
+ 894 00af 30       		.byte	0x30
+ 895 00b0 7A000000 		.4byte	0x7a
+ 896 00b4 05       		.uleb128 0x5
+ 897 00b5 13030000 		.4byte	.LASF16
+ 898 00b9 04       		.byte	0x4
+ 899 00ba E401     		.2byte	0x1e4
+ 900 00bc 53000000 		.4byte	0x53
+ 901 00c0 05       		.uleb128 0x5
+ 902 00c1 F2010000 		.4byte	.LASF17
+ 903 00c5 04       		.byte	0x4
+ 904 00c6 E501     		.2byte	0x1e5
+ 905 00c8 61000000 		.4byte	0x61
+ 906 00cc 03       		.uleb128 0x3
+ 907 00cd 04       		.byte	0x4
+ 908 00ce 04       		.byte	0x4
+ 909 00cf 57010000 		.4byte	.LASF18
+ 910 00d3 03       		.uleb128 0x3
+ 911 00d4 08       		.byte	0x8
+ 912 00d5 04       		.byte	0x4
+ 913 00d6 D3010000 		.4byte	.LASF19
+ 914 00da 03       		.uleb128 0x3
+ 915 00db 01       		.byte	0x1
+ 916 00dc 08       		.byte	0x8
+ 917 00dd 86020000 		.4byte	.LASF20
+ 918 00e1 03       		.uleb128 0x3
+ 919 00e2 04       		.byte	0x4
+ 920 00e3 07       		.byte	0x7
+ 921 00e4 61020000 		.4byte	.LASF21
+ 922 00e8 06       		.uleb128 0x6
+ 923 00e9 04       		.byte	0x4
+ 924 00ea 04       		.uleb128 0x4
+ 925 00eb 7A030000 		.4byte	.LASF22
+ 926 00ef 05       		.byte	0x5
+ 927 00f0 38       		.byte	0x38
+ 928 00f1 73000000 		.4byte	0x73
+ 929 00f5 04       		.uleb128 0x4
+ 930 00f6 B7000000 		.4byte	.LASF23
+ 931 00fa 05       		.byte	0x5
+ 932 00fb 3F       		.byte	0x3f
+ 933 00fc A9000000 		.4byte	0xa9
+ 934 0100 04       		.uleb128 0x4
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 21
 
 
- 936 011b 01       		.byte	0x1
- 937 011c 25       		.byte	0x25
- 938 011d 00000000 		.4byte	.LFB68
- 939 0121 CC000000 		.4byte	.LFE68-.LFB68
- 940 0125 01       		.uleb128 0x1
- 941 0126 9C       		.byte	0x9c
- 942 0127 0A       		.uleb128 0xa
- 943 0128 3A010000 		.4byte	.LASF56
- 944 012c 01       		.byte	0x1
- 945 012d 42       		.byte	0x42
- 946 012e 00000000 		.4byte	.LFB69
- 947 0132 C8000000 		.4byte	.LFE69-.LFB69
- 948 0136 01       		.uleb128 0x1
- 949 0137 9C       		.byte	0x9c
- 950 0138 75010000 		.4byte	0x175
- 951 013c 0B       		.uleb128 0xb
- 952 013d CE020000 		.4byte	.LASF33
- 953 0141 01       		.byte	0x1
- 954 0142 42       		.byte	0x42
- 955 0143 E8000000 		.4byte	0xe8
- 956 0147 02       		.uleb128 0x2
- 957 0148 91       		.byte	0x91
- 958 0149 64       		.sleb128 -28
- 959 014a 0C       		.uleb128 0xc
- 960 014b 65020000 		.4byte	.LASF25
- 961 014f 01       		.byte	0x1
- 962 0150 43       		.byte	0x43
- 963 0151 75010000 		.4byte	0x175
- 964 0155 02       		.uleb128 0x2
- 965 0156 91       		.byte	0x91
- 966 0157 6F       		.sleb128 -17
- 967 0158 0C       		.uleb128 0xc
- 968 0159 8B020000 		.4byte	.LASF26
- 969 015d 01       		.byte	0x1
- 970 015e 44       		.byte	0x44
- 971 015f EA000000 		.4byte	0xea
- 972 0163 02       		.uleb128 0x2
- 973 0164 91       		.byte	0x91
- 974 0165 70       		.sleb128 -16
- 975 0166 0C       		.uleb128 0xc
- 976 0167 18030000 		.4byte	.LASF27
- 977 016b 01       		.byte	0x1
- 978 016c 45       		.byte	0x45
- 979 016d 7C010000 		.4byte	0x17c
- 980 0171 02       		.uleb128 0x2
- 981 0172 91       		.byte	0x91
- 982 0173 74       		.sleb128 -12
- 983 0174 00       		.byte	0
- 984 0175 03       		.uleb128 0x3
- 985 0176 01       		.byte	0x1
- 986 0177 02       		.byte	0x2
- 987 0178 54030000 		.4byte	.LASF28
- 988 017c 07       		.uleb128 0x7
- 989 017d 04       		.byte	0x4
- 990 017e B4000000 		.4byte	0xb4
- 991 0182 0D       		.uleb128 0xd
- 992 0183 98000000 		.4byte	.LASF38
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 22
+ 935 0101 F5000000 		.4byte	.LASF24
+ 936 0105 06       		.byte	0x6
+ 937 0106 30       		.byte	0x30
+ 938 0107 0B010000 		.4byte	0x10b
+ 939 010b 07       		.uleb128 0x7
+ 940 010c 04       		.byte	0x4
+ 941 010d 11010000 		.4byte	0x111
+ 942 0111 08       		.uleb128 0x8
+ 943 0112 F9010000 		.4byte	.LASF55
+ 944 0116 09       		.uleb128 0x9
+ 945 0117 C4010000 		.4byte	.LASF36
+ 946 011b 01       		.byte	0x1
+ 947 011c 25       		.byte	0x25
+ 948 011d 00000000 		.4byte	.LFB68
+ 949 0121 D0000000 		.4byte	.LFE68-.LFB68
+ 950 0125 01       		.uleb128 0x1
+ 951 0126 9C       		.byte	0x9c
+ 952 0127 0A       		.uleb128 0xa
+ 953 0128 3A010000 		.4byte	.LASF56
+ 954 012c 01       		.byte	0x1
+ 955 012d 42       		.byte	0x42
+ 956 012e 00000000 		.4byte	.LFB69
+ 957 0132 C8000000 		.4byte	.LFE69-.LFB69
+ 958 0136 01       		.uleb128 0x1
+ 959 0137 9C       		.byte	0x9c
+ 960 0138 75010000 		.4byte	0x175
+ 961 013c 0B       		.uleb128 0xb
+ 962 013d 8B020000 		.4byte	.LASF33
+ 963 0141 01       		.byte	0x1
+ 964 0142 42       		.byte	0x42
+ 965 0143 E8000000 		.4byte	0xe8
+ 966 0147 02       		.uleb128 0x2
+ 967 0148 91       		.byte	0x91
+ 968 0149 64       		.sleb128 -28
+ 969 014a 0C       		.uleb128 0xc
+ 970 014b 22020000 		.4byte	.LASF25
+ 971 014f 01       		.byte	0x1
+ 972 0150 43       		.byte	0x43
+ 973 0151 75010000 		.4byte	0x175
+ 974 0155 02       		.uleb128 0x2
+ 975 0156 91       		.byte	0x91
+ 976 0157 6F       		.sleb128 -17
+ 977 0158 0C       		.uleb128 0xc
+ 978 0159 48020000 		.4byte	.LASF26
+ 979 015d 01       		.byte	0x1
+ 980 015e 44       		.byte	0x44
+ 981 015f EA000000 		.4byte	0xea
+ 982 0163 02       		.uleb128 0x2
+ 983 0164 91       		.byte	0x91
+ 984 0165 70       		.sleb128 -16
+ 985 0166 0C       		.uleb128 0xc
+ 986 0167 38030000 		.4byte	.LASF27
+ 987 016b 01       		.byte	0x1
+ 988 016c 45       		.byte	0x45
+ 989 016d 7C010000 		.4byte	0x17c
+ 990 0171 02       		.uleb128 0x2
+ 991 0172 91       		.byte	0x91
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 22
 
 
- 993 0187 01       		.byte	0x1
- 994 0188 72       		.byte	0x72
- 995 0189 00000000 		.4byte	.LFB70
- 996 018d A0000000 		.4byte	.LFE70-.LFB70
- 997 0191 01       		.uleb128 0x1
- 998 0192 9C       		.byte	0x9c
- 999 0193 DE010000 		.4byte	0x1de
- 1000 0197 0C       		.uleb128 0xc
- 1001 0198 EA000000 		.4byte	.LASF29
- 1002 019c 01       		.byte	0x1
- 1003 019d 73       		.byte	0x73
- 1004 019e CC000000 		.4byte	0xcc
- 1005 01a2 02       		.uleb128 0x2
- 1006 01a3 91       		.byte	0x91
- 1007 01a4 6C       		.sleb128 -20
- 1008 01a5 0C       		.uleb128 0xc
- 1009 01a6 CE000000 		.4byte	.LASF30
- 1010 01aa 01       		.byte	0x1
- 1011 01ab 74       		.byte	0x74
- 1012 01ac DE010000 		.4byte	0x1de
- 1013 01b0 02       		.uleb128 0x2
- 1014 01b1 91       		.byte	0x91
- 1015 01b2 70       		.sleb128 -16
- 1016 01b3 0C       		.uleb128 0xc
- 1017 01b4 9B020000 		.4byte	.LASF31
- 1018 01b8 01       		.byte	0x1
- 1019 01b9 75       		.byte	0x75
- 1020 01ba CC000000 		.4byte	0xcc
- 1021 01be 02       		.uleb128 0x2
- 1022 01bf 91       		.byte	0x91
- 1023 01c0 68       		.sleb128 -24
- 1024 01c1 0C       		.uleb128 0xc
- 1025 01c2 46030000 		.4byte	.LASF32
- 1026 01c6 01       		.byte	0x1
- 1027 01c7 76       		.byte	0x76
- 1028 01c8 C0000000 		.4byte	0xc0
- 1029 01cc 02       		.uleb128 0x2
- 1030 01cd 91       		.byte	0x91
- 1031 01ce 66       		.sleb128 -26
- 1032 01cf 0C       		.uleb128 0xc
- 1033 01d0 65020000 		.4byte	.LASF25
- 1034 01d4 01       		.byte	0x1
- 1035 01d5 77       		.byte	0x77
- 1036 01d6 75010000 		.4byte	0x175
- 1037 01da 02       		.uleb128 0x2
- 1038 01db 91       		.byte	0x91
- 1039 01dc 77       		.sleb128 -9
- 1040 01dd 00       		.byte	0
- 1041 01de 0E       		.uleb128 0xe
- 1042 01df F5000000 		.4byte	0xf5
- 1043 01e3 0F       		.uleb128 0xf
- 1044 01e4 0E010000 		.4byte	.LASF57
- 1045 01e8 01       		.byte	0x1
- 1046 01e9 8A       		.byte	0x8a
- 1047 01ea CC000000 		.4byte	0xcc
- 1048 01ee 00000000 		.4byte	.LFB71
- 1049 01f2 48010000 		.4byte	.LFE71-.LFB71
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 23
+ 992 0173 74       		.sleb128 -12
+ 993 0174 00       		.byte	0
+ 994 0175 03       		.uleb128 0x3
+ 995 0176 01       		.byte	0x1
+ 996 0177 02       		.byte	0x2
+ 997 0178 74030000 		.4byte	.LASF28
+ 998 017c 07       		.uleb128 0x7
+ 999 017d 04       		.byte	0x4
+ 1000 017e B4000000 		.4byte	0xb4
+ 1001 0182 0D       		.uleb128 0xd
+ 1002 0183 98000000 		.4byte	.LASF38
+ 1003 0187 01       		.byte	0x1
+ 1004 0188 72       		.byte	0x72
+ 1005 0189 00000000 		.4byte	.LFB70
+ 1006 018d C0000000 		.4byte	.LFE70-.LFB70
+ 1007 0191 01       		.uleb128 0x1
+ 1008 0192 9C       		.byte	0x9c
+ 1009 0193 DE010000 		.4byte	0x1de
+ 1010 0197 0C       		.uleb128 0xc
+ 1011 0198 EA000000 		.4byte	.LASF29
+ 1012 019c 01       		.byte	0x1
+ 1013 019d 73       		.byte	0x73
+ 1014 019e CC000000 		.4byte	0xcc
+ 1015 01a2 02       		.uleb128 0x2
+ 1016 01a3 91       		.byte	0x91
+ 1017 01a4 64       		.sleb128 -28
+ 1018 01a5 0C       		.uleb128 0xc
+ 1019 01a6 CE000000 		.4byte	.LASF30
+ 1020 01aa 01       		.byte	0x1
+ 1021 01ab 74       		.byte	0x74
+ 1022 01ac DE010000 		.4byte	0x1de
+ 1023 01b0 02       		.uleb128 0x2
+ 1024 01b1 91       		.byte	0x91
+ 1025 01b2 68       		.sleb128 -24
+ 1026 01b3 0C       		.uleb128 0xc
+ 1027 01b4 58020000 		.4byte	.LASF31
+ 1028 01b8 01       		.byte	0x1
+ 1029 01b9 75       		.byte	0x75
+ 1030 01ba CC000000 		.4byte	0xcc
+ 1031 01be 02       		.uleb128 0x2
+ 1032 01bf 91       		.byte	0x91
+ 1033 01c0 60       		.sleb128 -32
+ 1034 01c1 0C       		.uleb128 0xc
+ 1035 01c2 66030000 		.4byte	.LASF32
+ 1036 01c6 01       		.byte	0x1
+ 1037 01c7 76       		.byte	0x76
+ 1038 01c8 C0000000 		.4byte	0xc0
+ 1039 01cc 02       		.uleb128 0x2
+ 1040 01cd 91       		.byte	0x91
+ 1041 01ce 5E       		.sleb128 -34
+ 1042 01cf 0C       		.uleb128 0xc
+ 1043 01d0 22020000 		.4byte	.LASF25
+ 1044 01d4 01       		.byte	0x1
+ 1045 01d5 77       		.byte	0x77
+ 1046 01d6 75010000 		.4byte	0x175
+ 1047 01da 02       		.uleb128 0x2
+ 1048 01db 91       		.byte	0x91
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 23
 
 
- 1050 01f6 01       		.uleb128 0x1
- 1051 01f7 9C       		.byte	0x9c
- 1052 01f8 27020000 		.4byte	0x227
- 1053 01fc 0B       		.uleb128 0xb
- 1054 01fd EA000000 		.4byte	.LASF29
- 1055 0201 01       		.byte	0x1
- 1056 0202 8A       		.byte	0x8a
- 1057 0203 CC000000 		.4byte	0xcc
- 1058 0207 02       		.uleb128 0x2
- 1059 0208 91       		.byte	0x91
- 1060 0209 64       		.sleb128 -28
- 1061 020a 0C       		.uleb128 0xc
- 1062 020b 33030000 		.4byte	.LASF34
- 1063 020f 01       		.byte	0x1
- 1064 0210 8B       		.byte	0x8b
- 1065 0211 CC000000 		.4byte	0xcc
- 1066 0215 02       		.uleb128 0x2
- 1067 0216 91       		.byte	0x91
- 1068 0217 6C       		.sleb128 -20
- 1069 0218 0C       		.uleb128 0xc
- 1070 0219 03010000 		.4byte	.LASF35
- 1071 021d 01       		.byte	0x1
- 1072 021e 8C       		.byte	0x8c
- 1073 021f CC000000 		.4byte	0xcc
- 1074 0223 02       		.uleb128 0x2
- 1075 0224 91       		.byte	0x91
- 1076 0225 68       		.sleb128 -24
- 1077 0226 00       		.byte	0
- 1078 0227 09       		.uleb128 0x9
- 1079 0228 BB020000 		.4byte	.LASF37
- 1080 022c 01       		.byte	0x1
- 1081 022d 9D       		.byte	0x9d
- 1082 022e 00000000 		.4byte	.LFB72
- 1083 0232 44000000 		.4byte	.LFE72-.LFB72
- 1084 0236 01       		.uleb128 0x1
- 1085 0237 9C       		.byte	0x9c
- 1086 0238 0D       		.uleb128 0xd
- 1087 0239 20010000 		.4byte	.LASF39
- 1088 023d 01       		.byte	0x1
- 1089 023e A3       		.byte	0xa3
- 1090 023f 00000000 		.4byte	.LFB73
- 1091 0243 30000000 		.4byte	.LFE73-.LFB73
- 1092 0247 01       		.uleb128 0x1
- 1093 0248 9C       		.byte	0x9c
- 1094 0249 5C020000 		.4byte	0x25c
- 1095 024d 0C       		.uleb128 0xc
- 1096 024e B8010000 		.4byte	.LASF40
- 1097 0252 01       		.byte	0x1
- 1098 0253 A4       		.byte	0xa4
- 1099 0254 C0000000 		.4byte	0xc0
- 1100 0258 02       		.uleb128 0x2
- 1101 0259 91       		.byte	0x91
- 1102 025a 76       		.sleb128 -10
- 1103 025b 00       		.byte	0
- 1104 025c 0D       		.uleb128 0xd
- 1105 025d 78030000 		.4byte	.LASF41
- 1106 0261 01       		.byte	0x1
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 24
+ 1049 01dc 6F       		.sleb128 -17
+ 1050 01dd 00       		.byte	0
+ 1051 01de 0E       		.uleb128 0xe
+ 1052 01df F5000000 		.4byte	0xf5
+ 1053 01e3 0F       		.uleb128 0xf
+ 1054 01e4 0E010000 		.4byte	.LASF57
+ 1055 01e8 01       		.byte	0x1
+ 1056 01e9 8B       		.byte	0x8b
+ 1057 01ea CC000000 		.4byte	0xcc
+ 1058 01ee 00000000 		.4byte	.LFB71
+ 1059 01f2 48010000 		.4byte	.LFE71-.LFB71
+ 1060 01f6 01       		.uleb128 0x1
+ 1061 01f7 9C       		.byte	0x9c
+ 1062 01f8 27020000 		.4byte	0x227
+ 1063 01fc 0B       		.uleb128 0xb
+ 1064 01fd EA000000 		.4byte	.LASF29
+ 1065 0201 01       		.byte	0x1
+ 1066 0202 8B       		.byte	0x8b
+ 1067 0203 CC000000 		.4byte	0xcc
+ 1068 0207 02       		.uleb128 0x2
+ 1069 0208 91       		.byte	0x91
+ 1070 0209 64       		.sleb128 -28
+ 1071 020a 0C       		.uleb128 0xc
+ 1072 020b 53030000 		.4byte	.LASF34
+ 1073 020f 01       		.byte	0x1
+ 1074 0210 8C       		.byte	0x8c
+ 1075 0211 CC000000 		.4byte	0xcc
+ 1076 0215 02       		.uleb128 0x2
+ 1077 0216 91       		.byte	0x91
+ 1078 0217 6C       		.sleb128 -20
+ 1079 0218 0C       		.uleb128 0xc
+ 1080 0219 03010000 		.4byte	.LASF35
+ 1081 021d 01       		.byte	0x1
+ 1082 021e 8D       		.byte	0x8d
+ 1083 021f CC000000 		.4byte	0xcc
+ 1084 0223 02       		.uleb128 0x2
+ 1085 0224 91       		.byte	0x91
+ 1086 0225 68       		.sleb128 -24
+ 1087 0226 00       		.byte	0
+ 1088 0227 09       		.uleb128 0x9
+ 1089 0228 78020000 		.4byte	.LASF37
+ 1090 022c 01       		.byte	0x1
+ 1091 022d 9E       		.byte	0x9e
+ 1092 022e 00000000 		.4byte	.LFB72
+ 1093 0232 44000000 		.4byte	.LFE72-.LFB72
+ 1094 0236 01       		.uleb128 0x1
+ 1095 0237 9C       		.byte	0x9c
+ 1096 0238 0D       		.uleb128 0xd
+ 1097 0239 20010000 		.4byte	.LASF39
+ 1098 023d 01       		.byte	0x1
+ 1099 023e A4       		.byte	0xa4
+ 1100 023f 00000000 		.4byte	.LFB73
+ 1101 0243 30000000 		.4byte	.LFE73-.LFB73
+ 1102 0247 01       		.uleb128 0x1
+ 1103 0248 9C       		.byte	0x9c
+ 1104 0249 5C020000 		.4byte	0x25c
+ 1105 024d 0C       		.uleb128 0xc
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 24
 
 
- 1107 0262 AF       		.byte	0xaf
- 1108 0263 00000000 		.4byte	.LFB74
- 1109 0267 68000000 		.4byte	.LFE74-.LFB74
- 1110 026b 01       		.uleb128 0x1
- 1111 026c 9C       		.byte	0x9c
- 1112 026d 9C020000 		.4byte	0x29c
- 1113 0271 0C       		.uleb128 0xc
- 1114 0272 4C020000 		.4byte	.LASF42
- 1115 0276 01       		.byte	0x1
- 1116 0277 B0       		.byte	0xb0
- 1117 0278 75010000 		.4byte	0x175
- 1118 027c 02       		.uleb128 0x2
- 1119 027d 91       		.byte	0x91
- 1120 027e 73       		.sleb128 -13
- 1121 027f 0C       		.uleb128 0xc
- 1122 0280 C2000000 		.4byte	.LASF43
- 1123 0284 01       		.byte	0x1
- 1124 0285 B1       		.byte	0xb1
- 1125 0286 75010000 		.4byte	0x175
- 1126 028a 02       		.uleb128 0x2
- 1127 028b 91       		.byte	0x91
- 1128 028c 72       		.sleb128 -14
- 1129 028d 0C       		.uleb128 0xc
- 1130 028e CE000000 		.4byte	.LASF30
- 1131 0292 01       		.byte	0x1
- 1132 0293 B2       		.byte	0xb2
- 1133 0294 DE010000 		.4byte	0x1de
- 1134 0298 02       		.uleb128 0x2
- 1135 0299 91       		.byte	0x91
- 1136 029a 74       		.sleb128 -12
- 1137 029b 00       		.byte	0
- 1138 029c 10       		.uleb128 0x10
- 1139 029d AC020000 		.4byte	0x2ac
- 1140 02a1 AC020000 		.4byte	0x2ac
- 1141 02a5 11       		.uleb128 0x11
- 1142 02a6 E1000000 		.4byte	0xe1
- 1143 02aa 02       		.byte	0x2
- 1144 02ab 00       		.byte	0
- 1145 02ac 0E       		.uleb128 0xe
- 1146 02ad B4000000 		.4byte	0xb4
- 1147 02b1 0C       		.uleb128 0xc
- 1148 02b2 F9020000 		.4byte	.LASF44
- 1149 02b6 01       		.byte	0x1
- 1150 02b7 22       		.byte	0x22
- 1151 02b8 C2020000 		.4byte	0x2c2
- 1152 02bc 05       		.uleb128 0x5
- 1153 02bd 03       		.byte	0x3
- 1154 02be 0C000000 		.4byte	pcTextForNutrientPump
- 1155 02c2 0E       		.uleb128 0xe
- 1156 02c3 9C020000 		.4byte	0x29c
- 1157 02c7 12       		.uleb128 0x12
- 1158 02c8 FA010000 		.4byte	.LASF45
- 1159 02cc 07       		.byte	0x7
- 1160 02cd 1207     		.2byte	0x712
- 1161 02cf D3020000 		.4byte	0x2d3
- 1162 02d3 13       		.uleb128 0x13
- 1163 02d4 9E000000 		.4byte	0x9e
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 25
+ 1106 024e 75010000 		.4byte	.LASF40
+ 1107 0252 01       		.byte	0x1
+ 1108 0253 A5       		.byte	0xa5
+ 1109 0254 C0000000 		.4byte	0xc0
+ 1110 0258 02       		.uleb128 0x2
+ 1111 0259 91       		.byte	0x91
+ 1112 025a 76       		.sleb128 -10
+ 1113 025b 00       		.byte	0
+ 1114 025c 0D       		.uleb128 0xd
+ 1115 025d 98030000 		.4byte	.LASF41
+ 1116 0261 01       		.byte	0x1
+ 1117 0262 B0       		.byte	0xb0
+ 1118 0263 00000000 		.4byte	.LFB74
+ 1119 0267 68000000 		.4byte	.LFE74-.LFB74
+ 1120 026b 01       		.uleb128 0x1
+ 1121 026c 9C       		.byte	0x9c
+ 1122 026d 9C020000 		.4byte	0x29c
+ 1123 0271 0C       		.uleb128 0xc
+ 1124 0272 09020000 		.4byte	.LASF42
+ 1125 0276 01       		.byte	0x1
+ 1126 0277 B1       		.byte	0xb1
+ 1127 0278 75010000 		.4byte	0x175
+ 1128 027c 02       		.uleb128 0x2
+ 1129 027d 91       		.byte	0x91
+ 1130 027e 73       		.sleb128 -13
+ 1131 027f 0C       		.uleb128 0xc
+ 1132 0280 C2000000 		.4byte	.LASF43
+ 1133 0284 01       		.byte	0x1
+ 1134 0285 B2       		.byte	0xb2
+ 1135 0286 75010000 		.4byte	0x175
+ 1136 028a 02       		.uleb128 0x2
+ 1137 028b 91       		.byte	0x91
+ 1138 028c 72       		.sleb128 -14
+ 1139 028d 0C       		.uleb128 0xc
+ 1140 028e CE000000 		.4byte	.LASF30
+ 1141 0292 01       		.byte	0x1
+ 1142 0293 B3       		.byte	0xb3
+ 1143 0294 DE010000 		.4byte	0x1de
+ 1144 0298 02       		.uleb128 0x2
+ 1145 0299 91       		.byte	0x91
+ 1146 029a 74       		.sleb128 -12
+ 1147 029b 00       		.byte	0
+ 1148 029c 10       		.uleb128 0x10
+ 1149 029d AC020000 		.4byte	0x2ac
+ 1150 02a1 AC020000 		.4byte	0x2ac
+ 1151 02a5 11       		.uleb128 0x11
+ 1152 02a6 E1000000 		.4byte	0xe1
+ 1153 02aa 02       		.byte	0x2
+ 1154 02ab 00       		.byte	0
+ 1155 02ac 0E       		.uleb128 0xe
+ 1156 02ad B4000000 		.4byte	0xb4
+ 1157 02b1 0C       		.uleb128 0xc
+ 1158 02b2 19030000 		.4byte	.LASF44
+ 1159 02b6 01       		.byte	0x1
+ 1160 02b7 22       		.byte	0x22
+ 1161 02b8 C2020000 		.4byte	0x2c2
+ 1162 02bc 05       		.uleb128 0x5
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 25
 
 
- 1164 02d8 14       		.uleb128 0x14
- 1165 02d9 A7000000 		.4byte	.LASF46
- 1166 02dd 01       		.byte	0x1
- 1167 02de 19       		.byte	0x19
- 1168 02df E9020000 		.4byte	0x2e9
- 1169 02e3 05       		.uleb128 0x5
- 1170 02e4 03       		.byte	0x3
- 1171 02e5 00000000 		.4byte	fNeutralVoltage
- 1172 02e9 0E       		.uleb128 0xe
- 1173 02ea CC000000 		.4byte	0xcc
- 1174 02ee 14       		.uleb128 0x14
- 1175 02ef DB020000 		.4byte	.LASF47
- 1176 02f3 01       		.byte	0x1
- 1177 02f4 1A       		.byte	0x1a
- 1178 02f5 E9020000 		.4byte	0x2e9
- 1179 02f9 05       		.uleb128 0x5
- 1180 02fa 03       		.byte	0x3
- 1181 02fb 00000000 		.4byte	fAcidVoltage
- 1182 02ff 10       		.uleb128 0x10
- 1183 0300 00010000 		.4byte	0x100
- 1184 0304 0F030000 		.4byte	0x30f
- 1185 0308 11       		.uleb128 0x11
- 1186 0309 E1000000 		.4byte	0xe1
- 1187 030d 02       		.byte	0x2
- 1188 030e 00       		.byte	0
- 1189 030f 14       		.uleb128 0x14
- 1190 0310 65030000 		.4byte	.LASF48
- 1191 0314 01       		.byte	0x1
- 1192 0315 1C       		.byte	0x1c
- 1193 0316 FF020000 		.4byte	0x2ff
- 1194 031a 05       		.uleb128 0x5
- 1195 031b 03       		.byte	0x3
- 1196 031c 00000000 		.4byte	xQueueNutrientPump
- 1197 0320 14       		.uleb128 0x14
- 1198 0321 1D020000 		.4byte	.LASF49
- 1199 0325 01       		.byte	0x1
- 1200 0326 1D       		.byte	0x1d
- 1201 0327 00010000 		.4byte	0x100
- 1202 032b 05       		.uleb128 0x5
- 1203 032c 03       		.byte	0x3
- 1204 032d 00000000 		.4byte	xQueuePHValue
- 1205 0331 14       		.uleb128 0x14
- 1206 0332 A0010000 		.4byte	.LASF50
- 1207 0336 01       		.byte	0x1
- 1208 0337 20       		.byte	0x20
- 1209 0338 AC020000 		.4byte	0x2ac
- 1210 033c 05       		.uleb128 0x5
- 1211 033d 03       		.byte	0x3
- 1212 033e 00000000 		.4byte	MAX_SPEED
- 1213 0342 14       		.uleb128 0x14
- 1214 0343 E8020000 		.4byte	.LASF51
- 1215 0347 01       		.byte	0x1
- 1216 0348 21       		.byte	0x21
- 1217 0349 AC020000 		.4byte	0x2ac
- 1218 034d 05       		.uleb128 0x5
- 1219 034e 03       		.byte	0x3
- 1220 034f 00000000 		.4byte	STOP_SPEED
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 26
+ 1163 02bd 03       		.byte	0x3
+ 1164 02be 0C000000 		.4byte	pcTextForNutrientPump
+ 1165 02c2 0E       		.uleb128 0xe
+ 1166 02c3 9C020000 		.4byte	0x29c
+ 1167 02c7 12       		.uleb128 0x12
+ 1168 02c8 B7010000 		.4byte	.LASF45
+ 1169 02cc 07       		.byte	0x7
+ 1170 02cd 1207     		.2byte	0x712
+ 1171 02cf D3020000 		.4byte	0x2d3
+ 1172 02d3 13       		.uleb128 0x13
+ 1173 02d4 9E000000 		.4byte	0x9e
+ 1174 02d8 14       		.uleb128 0x14
+ 1175 02d9 A7000000 		.4byte	.LASF46
+ 1176 02dd 01       		.byte	0x1
+ 1177 02de 19       		.byte	0x19
+ 1178 02df E9020000 		.4byte	0x2e9
+ 1179 02e3 05       		.uleb128 0x5
+ 1180 02e4 03       		.byte	0x3
+ 1181 02e5 00000000 		.4byte	fNeutralVoltage
+ 1182 02e9 0E       		.uleb128 0xe
+ 1183 02ea CC000000 		.4byte	0xcc
+ 1184 02ee 14       		.uleb128 0x14
+ 1185 02ef FB020000 		.4byte	.LASF47
+ 1186 02f3 01       		.byte	0x1
+ 1187 02f4 1A       		.byte	0x1a
+ 1188 02f5 E9020000 		.4byte	0x2e9
+ 1189 02f9 05       		.uleb128 0x5
+ 1190 02fa 03       		.byte	0x3
+ 1191 02fb 00000000 		.4byte	fAcidVoltage
+ 1192 02ff 10       		.uleb128 0x10
+ 1193 0300 00010000 		.4byte	0x100
+ 1194 0304 0F030000 		.4byte	0x30f
+ 1195 0308 11       		.uleb128 0x11
+ 1196 0309 E1000000 		.4byte	0xe1
+ 1197 030d 02       		.byte	0x2
+ 1198 030e 00       		.byte	0
+ 1199 030f 14       		.uleb128 0x14
+ 1200 0310 85030000 		.4byte	.LASF48
+ 1201 0314 01       		.byte	0x1
+ 1202 0315 1C       		.byte	0x1c
+ 1203 0316 FF020000 		.4byte	0x2ff
+ 1204 031a 05       		.uleb128 0x5
+ 1205 031b 03       		.byte	0x3
+ 1206 031c 00000000 		.4byte	xQueueNutrientPump
+ 1207 0320 14       		.uleb128 0x14
+ 1208 0321 DA010000 		.4byte	.LASF49
+ 1209 0325 01       		.byte	0x1
+ 1210 0326 1D       		.byte	0x1d
+ 1211 0327 00010000 		.4byte	0x100
+ 1212 032b 05       		.uleb128 0x5
+ 1213 032c 03       		.byte	0x3
+ 1214 032d 00000000 		.4byte	xQueuePHValue
+ 1215 0331 14       		.uleb128 0x14
+ 1216 0332 5D010000 		.4byte	.LASF50
+ 1217 0336 01       		.byte	0x1
+ 1218 0337 20       		.byte	0x20
+ 1219 0338 AC020000 		.4byte	0x2ac
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 26
 
 
- 1221 0353 00       		.byte	0
- 1222              		.section	.debug_abbrev,"",%progbits
- 1223              	.Ldebug_abbrev0:
- 1224 0000 01       		.uleb128 0x1
- 1225 0001 11       		.uleb128 0x11
- 1226 0002 01       		.byte	0x1
- 1227 0003 25       		.uleb128 0x25
- 1228 0004 0E       		.uleb128 0xe
- 1229 0005 13       		.uleb128 0x13
- 1230 0006 0B       		.uleb128 0xb
- 1231 0007 03       		.uleb128 0x3
- 1232 0008 0E       		.uleb128 0xe
- 1233 0009 1B       		.uleb128 0x1b
- 1234 000a 0E       		.uleb128 0xe
- 1235 000b 55       		.uleb128 0x55
- 1236 000c 17       		.uleb128 0x17
- 1237 000d 11       		.uleb128 0x11
- 1238 000e 01       		.uleb128 0x1
- 1239 000f 10       		.uleb128 0x10
- 1240 0010 17       		.uleb128 0x17
- 1241 0011 00       		.byte	0
- 1242 0012 00       		.byte	0
- 1243 0013 02       		.uleb128 0x2
- 1244 0014 24       		.uleb128 0x24
- 1245 0015 00       		.byte	0
- 1246 0016 0B       		.uleb128 0xb
- 1247 0017 0B       		.uleb128 0xb
- 1248 0018 3E       		.uleb128 0x3e
- 1249 0019 0B       		.uleb128 0xb
- 1250 001a 03       		.uleb128 0x3
- 1251 001b 08       		.uleb128 0x8
- 1252 001c 00       		.byte	0
- 1253 001d 00       		.byte	0
- 1254 001e 03       		.uleb128 0x3
- 1255 001f 24       		.uleb128 0x24
- 1256 0020 00       		.byte	0
- 1257 0021 0B       		.uleb128 0xb
- 1258 0022 0B       		.uleb128 0xb
- 1259 0023 3E       		.uleb128 0x3e
- 1260 0024 0B       		.uleb128 0xb
- 1261 0025 03       		.uleb128 0x3
- 1262 0026 0E       		.uleb128 0xe
- 1263 0027 00       		.byte	0
- 1264 0028 00       		.byte	0
- 1265 0029 04       		.uleb128 0x4
- 1266 002a 16       		.uleb128 0x16
- 1267 002b 00       		.byte	0
- 1268 002c 03       		.uleb128 0x3
- 1269 002d 0E       		.uleb128 0xe
- 1270 002e 3A       		.uleb128 0x3a
- 1271 002f 0B       		.uleb128 0xb
- 1272 0030 3B       		.uleb128 0x3b
- 1273 0031 0B       		.uleb128 0xb
- 1274 0032 49       		.uleb128 0x49
- 1275 0033 13       		.uleb128 0x13
- 1276 0034 00       		.byte	0
- 1277 0035 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 27
+ 1220 033c 05       		.uleb128 0x5
+ 1221 033d 03       		.byte	0x3
+ 1222 033e 00000000 		.4byte	MAX_SPEED
+ 1223 0342 14       		.uleb128 0x14
+ 1224 0343 08030000 		.4byte	.LASF51
+ 1225 0347 01       		.byte	0x1
+ 1226 0348 21       		.byte	0x21
+ 1227 0349 AC020000 		.4byte	0x2ac
+ 1228 034d 05       		.uleb128 0x5
+ 1229 034e 03       		.byte	0x3
+ 1230 034f 00000000 		.4byte	STOP_SPEED
+ 1231 0353 00       		.byte	0
+ 1232              		.section	.debug_abbrev,"",%progbits
+ 1233              	.Ldebug_abbrev0:
+ 1234 0000 01       		.uleb128 0x1
+ 1235 0001 11       		.uleb128 0x11
+ 1236 0002 01       		.byte	0x1
+ 1237 0003 25       		.uleb128 0x25
+ 1238 0004 0E       		.uleb128 0xe
+ 1239 0005 13       		.uleb128 0x13
+ 1240 0006 0B       		.uleb128 0xb
+ 1241 0007 03       		.uleb128 0x3
+ 1242 0008 0E       		.uleb128 0xe
+ 1243 0009 1B       		.uleb128 0x1b
+ 1244 000a 0E       		.uleb128 0xe
+ 1245 000b 55       		.uleb128 0x55
+ 1246 000c 17       		.uleb128 0x17
+ 1247 000d 11       		.uleb128 0x11
+ 1248 000e 01       		.uleb128 0x1
+ 1249 000f 10       		.uleb128 0x10
+ 1250 0010 17       		.uleb128 0x17
+ 1251 0011 00       		.byte	0
+ 1252 0012 00       		.byte	0
+ 1253 0013 02       		.uleb128 0x2
+ 1254 0014 24       		.uleb128 0x24
+ 1255 0015 00       		.byte	0
+ 1256 0016 0B       		.uleb128 0xb
+ 1257 0017 0B       		.uleb128 0xb
+ 1258 0018 3E       		.uleb128 0x3e
+ 1259 0019 0B       		.uleb128 0xb
+ 1260 001a 03       		.uleb128 0x3
+ 1261 001b 08       		.uleb128 0x8
+ 1262 001c 00       		.byte	0
+ 1263 001d 00       		.byte	0
+ 1264 001e 03       		.uleb128 0x3
+ 1265 001f 24       		.uleb128 0x24
+ 1266 0020 00       		.byte	0
+ 1267 0021 0B       		.uleb128 0xb
+ 1268 0022 0B       		.uleb128 0xb
+ 1269 0023 3E       		.uleb128 0x3e
+ 1270 0024 0B       		.uleb128 0xb
+ 1271 0025 03       		.uleb128 0x3
+ 1272 0026 0E       		.uleb128 0xe
+ 1273 0027 00       		.byte	0
+ 1274 0028 00       		.byte	0
+ 1275 0029 04       		.uleb128 0x4
+ 1276 002a 16       		.uleb128 0x16
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 27
 
 
- 1278 0036 05       		.uleb128 0x5
- 1279 0037 16       		.uleb128 0x16
- 1280 0038 00       		.byte	0
- 1281 0039 03       		.uleb128 0x3
- 1282 003a 0E       		.uleb128 0xe
- 1283 003b 3A       		.uleb128 0x3a
- 1284 003c 0B       		.uleb128 0xb
- 1285 003d 3B       		.uleb128 0x3b
- 1286 003e 05       		.uleb128 0x5
- 1287 003f 49       		.uleb128 0x49
- 1288 0040 13       		.uleb128 0x13
- 1289 0041 00       		.byte	0
- 1290 0042 00       		.byte	0
- 1291 0043 06       		.uleb128 0x6
- 1292 0044 0F       		.uleb128 0xf
- 1293 0045 00       		.byte	0
- 1294 0046 0B       		.uleb128 0xb
- 1295 0047 0B       		.uleb128 0xb
- 1296 0048 00       		.byte	0
- 1297 0049 00       		.byte	0
- 1298 004a 07       		.uleb128 0x7
- 1299 004b 0F       		.uleb128 0xf
- 1300 004c 00       		.byte	0
- 1301 004d 0B       		.uleb128 0xb
- 1302 004e 0B       		.uleb128 0xb
- 1303 004f 49       		.uleb128 0x49
- 1304 0050 13       		.uleb128 0x13
- 1305 0051 00       		.byte	0
- 1306 0052 00       		.byte	0
- 1307 0053 08       		.uleb128 0x8
- 1308 0054 13       		.uleb128 0x13
- 1309 0055 00       		.byte	0
- 1310 0056 03       		.uleb128 0x3
- 1311 0057 0E       		.uleb128 0xe
- 1312 0058 3C       		.uleb128 0x3c
- 1313 0059 19       		.uleb128 0x19
- 1314 005a 00       		.byte	0
- 1315 005b 00       		.byte	0
- 1316 005c 09       		.uleb128 0x9
- 1317 005d 2E       		.uleb128 0x2e
- 1318 005e 00       		.byte	0
- 1319 005f 3F       		.uleb128 0x3f
- 1320 0060 19       		.uleb128 0x19
- 1321 0061 03       		.uleb128 0x3
- 1322 0062 0E       		.uleb128 0xe
- 1323 0063 3A       		.uleb128 0x3a
- 1324 0064 0B       		.uleb128 0xb
- 1325 0065 3B       		.uleb128 0x3b
- 1326 0066 0B       		.uleb128 0xb
- 1327 0067 11       		.uleb128 0x11
- 1328 0068 01       		.uleb128 0x1
- 1329 0069 12       		.uleb128 0x12
- 1330 006a 06       		.uleb128 0x6
- 1331 006b 40       		.uleb128 0x40
- 1332 006c 18       		.uleb128 0x18
- 1333 006d 9642     		.uleb128 0x2116
- 1334 006f 19       		.uleb128 0x19
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 28
+ 1277 002b 00       		.byte	0
+ 1278 002c 03       		.uleb128 0x3
+ 1279 002d 0E       		.uleb128 0xe
+ 1280 002e 3A       		.uleb128 0x3a
+ 1281 002f 0B       		.uleb128 0xb
+ 1282 0030 3B       		.uleb128 0x3b
+ 1283 0031 0B       		.uleb128 0xb
+ 1284 0032 49       		.uleb128 0x49
+ 1285 0033 13       		.uleb128 0x13
+ 1286 0034 00       		.byte	0
+ 1287 0035 00       		.byte	0
+ 1288 0036 05       		.uleb128 0x5
+ 1289 0037 16       		.uleb128 0x16
+ 1290 0038 00       		.byte	0
+ 1291 0039 03       		.uleb128 0x3
+ 1292 003a 0E       		.uleb128 0xe
+ 1293 003b 3A       		.uleb128 0x3a
+ 1294 003c 0B       		.uleb128 0xb
+ 1295 003d 3B       		.uleb128 0x3b
+ 1296 003e 05       		.uleb128 0x5
+ 1297 003f 49       		.uleb128 0x49
+ 1298 0040 13       		.uleb128 0x13
+ 1299 0041 00       		.byte	0
+ 1300 0042 00       		.byte	0
+ 1301 0043 06       		.uleb128 0x6
+ 1302 0044 0F       		.uleb128 0xf
+ 1303 0045 00       		.byte	0
+ 1304 0046 0B       		.uleb128 0xb
+ 1305 0047 0B       		.uleb128 0xb
+ 1306 0048 00       		.byte	0
+ 1307 0049 00       		.byte	0
+ 1308 004a 07       		.uleb128 0x7
+ 1309 004b 0F       		.uleb128 0xf
+ 1310 004c 00       		.byte	0
+ 1311 004d 0B       		.uleb128 0xb
+ 1312 004e 0B       		.uleb128 0xb
+ 1313 004f 49       		.uleb128 0x49
+ 1314 0050 13       		.uleb128 0x13
+ 1315 0051 00       		.byte	0
+ 1316 0052 00       		.byte	0
+ 1317 0053 08       		.uleb128 0x8
+ 1318 0054 13       		.uleb128 0x13
+ 1319 0055 00       		.byte	0
+ 1320 0056 03       		.uleb128 0x3
+ 1321 0057 0E       		.uleb128 0xe
+ 1322 0058 3C       		.uleb128 0x3c
+ 1323 0059 19       		.uleb128 0x19
+ 1324 005a 00       		.byte	0
+ 1325 005b 00       		.byte	0
+ 1326 005c 09       		.uleb128 0x9
+ 1327 005d 2E       		.uleb128 0x2e
+ 1328 005e 00       		.byte	0
+ 1329 005f 3F       		.uleb128 0x3f
+ 1330 0060 19       		.uleb128 0x19
+ 1331 0061 03       		.uleb128 0x3
+ 1332 0062 0E       		.uleb128 0xe
+ 1333 0063 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 28
 
 
- 1335 0070 00       		.byte	0
- 1336 0071 00       		.byte	0
- 1337 0072 0A       		.uleb128 0xa
- 1338 0073 2E       		.uleb128 0x2e
- 1339 0074 01       		.byte	0x1
- 1340 0075 3F       		.uleb128 0x3f
- 1341 0076 19       		.uleb128 0x19
- 1342 0077 03       		.uleb128 0x3
- 1343 0078 0E       		.uleb128 0xe
- 1344 0079 3A       		.uleb128 0x3a
- 1345 007a 0B       		.uleb128 0xb
- 1346 007b 3B       		.uleb128 0x3b
- 1347 007c 0B       		.uleb128 0xb
- 1348 007d 27       		.uleb128 0x27
- 1349 007e 19       		.uleb128 0x19
- 1350 007f 11       		.uleb128 0x11
- 1351 0080 01       		.uleb128 0x1
- 1352 0081 12       		.uleb128 0x12
- 1353 0082 06       		.uleb128 0x6
- 1354 0083 40       		.uleb128 0x40
- 1355 0084 18       		.uleb128 0x18
- 1356 0085 9642     		.uleb128 0x2116
- 1357 0087 19       		.uleb128 0x19
- 1358 0088 01       		.uleb128 0x1
- 1359 0089 13       		.uleb128 0x13
- 1360 008a 00       		.byte	0
- 1361 008b 00       		.byte	0
- 1362 008c 0B       		.uleb128 0xb
- 1363 008d 05       		.uleb128 0x5
- 1364 008e 00       		.byte	0
- 1365 008f 03       		.uleb128 0x3
- 1366 0090 0E       		.uleb128 0xe
- 1367 0091 3A       		.uleb128 0x3a
- 1368 0092 0B       		.uleb128 0xb
- 1369 0093 3B       		.uleb128 0x3b
- 1370 0094 0B       		.uleb128 0xb
- 1371 0095 49       		.uleb128 0x49
- 1372 0096 13       		.uleb128 0x13
- 1373 0097 02       		.uleb128 0x2
- 1374 0098 18       		.uleb128 0x18
- 1375 0099 00       		.byte	0
- 1376 009a 00       		.byte	0
- 1377 009b 0C       		.uleb128 0xc
- 1378 009c 34       		.uleb128 0x34
- 1379 009d 00       		.byte	0
- 1380 009e 03       		.uleb128 0x3
- 1381 009f 0E       		.uleb128 0xe
- 1382 00a0 3A       		.uleb128 0x3a
- 1383 00a1 0B       		.uleb128 0xb
- 1384 00a2 3B       		.uleb128 0x3b
- 1385 00a3 0B       		.uleb128 0xb
- 1386 00a4 49       		.uleb128 0x49
- 1387 00a5 13       		.uleb128 0x13
- 1388 00a6 02       		.uleb128 0x2
- 1389 00a7 18       		.uleb128 0x18
- 1390 00a8 00       		.byte	0
- 1391 00a9 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 29
+ 1334 0064 0B       		.uleb128 0xb
+ 1335 0065 3B       		.uleb128 0x3b
+ 1336 0066 0B       		.uleb128 0xb
+ 1337 0067 11       		.uleb128 0x11
+ 1338 0068 01       		.uleb128 0x1
+ 1339 0069 12       		.uleb128 0x12
+ 1340 006a 06       		.uleb128 0x6
+ 1341 006b 40       		.uleb128 0x40
+ 1342 006c 18       		.uleb128 0x18
+ 1343 006d 9642     		.uleb128 0x2116
+ 1344 006f 19       		.uleb128 0x19
+ 1345 0070 00       		.byte	0
+ 1346 0071 00       		.byte	0
+ 1347 0072 0A       		.uleb128 0xa
+ 1348 0073 2E       		.uleb128 0x2e
+ 1349 0074 01       		.byte	0x1
+ 1350 0075 3F       		.uleb128 0x3f
+ 1351 0076 19       		.uleb128 0x19
+ 1352 0077 03       		.uleb128 0x3
+ 1353 0078 0E       		.uleb128 0xe
+ 1354 0079 3A       		.uleb128 0x3a
+ 1355 007a 0B       		.uleb128 0xb
+ 1356 007b 3B       		.uleb128 0x3b
+ 1357 007c 0B       		.uleb128 0xb
+ 1358 007d 27       		.uleb128 0x27
+ 1359 007e 19       		.uleb128 0x19
+ 1360 007f 11       		.uleb128 0x11
+ 1361 0080 01       		.uleb128 0x1
+ 1362 0081 12       		.uleb128 0x12
+ 1363 0082 06       		.uleb128 0x6
+ 1364 0083 40       		.uleb128 0x40
+ 1365 0084 18       		.uleb128 0x18
+ 1366 0085 9642     		.uleb128 0x2116
+ 1367 0087 19       		.uleb128 0x19
+ 1368 0088 01       		.uleb128 0x1
+ 1369 0089 13       		.uleb128 0x13
+ 1370 008a 00       		.byte	0
+ 1371 008b 00       		.byte	0
+ 1372 008c 0B       		.uleb128 0xb
+ 1373 008d 05       		.uleb128 0x5
+ 1374 008e 00       		.byte	0
+ 1375 008f 03       		.uleb128 0x3
+ 1376 0090 0E       		.uleb128 0xe
+ 1377 0091 3A       		.uleb128 0x3a
+ 1378 0092 0B       		.uleb128 0xb
+ 1379 0093 3B       		.uleb128 0x3b
+ 1380 0094 0B       		.uleb128 0xb
+ 1381 0095 49       		.uleb128 0x49
+ 1382 0096 13       		.uleb128 0x13
+ 1383 0097 02       		.uleb128 0x2
+ 1384 0098 18       		.uleb128 0x18
+ 1385 0099 00       		.byte	0
+ 1386 009a 00       		.byte	0
+ 1387 009b 0C       		.uleb128 0xc
+ 1388 009c 34       		.uleb128 0x34
+ 1389 009d 00       		.byte	0
+ 1390 009e 03       		.uleb128 0x3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 29
 
 
- 1392 00aa 0D       		.uleb128 0xd
- 1393 00ab 2E       		.uleb128 0x2e
- 1394 00ac 01       		.byte	0x1
- 1395 00ad 3F       		.uleb128 0x3f
- 1396 00ae 19       		.uleb128 0x19
- 1397 00af 03       		.uleb128 0x3
- 1398 00b0 0E       		.uleb128 0xe
- 1399 00b1 3A       		.uleb128 0x3a
- 1400 00b2 0B       		.uleb128 0xb
- 1401 00b3 3B       		.uleb128 0x3b
- 1402 00b4 0B       		.uleb128 0xb
- 1403 00b5 11       		.uleb128 0x11
- 1404 00b6 01       		.uleb128 0x1
- 1405 00b7 12       		.uleb128 0x12
- 1406 00b8 06       		.uleb128 0x6
- 1407 00b9 40       		.uleb128 0x40
- 1408 00ba 18       		.uleb128 0x18
- 1409 00bb 9642     		.uleb128 0x2116
- 1410 00bd 19       		.uleb128 0x19
- 1411 00be 01       		.uleb128 0x1
- 1412 00bf 13       		.uleb128 0x13
- 1413 00c0 00       		.byte	0
- 1414 00c1 00       		.byte	0
- 1415 00c2 0E       		.uleb128 0xe
- 1416 00c3 26       		.uleb128 0x26
- 1417 00c4 00       		.byte	0
- 1418 00c5 49       		.uleb128 0x49
- 1419 00c6 13       		.uleb128 0x13
- 1420 00c7 00       		.byte	0
- 1421 00c8 00       		.byte	0
- 1422 00c9 0F       		.uleb128 0xf
- 1423 00ca 2E       		.uleb128 0x2e
- 1424 00cb 01       		.byte	0x1
- 1425 00cc 3F       		.uleb128 0x3f
- 1426 00cd 19       		.uleb128 0x19
- 1427 00ce 03       		.uleb128 0x3
- 1428 00cf 0E       		.uleb128 0xe
- 1429 00d0 3A       		.uleb128 0x3a
- 1430 00d1 0B       		.uleb128 0xb
- 1431 00d2 3B       		.uleb128 0x3b
- 1432 00d3 0B       		.uleb128 0xb
- 1433 00d4 27       		.uleb128 0x27
- 1434 00d5 19       		.uleb128 0x19
- 1435 00d6 49       		.uleb128 0x49
- 1436 00d7 13       		.uleb128 0x13
- 1437 00d8 11       		.uleb128 0x11
- 1438 00d9 01       		.uleb128 0x1
- 1439 00da 12       		.uleb128 0x12
- 1440 00db 06       		.uleb128 0x6
- 1441 00dc 40       		.uleb128 0x40
- 1442 00dd 18       		.uleb128 0x18
- 1443 00de 9642     		.uleb128 0x2116
- 1444 00e0 19       		.uleb128 0x19
- 1445 00e1 01       		.uleb128 0x1
- 1446 00e2 13       		.uleb128 0x13
- 1447 00e3 00       		.byte	0
- 1448 00e4 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 30
+ 1391 009f 0E       		.uleb128 0xe
+ 1392 00a0 3A       		.uleb128 0x3a
+ 1393 00a1 0B       		.uleb128 0xb
+ 1394 00a2 3B       		.uleb128 0x3b
+ 1395 00a3 0B       		.uleb128 0xb
+ 1396 00a4 49       		.uleb128 0x49
+ 1397 00a5 13       		.uleb128 0x13
+ 1398 00a6 02       		.uleb128 0x2
+ 1399 00a7 18       		.uleb128 0x18
+ 1400 00a8 00       		.byte	0
+ 1401 00a9 00       		.byte	0
+ 1402 00aa 0D       		.uleb128 0xd
+ 1403 00ab 2E       		.uleb128 0x2e
+ 1404 00ac 01       		.byte	0x1
+ 1405 00ad 3F       		.uleb128 0x3f
+ 1406 00ae 19       		.uleb128 0x19
+ 1407 00af 03       		.uleb128 0x3
+ 1408 00b0 0E       		.uleb128 0xe
+ 1409 00b1 3A       		.uleb128 0x3a
+ 1410 00b2 0B       		.uleb128 0xb
+ 1411 00b3 3B       		.uleb128 0x3b
+ 1412 00b4 0B       		.uleb128 0xb
+ 1413 00b5 11       		.uleb128 0x11
+ 1414 00b6 01       		.uleb128 0x1
+ 1415 00b7 12       		.uleb128 0x12
+ 1416 00b8 06       		.uleb128 0x6
+ 1417 00b9 40       		.uleb128 0x40
+ 1418 00ba 18       		.uleb128 0x18
+ 1419 00bb 9642     		.uleb128 0x2116
+ 1420 00bd 19       		.uleb128 0x19
+ 1421 00be 01       		.uleb128 0x1
+ 1422 00bf 13       		.uleb128 0x13
+ 1423 00c0 00       		.byte	0
+ 1424 00c1 00       		.byte	0
+ 1425 00c2 0E       		.uleb128 0xe
+ 1426 00c3 26       		.uleb128 0x26
+ 1427 00c4 00       		.byte	0
+ 1428 00c5 49       		.uleb128 0x49
+ 1429 00c6 13       		.uleb128 0x13
+ 1430 00c7 00       		.byte	0
+ 1431 00c8 00       		.byte	0
+ 1432 00c9 0F       		.uleb128 0xf
+ 1433 00ca 2E       		.uleb128 0x2e
+ 1434 00cb 01       		.byte	0x1
+ 1435 00cc 3F       		.uleb128 0x3f
+ 1436 00cd 19       		.uleb128 0x19
+ 1437 00ce 03       		.uleb128 0x3
+ 1438 00cf 0E       		.uleb128 0xe
+ 1439 00d0 3A       		.uleb128 0x3a
+ 1440 00d1 0B       		.uleb128 0xb
+ 1441 00d2 3B       		.uleb128 0x3b
+ 1442 00d3 0B       		.uleb128 0xb
+ 1443 00d4 27       		.uleb128 0x27
+ 1444 00d5 19       		.uleb128 0x19
+ 1445 00d6 49       		.uleb128 0x49
+ 1446 00d7 13       		.uleb128 0x13
+ 1447 00d8 11       		.uleb128 0x11
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 30
 
 
- 1449 00e5 10       		.uleb128 0x10
- 1450 00e6 01       		.uleb128 0x1
- 1451 00e7 01       		.byte	0x1
- 1452 00e8 49       		.uleb128 0x49
- 1453 00e9 13       		.uleb128 0x13
- 1454 00ea 01       		.uleb128 0x1
- 1455 00eb 13       		.uleb128 0x13
- 1456 00ec 00       		.byte	0
- 1457 00ed 00       		.byte	0
- 1458 00ee 11       		.uleb128 0x11
- 1459 00ef 21       		.uleb128 0x21
- 1460 00f0 00       		.byte	0
- 1461 00f1 49       		.uleb128 0x49
- 1462 00f2 13       		.uleb128 0x13
- 1463 00f3 2F       		.uleb128 0x2f
- 1464 00f4 0B       		.uleb128 0xb
- 1465 00f5 00       		.byte	0
- 1466 00f6 00       		.byte	0
- 1467 00f7 12       		.uleb128 0x12
- 1468 00f8 34       		.uleb128 0x34
- 1469 00f9 00       		.byte	0
- 1470 00fa 03       		.uleb128 0x3
- 1471 00fb 0E       		.uleb128 0xe
- 1472 00fc 3A       		.uleb128 0x3a
- 1473 00fd 0B       		.uleb128 0xb
- 1474 00fe 3B       		.uleb128 0x3b
- 1475 00ff 05       		.uleb128 0x5
- 1476 0100 49       		.uleb128 0x49
- 1477 0101 13       		.uleb128 0x13
- 1478 0102 3F       		.uleb128 0x3f
- 1479 0103 19       		.uleb128 0x19
- 1480 0104 3C       		.uleb128 0x3c
- 1481 0105 19       		.uleb128 0x19
- 1482 0106 00       		.byte	0
- 1483 0107 00       		.byte	0
- 1484 0108 13       		.uleb128 0x13
- 1485 0109 35       		.uleb128 0x35
- 1486 010a 00       		.byte	0
- 1487 010b 49       		.uleb128 0x49
- 1488 010c 13       		.uleb128 0x13
- 1489 010d 00       		.byte	0
- 1490 010e 00       		.byte	0
- 1491 010f 14       		.uleb128 0x14
- 1492 0110 34       		.uleb128 0x34
- 1493 0111 00       		.byte	0
- 1494 0112 03       		.uleb128 0x3
- 1495 0113 0E       		.uleb128 0xe
- 1496 0114 3A       		.uleb128 0x3a
- 1497 0115 0B       		.uleb128 0xb
- 1498 0116 3B       		.uleb128 0x3b
- 1499 0117 0B       		.uleb128 0xb
- 1500 0118 49       		.uleb128 0x49
- 1501 0119 13       		.uleb128 0x13
- 1502 011a 3F       		.uleb128 0x3f
- 1503 011b 19       		.uleb128 0x19
- 1504 011c 02       		.uleb128 0x2
- 1505 011d 18       		.uleb128 0x18
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 31
+ 1448 00d9 01       		.uleb128 0x1
+ 1449 00da 12       		.uleb128 0x12
+ 1450 00db 06       		.uleb128 0x6
+ 1451 00dc 40       		.uleb128 0x40
+ 1452 00dd 18       		.uleb128 0x18
+ 1453 00de 9642     		.uleb128 0x2116
+ 1454 00e0 19       		.uleb128 0x19
+ 1455 00e1 01       		.uleb128 0x1
+ 1456 00e2 13       		.uleb128 0x13
+ 1457 00e3 00       		.byte	0
+ 1458 00e4 00       		.byte	0
+ 1459 00e5 10       		.uleb128 0x10
+ 1460 00e6 01       		.uleb128 0x1
+ 1461 00e7 01       		.byte	0x1
+ 1462 00e8 49       		.uleb128 0x49
+ 1463 00e9 13       		.uleb128 0x13
+ 1464 00ea 01       		.uleb128 0x1
+ 1465 00eb 13       		.uleb128 0x13
+ 1466 00ec 00       		.byte	0
+ 1467 00ed 00       		.byte	0
+ 1468 00ee 11       		.uleb128 0x11
+ 1469 00ef 21       		.uleb128 0x21
+ 1470 00f0 00       		.byte	0
+ 1471 00f1 49       		.uleb128 0x49
+ 1472 00f2 13       		.uleb128 0x13
+ 1473 00f3 2F       		.uleb128 0x2f
+ 1474 00f4 0B       		.uleb128 0xb
+ 1475 00f5 00       		.byte	0
+ 1476 00f6 00       		.byte	0
+ 1477 00f7 12       		.uleb128 0x12
+ 1478 00f8 34       		.uleb128 0x34
+ 1479 00f9 00       		.byte	0
+ 1480 00fa 03       		.uleb128 0x3
+ 1481 00fb 0E       		.uleb128 0xe
+ 1482 00fc 3A       		.uleb128 0x3a
+ 1483 00fd 0B       		.uleb128 0xb
+ 1484 00fe 3B       		.uleb128 0x3b
+ 1485 00ff 05       		.uleb128 0x5
+ 1486 0100 49       		.uleb128 0x49
+ 1487 0101 13       		.uleb128 0x13
+ 1488 0102 3F       		.uleb128 0x3f
+ 1489 0103 19       		.uleb128 0x19
+ 1490 0104 3C       		.uleb128 0x3c
+ 1491 0105 19       		.uleb128 0x19
+ 1492 0106 00       		.byte	0
+ 1493 0107 00       		.byte	0
+ 1494 0108 13       		.uleb128 0x13
+ 1495 0109 35       		.uleb128 0x35
+ 1496 010a 00       		.byte	0
+ 1497 010b 49       		.uleb128 0x49
+ 1498 010c 13       		.uleb128 0x13
+ 1499 010d 00       		.byte	0
+ 1500 010e 00       		.byte	0
+ 1501 010f 14       		.uleb128 0x14
+ 1502 0110 34       		.uleb128 0x34
+ 1503 0111 00       		.byte	0
+ 1504 0112 03       		.uleb128 0x3
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 31
 
 
- 1506 011e 00       		.byte	0
- 1507 011f 00       		.byte	0
- 1508 0120 00       		.byte	0
- 1509              		.section	.debug_aranges,"",%progbits
- 1510 0000 4C000000 		.4byte	0x4c
- 1511 0004 0200     		.2byte	0x2
- 1512 0006 00000000 		.4byte	.Ldebug_info0
- 1513 000a 04       		.byte	0x4
- 1514 000b 00       		.byte	0
- 1515 000c 0000     		.2byte	0
- 1516 000e 0000     		.2byte	0
- 1517 0010 00000000 		.4byte	.LFB68
- 1518 0014 CC000000 		.4byte	.LFE68-.LFB68
- 1519 0018 00000000 		.4byte	.LFB69
- 1520 001c C8000000 		.4byte	.LFE69-.LFB69
- 1521 0020 00000000 		.4byte	.LFB70
- 1522 0024 A0000000 		.4byte	.LFE70-.LFB70
- 1523 0028 00000000 		.4byte	.LFB71
- 1524 002c 48010000 		.4byte	.LFE71-.LFB71
- 1525 0030 00000000 		.4byte	.LFB72
- 1526 0034 44000000 		.4byte	.LFE72-.LFB72
- 1527 0038 00000000 		.4byte	.LFB73
- 1528 003c 30000000 		.4byte	.LFE73-.LFB73
- 1529 0040 00000000 		.4byte	.LFB74
- 1530 0044 68000000 		.4byte	.LFE74-.LFB74
- 1531 0048 00000000 		.4byte	0
- 1532 004c 00000000 		.4byte	0
- 1533              		.section	.debug_ranges,"",%progbits
- 1534              	.Ldebug_ranges0:
- 1535 0000 00000000 		.4byte	.LFB68
- 1536 0004 CC000000 		.4byte	.LFE68
- 1537 0008 00000000 		.4byte	.LFB69
- 1538 000c C8000000 		.4byte	.LFE69
- 1539 0010 00000000 		.4byte	.LFB70
- 1540 0014 A0000000 		.4byte	.LFE70
- 1541 0018 00000000 		.4byte	.LFB71
- 1542 001c 48010000 		.4byte	.LFE71
- 1543 0020 00000000 		.4byte	.LFB72
- 1544 0024 44000000 		.4byte	.LFE72
- 1545 0028 00000000 		.4byte	.LFB73
- 1546 002c 30000000 		.4byte	.LFE73
- 1547 0030 00000000 		.4byte	.LFB74
- 1548 0034 68000000 		.4byte	.LFE74
- 1549 0038 00000000 		.4byte	0
- 1550 003c 00000000 		.4byte	0
- 1551              		.section	.debug_line,"",%progbits
- 1552              	.Ldebug_line0:
- 1553 0000 80020000 		.section	.debug_str,"MS",%progbits,1
- 1553      02009A01 
- 1553      00000201 
- 1553      FB0E0D00 
- 1553      01010101 
- 1554              	.LASF7:
- 1555 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 1555      6E74385F 
- 1555      7400
- 1556              	.LASF52:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 32
+ 1505 0113 0E       		.uleb128 0xe
+ 1506 0114 3A       		.uleb128 0x3a
+ 1507 0115 0B       		.uleb128 0xb
+ 1508 0116 3B       		.uleb128 0x3b
+ 1509 0117 0B       		.uleb128 0xb
+ 1510 0118 49       		.uleb128 0x49
+ 1511 0119 13       		.uleb128 0x13
+ 1512 011a 3F       		.uleb128 0x3f
+ 1513 011b 19       		.uleb128 0x19
+ 1514 011c 02       		.uleb128 0x2
+ 1515 011d 18       		.uleb128 0x18
+ 1516 011e 00       		.byte	0
+ 1517 011f 00       		.byte	0
+ 1518 0120 00       		.byte	0
+ 1519              		.section	.debug_aranges,"",%progbits
+ 1520 0000 4C000000 		.4byte	0x4c
+ 1521 0004 0200     		.2byte	0x2
+ 1522 0006 00000000 		.4byte	.Ldebug_info0
+ 1523 000a 04       		.byte	0x4
+ 1524 000b 00       		.byte	0
+ 1525 000c 0000     		.2byte	0
+ 1526 000e 0000     		.2byte	0
+ 1527 0010 00000000 		.4byte	.LFB68
+ 1528 0014 D0000000 		.4byte	.LFE68-.LFB68
+ 1529 0018 00000000 		.4byte	.LFB69
+ 1530 001c C8000000 		.4byte	.LFE69-.LFB69
+ 1531 0020 00000000 		.4byte	.LFB70
+ 1532 0024 C0000000 		.4byte	.LFE70-.LFB70
+ 1533 0028 00000000 		.4byte	.LFB71
+ 1534 002c 48010000 		.4byte	.LFE71-.LFB71
+ 1535 0030 00000000 		.4byte	.LFB72
+ 1536 0034 44000000 		.4byte	.LFE72-.LFB72
+ 1537 0038 00000000 		.4byte	.LFB73
+ 1538 003c 30000000 		.4byte	.LFE73-.LFB73
+ 1539 0040 00000000 		.4byte	.LFB74
+ 1540 0044 68000000 		.4byte	.LFE74-.LFB74
+ 1541 0048 00000000 		.4byte	0
+ 1542 004c 00000000 		.4byte	0
+ 1543              		.section	.debug_ranges,"",%progbits
+ 1544              	.Ldebug_ranges0:
+ 1545 0000 00000000 		.4byte	.LFB68
+ 1546 0004 D0000000 		.4byte	.LFE68
+ 1547 0008 00000000 		.4byte	.LFB69
+ 1548 000c C8000000 		.4byte	.LFE69
+ 1549 0010 00000000 		.4byte	.LFB70
+ 1550 0014 C0000000 		.4byte	.LFE70
+ 1551 0018 00000000 		.4byte	.LFB71
+ 1552 001c 48010000 		.4byte	.LFE71
+ 1553 0020 00000000 		.4byte	.LFB72
+ 1554 0024 44000000 		.4byte	.LFE72
+ 1555 0028 00000000 		.4byte	.LFB73
+ 1556 002c 30000000 		.4byte	.LFE73
+ 1557 0030 00000000 		.4byte	.LFB74
+ 1558 0034 68000000 		.4byte	.LFE74
+ 1559 0038 00000000 		.4byte	0
+ 1560 003c 00000000 		.4byte	0
+ 1561              		.section	.debug_line,"",%progbits
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 32
 
 
- 1557 000a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1557      43313120 
- 1557      352E342E 
- 1557      31203230 
- 1557      31363036 
- 1558 003d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1558      20726576 
- 1558      6973696F 
- 1558      6E203233 
- 1558      37373135 
- 1559 0070 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1559      66756E63 
- 1559      74696F6E 
- 1559      2D736563 
- 1559      74696F6E 
- 1560              	.LASF38:
- 1561 0098 76546173 		.ascii	"vTaskMeasurePH\000"
- 1561      6B4D6561 
- 1561      73757265 
- 1561      504800
- 1562              	.LASF46:
- 1563 00a7 664E6575 		.ascii	"fNeutralVoltage\000"
- 1563      7472616C 
- 1563      566F6C74 
- 1563      61676500 
- 1564              	.LASF23:
- 1565 00b7 5469636B 		.ascii	"TickType_t\000"
- 1565      54797065 
- 1565      5F7400
- 1566              	.LASF43:
- 1567 00c2 62546573 		.ascii	"bTestState2\000"
- 1567      74537461 
- 1567      74653200 
- 1568              	.LASF30:
- 1569 00ce 7844656C 		.ascii	"xDelayms\000"
- 1569      61796D73 
- 1569      00
- 1570              	.LASF8:
- 1571 00d7 5F5F696E 		.ascii	"__int32_t\000"
- 1571      7433325F 
- 1571      7400
- 1572              	.LASF9:
- 1573 00e1 6C6F6E67 		.ascii	"long int\000"
- 1573      20696E74 
- 1573      00
- 1574              	.LASF29:
- 1575 00ea 66504856 		.ascii	"fPHVoltage\000"
- 1575      6F6C7461 
- 1575      676500
- 1576              	.LASF24:
- 1577 00f5 51756575 		.ascii	"QueueHandle_t\000"
- 1577      6548616E 
- 1577      646C655F 
- 1577      7400
- 1578              	.LASF35:
- 1579 0103 66496E74 		.ascii	"fIntercept\000"
- 1579      65726365 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 33
+ 1562              	.Ldebug_line0:
+ 1563 0000 80020000 		.section	.debug_str,"MS",%progbits,1
+ 1563      02009A01 
+ 1563      00000201 
+ 1563      FB0E0D00 
+ 1563      01010101 
+ 1564              	.LASF7:
+ 1565 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1565      6E74385F 
+ 1565      7400
+ 1566              	.LASF52:
+ 1567 000a 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1567      43313120 
+ 1567      352E342E 
+ 1567      31203230 
+ 1567      31363036 
+ 1568 003d 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1568      20726576 
+ 1568      6973696F 
+ 1568      6E203233 
+ 1568      37373135 
+ 1569 0070 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1569      66756E63 
+ 1569      74696F6E 
+ 1569      2D736563 
+ 1569      74696F6E 
+ 1570              	.LASF38:
+ 1571 0098 76546173 		.ascii	"vTaskMeasurePH\000"
+ 1571      6B4D6561 
+ 1571      73757265 
+ 1571      504800
+ 1572              	.LASF46:
+ 1573 00a7 664E6575 		.ascii	"fNeutralVoltage\000"
+ 1573      7472616C 
+ 1573      566F6C74 
+ 1573      61676500 
+ 1574              	.LASF23:
+ 1575 00b7 5469636B 		.ascii	"TickType_t\000"
+ 1575      54797065 
+ 1575      5F7400
+ 1576              	.LASF43:
+ 1577 00c2 62546573 		.ascii	"bTestState2\000"
+ 1577      74537461 
+ 1577      74653200 
+ 1578              	.LASF30:
+ 1579 00ce 7844656C 		.ascii	"xDelayms\000"
+ 1579      61796D73 
+ 1579      00
+ 1580              	.LASF8:
+ 1581 00d7 5F5F696E 		.ascii	"__int32_t\000"
+ 1581      7433325F 
+ 1581      7400
+ 1582              	.LASF9:
+ 1583 00e1 6C6F6E67 		.ascii	"long int\000"
+ 1583      20696E74 
+ 1583      00
+ 1584              	.LASF29:
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 33
 
 
- 1579      707400
- 1580              	.LASF57:
- 1581 010e 6643616C 		.ascii	"fCalculatePHValue\000"
- 1581      63756C61 
- 1581      74655048 
- 1581      56616C75 
- 1581      6500
- 1582              	.LASF39:
- 1583 0120 76546573 		.ascii	"vTestTaskUARTDataTransmit\000"
- 1583      74546173 
- 1583      6B554152 
- 1583      54446174 
- 1583      61547261 
- 1584              	.LASF56:
- 1585 013a 76546173 		.ascii	"vTaskNutrientPump\000"
- 1585      6B4E7574 
- 1585      7269656E 
- 1585      7450756D 
- 1585      7000
- 1586              	.LASF10:
- 1587 014c 5F5F7569 		.ascii	"__uint32_t\000"
- 1587      6E743332 
- 1587      5F7400
- 1588              	.LASF18:
- 1589 0157 666C6F61 		.ascii	"float\000"
- 1589      7400
- 1590              	.LASF54:
- 1591 015d 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
- 1591      6F64655C 
- 1591      50345C50 
- 1591      345F5665 
- 1591      72746963 
- 1592 018c 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
- 1592      616E7465 
- 1592      4D6F6475 
- 1592      6C2E6379 
- 1592      64736E00 
- 1593              	.LASF50:
- 1594 01a0 4D41585F 		.ascii	"MAX_SPEED\000"
- 1594      53504545 
- 1594      4400
- 1595              	.LASF4:
- 1596 01aa 756E7369 		.ascii	"unsigned char\000"
- 1596      676E6564 
- 1596      20636861 
- 1596      7200
- 1597              	.LASF40:
- 1598 01b8 69504856 		.ascii	"iPHValueForPrint\000"
- 1598      616C7565 
- 1598      466F7250 
- 1598      72696E74 
- 1598      00
- 1599              	.LASF11:
- 1600 01c9 6C6F6E67 		.ascii	"long unsigned int\000"
- 1600      20756E73 
- 1600      69676E65 
- 1600      6420696E 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 34
+ 1585 00ea 66504856 		.ascii	"fPHVoltage\000"
+ 1585      6F6C7461 
+ 1585      676500
+ 1586              	.LASF24:
+ 1587 00f5 51756575 		.ascii	"QueueHandle_t\000"
+ 1587      6548616E 
+ 1587      646C655F 
+ 1587      7400
+ 1588              	.LASF35:
+ 1589 0103 66496E74 		.ascii	"fIntercept\000"
+ 1589      65726365 
+ 1589      707400
+ 1590              	.LASF57:
+ 1591 010e 6643616C 		.ascii	"fCalculatePHValue\000"
+ 1591      63756C61 
+ 1591      74655048 
+ 1591      56616C75 
+ 1591      6500
+ 1592              	.LASF39:
+ 1593 0120 76546573 		.ascii	"vTestTaskUARTDataTransmit\000"
+ 1593      74546173 
+ 1593      6B554152 
+ 1593      54446174 
+ 1593      61547261 
+ 1594              	.LASF56:
+ 1595 013a 76546173 		.ascii	"vTaskNutrientPump\000"
+ 1595      6B4E7574 
+ 1595      7269656E 
+ 1595      7450756D 
+ 1595      7000
+ 1596              	.LASF10:
+ 1597 014c 5F5F7569 		.ascii	"__uint32_t\000"
+ 1597      6E743332 
+ 1597      5F7400
+ 1598              	.LASF18:
+ 1599 0157 666C6F61 		.ascii	"float\000"
+ 1599      7400
+ 1600              	.LASF50:
+ 1601 015d 4D41585F 		.ascii	"MAX_SPEED\000"
+ 1601      53504545 
+ 1601      4400
+ 1602              	.LASF4:
+ 1603 0167 756E7369 		.ascii	"unsigned char\000"
+ 1603      676E6564 
+ 1603      20636861 
+ 1603      7200
+ 1604              	.LASF40:
+ 1605 0175 69504856 		.ascii	"iPHValueForPrint\000"
+ 1605      616C7565 
+ 1605      466F7250 
+ 1605      72696E74 
+ 1605      00
+ 1606              	.LASF11:
+ 1607 0186 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1607      20756E73 
+ 1607      69676E65 
+ 1607      6420696E 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 34
 
 
- 1600      7400
- 1601              	.LASF6:
- 1602 01db 73686F72 		.ascii	"short unsigned int\000"
- 1602      7420756E 
- 1602      7369676E 
- 1602      65642069 
- 1602      6E7400
- 1603              	.LASF53:
- 1604 01ee 4E757472 		.ascii	"Nutrients.c\000"
- 1604      69656E74 
- 1604      732E6300 
- 1605              	.LASF45:
- 1606 01fa 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1606      52784275 
- 1606      66666572 
- 1606      00
- 1607              	.LASF36:
- 1608 0207 764E7574 		.ascii	"vNutrientsInit\000"
- 1608      7269656E 
- 1608      7473496E 
- 1608      697400
- 1609              	.LASF19:
- 1610 0216 646F7562 		.ascii	"double\000"
- 1610      6C6500
- 1611              	.LASF49:
- 1612 021d 78517565 		.ascii	"xQueuePHValue\000"
- 1612      75655048 
- 1612      56616C75 
- 1612      6500
- 1613              	.LASF5:
- 1614 022b 73686F72 		.ascii	"short int\000"
- 1614      7420696E 
- 1614      7400
- 1615              	.LASF17:
- 1616 0235 75696E74 		.ascii	"uint16\000"
- 1616      313600
- 1617              	.LASF55:
- 1618 023c 51756575 		.ascii	"QueueDefinition\000"
- 1618      65446566 
- 1618      696E6974 
- 1618      696F6E00 
- 1619              	.LASF42:
- 1620 024c 62546573 		.ascii	"bTestState1\000"
- 1620      74537461 
- 1620      74653100 
- 1621              	.LASF0:
- 1622 0258 756E7369 		.ascii	"unsigned int\000"
- 1622      676E6564 
- 1622      20696E74 
- 1622      00
- 1623              	.LASF25:
- 1624 0265 62537461 		.ascii	"bState\000"
- 1624      746500
- 1625              	.LASF12:
- 1626 026c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1626      206C6F6E 
- 1626      6720756E 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 35
+ 1607      7400
+ 1608              	.LASF6:
+ 1609 0198 73686F72 		.ascii	"short unsigned int\000"
+ 1609      7420756E 
+ 1609      7369676E 
+ 1609      65642069 
+ 1609      6E7400
+ 1610              	.LASF53:
+ 1611 01ab 4E757472 		.ascii	"Nutrients.c\000"
+ 1611      69656E74 
+ 1611      732E6300 
+ 1612              	.LASF45:
+ 1613 01b7 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1613      52784275 
+ 1613      66666572 
+ 1613      00
+ 1614              	.LASF36:
+ 1615 01c4 764E7574 		.ascii	"vNutrientsInit\000"
+ 1615      7269656E 
+ 1615      7473496E 
+ 1615      697400
+ 1616              	.LASF19:
+ 1617 01d3 646F7562 		.ascii	"double\000"
+ 1617      6C6500
+ 1618              	.LASF49:
+ 1619 01da 78517565 		.ascii	"xQueuePHValue\000"
+ 1619      75655048 
+ 1619      56616C75 
+ 1619      6500
+ 1620              	.LASF5:
+ 1621 01e8 73686F72 		.ascii	"short int\000"
+ 1621      7420696E 
+ 1621      7400
+ 1622              	.LASF17:
+ 1623 01f2 75696E74 		.ascii	"uint16\000"
+ 1623      313600
+ 1624              	.LASF55:
+ 1625 01f9 51756575 		.ascii	"QueueDefinition\000"
+ 1625      65446566 
+ 1625      696E6974 
+ 1625      696F6E00 
+ 1626              	.LASF42:
+ 1627 0209 62546573 		.ascii	"bTestState1\000"
+ 1627      74537461 
+ 1627      74653100 
+ 1628              	.LASF0:
+ 1629 0215 756E7369 		.ascii	"unsigned int\000"
+ 1629      676E6564 
+ 1629      20696E74 
+ 1629      00
+ 1630              	.LASF25:
+ 1631 0222 62537461 		.ascii	"bState\000"
+ 1631      746500
+ 1632              	.LASF12:
+ 1633 0229 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1633      206C6F6E 
+ 1633      6720756E 
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 35
 
 
- 1626      7369676E 
- 1626      65642069 
- 1627              	.LASF13:
- 1628 0283 75696E74 		.ascii	"uint8_t\000"
- 1628      385F7400 
- 1629              	.LASF26:
- 1630 028b 78537461 		.ascii	"xStatus\000"
- 1630      74757300 
- 1631              	.LASF14:
- 1632 0293 696E7433 		.ascii	"int32_t\000"
- 1632      325F7400 
- 1633              	.LASF31:
- 1634 029b 66504856 		.ascii	"fPHValue\000"
- 1634      616C7565 
- 1634      00
- 1635              	.LASF21:
- 1636 02a4 73697A65 		.ascii	"sizetype\000"
- 1636      74797065 
- 1636      00
- 1637              	.LASF1:
- 1638 02ad 6C6F6E67 		.ascii	"long long int\000"
- 1638      206C6F6E 
- 1638      6720696E 
- 1638      7400
- 1639              	.LASF37:
- 1640 02bb 76546573 		.ascii	"vTestTaskInit\000"
- 1640      74546173 
- 1640      6B496E69 
- 1640      7400
- 1641              	.LASF20:
- 1642 02c9 63686172 		.ascii	"char\000"
- 1642      00
- 1643              	.LASF33:
- 1644 02ce 70765061 		.ascii	"pvParameters\000"
- 1644      72616D65 
- 1644      74657273 
- 1644      00
- 1645              	.LASF47:
- 1646 02db 66416369 		.ascii	"fAcidVoltage\000"
- 1646      64566F6C 
- 1646      74616765 
- 1646      00
- 1647              	.LASF51:
- 1648 02e8 53544F50 		.ascii	"STOP_SPEED\000"
- 1648      5F535045 
- 1648      454400
- 1649              	.LASF16:
- 1650 02f3 75696E74 		.ascii	"uint8\000"
- 1650      3800
- 1651              	.LASF44:
- 1652 02f9 70635465 		.ascii	"pcTextForNutrientPump\000"
- 1652      7874466F 
- 1652      724E7574 
- 1652      7269656E 
- 1652      7450756D 
- 1653              	.LASF15:
- 1654 030f 75696E74 		.ascii	"uint32_t\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\cci7vmq3.s 			page 36
+ 1633      7369676E 
+ 1633      65642069 
+ 1634              	.LASF13:
+ 1635 0240 75696E74 		.ascii	"uint8_t\000"
+ 1635      385F7400 
+ 1636              	.LASF26:
+ 1637 0248 78537461 		.ascii	"xStatus\000"
+ 1637      74757300 
+ 1638              	.LASF14:
+ 1639 0250 696E7433 		.ascii	"int32_t\000"
+ 1639      325F7400 
+ 1640              	.LASF31:
+ 1641 0258 66504856 		.ascii	"fPHValue\000"
+ 1641      616C7565 
+ 1641      00
+ 1642              	.LASF21:
+ 1643 0261 73697A65 		.ascii	"sizetype\000"
+ 1643      74797065 
+ 1643      00
+ 1644              	.LASF1:
+ 1645 026a 6C6F6E67 		.ascii	"long long int\000"
+ 1645      206C6F6E 
+ 1645      6720696E 
+ 1645      7400
+ 1646              	.LASF37:
+ 1647 0278 76546573 		.ascii	"vTestTaskInit\000"
+ 1647      74546173 
+ 1647      6B496E69 
+ 1647      7400
+ 1648              	.LASF20:
+ 1649 0286 63686172 		.ascii	"char\000"
+ 1649      00
+ 1650              	.LASF33:
+ 1651 028b 70765061 		.ascii	"pvParameters\000"
+ 1651      72616D65 
+ 1651      74657273 
+ 1651      00
+ 1652              	.LASF54:
+ 1653 0298 433A5C55 		.ascii	"C:\\Users\\mabo\\Documents\\AAU_EIT\\4-semester\\P4"
+ 1653      73657273 
+ 1653      5C6D6162 
+ 1653      6F5C446F 
+ 1653      63756D65 
+ 1654 02c5 5F566572 		.ascii	"_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.c"
+ 1654      74696361 
+ 1654      6C5F6661 
+ 1654      726D5C52 
+ 1654      544F535F 
+ 1655 02f6 7964736E 		.ascii	"ydsn\000"
+ 1655      00
+ 1656              	.LASF47:
+ 1657 02fb 66416369 		.ascii	"fAcidVoltage\000"
+ 1657      64566F6C 
+ 1657      74616765 
+ 1657      00
+ 1658              	.LASF51:
+ 1659 0308 53544F50 		.ascii	"STOP_SPEED\000"
+ARM GAS  C:\Users\mabo\AppData\Local\Temp\cc7SpRka.s 			page 36
 
 
- 1654      33325F74 
- 1654      00
- 1655              	.LASF27:
- 1656 0318 70694E75 		.ascii	"piNutrientPump\000"
- 1656      74726965 
- 1656      6E745075 
- 1656      6D7000
- 1657              	.LASF2:
- 1658 0327 6C6F6E67 		.ascii	"long double\000"
- 1658      20646F75 
- 1658      626C6500 
- 1659              	.LASF34:
- 1660 0333 66536C6F 		.ascii	"fSlope\000"
- 1660      706500
- 1661              	.LASF3:
- 1662 033a 7369676E 		.ascii	"signed char\000"
- 1662      65642063 
- 1662      68617200 
- 1663              	.LASF32:
- 1664 0346 694D696C 		.ascii	"iMilliPHValue\000"
- 1664      6C695048 
- 1664      56616C75 
- 1664      6500
- 1665              	.LASF28:
- 1666 0354 5F426F6F 		.ascii	"_Bool\000"
- 1666      6C00
- 1667              	.LASF22:
- 1668 035a 42617365 		.ascii	"BaseType_t\000"
- 1668      54797065 
- 1668      5F7400
- 1669              	.LASF48:
- 1670 0365 78517565 		.ascii	"xQueueNutrientPump\000"
- 1670      75654E75 
- 1670      74726965 
- 1670      6E745075 
- 1670      6D7000
- 1671              	.LASF41:
- 1672 0378 76546573 		.ascii	"vTestTaskNutrientPump\000"
- 1672      74546173 
- 1672      6B4E7574 
- 1672      7269656E 
- 1672      7450756D 
- 1673              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1659      5F535045 
+ 1659      454400
+ 1660              	.LASF16:
+ 1661 0313 75696E74 		.ascii	"uint8\000"
+ 1661      3800
+ 1662              	.LASF44:
+ 1663 0319 70635465 		.ascii	"pcTextForNutrientPump\000"
+ 1663      7874466F 
+ 1663      724E7574 
+ 1663      7269656E 
+ 1663      7450756D 
+ 1664              	.LASF15:
+ 1665 032f 75696E74 		.ascii	"uint32_t\000"
+ 1665      33325F74 
+ 1665      00
+ 1666              	.LASF27:
+ 1667 0338 70694E75 		.ascii	"piNutrientPump\000"
+ 1667      74726965 
+ 1667      6E745075 
+ 1667      6D7000
+ 1668              	.LASF2:
+ 1669 0347 6C6F6E67 		.ascii	"long double\000"
+ 1669      20646F75 
+ 1669      626C6500 
+ 1670              	.LASF34:
+ 1671 0353 66536C6F 		.ascii	"fSlope\000"
+ 1671      706500
+ 1672              	.LASF3:
+ 1673 035a 7369676E 		.ascii	"signed char\000"
+ 1673      65642063 
+ 1673      68617200 
+ 1674              	.LASF32:
+ 1675 0366 694D696C 		.ascii	"iMilliPHValue\000"
+ 1675      6C695048 
+ 1675      56616C75 
+ 1675      6500
+ 1676              	.LASF28:
+ 1677 0374 5F426F6F 		.ascii	"_Bool\000"
+ 1677      6C00
+ 1678              	.LASF22:
+ 1679 037a 42617365 		.ascii	"BaseType_t\000"
+ 1679      54797065 
+ 1679      5F7400
+ 1680              	.LASF48:
+ 1681 0385 78517565 		.ascii	"xQueueNutrientPump\000"
+ 1681      75654E75 
+ 1681      74726965 
+ 1681      6E745075 
+ 1681      6D7000
+ 1682              	.LASF41:
+ 1683 0398 76546573 		.ascii	"vTestTaskNutrientPump\000"
+ 1683      74546173 
+ 1683      6B4E7574 
+ 1683      7269656E 
+ 1683      7450756D 
+ 1684              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

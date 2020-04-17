@@ -50,7 +50,7 @@ void vNutrientsInit() {
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
     
-    xTaskCreate(vTaskMeasurePH, "PH", 100 , NULL , 2 , NULL);
+    xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
@@ -124,9 +124,10 @@ void vTaskMeasurePH(){
             bState = 1;
         }
         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
-            fPHVoltage = (ADC_PH_GetResult16()) / 4096 * 3000; //calculate voltage from measured value
+            fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; //calculate voltage from measured value
             fPHValue = fCalculatePHValue(fPHVoltage);
             iMilliPHValue = (uint16) fPHValue * 1000;
+            //iMilliPHValue = (uint16) fPHVoltage;
             xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY);
             bState = 0;
             vTaskDelay(xDelayms);
