@@ -107,7 +107,7 @@ void vTaskNutrientPump( void *pvParameters ) {
 
 void vTaskMeasurePH(){
     uint16 iPHValue;
-    const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
+    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
     _Bool bState = 0;
     
     
@@ -151,6 +151,7 @@ void vTestTaskUARTDataTransmit(){
     for(;;){
         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
         SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
+        SW_UART_TEST_USB_PutString("\n");
     }
 }
 
