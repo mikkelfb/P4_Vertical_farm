@@ -51,6 +51,14 @@
     */
     float fCalculatePHValue(float fPHVoltage);
     
+    /*
+    This task sends 'R' to the EC sensor, in order to make the sensor take a reading. 
+    Then it delays 300, to let the EC sensor prepare the reading.
+    Then it requests data from the EC sensor.
+    @Param[out]: Need to define the reading as an output from the task (iECIndex ??)
+    @Param[in]: 
+    */
+    void vNutrientsGetECValue();
     
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */

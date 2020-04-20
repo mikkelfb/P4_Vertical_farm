@@ -156,12 +156,52 @@ float fCalculatePHValue(float fPHVoltage){
     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
 }
 
+/*This function writes 'R' to the EC sensor, then delays(300) before requesting data transfer from the EC sensor. 
+This is in accordance with instructions given on the EC sensor datasheet. */
+void vNutrientsGetECValue()
+{
+    /* Defines the message to be sent, as an array of characters */
+    unsigned char  ucMessage[]= "R";
+ 
+    /* Initialize buffer with packet  , slave address is 9*/
+    (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
+
+   //Waits until master completes write transfer 
+   while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+    {
+    } 
+
+    
+    CyDelay(300);
+    unsigned char ucResponse[40];
+    (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
+    
+    //Waits until master completes write transfer     
+    while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
+    {
+    }
+    
+    
+    /*
+    //This 'if' statement blinks the LED on the PSoC as a test. If the LED blinks, succes.
+    //Note that the EC sensor will first send a '1' to confirm it can send data,
+    //then send the information, and finish with 0.
+    //An Arduino has been set up to emulate the EC sensor, and it will pretend it read the number '9,428'
+    if (ucResponse[0] == '1' && ucResponse[1] == '9' && ucResponse[6] == '0')
+    {
+        LED_Write (1U);
+        CyDelay(2000);
+        LED_Write (0U);
+    } 
+    */
+}
+
 /* --- TEST TASK --- */
 
 /*
     Task for testing existing implementations.
 
-    DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+    DO NOT delete this functions/tasks, but comment them out if they aren't nesessary 
     for your current implementation/testing
     
     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
