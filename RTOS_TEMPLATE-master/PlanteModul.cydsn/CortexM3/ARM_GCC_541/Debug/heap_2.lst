@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 1
 
 
    1              		.syntax unified
@@ -19,48 +19,50 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.bss
-  20              		.align	2
-  21              	ucHeap:
-  22 0000 00000000 		.space	32768
-  22      00000000 
-  22      00000000 
-  22      00000000 
-  22      00000000 
-  23              		.section	.rodata
-  24              		.align	1
-  25              		.type	heapSTRUCT_SIZE, %object
-  26              		.size	heapSTRUCT_SIZE, 2
-  27              	heapSTRUCT_SIZE:
-  28 0000 0800     		.short	8
-  29              		.bss
-  30              		.align	2
-  31              	xStart:
-  32 8000 00000000 		.space	8
-  32      00000000 
-  33              		.align	2
-  34              	xEnd:
-  35 8008 00000000 		.space	8
-  35      00000000 
-  36              		.data
-  37              		.align	2
-  38              		.type	xFreeBytesRemaining, %object
-  39              		.size	xFreeBytesRemaining, 4
-  40              	xFreeBytesRemaining:
-  41 0000 F87F0000 		.word	32760
-  42              		.section	.text.pvPortMalloc,"ax",%progbits
-  43              		.align	2
-  44              		.global	pvPortMalloc
-  45              		.thumb
-  46              		.thumb_func
-  47              		.type	pvPortMalloc, %function
-  48              	pvPortMalloc:
-  49              	.LFB68:
-  50              		.file 1 "Source\\portable\\MemMang\\heap_2.c"
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.bss
+  22              		.align	2
+  23              	ucHeap:
+  24 0000 00000000 		.space	32768
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  25              		.section	.rodata
+  26              		.align	1
+  27              		.type	heapSTRUCT_SIZE, %object
+  28              		.size	heapSTRUCT_SIZE, 2
+  29              	heapSTRUCT_SIZE:
+  30 0000 0800     		.short	8
+  31              		.bss
+  32              		.align	2
+  33              	xStart:
+  34 8000 00000000 		.space	8
+  34      00000000 
+  35              		.align	2
+  36              	xEnd:
+  37 8008 00000000 		.space	8
+  37      00000000 
+  38              		.data
+  39              		.align	2
+  40              		.type	xFreeBytesRemaining, %object
+  41              		.size	xFreeBytesRemaining, 4
+  42              	xFreeBytesRemaining:
+  43 0000 F87F0000 		.word	32760
+  44              		.section	.text.pvPortMalloc,"ax",%progbits
+  45              		.align	2
+  46              		.global	pvPortMalloc
+  47              		.thumb
+  48              		.thumb_func
+  49              		.type	pvPortMalloc, %function
+  50              	pvPortMalloc:
+  51              	.LFB68:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 2
+
+
+  52              		.file 1 "Source\\portable\\MemMang\\heap_2.c"
    1:Source\portable\MemMang/heap_2.c **** /*
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 2
-
-
    2:Source\portable\MemMang/heap_2.c ****  * FreeRTOS Kernel V10.3.1
    3:Source\portable\MemMang/heap_2.c ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
    4:Source\portable\MemMang/heap_2.c ****  *
@@ -116,11 +118,11 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 1
   54:Source\portable\MemMang/heap_2.c **** #define configADJUSTED_HEAP_SIZE	( configTOTAL_HEAP_SIZE - portBYTE_ALIGNMENT )
   55:Source\portable\MemMang/heap_2.c **** 
   56:Source\portable\MemMang/heap_2.c **** /*
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 3
+
+
   57:Source\portable\MemMang/heap_2.c ****  * Initialises the heap structures before their first use.
   58:Source\portable\MemMang/heap_2.c ****  */
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 3
-
-
   59:Source\portable\MemMang/heap_2.c **** static void prvHeapInit( void );
   60:Source\portable\MemMang/heap_2.c **** 
   61:Source\portable\MemMang/heap_2.c **** /* Allocate the memory for the heap. */
@@ -176,1765 +178,1897 @@ ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 1
  111:Source\portable\MemMang/heap_2.c **** 	/* Update the list to include the block being inserted in the correct */		\
  112:Source\portable\MemMang/heap_2.c **** 	/* position. */																	\
  113:Source\portable\MemMang/heap_2.c **** 	pxBlockToInsert->pxNextFreeBlock = pxIterator->pxNextFreeBlock;					\
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 4
+
+
  114:Source\portable\MemMang/heap_2.c **** 	pxIterator->pxNextFreeBlock = pxBlockToInsert;									\
  115:Source\portable\MemMang/heap_2.c **** }
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 4
-
-
  116:Source\portable\MemMang/heap_2.c **** /*-----------------------------------------------------------*/
  117:Source\portable\MemMang/heap_2.c **** 
  118:Source\portable\MemMang/heap_2.c **** void *pvPortMalloc( size_t xWantedSize )
  119:Source\portable\MemMang/heap_2.c **** {
-  51              		.loc 1 119 0
-  52              		.cfi_startproc
-  53              		@ args = 0, pretend = 0, frame = 32
-  54              		@ frame_needed = 1, uses_anonymous_args = 0
-  55 0000 80B5     		push	{r7, lr}
-  56              		.cfi_def_cfa_offset 8
-  57              		.cfi_offset 7, -8
-  58              		.cfi_offset 14, -4
-  59 0002 88B0     		sub	sp, sp, #32
-  60              		.cfi_def_cfa_offset 40
-  61 0004 00AF     		add	r7, sp, #0
-  62              		.cfi_def_cfa_register 7
-  63 0006 7860     		str	r0, [r7, #4]
+  53              		.loc 1 119 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 32
+  56              		@ frame_needed = 1, uses_anonymous_args = 0
+  57 0000 80B5     		push	{r7, lr}
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 7, -8
+  60              		.cfi_offset 14, -4
+  61 0002 88B0     		sub	sp, sp, #32
+  62              		.cfi_def_cfa_offset 40
+  63 0004 00AF     		add	r7, sp, #0
+  64              		.cfi_def_cfa_register 7
+  65 0006 7860     		str	r0, [r7, #4]
  120:Source\portable\MemMang/heap_2.c **** BlockLink_t *pxBlock, *pxPreviousBlock, *pxNewBlockLink;
  121:Source\portable\MemMang/heap_2.c **** static BaseType_t xHeapHasBeenInitialised = pdFALSE;
  122:Source\portable\MemMang/heap_2.c **** void *pvReturn = NULL;
-  64              		.loc 1 122 0
-  65 0008 0023     		movs	r3, #0
-  66 000a 7B61     		str	r3, [r7, #20]
+  66              		.loc 1 122 0
+  67 0008 0023     		movs	r3, #0
+  68 000a 7B61     		str	r3, [r7, #20]
  123:Source\portable\MemMang/heap_2.c **** 
  124:Source\portable\MemMang/heap_2.c **** 	vTaskSuspendAll();
-  67              		.loc 1 124 0
-  68 000c FFF7FEFF 		bl	vTaskSuspendAll
+  69              		.loc 1 124 0
+  70 000c FFF7FEFF 		bl	vTaskSuspendAll
  125:Source\portable\MemMang/heap_2.c **** 	{
  126:Source\portable\MemMang/heap_2.c **** 		/* If this is the first call to malloc then the heap will require
  127:Source\portable\MemMang/heap_2.c **** 		initialisation to setup the list of free blocks. */
  128:Source\portable\MemMang/heap_2.c **** 		if( xHeapHasBeenInitialised == pdFALSE )
-  69              		.loc 1 128 0
-  70 0010 404B     		ldr	r3, .L13
-  71 0012 1B68     		ldr	r3, [r3]
-  72 0014 002B     		cmp	r3, #0
-  73 0016 04D1     		bne	.L2
+  71              		.loc 1 128 0
+  72 0010 404B     		ldr	r3, .L13
+  73 0012 1B68     		ldr	r3, [r3]
+  74 0014 002B     		cmp	r3, #0
+  75 0016 04D1     		bne	.L2
  129:Source\portable\MemMang/heap_2.c **** 		{
  130:Source\portable\MemMang/heap_2.c **** 			prvHeapInit();
-  74              		.loc 1 130 0
-  75 0018 FFF7FEFF 		bl	prvHeapInit
+  76              		.loc 1 130 0
+  77 0018 FFF7FEFF 		bl	prvHeapInit
  131:Source\portable\MemMang/heap_2.c **** 			xHeapHasBeenInitialised = pdTRUE;
-  76              		.loc 1 131 0
-  77 001c 3D4B     		ldr	r3, .L13
-  78 001e 0122     		movs	r2, #1
-  79 0020 1A60     		str	r2, [r3]
-  80              	.L2:
+  78              		.loc 1 131 0
+  79 001c 3D4B     		ldr	r3, .L13
+  80 001e 0122     		movs	r2, #1
+  81 0020 1A60     		str	r2, [r3]
+  82              	.L2:
  132:Source\portable\MemMang/heap_2.c **** 		}
  133:Source\portable\MemMang/heap_2.c **** 
  134:Source\portable\MemMang/heap_2.c **** 		/* The wanted size is increased so it can contain a BlockLink_t
  135:Source\portable\MemMang/heap_2.c **** 		structure in addition to the requested amount of bytes. */
  136:Source\portable\MemMang/heap_2.c **** 		if( xWantedSize > 0 )
-  81              		.loc 1 136 0
-  82 0022 7B68     		ldr	r3, [r7, #4]
-  83 0024 002B     		cmp	r3, #0
-  84 0026 0ED0     		beq	.L3
+  83              		.loc 1 136 0
+  84 0022 7B68     		ldr	r3, [r7, #4]
+  85 0024 002B     		cmp	r3, #0
+  86 0026 0ED0     		beq	.L3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 5
+
+
  137:Source\portable\MemMang/heap_2.c **** 		{
  138:Source\portable\MemMang/heap_2.c **** 			xWantedSize += heapSTRUCT_SIZE;
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 5
-
-
-  85              		.loc 1 138 0
-  86 0028 0823     		movs	r3, #8
-  87 002a 1A46     		mov	r2, r3
-  88 002c 7B68     		ldr	r3, [r7, #4]
-  89 002e 1344     		add	r3, r3, r2
-  90 0030 7B60     		str	r3, [r7, #4]
+  87              		.loc 1 138 0
+  88 0028 0823     		movs	r3, #8
+  89 002a 1A46     		mov	r2, r3
+  90 002c 7B68     		ldr	r3, [r7, #4]
+  91 002e 1344     		add	r3, r3, r2
+  92 0030 7B60     		str	r3, [r7, #4]
  139:Source\portable\MemMang/heap_2.c **** 
  140:Source\portable\MemMang/heap_2.c **** 			/* Ensure that blocks are always aligned to the required number of bytes. */
  141:Source\portable\MemMang/heap_2.c **** 			if( ( xWantedSize & portBYTE_ALIGNMENT_MASK ) != 0 )
-  91              		.loc 1 141 0
-  92 0032 7B68     		ldr	r3, [r7, #4]
-  93 0034 03F00703 		and	r3, r3, #7
-  94 0038 002B     		cmp	r3, #0
-  95 003a 04D0     		beq	.L3
+  93              		.loc 1 141 0
+  94 0032 7B68     		ldr	r3, [r7, #4]
+  95 0034 03F00703 		and	r3, r3, #7
+  96 0038 002B     		cmp	r3, #0
+  97 003a 04D0     		beq	.L3
  142:Source\portable\MemMang/heap_2.c **** 			{
  143:Source\portable\MemMang/heap_2.c **** 				/* Byte alignment required. */
  144:Source\portable\MemMang/heap_2.c **** 				xWantedSize += ( portBYTE_ALIGNMENT - ( xWantedSize & portBYTE_ALIGNMENT_MASK ) );
-  96              		.loc 1 144 0
-  97 003c 7B68     		ldr	r3, [r7, #4]
-  98 003e 23F00703 		bic	r3, r3, #7
-  99 0042 0833     		adds	r3, r3, #8
- 100 0044 7B60     		str	r3, [r7, #4]
- 101              	.L3:
+  98              		.loc 1 144 0
+  99 003c 7B68     		ldr	r3, [r7, #4]
+ 100 003e 23F00703 		bic	r3, r3, #7
+ 101 0042 0833     		adds	r3, r3, #8
+ 102 0044 7B60     		str	r3, [r7, #4]
+ 103              	.L3:
  145:Source\portable\MemMang/heap_2.c **** 			}
  146:Source\portable\MemMang/heap_2.c **** 		}
  147:Source\portable\MemMang/heap_2.c **** 
  148:Source\portable\MemMang/heap_2.c **** 		if( ( xWantedSize > 0 ) && ( xWantedSize < configADJUSTED_HEAP_SIZE ) )
- 102              		.loc 1 148 0
- 103 0046 7B68     		ldr	r3, [r7, #4]
- 104 0048 002B     		cmp	r3, #0
- 105 004a 57D0     		beq	.L4
- 106              		.loc 1 148 0 is_stmt 0 discriminator 1
- 107 004c 7B68     		ldr	r3, [r7, #4]
- 108 004e 47F6F772 		movw	r2, #32759
- 109 0052 9342     		cmp	r3, r2
- 110 0054 52D8     		bhi	.L4
+ 104              		.loc 1 148 0
+ 105 0046 7B68     		ldr	r3, [r7, #4]
+ 106 0048 002B     		cmp	r3, #0
+ 107 004a 57D0     		beq	.L4
+ 108              		.loc 1 148 0 is_stmt 0 discriminator 1
+ 109 004c 7B68     		ldr	r3, [r7, #4]
+ 110 004e 47F6F772 		movw	r2, #32759
+ 111 0052 9342     		cmp	r3, r2
+ 112 0054 52D8     		bhi	.L4
  149:Source\portable\MemMang/heap_2.c **** 		{
  150:Source\portable\MemMang/heap_2.c **** 			/* Blocks are stored in byte order - traverse the list from the start
  151:Source\portable\MemMang/heap_2.c **** 			(smallest) block until one of adequate size is found. */
  152:Source\portable\MemMang/heap_2.c **** 			pxPreviousBlock = &xStart;
- 111              		.loc 1 152 0 is_stmt 1
- 112 0056 304B     		ldr	r3, .L13+4
- 113 0058 BB61     		str	r3, [r7, #24]
+ 113              		.loc 1 152 0 is_stmt 1
+ 114 0056 304B     		ldr	r3, .L13+4
+ 115 0058 BB61     		str	r3, [r7, #24]
  153:Source\portable\MemMang/heap_2.c **** 			pxBlock = xStart.pxNextFreeBlock;
- 114              		.loc 1 153 0
- 115 005a 2F4B     		ldr	r3, .L13+4
- 116 005c 1B68     		ldr	r3, [r3]
- 117 005e FB61     		str	r3, [r7, #28]
+ 116              		.loc 1 153 0
+ 117 005a 2F4B     		ldr	r3, .L13+4
+ 118 005c 1B68     		ldr	r3, [r3]
+ 119 005e FB61     		str	r3, [r7, #28]
  154:Source\portable\MemMang/heap_2.c **** 			while( ( pxBlock->xBlockSize < xWantedSize ) && ( pxBlock->pxNextFreeBlock != NULL ) )
- 118              		.loc 1 154 0
- 119 0060 04E0     		b	.L5
- 120              	.L7:
+ 120              		.loc 1 154 0
+ 121 0060 04E0     		b	.L5
+ 122              	.L7:
  155:Source\portable\MemMang/heap_2.c **** 			{
  156:Source\portable\MemMang/heap_2.c **** 				pxPreviousBlock = pxBlock;
- 121              		.loc 1 156 0
- 122 0062 FB69     		ldr	r3, [r7, #28]
- 123 0064 BB61     		str	r3, [r7, #24]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 6
+ 123              		.loc 1 156 0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 6
 
 
+ 124 0062 FB69     		ldr	r3, [r7, #28]
+ 125 0064 BB61     		str	r3, [r7, #24]
  157:Source\portable\MemMang/heap_2.c **** 				pxBlock = pxBlock->pxNextFreeBlock;
- 124              		.loc 1 157 0
- 125 0066 FB69     		ldr	r3, [r7, #28]
- 126 0068 1B68     		ldr	r3, [r3]
- 127 006a FB61     		str	r3, [r7, #28]
- 128              	.L5:
+ 126              		.loc 1 157 0
+ 127 0066 FB69     		ldr	r3, [r7, #28]
+ 128 0068 1B68     		ldr	r3, [r3]
+ 129 006a FB61     		str	r3, [r7, #28]
+ 130              	.L5:
  154:Source\portable\MemMang/heap_2.c **** 			while( ( pxBlock->xBlockSize < xWantedSize ) && ( pxBlock->pxNextFreeBlock != NULL ) )
- 129              		.loc 1 154 0
- 130 006c FB69     		ldr	r3, [r7, #28]
- 131 006e 5A68     		ldr	r2, [r3, #4]
- 132 0070 7B68     		ldr	r3, [r7, #4]
- 133 0072 9A42     		cmp	r2, r3
- 134 0074 03D2     		bcs	.L6
+ 131              		.loc 1 154 0
+ 132 006c FB69     		ldr	r3, [r7, #28]
+ 133 006e 5A68     		ldr	r2, [r3, #4]
+ 134 0070 7B68     		ldr	r3, [r7, #4]
+ 135 0072 9A42     		cmp	r2, r3
+ 136 0074 03D2     		bcs	.L6
  154:Source\portable\MemMang/heap_2.c **** 			while( ( pxBlock->xBlockSize < xWantedSize ) && ( pxBlock->pxNextFreeBlock != NULL ) )
- 135              		.loc 1 154 0 is_stmt 0 discriminator 1
- 136 0076 FB69     		ldr	r3, [r7, #28]
- 137 0078 1B68     		ldr	r3, [r3]
- 138 007a 002B     		cmp	r3, #0
- 139 007c F1D1     		bne	.L7
- 140              	.L6:
+ 137              		.loc 1 154 0 is_stmt 0 discriminator 1
+ 138 0076 FB69     		ldr	r3, [r7, #28]
+ 139 0078 1B68     		ldr	r3, [r3]
+ 140 007a 002B     		cmp	r3, #0
+ 141 007c F1D1     		bne	.L7
+ 142              	.L6:
  158:Source\portable\MemMang/heap_2.c **** 			}
  159:Source\portable\MemMang/heap_2.c **** 
  160:Source\portable\MemMang/heap_2.c **** 			/* If we found the end marker then a block of adequate size was not found. */
  161:Source\portable\MemMang/heap_2.c **** 			if( pxBlock != &xEnd )
- 141              		.loc 1 161 0 is_stmt 1
- 142 007e FB69     		ldr	r3, [r7, #28]
- 143 0080 264A     		ldr	r2, .L13+8
- 144 0082 9342     		cmp	r3, r2
- 145 0084 3AD0     		beq	.L4
+ 143              		.loc 1 161 0 is_stmt 1
+ 144 007e FB69     		ldr	r3, [r7, #28]
+ 145 0080 264A     		ldr	r2, .L13+8
+ 146 0082 9342     		cmp	r3, r2
+ 147 0084 3AD0     		beq	.L4
  162:Source\portable\MemMang/heap_2.c **** 			{
  163:Source\portable\MemMang/heap_2.c **** 				/* Return the memory space - jumping over the BlockLink_t structure
  164:Source\portable\MemMang/heap_2.c **** 				at its start. */
  165:Source\portable\MemMang/heap_2.c **** 				pvReturn = ( void * ) ( ( ( uint8_t * ) pxPreviousBlock->pxNextFreeBlock ) + heapSTRUCT_SIZE );
- 146              		.loc 1 165 0
- 147 0086 BB69     		ldr	r3, [r7, #24]
- 148 0088 1B68     		ldr	r3, [r3]
- 149 008a 0822     		movs	r2, #8
- 150 008c 1344     		add	r3, r3, r2
- 151 008e 7B61     		str	r3, [r7, #20]
+ 148              		.loc 1 165 0
+ 149 0086 BB69     		ldr	r3, [r7, #24]
+ 150 0088 1B68     		ldr	r3, [r3]
+ 151 008a 0822     		movs	r2, #8
+ 152 008c 1344     		add	r3, r3, r2
+ 153 008e 7B61     		str	r3, [r7, #20]
  166:Source\portable\MemMang/heap_2.c **** 
  167:Source\portable\MemMang/heap_2.c **** 				/* This block is being returned for use so must be taken out of the
  168:Source\portable\MemMang/heap_2.c **** 				list of free blocks. */
  169:Source\portable\MemMang/heap_2.c **** 				pxPreviousBlock->pxNextFreeBlock = pxBlock->pxNextFreeBlock;
- 152              		.loc 1 169 0
- 153 0090 FB69     		ldr	r3, [r7, #28]
- 154 0092 1A68     		ldr	r2, [r3]
- 155 0094 BB69     		ldr	r3, [r7, #24]
- 156 0096 1A60     		str	r2, [r3]
+ 154              		.loc 1 169 0
+ 155 0090 FB69     		ldr	r3, [r7, #28]
+ 156 0092 1A68     		ldr	r2, [r3]
+ 157 0094 BB69     		ldr	r3, [r7, #24]
+ 158 0096 1A60     		str	r2, [r3]
  170:Source\portable\MemMang/heap_2.c **** 
  171:Source\portable\MemMang/heap_2.c **** 				/* If the block is larger than required it can be split into two. */
  172:Source\portable\MemMang/heap_2.c **** 				if( ( pxBlock->xBlockSize - xWantedSize ) > heapMINIMUM_BLOCK_SIZE )
- 157              		.loc 1 172 0
- 158 0098 FB69     		ldr	r3, [r7, #28]
- 159 009a 5A68     		ldr	r2, [r3, #4]
- 160 009c 7B68     		ldr	r3, [r7, #4]
- 161 009e D31A     		subs	r3, r2, r3
- 162 00a0 0822     		movs	r2, #8
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 7
+ 159              		.loc 1 172 0
+ 160 0098 FB69     		ldr	r3, [r7, #28]
+ 161 009a 5A68     		ldr	r2, [r3, #4]
+ 162 009c 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 7
 
 
- 163 00a2 5200     		lsls	r2, r2, #1
- 164 00a4 9342     		cmp	r3, r2
- 165 00a6 22D9     		bls	.L8
+ 163 009e D31A     		subs	r3, r2, r3
+ 164 00a0 0822     		movs	r2, #8
+ 165 00a2 5200     		lsls	r2, r2, #1
+ 166 00a4 9342     		cmp	r3, r2
+ 167 00a6 22D9     		bls	.L8
  173:Source\portable\MemMang/heap_2.c **** 				{
  174:Source\portable\MemMang/heap_2.c **** 					/* This block is to be split into two.  Create a new block
  175:Source\portable\MemMang/heap_2.c **** 					following the number of bytes requested. The void cast is
  176:Source\portable\MemMang/heap_2.c **** 					used to prevent byte alignment warnings from the compiler. */
  177:Source\portable\MemMang/heap_2.c **** 					pxNewBlockLink = ( void * ) ( ( ( uint8_t * ) pxBlock ) + xWantedSize );
- 166              		.loc 1 177 0
- 167 00a8 FA69     		ldr	r2, [r7, #28]
- 168 00aa 7B68     		ldr	r3, [r7, #4]
- 169 00ac 1344     		add	r3, r3, r2
- 170 00ae FB60     		str	r3, [r7, #12]
+ 168              		.loc 1 177 0
+ 169 00a8 FA69     		ldr	r2, [r7, #28]
+ 170 00aa 7B68     		ldr	r3, [r7, #4]
+ 171 00ac 1344     		add	r3, r3, r2
+ 172 00ae FB60     		str	r3, [r7, #12]
  178:Source\portable\MemMang/heap_2.c **** 
  179:Source\portable\MemMang/heap_2.c **** 					/* Calculate the sizes of two blocks split from the single
  180:Source\portable\MemMang/heap_2.c **** 					block. */
  181:Source\portable\MemMang/heap_2.c **** 					pxNewBlockLink->xBlockSize = pxBlock->xBlockSize - xWantedSize;
- 171              		.loc 1 181 0
- 172 00b0 FB69     		ldr	r3, [r7, #28]
- 173 00b2 5A68     		ldr	r2, [r3, #4]
- 174 00b4 7B68     		ldr	r3, [r7, #4]
- 175 00b6 D21A     		subs	r2, r2, r3
- 176 00b8 FB68     		ldr	r3, [r7, #12]
- 177 00ba 5A60     		str	r2, [r3, #4]
+ 173              		.loc 1 181 0
+ 174 00b0 FB69     		ldr	r3, [r7, #28]
+ 175 00b2 5A68     		ldr	r2, [r3, #4]
+ 176 00b4 7B68     		ldr	r3, [r7, #4]
+ 177 00b6 D21A     		subs	r2, r2, r3
+ 178 00b8 FB68     		ldr	r3, [r7, #12]
+ 179 00ba 5A60     		str	r2, [r3, #4]
  182:Source\portable\MemMang/heap_2.c **** 					pxBlock->xBlockSize = xWantedSize;
- 178              		.loc 1 182 0
- 179 00bc FB69     		ldr	r3, [r7, #28]
- 180 00be 7A68     		ldr	r2, [r7, #4]
- 181 00c0 5A60     		str	r2, [r3, #4]
- 182              	.LBB2:
+ 180              		.loc 1 182 0
+ 181 00bc FB69     		ldr	r3, [r7, #28]
+ 182 00be 7A68     		ldr	r2, [r7, #4]
+ 183 00c0 5A60     		str	r2, [r3, #4]
+ 184              	.LBB2:
  183:Source\portable\MemMang/heap_2.c **** 
  184:Source\portable\MemMang/heap_2.c **** 					/* Insert the new block into the list of free blocks. */
  185:Source\portable\MemMang/heap_2.c **** 					prvInsertBlockIntoFreeList( ( pxNewBlockLink ) );
- 183              		.loc 1 185 0
- 184 00c2 FB68     		ldr	r3, [r7, #12]
- 185 00c4 5B68     		ldr	r3, [r3, #4]
- 186 00c6 BB60     		str	r3, [r7, #8]
- 187 00c8 134B     		ldr	r3, .L13+4
- 188 00ca 3B61     		str	r3, [r7, #16]
- 189 00cc 02E0     		b	.L9
- 190              	.L10:
- 191              		.loc 1 185 0 is_stmt 0 discriminator 3
- 192 00ce 3B69     		ldr	r3, [r7, #16]
- 193 00d0 1B68     		ldr	r3, [r3]
- 194 00d2 3B61     		str	r3, [r7, #16]
- 195              	.L9:
- 196              		.loc 1 185 0 discriminator 1
- 197 00d4 3B69     		ldr	r3, [r7, #16]
- 198 00d6 1B68     		ldr	r3, [r3]
- 199 00d8 5A68     		ldr	r2, [r3, #4]
- 200 00da BB68     		ldr	r3, [r7, #8]
- 201 00dc 9A42     		cmp	r2, r3
- 202 00de F6D3     		bcc	.L10
- 203              		.loc 1 185 0 discriminator 4
- 204 00e0 3B69     		ldr	r3, [r7, #16]
- 205 00e2 1A68     		ldr	r2, [r3]
- 206 00e4 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 8
+ 185              		.loc 1 185 0
+ 186 00c2 FB68     		ldr	r3, [r7, #12]
+ 187 00c4 5B68     		ldr	r3, [r3, #4]
+ 188 00c6 BB60     		str	r3, [r7, #8]
+ 189 00c8 134B     		ldr	r3, .L13+4
+ 190 00ca 3B61     		str	r3, [r7, #16]
+ 191 00cc 02E0     		b	.L9
+ 192              	.L10:
+ 193              		.loc 1 185 0 is_stmt 0 discriminator 3
+ 194 00ce 3B69     		ldr	r3, [r7, #16]
+ 195 00d0 1B68     		ldr	r3, [r3]
+ 196 00d2 3B61     		str	r3, [r7, #16]
+ 197              	.L9:
+ 198              		.loc 1 185 0 discriminator 1
+ 199 00d4 3B69     		ldr	r3, [r7, #16]
+ 200 00d6 1B68     		ldr	r3, [r3]
+ 201 00d8 5A68     		ldr	r2, [r3, #4]
+ 202 00da BB68     		ldr	r3, [r7, #8]
+ 203 00dc 9A42     		cmp	r2, r3
+ 204 00de F6D3     		bcc	.L10
+ 205              		.loc 1 185 0 discriminator 4
+ 206 00e0 3B69     		ldr	r3, [r7, #16]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 8
 
 
- 207 00e6 1A60     		str	r2, [r3]
- 208 00e8 3B69     		ldr	r3, [r7, #16]
- 209 00ea FA68     		ldr	r2, [r7, #12]
- 210 00ec 1A60     		str	r2, [r3]
- 211              	.L8:
- 212              	.LBE2:
+ 207 00e2 1A68     		ldr	r2, [r3]
+ 208 00e4 FB68     		ldr	r3, [r7, #12]
+ 209 00e6 1A60     		str	r2, [r3]
+ 210 00e8 3B69     		ldr	r3, [r7, #16]
+ 211 00ea FA68     		ldr	r2, [r7, #12]
+ 212 00ec 1A60     		str	r2, [r3]
+ 213              	.L8:
+ 214              	.LBE2:
  186:Source\portable\MemMang/heap_2.c **** 				}
  187:Source\portable\MemMang/heap_2.c **** 
  188:Source\portable\MemMang/heap_2.c **** 				xFreeBytesRemaining -= pxBlock->xBlockSize;
- 213              		.loc 1 188 0 is_stmt 1
- 214 00ee 0C4B     		ldr	r3, .L13+12
- 215 00f0 1A68     		ldr	r2, [r3]
- 216 00f2 FB69     		ldr	r3, [r7, #28]
- 217 00f4 5B68     		ldr	r3, [r3, #4]
- 218 00f6 D31A     		subs	r3, r2, r3
- 219 00f8 094A     		ldr	r2, .L13+12
- 220 00fa 1360     		str	r3, [r2]
- 221              	.L4:
+ 215              		.loc 1 188 0 is_stmt 1
+ 216 00ee 0C4B     		ldr	r3, .L13+12
+ 217 00f0 1A68     		ldr	r2, [r3]
+ 218 00f2 FB69     		ldr	r3, [r7, #28]
+ 219 00f4 5B68     		ldr	r3, [r3, #4]
+ 220 00f6 D31A     		subs	r3, r2, r3
+ 221 00f8 094A     		ldr	r2, .L13+12
+ 222 00fa 1360     		str	r3, [r2]
+ 223              	.L4:
  189:Source\portable\MemMang/heap_2.c **** 			}
  190:Source\portable\MemMang/heap_2.c **** 		}
  191:Source\portable\MemMang/heap_2.c **** 
  192:Source\portable\MemMang/heap_2.c **** 		traceMALLOC( pvReturn, xWantedSize );
  193:Source\portable\MemMang/heap_2.c **** 	}
  194:Source\portable\MemMang/heap_2.c **** 	( void ) xTaskResumeAll();
- 222              		.loc 1 194 0
- 223 00fc FFF7FEFF 		bl	xTaskResumeAll
+ 224              		.loc 1 194 0
+ 225 00fc FFF7FEFF 		bl	xTaskResumeAll
  195:Source\portable\MemMang/heap_2.c **** 
  196:Source\portable\MemMang/heap_2.c **** 	#if( configUSE_MALLOC_FAILED_HOOK == 1 )
  197:Source\portable\MemMang/heap_2.c **** 	{
  198:Source\portable\MemMang/heap_2.c **** 		if( pvReturn == NULL )
- 224              		.loc 1 198 0
- 225 0100 7B69     		ldr	r3, [r7, #20]
- 226 0102 002B     		cmp	r3, #0
- 227 0104 01D1     		bne	.L11
- 228              	.LBB3:
+ 226              		.loc 1 198 0
+ 227 0100 7B69     		ldr	r3, [r7, #20]
+ 228 0102 002B     		cmp	r3, #0
+ 229 0104 01D1     		bne	.L11
+ 230              	.LBB3:
  199:Source\portable\MemMang/heap_2.c **** 		{
  200:Source\portable\MemMang/heap_2.c **** 			extern void vApplicationMallocFailedHook( void );
  201:Source\portable\MemMang/heap_2.c **** 			vApplicationMallocFailedHook();
- 229              		.loc 1 201 0
- 230 0106 FFF7FEFF 		bl	vApplicationMallocFailedHook
- 231              	.L11:
- 232              	.LBE3:
+ 231              		.loc 1 201 0
+ 232 0106 FFF7FEFF 		bl	vApplicationMallocFailedHook
+ 233              	.L11:
+ 234              	.LBE3:
  202:Source\portable\MemMang/heap_2.c **** 		}
  203:Source\portable\MemMang/heap_2.c **** 	}
  204:Source\portable\MemMang/heap_2.c **** 	#endif
  205:Source\portable\MemMang/heap_2.c **** 
  206:Source\portable\MemMang/heap_2.c **** 	return pvReturn;
- 233              		.loc 1 206 0
- 234 010a 7B69     		ldr	r3, [r7, #20]
+ 235              		.loc 1 206 0
+ 236 010a 7B69     		ldr	r3, [r7, #20]
  207:Source\portable\MemMang/heap_2.c **** }
- 235              		.loc 1 207 0
- 236 010c 1846     		mov	r0, r3
- 237 010e 2037     		adds	r7, r7, #32
- 238              		.cfi_def_cfa_offset 8
- 239 0110 BD46     		mov	sp, r7
- 240              		.cfi_def_cfa_register 13
- 241              		@ sp needed
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 9
+ 237              		.loc 1 207 0
+ 238 010c 1846     		mov	r0, r3
+ 239 010e 2037     		adds	r7, r7, #32
+ 240              		.cfi_def_cfa_offset 8
+ 241 0110 BD46     		mov	sp, r7
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 9
 
 
- 242 0112 80BD     		pop	{r7, pc}
- 243              	.L14:
- 244              		.align	2
- 245              	.L13:
- 246 0114 10800000 		.word	xHeapHasBeenInitialised.6590
- 247 0118 00800000 		.word	xStart
- 248 011c 08800000 		.word	xEnd
- 249 0120 00000000 		.word	xFreeBytesRemaining
- 250              		.cfi_endproc
- 251              	.LFE68:
- 252              		.size	pvPortMalloc, .-pvPortMalloc
- 253              		.section	.text.vPortFree,"ax",%progbits
- 254              		.align	2
- 255              		.global	vPortFree
- 256              		.thumb
- 257              		.thumb_func
- 258              		.type	vPortFree, %function
- 259              	vPortFree:
- 260              	.LFB69:
+ 242              		.cfi_def_cfa_register 13
+ 243              		@ sp needed
+ 244 0112 80BD     		pop	{r7, pc}
+ 245              	.L14:
+ 246              		.align	2
+ 247              	.L13:
+ 248 0114 10800000 		.word	xHeapHasBeenInitialised.6829
+ 249 0118 00800000 		.word	xStart
+ 250 011c 08800000 		.word	xEnd
+ 251 0120 00000000 		.word	xFreeBytesRemaining
+ 252              		.cfi_endproc
+ 253              	.LFE68:
+ 254              		.size	pvPortMalloc, .-pvPortMalloc
+ 255              		.section	.text.vPortFree,"ax",%progbits
+ 256              		.align	2
+ 257              		.global	vPortFree
+ 258              		.thumb
+ 259              		.thumb_func
+ 260              		.type	vPortFree, %function
+ 261              	vPortFree:
+ 262              	.LFB69:
  208:Source\portable\MemMang/heap_2.c **** /*-----------------------------------------------------------*/
  209:Source\portable\MemMang/heap_2.c **** 
  210:Source\portable\MemMang/heap_2.c **** void vPortFree( void *pv )
  211:Source\portable\MemMang/heap_2.c **** {
- 261              		.loc 1 211 0
- 262              		.cfi_startproc
- 263              		@ args = 0, pretend = 0, frame = 24
- 264              		@ frame_needed = 1, uses_anonymous_args = 0
- 265 0000 80B5     		push	{r7, lr}
- 266              		.cfi_def_cfa_offset 8
- 267              		.cfi_offset 7, -8
- 268              		.cfi_offset 14, -4
- 269 0002 86B0     		sub	sp, sp, #24
- 270              		.cfi_def_cfa_offset 32
- 271 0004 00AF     		add	r7, sp, #0
- 272              		.cfi_def_cfa_register 7
- 273 0006 7860     		str	r0, [r7, #4]
+ 263              		.loc 1 211 0
+ 264              		.cfi_startproc
+ 265              		@ args = 0, pretend = 0, frame = 24
+ 266              		@ frame_needed = 1, uses_anonymous_args = 0
+ 267 0000 80B5     		push	{r7, lr}
+ 268              		.cfi_def_cfa_offset 8
+ 269              		.cfi_offset 7, -8
+ 270              		.cfi_offset 14, -4
+ 271 0002 86B0     		sub	sp, sp, #24
+ 272              		.cfi_def_cfa_offset 32
+ 273 0004 00AF     		add	r7, sp, #0
+ 274              		.cfi_def_cfa_register 7
+ 275 0006 7860     		str	r0, [r7, #4]
  212:Source\portable\MemMang/heap_2.c **** uint8_t *puc = ( uint8_t * ) pv;
- 274              		.loc 1 212 0
- 275 0008 7B68     		ldr	r3, [r7, #4]
- 276 000a 3B61     		str	r3, [r7, #16]
+ 276              		.loc 1 212 0
+ 277 0008 7B68     		ldr	r3, [r7, #4]
+ 278 000a 3B61     		str	r3, [r7, #16]
  213:Source\portable\MemMang/heap_2.c **** BlockLink_t *pxLink;
  214:Source\portable\MemMang/heap_2.c **** 
  215:Source\portable\MemMang/heap_2.c **** 	if( pv != NULL )
- 277              		.loc 1 215 0
- 278 000c 7B68     		ldr	r3, [r7, #4]
- 279 000e 002B     		cmp	r3, #0
- 280 0010 27D0     		beq	.L19
+ 279              		.loc 1 215 0
+ 280 000c 7B68     		ldr	r3, [r7, #4]
+ 281 000e 002B     		cmp	r3, #0
+ 282 0010 27D0     		beq	.L19
  216:Source\portable\MemMang/heap_2.c **** 	{
  217:Source\portable\MemMang/heap_2.c **** 		/* The memory being freed will have an BlockLink_t structure immediately
  218:Source\portable\MemMang/heap_2.c **** 		before it. */
  219:Source\portable\MemMang/heap_2.c **** 		puc -= heapSTRUCT_SIZE;
- 281              		.loc 1 219 0
- 282 0012 0823     		movs	r3, #8
- 283 0014 5B42     		negs	r3, r3
- 284 0016 3A69     		ldr	r2, [r7, #16]
- 285 0018 1344     		add	r3, r3, r2
- 286 001a 3B61     		str	r3, [r7, #16]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 10
+ 283              		.loc 1 219 0
+ 284 0012 0823     		movs	r3, #8
+ 285 0014 5B42     		negs	r3, r3
+ 286 0016 3A69     		ldr	r2, [r7, #16]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 10
 
 
+ 287 0018 1344     		add	r3, r3, r2
+ 288 001a 3B61     		str	r3, [r7, #16]
  220:Source\portable\MemMang/heap_2.c **** 
  221:Source\portable\MemMang/heap_2.c **** 		/* This unexpected casting is to keep some compilers from issuing
  222:Source\portable\MemMang/heap_2.c **** 		byte alignment warnings. */
  223:Source\portable\MemMang/heap_2.c **** 		pxLink = ( void * ) puc;
- 287              		.loc 1 223 0
- 288 001c 3B69     		ldr	r3, [r7, #16]
- 289 001e FB60     		str	r3, [r7, #12]
+ 289              		.loc 1 223 0
+ 290 001c 3B69     		ldr	r3, [r7, #16]
+ 291 001e FB60     		str	r3, [r7, #12]
  224:Source\portable\MemMang/heap_2.c **** 
  225:Source\portable\MemMang/heap_2.c **** 		vTaskSuspendAll();
- 290              		.loc 1 225 0
- 291 0020 FFF7FEFF 		bl	vTaskSuspendAll
- 292              	.LBB4:
+ 292              		.loc 1 225 0
+ 293 0020 FFF7FEFF 		bl	vTaskSuspendAll
+ 294              	.LBB4:
  226:Source\portable\MemMang/heap_2.c **** 		{
  227:Source\portable\MemMang/heap_2.c **** 			/* Add this block to the list of free blocks. */
  228:Source\portable\MemMang/heap_2.c **** 			prvInsertBlockIntoFreeList( ( ( BlockLink_t * ) pxLink ) );
- 293              		.loc 1 228 0
- 294 0024 FB68     		ldr	r3, [r7, #12]
- 295 0026 5B68     		ldr	r3, [r3, #4]
- 296 0028 BB60     		str	r3, [r7, #8]
- 297 002a 104B     		ldr	r3, .L20
- 298 002c 7B61     		str	r3, [r7, #20]
- 299 002e 02E0     		b	.L17
- 300              	.L18:
- 301              		.loc 1 228 0 is_stmt 0 discriminator 3
- 302 0030 7B69     		ldr	r3, [r7, #20]
- 303 0032 1B68     		ldr	r3, [r3]
- 304 0034 7B61     		str	r3, [r7, #20]
- 305              	.L17:
- 306              		.loc 1 228 0 discriminator 1
- 307 0036 7B69     		ldr	r3, [r7, #20]
- 308 0038 1B68     		ldr	r3, [r3]
- 309 003a 5A68     		ldr	r2, [r3, #4]
- 310 003c BB68     		ldr	r3, [r7, #8]
- 311 003e 9A42     		cmp	r2, r3
- 312 0040 F6D3     		bcc	.L18
- 313              		.loc 1 228 0 discriminator 4
- 314 0042 7B69     		ldr	r3, [r7, #20]
- 315 0044 1A68     		ldr	r2, [r3]
- 316 0046 FB68     		ldr	r3, [r7, #12]
- 317 0048 1A60     		str	r2, [r3]
- 318 004a 7B69     		ldr	r3, [r7, #20]
- 319 004c FA68     		ldr	r2, [r7, #12]
- 320 004e 1A60     		str	r2, [r3]
- 321              	.LBE4:
+ 295              		.loc 1 228 0
+ 296 0024 FB68     		ldr	r3, [r7, #12]
+ 297 0026 5B68     		ldr	r3, [r3, #4]
+ 298 0028 BB60     		str	r3, [r7, #8]
+ 299 002a 104B     		ldr	r3, .L20
+ 300 002c 7B61     		str	r3, [r7, #20]
+ 301 002e 02E0     		b	.L17
+ 302              	.L18:
+ 303              		.loc 1 228 0 is_stmt 0 discriminator 3
+ 304 0030 7B69     		ldr	r3, [r7, #20]
+ 305 0032 1B68     		ldr	r3, [r3]
+ 306 0034 7B61     		str	r3, [r7, #20]
+ 307              	.L17:
+ 308              		.loc 1 228 0 discriminator 1
+ 309 0036 7B69     		ldr	r3, [r7, #20]
+ 310 0038 1B68     		ldr	r3, [r3]
+ 311 003a 5A68     		ldr	r2, [r3, #4]
+ 312 003c BB68     		ldr	r3, [r7, #8]
+ 313 003e 9A42     		cmp	r2, r3
+ 314 0040 F6D3     		bcc	.L18
+ 315              		.loc 1 228 0 discriminator 4
+ 316 0042 7B69     		ldr	r3, [r7, #20]
+ 317 0044 1A68     		ldr	r2, [r3]
+ 318 0046 FB68     		ldr	r3, [r7, #12]
+ 319 0048 1A60     		str	r2, [r3]
+ 320 004a 7B69     		ldr	r3, [r7, #20]
+ 321 004c FA68     		ldr	r2, [r7, #12]
+ 322 004e 1A60     		str	r2, [r3]
+ 323              	.LBE4:
  229:Source\portable\MemMang/heap_2.c **** 			xFreeBytesRemaining += pxLink->xBlockSize;
- 322              		.loc 1 229 0 is_stmt 1 discriminator 4
- 323 0050 FB68     		ldr	r3, [r7, #12]
- 324 0052 5A68     		ldr	r2, [r3, #4]
- 325 0054 064B     		ldr	r3, .L20+4
- 326 0056 1B68     		ldr	r3, [r3]
- 327 0058 1344     		add	r3, r3, r2
- 328 005a 054A     		ldr	r2, .L20+4
- 329 005c 1360     		str	r3, [r2]
+ 324              		.loc 1 229 0 is_stmt 1 discriminator 4
+ 325 0050 FB68     		ldr	r3, [r7, #12]
+ 326 0052 5A68     		ldr	r2, [r3, #4]
+ 327 0054 064B     		ldr	r3, .L20+4
+ 328 0056 1B68     		ldr	r3, [r3]
+ 329 0058 1344     		add	r3, r3, r2
+ 330 005a 054A     		ldr	r2, .L20+4
+ 331 005c 1360     		str	r3, [r2]
  230:Source\portable\MemMang/heap_2.c **** 			traceFREE( pv, pxLink->xBlockSize );
  231:Source\portable\MemMang/heap_2.c **** 		}
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 11
+
+
  232:Source\portable\MemMang/heap_2.c **** 		( void ) xTaskResumeAll();
- 330              		.loc 1 232 0 discriminator 4
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 11
-
-
- 331 005e FFF7FEFF 		bl	xTaskResumeAll
- 332              	.L19:
+ 332              		.loc 1 232 0 discriminator 4
+ 333 005e FFF7FEFF 		bl	xTaskResumeAll
+ 334              	.L19:
  233:Source\portable\MemMang/heap_2.c **** 	}
  234:Source\portable\MemMang/heap_2.c **** }
- 333              		.loc 1 234 0
- 334 0062 00BF     		nop
- 335 0064 1837     		adds	r7, r7, #24
- 336              		.cfi_def_cfa_offset 8
- 337 0066 BD46     		mov	sp, r7
- 338              		.cfi_def_cfa_register 13
- 339              		@ sp needed
- 340 0068 80BD     		pop	{r7, pc}
- 341              	.L21:
- 342 006a 00BF     		.align	2
- 343              	.L20:
- 344 006c 00800000 		.word	xStart
- 345 0070 00000000 		.word	xFreeBytesRemaining
- 346              		.cfi_endproc
- 347              	.LFE69:
- 348              		.size	vPortFree, .-vPortFree
- 349              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
- 350              		.align	2
- 351              		.global	xPortGetFreeHeapSize
- 352              		.thumb
- 353              		.thumb_func
- 354              		.type	xPortGetFreeHeapSize, %function
- 355              	xPortGetFreeHeapSize:
- 356              	.LFB70:
+ 335              		.loc 1 234 0
+ 336 0062 00BF     		nop
+ 337 0064 1837     		adds	r7, r7, #24
+ 338              		.cfi_def_cfa_offset 8
+ 339 0066 BD46     		mov	sp, r7
+ 340              		.cfi_def_cfa_register 13
+ 341              		@ sp needed
+ 342 0068 80BD     		pop	{r7, pc}
+ 343              	.L21:
+ 344 006a 00BF     		.align	2
+ 345              	.L20:
+ 346 006c 00800000 		.word	xStart
+ 347 0070 00000000 		.word	xFreeBytesRemaining
+ 348              		.cfi_endproc
+ 349              	.LFE69:
+ 350              		.size	vPortFree, .-vPortFree
+ 351              		.section	.text.xPortGetFreeHeapSize,"ax",%progbits
+ 352              		.align	2
+ 353              		.global	xPortGetFreeHeapSize
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.type	xPortGetFreeHeapSize, %function
+ 357              	xPortGetFreeHeapSize:
+ 358              	.LFB70:
  235:Source\portable\MemMang/heap_2.c **** /*-----------------------------------------------------------*/
  236:Source\portable\MemMang/heap_2.c **** 
  237:Source\portable\MemMang/heap_2.c **** size_t xPortGetFreeHeapSize( void )
  238:Source\portable\MemMang/heap_2.c **** {
- 357              		.loc 1 238 0
- 358              		.cfi_startproc
- 359              		@ args = 0, pretend = 0, frame = 0
- 360              		@ frame_needed = 1, uses_anonymous_args = 0
- 361              		@ link register save eliminated.
- 362 0000 80B4     		push	{r7}
- 363              		.cfi_def_cfa_offset 4
- 364              		.cfi_offset 7, -4
- 365 0002 00AF     		add	r7, sp, #0
- 366              		.cfi_def_cfa_register 7
+ 359              		.loc 1 238 0
+ 360              		.cfi_startproc
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 1, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364 0000 80B4     		push	{r7}
+ 365              		.cfi_def_cfa_offset 4
+ 366              		.cfi_offset 7, -4
+ 367 0002 00AF     		add	r7, sp, #0
+ 368              		.cfi_def_cfa_register 7
  239:Source\portable\MemMang/heap_2.c **** 	return xFreeBytesRemaining;
- 367              		.loc 1 239 0
- 368 0004 024B     		ldr	r3, .L24
- 369 0006 1B68     		ldr	r3, [r3]
+ 369              		.loc 1 239 0
+ 370 0004 024B     		ldr	r3, .L24
+ 371 0006 1B68     		ldr	r3, [r3]
  240:Source\portable\MemMang/heap_2.c **** }
- 370              		.loc 1 240 0
- 371 0008 1846     		mov	r0, r3
- 372 000a BD46     		mov	sp, r7
- 373              		.cfi_def_cfa_register 13
- 374              		@ sp needed
- 375 000c 80BC     		pop	{r7}
- 376              		.cfi_restore 7
- 377              		.cfi_def_cfa_offset 0
- 378 000e 7047     		bx	lr
- 379              	.L25:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 12
+ 372              		.loc 1 240 0
+ 373 0008 1846     		mov	r0, r3
+ 374 000a BD46     		mov	sp, r7
+ 375              		.cfi_def_cfa_register 13
+ 376              		@ sp needed
+ 377 000c 80BC     		pop	{r7}
+ 378              		.cfi_restore 7
+ 379              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 12
 
 
- 380              		.align	2
- 381              	.L24:
- 382 0010 00000000 		.word	xFreeBytesRemaining
- 383              		.cfi_endproc
- 384              	.LFE70:
- 385              		.size	xPortGetFreeHeapSize, .-xPortGetFreeHeapSize
- 386              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
- 387              		.align	2
- 388              		.global	vPortInitialiseBlocks
- 389              		.thumb
- 390              		.thumb_func
- 391              		.type	vPortInitialiseBlocks, %function
- 392              	vPortInitialiseBlocks:
- 393              	.LFB71:
+ 380 000e 7047     		bx	lr
+ 381              	.L25:
+ 382              		.align	2
+ 383              	.L24:
+ 384 0010 00000000 		.word	xFreeBytesRemaining
+ 385              		.cfi_endproc
+ 386              	.LFE70:
+ 387              		.size	xPortGetFreeHeapSize, .-xPortGetFreeHeapSize
+ 388              		.section	.text.vPortInitialiseBlocks,"ax",%progbits
+ 389              		.align	2
+ 390              		.global	vPortInitialiseBlocks
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.type	vPortInitialiseBlocks, %function
+ 394              	vPortInitialiseBlocks:
+ 395              	.LFB71:
  241:Source\portable\MemMang/heap_2.c **** /*-----------------------------------------------------------*/
  242:Source\portable\MemMang/heap_2.c **** 
  243:Source\portable\MemMang/heap_2.c **** void vPortInitialiseBlocks( void )
  244:Source\portable\MemMang/heap_2.c **** {
- 394              		.loc 1 244 0
- 395              		.cfi_startproc
- 396              		@ args = 0, pretend = 0, frame = 0
- 397              		@ frame_needed = 1, uses_anonymous_args = 0
- 398              		@ link register save eliminated.
- 399 0000 80B4     		push	{r7}
- 400              		.cfi_def_cfa_offset 4
- 401              		.cfi_offset 7, -4
- 402 0002 00AF     		add	r7, sp, #0
- 403              		.cfi_def_cfa_register 7
+ 396              		.loc 1 244 0
+ 397              		.cfi_startproc
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 1, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401 0000 80B4     		push	{r7}
+ 402              		.cfi_def_cfa_offset 4
+ 403              		.cfi_offset 7, -4
+ 404 0002 00AF     		add	r7, sp, #0
+ 405              		.cfi_def_cfa_register 7
  245:Source\portable\MemMang/heap_2.c **** 	/* This just exists to keep the linker quiet. */
  246:Source\portable\MemMang/heap_2.c **** }
- 404              		.loc 1 246 0
- 405 0004 00BF     		nop
- 406 0006 BD46     		mov	sp, r7
- 407              		.cfi_def_cfa_register 13
- 408              		@ sp needed
- 409 0008 80BC     		pop	{r7}
- 410              		.cfi_restore 7
- 411              		.cfi_def_cfa_offset 0
- 412 000a 7047     		bx	lr
- 413              		.cfi_endproc
- 414              	.LFE71:
- 415              		.size	vPortInitialiseBlocks, .-vPortInitialiseBlocks
- 416              		.section	.text.prvHeapInit,"ax",%progbits
- 417              		.align	2
- 418              		.thumb
- 419              		.thumb_func
- 420              		.type	prvHeapInit, %function
- 421              	prvHeapInit:
- 422              	.LFB72:
+ 406              		.loc 1 246 0
+ 407 0004 00BF     		nop
+ 408 0006 BD46     		mov	sp, r7
+ 409              		.cfi_def_cfa_register 13
+ 410              		@ sp needed
+ 411 0008 80BC     		pop	{r7}
+ 412              		.cfi_restore 7
+ 413              		.cfi_def_cfa_offset 0
+ 414 000a 7047     		bx	lr
+ 415              		.cfi_endproc
+ 416              	.LFE71:
+ 417              		.size	vPortInitialiseBlocks, .-vPortInitialiseBlocks
+ 418              		.section	.text.prvHeapInit,"ax",%progbits
+ 419              		.align	2
+ 420              		.thumb
+ 421              		.thumb_func
+ 422              		.type	prvHeapInit, %function
+ 423              	prvHeapInit:
+ 424              	.LFB72:
  247:Source\portable\MemMang/heap_2.c **** /*-----------------------------------------------------------*/
  248:Source\portable\MemMang/heap_2.c **** 
  249:Source\portable\MemMang/heap_2.c **** static void prvHeapInit( void )
  250:Source\portable\MemMang/heap_2.c **** {
- 423              		.loc 1 250 0
- 424              		.cfi_startproc
- 425              		@ args = 0, pretend = 0, frame = 8
- 426              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 13
+ 425              		.loc 1 250 0
+ 426              		.cfi_startproc
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 13
 
 
- 427              		@ link register save eliminated.
- 428 0000 80B4     		push	{r7}
- 429              		.cfi_def_cfa_offset 4
- 430              		.cfi_offset 7, -4
- 431 0002 83B0     		sub	sp, sp, #12
- 432              		.cfi_def_cfa_offset 16
- 433 0004 00AF     		add	r7, sp, #0
- 434              		.cfi_def_cfa_register 7
+ 427              		@ args = 0, pretend = 0, frame = 8
+ 428              		@ frame_needed = 1, uses_anonymous_args = 0
+ 429              		@ link register save eliminated.
+ 430 0000 80B4     		push	{r7}
+ 431              		.cfi_def_cfa_offset 4
+ 432              		.cfi_offset 7, -4
+ 433 0002 83B0     		sub	sp, sp, #12
+ 434              		.cfi_def_cfa_offset 16
+ 435 0004 00AF     		add	r7, sp, #0
+ 436              		.cfi_def_cfa_register 7
  251:Source\portable\MemMang/heap_2.c **** BlockLink_t *pxFirstFreeBlock;
  252:Source\portable\MemMang/heap_2.c **** uint8_t *pucAlignedHeap;
  253:Source\portable\MemMang/heap_2.c **** 
  254:Source\portable\MemMang/heap_2.c **** 	/* Ensure the heap starts on a correctly aligned boundary. */
  255:Source\portable\MemMang/heap_2.c **** 	pucAlignedHeap = ( uint8_t * ) ( ( ( portPOINTER_SIZE_TYPE ) &ucHeap[ portBYTE_ALIGNMENT ] ) & ( ~
- 435              		.loc 1 255 0
- 436 0006 0F4B     		ldr	r3, .L28
- 437 0008 23F00703 		bic	r3, r3, #7
- 438 000c 7B60     		str	r3, [r7, #4]
+ 437              		.loc 1 255 0
+ 438 0006 0F4B     		ldr	r3, .L28
+ 439 0008 23F00703 		bic	r3, r3, #7
+ 440 000c 7B60     		str	r3, [r7, #4]
  256:Source\portable\MemMang/heap_2.c **** 
  257:Source\portable\MemMang/heap_2.c **** 	/* xStart is used to hold a pointer to the first item in the list of free
  258:Source\portable\MemMang/heap_2.c **** 	blocks.  The void cast is used to prevent compiler warnings. */
  259:Source\portable\MemMang/heap_2.c **** 	xStart.pxNextFreeBlock = ( void * ) pucAlignedHeap;
- 439              		.loc 1 259 0
- 440 000e 0E4A     		ldr	r2, .L28+4
- 441 0010 7B68     		ldr	r3, [r7, #4]
- 442 0012 1360     		str	r3, [r2]
+ 441              		.loc 1 259 0
+ 442 000e 0E4A     		ldr	r2, .L28+4
+ 443 0010 7B68     		ldr	r3, [r7, #4]
+ 444 0012 1360     		str	r3, [r2]
  260:Source\portable\MemMang/heap_2.c **** 	xStart.xBlockSize = ( size_t ) 0;
- 443              		.loc 1 260 0
- 444 0014 0C4B     		ldr	r3, .L28+4
- 445 0016 0022     		movs	r2, #0
- 446 0018 5A60     		str	r2, [r3, #4]
+ 445              		.loc 1 260 0
+ 446 0014 0C4B     		ldr	r3, .L28+4
+ 447 0016 0022     		movs	r2, #0
+ 448 0018 5A60     		str	r2, [r3, #4]
  261:Source\portable\MemMang/heap_2.c **** 
  262:Source\portable\MemMang/heap_2.c **** 	/* xEnd is used to mark the end of the list of free blocks. */
  263:Source\portable\MemMang/heap_2.c **** 	xEnd.xBlockSize = configADJUSTED_HEAP_SIZE;
- 447              		.loc 1 263 0
- 448 001a 0C4B     		ldr	r3, .L28+8
- 449 001c 47F6F872 		movw	r2, #32760
- 450 0020 5A60     		str	r2, [r3, #4]
+ 449              		.loc 1 263 0
+ 450 001a 0C4B     		ldr	r3, .L28+8
+ 451 001c 47F6F872 		movw	r2, #32760
+ 452 0020 5A60     		str	r2, [r3, #4]
  264:Source\portable\MemMang/heap_2.c **** 	xEnd.pxNextFreeBlock = NULL;
- 451              		.loc 1 264 0
- 452 0022 0A4B     		ldr	r3, .L28+8
- 453 0024 0022     		movs	r2, #0
- 454 0026 1A60     		str	r2, [r3]
+ 453              		.loc 1 264 0
+ 454 0022 0A4B     		ldr	r3, .L28+8
+ 455 0024 0022     		movs	r2, #0
+ 456 0026 1A60     		str	r2, [r3]
  265:Source\portable\MemMang/heap_2.c **** 
  266:Source\portable\MemMang/heap_2.c **** 	/* To start with there is a single free block that is sized to take up the
  267:Source\portable\MemMang/heap_2.c **** 	entire heap space. */
  268:Source\portable\MemMang/heap_2.c **** 	pxFirstFreeBlock = ( void * ) pucAlignedHeap;
- 455              		.loc 1 268 0
- 456 0028 7B68     		ldr	r3, [r7, #4]
- 457 002a 3B60     		str	r3, [r7]
+ 457              		.loc 1 268 0
+ 458 0028 7B68     		ldr	r3, [r7, #4]
+ 459 002a 3B60     		str	r3, [r7]
  269:Source\portable\MemMang/heap_2.c **** 	pxFirstFreeBlock->xBlockSize = configADJUSTED_HEAP_SIZE;
- 458              		.loc 1 269 0
- 459 002c 3B68     		ldr	r3, [r7]
- 460 002e 47F6F872 		movw	r2, #32760
- 461 0032 5A60     		str	r2, [r3, #4]
+ 460              		.loc 1 269 0
+ 461 002c 3B68     		ldr	r3, [r7]
+ 462 002e 47F6F872 		movw	r2, #32760
+ 463 0032 5A60     		str	r2, [r3, #4]
  270:Source\portable\MemMang/heap_2.c **** 	pxFirstFreeBlock->pxNextFreeBlock = &xEnd;
- 462              		.loc 1 270 0
- 463 0034 3B68     		ldr	r3, [r7]
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 14
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 14
 
 
- 464 0036 054A     		ldr	r2, .L28+8
- 465 0038 1A60     		str	r2, [r3]
+ 464              		.loc 1 270 0
+ 465 0034 3B68     		ldr	r3, [r7]
+ 466 0036 054A     		ldr	r2, .L28+8
+ 467 0038 1A60     		str	r2, [r3]
  271:Source\portable\MemMang/heap_2.c **** }
- 466              		.loc 1 271 0
- 467 003a 00BF     		nop
- 468 003c 0C37     		adds	r7, r7, #12
- 469              		.cfi_def_cfa_offset 4
- 470 003e BD46     		mov	sp, r7
- 471              		.cfi_def_cfa_register 13
- 472              		@ sp needed
- 473 0040 80BC     		pop	{r7}
- 474              		.cfi_restore 7
- 475              		.cfi_def_cfa_offset 0
- 476 0042 7047     		bx	lr
- 477              	.L29:
- 478              		.align	2
- 479              	.L28:
- 480 0044 08000000 		.word	ucHeap+8
- 481 0048 00800000 		.word	xStart
- 482 004c 08800000 		.word	xEnd
- 483              		.cfi_endproc
- 484              	.LFE72:
- 485              		.size	prvHeapInit, .-prvHeapInit
- 486              		.bss
- 487              		.align	2
- 488              	xHeapHasBeenInitialised.6590:
- 489 8010 00000000 		.space	4
- 490              		.text
- 491              	.Letext0:
- 492              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 493              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 494              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 495              		.file 5 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
- 496              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
- 497              		.section	.debug_info,"",%progbits
- 498              	.Ldebug_info0:
- 499 0000 22030000 		.4byte	0x322
- 500 0004 0400     		.2byte	0x4
- 501 0006 00000000 		.4byte	.Ldebug_abbrev0
- 502 000a 04       		.byte	0x4
- 503 000b 01       		.uleb128 0x1
- 504 000c 11000000 		.4byte	.LASF42
- 505 0010 0C       		.byte	0xc
- 506 0011 CE000000 		.4byte	.LASF43
- 507 0015 30010000 		.4byte	.LASF44
- 508 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 509 001d 00000000 		.4byte	0
- 510 0021 00000000 		.4byte	.Ldebug_line0
- 511 0025 02       		.uleb128 0x2
- 512 0026 0A000000 		.4byte	.LASF4
- 513 002a 02       		.byte	0x2
- 514 002b D8       		.byte	0xd8
- 515 002c 30000000 		.4byte	0x30
- 516 0030 03       		.uleb128 0x3
- 517 0031 04       		.byte	0x4
- 518 0032 07       		.byte	0x7
- 519 0033 41020000 		.4byte	.LASF0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 15
+ 468              		.loc 1 271 0
+ 469 003a 00BF     		nop
+ 470 003c 0C37     		adds	r7, r7, #12
+ 471              		.cfi_def_cfa_offset 4
+ 472 003e BD46     		mov	sp, r7
+ 473              		.cfi_def_cfa_register 13
+ 474              		@ sp needed
+ 475 0040 80BC     		pop	{r7}
+ 476              		.cfi_restore 7
+ 477              		.cfi_def_cfa_offset 0
+ 478 0042 7047     		bx	lr
+ 479              	.L29:
+ 480              		.align	2
+ 481              	.L28:
+ 482 0044 08000000 		.word	ucHeap+8
+ 483 0048 00800000 		.word	xStart
+ 484 004c 08800000 		.word	xEnd
+ 485              		.cfi_endproc
+ 486              	.LFE72:
+ 487              		.size	prvHeapInit, .-prvHeapInit
+ 488              		.bss
+ 489              		.align	2
+ 490              	xHeapHasBeenInitialised.6829:
+ 491 8010 00000000 		.space	4
+ 492              		.text
+ 493              	.Letext0:
+ 494              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 495              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 496              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 497              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 498              		.file 6 "Generated_Source\\PSoC5/DS18x8.h"
+ 499              		.file 7 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 500              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 501              		.section	.debug_info,"",%progbits
+ 502              	.Ldebug_info0:
+ 503 0000 96030000 		.4byte	0x396
+ 504 0004 0400     		.2byte	0x4
+ 505 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 506 000a 04       		.byte	0x4
+ 507 000b 01       		.uleb128 0x1
+ 508 000c 11000000 		.4byte	.LASF51
+ 509 0010 0C       		.byte	0xc
+ 510 0011 DA000000 		.4byte	.LASF52
+ 511 0015 5B020000 		.4byte	.LASF53
+ 512 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 513 001d 00000000 		.4byte	0
+ 514 0021 00000000 		.4byte	.Ldebug_line0
+ 515 0025 02       		.uleb128 0x2
+ 516 0026 0A000000 		.4byte	.LASF4
+ 517 002a 02       		.byte	0x2
+ 518 002b D8       		.byte	0xd8
+ 519 002c 30000000 		.4byte	0x30
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 15
 
 
- 520 0037 04       		.uleb128 0x4
- 521 0038 04       		.byte	0x4
- 522 0039 05       		.byte	0x5
- 523 003a 696E7400 		.ascii	"int\000"
- 524 003e 03       		.uleb128 0x3
- 525 003f 08       		.byte	0x8
- 526 0040 05       		.byte	0x5
- 527 0041 A7020000 		.4byte	.LASF1
- 528 0045 03       		.uleb128 0x3
- 529 0046 08       		.byte	0x8
- 530 0047 04       		.byte	0x4
- 531 0048 31030000 		.4byte	.LASF2
- 532 004c 03       		.uleb128 0x3
- 533 004d 01       		.byte	0x1
- 534 004e 06       		.byte	0x6
- 535 004f 3D030000 		.4byte	.LASF3
- 536 0053 02       		.uleb128 0x2
- 537 0054 00000000 		.4byte	.LASF5
- 538 0058 03       		.byte	0x3
- 539 0059 1D       		.byte	0x1d
- 540 005a 5E000000 		.4byte	0x5e
- 541 005e 03       		.uleb128 0x3
- 542 005f 01       		.byte	0x1
- 543 0060 08       		.byte	0x8
- 544 0061 73010000 		.4byte	.LASF6
- 545 0065 03       		.uleb128 0x3
- 546 0066 02       		.byte	0x2
- 547 0067 05       		.byte	0x5
- 548 0068 F5020000 		.4byte	.LASF7
- 549 006c 02       		.uleb128 0x2
- 550 006d DB010000 		.4byte	.LASF8
- 551 0071 03       		.byte	0x3
- 552 0072 2B       		.byte	0x2b
- 553 0073 77000000 		.4byte	0x77
- 554 0077 03       		.uleb128 0x3
- 555 0078 02       		.byte	0x2
- 556 0079 07       		.byte	0x7
- 557 007a 9E010000 		.4byte	.LASF9
- 558 007e 02       		.uleb128 0x2
- 559 007f 9F000000 		.4byte	.LASF10
- 560 0083 03       		.byte	0x3
- 561 0084 3F       		.byte	0x3f
- 562 0085 89000000 		.4byte	0x89
- 563 0089 03       		.uleb128 0x3
- 564 008a 04       		.byte	0x4
- 565 008b 05       		.byte	0x5
- 566 008c C5000000 		.4byte	.LASF11
- 567 0090 02       		.uleb128 0x2
- 568 0091 00020000 		.4byte	.LASF12
- 569 0095 03       		.byte	0x3
- 570 0096 41       		.byte	0x41
- 571 0097 9B000000 		.4byte	0x9b
- 572 009b 03       		.uleb128 0x3
- 573 009c 04       		.byte	0x4
- 574 009d 07       		.byte	0x7
- 575 009e 8C010000 		.4byte	.LASF13
- 576 00a2 03       		.uleb128 0x3
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 16
+ 520 0030 03       		.uleb128 0x3
+ 521 0031 04       		.byte	0x4
+ 522 0032 07       		.byte	0x7
+ 523 0033 2F020000 		.4byte	.LASF0
+ 524 0037 04       		.uleb128 0x4
+ 525 0038 04       		.byte	0x4
+ 526 0039 05       		.byte	0x5
+ 527 003a 696E7400 		.ascii	"int\000"
+ 528 003e 03       		.uleb128 0x3
+ 529 003f 08       		.byte	0x8
+ 530 0040 05       		.byte	0x5
+ 531 0041 06030000 		.4byte	.LASF1
+ 532 0045 03       		.uleb128 0x3
+ 533 0046 08       		.byte	0x8
+ 534 0047 04       		.byte	0x4
+ 535 0048 A1030000 		.4byte	.LASF2
+ 536 004c 03       		.uleb128 0x3
+ 537 004d 01       		.byte	0x1
+ 538 004e 06       		.byte	0x6
+ 539 004f AD030000 		.4byte	.LASF3
+ 540 0053 02       		.uleb128 0x2
+ 541 0054 00000000 		.4byte	.LASF5
+ 542 0058 03       		.byte	0x3
+ 543 0059 1D       		.byte	0x1d
+ 544 005a 5E000000 		.4byte	0x5e
+ 545 005e 03       		.uleb128 0x3
+ 546 005f 01       		.byte	0x1
+ 547 0060 08       		.byte	0x8
+ 548 0061 52010000 		.4byte	.LASF6
+ 549 0065 03       		.uleb128 0x3
+ 550 0066 02       		.byte	0x2
+ 551 0067 05       		.byte	0x5
+ 552 0068 54030000 		.4byte	.LASF7
+ 553 006c 02       		.uleb128 0x2
+ 554 006d C2010000 		.4byte	.LASF8
+ 555 0071 03       		.byte	0x3
+ 556 0072 2B       		.byte	0x2b
+ 557 0073 77000000 		.4byte	0x77
+ 558 0077 03       		.uleb128 0x3
+ 559 0078 02       		.byte	0x2
+ 560 0079 07       		.byte	0x7
+ 561 007a 85010000 		.4byte	.LASF9
+ 562 007e 02       		.uleb128 0x2
+ 563 007f AB000000 		.4byte	.LASF10
+ 564 0083 03       		.byte	0x3
+ 565 0084 3F       		.byte	0x3f
+ 566 0085 89000000 		.4byte	0x89
+ 567 0089 03       		.uleb128 0x3
+ 568 008a 04       		.byte	0x4
+ 569 008b 05       		.byte	0x5
+ 570 008c D1000000 		.4byte	.LASF11
+ 571 0090 02       		.uleb128 0x2
+ 572 0091 E7010000 		.4byte	.LASF12
+ 573 0095 03       		.byte	0x3
+ 574 0096 41       		.byte	0x41
+ 575 0097 9B000000 		.4byte	0x9b
+ 576 009b 03       		.uleb128 0x3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 16
 
 
- 577 00a3 08       		.byte	0x8
- 578 00a4 07       		.byte	0x7
- 579 00a5 4E020000 		.4byte	.LASF14
- 580 00a9 03       		.uleb128 0x3
- 581 00aa 04       		.byte	0x4
- 582 00ab 07       		.byte	0x7
- 583 00ac 9E020000 		.4byte	.LASF15
- 584 00b0 05       		.uleb128 0x5
- 585 00b1 04       		.byte	0x4
- 586 00b2 03       		.uleb128 0x3
- 587 00b3 01       		.byte	0x1
- 588 00b4 08       		.byte	0x8
- 589 00b5 C1020000 		.4byte	.LASF16
- 590 00b9 02       		.uleb128 0x2
- 591 00ba 65020000 		.4byte	.LASF17
- 592 00be 04       		.byte	0x4
- 593 00bf 18       		.byte	0x18
- 594 00c0 53000000 		.4byte	0x53
- 595 00c4 02       		.uleb128 0x2
- 596 00c5 FF020000 		.4byte	.LASF18
- 597 00c9 04       		.byte	0x4
- 598 00ca 24       		.byte	0x24
- 599 00cb 6C000000 		.4byte	0x6c
- 600 00cf 02       		.uleb128 0x2
- 601 00d0 8A020000 		.4byte	.LASF19
- 602 00d4 04       		.byte	0x4
- 603 00d5 2C       		.byte	0x2c
- 604 00d6 7E000000 		.4byte	0x7e
- 605 00da 02       		.uleb128 0x2
- 606 00db 1C030000 		.4byte	.LASF20
- 607 00df 04       		.byte	0x4
- 608 00e0 30       		.byte	0x30
- 609 00e1 90000000 		.4byte	0x90
- 610 00e5 03       		.uleb128 0x3
- 611 00e6 04       		.byte	0x4
- 612 00e7 04       		.byte	0x4
- 613 00e8 2A010000 		.4byte	.LASF21
- 614 00ec 03       		.uleb128 0x3
- 615 00ed 08       		.byte	0x8
- 616 00ee 04       		.byte	0x4
- 617 00ef EF000000 		.4byte	.LASF22
- 618 00f3 02       		.uleb128 0x2
- 619 00f4 59030000 		.4byte	.LASF23
- 620 00f8 05       		.byte	0x5
- 621 00f9 38       		.byte	0x38
- 622 00fa 89000000 		.4byte	0x89
- 623 00fe 06       		.uleb128 0x6
- 624 00ff 04       		.byte	0x4
- 625 0100 B9000000 		.4byte	0xb9
- 626 0104 07       		.uleb128 0x7
- 627 0105 B8000000 		.4byte	.LASF45
- 628 0109 08       		.byte	0x8
- 629 010a 01       		.byte	0x1
- 630 010b 49       		.byte	0x49
- 631 010c 29010000 		.4byte	0x129
- 632 0110 08       		.uleb128 0x8
- 633 0111 49030000 		.4byte	.LASF24
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 17
+ 577 009c 04       		.byte	0x4
+ 578 009d 07       		.byte	0x7
+ 579 009e 73010000 		.4byte	.LASF13
+ 580 00a2 03       		.uleb128 0x3
+ 581 00a3 08       		.byte	0x8
+ 582 00a4 07       		.byte	0x7
+ 583 00a5 3C020000 		.4byte	.LASF14
+ 584 00a9 03       		.uleb128 0x3
+ 585 00aa 04       		.byte	0x4
+ 586 00ab 07       		.byte	0x7
+ 587 00ac FD020000 		.4byte	.LASF15
+ 588 00b0 05       		.uleb128 0x5
+ 589 00b1 04       		.byte	0x4
+ 590 00b2 03       		.uleb128 0x3
+ 591 00b3 01       		.byte	0x1
+ 592 00b4 08       		.byte	0x8
+ 593 00b5 20030000 		.4byte	.LASF16
+ 594 00b9 02       		.uleb128 0x2
+ 595 00ba 53020000 		.4byte	.LASF17
+ 596 00be 04       		.byte	0x4
+ 597 00bf 18       		.byte	0x18
+ 598 00c0 53000000 		.4byte	0x53
+ 599 00c4 02       		.uleb128 0x2
+ 600 00c5 6F030000 		.4byte	.LASF18
+ 601 00c9 04       		.byte	0x4
+ 602 00ca 24       		.byte	0x24
+ 603 00cb 6C000000 		.4byte	0x6c
+ 604 00cf 02       		.uleb128 0x2
+ 605 00d0 E9020000 		.4byte	.LASF19
+ 606 00d4 04       		.byte	0x4
+ 607 00d5 2C       		.byte	0x2c
+ 608 00d6 7E000000 		.4byte	0x7e
+ 609 00da 02       		.uleb128 0x2
+ 610 00db 8C030000 		.4byte	.LASF20
+ 611 00df 04       		.byte	0x4
+ 612 00e0 30       		.byte	0x30
+ 613 00e1 90000000 		.4byte	0x90
+ 614 00e5 06       		.uleb128 0x6
+ 615 00e6 02010000 		.4byte	.LASF21
+ 616 00ea 05       		.byte	0x5
+ 617 00eb E401     		.2byte	0x1e4
+ 618 00ed 5E000000 		.4byte	0x5e
+ 619 00f1 06       		.uleb128 0x6
+ 620 00f2 F2010000 		.4byte	.LASF22
+ 621 00f6 05       		.byte	0x5
+ 622 00f7 E501     		.2byte	0x1e5
+ 623 00f9 77000000 		.4byte	0x77
+ 624 00fd 03       		.uleb128 0x3
+ 625 00fe 04       		.byte	0x4
+ 626 00ff 04       		.byte	0x4
+ 627 0100 3E010000 		.4byte	.LASF23
+ 628 0104 03       		.uleb128 0x3
+ 629 0105 08       		.byte	0x8
+ 630 0106 04       		.byte	0x4
+ 631 0107 FB000000 		.4byte	.LASF24
+ 632 010b 07       		.uleb128 0x7
+ 633 010c E5000000 		.4byte	0xe5
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 17
 
 
- 634 0115 01       		.byte	0x1
- 635 0116 4B       		.byte	0x4b
- 636 0117 29010000 		.4byte	0x129
- 637 011b 00       		.byte	0
- 638 011c 08       		.uleb128 0x8
- 639 011d 81010000 		.4byte	.LASF25
- 640 0121 01       		.byte	0x1
- 641 0122 4C       		.byte	0x4c
- 642 0123 25000000 		.4byte	0x25
- 643 0127 04       		.byte	0x4
- 644 0128 00       		.byte	0
- 645 0129 06       		.uleb128 0x6
- 646 012a 04       		.byte	0x4
- 647 012b 04010000 		.4byte	0x104
- 648 012f 02       		.uleb128 0x2
- 649 0130 92020000 		.4byte	.LASF26
- 650 0134 01       		.byte	0x1
- 651 0135 4D       		.byte	0x4d
- 652 0136 04010000 		.4byte	0x104
- 653 013a 09       		.uleb128 0x9
- 654 013b 05010000 		.4byte	.LASF46
- 655 013f 01       		.byte	0x1
- 656 0140 76       		.byte	0x76
- 657 0141 B0000000 		.4byte	0xb0
- 658 0145 00000000 		.4byte	.LFB68
- 659 0149 24010000 		.4byte	.LFE68-.LFB68
- 660 014d 01       		.uleb128 0x1
- 661 014e 9C       		.byte	0x9c
- 662 014f E6010000 		.4byte	0x1e6
- 663 0153 0A       		.uleb128 0xa
- 664 0154 B5020000 		.4byte	.LASF33
- 665 0158 01       		.byte	0x1
- 666 0159 76       		.byte	0x76
- 667 015a 25000000 		.4byte	0x25
- 668 015e 02       		.uleb128 0x2
- 669 015f 91       		.byte	0x91
- 670 0160 5C       		.sleb128 -36
- 671 0161 0B       		.uleb128 0xb
- 672 0162 F6000000 		.4byte	.LASF27
- 673 0166 01       		.byte	0x1
- 674 0167 78       		.byte	0x78
- 675 0168 E6010000 		.4byte	0x1e6
- 676 016c 02       		.uleb128 0x2
- 677 016d 91       		.byte	0x91
- 678 016e 74       		.sleb128 -12
- 679 016f 0B       		.uleb128 0xb
- 680 0170 E6010000 		.4byte	.LASF28
- 681 0174 01       		.byte	0x1
- 682 0175 78       		.byte	0x78
- 683 0176 E6010000 		.4byte	0x1e6
- 684 017a 02       		.uleb128 0x2
- 685 017b 91       		.byte	0x91
- 686 017c 70       		.sleb128 -16
- 687 017d 0B       		.uleb128 0xb
- 688 017e A9000000 		.4byte	.LASF29
- 689 0182 01       		.byte	0x1
- 690 0183 78       		.byte	0x78
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 18
+ 634 0110 08       		.uleb128 0x8
+ 635 0111 17010000 		.4byte	.LASF28
+ 636 0115 04       		.byte	0x4
+ 637 0116 06       		.byte	0x6
+ 638 0117 30       		.byte	0x30
+ 639 0118 35010000 		.4byte	0x135
+ 640 011c 09       		.uleb128 0x9
+ 641 011d 9F000000 		.4byte	.LASF25
+ 642 0121 06       		.byte	0x6
+ 643 0122 31       		.byte	0x31
+ 644 0123 F1000000 		.4byte	0xf1
+ 645 0127 00       		.byte	0
+ 646 0128 09       		.uleb128 0x9
+ 647 0129 6B010000 		.4byte	.LASF26
+ 648 012d 06       		.byte	0x6
+ 649 012e 32       		.byte	0x32
+ 650 012f E5000000 		.4byte	0xe5
+ 651 0133 02       		.byte	0x2
+ 652 0134 00       		.byte	0
+ 653 0135 02       		.uleb128 0x2
+ 654 0136 C9030000 		.4byte	.LASF27
+ 655 013a 07       		.byte	0x7
+ 656 013b 38       		.byte	0x38
+ 657 013c 89000000 		.4byte	0x89
+ 658 0140 0A       		.uleb128 0xa
+ 659 0141 04       		.byte	0x4
+ 660 0142 B9000000 		.4byte	0xb9
+ 661 0146 08       		.uleb128 0x8
+ 662 0147 C4000000 		.4byte	.LASF29
+ 663 014b 08       		.byte	0x8
+ 664 014c 01       		.byte	0x1
+ 665 014d 49       		.byte	0x49
+ 666 014e 6B010000 		.4byte	0x16b
+ 667 0152 09       		.uleb128 0x9
+ 668 0153 B9030000 		.4byte	.LASF30
+ 669 0157 01       		.byte	0x1
+ 670 0158 4B       		.byte	0x4b
+ 671 0159 6B010000 		.4byte	0x16b
+ 672 015d 00       		.byte	0
+ 673 015e 09       		.uleb128 0x9
+ 674 015f 60010000 		.4byte	.LASF31
+ 675 0163 01       		.byte	0x1
+ 676 0164 4C       		.byte	0x4c
+ 677 0165 25000000 		.4byte	0x25
+ 678 0169 04       		.byte	0x4
+ 679 016a 00       		.byte	0
+ 680 016b 0A       		.uleb128 0xa
+ 681 016c 04       		.byte	0x4
+ 682 016d 46010000 		.4byte	0x146
+ 683 0171 02       		.uleb128 0x2
+ 684 0172 F1020000 		.4byte	.LASF32
+ 685 0176 01       		.byte	0x1
+ 686 0177 4D       		.byte	0x4d
+ 687 0178 46010000 		.4byte	0x146
+ 688 017c 0B       		.uleb128 0xb
+ 689 017d DC020000 		.4byte	.LASF54
+ 690 0181 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 18
 
 
- 691 0184 E6010000 		.4byte	0x1e6
- 692 0188 02       		.uleb128 0x2
- 693 0189 91       		.byte	0x91
- 694 018a 64       		.sleb128 -28
- 695 018b 0B       		.uleb128 0xb
- 696 018c B1010000 		.4byte	.LASF30
- 697 0190 01       		.byte	0x1
- 698 0191 79       		.byte	0x79
- 699 0192 F3000000 		.4byte	0xf3
- 700 0196 05       		.uleb128 0x5
- 701 0197 03       		.byte	0x3
- 702 0198 10800000 		.4byte	xHeapHasBeenInitialised.6590
- 703 019c 0B       		.uleb128 0xb
- 704 019d 0B020000 		.4byte	.LASF31
- 705 01a1 01       		.byte	0x1
- 706 01a2 7A       		.byte	0x7a
- 707 01a3 B0000000 		.4byte	0xb0
- 708 01a7 02       		.uleb128 0x2
- 709 01a8 91       		.byte	0x91
- 710 01a9 6C       		.sleb128 -20
- 711 01aa 0C       		.uleb128 0xc
- 712 01ab C2000000 		.4byte	.LBB2
- 713 01af 2C000000 		.4byte	.LBE2-.LBB2
- 714 01b3 D4010000 		.4byte	0x1d4
- 715 01b7 0B       		.uleb128 0xb
- 716 01b8 EA020000 		.4byte	.LASF32
- 717 01bc 01       		.byte	0x1
- 718 01bd B9       		.byte	0xb9
- 719 01be E6010000 		.4byte	0x1e6
- 720 01c2 02       		.uleb128 0x2
- 721 01c3 91       		.byte	0x91
- 722 01c4 68       		.sleb128 -24
- 723 01c5 0B       		.uleb128 0xb
- 724 01c6 81010000 		.4byte	.LASF25
- 725 01ca 01       		.byte	0x1
- 726 01cb B9       		.byte	0xb9
- 727 01cc 25000000 		.4byte	0x25
- 728 01d0 02       		.uleb128 0x2
- 729 01d1 91       		.byte	0x91
- 730 01d2 60       		.sleb128 -32
- 731 01d3 00       		.byte	0
- 732 01d4 0D       		.uleb128 0xd
- 733 01d5 06010000 		.4byte	.LBB3
- 734 01d9 04000000 		.4byte	.LBE3-.LBB3
- 735 01dd 0E       		.uleb128 0xe
- 736 01de 6D020000 		.4byte	.LASF47
- 737 01e2 01       		.byte	0x1
- 738 01e3 C8       		.byte	0xc8
- 739 01e4 00       		.byte	0
- 740 01e5 00       		.byte	0
- 741 01e6 06       		.uleb128 0x6
- 742 01e7 04       		.byte	0x4
- 743 01e8 2F010000 		.4byte	0x12f
- 744 01ec 0F       		.uleb128 0xf
- 745 01ed F6010000 		.4byte	.LASF48
- 746 01f1 01       		.byte	0x1
- 747 01f2 D2       		.byte	0xd2
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 19
+ 691 0182 76       		.byte	0x76
+ 692 0183 B0000000 		.4byte	0xb0
+ 693 0187 00000000 		.4byte	.LFB68
+ 694 018b 24010000 		.4byte	.LFE68-.LFB68
+ 695 018f 01       		.uleb128 0x1
+ 696 0190 9C       		.byte	0x9c
+ 697 0191 28020000 		.4byte	0x228
+ 698 0195 0C       		.uleb128 0xc
+ 699 0196 14030000 		.4byte	.LASF39
+ 700 019a 01       		.byte	0x1
+ 701 019b 76       		.byte	0x76
+ 702 019c 25000000 		.4byte	0x25
+ 703 01a0 02       		.uleb128 0x2
+ 704 01a1 91       		.byte	0x91
+ 705 01a2 5C       		.sleb128 -36
+ 706 01a3 0D       		.uleb128 0xd
+ 707 01a4 08010000 		.4byte	.LASF33
+ 708 01a8 01       		.byte	0x1
+ 709 01a9 78       		.byte	0x78
+ 710 01aa 28020000 		.4byte	0x228
+ 711 01ae 02       		.uleb128 0x2
+ 712 01af 91       		.byte	0x91
+ 713 01b0 74       		.sleb128 -12
+ 714 01b1 0D       		.uleb128 0xd
+ 715 01b2 CD010000 		.4byte	.LASF34
+ 716 01b6 01       		.byte	0x1
+ 717 01b7 78       		.byte	0x78
+ 718 01b8 28020000 		.4byte	0x228
+ 719 01bc 02       		.uleb128 0x2
+ 720 01bd 91       		.byte	0x91
+ 721 01be 70       		.sleb128 -16
+ 722 01bf 0D       		.uleb128 0xd
+ 723 01c0 B5000000 		.4byte	.LASF35
+ 724 01c4 01       		.byte	0x1
+ 725 01c5 78       		.byte	0x78
+ 726 01c6 28020000 		.4byte	0x228
+ 727 01ca 02       		.uleb128 0x2
+ 728 01cb 91       		.byte	0x91
+ 729 01cc 64       		.sleb128 -28
+ 730 01cd 0D       		.uleb128 0xd
+ 731 01ce 98010000 		.4byte	.LASF36
+ 732 01d2 01       		.byte	0x1
+ 733 01d3 79       		.byte	0x79
+ 734 01d4 35010000 		.4byte	0x135
+ 735 01d8 05       		.uleb128 0x5
+ 736 01d9 03       		.byte	0x3
+ 737 01da 10800000 		.4byte	xHeapHasBeenInitialised.6829
+ 738 01de 0D       		.uleb128 0xd
+ 739 01df F9010000 		.4byte	.LASF37
+ 740 01e3 01       		.byte	0x1
+ 741 01e4 7A       		.byte	0x7a
+ 742 01e5 B0000000 		.4byte	0xb0
+ 743 01e9 02       		.uleb128 0x2
+ 744 01ea 91       		.byte	0x91
+ 745 01eb 6C       		.sleb128 -20
+ 746 01ec 0E       		.uleb128 0xe
+ 747 01ed C2000000 		.4byte	.LBB2
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 19
 
 
- 748 01f3 00000000 		.4byte	.LFB69
- 749 01f7 74000000 		.4byte	.LFE69-.LFB69
- 750 01fb 01       		.uleb128 0x1
- 751 01fc 9C       		.byte	0x9c
- 752 01fd 51020000 		.4byte	0x251
- 753 0201 10       		.uleb128 0x10
- 754 0202 707600   		.ascii	"pv\000"
- 755 0205 01       		.byte	0x1
- 756 0206 D2       		.byte	0xd2
- 757 0207 B0000000 		.4byte	0xb0
- 758 020b 02       		.uleb128 0x2
- 759 020c 91       		.byte	0x91
- 760 020d 64       		.sleb128 -28
- 761 020e 11       		.uleb128 0x11
- 762 020f 70756300 		.ascii	"puc\000"
- 763 0213 01       		.byte	0x1
- 764 0214 D4       		.byte	0xd4
- 765 0215 FE000000 		.4byte	0xfe
- 766 0219 02       		.uleb128 0x2
- 767 021a 91       		.byte	0x91
- 768 021b 70       		.sleb128 -16
- 769 021c 0B       		.uleb128 0xb
- 770 021d FE000000 		.4byte	.LASF34
- 771 0221 01       		.byte	0x1
- 772 0222 D5       		.byte	0xd5
- 773 0223 E6010000 		.4byte	0x1e6
- 774 0227 02       		.uleb128 0x2
- 775 0228 91       		.byte	0x91
- 776 0229 6C       		.sleb128 -20
- 777 022a 0D       		.uleb128 0xd
- 778 022b 24000000 		.4byte	.LBB4
- 779 022f 2C000000 		.4byte	.LBE4-.LBB4
- 780 0233 0B       		.uleb128 0xb
- 781 0234 EA020000 		.4byte	.LASF32
- 782 0238 01       		.byte	0x1
- 783 0239 E4       		.byte	0xe4
- 784 023a E6010000 		.4byte	0x1e6
- 785 023e 02       		.uleb128 0x2
- 786 023f 91       		.byte	0x91
- 787 0240 74       		.sleb128 -12
- 788 0241 0B       		.uleb128 0xb
- 789 0242 81010000 		.4byte	.LASF25
- 790 0246 01       		.byte	0x1
- 791 0247 E4       		.byte	0xe4
- 792 0248 25000000 		.4byte	0x25
- 793 024c 02       		.uleb128 0x2
- 794 024d 91       		.byte	0x91
- 795 024e 68       		.sleb128 -24
- 796 024f 00       		.byte	0
- 797 0250 00       		.byte	0
- 798 0251 12       		.uleb128 0x12
- 799 0252 C6020000 		.4byte	.LASF49
- 800 0256 01       		.byte	0x1
- 801 0257 ED       		.byte	0xed
- 802 0258 25000000 		.4byte	0x25
- 803 025c 00000000 		.4byte	.LFB70
- 804 0260 14000000 		.4byte	.LFE70-.LFB70
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 20
+ 748 01f1 2C000000 		.4byte	.LBE2-.LBB2
+ 749 01f5 16020000 		.4byte	0x216
+ 750 01f9 0D       		.uleb128 0xd
+ 751 01fa 49030000 		.4byte	.LASF38
+ 752 01fe 01       		.byte	0x1
+ 753 01ff B9       		.byte	0xb9
+ 754 0200 28020000 		.4byte	0x228
+ 755 0204 02       		.uleb128 0x2
+ 756 0205 91       		.byte	0x91
+ 757 0206 68       		.sleb128 -24
+ 758 0207 0D       		.uleb128 0xd
+ 759 0208 60010000 		.4byte	.LASF31
+ 760 020c 01       		.byte	0x1
+ 761 020d B9       		.byte	0xb9
+ 762 020e 25000000 		.4byte	0x25
+ 763 0212 02       		.uleb128 0x2
+ 764 0213 91       		.byte	0x91
+ 765 0214 60       		.sleb128 -32
+ 766 0215 00       		.byte	0
+ 767 0216 0F       		.uleb128 0xf
+ 768 0217 06010000 		.4byte	.LBB3
+ 769 021b 04000000 		.4byte	.LBE3-.LBB3
+ 770 021f 10       		.uleb128 0x10
+ 771 0220 BF020000 		.4byte	.LASF55
+ 772 0224 01       		.byte	0x1
+ 773 0225 C8       		.byte	0xc8
+ 774 0226 00       		.byte	0
+ 775 0227 00       		.byte	0
+ 776 0228 0A       		.uleb128 0xa
+ 777 0229 04       		.byte	0x4
+ 778 022a 71010000 		.4byte	0x171
+ 779 022e 11       		.uleb128 0x11
+ 780 022f DD010000 		.4byte	.LASF56
+ 781 0233 01       		.byte	0x1
+ 782 0234 D2       		.byte	0xd2
+ 783 0235 00000000 		.4byte	.LFB69
+ 784 0239 74000000 		.4byte	.LFE69-.LFB69
+ 785 023d 01       		.uleb128 0x1
+ 786 023e 9C       		.byte	0x9c
+ 787 023f 93020000 		.4byte	0x293
+ 788 0243 12       		.uleb128 0x12
+ 789 0244 707600   		.ascii	"pv\000"
+ 790 0247 01       		.byte	0x1
+ 791 0248 D2       		.byte	0xd2
+ 792 0249 B0000000 		.4byte	0xb0
+ 793 024d 02       		.uleb128 0x2
+ 794 024e 91       		.byte	0x91
+ 795 024f 64       		.sleb128 -28
+ 796 0250 13       		.uleb128 0x13
+ 797 0251 70756300 		.ascii	"puc\000"
+ 798 0255 01       		.byte	0x1
+ 799 0256 D4       		.byte	0xd4
+ 800 0257 40010000 		.4byte	0x140
+ 801 025b 02       		.uleb128 0x2
+ 802 025c 91       		.byte	0x91
+ 803 025d 70       		.sleb128 -16
+ 804 025e 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 20
 
 
- 805 0264 01       		.uleb128 0x1
- 806 0265 9C       		.byte	0x9c
- 807 0266 13       		.uleb128 0x13
- 808 0267 2B020000 		.4byte	.LASF50
- 809 026b 01       		.byte	0x1
- 810 026c F3       		.byte	0xf3
- 811 026d 00000000 		.4byte	.LFB71
- 812 0271 0C000000 		.4byte	.LFE71-.LFB71
- 813 0275 01       		.uleb128 0x1
- 814 0276 9C       		.byte	0x9c
- 815 0277 14       		.uleb128 0x14
- 816 0278 25030000 		.4byte	.LASF51
- 817 027c 01       		.byte	0x1
- 818 027d F9       		.byte	0xf9
- 819 027e 00000000 		.4byte	.LFB72
- 820 0282 50000000 		.4byte	.LFE72-.LFB72
- 821 0286 01       		.uleb128 0x1
- 822 0287 9C       		.byte	0x9c
- 823 0288 A9020000 		.4byte	0x2a9
- 824 028c 0B       		.uleb128 0xb
- 825 028d 12010000 		.4byte	.LASF35
- 826 0291 01       		.byte	0x1
- 827 0292 FB       		.byte	0xfb
- 828 0293 E6010000 		.4byte	0x1e6
- 829 0297 02       		.uleb128 0x2
- 830 0298 91       		.byte	0x91
- 831 0299 70       		.sleb128 -16
- 832 029a 0B       		.uleb128 0xb
- 833 029b DB020000 		.4byte	.LASF36
- 834 029f 01       		.byte	0x1
- 835 02a0 FC       		.byte	0xfc
- 836 02a1 FE000000 		.4byte	0xfe
- 837 02a5 02       		.uleb128 0x2
- 838 02a6 91       		.byte	0x91
- 839 02a7 74       		.sleb128 -12
- 840 02a8 00       		.byte	0
- 841 02a9 15       		.uleb128 0x15
- 842 02aa B9000000 		.4byte	0xb9
- 843 02ae BA020000 		.4byte	0x2ba
- 844 02b2 16       		.uleb128 0x16
- 845 02b3 A9000000 		.4byte	0xa9
- 846 02b7 FF7F     		.2byte	0x7fff
- 847 02b9 00       		.byte	0
- 848 02ba 0B       		.uleb128 0xb
- 849 02bb 23010000 		.4byte	.LASF37
- 850 02bf 01       		.byte	0x1
- 851 02c0 43       		.byte	0x43
- 852 02c1 A9020000 		.4byte	0x2a9
- 853 02c5 05       		.uleb128 0x5
- 854 02c6 03       		.byte	0x3
- 855 02c7 00000000 		.4byte	ucHeap
- 856 02cb 0B       		.uleb128 0xb
- 857 02cc 14020000 		.4byte	.LASF38
- 858 02d0 01       		.byte	0x1
- 859 02d1 50       		.byte	0x50
- 860 02d2 DC020000 		.4byte	0x2dc
- 861 02d6 05       		.uleb128 0x5
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 21
+ 805 025f 10010000 		.4byte	.LASF40
+ 806 0263 01       		.byte	0x1
+ 807 0264 D5       		.byte	0xd5
+ 808 0265 28020000 		.4byte	0x228
+ 809 0269 02       		.uleb128 0x2
+ 810 026a 91       		.byte	0x91
+ 811 026b 6C       		.sleb128 -20
+ 812 026c 0F       		.uleb128 0xf
+ 813 026d 24000000 		.4byte	.LBB4
+ 814 0271 2C000000 		.4byte	.LBE4-.LBB4
+ 815 0275 0D       		.uleb128 0xd
+ 816 0276 49030000 		.4byte	.LASF38
+ 817 027a 01       		.byte	0x1
+ 818 027b E4       		.byte	0xe4
+ 819 027c 28020000 		.4byte	0x228
+ 820 0280 02       		.uleb128 0x2
+ 821 0281 91       		.byte	0x91
+ 822 0282 74       		.sleb128 -12
+ 823 0283 0D       		.uleb128 0xd
+ 824 0284 60010000 		.4byte	.LASF31
+ 825 0288 01       		.byte	0x1
+ 826 0289 E4       		.byte	0xe4
+ 827 028a 25000000 		.4byte	0x25
+ 828 028e 02       		.uleb128 0x2
+ 829 028f 91       		.byte	0x91
+ 830 0290 68       		.sleb128 -24
+ 831 0291 00       		.byte	0
+ 832 0292 00       		.byte	0
+ 833 0293 14       		.uleb128 0x14
+ 834 0294 25030000 		.4byte	.LASF57
+ 835 0298 01       		.byte	0x1
+ 836 0299 ED       		.byte	0xed
+ 837 029a 25000000 		.4byte	0x25
+ 838 029e 00000000 		.4byte	.LFB70
+ 839 02a2 14000000 		.4byte	.LFE70-.LFB70
+ 840 02a6 01       		.uleb128 0x1
+ 841 02a7 9C       		.byte	0x9c
+ 842 02a8 15       		.uleb128 0x15
+ 843 02a9 19020000 		.4byte	.LASF58
+ 844 02ad 01       		.byte	0x1
+ 845 02ae F3       		.byte	0xf3
+ 846 02af 00000000 		.4byte	.LFB71
+ 847 02b3 0C000000 		.4byte	.LFE71-.LFB71
+ 848 02b7 01       		.uleb128 0x1
+ 849 02b8 9C       		.byte	0x9c
+ 850 02b9 16       		.uleb128 0x16
+ 851 02ba 95030000 		.4byte	.LASF59
+ 852 02be 01       		.byte	0x1
+ 853 02bf F9       		.byte	0xf9
+ 854 02c0 00000000 		.4byte	.LFB72
+ 855 02c4 50000000 		.4byte	.LFE72-.LFB72
+ 856 02c8 01       		.uleb128 0x1
+ 857 02c9 9C       		.byte	0x9c
+ 858 02ca EB020000 		.4byte	0x2eb
+ 859 02ce 0D       		.uleb128 0xd
+ 860 02cf 26010000 		.4byte	.LASF41
+ 861 02d3 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 21
 
 
- 862 02d7 03       		.byte	0x3
- 863 02d8 00000000 		.4byte	heapSTRUCT_SIZE
- 864 02dc 17       		.uleb128 0x17
- 865 02dd C4000000 		.4byte	0xc4
- 866 02e1 0B       		.uleb128 0xb
- 867 02e2 24020000 		.4byte	.LASF39
- 868 02e6 01       		.byte	0x1
- 869 02e7 54       		.byte	0x54
- 870 02e8 2F010000 		.4byte	0x12f
- 871 02ec 05       		.uleb128 0x5
- 872 02ed 03       		.byte	0x3
- 873 02ee 00800000 		.4byte	xStart
- 874 02f2 0B       		.uleb128 0xb
- 875 02f3 D6010000 		.4byte	.LASF40
- 876 02f7 01       		.byte	0x1
- 877 02f8 54       		.byte	0x54
- 878 02f9 2F010000 		.4byte	0x12f
- 879 02fd 05       		.uleb128 0x5
- 880 02fe 03       		.byte	0x3
- 881 02ff 08800000 		.4byte	xEnd
- 882 0303 0B       		.uleb128 0xb
- 883 0304 08030000 		.4byte	.LASF41
- 884 0308 01       		.byte	0x1
- 885 0309 58       		.byte	0x58
- 886 030a 25000000 		.4byte	0x25
- 887 030e 05       		.uleb128 0x5
- 888 030f 03       		.byte	0x3
- 889 0310 00000000 		.4byte	xFreeBytesRemaining
- 890 0314 18       		.uleb128 0x18
- 891 0315 C9010000 		.4byte	.LASF52
- 892 0319 06       		.byte	0x6
- 893 031a 1207     		.2byte	0x712
- 894 031c 20030000 		.4byte	0x320
- 895 0320 19       		.uleb128 0x19
- 896 0321 CF000000 		.4byte	0xcf
- 897 0325 00       		.byte	0
- 898              		.section	.debug_abbrev,"",%progbits
- 899              	.Ldebug_abbrev0:
- 900 0000 01       		.uleb128 0x1
- 901 0001 11       		.uleb128 0x11
- 902 0002 01       		.byte	0x1
- 903 0003 25       		.uleb128 0x25
- 904 0004 0E       		.uleb128 0xe
- 905 0005 13       		.uleb128 0x13
- 906 0006 0B       		.uleb128 0xb
- 907 0007 03       		.uleb128 0x3
- 908 0008 0E       		.uleb128 0xe
- 909 0009 1B       		.uleb128 0x1b
- 910 000a 0E       		.uleb128 0xe
- 911 000b 55       		.uleb128 0x55
- 912 000c 17       		.uleb128 0x17
- 913 000d 11       		.uleb128 0x11
- 914 000e 01       		.uleb128 0x1
- 915 000f 10       		.uleb128 0x10
- 916 0010 17       		.uleb128 0x17
- 917 0011 00       		.byte	0
- 918 0012 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 22
+ 862 02d4 FB       		.byte	0xfb
+ 863 02d5 28020000 		.4byte	0x228
+ 864 02d9 02       		.uleb128 0x2
+ 865 02da 91       		.byte	0x91
+ 866 02db 70       		.sleb128 -16
+ 867 02dc 0D       		.uleb128 0xd
+ 868 02dd 3A030000 		.4byte	.LASF42
+ 869 02e1 01       		.byte	0x1
+ 870 02e2 FC       		.byte	0xfc
+ 871 02e3 40010000 		.4byte	0x140
+ 872 02e7 02       		.uleb128 0x2
+ 873 02e8 91       		.byte	0x91
+ 874 02e9 74       		.sleb128 -12
+ 875 02ea 00       		.byte	0
+ 876 02eb 17       		.uleb128 0x17
+ 877 02ec B9000000 		.4byte	0xb9
+ 878 02f0 FC020000 		.4byte	0x2fc
+ 879 02f4 18       		.uleb128 0x18
+ 880 02f5 A9000000 		.4byte	0xa9
+ 881 02f9 FF7F     		.2byte	0x7fff
+ 882 02fb 00       		.byte	0
+ 883 02fc 0D       		.uleb128 0xd
+ 884 02fd 37010000 		.4byte	.LASF43
+ 885 0301 01       		.byte	0x1
+ 886 0302 43       		.byte	0x43
+ 887 0303 EB020000 		.4byte	0x2eb
+ 888 0307 05       		.uleb128 0x5
+ 889 0308 03       		.byte	0x3
+ 890 0309 00000000 		.4byte	ucHeap
+ 891 030d 0D       		.uleb128 0xd
+ 892 030e 02020000 		.4byte	.LASF44
+ 893 0312 01       		.byte	0x1
+ 894 0313 50       		.byte	0x50
+ 895 0314 1E030000 		.4byte	0x31e
+ 896 0318 05       		.uleb128 0x5
+ 897 0319 03       		.byte	0x3
+ 898 031a 00000000 		.4byte	heapSTRUCT_SIZE
+ 899 031e 19       		.uleb128 0x19
+ 900 031f C4000000 		.4byte	0xc4
+ 901 0323 0D       		.uleb128 0xd
+ 902 0324 12020000 		.4byte	.LASF45
+ 903 0328 01       		.byte	0x1
+ 904 0329 54       		.byte	0x54
+ 905 032a 71010000 		.4byte	0x171
+ 906 032e 05       		.uleb128 0x5
+ 907 032f 03       		.byte	0x3
+ 908 0330 00800000 		.4byte	xStart
+ 909 0334 0D       		.uleb128 0xd
+ 910 0335 BD010000 		.4byte	.LASF46
+ 911 0339 01       		.byte	0x1
+ 912 033a 54       		.byte	0x54
+ 913 033b 71010000 		.4byte	0x171
+ 914 033f 05       		.uleb128 0x5
+ 915 0340 03       		.byte	0x3
+ 916 0341 08800000 		.4byte	xEnd
+ 917 0345 0D       		.uleb128 0xd
+ 918 0346 78030000 		.4byte	.LASF47
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 22
 
 
- 919 0013 02       		.uleb128 0x2
- 920 0014 16       		.uleb128 0x16
- 921 0015 00       		.byte	0
- 922 0016 03       		.uleb128 0x3
- 923 0017 0E       		.uleb128 0xe
- 924 0018 3A       		.uleb128 0x3a
- 925 0019 0B       		.uleb128 0xb
- 926 001a 3B       		.uleb128 0x3b
- 927 001b 0B       		.uleb128 0xb
- 928 001c 49       		.uleb128 0x49
- 929 001d 13       		.uleb128 0x13
- 930 001e 00       		.byte	0
- 931 001f 00       		.byte	0
- 932 0020 03       		.uleb128 0x3
- 933 0021 24       		.uleb128 0x24
- 934 0022 00       		.byte	0
- 935 0023 0B       		.uleb128 0xb
- 936 0024 0B       		.uleb128 0xb
- 937 0025 3E       		.uleb128 0x3e
- 938 0026 0B       		.uleb128 0xb
- 939 0027 03       		.uleb128 0x3
- 940 0028 0E       		.uleb128 0xe
- 941 0029 00       		.byte	0
- 942 002a 00       		.byte	0
- 943 002b 04       		.uleb128 0x4
- 944 002c 24       		.uleb128 0x24
- 945 002d 00       		.byte	0
- 946 002e 0B       		.uleb128 0xb
- 947 002f 0B       		.uleb128 0xb
- 948 0030 3E       		.uleb128 0x3e
- 949 0031 0B       		.uleb128 0xb
- 950 0032 03       		.uleb128 0x3
- 951 0033 08       		.uleb128 0x8
- 952 0034 00       		.byte	0
- 953 0035 00       		.byte	0
- 954 0036 05       		.uleb128 0x5
- 955 0037 0F       		.uleb128 0xf
- 956 0038 00       		.byte	0
- 957 0039 0B       		.uleb128 0xb
- 958 003a 0B       		.uleb128 0xb
- 959 003b 00       		.byte	0
- 960 003c 00       		.byte	0
- 961 003d 06       		.uleb128 0x6
- 962 003e 0F       		.uleb128 0xf
- 963 003f 00       		.byte	0
- 964 0040 0B       		.uleb128 0xb
- 965 0041 0B       		.uleb128 0xb
- 966 0042 49       		.uleb128 0x49
- 967 0043 13       		.uleb128 0x13
- 968 0044 00       		.byte	0
- 969 0045 00       		.byte	0
- 970 0046 07       		.uleb128 0x7
- 971 0047 13       		.uleb128 0x13
- 972 0048 01       		.byte	0x1
- 973 0049 03       		.uleb128 0x3
- 974 004a 0E       		.uleb128 0xe
- 975 004b 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 23
+ 919 034a 01       		.byte	0x1
+ 920 034b 58       		.byte	0x58
+ 921 034c 25000000 		.4byte	0x25
+ 922 0350 05       		.uleb128 0x5
+ 923 0351 03       		.byte	0x3
+ 924 0352 00000000 		.4byte	xFreeBytesRemaining
+ 925 0356 17       		.uleb128 0x17
+ 926 0357 10010000 		.4byte	0x110
+ 927 035b 66030000 		.4byte	0x366
+ 928 035f 1A       		.uleb128 0x1a
+ 929 0360 A9000000 		.4byte	0xa9
+ 930 0364 07       		.byte	0x7
+ 931 0365 00       		.byte	0
+ 932 0366 1B       		.uleb128 0x1b
+ 933 0367 44010000 		.4byte	.LASF48
+ 934 036b 06       		.byte	0x6
+ 935 036c 34       		.byte	0x34
+ 936 036d 56030000 		.4byte	0x356
+ 937 0371 05       		.uleb128 0x5
+ 938 0372 03       		.byte	0x3
+ 939 0373 00000000 		.4byte	DS18x8_Sensor
+ 940 0377 1B       		.uleb128 0x1b
+ 941 0378 5E030000 		.4byte	.LASF49
+ 942 037c 06       		.byte	0x6
+ 943 037d 39       		.byte	0x39
+ 944 037e 0B010000 		.4byte	0x10b
+ 945 0382 05       		.uleb128 0x5
+ 946 0383 03       		.byte	0x3
+ 947 0384 00000000 		.4byte	DS18x8_DataReady
+ 948 0388 1C       		.uleb128 0x1c
+ 949 0389 B0010000 		.4byte	.LASF50
+ 950 038d 08       		.byte	0x8
+ 951 038e 1207     		.2byte	0x712
+ 952 0390 94030000 		.4byte	0x394
+ 953 0394 07       		.uleb128 0x7
+ 954 0395 CF000000 		.4byte	0xcf
+ 955 0399 00       		.byte	0
+ 956              		.section	.debug_abbrev,"",%progbits
+ 957              	.Ldebug_abbrev0:
+ 958 0000 01       		.uleb128 0x1
+ 959 0001 11       		.uleb128 0x11
+ 960 0002 01       		.byte	0x1
+ 961 0003 25       		.uleb128 0x25
+ 962 0004 0E       		.uleb128 0xe
+ 963 0005 13       		.uleb128 0x13
+ 964 0006 0B       		.uleb128 0xb
+ 965 0007 03       		.uleb128 0x3
+ 966 0008 0E       		.uleb128 0xe
+ 967 0009 1B       		.uleb128 0x1b
+ 968 000a 0E       		.uleb128 0xe
+ 969 000b 55       		.uleb128 0x55
+ 970 000c 17       		.uleb128 0x17
+ 971 000d 11       		.uleb128 0x11
+ 972 000e 01       		.uleb128 0x1
+ 973 000f 10       		.uleb128 0x10
+ 974 0010 17       		.uleb128 0x17
+ 975 0011 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 23
 
 
- 976 004c 0B       		.uleb128 0xb
- 977 004d 3A       		.uleb128 0x3a
- 978 004e 0B       		.uleb128 0xb
- 979 004f 3B       		.uleb128 0x3b
- 980 0050 0B       		.uleb128 0xb
- 981 0051 01       		.uleb128 0x1
- 982 0052 13       		.uleb128 0x13
- 983 0053 00       		.byte	0
- 984 0054 00       		.byte	0
- 985 0055 08       		.uleb128 0x8
- 986 0056 0D       		.uleb128 0xd
- 987 0057 00       		.byte	0
- 988 0058 03       		.uleb128 0x3
- 989 0059 0E       		.uleb128 0xe
- 990 005a 3A       		.uleb128 0x3a
- 991 005b 0B       		.uleb128 0xb
- 992 005c 3B       		.uleb128 0x3b
- 993 005d 0B       		.uleb128 0xb
- 994 005e 49       		.uleb128 0x49
- 995 005f 13       		.uleb128 0x13
- 996 0060 38       		.uleb128 0x38
- 997 0061 0B       		.uleb128 0xb
- 998 0062 00       		.byte	0
- 999 0063 00       		.byte	0
- 1000 0064 09       		.uleb128 0x9
- 1001 0065 2E       		.uleb128 0x2e
- 1002 0066 01       		.byte	0x1
- 1003 0067 3F       		.uleb128 0x3f
- 1004 0068 19       		.uleb128 0x19
- 1005 0069 03       		.uleb128 0x3
- 1006 006a 0E       		.uleb128 0xe
- 1007 006b 3A       		.uleb128 0x3a
- 1008 006c 0B       		.uleb128 0xb
- 1009 006d 3B       		.uleb128 0x3b
- 1010 006e 0B       		.uleb128 0xb
- 1011 006f 27       		.uleb128 0x27
- 1012 0070 19       		.uleb128 0x19
- 1013 0071 49       		.uleb128 0x49
- 1014 0072 13       		.uleb128 0x13
- 1015 0073 11       		.uleb128 0x11
- 1016 0074 01       		.uleb128 0x1
- 1017 0075 12       		.uleb128 0x12
- 1018 0076 06       		.uleb128 0x6
- 1019 0077 40       		.uleb128 0x40
- 1020 0078 18       		.uleb128 0x18
- 1021 0079 9642     		.uleb128 0x2116
- 1022 007b 19       		.uleb128 0x19
- 1023 007c 01       		.uleb128 0x1
- 1024 007d 13       		.uleb128 0x13
- 1025 007e 00       		.byte	0
- 1026 007f 00       		.byte	0
- 1027 0080 0A       		.uleb128 0xa
- 1028 0081 05       		.uleb128 0x5
- 1029 0082 00       		.byte	0
- 1030 0083 03       		.uleb128 0x3
- 1031 0084 0E       		.uleb128 0xe
- 1032 0085 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 24
+ 976 0012 00       		.byte	0
+ 977 0013 02       		.uleb128 0x2
+ 978 0014 16       		.uleb128 0x16
+ 979 0015 00       		.byte	0
+ 980 0016 03       		.uleb128 0x3
+ 981 0017 0E       		.uleb128 0xe
+ 982 0018 3A       		.uleb128 0x3a
+ 983 0019 0B       		.uleb128 0xb
+ 984 001a 3B       		.uleb128 0x3b
+ 985 001b 0B       		.uleb128 0xb
+ 986 001c 49       		.uleb128 0x49
+ 987 001d 13       		.uleb128 0x13
+ 988 001e 00       		.byte	0
+ 989 001f 00       		.byte	0
+ 990 0020 03       		.uleb128 0x3
+ 991 0021 24       		.uleb128 0x24
+ 992 0022 00       		.byte	0
+ 993 0023 0B       		.uleb128 0xb
+ 994 0024 0B       		.uleb128 0xb
+ 995 0025 3E       		.uleb128 0x3e
+ 996 0026 0B       		.uleb128 0xb
+ 997 0027 03       		.uleb128 0x3
+ 998 0028 0E       		.uleb128 0xe
+ 999 0029 00       		.byte	0
+ 1000 002a 00       		.byte	0
+ 1001 002b 04       		.uleb128 0x4
+ 1002 002c 24       		.uleb128 0x24
+ 1003 002d 00       		.byte	0
+ 1004 002e 0B       		.uleb128 0xb
+ 1005 002f 0B       		.uleb128 0xb
+ 1006 0030 3E       		.uleb128 0x3e
+ 1007 0031 0B       		.uleb128 0xb
+ 1008 0032 03       		.uleb128 0x3
+ 1009 0033 08       		.uleb128 0x8
+ 1010 0034 00       		.byte	0
+ 1011 0035 00       		.byte	0
+ 1012 0036 05       		.uleb128 0x5
+ 1013 0037 0F       		.uleb128 0xf
+ 1014 0038 00       		.byte	0
+ 1015 0039 0B       		.uleb128 0xb
+ 1016 003a 0B       		.uleb128 0xb
+ 1017 003b 00       		.byte	0
+ 1018 003c 00       		.byte	0
+ 1019 003d 06       		.uleb128 0x6
+ 1020 003e 16       		.uleb128 0x16
+ 1021 003f 00       		.byte	0
+ 1022 0040 03       		.uleb128 0x3
+ 1023 0041 0E       		.uleb128 0xe
+ 1024 0042 3A       		.uleb128 0x3a
+ 1025 0043 0B       		.uleb128 0xb
+ 1026 0044 3B       		.uleb128 0x3b
+ 1027 0045 05       		.uleb128 0x5
+ 1028 0046 49       		.uleb128 0x49
+ 1029 0047 13       		.uleb128 0x13
+ 1030 0048 00       		.byte	0
+ 1031 0049 00       		.byte	0
+ 1032 004a 07       		.uleb128 0x7
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 24
 
 
- 1033 0086 0B       		.uleb128 0xb
- 1034 0087 3B       		.uleb128 0x3b
- 1035 0088 0B       		.uleb128 0xb
- 1036 0089 49       		.uleb128 0x49
- 1037 008a 13       		.uleb128 0x13
- 1038 008b 02       		.uleb128 0x2
- 1039 008c 18       		.uleb128 0x18
- 1040 008d 00       		.byte	0
- 1041 008e 00       		.byte	0
- 1042 008f 0B       		.uleb128 0xb
- 1043 0090 34       		.uleb128 0x34
- 1044 0091 00       		.byte	0
- 1045 0092 03       		.uleb128 0x3
- 1046 0093 0E       		.uleb128 0xe
- 1047 0094 3A       		.uleb128 0x3a
- 1048 0095 0B       		.uleb128 0xb
- 1049 0096 3B       		.uleb128 0x3b
- 1050 0097 0B       		.uleb128 0xb
- 1051 0098 49       		.uleb128 0x49
- 1052 0099 13       		.uleb128 0x13
- 1053 009a 02       		.uleb128 0x2
- 1054 009b 18       		.uleb128 0x18
- 1055 009c 00       		.byte	0
- 1056 009d 00       		.byte	0
- 1057 009e 0C       		.uleb128 0xc
- 1058 009f 0B       		.uleb128 0xb
- 1059 00a0 01       		.byte	0x1
- 1060 00a1 11       		.uleb128 0x11
- 1061 00a2 01       		.uleb128 0x1
- 1062 00a3 12       		.uleb128 0x12
- 1063 00a4 06       		.uleb128 0x6
- 1064 00a5 01       		.uleb128 0x1
- 1065 00a6 13       		.uleb128 0x13
- 1066 00a7 00       		.byte	0
- 1067 00a8 00       		.byte	0
- 1068 00a9 0D       		.uleb128 0xd
- 1069 00aa 0B       		.uleb128 0xb
- 1070 00ab 01       		.byte	0x1
- 1071 00ac 11       		.uleb128 0x11
- 1072 00ad 01       		.uleb128 0x1
- 1073 00ae 12       		.uleb128 0x12
- 1074 00af 06       		.uleb128 0x6
- 1075 00b0 00       		.byte	0
- 1076 00b1 00       		.byte	0
- 1077 00b2 0E       		.uleb128 0xe
- 1078 00b3 2E       		.uleb128 0x2e
- 1079 00b4 00       		.byte	0
- 1080 00b5 3F       		.uleb128 0x3f
- 1081 00b6 19       		.uleb128 0x19
- 1082 00b7 03       		.uleb128 0x3
- 1083 00b8 0E       		.uleb128 0xe
- 1084 00b9 3A       		.uleb128 0x3a
- 1085 00ba 0B       		.uleb128 0xb
- 1086 00bb 3B       		.uleb128 0x3b
- 1087 00bc 0B       		.uleb128 0xb
- 1088 00bd 27       		.uleb128 0x27
- 1089 00be 19       		.uleb128 0x19
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 25
+ 1033 004b 35       		.uleb128 0x35
+ 1034 004c 00       		.byte	0
+ 1035 004d 49       		.uleb128 0x49
+ 1036 004e 13       		.uleb128 0x13
+ 1037 004f 00       		.byte	0
+ 1038 0050 00       		.byte	0
+ 1039 0051 08       		.uleb128 0x8
+ 1040 0052 13       		.uleb128 0x13
+ 1041 0053 01       		.byte	0x1
+ 1042 0054 03       		.uleb128 0x3
+ 1043 0055 0E       		.uleb128 0xe
+ 1044 0056 0B       		.uleb128 0xb
+ 1045 0057 0B       		.uleb128 0xb
+ 1046 0058 3A       		.uleb128 0x3a
+ 1047 0059 0B       		.uleb128 0xb
+ 1048 005a 3B       		.uleb128 0x3b
+ 1049 005b 0B       		.uleb128 0xb
+ 1050 005c 01       		.uleb128 0x1
+ 1051 005d 13       		.uleb128 0x13
+ 1052 005e 00       		.byte	0
+ 1053 005f 00       		.byte	0
+ 1054 0060 09       		.uleb128 0x9
+ 1055 0061 0D       		.uleb128 0xd
+ 1056 0062 00       		.byte	0
+ 1057 0063 03       		.uleb128 0x3
+ 1058 0064 0E       		.uleb128 0xe
+ 1059 0065 3A       		.uleb128 0x3a
+ 1060 0066 0B       		.uleb128 0xb
+ 1061 0067 3B       		.uleb128 0x3b
+ 1062 0068 0B       		.uleb128 0xb
+ 1063 0069 49       		.uleb128 0x49
+ 1064 006a 13       		.uleb128 0x13
+ 1065 006b 38       		.uleb128 0x38
+ 1066 006c 0B       		.uleb128 0xb
+ 1067 006d 00       		.byte	0
+ 1068 006e 00       		.byte	0
+ 1069 006f 0A       		.uleb128 0xa
+ 1070 0070 0F       		.uleb128 0xf
+ 1071 0071 00       		.byte	0
+ 1072 0072 0B       		.uleb128 0xb
+ 1073 0073 0B       		.uleb128 0xb
+ 1074 0074 49       		.uleb128 0x49
+ 1075 0075 13       		.uleb128 0x13
+ 1076 0076 00       		.byte	0
+ 1077 0077 00       		.byte	0
+ 1078 0078 0B       		.uleb128 0xb
+ 1079 0079 2E       		.uleb128 0x2e
+ 1080 007a 01       		.byte	0x1
+ 1081 007b 3F       		.uleb128 0x3f
+ 1082 007c 19       		.uleb128 0x19
+ 1083 007d 03       		.uleb128 0x3
+ 1084 007e 0E       		.uleb128 0xe
+ 1085 007f 3A       		.uleb128 0x3a
+ 1086 0080 0B       		.uleb128 0xb
+ 1087 0081 3B       		.uleb128 0x3b
+ 1088 0082 0B       		.uleb128 0xb
+ 1089 0083 27       		.uleb128 0x27
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 25
 
 
- 1090 00bf 3C       		.uleb128 0x3c
- 1091 00c0 19       		.uleb128 0x19
- 1092 00c1 00       		.byte	0
- 1093 00c2 00       		.byte	0
- 1094 00c3 0F       		.uleb128 0xf
- 1095 00c4 2E       		.uleb128 0x2e
- 1096 00c5 01       		.byte	0x1
- 1097 00c6 3F       		.uleb128 0x3f
- 1098 00c7 19       		.uleb128 0x19
- 1099 00c8 03       		.uleb128 0x3
- 1100 00c9 0E       		.uleb128 0xe
- 1101 00ca 3A       		.uleb128 0x3a
- 1102 00cb 0B       		.uleb128 0xb
- 1103 00cc 3B       		.uleb128 0x3b
- 1104 00cd 0B       		.uleb128 0xb
- 1105 00ce 27       		.uleb128 0x27
- 1106 00cf 19       		.uleb128 0x19
- 1107 00d0 11       		.uleb128 0x11
- 1108 00d1 01       		.uleb128 0x1
- 1109 00d2 12       		.uleb128 0x12
- 1110 00d3 06       		.uleb128 0x6
- 1111 00d4 40       		.uleb128 0x40
- 1112 00d5 18       		.uleb128 0x18
- 1113 00d6 9642     		.uleb128 0x2116
- 1114 00d8 19       		.uleb128 0x19
- 1115 00d9 01       		.uleb128 0x1
- 1116 00da 13       		.uleb128 0x13
- 1117 00db 00       		.byte	0
- 1118 00dc 00       		.byte	0
- 1119 00dd 10       		.uleb128 0x10
- 1120 00de 05       		.uleb128 0x5
- 1121 00df 00       		.byte	0
- 1122 00e0 03       		.uleb128 0x3
- 1123 00e1 08       		.uleb128 0x8
- 1124 00e2 3A       		.uleb128 0x3a
- 1125 00e3 0B       		.uleb128 0xb
- 1126 00e4 3B       		.uleb128 0x3b
- 1127 00e5 0B       		.uleb128 0xb
- 1128 00e6 49       		.uleb128 0x49
- 1129 00e7 13       		.uleb128 0x13
- 1130 00e8 02       		.uleb128 0x2
- 1131 00e9 18       		.uleb128 0x18
- 1132 00ea 00       		.byte	0
- 1133 00eb 00       		.byte	0
- 1134 00ec 11       		.uleb128 0x11
- 1135 00ed 34       		.uleb128 0x34
- 1136 00ee 00       		.byte	0
- 1137 00ef 03       		.uleb128 0x3
- 1138 00f0 08       		.uleb128 0x8
- 1139 00f1 3A       		.uleb128 0x3a
- 1140 00f2 0B       		.uleb128 0xb
- 1141 00f3 3B       		.uleb128 0x3b
- 1142 00f4 0B       		.uleb128 0xb
- 1143 00f5 49       		.uleb128 0x49
- 1144 00f6 13       		.uleb128 0x13
- 1145 00f7 02       		.uleb128 0x2
- 1146 00f8 18       		.uleb128 0x18
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 26
+ 1090 0084 19       		.uleb128 0x19
+ 1091 0085 49       		.uleb128 0x49
+ 1092 0086 13       		.uleb128 0x13
+ 1093 0087 11       		.uleb128 0x11
+ 1094 0088 01       		.uleb128 0x1
+ 1095 0089 12       		.uleb128 0x12
+ 1096 008a 06       		.uleb128 0x6
+ 1097 008b 40       		.uleb128 0x40
+ 1098 008c 18       		.uleb128 0x18
+ 1099 008d 9642     		.uleb128 0x2116
+ 1100 008f 19       		.uleb128 0x19
+ 1101 0090 01       		.uleb128 0x1
+ 1102 0091 13       		.uleb128 0x13
+ 1103 0092 00       		.byte	0
+ 1104 0093 00       		.byte	0
+ 1105 0094 0C       		.uleb128 0xc
+ 1106 0095 05       		.uleb128 0x5
+ 1107 0096 00       		.byte	0
+ 1108 0097 03       		.uleb128 0x3
+ 1109 0098 0E       		.uleb128 0xe
+ 1110 0099 3A       		.uleb128 0x3a
+ 1111 009a 0B       		.uleb128 0xb
+ 1112 009b 3B       		.uleb128 0x3b
+ 1113 009c 0B       		.uleb128 0xb
+ 1114 009d 49       		.uleb128 0x49
+ 1115 009e 13       		.uleb128 0x13
+ 1116 009f 02       		.uleb128 0x2
+ 1117 00a0 18       		.uleb128 0x18
+ 1118 00a1 00       		.byte	0
+ 1119 00a2 00       		.byte	0
+ 1120 00a3 0D       		.uleb128 0xd
+ 1121 00a4 34       		.uleb128 0x34
+ 1122 00a5 00       		.byte	0
+ 1123 00a6 03       		.uleb128 0x3
+ 1124 00a7 0E       		.uleb128 0xe
+ 1125 00a8 3A       		.uleb128 0x3a
+ 1126 00a9 0B       		.uleb128 0xb
+ 1127 00aa 3B       		.uleb128 0x3b
+ 1128 00ab 0B       		.uleb128 0xb
+ 1129 00ac 49       		.uleb128 0x49
+ 1130 00ad 13       		.uleb128 0x13
+ 1131 00ae 02       		.uleb128 0x2
+ 1132 00af 18       		.uleb128 0x18
+ 1133 00b0 00       		.byte	0
+ 1134 00b1 00       		.byte	0
+ 1135 00b2 0E       		.uleb128 0xe
+ 1136 00b3 0B       		.uleb128 0xb
+ 1137 00b4 01       		.byte	0x1
+ 1138 00b5 11       		.uleb128 0x11
+ 1139 00b6 01       		.uleb128 0x1
+ 1140 00b7 12       		.uleb128 0x12
+ 1141 00b8 06       		.uleb128 0x6
+ 1142 00b9 01       		.uleb128 0x1
+ 1143 00ba 13       		.uleb128 0x13
+ 1144 00bb 00       		.byte	0
+ 1145 00bc 00       		.byte	0
+ 1146 00bd 0F       		.uleb128 0xf
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 26
 
 
- 1147 00f9 00       		.byte	0
- 1148 00fa 00       		.byte	0
- 1149 00fb 12       		.uleb128 0x12
- 1150 00fc 2E       		.uleb128 0x2e
- 1151 00fd 00       		.byte	0
- 1152 00fe 3F       		.uleb128 0x3f
- 1153 00ff 19       		.uleb128 0x19
- 1154 0100 03       		.uleb128 0x3
- 1155 0101 0E       		.uleb128 0xe
- 1156 0102 3A       		.uleb128 0x3a
- 1157 0103 0B       		.uleb128 0xb
- 1158 0104 3B       		.uleb128 0x3b
- 1159 0105 0B       		.uleb128 0xb
- 1160 0106 27       		.uleb128 0x27
- 1161 0107 19       		.uleb128 0x19
- 1162 0108 49       		.uleb128 0x49
- 1163 0109 13       		.uleb128 0x13
- 1164 010a 11       		.uleb128 0x11
- 1165 010b 01       		.uleb128 0x1
- 1166 010c 12       		.uleb128 0x12
- 1167 010d 06       		.uleb128 0x6
- 1168 010e 40       		.uleb128 0x40
- 1169 010f 18       		.uleb128 0x18
- 1170 0110 9742     		.uleb128 0x2117
- 1171 0112 19       		.uleb128 0x19
- 1172 0113 00       		.byte	0
- 1173 0114 00       		.byte	0
- 1174 0115 13       		.uleb128 0x13
- 1175 0116 2E       		.uleb128 0x2e
- 1176 0117 00       		.byte	0
- 1177 0118 3F       		.uleb128 0x3f
- 1178 0119 19       		.uleb128 0x19
- 1179 011a 03       		.uleb128 0x3
- 1180 011b 0E       		.uleb128 0xe
- 1181 011c 3A       		.uleb128 0x3a
- 1182 011d 0B       		.uleb128 0xb
- 1183 011e 3B       		.uleb128 0x3b
- 1184 011f 0B       		.uleb128 0xb
- 1185 0120 27       		.uleb128 0x27
- 1186 0121 19       		.uleb128 0x19
- 1187 0122 11       		.uleb128 0x11
- 1188 0123 01       		.uleb128 0x1
- 1189 0124 12       		.uleb128 0x12
- 1190 0125 06       		.uleb128 0x6
- 1191 0126 40       		.uleb128 0x40
- 1192 0127 18       		.uleb128 0x18
- 1193 0128 9742     		.uleb128 0x2117
- 1194 012a 19       		.uleb128 0x19
- 1195 012b 00       		.byte	0
- 1196 012c 00       		.byte	0
- 1197 012d 14       		.uleb128 0x14
- 1198 012e 2E       		.uleb128 0x2e
- 1199 012f 01       		.byte	0x1
- 1200 0130 03       		.uleb128 0x3
- 1201 0131 0E       		.uleb128 0xe
- 1202 0132 3A       		.uleb128 0x3a
- 1203 0133 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 27
+ 1147 00be 0B       		.uleb128 0xb
+ 1148 00bf 01       		.byte	0x1
+ 1149 00c0 11       		.uleb128 0x11
+ 1150 00c1 01       		.uleb128 0x1
+ 1151 00c2 12       		.uleb128 0x12
+ 1152 00c3 06       		.uleb128 0x6
+ 1153 00c4 00       		.byte	0
+ 1154 00c5 00       		.byte	0
+ 1155 00c6 10       		.uleb128 0x10
+ 1156 00c7 2E       		.uleb128 0x2e
+ 1157 00c8 00       		.byte	0
+ 1158 00c9 3F       		.uleb128 0x3f
+ 1159 00ca 19       		.uleb128 0x19
+ 1160 00cb 03       		.uleb128 0x3
+ 1161 00cc 0E       		.uleb128 0xe
+ 1162 00cd 3A       		.uleb128 0x3a
+ 1163 00ce 0B       		.uleb128 0xb
+ 1164 00cf 3B       		.uleb128 0x3b
+ 1165 00d0 0B       		.uleb128 0xb
+ 1166 00d1 27       		.uleb128 0x27
+ 1167 00d2 19       		.uleb128 0x19
+ 1168 00d3 3C       		.uleb128 0x3c
+ 1169 00d4 19       		.uleb128 0x19
+ 1170 00d5 00       		.byte	0
+ 1171 00d6 00       		.byte	0
+ 1172 00d7 11       		.uleb128 0x11
+ 1173 00d8 2E       		.uleb128 0x2e
+ 1174 00d9 01       		.byte	0x1
+ 1175 00da 3F       		.uleb128 0x3f
+ 1176 00db 19       		.uleb128 0x19
+ 1177 00dc 03       		.uleb128 0x3
+ 1178 00dd 0E       		.uleb128 0xe
+ 1179 00de 3A       		.uleb128 0x3a
+ 1180 00df 0B       		.uleb128 0xb
+ 1181 00e0 3B       		.uleb128 0x3b
+ 1182 00e1 0B       		.uleb128 0xb
+ 1183 00e2 27       		.uleb128 0x27
+ 1184 00e3 19       		.uleb128 0x19
+ 1185 00e4 11       		.uleb128 0x11
+ 1186 00e5 01       		.uleb128 0x1
+ 1187 00e6 12       		.uleb128 0x12
+ 1188 00e7 06       		.uleb128 0x6
+ 1189 00e8 40       		.uleb128 0x40
+ 1190 00e9 18       		.uleb128 0x18
+ 1191 00ea 9642     		.uleb128 0x2116
+ 1192 00ec 19       		.uleb128 0x19
+ 1193 00ed 01       		.uleb128 0x1
+ 1194 00ee 13       		.uleb128 0x13
+ 1195 00ef 00       		.byte	0
+ 1196 00f0 00       		.byte	0
+ 1197 00f1 12       		.uleb128 0x12
+ 1198 00f2 05       		.uleb128 0x5
+ 1199 00f3 00       		.byte	0
+ 1200 00f4 03       		.uleb128 0x3
+ 1201 00f5 08       		.uleb128 0x8
+ 1202 00f6 3A       		.uleb128 0x3a
+ 1203 00f7 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 27
 
 
- 1204 0134 3B       		.uleb128 0x3b
- 1205 0135 0B       		.uleb128 0xb
- 1206 0136 27       		.uleb128 0x27
- 1207 0137 19       		.uleb128 0x19
- 1208 0138 11       		.uleb128 0x11
- 1209 0139 01       		.uleb128 0x1
- 1210 013a 12       		.uleb128 0x12
- 1211 013b 06       		.uleb128 0x6
- 1212 013c 40       		.uleb128 0x40
- 1213 013d 18       		.uleb128 0x18
- 1214 013e 9742     		.uleb128 0x2117
- 1215 0140 19       		.uleb128 0x19
- 1216 0141 01       		.uleb128 0x1
- 1217 0142 13       		.uleb128 0x13
- 1218 0143 00       		.byte	0
- 1219 0144 00       		.byte	0
- 1220 0145 15       		.uleb128 0x15
- 1221 0146 01       		.uleb128 0x1
- 1222 0147 01       		.byte	0x1
- 1223 0148 49       		.uleb128 0x49
- 1224 0149 13       		.uleb128 0x13
- 1225 014a 01       		.uleb128 0x1
- 1226 014b 13       		.uleb128 0x13
- 1227 014c 00       		.byte	0
- 1228 014d 00       		.byte	0
- 1229 014e 16       		.uleb128 0x16
- 1230 014f 21       		.uleb128 0x21
- 1231 0150 00       		.byte	0
- 1232 0151 49       		.uleb128 0x49
- 1233 0152 13       		.uleb128 0x13
- 1234 0153 2F       		.uleb128 0x2f
- 1235 0154 05       		.uleb128 0x5
- 1236 0155 00       		.byte	0
- 1237 0156 00       		.byte	0
- 1238 0157 17       		.uleb128 0x17
- 1239 0158 26       		.uleb128 0x26
- 1240 0159 00       		.byte	0
- 1241 015a 49       		.uleb128 0x49
- 1242 015b 13       		.uleb128 0x13
- 1243 015c 00       		.byte	0
- 1244 015d 00       		.byte	0
- 1245 015e 18       		.uleb128 0x18
- 1246 015f 34       		.uleb128 0x34
- 1247 0160 00       		.byte	0
- 1248 0161 03       		.uleb128 0x3
- 1249 0162 0E       		.uleb128 0xe
- 1250 0163 3A       		.uleb128 0x3a
- 1251 0164 0B       		.uleb128 0xb
- 1252 0165 3B       		.uleb128 0x3b
- 1253 0166 05       		.uleb128 0x5
- 1254 0167 49       		.uleb128 0x49
- 1255 0168 13       		.uleb128 0x13
- 1256 0169 3F       		.uleb128 0x3f
- 1257 016a 19       		.uleb128 0x19
- 1258 016b 3C       		.uleb128 0x3c
- 1259 016c 19       		.uleb128 0x19
- 1260 016d 00       		.byte	0
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 28
+ 1204 00f8 3B       		.uleb128 0x3b
+ 1205 00f9 0B       		.uleb128 0xb
+ 1206 00fa 49       		.uleb128 0x49
+ 1207 00fb 13       		.uleb128 0x13
+ 1208 00fc 02       		.uleb128 0x2
+ 1209 00fd 18       		.uleb128 0x18
+ 1210 00fe 00       		.byte	0
+ 1211 00ff 00       		.byte	0
+ 1212 0100 13       		.uleb128 0x13
+ 1213 0101 34       		.uleb128 0x34
+ 1214 0102 00       		.byte	0
+ 1215 0103 03       		.uleb128 0x3
+ 1216 0104 08       		.uleb128 0x8
+ 1217 0105 3A       		.uleb128 0x3a
+ 1218 0106 0B       		.uleb128 0xb
+ 1219 0107 3B       		.uleb128 0x3b
+ 1220 0108 0B       		.uleb128 0xb
+ 1221 0109 49       		.uleb128 0x49
+ 1222 010a 13       		.uleb128 0x13
+ 1223 010b 02       		.uleb128 0x2
+ 1224 010c 18       		.uleb128 0x18
+ 1225 010d 00       		.byte	0
+ 1226 010e 00       		.byte	0
+ 1227 010f 14       		.uleb128 0x14
+ 1228 0110 2E       		.uleb128 0x2e
+ 1229 0111 00       		.byte	0
+ 1230 0112 3F       		.uleb128 0x3f
+ 1231 0113 19       		.uleb128 0x19
+ 1232 0114 03       		.uleb128 0x3
+ 1233 0115 0E       		.uleb128 0xe
+ 1234 0116 3A       		.uleb128 0x3a
+ 1235 0117 0B       		.uleb128 0xb
+ 1236 0118 3B       		.uleb128 0x3b
+ 1237 0119 0B       		.uleb128 0xb
+ 1238 011a 27       		.uleb128 0x27
+ 1239 011b 19       		.uleb128 0x19
+ 1240 011c 49       		.uleb128 0x49
+ 1241 011d 13       		.uleb128 0x13
+ 1242 011e 11       		.uleb128 0x11
+ 1243 011f 01       		.uleb128 0x1
+ 1244 0120 12       		.uleb128 0x12
+ 1245 0121 06       		.uleb128 0x6
+ 1246 0122 40       		.uleb128 0x40
+ 1247 0123 18       		.uleb128 0x18
+ 1248 0124 9742     		.uleb128 0x2117
+ 1249 0126 19       		.uleb128 0x19
+ 1250 0127 00       		.byte	0
+ 1251 0128 00       		.byte	0
+ 1252 0129 15       		.uleb128 0x15
+ 1253 012a 2E       		.uleb128 0x2e
+ 1254 012b 00       		.byte	0
+ 1255 012c 3F       		.uleb128 0x3f
+ 1256 012d 19       		.uleb128 0x19
+ 1257 012e 03       		.uleb128 0x3
+ 1258 012f 0E       		.uleb128 0xe
+ 1259 0130 3A       		.uleb128 0x3a
+ 1260 0131 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 28
 
 
- 1261 016e 00       		.byte	0
- 1262 016f 19       		.uleb128 0x19
- 1263 0170 35       		.uleb128 0x35
- 1264 0171 00       		.byte	0
- 1265 0172 49       		.uleb128 0x49
- 1266 0173 13       		.uleb128 0x13
- 1267 0174 00       		.byte	0
- 1268 0175 00       		.byte	0
- 1269 0176 00       		.byte	0
- 1270              		.section	.debug_aranges,"",%progbits
- 1271 0000 3C000000 		.4byte	0x3c
- 1272 0004 0200     		.2byte	0x2
- 1273 0006 00000000 		.4byte	.Ldebug_info0
- 1274 000a 04       		.byte	0x4
- 1275 000b 00       		.byte	0
- 1276 000c 0000     		.2byte	0
- 1277 000e 0000     		.2byte	0
- 1278 0010 00000000 		.4byte	.LFB68
- 1279 0014 24010000 		.4byte	.LFE68-.LFB68
- 1280 0018 00000000 		.4byte	.LFB69
- 1281 001c 74000000 		.4byte	.LFE69-.LFB69
- 1282 0020 00000000 		.4byte	.LFB70
- 1283 0024 14000000 		.4byte	.LFE70-.LFB70
- 1284 0028 00000000 		.4byte	.LFB71
- 1285 002c 0C000000 		.4byte	.LFE71-.LFB71
- 1286 0030 00000000 		.4byte	.LFB72
- 1287 0034 50000000 		.4byte	.LFE72-.LFB72
- 1288 0038 00000000 		.4byte	0
- 1289 003c 00000000 		.4byte	0
- 1290              		.section	.debug_ranges,"",%progbits
- 1291              	.Ldebug_ranges0:
- 1292 0000 00000000 		.4byte	.LFB68
- 1293 0004 24010000 		.4byte	.LFE68
- 1294 0008 00000000 		.4byte	.LFB69
- 1295 000c 74000000 		.4byte	.LFE69
- 1296 0010 00000000 		.4byte	.LFB70
- 1297 0014 14000000 		.4byte	.LFE70
- 1298 0018 00000000 		.4byte	.LFB71
- 1299 001c 0C000000 		.4byte	.LFE71
- 1300 0020 00000000 		.4byte	.LFB72
- 1301 0024 50000000 		.4byte	.LFE72
- 1302 0028 00000000 		.4byte	0
- 1303 002c 00000000 		.4byte	0
- 1304              		.section	.debug_line,"",%progbits
- 1305              	.Ldebug_line0:
- 1306 0000 C9020000 		.section	.debug_str,"MS",%progbits,1
- 1306      02000802 
- 1306      00000201 
- 1306      FB0E0D00 
- 1306      01010101 
- 1307              	.LASF5:
- 1308 0000 5F5F7569 		.ascii	"__uint8_t\000"
- 1308      6E74385F 
- 1308      7400
- 1309              	.LASF4:
- 1310 000a 73697A65 		.ascii	"size_t\000"
- 1310      5F7400
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 29
+ 1261 0132 3B       		.uleb128 0x3b
+ 1262 0133 0B       		.uleb128 0xb
+ 1263 0134 27       		.uleb128 0x27
+ 1264 0135 19       		.uleb128 0x19
+ 1265 0136 11       		.uleb128 0x11
+ 1266 0137 01       		.uleb128 0x1
+ 1267 0138 12       		.uleb128 0x12
+ 1268 0139 06       		.uleb128 0x6
+ 1269 013a 40       		.uleb128 0x40
+ 1270 013b 18       		.uleb128 0x18
+ 1271 013c 9742     		.uleb128 0x2117
+ 1272 013e 19       		.uleb128 0x19
+ 1273 013f 00       		.byte	0
+ 1274 0140 00       		.byte	0
+ 1275 0141 16       		.uleb128 0x16
+ 1276 0142 2E       		.uleb128 0x2e
+ 1277 0143 01       		.byte	0x1
+ 1278 0144 03       		.uleb128 0x3
+ 1279 0145 0E       		.uleb128 0xe
+ 1280 0146 3A       		.uleb128 0x3a
+ 1281 0147 0B       		.uleb128 0xb
+ 1282 0148 3B       		.uleb128 0x3b
+ 1283 0149 0B       		.uleb128 0xb
+ 1284 014a 27       		.uleb128 0x27
+ 1285 014b 19       		.uleb128 0x19
+ 1286 014c 11       		.uleb128 0x11
+ 1287 014d 01       		.uleb128 0x1
+ 1288 014e 12       		.uleb128 0x12
+ 1289 014f 06       		.uleb128 0x6
+ 1290 0150 40       		.uleb128 0x40
+ 1291 0151 18       		.uleb128 0x18
+ 1292 0152 9742     		.uleb128 0x2117
+ 1293 0154 19       		.uleb128 0x19
+ 1294 0155 01       		.uleb128 0x1
+ 1295 0156 13       		.uleb128 0x13
+ 1296 0157 00       		.byte	0
+ 1297 0158 00       		.byte	0
+ 1298 0159 17       		.uleb128 0x17
+ 1299 015a 01       		.uleb128 0x1
+ 1300 015b 01       		.byte	0x1
+ 1301 015c 49       		.uleb128 0x49
+ 1302 015d 13       		.uleb128 0x13
+ 1303 015e 01       		.uleb128 0x1
+ 1304 015f 13       		.uleb128 0x13
+ 1305 0160 00       		.byte	0
+ 1306 0161 00       		.byte	0
+ 1307 0162 18       		.uleb128 0x18
+ 1308 0163 21       		.uleb128 0x21
+ 1309 0164 00       		.byte	0
+ 1310 0165 49       		.uleb128 0x49
+ 1311 0166 13       		.uleb128 0x13
+ 1312 0167 2F       		.uleb128 0x2f
+ 1313 0168 05       		.uleb128 0x5
+ 1314 0169 00       		.byte	0
+ 1315 016a 00       		.byte	0
+ 1316 016b 19       		.uleb128 0x19
+ 1317 016c 26       		.uleb128 0x26
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 29
 
 
- 1311              	.LASF42:
- 1312 0011 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1312      43313120 
- 1312      352E342E 
- 1312      31203230 
- 1312      31363036 
- 1313 0044 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1313      20726576 
- 1313      6973696F 
- 1313      6E203233 
- 1313      37373135 
- 1314 0077 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1314      66756E63 
- 1314      74696F6E 
- 1314      2D736563 
- 1314      74696F6E 
- 1315              	.LASF10:
- 1316 009f 5F5F696E 		.ascii	"__int32_t\000"
- 1316      7433325F 
- 1316      7400
- 1317              	.LASF29:
- 1318 00a9 70784E65 		.ascii	"pxNewBlockLink\000"
- 1318      77426C6F 
- 1318      636B4C69 
- 1318      6E6B00
- 1319              	.LASF45:
- 1320 00b8 415F424C 		.ascii	"A_BLOCK_LINK\000"
- 1320      4F434B5F 
- 1320      4C494E4B 
- 1320      00
- 1321              	.LASF11:
- 1322 00c5 6C6F6E67 		.ascii	"long int\000"
- 1322      20696E74 
- 1322      00
- 1323              	.LASF43:
- 1324 00ce 536F7572 		.ascii	"Source\\portable\\MemMang\\heap_2.c\000"
- 1324      63655C70 
- 1324      6F727461 
- 1324      626C655C 
- 1324      4D656D4D 
- 1325              	.LASF22:
- 1326 00ef 646F7562 		.ascii	"double\000"
- 1326      6C6500
- 1327              	.LASF27:
- 1328 00f6 7078426C 		.ascii	"pxBlock\000"
- 1328      6F636B00 
- 1329              	.LASF34:
- 1330 00fe 70784C69 		.ascii	"pxLink\000"
- 1330      6E6B00
- 1331              	.LASF46:
- 1332 0105 7076506F 		.ascii	"pvPortMalloc\000"
- 1332      72744D61 
- 1332      6C6C6F63 
- 1332      00
- 1333              	.LASF35:
- 1334 0112 70784669 		.ascii	"pxFirstFreeBlock\000"
- 1334      72737446 
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 30
+ 1318 016d 00       		.byte	0
+ 1319 016e 49       		.uleb128 0x49
+ 1320 016f 13       		.uleb128 0x13
+ 1321 0170 00       		.byte	0
+ 1322 0171 00       		.byte	0
+ 1323 0172 1A       		.uleb128 0x1a
+ 1324 0173 21       		.uleb128 0x21
+ 1325 0174 00       		.byte	0
+ 1326 0175 49       		.uleb128 0x49
+ 1327 0176 13       		.uleb128 0x13
+ 1328 0177 2F       		.uleb128 0x2f
+ 1329 0178 0B       		.uleb128 0xb
+ 1330 0179 00       		.byte	0
+ 1331 017a 00       		.byte	0
+ 1332 017b 1B       		.uleb128 0x1b
+ 1333 017c 34       		.uleb128 0x34
+ 1334 017d 00       		.byte	0
+ 1335 017e 03       		.uleb128 0x3
+ 1336 017f 0E       		.uleb128 0xe
+ 1337 0180 3A       		.uleb128 0x3a
+ 1338 0181 0B       		.uleb128 0xb
+ 1339 0182 3B       		.uleb128 0x3b
+ 1340 0183 0B       		.uleb128 0xb
+ 1341 0184 49       		.uleb128 0x49
+ 1342 0185 13       		.uleb128 0x13
+ 1343 0186 3F       		.uleb128 0x3f
+ 1344 0187 19       		.uleb128 0x19
+ 1345 0188 02       		.uleb128 0x2
+ 1346 0189 18       		.uleb128 0x18
+ 1347 018a 00       		.byte	0
+ 1348 018b 00       		.byte	0
+ 1349 018c 1C       		.uleb128 0x1c
+ 1350 018d 34       		.uleb128 0x34
+ 1351 018e 00       		.byte	0
+ 1352 018f 03       		.uleb128 0x3
+ 1353 0190 0E       		.uleb128 0xe
+ 1354 0191 3A       		.uleb128 0x3a
+ 1355 0192 0B       		.uleb128 0xb
+ 1356 0193 3B       		.uleb128 0x3b
+ 1357 0194 05       		.uleb128 0x5
+ 1358 0195 49       		.uleb128 0x49
+ 1359 0196 13       		.uleb128 0x13
+ 1360 0197 3F       		.uleb128 0x3f
+ 1361 0198 19       		.uleb128 0x19
+ 1362 0199 3C       		.uleb128 0x3c
+ 1363 019a 19       		.uleb128 0x19
+ 1364 019b 00       		.byte	0
+ 1365 019c 00       		.byte	0
+ 1366 019d 00       		.byte	0
+ 1367              		.section	.debug_aranges,"",%progbits
+ 1368 0000 3C000000 		.4byte	0x3c
+ 1369 0004 0200     		.2byte	0x2
+ 1370 0006 00000000 		.4byte	.Ldebug_info0
+ 1371 000a 04       		.byte	0x4
+ 1372 000b 00       		.byte	0
+ 1373 000c 0000     		.2byte	0
+ 1374 000e 0000     		.2byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 30
 
 
- 1334      72656542 
- 1334      6C6F636B 
- 1334      00
- 1335              	.LASF37:
- 1336 0123 75634865 		.ascii	"ucHeap\000"
- 1336      617000
- 1337              	.LASF21:
- 1338 012a 666C6F61 		.ascii	"float\000"
- 1338      7400
- 1339              	.LASF44:
- 1340 0130 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
- 1340      6F64655C 
- 1340      50345C50 
- 1340      345F5665 
- 1340      72746963 
- 1341 015f 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
- 1341      616E7465 
- 1341      4D6F6475 
- 1341      6C2E6379 
- 1341      64736E00 
- 1342              	.LASF6:
- 1343 0173 756E7369 		.ascii	"unsigned char\000"
- 1343      676E6564 
- 1343      20636861 
- 1343      7200
- 1344              	.LASF25:
- 1345 0181 78426C6F 		.ascii	"xBlockSize\000"
- 1345      636B5369 
- 1345      7A6500
- 1346              	.LASF13:
- 1347 018c 6C6F6E67 		.ascii	"long unsigned int\000"
- 1347      20756E73 
- 1347      69676E65 
- 1347      6420696E 
- 1347      7400
- 1348              	.LASF9:
- 1349 019e 73686F72 		.ascii	"short unsigned int\000"
- 1349      7420756E 
- 1349      7369676E 
- 1349      65642069 
- 1349      6E7400
- 1350              	.LASF30:
- 1351 01b1 78486561 		.ascii	"xHeapHasBeenInitialised\000"
- 1351      70486173 
- 1351      4265656E 
- 1351      496E6974 
- 1351      69616C69 
- 1352              	.LASF52:
- 1353 01c9 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1353      52784275 
- 1353      66666572 
- 1353      00
- 1354              	.LASF40:
- 1355 01d6 78456E64 		.ascii	"xEnd\000"
- 1355      00
- 1356              	.LASF8:
- 1357 01db 5F5F7569 		.ascii	"__uint16_t\000"
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 31
+ 1375 0010 00000000 		.4byte	.LFB68
+ 1376 0014 24010000 		.4byte	.LFE68-.LFB68
+ 1377 0018 00000000 		.4byte	.LFB69
+ 1378 001c 74000000 		.4byte	.LFE69-.LFB69
+ 1379 0020 00000000 		.4byte	.LFB70
+ 1380 0024 14000000 		.4byte	.LFE70-.LFB70
+ 1381 0028 00000000 		.4byte	.LFB71
+ 1382 002c 0C000000 		.4byte	.LFE71-.LFB71
+ 1383 0030 00000000 		.4byte	.LFB72
+ 1384 0034 50000000 		.4byte	.LFE72-.LFB72
+ 1385 0038 00000000 		.4byte	0
+ 1386 003c 00000000 		.4byte	0
+ 1387              		.section	.debug_ranges,"",%progbits
+ 1388              	.Ldebug_ranges0:
+ 1389 0000 00000000 		.4byte	.LFB68
+ 1390 0004 24010000 		.4byte	.LFE68
+ 1391 0008 00000000 		.4byte	.LFB69
+ 1392 000c 74000000 		.4byte	.LFE69
+ 1393 0010 00000000 		.4byte	.LFB70
+ 1394 0014 14000000 		.4byte	.LFE70
+ 1395 0018 00000000 		.4byte	.LFB71
+ 1396 001c 0C000000 		.4byte	.LFE71
+ 1397 0020 00000000 		.4byte	.LFB72
+ 1398 0024 50000000 		.4byte	.LFE72
+ 1399 0028 00000000 		.4byte	0
+ 1400 002c 00000000 		.4byte	0
+ 1401              		.section	.debug_line,"",%progbits
+ 1402              	.Ldebug_line0:
+ 1403 0000 E2020000 		.section	.debug_str,"MS",%progbits,1
+ 1403      02002102 
+ 1403      00000201 
+ 1403      FB0E0D00 
+ 1403      01010101 
+ 1404              	.LASF5:
+ 1405 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1405      6E74385F 
+ 1405      7400
+ 1406              	.LASF4:
+ 1407 000a 73697A65 		.ascii	"size_t\000"
+ 1407      5F7400
+ 1408              	.LASF51:
+ 1409 0011 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1409      43313120 
+ 1409      352E342E 
+ 1409      31203230 
+ 1409      31363036 
+ 1410 0044 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1410      20726576 
+ 1410      6973696F 
+ 1410      6E203233 
+ 1410      37373135 
+ 1411 0077 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1411      66756E63 
+ 1411      74696F6E 
+ 1411      2D736563 
+ 1411      74696F6E 
+ 1412              	.LASF25:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 31
 
 
- 1357      6E743136 
- 1357      5F7400
- 1358              	.LASF28:
- 1359 01e6 70785072 		.ascii	"pxPreviousBlock\000"
- 1359      6576696F 
- 1359      7573426C 
- 1359      6F636B00 
- 1360              	.LASF48:
- 1361 01f6 76506F72 		.ascii	"vPortFree\000"
- 1361      74467265 
- 1361      6500
- 1362              	.LASF12:
- 1363 0200 5F5F7569 		.ascii	"__uint32_t\000"
- 1363      6E743332 
- 1363      5F7400
- 1364              	.LASF31:
- 1365 020b 70765265 		.ascii	"pvReturn\000"
- 1365      7475726E 
- 1365      00
- 1366              	.LASF38:
- 1367 0214 68656170 		.ascii	"heapSTRUCT_SIZE\000"
- 1367      53545255 
- 1367      43545F53 
- 1367      495A4500 
- 1368              	.LASF39:
- 1369 0224 78537461 		.ascii	"xStart\000"
- 1369      727400
- 1370              	.LASF50:
- 1371 022b 76506F72 		.ascii	"vPortInitialiseBlocks\000"
- 1371      74496E69 
- 1371      7469616C 
- 1371      69736542 
- 1371      6C6F636B 
- 1372              	.LASF0:
- 1373 0241 756E7369 		.ascii	"unsigned int\000"
- 1373      676E6564 
- 1373      20696E74 
- 1373      00
- 1374              	.LASF14:
- 1375 024e 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1375      206C6F6E 
- 1375      6720756E 
- 1375      7369676E 
- 1375      65642069 
- 1376              	.LASF17:
- 1377 0265 75696E74 		.ascii	"uint8_t\000"
- 1377      385F7400 
- 1378              	.LASF47:
- 1379 026d 76417070 		.ascii	"vApplicationMallocFailedHook\000"
- 1379      6C696361 
- 1379      74696F6E 
- 1379      4D616C6C 
- 1379      6F634661 
- 1380              	.LASF19:
- 1381 028a 696E7433 		.ascii	"int32_t\000"
- 1381      325F7400 
- 1382              	.LASF26:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 32
+ 1413 009f 54656D70 		.ascii	"Temperature\000"
+ 1413      65726174 
+ 1413      75726500 
+ 1414              	.LASF10:
+ 1415 00ab 5F5F696E 		.ascii	"__int32_t\000"
+ 1415      7433325F 
+ 1415      7400
+ 1416              	.LASF35:
+ 1417 00b5 70784E65 		.ascii	"pxNewBlockLink\000"
+ 1417      77426C6F 
+ 1417      636B4C69 
+ 1417      6E6B00
+ 1418              	.LASF29:
+ 1419 00c4 415F424C 		.ascii	"A_BLOCK_LINK\000"
+ 1419      4F434B5F 
+ 1419      4C494E4B 
+ 1419      00
+ 1420              	.LASF11:
+ 1421 00d1 6C6F6E67 		.ascii	"long int\000"
+ 1421      20696E74 
+ 1421      00
+ 1422              	.LASF52:
+ 1423 00da 536F7572 		.ascii	"Source\\portable\\MemMang\\heap_2.c\000"
+ 1423      63655C70 
+ 1423      6F727461 
+ 1423      626C655C 
+ 1423      4D656D4D 
+ 1424              	.LASF24:
+ 1425 00fb 646F7562 		.ascii	"double\000"
+ 1425      6C6500
+ 1426              	.LASF21:
+ 1427 0102 75696E74 		.ascii	"uint8\000"
+ 1427      3800
+ 1428              	.LASF33:
+ 1429 0108 7078426C 		.ascii	"pxBlock\000"
+ 1429      6F636B00 
+ 1430              	.LASF40:
+ 1431 0110 70784C69 		.ascii	"pxLink\000"
+ 1431      6E6B00
+ 1432              	.LASF28:
+ 1433 0117 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1433      78385F54 
+ 1433      53656E73 
+ 1433      6F7200
+ 1434              	.LASF41:
+ 1435 0126 70784669 		.ascii	"pxFirstFreeBlock\000"
+ 1435      72737446 
+ 1435      72656542 
+ 1435      6C6F636B 
+ 1435      00
+ 1436              	.LASF43:
+ 1437 0137 75634865 		.ascii	"ucHeap\000"
+ 1437      617000
+ 1438              	.LASF23:
+ 1439 013e 666C6F61 		.ascii	"float\000"
+ 1439      7400
+ 1440              	.LASF48:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 32
 
 
- 1383 0292 426C6F63 		.ascii	"BlockLink_t\000"
- 1383      6B4C696E 
- 1383      6B5F7400 
- 1384              	.LASF15:
- 1385 029e 73697A65 		.ascii	"sizetype\000"
- 1385      74797065 
- 1385      00
- 1386              	.LASF1:
- 1387 02a7 6C6F6E67 		.ascii	"long long int\000"
- 1387      206C6F6E 
- 1387      6720696E 
- 1387      7400
- 1388              	.LASF33:
- 1389 02b5 7857616E 		.ascii	"xWantedSize\000"
- 1389      74656453 
- 1389      697A6500 
- 1390              	.LASF16:
- 1391 02c1 63686172 		.ascii	"char\000"
- 1391      00
- 1392              	.LASF49:
- 1393 02c6 78506F72 		.ascii	"xPortGetFreeHeapSize\000"
- 1393      74476574 
- 1393      46726565 
- 1393      48656170 
- 1393      53697A65 
- 1394              	.LASF36:
- 1395 02db 70756341 		.ascii	"pucAlignedHeap\000"
- 1395      6C69676E 
- 1395      65644865 
- 1395      617000
- 1396              	.LASF32:
- 1397 02ea 70784974 		.ascii	"pxIterator\000"
- 1397      65726174 
- 1397      6F7200
- 1398              	.LASF7:
- 1399 02f5 73686F72 		.ascii	"short int\000"
- 1399      7420696E 
- 1399      7400
- 1400              	.LASF18:
- 1401 02ff 75696E74 		.ascii	"uint16_t\000"
- 1401      31365F74 
- 1401      00
- 1402              	.LASF41:
- 1403 0308 78467265 		.ascii	"xFreeBytesRemaining\000"
- 1403      65427974 
- 1403      65735265 
- 1403      6D61696E 
- 1403      696E6700 
- 1404              	.LASF20:
- 1405 031c 75696E74 		.ascii	"uint32_t\000"
- 1405      33325F74 
- 1405      00
- 1406              	.LASF51:
- 1407 0325 70727648 		.ascii	"prvHeapInit\000"
- 1407      65617049 
- 1407      6E697400 
- 1408              	.LASF2:
-ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccEsOBjK.s 			page 33
+ 1441 0144 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1441      78385F53 
+ 1441      656E736F 
+ 1441      7200
+ 1442              	.LASF6:
+ 1443 0152 756E7369 		.ascii	"unsigned char\000"
+ 1443      676E6564 
+ 1443      20636861 
+ 1443      7200
+ 1444              	.LASF31:
+ 1445 0160 78426C6F 		.ascii	"xBlockSize\000"
+ 1445      636B5369 
+ 1445      7A6500
+ 1446              	.LASF26:
+ 1447 016b 70726573 		.ascii	"present\000"
+ 1447      656E7400 
+ 1448              	.LASF13:
+ 1449 0173 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1449      20756E73 
+ 1449      69676E65 
+ 1449      6420696E 
+ 1449      7400
+ 1450              	.LASF9:
+ 1451 0185 73686F72 		.ascii	"short unsigned int\000"
+ 1451      7420756E 
+ 1451      7369676E 
+ 1451      65642069 
+ 1451      6E7400
+ 1452              	.LASF36:
+ 1453 0198 78486561 		.ascii	"xHeapHasBeenInitialised\000"
+ 1453      70486173 
+ 1453      4265656E 
+ 1453      496E6974 
+ 1453      69616C69 
+ 1454              	.LASF50:
+ 1455 01b0 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1455      52784275 
+ 1455      66666572 
+ 1455      00
+ 1456              	.LASF46:
+ 1457 01bd 78456E64 		.ascii	"xEnd\000"
+ 1457      00
+ 1458              	.LASF8:
+ 1459 01c2 5F5F7569 		.ascii	"__uint16_t\000"
+ 1459      6E743136 
+ 1459      5F7400
+ 1460              	.LASF34:
+ 1461 01cd 70785072 		.ascii	"pxPreviousBlock\000"
+ 1461      6576696F 
+ 1461      7573426C 
+ 1461      6F636B00 
+ 1462              	.LASF56:
+ 1463 01dd 76506F72 		.ascii	"vPortFree\000"
+ 1463      74467265 
+ 1463      6500
+ 1464              	.LASF12:
+ 1465 01e7 5F5F7569 		.ascii	"__uint32_t\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 33
 
 
- 1409 0331 6C6F6E67 		.ascii	"long double\000"
- 1409      20646F75 
- 1409      626C6500 
- 1410              	.LASF3:
- 1411 033d 7369676E 		.ascii	"signed char\000"
- 1411      65642063 
- 1411      68617200 
- 1412              	.LASF24:
- 1413 0349 70784E65 		.ascii	"pxNextFreeBlock\000"
- 1413      78744672 
- 1413      6565426C 
- 1413      6F636B00 
- 1414              	.LASF23:
- 1415 0359 42617365 		.ascii	"BaseType_t\000"
- 1415      54797065 
- 1415      5F7400
- 1416              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1465      6E743332 
+ 1465      5F7400
+ 1466              	.LASF22:
+ 1467 01f2 75696E74 		.ascii	"uint16\000"
+ 1467      313600
+ 1468              	.LASF37:
+ 1469 01f9 70765265 		.ascii	"pvReturn\000"
+ 1469      7475726E 
+ 1469      00
+ 1470              	.LASF44:
+ 1471 0202 68656170 		.ascii	"heapSTRUCT_SIZE\000"
+ 1471      53545255 
+ 1471      43545F53 
+ 1471      495A4500 
+ 1472              	.LASF45:
+ 1473 0212 78537461 		.ascii	"xStart\000"
+ 1473      727400
+ 1474              	.LASF58:
+ 1475 0219 76506F72 		.ascii	"vPortInitialiseBlocks\000"
+ 1475      74496E69 
+ 1475      7469616C 
+ 1475      69736542 
+ 1475      6C6F636B 
+ 1476              	.LASF0:
+ 1477 022f 756E7369 		.ascii	"unsigned int\000"
+ 1477      676E6564 
+ 1477      20696E74 
+ 1477      00
+ 1478              	.LASF14:
+ 1479 023c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1479      206C6F6E 
+ 1479      6720756E 
+ 1479      7369676E 
+ 1479      65642069 
+ 1480              	.LASF17:
+ 1481 0253 75696E74 		.ascii	"uint8_t\000"
+ 1481      385F7400 
+ 1482              	.LASF53:
+ 1483 025b 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 1483      73657273 
+ 1483      5C6D6167 
+ 1483      39345C44 
+ 1483      65736B74 
+ 1484 0288 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 1484      72746963 
+ 1484      616C5F66 
+ 1484      61726D5C 
+ 1484      52544F53 
+ 1485 02b9 63796473 		.ascii	"cydsn\000"
+ 1485      6E00
+ 1486              	.LASF55:
+ 1487 02bf 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 1487      6C696361 
+ 1487      74696F6E 
+ 1487      4D616C6C 
+ 1487      6F634661 
+ 1488              	.LASF54:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 34
+
+
+ 1489 02dc 7076506F 		.ascii	"pvPortMalloc\000"
+ 1489      72744D61 
+ 1489      6C6C6F63 
+ 1489      00
+ 1490              	.LASF19:
+ 1491 02e9 696E7433 		.ascii	"int32_t\000"
+ 1491      325F7400 
+ 1492              	.LASF32:
+ 1493 02f1 426C6F63 		.ascii	"BlockLink_t\000"
+ 1493      6B4C696E 
+ 1493      6B5F7400 
+ 1494              	.LASF15:
+ 1495 02fd 73697A65 		.ascii	"sizetype\000"
+ 1495      74797065 
+ 1495      00
+ 1496              	.LASF1:
+ 1497 0306 6C6F6E67 		.ascii	"long long int\000"
+ 1497      206C6F6E 
+ 1497      6720696E 
+ 1497      7400
+ 1498              	.LASF39:
+ 1499 0314 7857616E 		.ascii	"xWantedSize\000"
+ 1499      74656453 
+ 1499      697A6500 
+ 1500              	.LASF16:
+ 1501 0320 63686172 		.ascii	"char\000"
+ 1501      00
+ 1502              	.LASF57:
+ 1503 0325 78506F72 		.ascii	"xPortGetFreeHeapSize\000"
+ 1503      74476574 
+ 1503      46726565 
+ 1503      48656170 
+ 1503      53697A65 
+ 1504              	.LASF42:
+ 1505 033a 70756341 		.ascii	"pucAlignedHeap\000"
+ 1505      6C69676E 
+ 1505      65644865 
+ 1505      617000
+ 1506              	.LASF38:
+ 1507 0349 70784974 		.ascii	"pxIterator\000"
+ 1507      65726174 
+ 1507      6F7200
+ 1508              	.LASF7:
+ 1509 0354 73686F72 		.ascii	"short int\000"
+ 1509      7420696E 
+ 1509      7400
+ 1510              	.LASF49:
+ 1511 035e 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1511      78385F44 
+ 1511      61746152 
+ 1511      65616479 
+ 1511      00
+ 1512              	.LASF18:
+ 1513 036f 75696E74 		.ascii	"uint16_t\000"
+ 1513      31365F74 
+ 1513      00
+ 1514              	.LASF47:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccfDLiph.s 			page 35
+
+
+ 1515 0378 78467265 		.ascii	"xFreeBytesRemaining\000"
+ 1515      65427974 
+ 1515      65735265 
+ 1515      6D61696E 
+ 1515      696E6700 
+ 1516              	.LASF20:
+ 1517 038c 75696E74 		.ascii	"uint32_t\000"
+ 1517      33325F74 
+ 1517      00
+ 1518              	.LASF59:
+ 1519 0395 70727648 		.ascii	"prvHeapInit\000"
+ 1519      65617049 
+ 1519      6E697400 
+ 1520              	.LASF2:
+ 1521 03a1 6C6F6E67 		.ascii	"long double\000"
+ 1521      20646F75 
+ 1521      626C6500 
+ 1522              	.LASF3:
+ 1523 03ad 7369676E 		.ascii	"signed char\000"
+ 1523      65642063 
+ 1523      68617200 
+ 1524              	.LASF30:
+ 1525 03b9 70784E65 		.ascii	"pxNextFreeBlock\000"
+ 1525      78744672 
+ 1525      6565426C 
+ 1525      6F636B00 
+ 1526              	.LASF27:
+ 1527 03c9 42617365 		.ascii	"BaseType_t\000"
+ 1527      54797065 
+ 1527      5F7400
+ 1528              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

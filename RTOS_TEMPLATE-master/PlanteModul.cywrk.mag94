@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul">
 <ExpandedNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
@@ -29,7 +29,6 @@
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\Flash Security</v>
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\EEPROM</v>
 <v>PlanteModul\PlanteModul\Header Files</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel\atomic.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel\deprecated_definitions.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel\event_groups.h</v>
@@ -53,7 +52,6 @@
 <v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
 <v>PlanteModul\PlanteModul\Source Files</v>
-<v>PlanteModul\PlanteModul\Source Files\Kernel</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\heap_2.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\list.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\port.c</v>
@@ -65,6 +63,9 @@
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
 <v>PlanteModul\PlanteModul\Generated_Source</v>
 <v>PlanteModul\PlanteModul\Generated_Source\PSoC5</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_TimerDelay</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\isr_DS18</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PlanteModul</v>
@@ -82,19 +83,29 @@
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\EEPROM</v>
 <v>PlanteModul\PlanteModul\Header Files</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\atomic.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\deprecated_definitions.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\event_groups.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\FreeRTOS.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\list.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\message_buffer.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\mpu_prototypes.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\mpu_wrappers.c</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\mpu_wrappers.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\portable.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\portmacro.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\projdefs.h</v>
-<v>PlanteModul\PlanteModul\Header Files\Kernel\queue.h</v>
+<v>PlanteModul\PlanteModul\Header Files\device.h</v>
+<v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
+<v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
+<v>PlanteModul\PlanteModul\Source Files</v>
+<v>PlanteModul\PlanteModul\Source Files\Kernel</v>
+<v>PlanteModul\PlanteModul\Source Files\main.c</v>
+<v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
+<v>PlanteModul\PlanteModul\Generated_Source</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\ADC_PH</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\ADC_PH_IRQ</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\ADC_PH_theACLK</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\Clock_1</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\Clock_DS18</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\cy_boot</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8\DS18x8.c</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8\DS18x8.h</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_clock_delay</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_ControlReg_DRV</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_ControlReg_SEL</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_isr_DataReady</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5\DS18x8_StatusReg_BUS</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -141,6 +152,7 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu_wrappers.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Nutrients.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_00.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_2.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_3.lst</v>
@@ -192,6 +204,16 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu_wrappers.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Nutrients.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_00.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_1.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_2.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_3.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_pH_in.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\port.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_1.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_1_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2_PM.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -208,9 +230,14 @@
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
 <v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
+<v>PlanteModul\PlanteModul\cy_isr_v1_70.pdf</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
+<v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>
 <v>PlanteModul\PlanteModul\SW_Tx_UART_v1_50.pdf</v>
@@ -223,9 +250,14 @@
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
 <v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
+<v>PlanteModul\PlanteModul\cy_isr_v1_70.pdf</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
+<v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>
 <v>PlanteModul\PlanteModul\SW_Tx_UART_v1_50.pdf</v>
@@ -234,10 +266,37 @@
 </TreeStatesV2>
 </CyGuid_1b906a0f-a7b6-4e4d-a428-82f98b53cb35>
 </dataGuid>
+<dataGuid v="6c335137-fa19-46ce-bc2d-2fbeb6d5f2a2">
+<CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2 type_name="CyDesigner.Common.ProjMgmt.GUI.CyDependenciesCustomData" version="1">
+<dictName v=".\PlanteModul.cydsn\PlanteModul.cyprj">
+<listName />
+</dictName>
+</CyGuid_70084457-cd6a-4593-9ed0-7f6eeb432dc2>
+</dataGuid>
+<dataGuid v="5f2be1a5-0687-4501-bb8c-cf21cb8211bf">
+<CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf type_name="CyDesigner.Common.ProjMgmt.GUI.CyBookmarkData" version="1">
+<indicators />
+</CyGuid_5f2be1a5-0687-4501-bb8c-cf21cb8211bf>
+</dataGuid>
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\PlanteModul.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PlanteModul.cydsn\Nutrients.h" />
+<name v=".\PlanteModul.cydsn\main.c" />
+<name v=".\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.c" />
+<name v=".\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.h" />
+<name v=".\PlanteModul.cydsn\Generated_Source\PSoC5\isr_DS18.c" />
+<name v=".\PlanteModul.cydsn\Nutrients.c" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="960, 467" SelectedTabbedMdiWindow="9af453c2-7d7d-4dd2-8773-7a5a98dabc72"><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\TopDesign\TopDesign.cysch" Guid="b99352ea-bdc1-460f-97f7-33ba093918aa" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.h" Guid="debfe2a3-b58d-40f7-8417-2d4a0422ecaf" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="b6460f97-1c5a-49f8-848d-3e8c759c623b" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.c" Guid="00fc9bcb-c036-4267-a18d-b069e227131a" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.h" Guid="2d61d91c-5553-440f-a921-ae43689a695f" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5\isr_DS18.c" Guid="17d6f963-d657-4994-b614-f1c8ce81b78f" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="9af453c2-7d7d-4dd2-8773-7a5a98dabc72" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

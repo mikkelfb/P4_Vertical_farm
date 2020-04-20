@@ -40,6 +40,13 @@ const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
 const uint8 STOP_SPEED = 19; // Stop speed for the nutrient pumps
 static const uint8 pcTextForNutrientPump[3] = {0, 1, 2};
 
+ static volatile CYBIT flag_Timer = 0 ; //semaphore for DS18 sensor  
+ CY_ISR(isr_DS18_Handler) // ISR Timer to report temperature at regular interval
+{
+   flag_Timer = 1;
+}
+
+
 
 void vNutrientsInit() {
     /*  The queue is created to hold a maximum of 1 value, each of which is
@@ -56,9 +63,10 @@ void vNutrientsInit() {
     xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 2, NULL);
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
+
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
-    
+    xTaskCreate(vTaskVandTemp, "VandTemp", 1000, NULL, 2 , NULL);
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
@@ -156,6 +164,26 @@ float fCalculatePHValue(float fPHVoltage){
     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
 }
 
+
+
+void vTaskVandTemp(){
+       
+    for(;;) 
+    { 
+        
+        if(flag_Timer) //read DS18B20 on timer, intervals >1sec
+    	{   
+            flag_Timer = 0;
+            DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1                                     
+        }
+        
+        if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
+    	{   
+            DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
+            int16 DS18x8_GetTemperatureAsInt100 (uint8 index);  // Converts reading to int16 ex: 38.06 --> 3806 , "index" depicts senosr
+        }    
+    }   
+}
 /* --- TEST TASK --- */
 
 /*
