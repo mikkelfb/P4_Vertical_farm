@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 1
   55              		.type	fAcidVoltage, %object
   56              		.size	fAcidVoltage, 4
   57              	fAcidVoltage:
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 2
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 2
 
 
   58 0008 140EFE44 		.word	1157500436
@@ -92,15 +92,21 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 1
   84 0023 00       		.align	2
   85              	.LC2:
   86 0024 504800   		.ascii	"PH\000"
-  87              		.section	.text.vNutrientsInit,"ax",%progbits
-  88              		.align	2
-  89              		.global	vNutrientsInit
-  90              		.thumb
-  91              		.thumb_func
-  92              		.type	vNutrientsInit, %function
-  93              	vNutrientsInit:
-  94              	.LFB68:
-  95              		.file 1 "Nutrients.c"
+  87 0027 00       		.align	2
+  88              	.LC3:
+  89 0028 47657420 		.ascii	"Get EC value\000"
+  89      45432076 
+  89      616C7565 
+  89      00
+  90              		.section	.text.vNutrientsInit,"ax",%progbits
+  91              		.align	2
+  92              		.global	vNutrientsInit
+  93              		.thumb
+  94              		.thumb_func
+  95              		.type	vNutrientsInit, %function
+  96              	vNutrientsInit:
+  97              	.LFB68:
+  98              		.file 1 "Nutrients.c"
    1:Nutrients.c   **** /* ========================================
    2:Nutrients.c   ****  *
    3:Nutrients.c   ****  * Copyright YOUR COMPANY, THE YEAR
@@ -112,15 +118,15 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 1
    9:Nutrients.c   ****  *
   10:Nutrients.c   ****  * ========================================
   11:Nutrients.c   **** */
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 3
+
+
   12:Nutrients.c   **** 
   13:Nutrients.c   **** /* [] END OF FILE */
   14:Nutrients.c   **** 
   15:Nutrients.c   **** #include "FreeRTOS.h"
   16:Nutrients.c   **** #include "Nutrients.h"
   17:Nutrients.c   **** #include "task.h"
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 3
-
-
   18:Nutrients.c   **** #include "queue.h"
   19:Nutrients.c   **** 
   20:Nutrients.c   **** struct Nutrients{ // Struct contains nutrients values measured
@@ -148,2473 +154,2526 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 1
   42:Nutrients.c   **** 
   43:Nutrients.c   **** 
   44:Nutrients.c   **** void vNutrientsInit() {
-  96              		.loc 1 44 0
-  97              		.cfi_startproc
-  98              		@ args = 0, pretend = 0, frame = 0
-  99              		@ frame_needed = 1, uses_anonymous_args = 0
- 100 0000 80B5     		push	{r7, lr}
- 101              		.cfi_def_cfa_offset 8
- 102              		.cfi_offset 7, -8
- 103              		.cfi_offset 14, -4
- 104 0002 82B0     		sub	sp, sp, #8
- 105              		.cfi_def_cfa_offset 16
- 106 0004 02AF     		add	r7, sp, #8
- 107              		.cfi_def_cfa 7, 8
+  99              		.loc 1 44 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 0
+ 102              		@ frame_needed = 1, uses_anonymous_args = 0
+ 103 0000 80B5     		push	{r7, lr}
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 7, -8
+ 106              		.cfi_offset 14, -4
+ 107 0002 82B0     		sub	sp, sp, #8
+ 108              		.cfi_def_cfa_offset 16
+ 109 0004 02AF     		add	r7, sp, #8
+ 110              		.cfi_def_cfa 7, 8
   45:Nutrients.c   ****     /*  The queue is created to hold a maximum of 1 value, each of which is
   46:Nutrients.c   ****         large enough to hold a variable at the size of Bool. */
   47:Nutrients.c   ****     xQueueNutrientPump[0] = xQueueCreate( 1, sizeof( _Bool ) );
- 108              		.loc 1 47 0
- 109 0006 0022     		movs	r2, #0
- 110 0008 0121     		movs	r1, #1
- 111 000a 0120     		movs	r0, #1
- 112 000c FFF7FEFF 		bl	xQueueGenericCreate
- 113 0010 0246     		mov	r2, r0
- 114 0012 254B     		ldr	r3, .L2
- 115 0014 1A60     		str	r2, [r3]
+ 111              		.loc 1 47 0
+ 112 0006 0022     		movs	r2, #0
+ 113 0008 0121     		movs	r1, #1
+ 114 000a 0120     		movs	r0, #1
+ 115 000c FFF7FEFF 		bl	xQueueGenericCreate
+ 116 0010 0246     		mov	r2, r0
+ 117 0012 2A4B     		ldr	r3, .L2
+ 118 0014 1A60     		str	r2, [r3]
   48:Nutrients.c   ****     xQueueNutrientPump[1] = xQueueCreate( 1, sizeof( _Bool ) );
- 116              		.loc 1 48 0
- 117 0016 0022     		movs	r2, #0
- 118 0018 0121     		movs	r1, #1
- 119 001a 0120     		movs	r0, #1
- 120 001c FFF7FEFF 		bl	xQueueGenericCreate
- 121 0020 0246     		mov	r2, r0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 4
 
 
- 122 0022 214B     		ldr	r3, .L2
- 123 0024 5A60     		str	r2, [r3, #4]
+ 119              		.loc 1 48 0
+ 120 0016 0022     		movs	r2, #0
+ 121 0018 0121     		movs	r1, #1
+ 122 001a 0120     		movs	r0, #1
+ 123 001c FFF7FEFF 		bl	xQueueGenericCreate
+ 124 0020 0246     		mov	r2, r0
+ 125 0022 264B     		ldr	r3, .L2
+ 126 0024 5A60     		str	r2, [r3, #4]
   49:Nutrients.c   ****     xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
- 124              		.loc 1 49 0
- 125 0026 0022     		movs	r2, #0
- 126 0028 0121     		movs	r1, #1
- 127 002a 0120     		movs	r0, #1
- 128 002c FFF7FEFF 		bl	xQueueGenericCreate
- 129 0030 0246     		mov	r2, r0
- 130 0032 1D4B     		ldr	r3, .L2
- 131 0034 9A60     		str	r2, [r3, #8]
+ 127              		.loc 1 49 0
+ 128 0026 0022     		movs	r2, #0
+ 129 0028 0121     		movs	r1, #1
+ 130 002a 0120     		movs	r0, #1
+ 131 002c FFF7FEFF 		bl	xQueueGenericCreate
+ 132 0030 0246     		mov	r2, r0
+ 133 0032 224B     		ldr	r3, .L2
+ 134 0034 9A60     		str	r2, [r3, #8]
   50:Nutrients.c   ****     
   51:Nutrients.c   ****     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
- 132              		.loc 1 51 0
- 133 0036 0022     		movs	r2, #0
- 134 0038 0221     		movs	r1, #2
- 135 003a 0120     		movs	r0, #1
- 136 003c FFF7FEFF 		bl	xQueueGenericCreate
- 137 0040 0246     		mov	r2, r0
- 138 0042 1A4B     		ldr	r3, .L2+4
- 139 0044 1A60     		str	r2, [r3]
+ 135              		.loc 1 51 0
+ 136 0036 0022     		movs	r2, #0
+ 137 0038 0221     		movs	r1, #2
+ 138 003a 0120     		movs	r0, #1
+ 139 003c FFF7FEFF 		bl	xQueueGenericCreate
+ 140 0040 0246     		mov	r2, r0
+ 141 0042 1F4B     		ldr	r3, .L2+4
+ 142 0044 1A60     		str	r2, [r3]
   52:Nutrients.c   ****     
   53:Nutrients.c   ****     
   54:Nutrients.c   ****     /*  Create the task that will control one nutrient pump. The task is created with
   55:Nutrients.c   ****         priority 1. */
   56:Nutrients.c   ****     xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 2, NULL);
- 140              		.loc 1 56 0
- 141 0046 0023     		movs	r3, #0
- 142 0048 0193     		str	r3, [sp, #4]
- 143 004a 0223     		movs	r3, #2
- 144 004c 0093     		str	r3, [sp]
- 145 004e 184B     		ldr	r3, .L2+8
- 146 0050 6422     		movs	r2, #100
- 147 0052 1849     		ldr	r1, .L2+12
- 148 0054 1848     		ldr	r0, .L2+16
- 149 0056 FFF7FEFF 		bl	xTaskCreate
+ 143              		.loc 1 56 0
+ 144 0046 0023     		movs	r3, #0
+ 145 0048 0193     		str	r3, [sp, #4]
+ 146 004a 0223     		movs	r3, #2
+ 147 004c 0093     		str	r3, [sp]
+ 148 004e 1D4B     		ldr	r3, .L2+8
+ 149 0050 6422     		movs	r2, #100
+ 150 0052 1D49     		ldr	r1, .L2+12
+ 151 0054 1D48     		ldr	r0, .L2+16
+ 152 0056 FFF7FEFF 		bl	xTaskCreate
   57:Nutrients.c   ****     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 2, NULL);
- 150              		.loc 1 57 0
- 151 005a 184A     		ldr	r2, .L2+20
- 152 005c 0023     		movs	r3, #0
- 153 005e 0193     		str	r3, [sp, #4]
- 154 0060 0223     		movs	r3, #2
- 155 0062 0093     		str	r3, [sp]
- 156 0064 1346     		mov	r3, r2
- 157 0066 6422     		movs	r2, #100
- 158 0068 1549     		ldr	r1, .L2+24
- 159 006a 1348     		ldr	r0, .L2+16
- 160 006c FFF7FEFF 		bl	xTaskCreate
+ 153              		.loc 1 57 0
+ 154 005a 1D4A     		ldr	r2, .L2+20
+ 155 005c 0023     		movs	r3, #0
+ 156 005e 0193     		str	r3, [sp, #4]
+ 157 0060 0223     		movs	r3, #2
+ 158 0062 0093     		str	r3, [sp]
+ 159 0064 1346     		mov	r3, r2
+ 160 0066 6422     		movs	r2, #100
+ 161 0068 1A49     		ldr	r1, .L2+24
+ 162 006a 1848     		ldr	r0, .L2+16
+ 163 006c FFF7FEFF 		bl	xTaskCreate
   58:Nutrients.c   ****     xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 2, NULL);
- 161              		.loc 1 58 0
- 162 0070 144A     		ldr	r2, .L2+28
- 163 0072 0023     		movs	r3, #0
- 164 0074 0193     		str	r3, [sp, #4]
- 165 0076 0223     		movs	r3, #2
- 166 0078 0093     		str	r3, [sp]
- 167 007a 1346     		mov	r3, r2
- 168 007c 6422     		movs	r2, #100
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 5
+ 164              		.loc 1 58 0
+ 165 0070 194A     		ldr	r2, .L2+28
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 5
 
 
- 169 007e 1049     		ldr	r1, .L2+24
- 170 0080 0D48     		ldr	r0, .L2+16
- 171 0082 FFF7FEFF 		bl	xTaskCreate
+ 166 0072 0023     		movs	r3, #0
+ 167 0074 0193     		str	r3, [sp, #4]
+ 168 0076 0223     		movs	r3, #2
+ 169 0078 0093     		str	r3, [sp]
+ 170 007a 1346     		mov	r3, r2
+ 171 007c 6422     		movs	r2, #100
+ 172 007e 1549     		ldr	r1, .L2+24
+ 173 0080 1248     		ldr	r0, .L2+16
+ 174 0082 FFF7FEFF 		bl	xTaskCreate
   59:Nutrients.c   ****     
   60:Nutrients.c   ****     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
- 172              		.loc 1 60 0
- 173 0086 0023     		movs	r3, #0
- 174 0088 0193     		str	r3, [sp, #4]
- 175 008a 0223     		movs	r3, #2
- 176 008c 0093     		str	r3, [sp]
- 177 008e 0023     		movs	r3, #0
- 178 0090 4FF47A72 		mov	r2, #1000
- 179 0094 0C49     		ldr	r1, .L2+32
- 180 0096 0D48     		ldr	r0, .L2+36
- 181 0098 FFF7FEFF 		bl	xTaskCreate
+ 175              		.loc 1 60 0
+ 176 0086 0023     		movs	r3, #0
+ 177 0088 0193     		str	r3, [sp, #4]
+ 178 008a 0223     		movs	r3, #2
+ 179 008c 0093     		str	r3, [sp]
+ 180 008e 0023     		movs	r3, #0
+ 181 0090 4FF47A72 		mov	r2, #1000
+ 182 0094 1149     		ldr	r1, .L2+32
+ 183 0096 1248     		ldr	r0, .L2+36
+ 184 0098 FFF7FEFF 		bl	xTaskCreate
   61:Nutrients.c   ****     
-  62:Nutrients.c   ****     /*Initialize test tasks*/
-  63:Nutrients.c   ****     #if NUTRIENTSTEST == 1
-  64:Nutrients.c   ****         vTestTaskInit();
- 182              		.loc 1 64 0
- 183 009c FFF7FEFF 		bl	vTestTaskInit
-  65:Nutrients.c   ****     #endif
-  66:Nutrients.c   ****     
-  67:Nutrients.c   ****     
-  68:Nutrients.c   **** }
- 184              		.loc 1 68 0
- 185 00a0 00BF     		nop
- 186 00a2 BD46     		mov	sp, r7
- 187              		.cfi_def_cfa_register 13
- 188              		@ sp needed
- 189 00a4 80BD     		pop	{r7, pc}
- 190              	.L3:
- 191 00a6 00BF     		.align	2
- 192              	.L2:
- 193 00a8 00000000 		.word	xQueueNutrientPump
- 194 00ac 00000000 		.word	xQueuePHValue
- 195 00b0 10000000 		.word	pcTextForNutrientPump
- 196 00b4 14000000 		.word	.LC0
- 197 00b8 00000000 		.word	vTaskNutrientPump
- 198 00bc 11000000 		.word	pcTextForNutrientPump+1
- 199 00c0 1C000000 		.word	.LC1
- 200 00c4 12000000 		.word	pcTextForNutrientPump+2
- 201 00c8 24000000 		.word	.LC2
- 202 00cc 00000000 		.word	vTaskMeasurePH
- 203              		.cfi_endproc
- 204              	.LFE68:
- 205              		.size	vNutrientsInit, .-vNutrientsInit
- 206              		.section	.text.vTaskNutrientPump,"ax",%progbits
- 207              		.align	2
- 208              		.global	vTaskNutrientPump
- 209              		.thumb
- 210              		.thumb_func
- 211              		.type	vTaskNutrientPump, %function
- 212              	vTaskNutrientPump:
- 213              	.LFB69:
-  69:Nutrients.c   **** 
-  70:Nutrients.c   **** 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 6
+  62:Nutrients.c   ****     xTaskCreate (vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
+ 185              		.loc 1 62 0
+ 186 009c 0023     		movs	r3, #0
+ 187 009e 0193     		str	r3, [sp, #4]
+ 188 00a0 0223     		movs	r3, #2
+ 189 00a2 0093     		str	r3, [sp]
+ 190 00a4 0023     		movs	r3, #0
+ 191 00a6 6422     		movs	r2, #100
+ 192 00a8 0E49     		ldr	r1, .L2+40
+ 193 00aa 0F48     		ldr	r0, .L2+44
+ 194 00ac FFF7FEFF 		bl	xTaskCreate
+  63:Nutrients.c   ****     
+  64:Nutrients.c   ****     /*Initialize test tasks*/
+  65:Nutrients.c   ****     #if NUTRIENTSTEST == 1
+  66:Nutrients.c   ****         vTestTaskInit();
+ 195              		.loc 1 66 0
+ 196 00b0 FFF7FEFF 		bl	vTestTaskInit
+  67:Nutrients.c   ****     #endif
+  68:Nutrients.c   ****     
+  69:Nutrients.c   ****     
+  70:Nutrients.c   **** }
+ 197              		.loc 1 70 0
+ 198 00b4 00BF     		nop
+ 199 00b6 BD46     		mov	sp, r7
+ 200              		.cfi_def_cfa_register 13
+ 201              		@ sp needed
+ 202 00b8 80BD     		pop	{r7, pc}
+ 203              	.L3:
+ 204 00ba 00BF     		.align	2
+ 205              	.L2:
+ 206 00bc 00000000 		.word	xQueueNutrientPump
+ 207 00c0 00000000 		.word	xQueuePHValue
+ 208 00c4 10000000 		.word	pcTextForNutrientPump
+ 209 00c8 14000000 		.word	.LC0
+ 210 00cc 00000000 		.word	vTaskNutrientPump
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 6
 
 
+ 211 00d0 11000000 		.word	pcTextForNutrientPump+1
+ 212 00d4 1C000000 		.word	.LC1
+ 213 00d8 12000000 		.word	pcTextForNutrientPump+2
+ 214 00dc 24000000 		.word	.LC2
+ 215 00e0 00000000 		.word	vTaskMeasurePH
+ 216 00e4 28000000 		.word	.LC3
+ 217 00e8 00000000 		.word	vTaskMeasureEC
+ 218              		.cfi_endproc
+ 219              	.LFE68:
+ 220              		.size	vNutrientsInit, .-vNutrientsInit
+ 221              		.section	.text.vTaskNutrientPump,"ax",%progbits
+ 222              		.align	2
+ 223              		.global	vTaskNutrientPump
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.type	vTaskNutrientPump, %function
+ 227              	vTaskNutrientPump:
+ 228              	.LFB69:
   71:Nutrients.c   **** 
   72:Nutrients.c   **** 
   73:Nutrients.c   **** void vTaskNutrientPump( void *pvParameters ) {
- 214              		.loc 1 73 0
- 215              		.cfi_startproc
- 216              		@ args = 0, pretend = 0, frame = 24
- 217              		@ frame_needed = 1, uses_anonymous_args = 0
- 218 0000 80B5     		push	{r7, lr}
- 219              		.cfi_def_cfa_offset 8
- 220              		.cfi_offset 7, -8
- 221              		.cfi_offset 14, -4
- 222 0002 86B0     		sub	sp, sp, #24
- 223              		.cfi_def_cfa_offset 32
- 224 0004 00AF     		add	r7, sp, #0
- 225              		.cfi_def_cfa_register 7
- 226 0006 7860     		str	r0, [r7, #4]
+ 229              		.loc 1 73 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 24
+ 232              		@ frame_needed = 1, uses_anonymous_args = 0
+ 233 0000 80B5     		push	{r7, lr}
+ 234              		.cfi_def_cfa_offset 8
+ 235              		.cfi_offset 7, -8
+ 236              		.cfi_offset 14, -4
+ 237 0002 86B0     		sub	sp, sp, #24
+ 238              		.cfi_def_cfa_offset 32
+ 239 0004 00AF     		add	r7, sp, #0
+ 240              		.cfi_def_cfa_register 7
+ 241 0006 7860     		str	r0, [r7, #4]
   74:Nutrients.c   ****     _Bool bState;
   75:Nutrients.c   ****     BaseType_t xStatus;
   76:Nutrients.c   ****     uint8 *piNutrientPump;
   77:Nutrients.c   ****     
   78:Nutrients.c   ****     piNutrientPump = ( uint8 * ) pvParameters;
- 227              		.loc 1 78 0
- 228 0008 7B68     		ldr	r3, [r7, #4]
- 229 000a 7B61     		str	r3, [r7, #20]
- 230              	.L15:
+ 242              		.loc 1 78 0
+ 243 0008 7B68     		ldr	r3, [r7, #4]
+ 244 000a 7B61     		str	r3, [r7, #20]
+ 245              	.L15:
   79:Nutrients.c   ****     
   80:Nutrients.c   ****     for(;;) {
   81:Nutrients.c   ****         /* Switch case for controlling the nutrient pumps */
   82:Nutrients.c   ****         switch (*piNutrientPump) {
- 231              		.loc 1 82 0
- 232 000c 7B69     		ldr	r3, [r7, #20]
- 233 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 234 0010 012B     		cmp	r3, #1
- 235 0012 1DD0     		beq	.L6
- 236 0014 022B     		cmp	r3, #2
- 237 0016 35D0     		beq	.L7
- 238 0018 002B     		cmp	r3, #0
- 239 001a 52D1     		bne	.L5
+ 246              		.loc 1 82 0
+ 247 000c 7B69     		ldr	r3, [r7, #20]
+ 248 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 249 0010 012B     		cmp	r3, #1
+ 250 0012 1DD0     		beq	.L6
+ 251 0014 022B     		cmp	r3, #2
+ 252 0016 35D0     		beq	.L7
+ 253 0018 002B     		cmp	r3, #0
+ 254 001a 52D1     		bne	.L5
   83:Nutrients.c   ****             case 0:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 7
+
+
   84:Nutrients.c   ****                 xStatus = xQueueReceive( xQueueNutrientPump[0], &bState, portMAX_DELAY ); // Checks
- 240              		.loc 1 84 0
- 241 001c 294B     		ldr	r3, .L19
- 242 001e 1B68     		ldr	r3, [r3]
- 243 0020 07F10F01 		add	r1, r7, #15
- 244 0024 4FF0FF32 		mov	r2, #-1
- 245 0028 1846     		mov	r0, r3
- 246 002a FFF7FEFF 		bl	xQueueReceive
- 247 002e 3861     		str	r0, [r7, #16]
+ 255              		.loc 1 84 0
+ 256 001c 294B     		ldr	r3, .L19
+ 257 001e 1B68     		ldr	r3, [r3]
+ 258 0020 07F10F01 		add	r1, r7, #15
+ 259 0024 4FF0FF32 		mov	r2, #-1
+ 260 0028 1846     		mov	r0, r3
+ 261 002a FFF7FEFF 		bl	xQueueReceive
+ 262 002e 3861     		str	r0, [r7, #16]
   85:Nutrients.c   ****         
   86:Nutrients.c   ****                 if (xStatus == pdPASS) {
- 248              		.loc 1 86 0
- 249 0030 3B69     		ldr	r3, [r7, #16]
- 250 0032 012B     		cmp	r3, #1
- 251 0034 40D1     		bne	.L16
+ 263              		.loc 1 86 0
+ 264 0030 3B69     		ldr	r3, [r7, #16]
+ 265 0032 012B     		cmp	r3, #1
+ 266 0034 40D1     		bne	.L16
   87:Nutrients.c   ****                     if (bState) {
- 252              		.loc 1 87 0
- 253 0036 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 7
-
-
- 254 0038 002B     		cmp	r3, #0
- 255 003a 04D0     		beq	.L10
+ 267              		.loc 1 87 0
+ 268 0036 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 269 0038 002B     		cmp	r3, #0
+ 270 003a 04D0     		beq	.L10
   88:Nutrients.c   ****                         PWM_PERISTALTISK_1_WriteCompare1(MAX_SPEED); // Start running the pump.
- 256              		.loc 1 88 0
- 257 003c 0623     		movs	r3, #6
- 258 003e 1846     		mov	r0, r3
- 259 0040 FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare1
+ 271              		.loc 1 88 0
+ 272 003c 0623     		movs	r3, #6
+ 273 003e 1846     		mov	r0, r3
+ 274 0040 FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare1
   89:Nutrients.c   ****                     } else {
   90:Nutrients.c   ****                         PWM_PERISTALTISK_1_WriteCompare1(STOP_SPEED); // Stop running the pump.
   91:Nutrients.c   ****                     }
   92:Nutrients.c   ****                 }
   93:Nutrients.c   ****                 break;
- 260              		.loc 1 93 0
- 261 0044 38E0     		b	.L16
- 262              	.L10:
+ 275              		.loc 1 93 0
+ 276 0044 38E0     		b	.L16
+ 277              	.L10:
   90:Nutrients.c   ****                     }
- 263              		.loc 1 90 0
- 264 0046 1323     		movs	r3, #19
- 265 0048 1846     		mov	r0, r3
- 266 004a FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare1
- 267              		.loc 1 93 0
- 268 004e 33E0     		b	.L16
- 269              	.L6:
+ 278              		.loc 1 90 0
+ 279 0046 1323     		movs	r3, #19
+ 280 0048 1846     		mov	r0, r3
+ 281 004a FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare1
+ 282              		.loc 1 93 0
+ 283 004e 33E0     		b	.L16
+ 284              	.L6:
   94:Nutrients.c   ****             
   95:Nutrients.c   ****             case 1:
   96:Nutrients.c   ****                 xStatus = xQueueReceive( xQueueNutrientPump[1], &bState, portMAX_DELAY ); // Checks
- 270              		.loc 1 96 0
- 271 0050 1C4B     		ldr	r3, .L19
- 272 0052 5B68     		ldr	r3, [r3, #4]
- 273 0054 07F10F01 		add	r1, r7, #15
- 274 0058 4FF0FF32 		mov	r2, #-1
- 275 005c 1846     		mov	r0, r3
- 276 005e FFF7FEFF 		bl	xQueueReceive
- 277 0062 3861     		str	r0, [r7, #16]
+ 285              		.loc 1 96 0
+ 286 0050 1C4B     		ldr	r3, .L19
+ 287 0052 5B68     		ldr	r3, [r3, #4]
+ 288 0054 07F10F01 		add	r1, r7, #15
+ 289 0058 4FF0FF32 		mov	r2, #-1
+ 290 005c 1846     		mov	r0, r3
+ 291 005e FFF7FEFF 		bl	xQueueReceive
+ 292 0062 3861     		str	r0, [r7, #16]
   97:Nutrients.c   ****         
   98:Nutrients.c   ****                 if (xStatus == pdPASS) {
- 278              		.loc 1 98 0
- 279 0064 3B69     		ldr	r3, [r7, #16]
- 280 0066 012B     		cmp	r3, #1
- 281 0068 28D1     		bne	.L17
+ 293              		.loc 1 98 0
+ 294 0064 3B69     		ldr	r3, [r7, #16]
+ 295 0066 012B     		cmp	r3, #1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 8
+
+
+ 296 0068 28D1     		bne	.L17
   99:Nutrients.c   ****                     if (bState) {
- 282              		.loc 1 99 0
- 283 006a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 284 006c 002B     		cmp	r3, #0
- 285 006e 04D0     		beq	.L12
+ 297              		.loc 1 99 0
+ 298 006a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 299 006c 002B     		cmp	r3, #0
+ 300 006e 04D0     		beq	.L12
  100:Nutrients.c   ****                         PWM_PERISTALTISK_1_WriteCompare2(MAX_SPEED);
- 286              		.loc 1 100 0
- 287 0070 0623     		movs	r3, #6
- 288 0072 1846     		mov	r0, r3
- 289 0074 FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare2
+ 301              		.loc 1 100 0
+ 302 0070 0623     		movs	r3, #6
+ 303 0072 1846     		mov	r0, r3
+ 304 0074 FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare2
  101:Nutrients.c   ****                     } else {
  102:Nutrients.c   ****                         PWM_PERISTALTISK_1_WriteCompare2(STOP_SPEED);
  103:Nutrients.c   ****                     }
  104:Nutrients.c   ****                 }
  105:Nutrients.c   ****                 break;
- 290              		.loc 1 105 0
- 291 0078 20E0     		b	.L17
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 8
-
-
- 292              	.L12:
+ 305              		.loc 1 105 0
+ 306 0078 20E0     		b	.L17
+ 307              	.L12:
  102:Nutrients.c   ****                     }
- 293              		.loc 1 102 0
- 294 007a 1323     		movs	r3, #19
- 295 007c 1846     		mov	r0, r3
- 296 007e FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare2
- 297              		.loc 1 105 0
- 298 0082 1BE0     		b	.L17
- 299              	.L7:
+ 308              		.loc 1 102 0
+ 309 007a 1323     		movs	r3, #19
+ 310 007c 1846     		mov	r0, r3
+ 311 007e FFF7FEFF 		bl	PWM_PERISTALTISK_1_WriteCompare2
+ 312              		.loc 1 105 0
+ 313 0082 1BE0     		b	.L17
+ 314              	.L7:
  106:Nutrients.c   ****                 
  107:Nutrients.c   ****             case 2:
  108:Nutrients.c   ****                 xStatus = xQueueReceive( xQueueNutrientPump[2], &bState, portMAX_DELAY ); // Checks
- 300              		.loc 1 108 0
- 301 0084 0F4B     		ldr	r3, .L19
- 302 0086 9B68     		ldr	r3, [r3, #8]
- 303 0088 07F10F01 		add	r1, r7, #15
- 304 008c 4FF0FF32 		mov	r2, #-1
- 305 0090 1846     		mov	r0, r3
- 306 0092 FFF7FEFF 		bl	xQueueReceive
- 307 0096 3861     		str	r0, [r7, #16]
+ 315              		.loc 1 108 0
+ 316 0084 0F4B     		ldr	r3, .L19
+ 317 0086 9B68     		ldr	r3, [r3, #8]
+ 318 0088 07F10F01 		add	r1, r7, #15
+ 319 008c 4FF0FF32 		mov	r2, #-1
+ 320 0090 1846     		mov	r0, r3
+ 321 0092 FFF7FEFF 		bl	xQueueReceive
+ 322 0096 3861     		str	r0, [r7, #16]
  109:Nutrients.c   ****         
  110:Nutrients.c   ****                 if (xStatus == pdPASS) {
- 308              		.loc 1 110 0
- 309 0098 3B69     		ldr	r3, [r7, #16]
- 310 009a 012B     		cmp	r3, #1
- 311 009c 10D1     		bne	.L18
+ 323              		.loc 1 110 0
+ 324 0098 3B69     		ldr	r3, [r7, #16]
+ 325 009a 012B     		cmp	r3, #1
+ 326 009c 10D1     		bne	.L18
  111:Nutrients.c   ****                     if (bState) {
- 312              		.loc 1 111 0
- 313 009e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
- 314 00a0 002B     		cmp	r3, #0
- 315 00a2 04D0     		beq	.L14
+ 327              		.loc 1 111 0
+ 328 009e FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 329 00a0 002B     		cmp	r3, #0
+ 330 00a2 04D0     		beq	.L14
  112:Nutrients.c   ****                         PWM_PERISTALTISK_2_WriteCompare(MAX_SPEED);
- 316              		.loc 1 112 0
- 317 00a4 0623     		movs	r3, #6
- 318 00a6 1846     		mov	r0, r3
- 319 00a8 FFF7FEFF 		bl	PWM_PERISTALTISK_2_WriteCompare
+ 331              		.loc 1 112 0
+ 332 00a4 0623     		movs	r3, #6
+ 333 00a6 1846     		mov	r0, r3
+ 334 00a8 FFF7FEFF 		bl	PWM_PERISTALTISK_2_WriteCompare
  113:Nutrients.c   ****                     } else {
  114:Nutrients.c   ****                         PWM_PERISTALTISK_2_WriteCompare(STOP_SPEED);
  115:Nutrients.c   ****                     }
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 9
+
+
  116:Nutrients.c   ****                 }
  117:Nutrients.c   ****                 break;
- 320              		.loc 1 117 0
- 321 00ac 08E0     		b	.L18
- 322              	.L14:
+ 335              		.loc 1 117 0
+ 336 00ac 08E0     		b	.L18
+ 337              	.L14:
  114:Nutrients.c   ****                     }
- 323              		.loc 1 114 0
- 324 00ae 1323     		movs	r3, #19
- 325 00b0 1846     		mov	r0, r3
- 326 00b2 FFF7FEFF 		bl	PWM_PERISTALTISK_2_WriteCompare
- 327              		.loc 1 117 0
- 328 00b6 03E0     		b	.L18
- 329              	.L16:
+ 338              		.loc 1 114 0
+ 339 00ae 1323     		movs	r3, #19
+ 340 00b0 1846     		mov	r0, r3
+ 341 00b2 FFF7FEFF 		bl	PWM_PERISTALTISK_2_WriteCompare
+ 342              		.loc 1 117 0
+ 343 00b6 03E0     		b	.L18
+ 344              	.L16:
   93:Nutrients.c   ****             
- 330              		.loc 1 93 0
- 331 00b8 00BF     		nop
- 332 00ba A7E7     		b	.L15
- 333              	.L17:
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 9
-
-
+ 345              		.loc 1 93 0
+ 346 00b8 00BF     		nop
+ 347 00ba A7E7     		b	.L15
+ 348              	.L17:
  105:Nutrients.c   ****                 
- 334              		.loc 1 105 0
- 335 00bc 00BF     		nop
- 336 00be A5E7     		b	.L15
- 337              	.L18:
- 338              		.loc 1 117 0
- 339 00c0 00BF     		nop
- 340              	.L5:
+ 349              		.loc 1 105 0
+ 350 00bc 00BF     		nop
+ 351 00be A5E7     		b	.L15
+ 352              	.L18:
+ 353              		.loc 1 117 0
+ 354 00c0 00BF     		nop
+ 355              	.L5:
  118:Nutrients.c   ****         }
  119:Nutrients.c   ****     }
- 341              		.loc 1 119 0 discriminator 1
- 342 00c2 A3E7     		b	.L15
- 343              	.L20:
- 344              		.align	2
- 345              	.L19:
- 346 00c4 00000000 		.word	xQueueNutrientPump
- 347              		.cfi_endproc
- 348              	.LFE69:
- 349              		.size	vTaskNutrientPump, .-vTaskNutrientPump
- 350              		.global	__aeabi_i2d
- 351              		.global	__aeabi_ddiv
- 352              		.global	__aeabi_dmul
- 353              		.global	__aeabi_d2f
- 354              		.global	__aeabi_fmul
- 355              		.global	__aeabi_f2uiz
- 356              		.section	.text.vTaskMeasurePH,"ax",%progbits
- 357              		.align	2
- 358              		.global	vTaskMeasurePH
- 359              		.thumb
- 360              		.thumb_func
- 361              		.type	vTaskMeasurePH, %function
- 362              	vTaskMeasurePH:
- 363              	.LFB70:
+ 356              		.loc 1 119 0 discriminator 1
+ 357 00c2 A3E7     		b	.L15
+ 358              	.L20:
+ 359              		.align	2
+ 360              	.L19:
+ 361 00c4 00000000 		.word	xQueueNutrientPump
+ 362              		.cfi_endproc
+ 363              	.LFE69:
+ 364              		.size	vTaskNutrientPump, .-vTaskNutrientPump
+ 365              		.global	__aeabi_i2d
+ 366              		.global	__aeabi_ddiv
+ 367              		.global	__aeabi_dmul
+ 368              		.global	__aeabi_d2f
+ 369              		.global	__aeabi_fmul
+ 370              		.global	__aeabi_f2uiz
+ 371              		.section	.text.vTaskMeasurePH,"ax",%progbits
+ 372              		.align	2
+ 373              		.global	vTaskMeasurePH
+ 374              		.thumb
+ 375              		.thumb_func
+ 376              		.type	vTaskMeasurePH, %function
+ 377              	vTaskMeasurePH:
+ 378              	.LFB70:
  120:Nutrients.c   **** }
  121:Nutrients.c   **** 
  122:Nutrients.c   **** void vTaskMeasurePH(){
- 364              		.loc 1 122 0
- 365              		.cfi_startproc
- 366              		@ args = 0, pretend = 0, frame = 24
- 367              		@ frame_needed = 1, uses_anonymous_args = 0
- 368 0000 90B5     		push	{r4, r7, lr}
- 369              		.cfi_def_cfa_offset 12
- 370              		.cfi_offset 4, -12
- 371              		.cfi_offset 7, -8
- 372              		.cfi_offset 14, -4
- 373 0002 87B0     		sub	sp, sp, #28
- 374              		.cfi_def_cfa_offset 40
- 375 0004 00AF     		add	r7, sp, #0
- 376              		.cfi_def_cfa_register 7
+ 379              		.loc 1 122 0
+ 380              		.cfi_startproc
+ 381              		@ args = 0, pretend = 0, frame = 24
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 10
+
+
+ 382              		@ frame_needed = 1, uses_anonymous_args = 0
+ 383 0000 90B5     		push	{r4, r7, lr}
+ 384              		.cfi_def_cfa_offset 12
+ 385              		.cfi_offset 4, -12
+ 386              		.cfi_offset 7, -8
+ 387              		.cfi_offset 14, -4
+ 388 0002 87B0     		sub	sp, sp, #28
+ 389              		.cfi_def_cfa_offset 40
+ 390 0004 00AF     		add	r7, sp, #0
+ 391              		.cfi_def_cfa_register 7
  123:Nutrients.c   ****     float fPHVoltage;
  124:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
- 377              		.loc 1 124 0
- 378 0006 6423     		movs	r3, #100
- 379 0008 3B61     		str	r3, [r7, #16]
+ 392              		.loc 1 124 0
+ 393 0006 6423     		movs	r3, #100
+ 394 0008 3B61     		str	r3, [r7, #16]
  125:Nutrients.c   ****     float fPHValue;
  126:Nutrients.c   ****     float fMilliPHValue;
  127:Nutrients.c   ****     uint16 iMilliPHValue;
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 10
-
-
  128:Nutrients.c   ****     _Bool bState = 0;
- 380              		.loc 1 128 0
- 381 000a 0023     		movs	r3, #0
- 382 000c FB75     		strb	r3, [r7, #23]
- 383              	.L25:
+ 395              		.loc 1 128 0
+ 396 000a 0023     		movs	r3, #0
+ 397 000c FB75     		strb	r3, [r7, #23]
+ 398              	.L25:
  129:Nutrients.c   ****     
  130:Nutrients.c   ****     for(;;){
  131:Nutrients.c   ****         if(bState == 0){
- 384              		.loc 1 131 0
- 385 000e FB7D     		ldrb	r3, [r7, #23]
- 386 0010 83F00103 		eor	r3, r3, #1
- 387 0014 DBB2     		uxtb	r3, r3
- 388 0016 002B     		cmp	r3, #0
- 389 0018 04D0     		beq	.L22
+ 399              		.loc 1 131 0
+ 400 000e FB7D     		ldrb	r3, [r7, #23]
+ 401 0010 83F00103 		eor	r3, r3, #1
+ 402 0014 DBB2     		uxtb	r3, r3
+ 403 0016 002B     		cmp	r3, #0
+ 404 0018 04D0     		beq	.L22
  132:Nutrients.c   ****             ADC_PH_StartConvert();
- 390              		.loc 1 132 0
- 391 001a FFF7FEFF 		bl	ADC_PH_StartConvert
+ 405              		.loc 1 132 0
+ 406 001a FFF7FEFF 		bl	ADC_PH_StartConvert
  133:Nutrients.c   ****             bState = 1;
- 392              		.loc 1 133 0
- 393 001e 0123     		movs	r3, #1
- 394 0020 FB75     		strb	r3, [r7, #23]
- 395 0022 F4E7     		b	.L25
- 396              	.L22:
+ 407              		.loc 1 133 0
+ 408 001e 0123     		movs	r3, #1
+ 409 0020 FB75     		strb	r3, [r7, #23]
+ 410 0022 F4E7     		b	.L25
+ 411              	.L22:
  134:Nutrients.c   ****         }
  135:Nutrients.c   ****         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
- 397              		.loc 1 135 0
- 398 0024 0120     		movs	r0, #1
- 399 0026 FFF7FEFF 		bl	ADC_PH_IsEndConversion
- 400 002a 0346     		mov	r3, r0
- 401 002c 002B     		cmp	r3, #0
- 402 002e EED0     		beq	.L25
- 403              		.loc 1 135 0 is_stmt 0 discriminator 1
- 404 0030 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
- 405 0032 002B     		cmp	r3, #0
- 406 0034 EBD0     		beq	.L25
+ 412              		.loc 1 135 0
+ 413 0024 0120     		movs	r0, #1
+ 414 0026 FFF7FEFF 		bl	ADC_PH_IsEndConversion
+ 415 002a 0346     		mov	r3, r0
+ 416 002c 002B     		cmp	r3, #0
+ 417 002e EED0     		beq	.L25
+ 418              		.loc 1 135 0 is_stmt 0 discriminator 1
+ 419 0030 FB7D     		ldrb	r3, [r7, #23]	@ zero_extendqisi2
+ 420 0032 002B     		cmp	r3, #0
+ 421 0034 EBD0     		beq	.L25
  136:Nutrients.c   ****             fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; // Calculate voltage from meas
- 407              		.loc 1 136 0 is_stmt 1
- 408 0036 FFF7FEFF 		bl	ADC_PH_GetResult16
- 409 003a 0346     		mov	r3, r0
- 410 003c 1846     		mov	r0, r3
- 411 003e FFF7FEFF 		bl	__aeabi_i2d
- 412 0042 4FF00002 		mov	r2, #0
- 413 0046 284B     		ldr	r3, .L26+8
- 414 0048 FFF7FEFF 		bl	__aeabi_ddiv
- 415 004c 0346     		mov	r3, r0
- 416 004e 0C46     		mov	r4, r1
- 417 0050 1846     		mov	r0, r3
- 418 0052 2146     		mov	r1, r4
- 419 0054 22A3     		adr	r3, .L26
- 420 0056 D3E90023 		ldrd	r2, [r3]
- 421 005a FFF7FEFF 		bl	__aeabi_dmul
- 422 005e 0346     		mov	r3, r0
- 423 0060 0C46     		mov	r4, r1
- 424 0062 1846     		mov	r0, r3
- 425 0064 2146     		mov	r1, r4
- 426 0066 FFF7FEFF 		bl	__aeabi_d2f
- 427 006a 0346     		mov	r3, r0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 11
+ 422              		.loc 1 136 0 is_stmt 1
+ 423 0036 FFF7FEFF 		bl	ADC_PH_GetResult16
+ 424 003a 0346     		mov	r3, r0
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 11
 
 
- 428 006c FB60     		str	r3, [r7, #12]	@ float
+ 425 003c 1846     		mov	r0, r3
+ 426 003e FFF7FEFF 		bl	__aeabi_i2d
+ 427 0042 4FF00002 		mov	r2, #0
+ 428 0046 284B     		ldr	r3, .L26+8
+ 429 0048 FFF7FEFF 		bl	__aeabi_ddiv
+ 430 004c 0346     		mov	r3, r0
+ 431 004e 0C46     		mov	r4, r1
+ 432 0050 1846     		mov	r0, r3
+ 433 0052 2146     		mov	r1, r4
+ 434 0054 22A3     		adr	r3, .L26
+ 435 0056 D3E90023 		ldrd	r2, [r3]
+ 436 005a FFF7FEFF 		bl	__aeabi_dmul
+ 437 005e 0346     		mov	r3, r0
+ 438 0060 0C46     		mov	r4, r1
+ 439 0062 1846     		mov	r0, r3
+ 440 0064 2146     		mov	r1, r4
+ 441 0066 FFF7FEFF 		bl	__aeabi_d2f
+ 442 006a 0346     		mov	r3, r0
+ 443 006c FB60     		str	r3, [r7, #12]	@ float
  137:Nutrients.c   ****             fPHValue = fCalculatePHValue(fPHVoltage); // Convert the voltage to a pH value
- 429              		.loc 1 137 0
- 430 006e F868     		ldr	r0, [r7, #12]	@ float
- 431 0070 FFF7FEFF 		bl	fCalculatePHValue
- 432 0074 B860     		str	r0, [r7, #8]	@ float
+ 444              		.loc 1 137 0
+ 445 006e F868     		ldr	r0, [r7, #12]	@ float
+ 446 0070 FFF7FEFF 		bl	fCalculatePHValue
+ 447 0074 B860     		str	r0, [r7, #8]	@ float
  138:Nutrients.c   ****             fMilliPHValue = fPHValue * 1000; // Convert to milli pH value. This makes sure that we 
- 433              		.loc 1 138 0
- 434 0076 1D49     		ldr	r1, .L26+12
- 435 0078 B868     		ldr	r0, [r7, #8]	@ float
- 436 007a FFF7FEFF 		bl	__aeabi_fmul
- 437 007e 0346     		mov	r3, r0
- 438 0080 7B60     		str	r3, [r7, #4]	@ float
+ 448              		.loc 1 138 0
+ 449 0076 1D49     		ldr	r1, .L26+12
+ 450 0078 B868     		ldr	r0, [r7, #8]	@ float
+ 451 007a FFF7FEFF 		bl	__aeabi_fmul
+ 452 007e 0346     		mov	r3, r0
+ 453 0080 7B60     		str	r3, [r7, #4]	@ float
  139:Nutrients.c   ****             iMilliPHValue = (uint16) fMilliPHValue; // Convert to a sendable message for UART (from
- 439              		.loc 1 139 0
- 440 0082 7868     		ldr	r0, [r7, #4]	@ float
- 441 0084 FFF7FEFF 		bl	__aeabi_f2uiz
- 442 0088 0346     		mov	r3, r0
- 443 008a 9BB2     		uxth	r3, r3
- 444 008c 7B80     		strh	r3, [r7, #2]	@ movhi
+ 454              		.loc 1 139 0
+ 455 0082 7868     		ldr	r0, [r7, #4]	@ float
+ 456 0084 FFF7FEFF 		bl	__aeabi_f2uiz
+ 457 0088 0346     		mov	r3, r0
+ 458 008a 9BB2     		uxth	r3, r3
+ 459 008c 7B80     		strh	r3, [r7, #2]	@ movhi
  140:Nutrients.c   ****             currentNutrients[iPHIndex].iPHvalue = iMilliPHValue; // Save in the currentNutrients ar
- 445              		.loc 1 140 0
- 446 008e 184B     		ldr	r3, .L26+16
- 447 0090 1A68     		ldr	r2, [r3]
- 448 0092 7888     		ldrh	r0, [r7, #2]
- 449 0094 1749     		ldr	r1, .L26+20
- 450 0096 1346     		mov	r3, r2
- 451 0098 5B00     		lsls	r3, r3, #1
- 452 009a 1344     		add	r3, r3, r2
- 453 009c 5B00     		lsls	r3, r3, #1
- 454 009e 0B44     		add	r3, r3, r1
- 455 00a0 0246     		mov	r2, r0	@ movhi
- 456 00a2 1A80     		strh	r2, [r3]	@ movhi
+ 460              		.loc 1 140 0
+ 461 008e 184B     		ldr	r3, .L26+16
+ 462 0090 1A68     		ldr	r2, [r3]
+ 463 0092 7888     		ldrh	r0, [r7, #2]
+ 464 0094 1749     		ldr	r1, .L26+20
+ 465 0096 1346     		mov	r3, r2
+ 466 0098 5B00     		lsls	r3, r3, #1
+ 467 009a 1344     		add	r3, r3, r2
+ 468 009c 5B00     		lsls	r3, r3, #1
+ 469 009e 0B44     		add	r3, r3, r1
+ 470 00a0 0246     		mov	r2, r0	@ movhi
+ 471 00a2 1A80     		strh	r2, [r3]	@ movhi
  141:Nutrients.c   ****             iPHIndex++;
- 457              		.loc 1 141 0
- 458 00a4 124B     		ldr	r3, .L26+16
- 459 00a6 1B68     		ldr	r3, [r3]
- 460 00a8 0133     		adds	r3, r3, #1
- 461 00aa 114A     		ldr	r2, .L26+16
- 462 00ac 1360     		str	r3, [r2]
+ 472              		.loc 1 141 0
+ 473 00a4 124B     		ldr	r3, .L26+16
+ 474 00a6 1B68     		ldr	r3, [r3]
+ 475 00a8 0133     		adds	r3, r3, #1
+ 476 00aa 114A     		ldr	r2, .L26+16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 12
+
+
+ 477 00ac 1360     		str	r3, [r2]
  142:Nutrients.c   ****             if(iPHIndex == iSizeOfNutrients) {
- 463              		.loc 1 142 0
- 464 00ae 104B     		ldr	r3, .L26+16
- 465 00b0 1B68     		ldr	r3, [r3]
- 466 00b2 2822     		movs	r2, #40
- 467 00b4 9342     		cmp	r3, r2
- 468 00b6 02D1     		bne	.L24
+ 478              		.loc 1 142 0
+ 479 00ae 104B     		ldr	r3, .L26+16
+ 480 00b0 1B68     		ldr	r3, [r3]
+ 481 00b2 2822     		movs	r2, #40
+ 482 00b4 9342     		cmp	r3, r2
+ 483 00b6 02D1     		bne	.L24
  143:Nutrients.c   ****                 iPHIndex = 0;
- 469              		.loc 1 143 0
- 470 00b8 0D4B     		ldr	r3, .L26+16
- 471 00ba 0022     		movs	r2, #0
- 472 00bc 1A60     		str	r2, [r3]
- 473              	.L24:
+ 484              		.loc 1 143 0
+ 485 00b8 0D4B     		ldr	r3, .L26+16
+ 486 00ba 0022     		movs	r2, #0
+ 487 00bc 1A60     		str	r2, [r3]
+ 488              	.L24:
  144:Nutrients.c   ****             }
  145:Nutrients.c   ****             bState = 0;
- 474              		.loc 1 145 0
- 475 00be 0023     		movs	r3, #0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 12
-
-
- 476 00c0 FB75     		strb	r3, [r7, #23]
+ 489              		.loc 1 145 0
+ 490 00be 0023     		movs	r3, #0
+ 491 00c0 FB75     		strb	r3, [r7, #23]
  146:Nutrients.c   ****             xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to 
- 477              		.loc 1 146 0
- 478 00c2 0D4B     		ldr	r3, .L26+24
- 479 00c4 1868     		ldr	r0, [r3]
- 480 00c6 B91C     		adds	r1, r7, #2
- 481 00c8 0023     		movs	r3, #0
- 482 00ca 4FF0FF32 		mov	r2, #-1
- 483 00ce FFF7FEFF 		bl	xQueueGenericSend
+ 492              		.loc 1 146 0
+ 493 00c2 0D4B     		ldr	r3, .L26+24
+ 494 00c4 1868     		ldr	r0, [r3]
+ 495 00c6 B91C     		adds	r1, r7, #2
+ 496 00c8 0023     		movs	r3, #0
+ 497 00ca 4FF0FF32 		mov	r2, #-1
+ 498 00ce FFF7FEFF 		bl	xQueueGenericSend
  147:Nutrients.c   ****             vTaskDelay(xDelayms);
- 484              		.loc 1 147 0
- 485 00d2 3869     		ldr	r0, [r7, #16]
- 486 00d4 FFF7FEFF 		bl	vTaskDelay
+ 499              		.loc 1 147 0
+ 500 00d2 3869     		ldr	r0, [r7, #16]
+ 501 00d4 FFF7FEFF 		bl	vTaskDelay
  148:Nutrients.c   ****         }
  149:Nutrients.c   ****     }
- 487              		.loc 1 149 0
- 488 00d8 99E7     		b	.L25
- 489              	.L27:
- 490 00da 00BFAFF3 		.align	3
- 490      0080
- 491              	.L26:
- 492 00e0 00000000 		.word	0
- 493 00e4 0070A740 		.word	1084715008
- 494 00e8 0000B040 		.word	1085276160
- 495 00ec 00007A44 		.word	1148846080
- 496 00f0 00000000 		.word	iPHIndex
- 497 00f4 00000000 		.word	currentNutrients
- 498 00f8 00000000 		.word	xQueuePHValue
- 499              		.cfi_endproc
- 500              	.LFE70:
- 501              		.size	vTaskMeasurePH, .-vTaskMeasurePH
- 502              		.global	__aeabi_f2d
- 503              		.global	__aeabi_dsub
- 504              		.global	__aeabi_dadd
- 505              		.section	.text.fCalculatePHValue,"ax",%progbits
- 506              		.align	2
- 507              		.global	fCalculatePHValue
- 508              		.thumb
- 509              		.thumb_func
- 510              		.type	fCalculatePHValue, %function
- 511              	fCalculatePHValue:
- 512              	.LFB71:
+ 502              		.loc 1 149 0
+ 503 00d8 99E7     		b	.L25
+ 504              	.L27:
+ 505 00da 00BFAFF3 		.align	3
+ 505      0080
+ 506              	.L26:
+ 507 00e0 00000000 		.word	0
+ 508 00e4 0070A740 		.word	1084715008
+ 509 00e8 0000B040 		.word	1085276160
+ 510 00ec 00007A44 		.word	1148846080
+ 511 00f0 00000000 		.word	iPHIndex
+ 512 00f4 00000000 		.word	currentNutrients
+ 513 00f8 00000000 		.word	xQueuePHValue
+ 514              		.cfi_endproc
+ 515              	.LFE70:
+ 516              		.size	vTaskMeasurePH, .-vTaskMeasurePH
+ 517              		.global	__aeabi_f2d
+ 518              		.global	__aeabi_dsub
+ 519              		.global	__aeabi_dadd
+ 520              		.section	.text.fCalculatePHValue,"ax",%progbits
+ 521              		.align	2
+ 522              		.global	fCalculatePHValue
+ 523              		.thumb
+ 524              		.thumb_func
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 13
+
+
+ 525              		.type	fCalculatePHValue, %function
+ 526              	fCalculatePHValue:
+ 527              	.LFB71:
  150:Nutrients.c   **** }
  151:Nutrients.c   **** 
  152:Nutrients.c   **** 
  153:Nutrients.c   **** float fCalculatePHValue(float fPHVoltage){
- 513              		.loc 1 153 0
- 514              		.cfi_startproc
- 515              		@ args = 0, pretend = 0, frame = 16
- 516              		@ frame_needed = 1, uses_anonymous_args = 0
- 517 0000 B0B5     		push	{r4, r5, r7, lr}
- 518              		.cfi_def_cfa_offset 16
- 519              		.cfi_offset 4, -16
- 520              		.cfi_offset 5, -12
- 521              		.cfi_offset 7, -8
- 522              		.cfi_offset 14, -4
- 523 0002 84B0     		sub	sp, sp, #16
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 13
-
-
- 524              		.cfi_def_cfa_offset 32
- 525 0004 00AF     		add	r7, sp, #0
- 526              		.cfi_def_cfa_register 7
- 527 0006 7860     		str	r0, [r7, #4]	@ float
+ 528              		.loc 1 153 0
+ 529              		.cfi_startproc
+ 530              		@ args = 0, pretend = 0, frame = 16
+ 531              		@ frame_needed = 1, uses_anonymous_args = 0
+ 532 0000 B0B5     		push	{r4, r5, r7, lr}
+ 533              		.cfi_def_cfa_offset 16
+ 534              		.cfi_offset 4, -16
+ 535              		.cfi_offset 5, -12
+ 536              		.cfi_offset 7, -8
+ 537              		.cfi_offset 14, -4
+ 538 0002 84B0     		sub	sp, sp, #16
+ 539              		.cfi_def_cfa_offset 32
+ 540 0004 00AF     		add	r7, sp, #0
+ 541              		.cfi_def_cfa_register 7
+ 542 0006 7860     		str	r0, [r7, #4]	@ float
  154:Nutrients.c   ****     float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500.0)/3.0 - (fAcidVoltage - 1500.0)/3.0); //c
- 528              		.loc 1 154 0
- 529 0008 534B     		ldr	r3, .L30+8
- 530 000a 1846     		mov	r0, r3
- 531 000c FFF7FEFF 		bl	__aeabi_f2d
- 532 0010 4FA3     		adr	r3, .L30
- 533 0012 D3E90023 		ldrd	r2, [r3]
- 534 0016 FFF7FEFF 		bl	__aeabi_dsub
- 535 001a 0346     		mov	r3, r0
- 536 001c 0C46     		mov	r4, r1
- 537 001e 1846     		mov	r0, r3
- 538 0020 2146     		mov	r1, r4
- 539 0022 4FF00002 		mov	r2, #0
- 540 0026 4D4B     		ldr	r3, .L30+12
- 541 0028 FFF7FEFF 		bl	__aeabi_ddiv
- 542 002c 0346     		mov	r3, r0
- 543 002e 0C46     		mov	r4, r1
- 544 0030 2546     		mov	r5, r4
- 545 0032 1C46     		mov	r4, r3
- 546 0034 4A4B     		ldr	r3, .L30+16
- 547 0036 1846     		mov	r0, r3
- 548 0038 FFF7FEFF 		bl	__aeabi_f2d
- 549 003c 44A3     		adr	r3, .L30
- 550 003e D3E90023 		ldrd	r2, [r3]
- 551 0042 FFF7FEFF 		bl	__aeabi_dsub
- 552 0046 0246     		mov	r2, r0
- 553 0048 0B46     		mov	r3, r1
- 554 004a 1046     		mov	r0, r2
- 555 004c 1946     		mov	r1, r3
- 556 004e 4FF00002 		mov	r2, #0
- 557 0052 424B     		ldr	r3, .L30+12
- 558 0054 FFF7FEFF 		bl	__aeabi_ddiv
- 559 0058 0246     		mov	r2, r0
- 560 005a 0B46     		mov	r3, r1
- 561 005c 2046     		mov	r0, r4
- 562 005e 2946     		mov	r1, r5
- 563 0060 FFF7FEFF 		bl	__aeabi_dsub
- 564 0064 0346     		mov	r3, r0
- 565 0066 0C46     		mov	r4, r1
- 566 0068 1A46     		mov	r2, r3
- 567 006a 2346     		mov	r3, r4
- 568 006c 4FF00000 		mov	r0, #0
- 569 0070 3A49     		ldr	r1, .L30+12
- 570 0072 FFF7FEFF 		bl	__aeabi_ddiv
- 571 0076 0346     		mov	r3, r0
- 572 0078 0C46     		mov	r4, r1
- 573 007a 1846     		mov	r0, r3
- 574 007c 2146     		mov	r1, r4
- 575 007e FFF7FEFF 		bl	__aeabi_d2f
- 576 0082 0346     		mov	r3, r0
- 577 0084 FB60     		str	r3, [r7, #12]	@ float
+ 543              		.loc 1 154 0
+ 544 0008 534B     		ldr	r3, .L30+8
+ 545 000a 1846     		mov	r0, r3
+ 546 000c FFF7FEFF 		bl	__aeabi_f2d
+ 547 0010 4FA3     		adr	r3, .L30
+ 548 0012 D3E90023 		ldrd	r2, [r3]
+ 549 0016 FFF7FEFF 		bl	__aeabi_dsub
+ 550 001a 0346     		mov	r3, r0
+ 551 001c 0C46     		mov	r4, r1
+ 552 001e 1846     		mov	r0, r3
+ 553 0020 2146     		mov	r1, r4
+ 554 0022 4FF00002 		mov	r2, #0
+ 555 0026 4D4B     		ldr	r3, .L30+12
+ 556 0028 FFF7FEFF 		bl	__aeabi_ddiv
+ 557 002c 0346     		mov	r3, r0
+ 558 002e 0C46     		mov	r4, r1
+ 559 0030 2546     		mov	r5, r4
+ 560 0032 1C46     		mov	r4, r3
+ 561 0034 4A4B     		ldr	r3, .L30+16
+ 562 0036 1846     		mov	r0, r3
+ 563 0038 FFF7FEFF 		bl	__aeabi_f2d
+ 564 003c 44A3     		adr	r3, .L30
+ 565 003e D3E90023 		ldrd	r2, [r3]
+ 566 0042 FFF7FEFF 		bl	__aeabi_dsub
+ 567 0046 0246     		mov	r2, r0
+ 568 0048 0B46     		mov	r3, r1
+ 569 004a 1046     		mov	r0, r2
+ 570 004c 1946     		mov	r1, r3
+ 571 004e 4FF00002 		mov	r2, #0
+ 572 0052 424B     		ldr	r3, .L30+12
+ 573 0054 FFF7FEFF 		bl	__aeabi_ddiv
+ 574 0058 0246     		mov	r2, r0
+ 575 005a 0B46     		mov	r3, r1
+ 576 005c 2046     		mov	r0, r4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 14
+
+
+ 577 005e 2946     		mov	r1, r5
+ 578 0060 FFF7FEFF 		bl	__aeabi_dsub
+ 579 0064 0346     		mov	r3, r0
+ 580 0066 0C46     		mov	r4, r1
+ 581 0068 1A46     		mov	r2, r3
+ 582 006a 2346     		mov	r3, r4
+ 583 006c 4FF00000 		mov	r0, #0
+ 584 0070 3A49     		ldr	r1, .L30+12
+ 585 0072 FFF7FEFF 		bl	__aeabi_ddiv
+ 586 0076 0346     		mov	r3, r0
+ 587 0078 0C46     		mov	r4, r1
+ 588 007a 1846     		mov	r0, r3
+ 589 007c 2146     		mov	r1, r4
+ 590 007e FFF7FEFF 		bl	__aeabi_d2f
+ 591 0082 0346     		mov	r3, r0
+ 592 0084 FB60     		str	r3, [r7, #12]	@ float
  155:Nutrients.c   ****     float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500.0)/3.0; //calculate b in y = ax + b
- 578              		.loc 1 155 0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 14
-
-
- 579 0086 F868     		ldr	r0, [r7, #12]	@ float
- 580 0088 FFF7FEFF 		bl	__aeabi_f2d
- 581 008c 0446     		mov	r4, r0
- 582 008e 0D46     		mov	r5, r1
- 583 0090 314B     		ldr	r3, .L30+8
- 584 0092 1846     		mov	r0, r3
- 585 0094 FFF7FEFF 		bl	__aeabi_f2d
- 586 0098 2DA3     		adr	r3, .L30
- 587 009a D3E90023 		ldrd	r2, [r3]
- 588 009e FFF7FEFF 		bl	__aeabi_dsub
- 589 00a2 0246     		mov	r2, r0
- 590 00a4 0B46     		mov	r3, r1
- 591 00a6 2046     		mov	r0, r4
- 592 00a8 2946     		mov	r1, r5
- 593 00aa FFF7FEFF 		bl	__aeabi_dmul
- 594 00ae 0346     		mov	r3, r0
- 595 00b0 0C46     		mov	r4, r1
- 596 00b2 1846     		mov	r0, r3
- 597 00b4 2146     		mov	r1, r4
- 598 00b6 4FF00002 		mov	r2, #0
- 599 00ba 284B     		ldr	r3, .L30+12
- 600 00bc FFF7FEFF 		bl	__aeabi_ddiv
- 601 00c0 0346     		mov	r3, r0
- 602 00c2 0C46     		mov	r4, r1
- 603 00c4 1A46     		mov	r2, r3
- 604 00c6 2346     		mov	r3, r4
- 605 00c8 4FF00000 		mov	r0, #0
- 606 00cc 2549     		ldr	r1, .L30+20
- 607 00ce FFF7FEFF 		bl	__aeabi_dsub
- 608 00d2 0346     		mov	r3, r0
- 609 00d4 0C46     		mov	r4, r1
- 610 00d6 1846     		mov	r0, r3
- 611 00d8 2146     		mov	r1, r4
- 612 00da FFF7FEFF 		bl	__aeabi_d2f
- 613 00de 0346     		mov	r3, r0
- 614 00e0 BB60     		str	r3, [r7, #8]	@ float
+ 593              		.loc 1 155 0
+ 594 0086 F868     		ldr	r0, [r7, #12]	@ float
+ 595 0088 FFF7FEFF 		bl	__aeabi_f2d
+ 596 008c 0446     		mov	r4, r0
+ 597 008e 0D46     		mov	r5, r1
+ 598 0090 314B     		ldr	r3, .L30+8
+ 599 0092 1846     		mov	r0, r3
+ 600 0094 FFF7FEFF 		bl	__aeabi_f2d
+ 601 0098 2DA3     		adr	r3, .L30
+ 602 009a D3E90023 		ldrd	r2, [r3]
+ 603 009e FFF7FEFF 		bl	__aeabi_dsub
+ 604 00a2 0246     		mov	r2, r0
+ 605 00a4 0B46     		mov	r3, r1
+ 606 00a6 2046     		mov	r0, r4
+ 607 00a8 2946     		mov	r1, r5
+ 608 00aa FFF7FEFF 		bl	__aeabi_dmul
+ 609 00ae 0346     		mov	r3, r0
+ 610 00b0 0C46     		mov	r4, r1
+ 611 00b2 1846     		mov	r0, r3
+ 612 00b4 2146     		mov	r1, r4
+ 613 00b6 4FF00002 		mov	r2, #0
+ 614 00ba 284B     		ldr	r3, .L30+12
+ 615 00bc FFF7FEFF 		bl	__aeabi_ddiv
+ 616 00c0 0346     		mov	r3, r0
+ 617 00c2 0C46     		mov	r4, r1
+ 618 00c4 1A46     		mov	r2, r3
+ 619 00c6 2346     		mov	r3, r4
+ 620 00c8 4FF00000 		mov	r0, #0
+ 621 00cc 2549     		ldr	r1, .L30+20
+ 622 00ce FFF7FEFF 		bl	__aeabi_dsub
+ 623 00d2 0346     		mov	r3, r0
+ 624 00d4 0C46     		mov	r4, r1
+ 625 00d6 1846     		mov	r0, r3
+ 626 00d8 2146     		mov	r1, r4
+ 627 00da FFF7FEFF 		bl	__aeabi_d2f
+ 628 00de 0346     		mov	r3, r0
+ 629 00e0 BB60     		str	r3, [r7, #8]	@ float
  156:Nutrients.c   ****     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
- 615              		.loc 1 156 0
- 616 00e2 F868     		ldr	r0, [r7, #12]	@ float
- 617 00e4 FFF7FEFF 		bl	__aeabi_f2d
- 618 00e8 0446     		mov	r4, r0
- 619 00ea 0D46     		mov	r5, r1
- 620 00ec 7868     		ldr	r0, [r7, #4]	@ float
- 621 00ee FFF7FEFF 		bl	__aeabi_f2d
- 622 00f2 17A3     		adr	r3, .L30
- 623 00f4 D3E90023 		ldrd	r2, [r3]
- 624 00f8 FFF7FEFF 		bl	__aeabi_dsub
- 625 00fc 0246     		mov	r2, r0
- 626 00fe 0B46     		mov	r3, r1
- 627 0100 2046     		mov	r0, r4
- 628 0102 2946     		mov	r1, r5
- 629 0104 FFF7FEFF 		bl	__aeabi_dmul
- 630 0108 0346     		mov	r3, r0
- 631 010a 0C46     		mov	r4, r1
- 632 010c 1846     		mov	r0, r3
- 633 010e 2146     		mov	r1, r4
- 634 0110 4FF00002 		mov	r2, #0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 15
+ 630              		.loc 1 156 0
+ 631 00e2 F868     		ldr	r0, [r7, #12]	@ float
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 15
 
 
- 635 0114 114B     		ldr	r3, .L30+12
- 636 0116 FFF7FEFF 		bl	__aeabi_ddiv
- 637 011a 0346     		mov	r3, r0
- 638 011c 0C46     		mov	r4, r1
- 639 011e 2546     		mov	r5, r4
- 640 0120 1C46     		mov	r4, r3
- 641 0122 B868     		ldr	r0, [r7, #8]	@ float
- 642 0124 FFF7FEFF 		bl	__aeabi_f2d
- 643 0128 0246     		mov	r2, r0
- 644 012a 0B46     		mov	r3, r1
- 645 012c 2046     		mov	r0, r4
- 646 012e 2946     		mov	r1, r5
- 647 0130 FFF7FEFF 		bl	__aeabi_dadd
- 648 0134 0346     		mov	r3, r0
- 649 0136 0C46     		mov	r4, r1
- 650 0138 1846     		mov	r0, r3
- 651 013a 2146     		mov	r1, r4
- 652 013c FFF7FEFF 		bl	__aeabi_d2f
- 653 0140 0346     		mov	r3, r0
+ 632 00e4 FFF7FEFF 		bl	__aeabi_f2d
+ 633 00e8 0446     		mov	r4, r0
+ 634 00ea 0D46     		mov	r5, r1
+ 635 00ec 7868     		ldr	r0, [r7, #4]	@ float
+ 636 00ee FFF7FEFF 		bl	__aeabi_f2d
+ 637 00f2 17A3     		adr	r3, .L30
+ 638 00f4 D3E90023 		ldrd	r2, [r3]
+ 639 00f8 FFF7FEFF 		bl	__aeabi_dsub
+ 640 00fc 0246     		mov	r2, r0
+ 641 00fe 0B46     		mov	r3, r1
+ 642 0100 2046     		mov	r0, r4
+ 643 0102 2946     		mov	r1, r5
+ 644 0104 FFF7FEFF 		bl	__aeabi_dmul
+ 645 0108 0346     		mov	r3, r0
+ 646 010a 0C46     		mov	r4, r1
+ 647 010c 1846     		mov	r0, r3
+ 648 010e 2146     		mov	r1, r4
+ 649 0110 4FF00002 		mov	r2, #0
+ 650 0114 114B     		ldr	r3, .L30+12
+ 651 0116 FFF7FEFF 		bl	__aeabi_ddiv
+ 652 011a 0346     		mov	r3, r0
+ 653 011c 0C46     		mov	r4, r1
+ 654 011e 2546     		mov	r5, r4
+ 655 0120 1C46     		mov	r4, r3
+ 656 0122 B868     		ldr	r0, [r7, #8]	@ float
+ 657 0124 FFF7FEFF 		bl	__aeabi_f2d
+ 658 0128 0246     		mov	r2, r0
+ 659 012a 0B46     		mov	r3, r1
+ 660 012c 2046     		mov	r0, r4
+ 661 012e 2946     		mov	r1, r5
+ 662 0130 FFF7FEFF 		bl	__aeabi_dadd
+ 663 0134 0346     		mov	r3, r0
+ 664 0136 0C46     		mov	r4, r1
+ 665 0138 1846     		mov	r0, r3
+ 666 013a 2146     		mov	r1, r4
+ 667 013c FFF7FEFF 		bl	__aeabi_d2f
+ 668 0140 0346     		mov	r3, r0
  157:Nutrients.c   **** }
- 654              		.loc 1 157 0
- 655 0142 1846     		mov	r0, r3
- 656 0144 1037     		adds	r7, r7, #16
- 657              		.cfi_def_cfa_offset 16
- 658 0146 BD46     		mov	sp, r7
- 659              		.cfi_def_cfa_register 13
- 660              		@ sp needed
- 661 0148 B0BD     		pop	{r4, r5, r7, pc}
- 662              	.L31:
- 663 014a 00BFAFF3 		.align	3
- 663      0080
- 664              	.L30:
- 665 0150 00000000 		.word	0
- 666 0154 00709740 		.word	1083666432
- 667 0158 0080BB44 		.word	1153138688
- 668 015c 00000840 		.word	1074266112
- 669 0160 140EFE44 		.word	1157500436
- 670 0164 00001C40 		.word	1075576832
- 671              		.cfi_endproc
- 672              	.LFE71:
- 673              		.size	fCalculatePHValue, .-fCalculatePHValue
- 674              		.section	.text.vNutrientsGetECValue,"ax",%progbits
- 675              		.align	2
- 676              		.global	vNutrientsGetECValue
- 677              		.thumb
- 678              		.thumb_func
- 679              		.type	vNutrientsGetECValue, %function
- 680              	vNutrientsGetECValue:
- 681              	.LFB72:
+ 669              		.loc 1 157 0
+ 670 0142 1846     		mov	r0, r3
+ 671 0144 1037     		adds	r7, r7, #16
+ 672              		.cfi_def_cfa_offset 16
+ 673 0146 BD46     		mov	sp, r7
+ 674              		.cfi_def_cfa_register 13
+ 675              		@ sp needed
+ 676 0148 B0BD     		pop	{r4, r5, r7, pc}
+ 677              	.L31:
+ 678 014a 00BFAFF3 		.align	3
+ 678      0080
+ 679              	.L30:
+ 680 0150 00000000 		.word	0
+ 681 0154 00709740 		.word	1083666432
+ 682 0158 0080BB44 		.word	1153138688
+ 683 015c 00000840 		.word	1074266112
+ 684 0160 140EFE44 		.word	1157500436
+ 685 0164 00001C40 		.word	1075576832
+ 686              		.cfi_endproc
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 16
+
+
+ 687              	.LFE71:
+ 688              		.size	fCalculatePHValue, .-fCalculatePHValue
+ 689              		.section	.text.vTaskMeasureEC,"ax",%progbits
+ 690              		.align	2
+ 691              		.global	vTaskMeasureEC
+ 692              		.thumb
+ 693              		.thumb_func
+ 694              		.type	vTaskMeasureEC, %function
+ 695              	vTaskMeasureEC:
+ 696              	.LFB72:
  158:Nutrients.c   **** 
  159:Nutrients.c   **** /*This function writes 'R' to the EC sensor, then delays(300) before requesting data transfer from 
  160:Nutrients.c   **** This is in accordance with instructions given on the EC sensor datasheet. */
- 161:Nutrients.c   **** void vNutrientsGetECValue()
+ 161:Nutrients.c   **** void vTaskMeasureEC()
  162:Nutrients.c   **** {
- 682              		.loc 1 162 0
- 683              		.cfi_startproc
- 684              		@ args = 0, pretend = 0, frame = 48
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 16
+ 697              		.loc 1 162 0
+ 698              		.cfi_startproc
+ 699              		@ args = 0, pretend = 0, frame = 56
+ 700              		@ frame_needed = 1, uses_anonymous_args = 0
+ 701 0000 80B5     		push	{r7, lr}
+ 702              		.cfi_def_cfa_offset 8
+ 703              		.cfi_offset 7, -8
+ 704              		.cfi_offset 14, -4
+ 705 0002 8EB0     		sub	sp, sp, #56
+ 706              		.cfi_def_cfa_offset 64
+ 707 0004 00AF     		add	r7, sp, #0
+ 708              		.cfi_def_cfa_register 7
+ 709              	.L35:
+ 710              	.LBB2:
+ 163:Nutrients.c   ****     for (;;){
+ 164:Nutrients.c   ****         const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolut
+ 711              		.loc 1 164 0
+ 712 0006 4FF49673 		mov	r3, #300
+ 713 000a 7B63     		str	r3, [r7, #52]
+ 165:Nutrients.c   ****         const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolut
+ 714              		.loc 1 165 0
+ 715 000c 6423     		movs	r3, #100
+ 716 000e 3B63     		str	r3, [r7, #48]
+ 166:Nutrients.c   **** 
+ 167:Nutrients.c   ****         /* Defines the message to be sent, as an array of characters */
+ 168:Nutrients.c   ****         unsigned char  ucMessage[]= "R";
+ 717              		.loc 1 168 0
+ 718 0010 5223     		movs	r3, #82
+ 719 0012 BB85     		strh	r3, [r7, #44]	@ movhi
+ 169:Nutrients.c   ****      
+ 170:Nutrients.c   ****         /* Initialize buffer with packet  , slave address is 9*/
+ 171:Nutrients.c   ****         (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
+ 720              		.loc 1 171 0
+ 721 0014 07F12C01 		add	r1, r7, #44
+ 722 0018 0023     		movs	r3, #0
+ 723 001a 0122     		movs	r2, #1
+ 724 001c 0920     		movs	r0, #9
+ 725 001e FFF7FEFF 		bl	I2C_MasterWriteBuf
+ 172:Nutrients.c   **** 
+ 173:Nutrients.c   ****         //Waits until master completes write transfer 
+ 174:Nutrients.c   ****         while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+ 726              		.loc 1 174 0
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 17
 
 
- 685              		@ frame_needed = 1, uses_anonymous_args = 0
- 686 0000 80B5     		push	{r7, lr}
- 687              		.cfi_def_cfa_offset 8
- 688              		.cfi_offset 7, -8
- 689              		.cfi_offset 14, -4
- 690 0002 8CB0     		sub	sp, sp, #48
- 691              		.cfi_def_cfa_offset 56
- 692 0004 00AF     		add	r7, sp, #0
- 693              		.cfi_def_cfa_register 7
- 163:Nutrients.c   ****     /* Defines the message to be sent, as an array of characters */
- 164:Nutrients.c   ****     unsigned char  ucMessage[]= "R";
- 694              		.loc 1 164 0
- 695 0006 5223     		movs	r3, #82
- 696 0008 BB85     		strh	r3, [r7, #44]	@ movhi
- 165:Nutrients.c   ****  
- 166:Nutrients.c   ****     /* Initialize buffer with packet  , slave address is 9*/
- 167:Nutrients.c   ****     (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
- 697              		.loc 1 167 0
- 698 000a 07F12C01 		add	r1, r7, #44
- 699 000e 0023     		movs	r3, #0
- 700 0010 0122     		movs	r2, #1
- 701 0012 0920     		movs	r0, #9
- 702 0014 FFF7FEFF 		bl	I2C_MasterWriteBuf
- 168:Nutrients.c   **** 
- 169:Nutrients.c   ****    //Waits until master completes write transfer 
- 170:Nutrients.c   ****    while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
- 703              		.loc 1 170 0
- 704 0018 00BF     		nop
- 705              	.L33:
- 706              		.loc 1 170 0 is_stmt 0 discriminator 1
- 707 001a FFF7FEFF 		bl	I2C_MasterStatus
- 708 001e 0346     		mov	r3, r0
- 709 0020 03F00203 		and	r3, r3, #2
- 710 0024 002B     		cmp	r3, #0
- 711 0026 F8D0     		beq	.L33
- 171:Nutrients.c   ****     {
- 172:Nutrients.c   ****     } 
- 173:Nutrients.c   **** 
- 174:Nutrients.c   ****     
- 175:Nutrients.c   ****     CyDelay(300);
- 712              		.loc 1 175 0 is_stmt 1
- 713 0028 4FF49670 		mov	r0, #300
- 714 002c FFF7FEFF 		bl	CyDelay
- 176:Nutrients.c   ****     unsigned char ucResponse[40];
- 177:Nutrients.c   ****     (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
- 715              		.loc 1 177 0
- 716 0030 391D     		adds	r1, r7, #4
- 717 0032 0023     		movs	r3, #0
- 718 0034 2822     		movs	r2, #40
- 719 0036 0920     		movs	r0, #9
- 720 0038 FFF7FEFF 		bl	I2C_MasterReadBuf
- 178:Nutrients.c   ****     
- 179:Nutrients.c   ****     //Waits until master completes write transfer     
- 180:Nutrients.c   ****     while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
- 721              		.loc 1 180 0
- 722 003c 00BF     		nop
- 723              	.L34:
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 17
+ 727 0022 00BF     		nop
+ 728              	.L33:
+ 729              		.loc 1 174 0 is_stmt 0 discriminator 1
+ 730 0024 FFF7FEFF 		bl	I2C_MasterStatus
+ 731 0028 0346     		mov	r3, r0
+ 732 002a 03F00203 		and	r3, r3, #2
+ 733 002e 002B     		cmp	r3, #0
+ 734 0030 F8D0     		beq	.L33
+ 175:Nutrients.c   ****         {
+ 176:Nutrients.c   ****         } 
+ 177:Nutrients.c   **** 
+ 178:Nutrients.c   ****         
+ 179:Nutrients.c   ****         vTaskDelay(xDelaymsBeforeRead);
+ 735              		.loc 1 179 0 is_stmt 1
+ 736 0032 786B     		ldr	r0, [r7, #52]
+ 737 0034 FFF7FEFF 		bl	vTaskDelay
+ 180:Nutrients.c   ****         unsigned char ucResponse[40];
+ 181:Nutrients.c   ****         (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
+ 738              		.loc 1 181 0
+ 739 0038 391D     		adds	r1, r7, #4
+ 740 003a 0023     		movs	r3, #0
+ 741 003c 2822     		movs	r2, #40
+ 742 003e 0920     		movs	r0, #9
+ 743 0040 FFF7FEFF 		bl	I2C_MasterReadBuf
+ 182:Nutrients.c   ****         
+ 183:Nutrients.c   ****         //Waits until master completes write transfer     
+ 184:Nutrients.c   ****         while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
+ 744              		.loc 1 184 0
+ 745 0044 00BF     		nop
+ 746              	.L34:
+ 747              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 748 0046 FFF7FEFF 		bl	I2C_MasterStatus
+ 749 004a 0346     		mov	r3, r0
+ 750 004c 03F00103 		and	r3, r3, #1
+ 751 0050 002B     		cmp	r3, #0
+ 752 0052 F8D0     		beq	.L34
+ 185:Nutrients.c   ****         {
+ 186:Nutrients.c   ****         }
+ 187:Nutrients.c   ****         vTaskDelay(xDelaymsTimerEvent);
+ 753              		.loc 1 187 0 is_stmt 1
+ 754 0054 386B     		ldr	r0, [r7, #48]
+ 755 0056 FFF7FEFF 		bl	vTaskDelay
+ 756              	.LBE2:
+ 188:Nutrients.c   ****     }
+ 757              		.loc 1 188 0
+ 758 005a D4E7     		b	.L35
+ 759              		.cfi_endproc
+ 760              	.LFE72:
+ 761              		.size	vTaskMeasureEC, .-vTaskMeasureEC
+ 762              		.section	.rodata
+ 763 0035 000000   		.align	2
+ 764              	.LC4:
+ 765 0038 54657374 		.ascii	"Test Pump 1\000"
+ 765      2050756D 
+ 765      70203100 
+ 766              		.align	2
+ 767              	.LC5:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 18
 
 
- 724              		.loc 1 180 0 is_stmt 0 discriminator 1
- 725 003e FFF7FEFF 		bl	I2C_MasterStatus
- 726 0042 0346     		mov	r3, r0
- 727 0044 03F00103 		and	r3, r3, #1
- 728 0048 002B     		cmp	r3, #0
- 729 004a F8D0     		beq	.L34
- 181:Nutrients.c   ****     {
- 182:Nutrients.c   ****     }
- 183:Nutrients.c   ****     
- 184:Nutrients.c   ****     
- 185:Nutrients.c   ****     /*
- 186:Nutrients.c   ****     //This 'if' statement blinks the LED on the PSoC as a test. If the LED blinks, succes.
- 187:Nutrients.c   ****     //Note that the EC sensor will first send a '1' to confirm it can send data,
- 188:Nutrients.c   ****     //then send the information, and finish with 0.
- 189:Nutrients.c   ****     //An Arduino has been set up to emulate the EC sensor, and it will pretend it read the number '
- 190:Nutrients.c   ****     if (ucResponse[0] == '1' && ucResponse[1] == '9' && ucResponse[6] == '0')
- 191:Nutrients.c   ****     {
- 192:Nutrients.c   ****         LED_Write (1U);
- 193:Nutrients.c   ****         CyDelay(2000);
- 194:Nutrients.c   ****         LED_Write (0U);
- 195:Nutrients.c   ****     } 
- 196:Nutrients.c   ****     */
- 197:Nutrients.c   **** }
- 730              		.loc 1 197 0 is_stmt 1
- 731 004c 00BF     		nop
- 732 004e 3037     		adds	r7, r7, #48
- 733              		.cfi_def_cfa_offset 8
- 734 0050 BD46     		mov	sp, r7
- 735              		.cfi_def_cfa_register 13
- 736              		@ sp needed
- 737 0052 80BD     		pop	{r7, pc}
- 738              		.cfi_endproc
- 739              	.LFE72:
- 740              		.size	vNutrientsGetECValue, .-vNutrientsGetECValue
- 741              		.section	.rodata
- 742 0027 00       		.align	2
- 743              	.LC3:
- 744 0028 54657374 		.ascii	"Test Pump 1\000"
- 744      2050756D 
- 744      70203100 
- 745              		.align	2
- 746              	.LC4:
- 747 0034 54657374 		.ascii	"Test PH print\000"
- 747      20504820 
- 747      7072696E 
- 747      7400
- 748              		.section	.text.vTestTaskInit,"ax",%progbits
- 749              		.align	2
- 750              		.global	vTestTaskInit
- 751              		.thumb
- 752              		.thumb_func
- 753              		.type	vTestTaskInit, %function
- 754              	vTestTaskInit:
- 755              	.LFB73:
- 198:Nutrients.c   **** 
- 199:Nutrients.c   **** /* --- TEST TASK --- */
+ 768 0044 54657374 		.ascii	"Test PH print\000"
+ 768      20504820 
+ 768      7072696E 
+ 768      7400
+ 769              		.section	.text.vTestTaskInit,"ax",%progbits
+ 770              		.align	2
+ 771              		.global	vTestTaskInit
+ 772              		.thumb
+ 773              		.thumb_func
+ 774              		.type	vTestTaskInit, %function
+ 775              	vTestTaskInit:
+ 776              	.LFB73:
+ 189:Nutrients.c   **** }
+ 190:Nutrients.c   **** 
+ 191:Nutrients.c   **** /* --- TEST TASK --- */
+ 192:Nutrients.c   **** 
+ 193:Nutrients.c   **** /*
+ 194:Nutrients.c   ****     Task for testing existing implementations.
+ 195:Nutrients.c   **** 
+ 196:Nutrients.c   ****     DO NOT delete this functions/tasks, but comment them out if they aren't nesessary 
+ 197:Nutrients.c   ****     for your current implementation/testing
+ 198:Nutrients.c   ****     
+ 199:Nutrients.c   ****     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
  200:Nutrients.c   **** 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 18
-
-
- 201:Nutrients.c   **** /*
- 202:Nutrients.c   ****     Task for testing existing implementations.
+ 201:Nutrients.c   ****     
+ 202:Nutrients.c   **** */
  203:Nutrients.c   **** 
- 204:Nutrients.c   ****     DO NOT delete this functions/tasks, but comment them out if they aren't nesessary 
- 205:Nutrients.c   ****     for your current implementation/testing
- 206:Nutrients.c   ****     
- 207:Nutrients.c   ****     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
+ 204:Nutrients.c   **** void vTestTaskInit(){
+ 777              		.loc 1 204 0
+ 778              		.cfi_startproc
+ 779              		@ args = 0, pretend = 0, frame = 0
+ 780              		@ frame_needed = 1, uses_anonymous_args = 0
+ 781 0000 80B5     		push	{r7, lr}
+ 782              		.cfi_def_cfa_offset 8
+ 783              		.cfi_offset 7, -8
+ 784              		.cfi_offset 14, -4
+ 785 0002 82B0     		sub	sp, sp, #8
+ 786              		.cfi_def_cfa_offset 16
+ 787 0004 02AF     		add	r7, sp, #8
+ 788              		.cfi_def_cfa 7, 8
+ 205:Nutrients.c   ****     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
+ 789              		.loc 1 205 0
+ 790 0006 0023     		movs	r3, #0
+ 791 0008 0193     		str	r3, [sp, #4]
+ 792 000a 0123     		movs	r3, #1
+ 793 000c 0093     		str	r3, [sp]
+ 794 000e 0023     		movs	r3, #0
+ 795 0010 6422     		movs	r2, #100
+ 796 0012 0849     		ldr	r1, .L37
+ 797 0014 0848     		ldr	r0, .L37+4
+ 798 0016 FFF7FEFF 		bl	xTaskCreate
+ 206:Nutrients.c   ****     xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
+ 799              		.loc 1 206 0
+ 800 001a 0023     		movs	r3, #0
+ 801 001c 0193     		str	r3, [sp, #4]
+ 802 001e 0223     		movs	r3, #2
+ 803 0020 0093     		str	r3, [sp]
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 19
+
+
+ 804 0022 0023     		movs	r3, #0
+ 805 0024 6422     		movs	r2, #100
+ 806 0026 0549     		ldr	r1, .L37+8
+ 807 0028 0548     		ldr	r0, .L37+12
+ 808 002a FFF7FEFF 		bl	xTaskCreate
+ 207:Nutrients.c   **** }
+ 809              		.loc 1 207 0
+ 810 002e 00BF     		nop
+ 811 0030 BD46     		mov	sp, r7
+ 812              		.cfi_def_cfa_register 13
+ 813              		@ sp needed
+ 814 0032 80BD     		pop	{r7, pc}
+ 815              	.L38:
+ 816              		.align	2
+ 817              	.L37:
+ 818 0034 38000000 		.word	.LC4
+ 819 0038 00000000 		.word	vTestTaskNutrientPump
+ 820 003c 44000000 		.word	.LC5
+ 821 0040 00000000 		.word	vTestTaskUARTDataTransmit
+ 822              		.cfi_endproc
+ 823              	.LFE73:
+ 824              		.size	vTestTaskInit, .-vTestTaskInit
+ 825              		.section	.rodata
+ 826 0052 0000     		.align	2
+ 827              	.LC6:
+ 828 0054 693A2000 		.ascii	"i: \000"
+ 829              		.align	2
+ 830              	.LC7:
+ 831 0058 20307800 		.ascii	" 0x\000"
+ 832              		.align	2
+ 833              	.LC8:
+ 834 005c 0A00     		.ascii	"\012\000"
+ 835              		.section	.text.vTestTaskUARTDataTransmit,"ax",%progbits
+ 836              		.align	2
+ 837              		.global	vTestTaskUARTDataTransmit
+ 838              		.thumb
+ 839              		.thumb_func
+ 840              		.type	vTestTaskUARTDataTransmit, %function
+ 841              	vTestTaskUARTDataTransmit:
+ 842              	.LFB74:
  208:Nutrients.c   **** 
- 209:Nutrients.c   ****     
- 210:Nutrients.c   **** */
- 211:Nutrients.c   **** 
- 212:Nutrients.c   **** void vTestTaskInit(){
- 756              		.loc 1 212 0
- 757              		.cfi_startproc
- 758              		@ args = 0, pretend = 0, frame = 0
- 759              		@ frame_needed = 1, uses_anonymous_args = 0
- 760 0000 80B5     		push	{r7, lr}
- 761              		.cfi_def_cfa_offset 8
- 762              		.cfi_offset 7, -8
- 763              		.cfi_offset 14, -4
- 764 0002 82B0     		sub	sp, sp, #8
- 765              		.cfi_def_cfa_offset 16
- 766 0004 02AF     		add	r7, sp, #8
- 767              		.cfi_def_cfa 7, 8
- 213:Nutrients.c   ****     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
- 768              		.loc 1 213 0
- 769 0006 0023     		movs	r3, #0
- 770 0008 0193     		str	r3, [sp, #4]
- 771 000a 0123     		movs	r3, #1
- 772 000c 0093     		str	r3, [sp]
- 773 000e 0023     		movs	r3, #0
- 774 0010 6422     		movs	r2, #100
- 775 0012 0849     		ldr	r1, .L36
- 776 0014 0848     		ldr	r0, .L36+4
- 777 0016 FFF7FEFF 		bl	xTaskCreate
- 214:Nutrients.c   ****     xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
- 778              		.loc 1 214 0
- 779 001a 0023     		movs	r3, #0
- 780 001c 0193     		str	r3, [sp, #4]
- 781 001e 0223     		movs	r3, #2
- 782 0020 0093     		str	r3, [sp]
- 783 0022 0023     		movs	r3, #0
- 784 0024 6422     		movs	r2, #100
- 785 0026 0549     		ldr	r1, .L36+8
- 786 0028 0548     		ldr	r0, .L36+12
- 787 002a FFF7FEFF 		bl	xTaskCreate
- 215:Nutrients.c   **** }
- 788              		.loc 1 215 0
- 789 002e 00BF     		nop
- 790 0030 BD46     		mov	sp, r7
- 791              		.cfi_def_cfa_register 13
- 792              		@ sp needed
- 793 0032 80BD     		pop	{r7, pc}
- 794              	.L37:
- 795              		.align	2
- 796              	.L36:
- 797 0034 28000000 		.word	.LC3
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 19
+ 209:Nutrients.c   **** 
+ 210:Nutrients.c   **** void vTestTaskUARTDataTransmit(){
+ 843              		.loc 1 210 0
+ 844              		.cfi_startproc
+ 845              		@ args = 0, pretend = 0, frame = 8
+ 846              		@ frame_needed = 1, uses_anonymous_args = 0
+ 847 0000 80B5     		push	{r7, lr}
+ 848              		.cfi_def_cfa_offset 8
+ 849              		.cfi_offset 7, -8
+ 850              		.cfi_offset 14, -4
+ 851 0002 82B0     		sub	sp, sp, #8
+ 852              		.cfi_def_cfa_offset 16
+ 853 0004 00AF     		add	r7, sp, #0
+ 854              		.cfi_def_cfa_register 7
+ 855              	.L40:
+ 211:Nutrients.c   ****     uint16 iPHValueForPrint;
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 20
 
 
- 798 0038 00000000 		.word	vTestTaskNutrientPump
- 799 003c 34000000 		.word	.LC4
- 800 0040 00000000 		.word	vTestTaskUARTDataTransmit
- 801              		.cfi_endproc
- 802              	.LFE73:
- 803              		.size	vTestTaskInit, .-vTestTaskInit
- 804              		.section	.rodata
- 805 0042 0000     		.align	2
- 806              	.LC5:
- 807 0044 693A2000 		.ascii	"i: \000"
- 808              		.align	2
- 809              	.LC6:
- 810 0048 20307800 		.ascii	" 0x\000"
- 811              		.align	2
- 812              	.LC7:
- 813 004c 0A00     		.ascii	"\012\000"
- 814              		.section	.text.vTestTaskUARTDataTransmit,"ax",%progbits
- 815              		.align	2
- 816              		.global	vTestTaskUARTDataTransmit
- 817              		.thumb
- 818              		.thumb_func
- 819              		.type	vTestTaskUARTDataTransmit, %function
- 820              	vTestTaskUARTDataTransmit:
- 821              	.LFB74:
- 216:Nutrients.c   **** 
- 217:Nutrients.c   **** 
- 218:Nutrients.c   **** void vTestTaskUARTDataTransmit(){
- 822              		.loc 1 218 0
- 823              		.cfi_startproc
- 824              		@ args = 0, pretend = 0, frame = 8
- 825              		@ frame_needed = 1, uses_anonymous_args = 0
- 826 0000 80B5     		push	{r7, lr}
- 827              		.cfi_def_cfa_offset 8
- 828              		.cfi_offset 7, -8
- 829              		.cfi_offset 14, -4
- 830 0002 82B0     		sub	sp, sp, #8
- 831              		.cfi_def_cfa_offset 16
- 832 0004 00AF     		add	r7, sp, #0
- 833              		.cfi_def_cfa_register 7
- 834              	.L39:
- 219:Nutrients.c   ****     uint16 iPHValueForPrint;
- 220:Nutrients.c   ****     for(;;){
- 221:Nutrients.c   ****         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
- 835              		.loc 1 221 0 discriminator 1
- 836 0006 124B     		ldr	r3, .L40
- 837 0008 1B68     		ldr	r3, [r3]
- 838 000a B91D     		adds	r1, r7, #6
- 839 000c 4FF0FF32 		mov	r2, #-1
- 840 0010 1846     		mov	r0, r3
- 841 0012 FFF7FEFF 		bl	xQueueReceive
- 222:Nutrients.c   ****         SW_UART_TEST_USB_PutString("i: ");
- 842              		.loc 1 222 0 discriminator 1
- 843 0016 0F48     		ldr	r0, .L40+4
- 844 0018 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
- 223:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(iPHIndex);
- 845              		.loc 1 223 0 discriminator 1
- 846 001c 0E4B     		ldr	r3, .L40+8
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 20
+ 212:Nutrients.c   ****     for(;;){
+ 213:Nutrients.c   ****         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
+ 856              		.loc 1 213 0 discriminator 1
+ 857 0006 124B     		ldr	r3, .L41
+ 858 0008 1B68     		ldr	r3, [r3]
+ 859 000a B91D     		adds	r1, r7, #6
+ 860 000c 4FF0FF32 		mov	r2, #-1
+ 861 0010 1846     		mov	r0, r3
+ 862 0012 FFF7FEFF 		bl	xQueueReceive
+ 214:Nutrients.c   ****         SW_UART_TEST_USB_PutString("i: ");
+ 863              		.loc 1 214 0 discriminator 1
+ 864 0016 0F48     		ldr	r0, .L41+4
+ 865 0018 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 215:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(iPHIndex);
+ 866              		.loc 1 215 0 discriminator 1
+ 867 001c 0E4B     		ldr	r3, .L41+8
+ 868 001e 1B68     		ldr	r3, [r3]
+ 869 0020 9BB2     		uxth	r3, r3
+ 870 0022 1846     		mov	r0, r3
+ 871 0024 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+ 216:Nutrients.c   ****         SW_UART_TEST_USB_PutString(" 0x");
+ 872              		.loc 1 216 0 discriminator 1
+ 873 0028 0C48     		ldr	r0, .L41+12
+ 874 002a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 217:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(currentNutrients[iPHIndex].iPHvalue);
+ 875              		.loc 1 217 0 discriminator 1
+ 876 002e 0A4B     		ldr	r3, .L41+8
+ 877 0030 1A68     		ldr	r2, [r3]
+ 878 0032 0B49     		ldr	r1, .L41+16
+ 879 0034 1346     		mov	r3, r2
+ 880 0036 5B00     		lsls	r3, r3, #1
+ 881 0038 1344     		add	r3, r3, r2
+ 882 003a 5B00     		lsls	r3, r3, #1
+ 883 003c 0B44     		add	r3, r3, r1
+ 884 003e 1B88     		ldrh	r3, [r3]
+ 885 0040 1846     		mov	r0, r3
+ 886 0042 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+ 218:Nutrients.c   ****         SW_UART_TEST_USB_PutString("\n");
+ 887              		.loc 1 218 0 discriminator 1
+ 888 0046 0748     		ldr	r0, .L41+20
+ 889 0048 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 219:Nutrients.c   ****     }
+ 890              		.loc 1 219 0 discriminator 1
+ 891 004c DBE7     		b	.L40
+ 892              	.L42:
+ 893 004e 00BF     		.align	2
+ 894              	.L41:
+ 895 0050 00000000 		.word	xQueuePHValue
+ 896 0054 54000000 		.word	.LC6
+ 897 0058 00000000 		.word	iPHIndex
+ 898 005c 58000000 		.word	.LC7
+ 899 0060 00000000 		.word	currentNutrients
+ 900 0064 5C000000 		.word	.LC8
+ 901              		.cfi_endproc
+ 902              	.LFE74:
+ 903              		.size	vTestTaskUARTDataTransmit, .-vTestTaskUARTDataTransmit
+ 904              		.section	.text.vTestTaskNutrientPump,"ax",%progbits
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 21
 
 
- 847 001e 1B68     		ldr	r3, [r3]
- 848 0020 9BB2     		uxth	r3, r3
- 849 0022 1846     		mov	r0, r3
- 850 0024 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
- 224:Nutrients.c   ****         SW_UART_TEST_USB_PutString(" 0x");
- 851              		.loc 1 224 0 discriminator 1
- 852 0028 0C48     		ldr	r0, .L40+12
- 853 002a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
- 225:Nutrients.c   ****         SW_UART_TEST_USB_PutHexInt(currentNutrients[iPHIndex].iPHvalue);
- 854              		.loc 1 225 0 discriminator 1
- 855 002e 0A4B     		ldr	r3, .L40+8
- 856 0030 1A68     		ldr	r2, [r3]
- 857 0032 0B49     		ldr	r1, .L40+16
- 858 0034 1346     		mov	r3, r2
- 859 0036 5B00     		lsls	r3, r3, #1
- 860 0038 1344     		add	r3, r3, r2
- 861 003a 5B00     		lsls	r3, r3, #1
- 862 003c 0B44     		add	r3, r3, r1
- 863 003e 1B88     		ldrh	r3, [r3]
- 864 0040 1846     		mov	r0, r3
- 865 0042 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
- 226:Nutrients.c   ****         SW_UART_TEST_USB_PutString("\n");
- 866              		.loc 1 226 0 discriminator 1
- 867 0046 0748     		ldr	r0, .L40+20
- 868 0048 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
- 227:Nutrients.c   ****     }
- 869              		.loc 1 227 0 discriminator 1
- 870 004c DBE7     		b	.L39
- 871              	.L41:
- 872 004e 00BF     		.align	2
- 873              	.L40:
- 874 0050 00000000 		.word	xQueuePHValue
- 875 0054 44000000 		.word	.LC5
- 876 0058 00000000 		.word	iPHIndex
- 877 005c 48000000 		.word	.LC6
- 878 0060 00000000 		.word	currentNutrients
- 879 0064 4C000000 		.word	.LC7
- 880              		.cfi_endproc
- 881              	.LFE74:
- 882              		.size	vTestTaskUARTDataTransmit, .-vTestTaskUARTDataTransmit
- 883              		.section	.text.vTestTaskNutrientPump,"ax",%progbits
- 884              		.align	2
- 885              		.global	vTestTaskNutrientPump
- 886              		.thumb
- 887              		.thumb_func
- 888              		.type	vTestTaskNutrientPump, %function
- 889              	vTestTaskNutrientPump:
- 890              	.LFB75:
- 228:Nutrients.c   **** }
- 229:Nutrients.c   **** 
- 230:Nutrients.c   **** 
- 231:Nutrients.c   **** 
- 232:Nutrients.c   **** void vTestTaskNutrientPump() {
- 891              		.loc 1 232 0
- 892              		.cfi_startproc
- 893              		@ args = 0, pretend = 0, frame = 8
- 894              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 21
+ 905              		.align	2
+ 906              		.global	vTestTaskNutrientPump
+ 907              		.thumb
+ 908              		.thumb_func
+ 909              		.type	vTestTaskNutrientPump, %function
+ 910              	vTestTaskNutrientPump:
+ 911              	.LFB75:
+ 220:Nutrients.c   **** }
+ 221:Nutrients.c   **** 
+ 222:Nutrients.c   **** 
+ 223:Nutrients.c   **** 
+ 224:Nutrients.c   **** void vTestTaskNutrientPump() {
+ 912              		.loc 1 224 0
+ 913              		.cfi_startproc
+ 914              		@ args = 0, pretend = 0, frame = 8
+ 915              		@ frame_needed = 1, uses_anonymous_args = 0
+ 916 0000 80B5     		push	{r7, lr}
+ 917              		.cfi_def_cfa_offset 8
+ 918              		.cfi_offset 7, -8
+ 919              		.cfi_offset 14, -4
+ 920 0002 82B0     		sub	sp, sp, #8
+ 921              		.cfi_def_cfa_offset 16
+ 922 0004 00AF     		add	r7, sp, #0
+ 923              		.cfi_def_cfa_register 7
+ 225:Nutrients.c   ****     _Bool bTestState1 = 1;
+ 924              		.loc 1 225 0
+ 925 0006 0123     		movs	r3, #1
+ 926 0008 FB70     		strb	r3, [r7, #3]
+ 226:Nutrients.c   ****     _Bool bTestState2 = 0;
+ 927              		.loc 1 226 0
+ 928 000a 0023     		movs	r3, #0
+ 929 000c BB70     		strb	r3, [r7, #2]
+ 227:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
+ 930              		.loc 1 227 0
+ 931 000e C823     		movs	r3, #200
+ 932 0010 7B60     		str	r3, [r7, #4]
+ 933              	.L46:
+ 228:Nutrients.c   ****     
+ 229:Nutrients.c   ****     for(;;) {
+ 230:Nutrients.c   ****         if(bTestState1 == 1) {
+ 934              		.loc 1 230 0
+ 935 0012 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 936 0014 002B     		cmp	r3, #0
+ 937 0016 04D0     		beq	.L44
+ 231:Nutrients.c   ****             bTestState1 = 0;
+ 938              		.loc 1 231 0
+ 939 0018 0023     		movs	r3, #0
+ 940 001a FB70     		strb	r3, [r7, #3]
+ 232:Nutrients.c   ****             bTestState2 = 1;
+ 941              		.loc 1 232 0
+ 942 001c 0123     		movs	r3, #1
+ 943 001e BB70     		strb	r3, [r7, #2]
+ 944 0020 03E0     		b	.L45
+ 945              	.L44:
+ 233:Nutrients.c   ****         }
+ 234:Nutrients.c   ****         else {
+ 235:Nutrients.c   ****             bTestState1 = 1;
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 22
 
 
- 895 0000 80B5     		push	{r7, lr}
- 896              		.cfi_def_cfa_offset 8
- 897              		.cfi_offset 7, -8
- 898              		.cfi_offset 14, -4
- 899 0002 82B0     		sub	sp, sp, #8
- 900              		.cfi_def_cfa_offset 16
- 901 0004 00AF     		add	r7, sp, #0
- 902              		.cfi_def_cfa_register 7
- 233:Nutrients.c   ****     _Bool bTestState1 = 1;
- 903              		.loc 1 233 0
- 904 0006 0123     		movs	r3, #1
- 905 0008 FB70     		strb	r3, [r7, #3]
- 234:Nutrients.c   ****     _Bool bTestState2 = 0;
- 906              		.loc 1 234 0
- 907 000a 0023     		movs	r3, #0
- 908 000c BB70     		strb	r3, [r7, #2]
- 235:Nutrients.c   ****     const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
- 909              		.loc 1 235 0
- 910 000e C823     		movs	r3, #200
- 911 0010 7B60     		str	r3, [r7, #4]
- 912              	.L45:
- 236:Nutrients.c   ****     
- 237:Nutrients.c   ****     for(;;) {
- 238:Nutrients.c   ****         if(bTestState1 == 1) {
- 913              		.loc 1 238 0
- 914 0012 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
- 915 0014 002B     		cmp	r3, #0
- 916 0016 04D0     		beq	.L43
- 239:Nutrients.c   ****             bTestState1 = 0;
- 917              		.loc 1 239 0
- 918 0018 0023     		movs	r3, #0
- 919 001a FB70     		strb	r3, [r7, #3]
- 240:Nutrients.c   ****             bTestState2 = 1;
- 920              		.loc 1 240 0
- 921 001c 0123     		movs	r3, #1
- 922 001e BB70     		strb	r3, [r7, #2]
- 923 0020 03E0     		b	.L44
- 924              	.L43:
- 241:Nutrients.c   ****         }
- 242:Nutrients.c   ****         else {
- 243:Nutrients.c   ****             bTestState1 = 1;
- 925              		.loc 1 243 0
- 926 0022 0123     		movs	r3, #1
- 927 0024 FB70     		strb	r3, [r7, #3]
- 244:Nutrients.c   ****             bTestState2 = 0;
- 928              		.loc 1 244 0
- 929 0026 0023     		movs	r3, #0
- 930 0028 BB70     		strb	r3, [r7, #2]
- 931              	.L44:
- 245:Nutrients.c   ****         }
- 246:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
- 932              		.loc 1 246 0
- 933 002a 0E4B     		ldr	r3, .L46
- 934 002c 1868     		ldr	r0, [r3]
- 935 002e F91C     		adds	r1, r7, #3
- 936 0030 0023     		movs	r3, #0
- 937 0032 4FF0FF32 		mov	r2, #-1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 22
+ 946              		.loc 1 235 0
+ 947 0022 0123     		movs	r3, #1
+ 948 0024 FB70     		strb	r3, [r7, #3]
+ 236:Nutrients.c   ****             bTestState2 = 0;
+ 949              		.loc 1 236 0
+ 950 0026 0023     		movs	r3, #0
+ 951 0028 BB70     		strb	r3, [r7, #2]
+ 952              	.L45:
+ 237:Nutrients.c   ****         }
+ 238:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[0], &bTestState1, portMAX_DELAY);
+ 953              		.loc 1 238 0
+ 954 002a 0E4B     		ldr	r3, .L47
+ 955 002c 1868     		ldr	r0, [r3]
+ 956 002e F91C     		adds	r1, r7, #3
+ 957 0030 0023     		movs	r3, #0
+ 958 0032 4FF0FF32 		mov	r2, #-1
+ 959 0036 FFF7FEFF 		bl	xQueueGenericSend
+ 239:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
+ 960              		.loc 1 239 0
+ 961 003a 0A4B     		ldr	r3, .L47
+ 962 003c 5868     		ldr	r0, [r3, #4]
+ 963 003e B91C     		adds	r1, r7, #2
+ 964 0040 0023     		movs	r3, #0
+ 965 0042 4FF0FF32 		mov	r2, #-1
+ 966 0046 FFF7FEFF 		bl	xQueueGenericSend
+ 240:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
+ 967              		.loc 1 240 0
+ 968 004a 064B     		ldr	r3, .L47
+ 969 004c 9868     		ldr	r0, [r3, #8]
+ 970 004e F91C     		adds	r1, r7, #3
+ 971 0050 0023     		movs	r3, #0
+ 972 0052 4FF0FF32 		mov	r2, #-1
+ 973 0056 FFF7FEFF 		bl	xQueueGenericSend
+ 241:Nutrients.c   ****         vTaskDelay(xDelayms);
+ 974              		.loc 1 241 0
+ 975 005a 7868     		ldr	r0, [r7, #4]
+ 976 005c FFF7FEFF 		bl	vTaskDelay
+ 242:Nutrients.c   ****     }
+ 977              		.loc 1 242 0
+ 978 0060 D7E7     		b	.L46
+ 979              	.L48:
+ 980 0062 00BF     		.align	2
+ 981              	.L47:
+ 982 0064 00000000 		.word	xQueueNutrientPump
+ 983              		.cfi_endproc
+ 984              	.LFE75:
+ 985              		.size	vTestTaskNutrientPump, .-vTestTaskNutrientPump
+ 986              		.text
+ 987              	.Letext0:
+ 988              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 989              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 990              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 991              		.file 5 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 992              		.file 6 ".\\Source\\include/queue.h"
+ 993              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 994              		.section	.debug_info,"",%progbits
+ 995              	.Ldebug_info0:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 23
 
 
- 938 0036 FFF7FEFF 		bl	xQueueGenericSend
- 247:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
- 939              		.loc 1 247 0
- 940 003a 0A4B     		ldr	r3, .L46
- 941 003c 5868     		ldr	r0, [r3, #4]
- 942 003e B91C     		adds	r1, r7, #2
- 943 0040 0023     		movs	r3, #0
- 944 0042 4FF0FF32 		mov	r2, #-1
- 945 0046 FFF7FEFF 		bl	xQueueGenericSend
- 248:Nutrients.c   ****         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
- 946              		.loc 1 248 0
- 947 004a 064B     		ldr	r3, .L46
- 948 004c 9868     		ldr	r0, [r3, #8]
- 949 004e F91C     		adds	r1, r7, #3
- 950 0050 0023     		movs	r3, #0
- 951 0052 4FF0FF32 		mov	r2, #-1
- 952 0056 FFF7FEFF 		bl	xQueueGenericSend
- 249:Nutrients.c   ****         vTaskDelay(xDelayms);
- 953              		.loc 1 249 0
- 954 005a 7868     		ldr	r0, [r7, #4]
- 955 005c FFF7FEFF 		bl	vTaskDelay
- 250:Nutrients.c   ****     }
- 956              		.loc 1 250 0
- 957 0060 D7E7     		b	.L45
- 958              	.L47:
- 959 0062 00BF     		.align	2
- 960              	.L46:
- 961 0064 00000000 		.word	xQueueNutrientPump
- 962              		.cfi_endproc
- 963              	.LFE75:
- 964              		.size	vTestTaskNutrientPump, .-vTestTaskNutrientPump
- 965              		.text
- 966              	.Letext0:
- 967              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 968              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 969              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 970              		.file 5 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
- 971              		.file 6 ".\\Source\\include/queue.h"
- 972              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
- 973              		.section	.debug_info,"",%progbits
- 974              	.Ldebug_info0:
- 975 0000 4B040000 		.4byte	0x44b
- 976 0004 0400     		.2byte	0x4
- 977 0006 00000000 		.4byte	.Ldebug_abbrev0
- 978 000a 04       		.byte	0x4
- 979 000b 01       		.uleb128 0x1
- 980 000c 58000000 		.4byte	.LASF64
- 981 0010 0C       		.byte	0xc
- 982 0011 0A030000 		.4byte	.LASF65
- 983 0015 49030000 		.4byte	.LASF66
- 984 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 985 001d 00000000 		.4byte	0
- 986 0021 00000000 		.4byte	.Ldebug_line0
- 987 0025 02       		.uleb128 0x2
- 988 0026 04       		.byte	0x4
- 989 0027 05       		.byte	0x5
- 990 0028 696E7400 		.ascii	"int\000"
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 23
+ 996 0000 71040000 		.4byte	0x471
+ 997 0004 0400     		.2byte	0x4
+ 998 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 999 000a 04       		.byte	0x4
+ 1000 000b 01       		.uleb128 0x1
+ 1001 000c 6B000000 		.4byte	.LASF66
+ 1002 0010 0C       		.byte	0xc
+ 1003 0011 17030000 		.4byte	.LASF67
+ 1004 0015 69030000 		.4byte	.LASF68
+ 1005 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 1006 001d 00000000 		.4byte	0
+ 1007 0021 00000000 		.4byte	.Ldebug_line0
+ 1008 0025 02       		.uleb128 0x2
+ 1009 0026 04       		.byte	0x4
+ 1010 0027 05       		.byte	0x5
+ 1011 0028 696E7400 		.ascii	"int\000"
+ 1012 002c 03       		.uleb128 0x3
+ 1013 002d 04       		.byte	0x4
+ 1014 002e 07       		.byte	0x7
+ 1015 002f 64020000 		.4byte	.LASF0
+ 1016 0033 03       		.uleb128 0x3
+ 1017 0034 08       		.byte	0x8
+ 1018 0035 05       		.byte	0x5
+ 1019 0036 82010000 		.4byte	.LASF1
+ 1020 003a 03       		.uleb128 0x3
+ 1021 003b 08       		.byte	0x8
+ 1022 003c 04       		.byte	0x4
+ 1023 003d 02020000 		.4byte	.LASF2
+ 1024 0041 03       		.uleb128 0x3
+ 1025 0042 01       		.byte	0x1
+ 1026 0043 06       		.byte	0x6
+ 1027 0044 26020000 		.4byte	.LASF3
+ 1028 0048 04       		.uleb128 0x4
+ 1029 0049 D1010000 		.4byte	.LASF7
+ 1030 004d 02       		.byte	0x2
+ 1031 004e 1D       		.byte	0x1d
+ 1032 004f 53000000 		.4byte	0x53
+ 1033 0053 03       		.uleb128 0x3
+ 1034 0054 01       		.byte	0x1
+ 1035 0055 08       		.byte	0x8
+ 1036 0056 18020000 		.4byte	.LASF4
+ 1037 005a 03       		.uleb128 0x3
+ 1038 005b 02       		.byte	0x2
+ 1039 005c 05       		.byte	0x5
+ 1040 005d 3F000000 		.4byte	.LASF5
+ 1041 0061 03       		.uleb128 0x3
+ 1042 0062 02       		.byte	0x2
+ 1043 0063 07       		.byte	0x7
+ 1044 0064 D4020000 		.4byte	.LASF6
+ 1045 0068 04       		.uleb128 0x4
+ 1046 0069 D2030000 		.4byte	.LASF8
+ 1047 006d 02       		.byte	0x2
+ 1048 006e 3F       		.byte	0x3f
+ 1049 006f 73000000 		.4byte	0x73
+ 1050 0073 03       		.uleb128 0x3
+ 1051 0074 04       		.byte	0x4
+ 1052 0075 05       		.byte	0x5
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 24
 
 
- 991 002c 03       		.uleb128 0x3
- 992 002d 04       		.byte	0x4
- 993 002e 07       		.byte	0x7
- 994 002f 57020000 		.4byte	.LASF0
- 995 0033 03       		.uleb128 0x3
- 996 0034 08       		.byte	0x8
- 997 0035 05       		.byte	0x5
- 998 0036 60010000 		.4byte	.LASF1
- 999 003a 03       		.uleb128 0x3
- 1000 003b 08       		.byte	0x8
- 1001 003c 04       		.byte	0x4
- 1002 003d F5010000 		.4byte	.LASF2
- 1003 0041 03       		.uleb128 0x3
- 1004 0042 01       		.byte	0x1
- 1005 0043 06       		.byte	0x6
- 1006 0044 19020000 		.4byte	.LASF3
- 1007 0048 04       		.uleb128 0x4
- 1008 0049 C4010000 		.4byte	.LASF7
- 1009 004d 02       		.byte	0x2
- 1010 004e 1D       		.byte	0x1d
- 1011 004f 53000000 		.4byte	0x53
- 1012 0053 03       		.uleb128 0x3
- 1013 0054 01       		.byte	0x1
- 1014 0055 08       		.byte	0x8
- 1015 0056 0B020000 		.4byte	.LASF4
- 1016 005a 03       		.uleb128 0x3
- 1017 005b 02       		.byte	0x2
- 1018 005c 05       		.byte	0x5
- 1019 005d 2C000000 		.4byte	.LASF5
- 1020 0061 03       		.uleb128 0x3
- 1021 0062 02       		.byte	0x2
- 1022 0063 07       		.byte	0x7
- 1023 0064 C7020000 		.4byte	.LASF6
- 1024 0068 04       		.uleb128 0x4
- 1025 0069 B2030000 		.4byte	.LASF8
- 1026 006d 02       		.byte	0x2
- 1027 006e 3F       		.byte	0x3f
- 1028 006f 73000000 		.4byte	0x73
- 1029 0073 03       		.uleb128 0x3
- 1030 0074 04       		.byte	0x4
- 1031 0075 05       		.byte	0x5
- 1032 0076 85010000 		.4byte	.LASF9
- 1033 007a 04       		.uleb128 0x4
- 1034 007b 3E030000 		.4byte	.LASF10
- 1035 007f 02       		.byte	0x2
- 1036 0080 41       		.byte	0x41
- 1037 0081 85000000 		.4byte	0x85
- 1038 0085 03       		.uleb128 0x3
- 1039 0086 04       		.byte	0x4
- 1040 0087 07       		.byte	0x7
- 1041 0088 16030000 		.4byte	.LASF11
- 1042 008c 03       		.uleb128 0x3
- 1043 008d 08       		.byte	0x8
- 1044 008e 07       		.byte	0x7
- 1045 008f 25020000 		.4byte	.LASF12
- 1046 0093 04       		.uleb128 0x4
- 1047 0094 38010000 		.4byte	.LASF13
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 24
+ 1053 0076 A7010000 		.4byte	.LASF9
+ 1054 007a 04       		.uleb128 0x4
+ 1055 007b 5E030000 		.4byte	.LASF10
+ 1056 007f 02       		.byte	0x2
+ 1057 0080 41       		.byte	0x41
+ 1058 0081 85000000 		.4byte	0x85
+ 1059 0085 03       		.uleb128 0x3
+ 1060 0086 04       		.byte	0x4
+ 1061 0087 07       		.byte	0x7
+ 1062 0088 23030000 		.4byte	.LASF11
+ 1063 008c 03       		.uleb128 0x3
+ 1064 008d 08       		.byte	0x8
+ 1065 008e 07       		.byte	0x7
+ 1066 008f 32020000 		.4byte	.LASF12
+ 1067 0093 04       		.uleb128 0x4
+ 1068 0094 4B010000 		.4byte	.LASF13
+ 1069 0098 03       		.byte	0x3
+ 1070 0099 18       		.byte	0x18
+ 1071 009a 48000000 		.4byte	0x48
+ 1072 009e 04       		.uleb128 0x4
+ 1073 009f CC020000 		.4byte	.LASF14
+ 1074 00a3 03       		.byte	0x3
+ 1075 00a4 2C       		.byte	0x2c
+ 1076 00a5 68000000 		.4byte	0x68
+ 1077 00a9 04       		.uleb128 0x4
+ 1078 00aa 5B020000 		.4byte	.LASF15
+ 1079 00ae 03       		.byte	0x3
+ 1080 00af 30       		.byte	0x30
+ 1081 00b0 7A000000 		.4byte	0x7a
+ 1082 00b4 05       		.uleb128 0x5
+ 1083 00b5 5C010000 		.4byte	.LASF16
+ 1084 00b9 04       		.byte	0x4
+ 1085 00ba E401     		.2byte	0x1e4
+ 1086 00bc 53000000 		.4byte	0x53
+ 1087 00c0 05       		.uleb128 0x5
+ 1088 00c1 20010000 		.4byte	.LASF17
+ 1089 00c5 04       		.byte	0x4
+ 1090 00c6 E501     		.2byte	0x1e5
+ 1091 00c8 61000000 		.4byte	0x61
+ 1092 00cc 03       		.uleb128 0x3
+ 1093 00cd 04       		.byte	0x4
+ 1094 00ce 04       		.byte	0x4
+ 1095 00cf 62010000 		.4byte	.LASF18
+ 1096 00d3 03       		.uleb128 0x3
+ 1097 00d4 08       		.byte	0x8
+ 1098 00d5 04       		.byte	0x4
+ 1099 00d6 35030000 		.4byte	.LASF19
+ 1100 00da 03       		.uleb128 0x3
+ 1101 00db 01       		.byte	0x1
+ 1102 00dc 08       		.byte	0x8
+ 1103 00dd C7020000 		.4byte	.LASF20
+ 1104 00e1 03       		.uleb128 0x3
+ 1105 00e2 04       		.byte	0x4
+ 1106 00e3 07       		.byte	0x7
+ 1107 00e4 49000000 		.4byte	.LASF21
+ 1108 00e8 06       		.uleb128 0x6
+ 1109 00e9 04       		.byte	0x4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 25
 
 
- 1048 0098 03       		.byte	0x3
- 1049 0099 18       		.byte	0x18
- 1050 009a 48000000 		.4byte	0x48
- 1051 009e 04       		.uleb128 0x4
- 1052 009f BF020000 		.4byte	.LASF14
- 1053 00a3 03       		.byte	0x3
- 1054 00a4 2C       		.byte	0x2c
- 1055 00a5 68000000 		.4byte	0x68
- 1056 00a9 04       		.uleb128 0x4
- 1057 00aa 4E020000 		.4byte	.LASF15
- 1058 00ae 03       		.byte	0x3
- 1059 00af 30       		.byte	0x30
- 1060 00b0 7A000000 		.4byte	0x7a
- 1061 00b4 05       		.uleb128 0x5
- 1062 00b5 49010000 		.4byte	.LASF16
- 1063 00b9 04       		.byte	0x4
- 1064 00ba E401     		.2byte	0x1e4
- 1065 00bc 53000000 		.4byte	0x53
- 1066 00c0 05       		.uleb128 0x5
- 1067 00c1 0D010000 		.4byte	.LASF17
- 1068 00c5 04       		.byte	0x4
- 1069 00c6 E501     		.2byte	0x1e5
- 1070 00c8 61000000 		.4byte	0x61
- 1071 00cc 03       		.uleb128 0x3
- 1072 00cd 04       		.byte	0x4
- 1073 00ce 04       		.byte	0x4
- 1074 00cf 4F010000 		.4byte	.LASF18
- 1075 00d3 03       		.uleb128 0x3
- 1076 00d4 08       		.byte	0x8
- 1077 00d5 04       		.byte	0x4
- 1078 00d6 28030000 		.4byte	.LASF19
- 1079 00da 03       		.uleb128 0x3
- 1080 00db 01       		.byte	0x1
- 1081 00dc 08       		.byte	0x8
- 1082 00dd BA020000 		.4byte	.LASF20
- 1083 00e1 03       		.uleb128 0x3
- 1084 00e2 04       		.byte	0x4
- 1085 00e3 07       		.byte	0x7
- 1086 00e4 36000000 		.4byte	.LASF21
- 1087 00e8 06       		.uleb128 0x6
- 1088 00e9 04       		.byte	0x4
- 1089 00ea 04       		.uleb128 0x4
- 1090 00eb 7A020000 		.4byte	.LASF22
- 1091 00ef 05       		.byte	0x5
- 1092 00f0 38       		.byte	0x38
- 1093 00f1 73000000 		.4byte	0x73
- 1094 00f5 04       		.uleb128 0x4
- 1095 00f6 EA010000 		.4byte	.LASF23
- 1096 00fa 05       		.byte	0x5
- 1097 00fb 3F       		.byte	0x3f
- 1098 00fc A9000000 		.4byte	0xa9
- 1099 0100 04       		.uleb128 0x4
- 1100 0101 CE010000 		.4byte	.LASF24
- 1101 0105 06       		.byte	0x6
- 1102 0106 30       		.byte	0x30
- 1103 0107 0B010000 		.4byte	0x10b
- 1104 010b 07       		.uleb128 0x7
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 25
+ 1110 00ea 04       		.uleb128 0x4
+ 1111 00eb 87020000 		.4byte	.LASF22
+ 1112 00ef 05       		.byte	0x5
+ 1113 00f0 38       		.byte	0x38
+ 1114 00f1 73000000 		.4byte	0x73
+ 1115 00f5 04       		.uleb128 0x4
+ 1116 00f6 F7010000 		.4byte	.LASF23
+ 1117 00fa 05       		.byte	0x5
+ 1118 00fb 3F       		.byte	0x3f
+ 1119 00fc A9000000 		.4byte	0xa9
+ 1120 0100 04       		.uleb128 0x4
+ 1121 0101 DB010000 		.4byte	.LASF24
+ 1122 0105 06       		.byte	0x6
+ 1123 0106 30       		.byte	0x30
+ 1124 0107 0B010000 		.4byte	0x10b
+ 1125 010b 07       		.uleb128 0x7
+ 1126 010c 04       		.byte	0x4
+ 1127 010d 11010000 		.4byte	0x111
+ 1128 0111 08       		.uleb128 0x8
+ 1129 0112 9B020000 		.4byte	.LASF69
+ 1130 0116 09       		.uleb128 0x9
+ 1131 0117 0E020000 		.4byte	.LASF70
+ 1132 011b 06       		.byte	0x6
+ 1133 011c 01       		.byte	0x1
+ 1134 011d 14       		.byte	0x14
+ 1135 011e 47010000 		.4byte	0x147
+ 1136 0122 0A       		.uleb128 0xa
+ 1137 0123 90010000 		.4byte	.LASF25
+ 1138 0127 01       		.byte	0x1
+ 1139 0128 15       		.byte	0x15
+ 1140 0129 C0000000 		.4byte	0xc0
+ 1141 012d 00       		.byte	0
+ 1142 012e 0A       		.uleb128 0xa
+ 1143 012f BB010000 		.4byte	.LASF26
+ 1144 0133 01       		.byte	0x1
+ 1145 0134 16       		.byte	0x16
+ 1146 0135 C0000000 		.4byte	0xc0
+ 1147 0139 02       		.byte	0x2
+ 1148 013a 0A       		.uleb128 0xa
+ 1149 013b 0C030000 		.4byte	.LASF27
+ 1150 013f 01       		.byte	0x1
+ 1151 0140 17       		.byte	0x17
+ 1152 0141 C0000000 		.4byte	0xc0
+ 1153 0145 04       		.byte	0x4
+ 1154 0146 00       		.byte	0
+ 1155 0147 0B       		.uleb128 0xb
+ 1156 0148 F4020000 		.4byte	.LASF46
+ 1157 014c 01       		.byte	0x1
+ 1158 014d 2C       		.byte	0x2c
+ 1159 014e 00000000 		.4byte	.LFB68
+ 1160 0152 EC000000 		.4byte	.LFE68-.LFB68
+ 1161 0156 01       		.uleb128 0x1
+ 1162 0157 9C       		.byte	0x9c
+ 1163 0158 0C       		.uleb128 0xc
+ 1164 0159 49020000 		.4byte	.LASF71
+ 1165 015d 01       		.byte	0x1
+ 1166 015e 49       		.byte	0x49
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 26
 
 
- 1105 010c 04       		.byte	0x4
- 1106 010d 11010000 		.4byte	0x111
- 1107 0111 08       		.uleb128 0x8
- 1108 0112 8E020000 		.4byte	.LASF67
- 1109 0116 09       		.uleb128 0x9
- 1110 0117 01020000 		.4byte	.LASF68
- 1111 011b 06       		.byte	0x6
- 1112 011c 01       		.byte	0x1
- 1113 011d 14       		.byte	0x14
- 1114 011e 47010000 		.4byte	0x147
- 1115 0122 0A       		.uleb128 0xa
- 1116 0123 6E010000 		.4byte	.LASF25
- 1117 0127 01       		.byte	0x1
- 1118 0128 15       		.byte	0x15
- 1119 0129 C0000000 		.4byte	0xc0
- 1120 012d 00       		.byte	0
- 1121 012e 0A       		.uleb128 0xa
- 1122 012f AE010000 		.4byte	.LASF26
- 1123 0133 01       		.byte	0x1
- 1124 0134 16       		.byte	0x16
- 1125 0135 C0000000 		.4byte	0xc0
- 1126 0139 02       		.byte	0x2
- 1127 013a 0A       		.uleb128 0xa
- 1128 013b FF020000 		.4byte	.LASF27
- 1129 013f 01       		.byte	0x1
- 1130 0140 17       		.byte	0x17
- 1131 0141 C0000000 		.4byte	0xc0
- 1132 0145 04       		.byte	0x4
- 1133 0146 00       		.byte	0
- 1134 0147 0B       		.uleb128 0xb
- 1135 0148 E7020000 		.4byte	.LASF44
- 1136 014c 01       		.byte	0x1
- 1137 014d 2C       		.byte	0x2c
- 1138 014e 00000000 		.4byte	.LFB68
- 1139 0152 D0000000 		.4byte	.LFE68-.LFB68
- 1140 0156 01       		.uleb128 0x1
- 1141 0157 9C       		.byte	0x9c
- 1142 0158 0C       		.uleb128 0xc
- 1143 0159 3C020000 		.4byte	.LASF69
- 1144 015d 01       		.byte	0x1
- 1145 015e 49       		.byte	0x49
- 1146 015f 00000000 		.4byte	.LFB69
- 1147 0163 C8000000 		.4byte	.LFE69-.LFB69
- 1148 0167 01       		.uleb128 0x1
- 1149 0168 9C       		.byte	0x9c
- 1150 0169 A6010000 		.4byte	0x1a6
- 1151 016d 0D       		.uleb128 0xd
- 1152 016e D5030000 		.4byte	.LASF37
- 1153 0172 01       		.byte	0x1
- 1154 0173 49       		.byte	0x49
- 1155 0174 E8000000 		.4byte	0xe8
- 1156 0178 02       		.uleb128 0x2
- 1157 0179 91       		.byte	0x91
- 1158 017a 64       		.sleb128 -28
- 1159 017b 0E       		.uleb128 0xe
- 1160 017c 0F040000 		.4byte	.LASF28
- 1161 0180 01       		.byte	0x1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 26
+ 1167 015f 00000000 		.4byte	.LFB69
+ 1168 0163 C8000000 		.4byte	.LFE69-.LFB69
+ 1169 0167 01       		.uleb128 0x1
+ 1170 0168 9C       		.byte	0x9c
+ 1171 0169 A6010000 		.4byte	0x1a6
+ 1172 016d 0D       		.uleb128 0xd
+ 1173 016e F5030000 		.4byte	.LASF37
+ 1174 0172 01       		.byte	0x1
+ 1175 0173 49       		.byte	0x49
+ 1176 0174 E8000000 		.4byte	0xe8
+ 1177 0178 02       		.uleb128 0x2
+ 1178 0179 91       		.byte	0x91
+ 1179 017a 64       		.sleb128 -28
+ 1180 017b 0E       		.uleb128 0xe
+ 1181 017c 2F040000 		.4byte	.LASF28
+ 1182 0180 01       		.byte	0x1
+ 1183 0181 4A       		.byte	0x4a
+ 1184 0182 A6010000 		.4byte	0x1a6
+ 1185 0186 02       		.uleb128 0x2
+ 1186 0187 91       		.byte	0x91
+ 1187 0188 6F       		.sleb128 -17
+ 1188 0189 0E       		.uleb128 0xe
+ 1189 018a 63000000 		.4byte	.LASF29
+ 1190 018e 01       		.byte	0x1
+ 1191 018f 4B       		.byte	0x4b
+ 1192 0190 EA000000 		.4byte	0xea
+ 1193 0194 02       		.uleb128 0x2
+ 1194 0195 91       		.byte	0x91
+ 1195 0196 70       		.sleb128 -16
+ 1196 0197 0E       		.uleb128 0xe
+ 1197 0198 02040000 		.4byte	.LASF30
+ 1198 019c 01       		.byte	0x1
+ 1199 019d 4C       		.byte	0x4c
+ 1200 019e AD010000 		.4byte	0x1ad
+ 1201 01a2 02       		.uleb128 0x2
+ 1202 01a3 91       		.byte	0x91
+ 1203 01a4 74       		.sleb128 -12
+ 1204 01a5 00       		.byte	0
+ 1205 01a6 03       		.uleb128 0x3
+ 1206 01a7 01       		.byte	0x1
+ 1207 01a8 02       		.byte	0x2
+ 1208 01a9 EE020000 		.4byte	.LASF31
+ 1209 01ad 07       		.uleb128 0x7
+ 1210 01ae 04       		.byte	0x4
+ 1211 01af B4000000 		.4byte	0xb4
+ 1212 01b3 0F       		.uleb128 0xf
+ 1213 01b4 E6030000 		.4byte	.LASF40
+ 1214 01b8 01       		.byte	0x1
+ 1215 01b9 7A       		.byte	0x7a
+ 1216 01ba 00000000 		.4byte	.LFB70
+ 1217 01be FC000000 		.4byte	.LFE70-.LFB70
+ 1218 01c2 01       		.uleb128 0x1
+ 1219 01c3 9C       		.byte	0x9c
+ 1220 01c4 1D020000 		.4byte	0x21d
+ 1221 01c8 0E       		.uleb128 0xe
+ 1222 01c9 68010000 		.4byte	.LASF32
+ 1223 01cd 01       		.byte	0x1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 27
 
 
- 1162 0181 4A       		.byte	0x4a
- 1163 0182 A6010000 		.4byte	0x1a6
- 1164 0186 02       		.uleb128 0x2
- 1165 0187 91       		.byte	0x91
- 1166 0188 6F       		.sleb128 -17
- 1167 0189 0E       		.uleb128 0xe
- 1168 018a 50000000 		.4byte	.LASF29
- 1169 018e 01       		.byte	0x1
- 1170 018f 4B       		.byte	0x4b
- 1171 0190 EA000000 		.4byte	0xea
- 1172 0194 02       		.uleb128 0x2
- 1173 0195 91       		.byte	0x91
- 1174 0196 70       		.sleb128 -16
- 1175 0197 0E       		.uleb128 0xe
- 1176 0198 E2030000 		.4byte	.LASF30
- 1177 019c 01       		.byte	0x1
- 1178 019d 4C       		.byte	0x4c
- 1179 019e AD010000 		.4byte	0x1ad
- 1180 01a2 02       		.uleb128 0x2
- 1181 01a3 91       		.byte	0x91
- 1182 01a4 74       		.sleb128 -12
- 1183 01a5 00       		.byte	0
- 1184 01a6 03       		.uleb128 0x3
- 1185 01a7 01       		.byte	0x1
- 1186 01a8 02       		.byte	0x2
- 1187 01a9 E1020000 		.4byte	.LASF31
- 1188 01ad 07       		.uleb128 0x7
- 1189 01ae 04       		.byte	0x4
- 1190 01af B4000000 		.4byte	0xb4
- 1191 01b3 0F       		.uleb128 0xf
- 1192 01b4 C6030000 		.4byte	.LASF40
- 1193 01b8 01       		.byte	0x1
- 1194 01b9 7A       		.byte	0x7a
- 1195 01ba 00000000 		.4byte	.LFB70
- 1196 01be FC000000 		.4byte	.LFE70-.LFB70
- 1197 01c2 01       		.uleb128 0x1
- 1198 01c3 9C       		.byte	0x9c
- 1199 01c4 1D020000 		.4byte	0x21d
- 1200 01c8 0E       		.uleb128 0xe
- 1201 01c9 55010000 		.4byte	.LASF32
- 1202 01cd 01       		.byte	0x1
- 1203 01ce 7B       		.byte	0x7b
- 1204 01cf CC000000 		.4byte	0xcc
- 1205 01d3 02       		.uleb128 0x2
- 1206 01d4 91       		.byte	0x91
- 1207 01d5 64       		.sleb128 -28
- 1208 01d6 0E       		.uleb128 0xe
- 1209 01d7 04010000 		.4byte	.LASF33
- 1210 01db 01       		.byte	0x1
- 1211 01dc 7C       		.byte	0x7c
- 1212 01dd 1D020000 		.4byte	0x21d
- 1213 01e1 02       		.uleb128 0x2
- 1214 01e2 91       		.byte	0x91
- 1215 01e3 68       		.sleb128 -24
- 1216 01e4 0E       		.uleb128 0xe
- 1217 01e5 85020000 		.4byte	.LASF34
- 1218 01e9 01       		.byte	0x1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 27
+ 1224 01ce 7B       		.byte	0x7b
+ 1225 01cf CC000000 		.4byte	0xcc
+ 1226 01d3 02       		.uleb128 0x2
+ 1227 01d4 91       		.byte	0x91
+ 1228 01d5 64       		.sleb128 -28
+ 1229 01d6 0E       		.uleb128 0xe
+ 1230 01d7 17010000 		.4byte	.LASF33
+ 1231 01db 01       		.byte	0x1
+ 1232 01dc 7C       		.byte	0x7c
+ 1233 01dd 1D020000 		.4byte	0x21d
+ 1234 01e1 02       		.uleb128 0x2
+ 1235 01e2 91       		.byte	0x91
+ 1236 01e3 68       		.sleb128 -24
+ 1237 01e4 0E       		.uleb128 0xe
+ 1238 01e5 92020000 		.4byte	.LASF34
+ 1239 01e9 01       		.byte	0x1
+ 1240 01ea 7D       		.byte	0x7d
+ 1241 01eb CC000000 		.4byte	0xcc
+ 1242 01ef 02       		.uleb128 0x2
+ 1243 01f0 91       		.byte	0x91
+ 1244 01f1 60       		.sleb128 -32
+ 1245 01f2 0E       		.uleb128 0xe
+ 1246 01f3 0E000000 		.4byte	.LASF35
+ 1247 01f7 01       		.byte	0x1
+ 1248 01f8 7E       		.byte	0x7e
+ 1249 01f9 CC000000 		.4byte	0xcc
+ 1250 01fd 02       		.uleb128 0x2
+ 1251 01fe 91       		.byte	0x91
+ 1252 01ff 5C       		.sleb128 -36
+ 1253 0200 0E       		.uleb128 0xe
+ 1254 0201 99010000 		.4byte	.LASF36
+ 1255 0205 01       		.byte	0x1
+ 1256 0206 7F       		.byte	0x7f
+ 1257 0207 C0000000 		.4byte	0xc0
+ 1258 020b 02       		.uleb128 0x2
+ 1259 020c 91       		.byte	0x91
+ 1260 020d 5A       		.sleb128 -38
+ 1261 020e 0E       		.uleb128 0xe
+ 1262 020f 2F040000 		.4byte	.LASF28
+ 1263 0213 01       		.byte	0x1
+ 1264 0214 80       		.byte	0x80
+ 1265 0215 A6010000 		.4byte	0x1a6
+ 1266 0219 02       		.uleb128 0x2
+ 1267 021a 91       		.byte	0x91
+ 1268 021b 6F       		.sleb128 -17
+ 1269 021c 00       		.byte	0
+ 1270 021d 10       		.uleb128 0x10
+ 1271 021e F5000000 		.4byte	0xf5
+ 1272 0222 11       		.uleb128 0x11
+ 1273 0223 C0030000 		.4byte	.LASF72
+ 1274 0227 01       		.byte	0x1
+ 1275 0228 99       		.byte	0x99
+ 1276 0229 CC000000 		.4byte	0xcc
+ 1277 022d 00000000 		.4byte	.LFB71
+ 1278 0231 68010000 		.4byte	.LFE71-.LFB71
+ 1279 0235 01       		.uleb128 0x1
+ 1280 0236 9C       		.byte	0x9c
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 28
 
 
- 1219 01ea 7D       		.byte	0x7d
- 1220 01eb CC000000 		.4byte	0xcc
- 1221 01ef 02       		.uleb128 0x2
- 1222 01f0 91       		.byte	0x91
- 1223 01f1 60       		.sleb128 -32
- 1224 01f2 0E       		.uleb128 0xe
- 1225 01f3 0E000000 		.4byte	.LASF35
- 1226 01f7 01       		.byte	0x1
- 1227 01f8 7E       		.byte	0x7e
- 1228 01f9 CC000000 		.4byte	0xcc
- 1229 01fd 02       		.uleb128 0x2
- 1230 01fe 91       		.byte	0x91
- 1231 01ff 5C       		.sleb128 -36
- 1232 0200 0E       		.uleb128 0xe
- 1233 0201 77010000 		.4byte	.LASF36
- 1234 0205 01       		.byte	0x1
- 1235 0206 7F       		.byte	0x7f
- 1236 0207 C0000000 		.4byte	0xc0
- 1237 020b 02       		.uleb128 0x2
- 1238 020c 91       		.byte	0x91
- 1239 020d 5A       		.sleb128 -38
- 1240 020e 0E       		.uleb128 0xe
- 1241 020f 0F040000 		.4byte	.LASF28
- 1242 0213 01       		.byte	0x1
- 1243 0214 80       		.byte	0x80
- 1244 0215 A6010000 		.4byte	0x1a6
- 1245 0219 02       		.uleb128 0x2
- 1246 021a 91       		.byte	0x91
- 1247 021b 6F       		.sleb128 -17
- 1248 021c 00       		.byte	0
- 1249 021d 10       		.uleb128 0x10
- 1250 021e F5000000 		.4byte	0xf5
- 1251 0222 11       		.uleb128 0x11
- 1252 0223 A0030000 		.4byte	.LASF70
- 1253 0227 01       		.byte	0x1
- 1254 0228 99       		.byte	0x99
- 1255 0229 CC000000 		.4byte	0xcc
- 1256 022d 00000000 		.4byte	.LFB71
- 1257 0231 68010000 		.4byte	.LFE71-.LFB71
- 1258 0235 01       		.uleb128 0x1
- 1259 0236 9C       		.byte	0x9c
- 1260 0237 66020000 		.4byte	0x266
- 1261 023b 0D       		.uleb128 0xd
- 1262 023c 55010000 		.4byte	.LASF32
- 1263 0240 01       		.byte	0x1
- 1264 0241 99       		.byte	0x99
- 1265 0242 CC000000 		.4byte	0xcc
- 1266 0246 02       		.uleb128 0x2
- 1267 0247 91       		.byte	0x91
- 1268 0248 64       		.sleb128 -28
- 1269 0249 0E       		.uleb128 0xe
- 1270 024a DA020000 		.4byte	.LASF38
- 1271 024e 01       		.byte	0x1
- 1272 024f 9A       		.byte	0x9a
- 1273 0250 CC000000 		.4byte	0xcc
- 1274 0254 02       		.uleb128 0x2
- 1275 0255 91       		.byte	0x91
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 28
+ 1281 0237 66020000 		.4byte	0x266
+ 1282 023b 0D       		.uleb128 0xd
+ 1283 023c 68010000 		.4byte	.LASF32
+ 1284 0240 01       		.byte	0x1
+ 1285 0241 99       		.byte	0x99
+ 1286 0242 CC000000 		.4byte	0xcc
+ 1287 0246 02       		.uleb128 0x2
+ 1288 0247 91       		.byte	0x91
+ 1289 0248 64       		.sleb128 -28
+ 1290 0249 0E       		.uleb128 0xe
+ 1291 024a E7020000 		.4byte	.LASF38
+ 1292 024e 01       		.byte	0x1
+ 1293 024f 9A       		.byte	0x9a
+ 1294 0250 CC000000 		.4byte	0xcc
+ 1295 0254 02       		.uleb128 0x2
+ 1296 0255 91       		.byte	0x91
+ 1297 0256 6C       		.sleb128 -20
+ 1298 0257 0E       		.uleb128 0xe
+ 1299 0258 0C010000 		.4byte	.LASF39
+ 1300 025c 01       		.byte	0x1
+ 1301 025d 9B       		.byte	0x9b
+ 1302 025e CC000000 		.4byte	0xcc
+ 1303 0262 02       		.uleb128 0x2
+ 1304 0263 91       		.byte	0x91
+ 1305 0264 68       		.sleb128 -24
+ 1306 0265 00       		.byte	0
+ 1307 0266 0F       		.uleb128 0xf
+ 1308 0267 73010000 		.4byte	.LASF41
+ 1309 026b 01       		.byte	0x1
+ 1310 026c A1       		.byte	0xa1
+ 1311 026d 00000000 		.4byte	.LFB72
+ 1312 0271 5C000000 		.4byte	.LFE72-.LFB72
+ 1313 0275 01       		.uleb128 0x1
+ 1314 0276 9C       		.byte	0x9c
+ 1315 0277 BE020000 		.4byte	0x2be
+ 1316 027b 12       		.uleb128 0x12
+ 1317 027c 06000000 		.4byte	.LBB2
+ 1318 0280 54000000 		.4byte	.LBE2-.LBB2
+ 1319 0284 0E       		.uleb128 0xe
+ 1320 0285 2C000000 		.4byte	.LASF42
+ 1321 0289 01       		.byte	0x1
+ 1322 028a A4       		.byte	0xa4
+ 1323 028b 1D020000 		.4byte	0x21d
+ 1324 028f 02       		.uleb128 0x2
+ 1325 0290 91       		.byte	0x91
+ 1326 0291 74       		.sleb128 -12
+ 1327 0292 0E       		.uleb128 0xe
+ 1328 0293 4B030000 		.4byte	.LASF43
+ 1329 0297 01       		.byte	0x1
+ 1330 0298 A5       		.byte	0xa5
+ 1331 0299 1D020000 		.4byte	0x21d
+ 1332 029d 02       		.uleb128 0x2
+ 1333 029e 91       		.byte	0x91
+ 1334 029f 70       		.sleb128 -16
+ 1335 02a0 0E       		.uleb128 0xe
+ 1336 02a1 41010000 		.4byte	.LASF44
+ 1337 02a5 01       		.byte	0x1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 29
 
 
- 1276 0256 6C       		.sleb128 -20
- 1277 0257 0E       		.uleb128 0xe
- 1278 0258 F9000000 		.4byte	.LASF39
- 1279 025c 01       		.byte	0x1
- 1280 025d 9B       		.byte	0x9b
- 1281 025e CC000000 		.4byte	0xcc
- 1282 0262 02       		.uleb128 0x2
- 1283 0263 91       		.byte	0x91
- 1284 0264 68       		.sleb128 -24
- 1285 0265 00       		.byte	0
- 1286 0266 0F       		.uleb128 0xf
- 1287 0267 99010000 		.4byte	.LASF41
- 1288 026b 01       		.byte	0x1
- 1289 026c A1       		.byte	0xa1
- 1290 026d 00000000 		.4byte	.LFB72
- 1291 0271 54000000 		.4byte	.LFE72-.LFB72
- 1292 0275 01       		.uleb128 0x1
- 1293 0276 9C       		.byte	0x9c
- 1294 0277 98020000 		.4byte	0x298
- 1295 027b 0E       		.uleb128 0xe
- 1296 027c 2E010000 		.4byte	.LASF42
- 1297 0280 01       		.byte	0x1
- 1298 0281 A4       		.byte	0xa4
- 1299 0282 98020000 		.4byte	0x298
- 1300 0286 02       		.uleb128 0x2
- 1301 0287 91       		.byte	0x91
- 1302 0288 74       		.sleb128 -12
- 1303 0289 0E       		.uleb128 0xe
- 1304 028a 8E010000 		.4byte	.LASF43
- 1305 028e 01       		.byte	0x1
- 1306 028f B0       		.byte	0xb0
- 1307 0290 A8020000 		.4byte	0x2a8
- 1308 0294 02       		.uleb128 0x2
- 1309 0295 91       		.byte	0x91
- 1310 0296 4C       		.sleb128 -52
- 1311 0297 00       		.byte	0
- 1312 0298 12       		.uleb128 0x12
- 1313 0299 53000000 		.4byte	0x53
- 1314 029d A8020000 		.4byte	0x2a8
- 1315 02a1 13       		.uleb128 0x13
- 1316 02a2 E1000000 		.4byte	0xe1
- 1317 02a6 01       		.byte	0x1
- 1318 02a7 00       		.byte	0
- 1319 02a8 12       		.uleb128 0x12
- 1320 02a9 53000000 		.4byte	0x53
- 1321 02ad B8020000 		.4byte	0x2b8
- 1322 02b1 13       		.uleb128 0x13
- 1323 02b2 E1000000 		.4byte	0xe1
- 1324 02b6 27       		.byte	0x27
- 1325 02b7 00       		.byte	0
- 1326 02b8 0B       		.uleb128 0xb
- 1327 02b9 00000000 		.4byte	.LASF45
- 1328 02bd 01       		.byte	0x1
- 1329 02be D4       		.byte	0xd4
- 1330 02bf 00000000 		.4byte	.LFB73
- 1331 02c3 44000000 		.4byte	.LFE73-.LFB73
- 1332 02c7 01       		.uleb128 0x1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 29
+ 1338 02a6 A8       		.byte	0xa8
+ 1339 02a7 BE020000 		.4byte	0x2be
+ 1340 02ab 02       		.uleb128 0x2
+ 1341 02ac 91       		.byte	0x91
+ 1342 02ad 6C       		.sleb128 -20
+ 1343 02ae 0E       		.uleb128 0xe
+ 1344 02af B0010000 		.4byte	.LASF45
+ 1345 02b3 01       		.byte	0x1
+ 1346 02b4 B4       		.byte	0xb4
+ 1347 02b5 CE020000 		.4byte	0x2ce
+ 1348 02b9 02       		.uleb128 0x2
+ 1349 02ba 91       		.byte	0x91
+ 1350 02bb 44       		.sleb128 -60
+ 1351 02bc 00       		.byte	0
+ 1352 02bd 00       		.byte	0
+ 1353 02be 13       		.uleb128 0x13
+ 1354 02bf 53000000 		.4byte	0x53
+ 1355 02c3 CE020000 		.4byte	0x2ce
+ 1356 02c7 14       		.uleb128 0x14
+ 1357 02c8 E1000000 		.4byte	0xe1
+ 1358 02cc 01       		.byte	0x1
+ 1359 02cd 00       		.byte	0
+ 1360 02ce 13       		.uleb128 0x13
+ 1361 02cf 53000000 		.4byte	0x53
+ 1362 02d3 DE020000 		.4byte	0x2de
+ 1363 02d7 14       		.uleb128 0x14
+ 1364 02d8 E1000000 		.4byte	0xe1
+ 1365 02dc 27       		.byte	0x27
+ 1366 02dd 00       		.byte	0
+ 1367 02de 0B       		.uleb128 0xb
+ 1368 02df 00000000 		.4byte	.LASF47
+ 1369 02e3 01       		.byte	0x1
+ 1370 02e4 CC       		.byte	0xcc
+ 1371 02e5 00000000 		.4byte	.LFB73
+ 1372 02e9 44000000 		.4byte	.LFE73-.LFB73
+ 1373 02ed 01       		.uleb128 0x1
+ 1374 02ee 9C       		.byte	0x9c
+ 1375 02ef 0F       		.uleb128 0xf
+ 1376 02f0 27010000 		.4byte	.LASF48
+ 1377 02f4 01       		.byte	0x1
+ 1378 02f5 D2       		.byte	0xd2
+ 1379 02f6 00000000 		.4byte	.LFB74
+ 1380 02fa 68000000 		.4byte	.LFE74-.LFB74
+ 1381 02fe 01       		.uleb128 0x1
+ 1382 02ff 9C       		.byte	0x9c
+ 1383 0300 13030000 		.4byte	0x313
+ 1384 0304 0E       		.uleb128 0xe
+ 1385 0305 B6020000 		.4byte	.LASF49
+ 1386 0309 01       		.byte	0x1
+ 1387 030a D3       		.byte	0xd3
+ 1388 030b C0000000 		.4byte	0xc0
+ 1389 030f 02       		.uleb128 0x2
+ 1390 0310 91       		.byte	0x91
+ 1391 0311 76       		.sleb128 -10
+ 1392 0312 00       		.byte	0
+ 1393 0313 0F       		.uleb128 0xf
+ 1394 0314 36040000 		.4byte	.LASF50
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 30
 
 
- 1333 02c8 9C       		.byte	0x9c
- 1334 02c9 0F       		.uleb128 0xf
- 1335 02ca 14010000 		.4byte	.LASF46
- 1336 02ce 01       		.byte	0x1
- 1337 02cf DA       		.byte	0xda
- 1338 02d0 00000000 		.4byte	.LFB74
- 1339 02d4 68000000 		.4byte	.LFE74-.LFB74
- 1340 02d8 01       		.uleb128 0x1
- 1341 02d9 9C       		.byte	0x9c
- 1342 02da ED020000 		.4byte	0x2ed
- 1343 02de 0E       		.uleb128 0xe
- 1344 02df A9020000 		.4byte	.LASF47
- 1345 02e3 01       		.byte	0x1
- 1346 02e4 DB       		.byte	0xdb
- 1347 02e5 C0000000 		.4byte	0xc0
- 1348 02e9 02       		.uleb128 0x2
- 1349 02ea 91       		.byte	0x91
- 1350 02eb 76       		.sleb128 -10
- 1351 02ec 00       		.byte	0
- 1352 02ed 0F       		.uleb128 0xf
- 1353 02ee 16040000 		.4byte	.LASF48
- 1354 02f2 01       		.byte	0x1
- 1355 02f3 E8       		.byte	0xe8
- 1356 02f4 00000000 		.4byte	.LFB75
- 1357 02f8 68000000 		.4byte	.LFE75-.LFB75
- 1358 02fc 01       		.uleb128 0x1
- 1359 02fd 9C       		.byte	0x9c
- 1360 02fe 2D030000 		.4byte	0x32d
- 1361 0302 0E       		.uleb128 0xe
- 1362 0303 2C040000 		.4byte	.LASF49
- 1363 0307 01       		.byte	0x1
- 1364 0308 E9       		.byte	0xe9
- 1365 0309 A6010000 		.4byte	0x1a6
- 1366 030d 02       		.uleb128 0x2
- 1367 030e 91       		.byte	0x91
- 1368 030f 73       		.sleb128 -13
- 1369 0310 0E       		.uleb128 0xe
- 1370 0311 38040000 		.4byte	.LASF50
- 1371 0315 01       		.byte	0x1
- 1372 0316 EA       		.byte	0xea
- 1373 0317 A6010000 		.4byte	0x1a6
- 1374 031b 02       		.uleb128 0x2
- 1375 031c 91       		.byte	0x91
- 1376 031d 72       		.sleb128 -14
- 1377 031e 0E       		.uleb128 0xe
- 1378 031f 04010000 		.4byte	.LASF33
- 1379 0323 01       		.byte	0x1
- 1380 0324 EB       		.byte	0xeb
- 1381 0325 1D020000 		.4byte	0x21d
- 1382 0329 02       		.uleb128 0x2
- 1383 032a 91       		.byte	0x91
- 1384 032b 74       		.sleb128 -12
- 1385 032c 00       		.byte	0
- 1386 032d 12       		.uleb128 0x12
- 1387 032e 3D030000 		.4byte	0x33d
- 1388 0332 3D030000 		.4byte	0x33d
- 1389 0336 13       		.uleb128 0x13
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 30
+ 1395 0318 01       		.byte	0x1
+ 1396 0319 E0       		.byte	0xe0
+ 1397 031a 00000000 		.4byte	.LFB75
+ 1398 031e 68000000 		.4byte	.LFE75-.LFB75
+ 1399 0322 01       		.uleb128 0x1
+ 1400 0323 9C       		.byte	0x9c
+ 1401 0324 53030000 		.4byte	0x353
+ 1402 0328 0E       		.uleb128 0xe
+ 1403 0329 4C040000 		.4byte	.LASF51
+ 1404 032d 01       		.byte	0x1
+ 1405 032e E1       		.byte	0xe1
+ 1406 032f A6010000 		.4byte	0x1a6
+ 1407 0333 02       		.uleb128 0x2
+ 1408 0334 91       		.byte	0x91
+ 1409 0335 73       		.sleb128 -13
+ 1410 0336 0E       		.uleb128 0xe
+ 1411 0337 58040000 		.4byte	.LASF52
+ 1412 033b 01       		.byte	0x1
+ 1413 033c E2       		.byte	0xe2
+ 1414 033d A6010000 		.4byte	0x1a6
+ 1415 0341 02       		.uleb128 0x2
+ 1416 0342 91       		.byte	0x91
+ 1417 0343 72       		.sleb128 -14
+ 1418 0344 0E       		.uleb128 0xe
+ 1419 0345 17010000 		.4byte	.LASF33
+ 1420 0349 01       		.byte	0x1
+ 1421 034a E3       		.byte	0xe3
+ 1422 034b 1D020000 		.4byte	0x21d
+ 1423 034f 02       		.uleb128 0x2
+ 1424 0350 91       		.byte	0x91
+ 1425 0351 74       		.sleb128 -12
+ 1426 0352 00       		.byte	0
+ 1427 0353 13       		.uleb128 0x13
+ 1428 0354 63030000 		.4byte	0x363
+ 1429 0358 63030000 		.4byte	0x363
+ 1430 035c 14       		.uleb128 0x14
+ 1431 035d E1000000 		.4byte	0xe1
+ 1432 0361 02       		.byte	0x2
+ 1433 0362 00       		.byte	0
+ 1434 0363 10       		.uleb128 0x10
+ 1435 0364 B4000000 		.4byte	0xb4
+ 1436 0368 0E       		.uleb128 0xe
+ 1437 0369 71020000 		.4byte	.LASF53
+ 1438 036d 01       		.byte	0x1
+ 1439 036e 29       		.byte	0x29
+ 1440 036f 79030000 		.4byte	0x379
+ 1441 0373 05       		.uleb128 0x5
+ 1442 0374 03       		.byte	0x3
+ 1443 0375 10000000 		.4byte	pcTextForNutrientPump
+ 1444 0379 10       		.uleb128 0x10
+ 1445 037a 53030000 		.4byte	0x353
+ 1446 037e 15       		.uleb128 0x15
+ 1447 037f 11040000 		.4byte	.LASF54
+ 1448 0383 07       		.byte	0x7
+ 1449 0384 1207     		.2byte	0x712
+ 1450 0386 8A030000 		.4byte	0x38a
+ 1451 038a 16       		.uleb128 0x16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 31
 
 
- 1390 0337 E1000000 		.4byte	0xe1
- 1391 033b 02       		.byte	0x2
- 1392 033c 00       		.byte	0
- 1393 033d 10       		.uleb128 0x10
- 1394 033e B4000000 		.4byte	0xb4
- 1395 0342 0E       		.uleb128 0xe
- 1396 0343 64020000 		.4byte	.LASF51
- 1397 0347 01       		.byte	0x1
- 1398 0348 29       		.byte	0x29
- 1399 0349 53030000 		.4byte	0x353
- 1400 034d 05       		.uleb128 0x5
- 1401 034e 03       		.byte	0x3
- 1402 034f 10000000 		.4byte	pcTextForNutrientPump
- 1403 0353 10       		.uleb128 0x10
- 1404 0354 2D030000 		.4byte	0x32d
- 1405 0358 14       		.uleb128 0x14
- 1406 0359 F1030000 		.4byte	.LASF52
- 1407 035d 07       		.byte	0x7
- 1408 035e 1207     		.2byte	0x712
- 1409 0360 64030000 		.4byte	0x364
- 1410 0364 15       		.uleb128 0x15
- 1411 0365 9E000000 		.4byte	0x9e
- 1412 0369 16       		.uleb128 0x16
- 1413 036a 3F000000 		.4byte	.LASF53
- 1414 036e 01       		.byte	0x1
- 1415 036f 1A       		.byte	0x1a
- 1416 0370 7A030000 		.4byte	0x37a
- 1417 0374 05       		.uleb128 0x5
- 1418 0375 03       		.byte	0x3
- 1419 0376 00000000 		.4byte	iSizeOfNutrients
- 1420 037a 10       		.uleb128 0x10
- 1421 037b 25000000 		.4byte	0x25
- 1422 037f 12       		.uleb128 0x12
- 1423 0380 16010000 		.4byte	0x116
- 1424 0384 8F030000 		.4byte	0x38f
- 1425 0388 13       		.uleb128 0x13
- 1426 0389 E1000000 		.4byte	0xe1
- 1427 038d 27       		.byte	0x27
- 1428 038e 00       		.byte	0
- 1429 038f 16       		.uleb128 0x16
- 1430 0390 FE030000 		.4byte	.LASF54
- 1431 0394 01       		.byte	0x1
- 1432 0395 1B       		.byte	0x1b
- 1433 0396 7F030000 		.4byte	0x37f
- 1434 039a 05       		.uleb128 0x5
- 1435 039b 03       		.byte	0x3
- 1436 039c 00000000 		.4byte	currentNutrients
- 1437 03a0 16       		.uleb128 0x16
- 1438 03a1 40010000 		.4byte	.LASF55
- 1439 03a5 01       		.byte	0x1
- 1440 03a6 1C       		.byte	0x1c
- 1441 03a7 25000000 		.4byte	0x25
- 1442 03ab 05       		.uleb128 0x5
- 1443 03ac 03       		.byte	0x3
- 1444 03ad 00000000 		.4byte	iPHIndex
- 1445 03b1 16       		.uleb128 0x16
- 1446 03b2 F6020000 		.4byte	.LASF56
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 31
+ 1452 038b 9E000000 		.4byte	0x9e
+ 1453 038f 17       		.uleb128 0x17
+ 1454 0390 52000000 		.4byte	.LASF55
+ 1455 0394 01       		.byte	0x1
+ 1456 0395 1A       		.byte	0x1a
+ 1457 0396 A0030000 		.4byte	0x3a0
+ 1458 039a 05       		.uleb128 0x5
+ 1459 039b 03       		.byte	0x3
+ 1460 039c 00000000 		.4byte	iSizeOfNutrients
+ 1461 03a0 10       		.uleb128 0x10
+ 1462 03a1 25000000 		.4byte	0x25
+ 1463 03a5 13       		.uleb128 0x13
+ 1464 03a6 16010000 		.4byte	0x116
+ 1465 03aa B5030000 		.4byte	0x3b5
+ 1466 03ae 14       		.uleb128 0x14
+ 1467 03af E1000000 		.4byte	0xe1
+ 1468 03b3 27       		.byte	0x27
+ 1469 03b4 00       		.byte	0
+ 1470 03b5 17       		.uleb128 0x17
+ 1471 03b6 1E040000 		.4byte	.LASF56
+ 1472 03ba 01       		.byte	0x1
+ 1473 03bb 1B       		.byte	0x1b
+ 1474 03bc A5030000 		.4byte	0x3a5
+ 1475 03c0 05       		.uleb128 0x5
+ 1476 03c1 03       		.byte	0x3
+ 1477 03c2 00000000 		.4byte	currentNutrients
+ 1478 03c6 17       		.uleb128 0x17
+ 1479 03c7 53010000 		.4byte	.LASF57
+ 1480 03cb 01       		.byte	0x1
+ 1481 03cc 1C       		.byte	0x1c
+ 1482 03cd 25000000 		.4byte	0x25
+ 1483 03d1 05       		.uleb128 0x5
+ 1484 03d2 03       		.byte	0x3
+ 1485 03d3 00000000 		.4byte	iPHIndex
+ 1486 03d7 17       		.uleb128 0x17
+ 1487 03d8 03030000 		.4byte	.LASF58
+ 1488 03dc 01       		.byte	0x1
+ 1489 03dd 1D       		.byte	0x1d
+ 1490 03de 25000000 		.4byte	0x25
+ 1491 03e2 05       		.uleb128 0x5
+ 1492 03e3 03       		.byte	0x3
+ 1493 03e4 00000000 		.4byte	iECIndex
+ 1494 03e8 17       		.uleb128 0x17
+ 1495 03e9 3C030000 		.4byte	.LASF59
+ 1496 03ed 01       		.byte	0x1
+ 1497 03ee 1E       		.byte	0x1e
+ 1498 03ef 25000000 		.4byte	0x25
+ 1499 03f3 05       		.uleb128 0x5
+ 1500 03f4 03       		.byte	0x3
+ 1501 03f5 00000000 		.4byte	iWateTempIndex
+ 1502 03f9 17       		.uleb128 0x17
+ 1503 03fa 1C000000 		.4byte	.LASF60
+ 1504 03fe 01       		.byte	0x1
+ 1505 03ff 20       		.byte	0x20
+ 1506 0400 0A040000 		.4byte	0x40a
+ 1507 0404 05       		.uleb128 0x5
+ 1508 0405 03       		.byte	0x3
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 32
 
 
- 1447 03b6 01       		.byte	0x1
- 1448 03b7 1D       		.byte	0x1d
- 1449 03b8 25000000 		.4byte	0x25
- 1450 03bc 05       		.uleb128 0x5
- 1451 03bd 03       		.byte	0x3
- 1452 03be 00000000 		.4byte	iECIndex
- 1453 03c2 16       		.uleb128 0x16
- 1454 03c3 2F030000 		.4byte	.LASF57
- 1455 03c7 01       		.byte	0x1
- 1456 03c8 1E       		.byte	0x1e
- 1457 03c9 25000000 		.4byte	0x25
- 1458 03cd 05       		.uleb128 0x5
- 1459 03ce 03       		.byte	0x3
- 1460 03cf 00000000 		.4byte	iWateTempIndex
- 1461 03d3 16       		.uleb128 0x16
- 1462 03d4 1C000000 		.4byte	.LASF58
- 1463 03d8 01       		.byte	0x1
- 1464 03d9 20       		.byte	0x20
- 1465 03da E4030000 		.4byte	0x3e4
- 1466 03de 05       		.uleb128 0x5
- 1467 03df 03       		.byte	0x3
- 1468 03e0 00000000 		.4byte	fNeutralVoltage
- 1469 03e4 10       		.uleb128 0x10
- 1470 03e5 CC000000 		.4byte	0xcc
- 1471 03e9 16       		.uleb128 0x16
- 1472 03ea B7010000 		.4byte	.LASF59
- 1473 03ee 01       		.byte	0x1
- 1474 03ef 21       		.byte	0x21
- 1475 03f0 E4030000 		.4byte	0x3e4
- 1476 03f4 05       		.uleb128 0x5
- 1477 03f5 03       		.byte	0x3
- 1478 03f6 00000000 		.4byte	fAcidVoltage
- 1479 03fa 12       		.uleb128 0x12
- 1480 03fb 00010000 		.4byte	0x100
- 1481 03ff 0A040000 		.4byte	0x40a
- 1482 0403 13       		.uleb128 0x13
- 1483 0404 E1000000 		.4byte	0xe1
- 1484 0408 02       		.byte	0x2
- 1485 0409 00       		.byte	0
- 1486 040a 16       		.uleb128 0x16
- 1487 040b E6000000 		.4byte	.LASF60
- 1488 040f 01       		.byte	0x1
- 1489 0410 23       		.byte	0x23
- 1490 0411 FA030000 		.4byte	0x3fa
- 1491 0415 05       		.uleb128 0x5
- 1492 0416 03       		.byte	0x3
- 1493 0417 00000000 		.4byte	xQueueNutrientPump
- 1494 041b 16       		.uleb128 0x16
- 1495 041c DC010000 		.4byte	.LASF61
- 1496 0420 01       		.byte	0x1
- 1497 0421 24       		.byte	0x24
- 1498 0422 00010000 		.4byte	0x100
- 1499 0426 05       		.uleb128 0x5
- 1500 0427 03       		.byte	0x3
- 1501 0428 00000000 		.4byte	xQueuePHValue
- 1502 042c 16       		.uleb128 0x16
- 1503 042d BC030000 		.4byte	.LASF62
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 32
+ 1509 0406 00000000 		.4byte	fNeutralVoltage
+ 1510 040a 10       		.uleb128 0x10
+ 1511 040b CC000000 		.4byte	0xcc
+ 1512 040f 17       		.uleb128 0x17
+ 1513 0410 C4010000 		.4byte	.LASF61
+ 1514 0414 01       		.byte	0x1
+ 1515 0415 21       		.byte	0x21
+ 1516 0416 0A040000 		.4byte	0x40a
+ 1517 041a 05       		.uleb128 0x5
+ 1518 041b 03       		.byte	0x3
+ 1519 041c 00000000 		.4byte	fAcidVoltage
+ 1520 0420 13       		.uleb128 0x13
+ 1521 0421 00010000 		.4byte	0x100
+ 1522 0425 30040000 		.4byte	0x430
+ 1523 0429 14       		.uleb128 0x14
+ 1524 042a E1000000 		.4byte	0xe1
+ 1525 042e 02       		.byte	0x2
+ 1526 042f 00       		.byte	0
+ 1527 0430 17       		.uleb128 0x17
+ 1528 0431 F9000000 		.4byte	.LASF62
+ 1529 0435 01       		.byte	0x1
+ 1530 0436 23       		.byte	0x23
+ 1531 0437 20040000 		.4byte	0x420
+ 1532 043b 05       		.uleb128 0x5
+ 1533 043c 03       		.byte	0x3
+ 1534 043d 00000000 		.4byte	xQueueNutrientPump
+ 1535 0441 17       		.uleb128 0x17
+ 1536 0442 E9010000 		.4byte	.LASF63
+ 1537 0446 01       		.byte	0x1
+ 1538 0447 24       		.byte	0x24
+ 1539 0448 00010000 		.4byte	0x100
+ 1540 044c 05       		.uleb128 0x5
+ 1541 044d 03       		.byte	0x3
+ 1542 044e 00000000 		.4byte	xQueuePHValue
+ 1543 0452 17       		.uleb128 0x17
+ 1544 0453 DC030000 		.4byte	.LASF64
+ 1545 0457 01       		.byte	0x1
+ 1546 0458 27       		.byte	0x27
+ 1547 0459 63030000 		.4byte	0x363
+ 1548 045d 05       		.uleb128 0x5
+ 1549 045e 03       		.byte	0x3
+ 1550 045f 00000000 		.4byte	MAX_SPEED
+ 1551 0463 17       		.uleb128 0x17
+ 1552 0464 AB020000 		.4byte	.LASF65
+ 1553 0468 01       		.byte	0x1
+ 1554 0469 28       		.byte	0x28
+ 1555 046a 63030000 		.4byte	0x363
+ 1556 046e 05       		.uleb128 0x5
+ 1557 046f 03       		.byte	0x3
+ 1558 0470 00000000 		.4byte	STOP_SPEED
+ 1559 0474 00       		.byte	0
+ 1560              		.section	.debug_abbrev,"",%progbits
+ 1561              	.Ldebug_abbrev0:
+ 1562 0000 01       		.uleb128 0x1
+ 1563 0001 11       		.uleb128 0x11
+ 1564 0002 01       		.byte	0x1
+ 1565 0003 25       		.uleb128 0x25
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 33
 
 
- 1504 0431 01       		.byte	0x1
- 1505 0432 27       		.byte	0x27
- 1506 0433 3D030000 		.4byte	0x33d
- 1507 0437 05       		.uleb128 0x5
- 1508 0438 03       		.byte	0x3
- 1509 0439 00000000 		.4byte	MAX_SPEED
- 1510 043d 16       		.uleb128 0x16
- 1511 043e 9E020000 		.4byte	.LASF63
- 1512 0442 01       		.byte	0x1
- 1513 0443 28       		.byte	0x28
- 1514 0444 3D030000 		.4byte	0x33d
- 1515 0448 05       		.uleb128 0x5
- 1516 0449 03       		.byte	0x3
- 1517 044a 00000000 		.4byte	STOP_SPEED
- 1518 044e 00       		.byte	0
- 1519              		.section	.debug_abbrev,"",%progbits
- 1520              	.Ldebug_abbrev0:
- 1521 0000 01       		.uleb128 0x1
- 1522 0001 11       		.uleb128 0x11
- 1523 0002 01       		.byte	0x1
- 1524 0003 25       		.uleb128 0x25
- 1525 0004 0E       		.uleb128 0xe
- 1526 0005 13       		.uleb128 0x13
- 1527 0006 0B       		.uleb128 0xb
- 1528 0007 03       		.uleb128 0x3
- 1529 0008 0E       		.uleb128 0xe
- 1530 0009 1B       		.uleb128 0x1b
- 1531 000a 0E       		.uleb128 0xe
- 1532 000b 55       		.uleb128 0x55
- 1533 000c 17       		.uleb128 0x17
- 1534 000d 11       		.uleb128 0x11
- 1535 000e 01       		.uleb128 0x1
- 1536 000f 10       		.uleb128 0x10
- 1537 0010 17       		.uleb128 0x17
- 1538 0011 00       		.byte	0
- 1539 0012 00       		.byte	0
- 1540 0013 02       		.uleb128 0x2
- 1541 0014 24       		.uleb128 0x24
- 1542 0015 00       		.byte	0
- 1543 0016 0B       		.uleb128 0xb
- 1544 0017 0B       		.uleb128 0xb
- 1545 0018 3E       		.uleb128 0x3e
- 1546 0019 0B       		.uleb128 0xb
- 1547 001a 03       		.uleb128 0x3
- 1548 001b 08       		.uleb128 0x8
- 1549 001c 00       		.byte	0
- 1550 001d 00       		.byte	0
- 1551 001e 03       		.uleb128 0x3
- 1552 001f 24       		.uleb128 0x24
- 1553 0020 00       		.byte	0
- 1554 0021 0B       		.uleb128 0xb
- 1555 0022 0B       		.uleb128 0xb
- 1556 0023 3E       		.uleb128 0x3e
- 1557 0024 0B       		.uleb128 0xb
- 1558 0025 03       		.uleb128 0x3
- 1559 0026 0E       		.uleb128 0xe
- 1560 0027 00       		.byte	0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 33
+ 1566 0004 0E       		.uleb128 0xe
+ 1567 0005 13       		.uleb128 0x13
+ 1568 0006 0B       		.uleb128 0xb
+ 1569 0007 03       		.uleb128 0x3
+ 1570 0008 0E       		.uleb128 0xe
+ 1571 0009 1B       		.uleb128 0x1b
+ 1572 000a 0E       		.uleb128 0xe
+ 1573 000b 55       		.uleb128 0x55
+ 1574 000c 17       		.uleb128 0x17
+ 1575 000d 11       		.uleb128 0x11
+ 1576 000e 01       		.uleb128 0x1
+ 1577 000f 10       		.uleb128 0x10
+ 1578 0010 17       		.uleb128 0x17
+ 1579 0011 00       		.byte	0
+ 1580 0012 00       		.byte	0
+ 1581 0013 02       		.uleb128 0x2
+ 1582 0014 24       		.uleb128 0x24
+ 1583 0015 00       		.byte	0
+ 1584 0016 0B       		.uleb128 0xb
+ 1585 0017 0B       		.uleb128 0xb
+ 1586 0018 3E       		.uleb128 0x3e
+ 1587 0019 0B       		.uleb128 0xb
+ 1588 001a 03       		.uleb128 0x3
+ 1589 001b 08       		.uleb128 0x8
+ 1590 001c 00       		.byte	0
+ 1591 001d 00       		.byte	0
+ 1592 001e 03       		.uleb128 0x3
+ 1593 001f 24       		.uleb128 0x24
+ 1594 0020 00       		.byte	0
+ 1595 0021 0B       		.uleb128 0xb
+ 1596 0022 0B       		.uleb128 0xb
+ 1597 0023 3E       		.uleb128 0x3e
+ 1598 0024 0B       		.uleb128 0xb
+ 1599 0025 03       		.uleb128 0x3
+ 1600 0026 0E       		.uleb128 0xe
+ 1601 0027 00       		.byte	0
+ 1602 0028 00       		.byte	0
+ 1603 0029 04       		.uleb128 0x4
+ 1604 002a 16       		.uleb128 0x16
+ 1605 002b 00       		.byte	0
+ 1606 002c 03       		.uleb128 0x3
+ 1607 002d 0E       		.uleb128 0xe
+ 1608 002e 3A       		.uleb128 0x3a
+ 1609 002f 0B       		.uleb128 0xb
+ 1610 0030 3B       		.uleb128 0x3b
+ 1611 0031 0B       		.uleb128 0xb
+ 1612 0032 49       		.uleb128 0x49
+ 1613 0033 13       		.uleb128 0x13
+ 1614 0034 00       		.byte	0
+ 1615 0035 00       		.byte	0
+ 1616 0036 05       		.uleb128 0x5
+ 1617 0037 16       		.uleb128 0x16
+ 1618 0038 00       		.byte	0
+ 1619 0039 03       		.uleb128 0x3
+ 1620 003a 0E       		.uleb128 0xe
+ 1621 003b 3A       		.uleb128 0x3a
+ 1622 003c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 34
 
 
- 1561 0028 00       		.byte	0
- 1562 0029 04       		.uleb128 0x4
- 1563 002a 16       		.uleb128 0x16
- 1564 002b 00       		.byte	0
- 1565 002c 03       		.uleb128 0x3
- 1566 002d 0E       		.uleb128 0xe
- 1567 002e 3A       		.uleb128 0x3a
- 1568 002f 0B       		.uleb128 0xb
- 1569 0030 3B       		.uleb128 0x3b
- 1570 0031 0B       		.uleb128 0xb
- 1571 0032 49       		.uleb128 0x49
- 1572 0033 13       		.uleb128 0x13
- 1573 0034 00       		.byte	0
- 1574 0035 00       		.byte	0
- 1575 0036 05       		.uleb128 0x5
- 1576 0037 16       		.uleb128 0x16
- 1577 0038 00       		.byte	0
- 1578 0039 03       		.uleb128 0x3
- 1579 003a 0E       		.uleb128 0xe
- 1580 003b 3A       		.uleb128 0x3a
- 1581 003c 0B       		.uleb128 0xb
- 1582 003d 3B       		.uleb128 0x3b
- 1583 003e 05       		.uleb128 0x5
- 1584 003f 49       		.uleb128 0x49
- 1585 0040 13       		.uleb128 0x13
- 1586 0041 00       		.byte	0
- 1587 0042 00       		.byte	0
- 1588 0043 06       		.uleb128 0x6
- 1589 0044 0F       		.uleb128 0xf
- 1590 0045 00       		.byte	0
- 1591 0046 0B       		.uleb128 0xb
- 1592 0047 0B       		.uleb128 0xb
- 1593 0048 00       		.byte	0
- 1594 0049 00       		.byte	0
- 1595 004a 07       		.uleb128 0x7
- 1596 004b 0F       		.uleb128 0xf
- 1597 004c 00       		.byte	0
- 1598 004d 0B       		.uleb128 0xb
- 1599 004e 0B       		.uleb128 0xb
- 1600 004f 49       		.uleb128 0x49
- 1601 0050 13       		.uleb128 0x13
- 1602 0051 00       		.byte	0
- 1603 0052 00       		.byte	0
- 1604 0053 08       		.uleb128 0x8
- 1605 0054 13       		.uleb128 0x13
- 1606 0055 00       		.byte	0
- 1607 0056 03       		.uleb128 0x3
- 1608 0057 0E       		.uleb128 0xe
- 1609 0058 3C       		.uleb128 0x3c
- 1610 0059 19       		.uleb128 0x19
- 1611 005a 00       		.byte	0
- 1612 005b 00       		.byte	0
- 1613 005c 09       		.uleb128 0x9
- 1614 005d 13       		.uleb128 0x13
- 1615 005e 01       		.byte	0x1
- 1616 005f 03       		.uleb128 0x3
- 1617 0060 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 34
+ 1623 003d 3B       		.uleb128 0x3b
+ 1624 003e 05       		.uleb128 0x5
+ 1625 003f 49       		.uleb128 0x49
+ 1626 0040 13       		.uleb128 0x13
+ 1627 0041 00       		.byte	0
+ 1628 0042 00       		.byte	0
+ 1629 0043 06       		.uleb128 0x6
+ 1630 0044 0F       		.uleb128 0xf
+ 1631 0045 00       		.byte	0
+ 1632 0046 0B       		.uleb128 0xb
+ 1633 0047 0B       		.uleb128 0xb
+ 1634 0048 00       		.byte	0
+ 1635 0049 00       		.byte	0
+ 1636 004a 07       		.uleb128 0x7
+ 1637 004b 0F       		.uleb128 0xf
+ 1638 004c 00       		.byte	0
+ 1639 004d 0B       		.uleb128 0xb
+ 1640 004e 0B       		.uleb128 0xb
+ 1641 004f 49       		.uleb128 0x49
+ 1642 0050 13       		.uleb128 0x13
+ 1643 0051 00       		.byte	0
+ 1644 0052 00       		.byte	0
+ 1645 0053 08       		.uleb128 0x8
+ 1646 0054 13       		.uleb128 0x13
+ 1647 0055 00       		.byte	0
+ 1648 0056 03       		.uleb128 0x3
+ 1649 0057 0E       		.uleb128 0xe
+ 1650 0058 3C       		.uleb128 0x3c
+ 1651 0059 19       		.uleb128 0x19
+ 1652 005a 00       		.byte	0
+ 1653 005b 00       		.byte	0
+ 1654 005c 09       		.uleb128 0x9
+ 1655 005d 13       		.uleb128 0x13
+ 1656 005e 01       		.byte	0x1
+ 1657 005f 03       		.uleb128 0x3
+ 1658 0060 0E       		.uleb128 0xe
+ 1659 0061 0B       		.uleb128 0xb
+ 1660 0062 0B       		.uleb128 0xb
+ 1661 0063 3A       		.uleb128 0x3a
+ 1662 0064 0B       		.uleb128 0xb
+ 1663 0065 3B       		.uleb128 0x3b
+ 1664 0066 0B       		.uleb128 0xb
+ 1665 0067 01       		.uleb128 0x1
+ 1666 0068 13       		.uleb128 0x13
+ 1667 0069 00       		.byte	0
+ 1668 006a 00       		.byte	0
+ 1669 006b 0A       		.uleb128 0xa
+ 1670 006c 0D       		.uleb128 0xd
+ 1671 006d 00       		.byte	0
+ 1672 006e 03       		.uleb128 0x3
+ 1673 006f 0E       		.uleb128 0xe
+ 1674 0070 3A       		.uleb128 0x3a
+ 1675 0071 0B       		.uleb128 0xb
+ 1676 0072 3B       		.uleb128 0x3b
+ 1677 0073 0B       		.uleb128 0xb
+ 1678 0074 49       		.uleb128 0x49
+ 1679 0075 13       		.uleb128 0x13
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 35
 
 
- 1618 0061 0B       		.uleb128 0xb
- 1619 0062 0B       		.uleb128 0xb
- 1620 0063 3A       		.uleb128 0x3a
- 1621 0064 0B       		.uleb128 0xb
- 1622 0065 3B       		.uleb128 0x3b
- 1623 0066 0B       		.uleb128 0xb
- 1624 0067 01       		.uleb128 0x1
- 1625 0068 13       		.uleb128 0x13
- 1626 0069 00       		.byte	0
- 1627 006a 00       		.byte	0
- 1628 006b 0A       		.uleb128 0xa
- 1629 006c 0D       		.uleb128 0xd
- 1630 006d 00       		.byte	0
- 1631 006e 03       		.uleb128 0x3
- 1632 006f 0E       		.uleb128 0xe
- 1633 0070 3A       		.uleb128 0x3a
- 1634 0071 0B       		.uleb128 0xb
- 1635 0072 3B       		.uleb128 0x3b
- 1636 0073 0B       		.uleb128 0xb
- 1637 0074 49       		.uleb128 0x49
- 1638 0075 13       		.uleb128 0x13
- 1639 0076 38       		.uleb128 0x38
- 1640 0077 0B       		.uleb128 0xb
- 1641 0078 00       		.byte	0
- 1642 0079 00       		.byte	0
- 1643 007a 0B       		.uleb128 0xb
- 1644 007b 2E       		.uleb128 0x2e
- 1645 007c 00       		.byte	0
- 1646 007d 3F       		.uleb128 0x3f
- 1647 007e 19       		.uleb128 0x19
- 1648 007f 03       		.uleb128 0x3
- 1649 0080 0E       		.uleb128 0xe
- 1650 0081 3A       		.uleb128 0x3a
- 1651 0082 0B       		.uleb128 0xb
- 1652 0083 3B       		.uleb128 0x3b
- 1653 0084 0B       		.uleb128 0xb
- 1654 0085 11       		.uleb128 0x11
- 1655 0086 01       		.uleb128 0x1
- 1656 0087 12       		.uleb128 0x12
- 1657 0088 06       		.uleb128 0x6
- 1658 0089 40       		.uleb128 0x40
- 1659 008a 18       		.uleb128 0x18
- 1660 008b 9642     		.uleb128 0x2116
- 1661 008d 19       		.uleb128 0x19
- 1662 008e 00       		.byte	0
- 1663 008f 00       		.byte	0
- 1664 0090 0C       		.uleb128 0xc
- 1665 0091 2E       		.uleb128 0x2e
- 1666 0092 01       		.byte	0x1
- 1667 0093 3F       		.uleb128 0x3f
- 1668 0094 19       		.uleb128 0x19
- 1669 0095 03       		.uleb128 0x3
- 1670 0096 0E       		.uleb128 0xe
- 1671 0097 3A       		.uleb128 0x3a
- 1672 0098 0B       		.uleb128 0xb
- 1673 0099 3B       		.uleb128 0x3b
- 1674 009a 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 35
+ 1680 0076 38       		.uleb128 0x38
+ 1681 0077 0B       		.uleb128 0xb
+ 1682 0078 00       		.byte	0
+ 1683 0079 00       		.byte	0
+ 1684 007a 0B       		.uleb128 0xb
+ 1685 007b 2E       		.uleb128 0x2e
+ 1686 007c 00       		.byte	0
+ 1687 007d 3F       		.uleb128 0x3f
+ 1688 007e 19       		.uleb128 0x19
+ 1689 007f 03       		.uleb128 0x3
+ 1690 0080 0E       		.uleb128 0xe
+ 1691 0081 3A       		.uleb128 0x3a
+ 1692 0082 0B       		.uleb128 0xb
+ 1693 0083 3B       		.uleb128 0x3b
+ 1694 0084 0B       		.uleb128 0xb
+ 1695 0085 11       		.uleb128 0x11
+ 1696 0086 01       		.uleb128 0x1
+ 1697 0087 12       		.uleb128 0x12
+ 1698 0088 06       		.uleb128 0x6
+ 1699 0089 40       		.uleb128 0x40
+ 1700 008a 18       		.uleb128 0x18
+ 1701 008b 9642     		.uleb128 0x2116
+ 1702 008d 19       		.uleb128 0x19
+ 1703 008e 00       		.byte	0
+ 1704 008f 00       		.byte	0
+ 1705 0090 0C       		.uleb128 0xc
+ 1706 0091 2E       		.uleb128 0x2e
+ 1707 0092 01       		.byte	0x1
+ 1708 0093 3F       		.uleb128 0x3f
+ 1709 0094 19       		.uleb128 0x19
+ 1710 0095 03       		.uleb128 0x3
+ 1711 0096 0E       		.uleb128 0xe
+ 1712 0097 3A       		.uleb128 0x3a
+ 1713 0098 0B       		.uleb128 0xb
+ 1714 0099 3B       		.uleb128 0x3b
+ 1715 009a 0B       		.uleb128 0xb
+ 1716 009b 27       		.uleb128 0x27
+ 1717 009c 19       		.uleb128 0x19
+ 1718 009d 11       		.uleb128 0x11
+ 1719 009e 01       		.uleb128 0x1
+ 1720 009f 12       		.uleb128 0x12
+ 1721 00a0 06       		.uleb128 0x6
+ 1722 00a1 40       		.uleb128 0x40
+ 1723 00a2 18       		.uleb128 0x18
+ 1724 00a3 9642     		.uleb128 0x2116
+ 1725 00a5 19       		.uleb128 0x19
+ 1726 00a6 01       		.uleb128 0x1
+ 1727 00a7 13       		.uleb128 0x13
+ 1728 00a8 00       		.byte	0
+ 1729 00a9 00       		.byte	0
+ 1730 00aa 0D       		.uleb128 0xd
+ 1731 00ab 05       		.uleb128 0x5
+ 1732 00ac 00       		.byte	0
+ 1733 00ad 03       		.uleb128 0x3
+ 1734 00ae 0E       		.uleb128 0xe
+ 1735 00af 3A       		.uleb128 0x3a
+ 1736 00b0 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 36
 
 
- 1675 009b 27       		.uleb128 0x27
- 1676 009c 19       		.uleb128 0x19
- 1677 009d 11       		.uleb128 0x11
- 1678 009e 01       		.uleb128 0x1
- 1679 009f 12       		.uleb128 0x12
- 1680 00a0 06       		.uleb128 0x6
- 1681 00a1 40       		.uleb128 0x40
- 1682 00a2 18       		.uleb128 0x18
- 1683 00a3 9642     		.uleb128 0x2116
- 1684 00a5 19       		.uleb128 0x19
- 1685 00a6 01       		.uleb128 0x1
- 1686 00a7 13       		.uleb128 0x13
- 1687 00a8 00       		.byte	0
- 1688 00a9 00       		.byte	0
- 1689 00aa 0D       		.uleb128 0xd
- 1690 00ab 05       		.uleb128 0x5
- 1691 00ac 00       		.byte	0
- 1692 00ad 03       		.uleb128 0x3
- 1693 00ae 0E       		.uleb128 0xe
- 1694 00af 3A       		.uleb128 0x3a
- 1695 00b0 0B       		.uleb128 0xb
- 1696 00b1 3B       		.uleb128 0x3b
- 1697 00b2 0B       		.uleb128 0xb
- 1698 00b3 49       		.uleb128 0x49
- 1699 00b4 13       		.uleb128 0x13
- 1700 00b5 02       		.uleb128 0x2
- 1701 00b6 18       		.uleb128 0x18
- 1702 00b7 00       		.byte	0
- 1703 00b8 00       		.byte	0
- 1704 00b9 0E       		.uleb128 0xe
- 1705 00ba 34       		.uleb128 0x34
- 1706 00bb 00       		.byte	0
- 1707 00bc 03       		.uleb128 0x3
- 1708 00bd 0E       		.uleb128 0xe
- 1709 00be 3A       		.uleb128 0x3a
- 1710 00bf 0B       		.uleb128 0xb
- 1711 00c0 3B       		.uleb128 0x3b
- 1712 00c1 0B       		.uleb128 0xb
- 1713 00c2 49       		.uleb128 0x49
- 1714 00c3 13       		.uleb128 0x13
- 1715 00c4 02       		.uleb128 0x2
- 1716 00c5 18       		.uleb128 0x18
- 1717 00c6 00       		.byte	0
- 1718 00c7 00       		.byte	0
- 1719 00c8 0F       		.uleb128 0xf
- 1720 00c9 2E       		.uleb128 0x2e
- 1721 00ca 01       		.byte	0x1
- 1722 00cb 3F       		.uleb128 0x3f
- 1723 00cc 19       		.uleb128 0x19
- 1724 00cd 03       		.uleb128 0x3
- 1725 00ce 0E       		.uleb128 0xe
- 1726 00cf 3A       		.uleb128 0x3a
- 1727 00d0 0B       		.uleb128 0xb
- 1728 00d1 3B       		.uleb128 0x3b
- 1729 00d2 0B       		.uleb128 0xb
- 1730 00d3 11       		.uleb128 0x11
- 1731 00d4 01       		.uleb128 0x1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 36
+ 1737 00b1 3B       		.uleb128 0x3b
+ 1738 00b2 0B       		.uleb128 0xb
+ 1739 00b3 49       		.uleb128 0x49
+ 1740 00b4 13       		.uleb128 0x13
+ 1741 00b5 02       		.uleb128 0x2
+ 1742 00b6 18       		.uleb128 0x18
+ 1743 00b7 00       		.byte	0
+ 1744 00b8 00       		.byte	0
+ 1745 00b9 0E       		.uleb128 0xe
+ 1746 00ba 34       		.uleb128 0x34
+ 1747 00bb 00       		.byte	0
+ 1748 00bc 03       		.uleb128 0x3
+ 1749 00bd 0E       		.uleb128 0xe
+ 1750 00be 3A       		.uleb128 0x3a
+ 1751 00bf 0B       		.uleb128 0xb
+ 1752 00c0 3B       		.uleb128 0x3b
+ 1753 00c1 0B       		.uleb128 0xb
+ 1754 00c2 49       		.uleb128 0x49
+ 1755 00c3 13       		.uleb128 0x13
+ 1756 00c4 02       		.uleb128 0x2
+ 1757 00c5 18       		.uleb128 0x18
+ 1758 00c6 00       		.byte	0
+ 1759 00c7 00       		.byte	0
+ 1760 00c8 0F       		.uleb128 0xf
+ 1761 00c9 2E       		.uleb128 0x2e
+ 1762 00ca 01       		.byte	0x1
+ 1763 00cb 3F       		.uleb128 0x3f
+ 1764 00cc 19       		.uleb128 0x19
+ 1765 00cd 03       		.uleb128 0x3
+ 1766 00ce 0E       		.uleb128 0xe
+ 1767 00cf 3A       		.uleb128 0x3a
+ 1768 00d0 0B       		.uleb128 0xb
+ 1769 00d1 3B       		.uleb128 0x3b
+ 1770 00d2 0B       		.uleb128 0xb
+ 1771 00d3 11       		.uleb128 0x11
+ 1772 00d4 01       		.uleb128 0x1
+ 1773 00d5 12       		.uleb128 0x12
+ 1774 00d6 06       		.uleb128 0x6
+ 1775 00d7 40       		.uleb128 0x40
+ 1776 00d8 18       		.uleb128 0x18
+ 1777 00d9 9642     		.uleb128 0x2116
+ 1778 00db 19       		.uleb128 0x19
+ 1779 00dc 01       		.uleb128 0x1
+ 1780 00dd 13       		.uleb128 0x13
+ 1781 00de 00       		.byte	0
+ 1782 00df 00       		.byte	0
+ 1783 00e0 10       		.uleb128 0x10
+ 1784 00e1 26       		.uleb128 0x26
+ 1785 00e2 00       		.byte	0
+ 1786 00e3 49       		.uleb128 0x49
+ 1787 00e4 13       		.uleb128 0x13
+ 1788 00e5 00       		.byte	0
+ 1789 00e6 00       		.byte	0
+ 1790 00e7 11       		.uleb128 0x11
+ 1791 00e8 2E       		.uleb128 0x2e
+ 1792 00e9 01       		.byte	0x1
+ 1793 00ea 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 37
 
 
- 1732 00d5 12       		.uleb128 0x12
- 1733 00d6 06       		.uleb128 0x6
- 1734 00d7 40       		.uleb128 0x40
- 1735 00d8 18       		.uleb128 0x18
- 1736 00d9 9642     		.uleb128 0x2116
- 1737 00db 19       		.uleb128 0x19
- 1738 00dc 01       		.uleb128 0x1
- 1739 00dd 13       		.uleb128 0x13
- 1740 00de 00       		.byte	0
- 1741 00df 00       		.byte	0
- 1742 00e0 10       		.uleb128 0x10
- 1743 00e1 26       		.uleb128 0x26
- 1744 00e2 00       		.byte	0
- 1745 00e3 49       		.uleb128 0x49
- 1746 00e4 13       		.uleb128 0x13
- 1747 00e5 00       		.byte	0
- 1748 00e6 00       		.byte	0
- 1749 00e7 11       		.uleb128 0x11
- 1750 00e8 2E       		.uleb128 0x2e
- 1751 00e9 01       		.byte	0x1
- 1752 00ea 3F       		.uleb128 0x3f
- 1753 00eb 19       		.uleb128 0x19
- 1754 00ec 03       		.uleb128 0x3
- 1755 00ed 0E       		.uleb128 0xe
- 1756 00ee 3A       		.uleb128 0x3a
- 1757 00ef 0B       		.uleb128 0xb
- 1758 00f0 3B       		.uleb128 0x3b
- 1759 00f1 0B       		.uleb128 0xb
- 1760 00f2 27       		.uleb128 0x27
- 1761 00f3 19       		.uleb128 0x19
- 1762 00f4 49       		.uleb128 0x49
- 1763 00f5 13       		.uleb128 0x13
- 1764 00f6 11       		.uleb128 0x11
- 1765 00f7 01       		.uleb128 0x1
- 1766 00f8 12       		.uleb128 0x12
- 1767 00f9 06       		.uleb128 0x6
- 1768 00fa 40       		.uleb128 0x40
- 1769 00fb 18       		.uleb128 0x18
- 1770 00fc 9642     		.uleb128 0x2116
- 1771 00fe 19       		.uleb128 0x19
- 1772 00ff 01       		.uleb128 0x1
- 1773 0100 13       		.uleb128 0x13
- 1774 0101 00       		.byte	0
- 1775 0102 00       		.byte	0
- 1776 0103 12       		.uleb128 0x12
- 1777 0104 01       		.uleb128 0x1
- 1778 0105 01       		.byte	0x1
- 1779 0106 49       		.uleb128 0x49
- 1780 0107 13       		.uleb128 0x13
- 1781 0108 01       		.uleb128 0x1
- 1782 0109 13       		.uleb128 0x13
- 1783 010a 00       		.byte	0
- 1784 010b 00       		.byte	0
- 1785 010c 13       		.uleb128 0x13
- 1786 010d 21       		.uleb128 0x21
- 1787 010e 00       		.byte	0
- 1788 010f 49       		.uleb128 0x49
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 37
+ 1794 00eb 19       		.uleb128 0x19
+ 1795 00ec 03       		.uleb128 0x3
+ 1796 00ed 0E       		.uleb128 0xe
+ 1797 00ee 3A       		.uleb128 0x3a
+ 1798 00ef 0B       		.uleb128 0xb
+ 1799 00f0 3B       		.uleb128 0x3b
+ 1800 00f1 0B       		.uleb128 0xb
+ 1801 00f2 27       		.uleb128 0x27
+ 1802 00f3 19       		.uleb128 0x19
+ 1803 00f4 49       		.uleb128 0x49
+ 1804 00f5 13       		.uleb128 0x13
+ 1805 00f6 11       		.uleb128 0x11
+ 1806 00f7 01       		.uleb128 0x1
+ 1807 00f8 12       		.uleb128 0x12
+ 1808 00f9 06       		.uleb128 0x6
+ 1809 00fa 40       		.uleb128 0x40
+ 1810 00fb 18       		.uleb128 0x18
+ 1811 00fc 9642     		.uleb128 0x2116
+ 1812 00fe 19       		.uleb128 0x19
+ 1813 00ff 01       		.uleb128 0x1
+ 1814 0100 13       		.uleb128 0x13
+ 1815 0101 00       		.byte	0
+ 1816 0102 00       		.byte	0
+ 1817 0103 12       		.uleb128 0x12
+ 1818 0104 0B       		.uleb128 0xb
+ 1819 0105 01       		.byte	0x1
+ 1820 0106 11       		.uleb128 0x11
+ 1821 0107 01       		.uleb128 0x1
+ 1822 0108 12       		.uleb128 0x12
+ 1823 0109 06       		.uleb128 0x6
+ 1824 010a 00       		.byte	0
+ 1825 010b 00       		.byte	0
+ 1826 010c 13       		.uleb128 0x13
+ 1827 010d 01       		.uleb128 0x1
+ 1828 010e 01       		.byte	0x1
+ 1829 010f 49       		.uleb128 0x49
+ 1830 0110 13       		.uleb128 0x13
+ 1831 0111 01       		.uleb128 0x1
+ 1832 0112 13       		.uleb128 0x13
+ 1833 0113 00       		.byte	0
+ 1834 0114 00       		.byte	0
+ 1835 0115 14       		.uleb128 0x14
+ 1836 0116 21       		.uleb128 0x21
+ 1837 0117 00       		.byte	0
+ 1838 0118 49       		.uleb128 0x49
+ 1839 0119 13       		.uleb128 0x13
+ 1840 011a 2F       		.uleb128 0x2f
+ 1841 011b 0B       		.uleb128 0xb
+ 1842 011c 00       		.byte	0
+ 1843 011d 00       		.byte	0
+ 1844 011e 15       		.uleb128 0x15
+ 1845 011f 34       		.uleb128 0x34
+ 1846 0120 00       		.byte	0
+ 1847 0121 03       		.uleb128 0x3
+ 1848 0122 0E       		.uleb128 0xe
+ 1849 0123 3A       		.uleb128 0x3a
+ 1850 0124 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 38
 
 
- 1789 0110 13       		.uleb128 0x13
- 1790 0111 2F       		.uleb128 0x2f
- 1791 0112 0B       		.uleb128 0xb
- 1792 0113 00       		.byte	0
- 1793 0114 00       		.byte	0
- 1794 0115 14       		.uleb128 0x14
- 1795 0116 34       		.uleb128 0x34
- 1796 0117 00       		.byte	0
- 1797 0118 03       		.uleb128 0x3
- 1798 0119 0E       		.uleb128 0xe
- 1799 011a 3A       		.uleb128 0x3a
- 1800 011b 0B       		.uleb128 0xb
- 1801 011c 3B       		.uleb128 0x3b
- 1802 011d 05       		.uleb128 0x5
- 1803 011e 49       		.uleb128 0x49
- 1804 011f 13       		.uleb128 0x13
- 1805 0120 3F       		.uleb128 0x3f
- 1806 0121 19       		.uleb128 0x19
- 1807 0122 3C       		.uleb128 0x3c
- 1808 0123 19       		.uleb128 0x19
- 1809 0124 00       		.byte	0
- 1810 0125 00       		.byte	0
- 1811 0126 15       		.uleb128 0x15
- 1812 0127 35       		.uleb128 0x35
- 1813 0128 00       		.byte	0
- 1814 0129 49       		.uleb128 0x49
- 1815 012a 13       		.uleb128 0x13
- 1816 012b 00       		.byte	0
- 1817 012c 00       		.byte	0
- 1818 012d 16       		.uleb128 0x16
- 1819 012e 34       		.uleb128 0x34
- 1820 012f 00       		.byte	0
- 1821 0130 03       		.uleb128 0x3
- 1822 0131 0E       		.uleb128 0xe
- 1823 0132 3A       		.uleb128 0x3a
- 1824 0133 0B       		.uleb128 0xb
- 1825 0134 3B       		.uleb128 0x3b
- 1826 0135 0B       		.uleb128 0xb
- 1827 0136 49       		.uleb128 0x49
- 1828 0137 13       		.uleb128 0x13
- 1829 0138 3F       		.uleb128 0x3f
- 1830 0139 19       		.uleb128 0x19
- 1831 013a 02       		.uleb128 0x2
- 1832 013b 18       		.uleb128 0x18
- 1833 013c 00       		.byte	0
- 1834 013d 00       		.byte	0
- 1835 013e 00       		.byte	0
- 1836              		.section	.debug_aranges,"",%progbits
- 1837 0000 54000000 		.4byte	0x54
- 1838 0004 0200     		.2byte	0x2
- 1839 0006 00000000 		.4byte	.Ldebug_info0
- 1840 000a 04       		.byte	0x4
- 1841 000b 00       		.byte	0
- 1842 000c 0000     		.2byte	0
- 1843 000e 0000     		.2byte	0
- 1844 0010 00000000 		.4byte	.LFB68
- 1845 0014 D0000000 		.4byte	.LFE68-.LFB68
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 38
+ 1851 0125 3B       		.uleb128 0x3b
+ 1852 0126 05       		.uleb128 0x5
+ 1853 0127 49       		.uleb128 0x49
+ 1854 0128 13       		.uleb128 0x13
+ 1855 0129 3F       		.uleb128 0x3f
+ 1856 012a 19       		.uleb128 0x19
+ 1857 012b 3C       		.uleb128 0x3c
+ 1858 012c 19       		.uleb128 0x19
+ 1859 012d 00       		.byte	0
+ 1860 012e 00       		.byte	0
+ 1861 012f 16       		.uleb128 0x16
+ 1862 0130 35       		.uleb128 0x35
+ 1863 0131 00       		.byte	0
+ 1864 0132 49       		.uleb128 0x49
+ 1865 0133 13       		.uleb128 0x13
+ 1866 0134 00       		.byte	0
+ 1867 0135 00       		.byte	0
+ 1868 0136 17       		.uleb128 0x17
+ 1869 0137 34       		.uleb128 0x34
+ 1870 0138 00       		.byte	0
+ 1871 0139 03       		.uleb128 0x3
+ 1872 013a 0E       		.uleb128 0xe
+ 1873 013b 3A       		.uleb128 0x3a
+ 1874 013c 0B       		.uleb128 0xb
+ 1875 013d 3B       		.uleb128 0x3b
+ 1876 013e 0B       		.uleb128 0xb
+ 1877 013f 49       		.uleb128 0x49
+ 1878 0140 13       		.uleb128 0x13
+ 1879 0141 3F       		.uleb128 0x3f
+ 1880 0142 19       		.uleb128 0x19
+ 1881 0143 02       		.uleb128 0x2
+ 1882 0144 18       		.uleb128 0x18
+ 1883 0145 00       		.byte	0
+ 1884 0146 00       		.byte	0
+ 1885 0147 00       		.byte	0
+ 1886              		.section	.debug_aranges,"",%progbits
+ 1887 0000 54000000 		.4byte	0x54
+ 1888 0004 0200     		.2byte	0x2
+ 1889 0006 00000000 		.4byte	.Ldebug_info0
+ 1890 000a 04       		.byte	0x4
+ 1891 000b 00       		.byte	0
+ 1892 000c 0000     		.2byte	0
+ 1893 000e 0000     		.2byte	0
+ 1894 0010 00000000 		.4byte	.LFB68
+ 1895 0014 EC000000 		.4byte	.LFE68-.LFB68
+ 1896 0018 00000000 		.4byte	.LFB69
+ 1897 001c C8000000 		.4byte	.LFE69-.LFB69
+ 1898 0020 00000000 		.4byte	.LFB70
+ 1899 0024 FC000000 		.4byte	.LFE70-.LFB70
+ 1900 0028 00000000 		.4byte	.LFB71
+ 1901 002c 68010000 		.4byte	.LFE71-.LFB71
+ 1902 0030 00000000 		.4byte	.LFB72
+ 1903 0034 5C000000 		.4byte	.LFE72-.LFB72
+ 1904 0038 00000000 		.4byte	.LFB73
+ 1905 003c 44000000 		.4byte	.LFE73-.LFB73
+ 1906 0040 00000000 		.4byte	.LFB74
+ 1907 0044 68000000 		.4byte	.LFE74-.LFB74
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 39
 
 
- 1846 0018 00000000 		.4byte	.LFB69
- 1847 001c C8000000 		.4byte	.LFE69-.LFB69
- 1848 0020 00000000 		.4byte	.LFB70
- 1849 0024 FC000000 		.4byte	.LFE70-.LFB70
- 1850 0028 00000000 		.4byte	.LFB71
- 1851 002c 68010000 		.4byte	.LFE71-.LFB71
- 1852 0030 00000000 		.4byte	.LFB72
- 1853 0034 54000000 		.4byte	.LFE72-.LFB72
- 1854 0038 00000000 		.4byte	.LFB73
- 1855 003c 44000000 		.4byte	.LFE73-.LFB73
- 1856 0040 00000000 		.4byte	.LFB74
- 1857 0044 68000000 		.4byte	.LFE74-.LFB74
- 1858 0048 00000000 		.4byte	.LFB75
- 1859 004c 68000000 		.4byte	.LFE75-.LFB75
- 1860 0050 00000000 		.4byte	0
- 1861 0054 00000000 		.4byte	0
- 1862              		.section	.debug_ranges,"",%progbits
- 1863              	.Ldebug_ranges0:
- 1864 0000 00000000 		.4byte	.LFB68
- 1865 0004 D0000000 		.4byte	.LFE68
- 1866 0008 00000000 		.4byte	.LFB69
- 1867 000c C8000000 		.4byte	.LFE69
- 1868 0010 00000000 		.4byte	.LFB70
- 1869 0014 FC000000 		.4byte	.LFE70
- 1870 0018 00000000 		.4byte	.LFB71
- 1871 001c 68010000 		.4byte	.LFE71
- 1872 0020 00000000 		.4byte	.LFB72
- 1873 0024 54000000 		.4byte	.LFE72
- 1874 0028 00000000 		.4byte	.LFB73
- 1875 002c 44000000 		.4byte	.LFE73
- 1876 0030 00000000 		.4byte	.LFB74
- 1877 0034 68000000 		.4byte	.LFE74
- 1878 0038 00000000 		.4byte	.LFB75
- 1879 003c 68000000 		.4byte	.LFE75
- 1880 0040 00000000 		.4byte	0
- 1881 0044 00000000 		.4byte	0
- 1882              		.section	.debug_line,"",%progbits
- 1883              	.Ldebug_line0:
- 1884 0000 BC020000 		.section	.debug_str,"MS",%progbits,1
- 1884      02009A01 
- 1884      00000201 
- 1884      FB0E0D00 
- 1884      01010101 
- 1885              	.LASF45:
- 1886 0000 76546573 		.ascii	"vTestTaskInit\000"
- 1886      74546173 
- 1886      6B496E69 
- 1886      7400
- 1887              	.LASF35:
- 1888 000e 664D696C 		.ascii	"fMilliPHValue\000"
- 1888      6C695048 
- 1888      56616C75 
- 1888      6500
- 1889              	.LASF58:
- 1890 001c 664E6575 		.ascii	"fNeutralVoltage\000"
- 1890      7472616C 
- 1890      566F6C74 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 39
-
-
- 1890      61676500 
- 1891              	.LASF5:
- 1892 002c 73686F72 		.ascii	"short int\000"
- 1892      7420696E 
- 1892      7400
- 1893              	.LASF21:
- 1894 0036 73697A65 		.ascii	"sizetype\000"
- 1894      74797065 
- 1894      00
- 1895              	.LASF53:
- 1896 003f 6953697A 		.ascii	"iSizeOfNutrients\000"
- 1896      654F664E 
- 1896      75747269 
- 1896      656E7473 
- 1896      00
- 1897              	.LASF29:
- 1898 0050 78537461 		.ascii	"xStatus\000"
- 1898      74757300 
- 1899              	.LASF64:
- 1900 0058 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1900      43313120 
- 1900      352E342E 
- 1900      31203230 
- 1900      31363036 
- 1901 008b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1901      20726576 
- 1901      6973696F 
- 1901      6E203233 
- 1901      37373135 
- 1902 00be 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1902      66756E63 
- 1902      74696F6E 
- 1902      2D736563 
- 1902      74696F6E 
- 1903              	.LASF60:
- 1904 00e6 78517565 		.ascii	"xQueueNutrientPump\000"
- 1904      75654E75 
- 1904      74726965 
- 1904      6E745075 
- 1904      6D7000
- 1905              	.LASF39:
- 1906 00f9 66496E74 		.ascii	"fIntercept\000"
- 1906      65726365 
- 1906      707400
- 1907              	.LASF33:
- 1908 0104 7844656C 		.ascii	"xDelayms\000"
- 1908      61796D73 
- 1908      00
- 1909              	.LASF17:
- 1910 010d 75696E74 		.ascii	"uint16\000"
- 1910      313600
- 1911              	.LASF46:
- 1912 0114 76546573 		.ascii	"vTestTaskUARTDataTransmit\000"
- 1912      74546173 
- 1912      6B554152 
- 1912      54446174 
- 1912      61547261 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 40
-
-
- 1913              	.LASF42:
- 1914 012e 75634D65 		.ascii	"ucMessage\000"
- 1914      73736167 
- 1914      6500
- 1915              	.LASF13:
- 1916 0138 75696E74 		.ascii	"uint8_t\000"
- 1916      385F7400 
- 1917              	.LASF55:
- 1918 0140 69504849 		.ascii	"iPHIndex\000"
- 1918      6E646578 
- 1918      00
- 1919              	.LASF16:
- 1920 0149 75696E74 		.ascii	"uint8\000"
- 1920      3800
- 1921              	.LASF18:
- 1922 014f 666C6F61 		.ascii	"float\000"
- 1922      7400
- 1923              	.LASF32:
- 1924 0155 66504856 		.ascii	"fPHVoltage\000"
- 1924      6F6C7461 
- 1924      676500
- 1925              	.LASF1:
- 1926 0160 6C6F6E67 		.ascii	"long long int\000"
- 1926      206C6F6E 
- 1926      6720696E 
- 1926      7400
- 1927              	.LASF25:
- 1928 016e 69504876 		.ascii	"iPHvalue\000"
- 1928      616C7565 
- 1928      00
- 1929              	.LASF36:
- 1930 0177 694D696C 		.ascii	"iMilliPHValue\000"
- 1930      6C695048 
- 1930      56616C75 
- 1930      6500
- 1931              	.LASF9:
- 1932 0185 6C6F6E67 		.ascii	"long int\000"
- 1932      20696E74 
- 1932      00
- 1933              	.LASF43:
- 1934 018e 75635265 		.ascii	"ucResponse\000"
- 1934      73706F6E 
- 1934      736500
- 1935              	.LASF41:
- 1936 0199 764E7574 		.ascii	"vNutrientsGetECValue\000"
- 1936      7269656E 
- 1936      74734765 
- 1936      74454356 
- 1936      616C7565 
- 1937              	.LASF26:
- 1938 01ae 69454376 		.ascii	"iECvalue\000"
- 1938      616C7565 
- 1938      00
- 1939              	.LASF59:
- 1940 01b7 66416369 		.ascii	"fAcidVoltage\000"
- 1940      64566F6C 
- 1940      74616765 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 41
-
-
- 1940      00
- 1941              	.LASF7:
- 1942 01c4 5F5F7569 		.ascii	"__uint8_t\000"
- 1942      6E74385F 
- 1942      7400
- 1943              	.LASF24:
- 1944 01ce 51756575 		.ascii	"QueueHandle_t\000"
- 1944      6548616E 
- 1944      646C655F 
+ 1908 0048 00000000 		.4byte	.LFB75
+ 1909 004c 68000000 		.4byte	.LFE75-.LFB75
+ 1910 0050 00000000 		.4byte	0
+ 1911 0054 00000000 		.4byte	0
+ 1912              		.section	.debug_ranges,"",%progbits
+ 1913              	.Ldebug_ranges0:
+ 1914 0000 00000000 		.4byte	.LFB68
+ 1915 0004 EC000000 		.4byte	.LFE68
+ 1916 0008 00000000 		.4byte	.LFB69
+ 1917 000c C8000000 		.4byte	.LFE69
+ 1918 0010 00000000 		.4byte	.LFB70
+ 1919 0014 FC000000 		.4byte	.LFE70
+ 1920 0018 00000000 		.4byte	.LFB71
+ 1921 001c 68010000 		.4byte	.LFE71
+ 1922 0020 00000000 		.4byte	.LFB72
+ 1923 0024 5C000000 		.4byte	.LFE72
+ 1924 0028 00000000 		.4byte	.LFB73
+ 1925 002c 44000000 		.4byte	.LFE73
+ 1926 0030 00000000 		.4byte	.LFB74
+ 1927 0034 68000000 		.4byte	.LFE74
+ 1928 0038 00000000 		.4byte	.LFB75
+ 1929 003c 68000000 		.4byte	.LFE75
+ 1930 0040 00000000 		.4byte	0
+ 1931 0044 00000000 		.4byte	0
+ 1932              		.section	.debug_line,"",%progbits
+ 1933              	.Ldebug_line0:
+ 1934 0000 BE020000 		.section	.debug_str,"MS",%progbits,1
+ 1934      02009A01 
+ 1934      00000201 
+ 1934      FB0E0D00 
+ 1934      01010101 
+ 1935              	.LASF47:
+ 1936 0000 76546573 		.ascii	"vTestTaskInit\000"
+ 1936      74546173 
+ 1936      6B496E69 
+ 1936      7400
+ 1937              	.LASF35:
+ 1938 000e 664D696C 		.ascii	"fMilliPHValue\000"
+ 1938      6C695048 
+ 1938      56616C75 
+ 1938      6500
+ 1939              	.LASF60:
+ 1940 001c 664E6575 		.ascii	"fNeutralVoltage\000"
+ 1940      7472616C 
+ 1940      566F6C74 
+ 1940      61676500 
+ 1941              	.LASF42:
+ 1942 002c 7844656C 		.ascii	"xDelaymsBeforeRead\000"
+ 1942      61796D73 
+ 1942      4265666F 
+ 1942      72655265 
+ 1942      616400
+ 1943              	.LASF5:
+ 1944 003f 73686F72 		.ascii	"short int\000"
+ 1944      7420696E 
  1944      7400
- 1945              	.LASF61:
- 1946 01dc 78517565 		.ascii	"xQueuePHValue\000"
- 1946      75655048 
- 1946      56616C75 
- 1946      6500
- 1947              	.LASF23:
- 1948 01ea 5469636B 		.ascii	"TickType_t\000"
- 1948      54797065 
- 1948      5F7400
- 1949              	.LASF2:
- 1950 01f5 6C6F6E67 		.ascii	"long double\000"
- 1950      20646F75 
- 1950      626C6500 
- 1951              	.LASF68:
- 1952 0201 4E757472 		.ascii	"Nutrients\000"
- 1952      69656E74 
- 1952      7300
- 1953              	.LASF4:
- 1954 020b 756E7369 		.ascii	"unsigned char\000"
- 1954      676E6564 
- 1954      20636861 
- 1954      7200
- 1955              	.LASF3:
- 1956 0219 7369676E 		.ascii	"signed char\000"
- 1956      65642063 
- 1956      68617200 
- 1957              	.LASF12:
- 1958 0225 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1958      206C6F6E 
- 1958      6720756E 
- 1958      7369676E 
- 1958      65642069 
- 1959              	.LASF69:
- 1960 023c 76546173 		.ascii	"vTaskNutrientPump\000"
- 1960      6B4E7574 
- 1960      7269656E 
- 1960      7450756D 
- 1960      7000
- 1961              	.LASF15:
- 1962 024e 75696E74 		.ascii	"uint32_t\000"
- 1962      33325F74 
- 1962      00
- 1963              	.LASF0:
- 1964 0257 756E7369 		.ascii	"unsigned int\000"
- 1964      676E6564 
- 1964      20696E74 
- 1964      00
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 42
+ 1945              	.LASF21:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 40
 
 
- 1965              	.LASF51:
- 1966 0264 70635465 		.ascii	"pcTextForNutrientPump\000"
- 1966      7874466F 
- 1966      724E7574 
- 1966      7269656E 
- 1966      7450756D 
- 1967              	.LASF22:
- 1968 027a 42617365 		.ascii	"BaseType_t\000"
- 1968      54797065 
- 1968      5F7400
- 1969              	.LASF34:
- 1970 0285 66504856 		.ascii	"fPHValue\000"
- 1970      616C7565 
+ 1946 0049 73697A65 		.ascii	"sizetype\000"
+ 1946      74797065 
+ 1946      00
+ 1947              	.LASF55:
+ 1948 0052 6953697A 		.ascii	"iSizeOfNutrients\000"
+ 1948      654F664E 
+ 1948      75747269 
+ 1948      656E7473 
+ 1948      00
+ 1949              	.LASF29:
+ 1950 0063 78537461 		.ascii	"xStatus\000"
+ 1950      74757300 
+ 1951              	.LASF66:
+ 1952 006b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1952      43313120 
+ 1952      352E342E 
+ 1952      31203230 
+ 1952      31363036 
+ 1953 009e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1953      20726576 
+ 1953      6973696F 
+ 1953      6E203233 
+ 1953      37373135 
+ 1954 00d1 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1954      66756E63 
+ 1954      74696F6E 
+ 1954      2D736563 
+ 1954      74696F6E 
+ 1955              	.LASF62:
+ 1956 00f9 78517565 		.ascii	"xQueueNutrientPump\000"
+ 1956      75654E75 
+ 1956      74726965 
+ 1956      6E745075 
+ 1956      6D7000
+ 1957              	.LASF39:
+ 1958 010c 66496E74 		.ascii	"fIntercept\000"
+ 1958      65726365 
+ 1958      707400
+ 1959              	.LASF33:
+ 1960 0117 7844656C 		.ascii	"xDelayms\000"
+ 1960      61796D73 
+ 1960      00
+ 1961              	.LASF17:
+ 1962 0120 75696E74 		.ascii	"uint16\000"
+ 1962      313600
+ 1963              	.LASF48:
+ 1964 0127 76546573 		.ascii	"vTestTaskUARTDataTransmit\000"
+ 1964      74546173 
+ 1964      6B554152 
+ 1964      54446174 
+ 1964      61547261 
+ 1965              	.LASF44:
+ 1966 0141 75634D65 		.ascii	"ucMessage\000"
+ 1966      73736167 
+ 1966      6500
+ 1967              	.LASF13:
+ 1968 014b 75696E74 		.ascii	"uint8_t\000"
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 41
+
+
+ 1968      385F7400 
+ 1969              	.LASF57:
+ 1970 0153 69504849 		.ascii	"iPHIndex\000"
+ 1970      6E646578 
  1970      00
- 1971              	.LASF67:
- 1972 028e 51756575 		.ascii	"QueueDefinition\000"
- 1972      65446566 
- 1972      696E6974 
- 1972      696F6E00 
- 1973              	.LASF63:
- 1974 029e 53544F50 		.ascii	"STOP_SPEED\000"
- 1974      5F535045 
- 1974      454400
- 1975              	.LASF47:
- 1976 02a9 69504856 		.ascii	"iPHValueForPrint\000"
- 1976      616C7565 
- 1976      466F7250 
- 1976      72696E74 
- 1976      00
- 1977              	.LASF20:
- 1978 02ba 63686172 		.ascii	"char\000"
- 1978      00
- 1979              	.LASF14:
- 1980 02bf 696E7433 		.ascii	"int32_t\000"
- 1980      325F7400 
- 1981              	.LASF6:
- 1982 02c7 73686F72 		.ascii	"short unsigned int\000"
- 1982      7420756E 
- 1982      7369676E 
- 1982      65642069 
- 1982      6E7400
- 1983              	.LASF38:
- 1984 02da 66536C6F 		.ascii	"fSlope\000"
- 1984      706500
- 1985              	.LASF31:
- 1986 02e1 5F426F6F 		.ascii	"_Bool\000"
- 1986      6C00
- 1987              	.LASF44:
- 1988 02e7 764E7574 		.ascii	"vNutrientsInit\000"
- 1988      7269656E 
- 1988      7473496E 
- 1988      697400
- 1989              	.LASF56:
- 1990 02f6 69454349 		.ascii	"iECIndex\000"
- 1990      6E646578 
+ 1971              	.LASF16:
+ 1972 015c 75696E74 		.ascii	"uint8\000"
+ 1972      3800
+ 1973              	.LASF18:
+ 1974 0162 666C6F61 		.ascii	"float\000"
+ 1974      7400
+ 1975              	.LASF32:
+ 1976 0168 66504856 		.ascii	"fPHVoltage\000"
+ 1976      6F6C7461 
+ 1976      676500
+ 1977              	.LASF41:
+ 1978 0173 76546173 		.ascii	"vTaskMeasureEC\000"
+ 1978      6B4D6561 
+ 1978      73757265 
+ 1978      454300
+ 1979              	.LASF1:
+ 1980 0182 6C6F6E67 		.ascii	"long long int\000"
+ 1980      206C6F6E 
+ 1980      6720696E 
+ 1980      7400
+ 1981              	.LASF25:
+ 1982 0190 69504876 		.ascii	"iPHvalue\000"
+ 1982      616C7565 
+ 1982      00
+ 1983              	.LASF36:
+ 1984 0199 694D696C 		.ascii	"iMilliPHValue\000"
+ 1984      6C695048 
+ 1984      56616C75 
+ 1984      6500
+ 1985              	.LASF9:
+ 1986 01a7 6C6F6E67 		.ascii	"long int\000"
+ 1986      20696E74 
+ 1986      00
+ 1987              	.LASF45:
+ 1988 01b0 75635265 		.ascii	"ucResponse\000"
+ 1988      73706F6E 
+ 1988      736500
+ 1989              	.LASF26:
+ 1990 01bb 69454376 		.ascii	"iECvalue\000"
+ 1990      616C7565 
  1990      00
- 1991              	.LASF27:
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 43
+ 1991              	.LASF61:
+ 1992 01c4 66416369 		.ascii	"fAcidVoltage\000"
+ 1992      64566F6C 
+ 1992      74616765 
+ 1992      00
+ 1993              	.LASF7:
+ 1994 01d1 5F5F7569 		.ascii	"__uint8_t\000"
+ 1994      6E74385F 
+ 1994      7400
+ 1995              	.LASF24:
+ 1996 01db 51756575 		.ascii	"QueueHandle_t\000"
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 42
 
 
- 1992 02ff 69576174 		.ascii	"iWaterTemp\000"
- 1992      65725465 
- 1992      6D7000
- 1993              	.LASF65:
- 1994 030a 4E757472 		.ascii	"Nutrients.c\000"
- 1994      69656E74 
- 1994      732E6300 
- 1995              	.LASF11:
- 1996 0316 6C6F6E67 		.ascii	"long unsigned int\000"
- 1996      20756E73 
- 1996      69676E65 
- 1996      6420696E 
+ 1996      6548616E 
+ 1996      646C655F 
  1996      7400
- 1997              	.LASF19:
- 1998 0328 646F7562 		.ascii	"double\000"
- 1998      6C6500
- 1999              	.LASF57:
- 2000 032f 69576174 		.ascii	"iWateTempIndex\000"
- 2000      6554656D 
- 2000      70496E64 
- 2000      657800
- 2001              	.LASF10:
- 2002 033e 5F5F7569 		.ascii	"__uint32_t\000"
- 2002      6E743332 
- 2002      5F7400
- 2003              	.LASF66:
- 2004 0349 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
- 2004      73657273 
- 2004      5C456D69 
- 2004      6C5C446F 
- 2004      63756D65 
- 2005 0377 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 2005      4F535F54 
- 2005      454D504C 
- 2005      4154452D 
- 2005      6D617374 
- 2006              	.LASF70:
- 2007 03a0 6643616C 		.ascii	"fCalculatePHValue\000"
- 2007      63756C61 
- 2007      74655048 
- 2007      56616C75 
- 2007      6500
- 2008              	.LASF8:
- 2009 03b2 5F5F696E 		.ascii	"__int32_t\000"
- 2009      7433325F 
- 2009      7400
- 2010              	.LASF62:
- 2011 03bc 4D41585F 		.ascii	"MAX_SPEED\000"
- 2011      53504545 
- 2011      4400
- 2012              	.LASF40:
- 2013 03c6 76546173 		.ascii	"vTaskMeasurePH\000"
- 2013      6B4D6561 
- 2013      73757265 
- 2013      504800
- 2014              	.LASF37:
- 2015 03d5 70765061 		.ascii	"pvParameters\000"
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccLBXmTz.s 			page 44
+ 1997              	.LASF63:
+ 1998 01e9 78517565 		.ascii	"xQueuePHValue\000"
+ 1998      75655048 
+ 1998      56616C75 
+ 1998      6500
+ 1999              	.LASF23:
+ 2000 01f7 5469636B 		.ascii	"TickType_t\000"
+ 2000      54797065 
+ 2000      5F7400
+ 2001              	.LASF2:
+ 2002 0202 6C6F6E67 		.ascii	"long double\000"
+ 2002      20646F75 
+ 2002      626C6500 
+ 2003              	.LASF70:
+ 2004 020e 4E757472 		.ascii	"Nutrients\000"
+ 2004      69656E74 
+ 2004      7300
+ 2005              	.LASF4:
+ 2006 0218 756E7369 		.ascii	"unsigned char\000"
+ 2006      676E6564 
+ 2006      20636861 
+ 2006      7200
+ 2007              	.LASF3:
+ 2008 0226 7369676E 		.ascii	"signed char\000"
+ 2008      65642063 
+ 2008      68617200 
+ 2009              	.LASF12:
+ 2010 0232 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2010      206C6F6E 
+ 2010      6720756E 
+ 2010      7369676E 
+ 2010      65642069 
+ 2011              	.LASF71:
+ 2012 0249 76546173 		.ascii	"vTaskNutrientPump\000"
+ 2012      6B4E7574 
+ 2012      7269656E 
+ 2012      7450756D 
+ 2012      7000
+ 2013              	.LASF15:
+ 2014 025b 75696E74 		.ascii	"uint32_t\000"
+ 2014      33325F74 
+ 2014      00
+ 2015              	.LASF0:
+ 2016 0264 756E7369 		.ascii	"unsigned int\000"
+ 2016      676E6564 
+ 2016      20696E74 
+ 2016      00
+ 2017              	.LASF53:
+ 2018 0271 70635465 		.ascii	"pcTextForNutrientPump\000"
+ 2018      7874466F 
+ 2018      724E7574 
+ 2018      7269656E 
+ 2018      7450756D 
+ 2019              	.LASF22:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 43
 
 
- 2015      72616D65 
- 2015      74657273 
- 2015      00
- 2016              	.LASF30:
- 2017 03e2 70694E75 		.ascii	"piNutrientPump\000"
- 2017      74726965 
- 2017      6E745075 
- 2017      6D7000
- 2018              	.LASF52:
- 2019 03f1 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 2019      52784275 
- 2019      66666572 
- 2019      00
- 2020              	.LASF54:
- 2021 03fe 63757272 		.ascii	"currentNutrients\000"
- 2021      656E744E 
- 2021      75747269 
- 2021      656E7473 
- 2021      00
- 2022              	.LASF28:
- 2023 040f 62537461 		.ascii	"bState\000"
- 2023      746500
- 2024              	.LASF48:
- 2025 0416 76546573 		.ascii	"vTestTaskNutrientPump\000"
- 2025      74546173 
- 2025      6B4E7574 
- 2025      7269656E 
- 2025      7450756D 
- 2026              	.LASF49:
- 2027 042c 62546573 		.ascii	"bTestState1\000"
- 2027      74537461 
- 2027      74653100 
- 2028              	.LASF50:
- 2029 0438 62546573 		.ascii	"bTestState2\000"
- 2029      74537461 
- 2029      74653200 
- 2030              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 2020 0287 42617365 		.ascii	"BaseType_t\000"
+ 2020      54797065 
+ 2020      5F7400
+ 2021              	.LASF34:
+ 2022 0292 66504856 		.ascii	"fPHValue\000"
+ 2022      616C7565 
+ 2022      00
+ 2023              	.LASF69:
+ 2024 029b 51756575 		.ascii	"QueueDefinition\000"
+ 2024      65446566 
+ 2024      696E6974 
+ 2024      696F6E00 
+ 2025              	.LASF65:
+ 2026 02ab 53544F50 		.ascii	"STOP_SPEED\000"
+ 2026      5F535045 
+ 2026      454400
+ 2027              	.LASF49:
+ 2028 02b6 69504856 		.ascii	"iPHValueForPrint\000"
+ 2028      616C7565 
+ 2028      466F7250 
+ 2028      72696E74 
+ 2028      00
+ 2029              	.LASF20:
+ 2030 02c7 63686172 		.ascii	"char\000"
+ 2030      00
+ 2031              	.LASF14:
+ 2032 02cc 696E7433 		.ascii	"int32_t\000"
+ 2032      325F7400 
+ 2033              	.LASF6:
+ 2034 02d4 73686F72 		.ascii	"short unsigned int\000"
+ 2034      7420756E 
+ 2034      7369676E 
+ 2034      65642069 
+ 2034      6E7400
+ 2035              	.LASF38:
+ 2036 02e7 66536C6F 		.ascii	"fSlope\000"
+ 2036      706500
+ 2037              	.LASF31:
+ 2038 02ee 5F426F6F 		.ascii	"_Bool\000"
+ 2038      6C00
+ 2039              	.LASF46:
+ 2040 02f4 764E7574 		.ascii	"vNutrientsInit\000"
+ 2040      7269656E 
+ 2040      7473496E 
+ 2040      697400
+ 2041              	.LASF58:
+ 2042 0303 69454349 		.ascii	"iECIndex\000"
+ 2042      6E646578 
+ 2042      00
+ 2043              	.LASF27:
+ 2044 030c 69576174 		.ascii	"iWaterTemp\000"
+ 2044      65725465 
+ 2044      6D7000
+ 2045              	.LASF67:
+ 2046 0317 4E757472 		.ascii	"Nutrients.c\000"
+ 2046      69656E74 
+ 2046      732E6300 
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 44
+
+
+ 2047              	.LASF11:
+ 2048 0323 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2048      20756E73 
+ 2048      69676E65 
+ 2048      6420696E 
+ 2048      7400
+ 2049              	.LASF19:
+ 2050 0335 646F7562 		.ascii	"double\000"
+ 2050      6C6500
+ 2051              	.LASF59:
+ 2052 033c 69576174 		.ascii	"iWateTempIndex\000"
+ 2052      6554656D 
+ 2052      70496E64 
+ 2052      657800
+ 2053              	.LASF43:
+ 2054 034b 7844656C 		.ascii	"xDelaymsTimerEvent\000"
+ 2054      61796D73 
+ 2054      54696D65 
+ 2054      72457665 
+ 2054      6E7400
+ 2055              	.LASF10:
+ 2056 035e 5F5F7569 		.ascii	"__uint32_t\000"
+ 2056      6E743332 
+ 2056      5F7400
+ 2057              	.LASF68:
+ 2058 0369 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
+ 2058      73657273 
+ 2058      5C456D69 
+ 2058      6C5C446F 
+ 2058      63756D65 
+ 2059 0397 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 2059      4F535F54 
+ 2059      454D504C 
+ 2059      4154452D 
+ 2059      6D617374 
+ 2060              	.LASF72:
+ 2061 03c0 6643616C 		.ascii	"fCalculatePHValue\000"
+ 2061      63756C61 
+ 2061      74655048 
+ 2061      56616C75 
+ 2061      6500
+ 2062              	.LASF8:
+ 2063 03d2 5F5F696E 		.ascii	"__int32_t\000"
+ 2063      7433325F 
+ 2063      7400
+ 2064              	.LASF64:
+ 2065 03dc 4D41585F 		.ascii	"MAX_SPEED\000"
+ 2065      53504545 
+ 2065      4400
+ 2066              	.LASF40:
+ 2067 03e6 76546173 		.ascii	"vTaskMeasurePH\000"
+ 2067      6B4D6561 
+ 2067      73757265 
+ 2067      504800
+ 2068              	.LASF37:
+ 2069 03f5 70765061 		.ascii	"pvParameters\000"
+ 2069      72616D65 
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccasBsug.s 			page 45
+
+
+ 2069      74657273 
+ 2069      00
+ 2070              	.LASF30:
+ 2071 0402 70694E75 		.ascii	"piNutrientPump\000"
+ 2071      74726965 
+ 2071      6E745075 
+ 2071      6D7000
+ 2072              	.LASF54:
+ 2073 0411 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2073      52784275 
+ 2073      66666572 
+ 2073      00
+ 2074              	.LASF56:
+ 2075 041e 63757272 		.ascii	"currentNutrients\000"
+ 2075      656E744E 
+ 2075      75747269 
+ 2075      656E7473 
+ 2075      00
+ 2076              	.LASF28:
+ 2077 042f 62537461 		.ascii	"bState\000"
+ 2077      746500
+ 2078              	.LASF50:
+ 2079 0436 76546573 		.ascii	"vTestTaskNutrientPump\000"
+ 2079      74546173 
+ 2079      6B4E7574 
+ 2079      7269656E 
+ 2079      7450756D 
+ 2080              	.LASF51:
+ 2081 044c 62546573 		.ascii	"bTestState1\000"
+ 2081      74537461 
+ 2081      74653100 
+ 2082              	.LASF52:
+ 2083 0458 62546573 		.ascii	"bTestState2\000"
+ 2083      74537461 
+ 2083      74653200 
+ 2084              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

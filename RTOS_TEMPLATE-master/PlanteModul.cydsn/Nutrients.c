@@ -59,6 +59,8 @@ void vNutrientsInit() {
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
     
+    xTaskCreate (vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
+    
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
@@ -66,8 +68,6 @@ void vNutrientsInit() {
     
     
 }
-
-
 
 
 void vTaskNutrientPump( void *pvParameters ) {
@@ -158,42 +158,34 @@ float fCalculatePHValue(float fPHVoltage){
 
 /*This function writes 'R' to the EC sensor, then delays(300) before requesting data transfer from the EC sensor. 
 This is in accordance with instructions given on the EC sensor datasheet. */
-void vNutrientsGetECValue()
+void vTaskMeasureEC()
 {
-    /* Defines the message to be sent, as an array of characters */
-    unsigned char  ucMessage[]= "R";
- 
-    /* Initialize buffer with packet  , slave address is 9*/
-    (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
+    for (;;){
+        const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
+        const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
 
-   //Waits until master completes write transfer 
-   while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
-    {
-    } 
+        /* Defines the message to be sent, as an array of characters */
+        unsigned char  ucMessage[]= "R";
+     
+        /* Initialize buffer with packet  , slave address is 9*/
+        (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
 
-    
-    CyDelay(300);
-    unsigned char ucResponse[40];
-    (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
-    
-    //Waits until master completes write transfer     
-    while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
-    {
+        //Waits until master completes write transfer 
+        while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+        {
+        } 
+
+        
+        vTaskDelay(xDelaymsBeforeRead);
+        unsigned char ucResponse[40];
+        (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
+        
+        //Waits until master completes write transfer     
+        while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
+        {
+        }
+        vTaskDelay(xDelaymsTimerEvent);
     }
-    
-    
-    /*
-    //This 'if' statement blinks the LED on the PSoC as a test. If the LED blinks, succes.
-    //Note that the EC sensor will first send a '1' to confirm it can send data,
-    //then send the information, and finish with 0.
-    //An Arduino has been set up to emulate the EC sensor, and it will pretend it read the number '9,428'
-    if (ucResponse[0] == '1' && ucResponse[1] == '9' && ucResponse[6] == '0')
-    {
-        LED_Write (1U);
-        CyDelay(2000);
-        LED_Write (0U);
-    } 
-    */
 }
 
 /* --- TEST TASK --- */

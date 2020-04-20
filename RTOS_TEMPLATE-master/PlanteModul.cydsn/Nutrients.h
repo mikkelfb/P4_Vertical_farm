@@ -58,7 +58,7 @@
     @Param[out]: Need to define the reading as an output from the task (iECIndex ??)
     @Param[in]: 
     */
-    void vNutrientsGetECValue();
+    void vTaskMeasureEC();
     
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
