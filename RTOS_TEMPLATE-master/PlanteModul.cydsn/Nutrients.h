@@ -35,12 +35,7 @@
     
     
     
-    
-    /* --- Functions and variables for pH --- */
-
-    
-
-    
+        
     
     /*
     This task is for making measurements of the PH sensor.
@@ -86,8 +81,7 @@
         void vTestTaskNutrientPump();
         
         /*
-        This function tests the vTaskMeasurePH by sending a 
-        Queue signal every 500ms alternating between 1 and 0.
+        This function sends the pH measurement data from the queue through UART. 
         @Param[out]: 
 	    @Param[in]: 
         */

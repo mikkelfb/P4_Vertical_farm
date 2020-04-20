@@ -17,20 +17,27 @@
 #include "task.h"
 #include "queue.h"
 
-struct currentNutrients{
+struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
     uint16  iECvalue;
+    uint16  iWaterTemp;
 };
+
+const int iSizeOfNutrients = 40; // Should be the same as the value of the array below
+struct Nutrients currentNutrients[40]; // Create struct array with space for 40 measurements
+int iPHIndex = 0; // Use this index to save pH measurements into the struct array
+int iECIndex = 0; // Use this index to save EC measurements into the struct array
+int iWateTempIndex = 0; // Use this index to save water temperature measurements into the struct array
 
 const float fNeutralVoltage = 1500; //Voltage at pH 7, should be calibrated
 const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 
-QueueHandle_t xQueueNutrientPump[3];
-QueueHandle_t xQueuePHValue;
+QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
+QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
 
 
-const uint8 MAX_SPEED = 6;
-const uint8 STOP_SPEED = 19;
+const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
+const uint8 STOP_SPEED = 19; // Stop speed for the nutrient pumps
 static const uint8 pcTextForNutrientPump[3] = {0, 1, 2};
 
 
@@ -71,21 +78,22 @@ void vTaskNutrientPump( void *pvParameters ) {
     piNutrientPump = ( uint8 * ) pvParameters;
     
     for(;;) {
+        /* Switch case for controlling the nutrient pumps */
         switch (*piNutrientPump) {
             case 0:
-                xStatus = xQueueReceive( xQueueNutrientPump[0], &bState, portMAX_DELAY );
+                xStatus = xQueueReceive( xQueueNutrientPump[0], &bState, portMAX_DELAY ); // Checks if there is a new message in the queue.
         
                 if (xStatus == pdPASS) {
                     if (bState) {
-                        PWM_PERISTALTISK_1_WriteCompare1(MAX_SPEED);
+                        PWM_PERISTALTISK_1_WriteCompare1(MAX_SPEED); // Start running the pump.
                     } else {
-                        PWM_PERISTALTISK_1_WriteCompare1(STOP_SPEED);
+                        PWM_PERISTALTISK_1_WriteCompare1(STOP_SPEED); // Stop running the pump.
                     }
                 }
                 break;
             
             case 1:
-                xStatus = xQueueReceive( xQueueNutrientPump[1], &bState, portMAX_DELAY );
+                xStatus = xQueueReceive( xQueueNutrientPump[1], &bState, portMAX_DELAY ); // Checks if there is a new message in the queue.
         
                 if (xStatus == pdPASS) {
                     if (bState) {
@@ -97,7 +105,7 @@ void vTaskNutrientPump( void *pvParameters ) {
                 break;
                 
             case 2:
-                xStatus = xQueueReceive( xQueueNutrientPump[2], &bState, portMAX_DELAY );
+                xStatus = xQueueReceive( xQueueNutrientPump[2], &bState, portMAX_DELAY ); // Checks if there is a new message in the queue.
         
                 if (xStatus == pdPASS) {
                     if (bState) {
@@ -113,8 +121,9 @@ void vTaskNutrientPump( void *pvParameters ) {
 
 void vTaskMeasurePH(){
     float fPHVoltage;
-    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
+    const TickType_t xDelayms = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
     float fPHValue;
+    float fMilliPHValue;
     uint16 iMilliPHValue;
     _Bool bState = 0;
     
@@ -124,12 +133,17 @@ void vTaskMeasurePH(){
             bState = 1;
         }
         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
-            fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; //calculate voltage from measured value
-            fPHValue = fCalculatePHValue(fPHVoltage);
-            iMilliPHValue = (uint16) fPHValue * 1000;
-            //iMilliPHValue = (uint16) fPHVoltage;
-            xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY);
+            fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; // Calculate voltage from measured value
+            fPHValue = fCalculatePHValue(fPHVoltage); // Convert the voltage to a pH value
+            fMilliPHValue = fPHValue * 1000; // Convert to milli pH value. This makes sure that we can see float values. 
+            iMilliPHValue = (uint16) fMilliPHValue; // Convert to a sendable message for UART (from float to int).
+            currentNutrients[iPHIndex].iPHvalue = iMilliPHValue; // Save in the currentNutrients array on the respective index.
+            iPHIndex++;
+            if(iPHIndex == iSizeOfNutrients) {
+                iPHIndex = 0;
+            }
             bState = 0;
+            xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             vTaskDelay(xDelayms);
         }
     }
@@ -137,8 +151,8 @@ void vTaskMeasurePH(){
 
 
 float fCalculatePHValue(float fPHVoltage){
-    float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500)/3.0 - (fAcidVoltage - 1500.00)/3.0); //calculate a in y = ax+b
-    float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500)/3.0; //calculate b in y = ax + b
+    float fSlope = (7.0-4.0) / ( (fNeutralVoltage - 1500.0)/3.0 - (fAcidVoltage - 1500.0)/3.0); //calculate a in y = ax+b
+    float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500.0)/3.0; //calculate b in y = ax + b
     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
 }
 
@@ -165,8 +179,10 @@ void vTestTaskUARTDataTransmit(){
     uint16 iPHValueForPrint;
     for(;;){
         xQueueReceive( xQueuePHValue, &iPHValueForPrint, portMAX_DELAY );
-        SW_UART_TEST_USB_PutHexInt(iPHValueForPrint);
-
+        SW_UART_TEST_USB_PutString("i: ");
+        SW_UART_TEST_USB_PutHexInt(iPHIndex);
+        SW_UART_TEST_USB_PutString(" 0x");
+        SW_UART_TEST_USB_PutHexInt(currentNutrients[iPHIndex].iPHvalue);
         SW_UART_TEST_USB_PutString("\n");
     }
 }
