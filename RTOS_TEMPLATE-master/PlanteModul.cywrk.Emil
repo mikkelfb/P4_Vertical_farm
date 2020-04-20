@@ -166,40 +166,6 @@
 <VisibleNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
-<v>PlanteModul\PlanteModul\CortexM3</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_INT.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_IRQ.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_2.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu_wrappers.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Nutrients.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_1.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_2.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -253,6 +219,8 @@
 <name v=".\PlanteModul.cydsn\main.c" />
 <name v=".\PlanteModul.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\PlanteModul.cydsn\PlanteModul.cydwr" />
+<name v=".\PlanteModul.cydsn\device.h" />
+<name v=".\PlanteModul.cydsn\FreeRTOSConfig.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -260,7 +228,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1085, 509" SelectedTabbedMdiWindow="79697d49-8933-46e4-8ea6-5bfd0f68cfba"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="bb12ae90-b468-4aec-bc13-0c0f48670fb4" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.h" Guid="32c35496-690e-4e20-a35c-151da3f489cc" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="188489e5-c006-4b11-b43f-7904e25f9333" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="79697d49-8933-46e4-8ea6-5bfd0f68cfba" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\TopDesign\TopDesign.cysch" Guid="e243c399-7f05-45a8-a210-0c6b4cbc4158" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cydwr" Guid="4b82df00-ef62-41df-87d2-be87f80f5213" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1085, 509" SelectedTabbedMdiWindow="188489e5-c006-4b11-b43f-7904e25f9333"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="bb12ae90-b468-4aec-bc13-0c0f48670fb4" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.h" Guid="32c35496-690e-4e20-a35c-151da3f489cc" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="188489e5-c006-4b11-b43f-7904e25f9333" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="79697d49-8933-46e4-8ea6-5bfd0f68cfba" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\TopDesign\TopDesign.cysch" Guid="e243c399-7f05-45a8-a210-0c6b4cbc4158" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cydwr" Guid="4b82df00-ef62-41df-87d2-be87f80f5213" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\device.h" Guid="3fa49492-d24e-4d0f-83d0-33d77ce0c138" /><DocumentWindow Key="C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\FreeRTOSConfig.h" Guid="0de74481-b9b1-4b03-a001-c5c8f181f9f1" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

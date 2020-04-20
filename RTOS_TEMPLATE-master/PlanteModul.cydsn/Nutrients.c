@@ -59,7 +59,7 @@ void vNutrientsInit() {
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
     
-    xTaskCreate (vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
