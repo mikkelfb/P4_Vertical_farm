@@ -34,18 +34,12 @@ const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 
 QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
 QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
+QueueHandle_t xQueueWaterTemp;
 
 
 const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
 const uint8 STOP_SPEED = 19; // Stop speed for the nutrient pumps
 static const uint8 pcTextForNutrientPump[3] = {0, 1, 2};
-
- static volatile CYBIT flag_Timer = 0 ; //semaphore for DS18 sensor  
- CY_ISR(isr_DS18_Handler) // ISR Timer to report temperature at regular interval
-{
-   flag_Timer = 1;
-}
-
 
 
 void vNutrientsInit() {
@@ -66,7 +60,7 @@ void vNutrientsInit() {
 
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
-    xTaskCreate(vTaskVandTemp, "VandTemp", 1000, NULL, 2 , NULL);
+    xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 4 , NULL);
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
@@ -151,7 +145,7 @@ void vTaskMeasurePH(){
                 iPHIndex = 0;
             }
             bState = 0;
-            xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
+          //  xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             vTaskDelay(xDelayms);
         }
     }
@@ -166,21 +160,25 @@ float fCalculatePHValue(float fPHVoltage){
 
 
 
-void vTaskVandTemp(){
-       
+void vTaskWaterTemp(){
+       const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
+    int16 waterTemp; 
+    _Bool flagTimer = 1;
     for(;;) 
     { 
-        
-        if(flag_Timer) //read DS18B20 on timer, intervals >1sec
-    	{   
-            flag_Timer = 0;
-            DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1                                     
+        if (flagTimer == 1){
+            flagTimer = 0;
+           waterTemp = 5;
+         //   DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1 
         }
-        
-        if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
-    	{   
-            DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
-            int16 DS18x8_GetTemperatureAsInt100 (uint8 index);  // Converts reading to int16 ex: 38.06 --> 3806 , "index" depicts senosr
+       // if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
+    	if (flagTimer==0)
+        {   
+      //      DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
+        //    waterTemp = DS18x8_GetTemperatureAsInt100 (0);  // Converts reading to int16 ex: 38.06 --> 3806 , "index" depicts senosr
+            xQueueSendToBack(xQueueWaterTemp, &waterTemp, portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
+            flagTimer = 1;
+            vTaskDelay(xDelayms);
         }    
     }   
 }
@@ -196,10 +194,20 @@ void vTaskVandTemp(){
 
     
 */
+void vTestTaskWaterTemp(){
+    uint16 WaterTempTest;
+    for(;;){
+        xQueueReceive( xQueueWaterTemp, &WaterTempTest, portMAX_DELAY);
+        SW_UART_TEST_USB_PutString("Watertemp: ");
+        SW_UART_TEST_USB_PutHexInt(WaterTempTest);
+     }
+}
+
 
 void vTestTaskInit(){
     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
-    xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
+   // xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
+    xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 1, NULL);
 }
 
 

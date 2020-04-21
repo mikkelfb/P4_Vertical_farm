@@ -51,6 +51,12 @@
     */
     float fCalculatePHValue(float fPHVoltage);
     
+    /*
+    This task is for measuring the water temperature. The task writes
+    result to waterTemp as a int16, result being the temperature * 100
+    */
+    void vTaskWaterTemp();
+    
     
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
@@ -86,5 +92,10 @@
 	    @Param[in]: 
         */
         void vTestTaskUARTDataTransmit();
+        
+        /*
+        This function sends the water temperature data from the queue through UART. 
+        */
+        void vTestTaskWaterTemp();
     #endif
 #endif
