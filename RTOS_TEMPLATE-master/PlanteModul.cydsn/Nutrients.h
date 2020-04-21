@@ -94,5 +94,14 @@
 	    @Param[in]: 
         */
         void vTestTaskUARTDataTransmit();
+        
+        
+        /* 
+        This function prints the EC value
+        @Param[out]:
+        @Param[in]:
+        */
+        void vTestTaskMeasureEC();
+        
     #endif
 #endif
