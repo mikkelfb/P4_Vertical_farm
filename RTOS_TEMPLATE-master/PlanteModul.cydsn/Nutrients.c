@@ -50,7 +50,7 @@ void vNutrientsInit() {
     xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
     
     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
-    
+    xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
@@ -168,14 +168,12 @@ void vTaskWaterTemp(){
     { 
         if (flagTimer == 1){
             flagTimer = 0;
-           waterTemp = 5;
-         //   DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1 
+            DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1 
         }
-       // if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
-    	if (flagTimer==0)
+        if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
         {   
-      //      DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
-        //    waterTemp = DS18x8_GetTemperatureAsInt100 (0);  // Converts reading to int16 ex: 38.06 --> 3806 , "index" depicts senosr
+            DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
+            waterTemp = DS18x8_GetTemperatureAsInt100 (0);  // Converts reading to int16 ex: 38.06 --> 3806 , "index" depicts senosr
             xQueueSendToBack(xQueueWaterTemp, &waterTemp, portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             flagTimer = 1;
             vTaskDelay(xDelayms);
@@ -200,6 +198,7 @@ void vTestTaskWaterTemp(){
         xQueueReceive( xQueueWaterTemp, &WaterTempTest, portMAX_DELAY);
         SW_UART_TEST_USB_PutString("Watertemp: ");
         SW_UART_TEST_USB_PutHexInt(WaterTempTest);
+        SW_UART_TEST_USB_PutString("\n");
      }
 }
 
@@ -207,7 +206,7 @@ void vTestTaskWaterTemp(){
 void vTestTaskInit(){
     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
    // xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
-    xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 1, NULL);
+    xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
 }
 
 
