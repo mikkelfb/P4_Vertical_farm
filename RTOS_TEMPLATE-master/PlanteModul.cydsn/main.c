@@ -101,7 +101,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_1_Start(); //start PWM module 1
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
-    
+    I2C_Start();
     SW_UART_TEST_USB_Start();
 }
 /*---------------------------------------------------------------------------*/

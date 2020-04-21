@@ -167,10 +167,9 @@ void vTaskMeasureEC()
     float fmicroECValue;
     //float fnanoECValue;
     uint16 imicroECValue;
-    
+    const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
+    const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.    
     for (;;){
-        const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
-        const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
 
         /* Defines the message to be sent, as an array of characters */
         unsigned char  ucMessage[]= "R";
