@@ -16,6 +16,8 @@
 #include "Nutrients.h"
 #include "task.h"
 #include "queue.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
@@ -160,6 +162,10 @@ float fCalculatePHValue(float fPHVoltage){
 This is in accordance with instructions given on the EC sensor datasheet. */
 void vTaskMeasureEC()
 {
+    float fmicroECValue;
+    float fnanoECValue;
+    uint16 inanoECValue;
+    
     for (;;){
         const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
         const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
@@ -177,13 +183,34 @@ void vTaskMeasureEC()
 
         
         vTaskDelay(xDelaymsBeforeRead);
-        unsigned char ucResponse[40];
-        (void) I2C_MasterReadBuf(0x009, (uint8 *) ucResponse, 40, I2C_MODE_COMPLETE_XFER);
+        int iResponselen = 10;
+        char cResponse[iResponselen];
+        (void) I2C_MasterReadBuf(0x009, (uint8 *) cResponse, iResponselen, I2C_MODE_COMPLETE_XFER);
         
         //Waits until master completes write transfer     
         while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
         {
         }
+            
+        if (cResponse[0] == '1'){
+            
+            cResponse[0] = 0;                   //removes the initial '1' from the string, before converting to float.
+            for(int i=0; i<iResponselen; i++){
+                cResponse[i]=cResponse[i+1];
+            }
+            
+            fmicroECValue = strtof(cResponse, NULL); //converts to float.
+            fnanoECValue = fmicroECValue * 1000; // Convert to ns/cm (nano siemen per centimeter) value. This makes sure that we can see float values. 
+            inanoECValue = (uint16) fnanoECValue; // Convert to a sendable message for UART (from float to int).
+            currentNutrients[iECIndex].iECvalue = inanoECValue; // Save in the currentNutrients array on the respective index.
+            iECIndex++;
+            if(iECIndex == iSizeOfNutrients) {
+                iECIndex = 0;
+            }        
+        }
+
+
+        
         vTaskDelay(xDelaymsTimerEvent);
     }
 }
