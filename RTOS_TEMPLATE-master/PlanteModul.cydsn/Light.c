@@ -17,8 +17,7 @@
 #include "task.h"
 #include "queue.h"
 
-const int iLightArrayle = 5;
-uint8 Light[5]; // variable contains measured light value
+uint8 Light; // variable contains measured light value
 
 QueueHandle_t xQueueLightValue;
 
@@ -27,6 +26,7 @@ void vLightInit(){
     xQueueLightValue = xQueueCreate(1, sizeof(uint8));
     
     xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 2 , NULL);
+    xTaskCreate(vTaskLightController, "Light controller", 100, NULL, 2, NULL);
     
     /*Initialize test tasks*/
     #if LIGHTTEST == 1
@@ -40,14 +40,40 @@ void vTaskLightMeasure(){
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
     
     for(;;){
-        for(int i = 0;i < iLightArrayle;i++){
-            uint8 LightRead = Pin_LIGHT_in_Read();
-            Light[i] = LightRead;
-            xQueueSendToBack(xQueueLightValue, &Light[i], portMAX_DELAY);
-            vTaskDelay(xDelayms);
-        }    
+       
+        uint8 LightRead = Pin_LIGHT_in_Read();
+        Light = LightRead;
+        xQueueSendToBack(xQueueLightValue, &Light, portMAX_DELAY);
+        vTaskDelay(xDelayms); 
     }
 }
+
+// this function recieves info about which time interval there should be light, turns on/off LED lights and 
+// periodically checks if the lights are on
+void vTaskLightController(){
+    uint8 LightCycle[] = {8, 16}; //input parameters with start and stop time for the light cycle
+    const TickType_t xDelayms = pdMS_TO_TICKS( 500 ); // Sets the measurement resolution.
+    
+    uint8 CurrentHour = RTC_ReadHour();
+    
+    if((CurrentHour >= LightCycle[0]) && (CurrentHour <= LightCycle[1])){
+        // some code that turns on the LED
+        
+        vTaskDelay(xDelayms);
+        if(Light == 0){
+            // all is good
+        }
+        else if(Light == 1){
+            //all is not good
+            //force turn on LED and send alarm
+        }
+        else{
+            //panic
+        }    
+    }
+    
+}
+
 
 void vTestLightTaskInit(){
     xTaskCreate(vTestLightTask, "TestLight", 1000, NULL, 2, NULL);

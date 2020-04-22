@@ -32,6 +32,13 @@
     */
     void vTaskLightMeasure();
     
+    /*
+    This task controls the light sensor and the LED light.
+    @Param[out]:
+	@Param[in]
+    */
+    void vTaskLightController();
+    
     
     #if LIGHTTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */

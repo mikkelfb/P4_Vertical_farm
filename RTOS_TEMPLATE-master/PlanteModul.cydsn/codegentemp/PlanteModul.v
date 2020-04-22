@@ -1,6 +1,6 @@
 // ======================================================================
 // PlanteModul.v generated from TopDesign.cysch
-// 04/22/2020 at 11:32
+// 04/22/2020 at 14:47
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1056,6 +1056,30 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.3\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\FreqDiv_v1_0\FreqDiv_v1_0.v"
 `endif
 
+// RTC_v2_0(DstEnable=true, StartOfWeek=1, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=RTC_v2_0, CY_CONFIG_TITLE=RTC, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=RTC, CY_INSTANCE_SHORT_NAME=RTC, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=0, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.3, INSTANCE_NAME=RTC, )
+module RTC_v2_0_6 ;
+
+
+          wire  Net_5;
+
+
+	cy_isr_v1_0
+		#(.int_type(2'b10))
+		isr
+		 (.int_signal(Net_5));
+
+
+
+	cy_gsref_v1_0
+		#(.guid("2C8B7907-32C2-4035-8A12-D819F94023EF"))
+		gsRef_1
+		 (.sig_out(Net_5));
+
+
+
+
+endmodule
+
 // top
 module top ;
 
@@ -1794,6 +1818,8 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__Pin_LightTestLED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    RTC_v2_0_6 RTC ();
 
 
 
