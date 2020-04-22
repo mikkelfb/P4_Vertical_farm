@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   26:main.c        ****  */
   27:main.c        **** 
   28:main.c        **** 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 2
 
 
   29:main.c        **** 
@@ -72,26 +72,27 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   37:main.c        **** 
   38:main.c        **** /* Plantemodul includes */
   39:main.c        **** #include "Nutrients.h"
-  40:main.c        **** 
+  40:main.c        **** #include "light.h"
   41:main.c        **** 
-  42:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
-  43:main.c        **** tick hook. */
-  44:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
-  45:main.c        **** #define mainCOM_LED							( 3 )
-  46:main.c        **** 
-  47:main.c        **** /* The number of nano seconds between each processor clock. */
-  48:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
-  49:main.c        **** 
-  50:main.c        **** /*
-  51:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
-  52:main.c        ****  */
-  53:main.c        **** static void prvHardwareSetup( void );
-  54:main.c        **** /*---------------------------------------------------------------------------*/
-  55:main.c        **** 
+  42:main.c        **** 
+  43:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
+  44:main.c        **** tick hook. */
+  45:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
+  46:main.c        **** #define mainCOM_LED							( 3 )
+  47:main.c        **** 
+  48:main.c        **** /* The number of nano seconds between each processor clock. */
+  49:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
+  50:main.c        **** 
+  51:main.c        **** /*
+  52:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
+  53:main.c        ****  */
+  54:main.c        **** static void prvHardwareSetup( void );
+  55:main.c        **** /*---------------------------------------------------------------------------*/
   56:main.c        **** 
-  57:main.c        **** int main( void )
-  58:main.c        **** {
-  30              		.loc 1 58 0
+  57:main.c        **** 
+  58:main.c        **** int main( void )
+  59:main.c        **** {
+  30              		.loc 1 59 0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -101,35 +102,35 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   37              		.cfi_offset 14, -4
   38 0002 00AF     		add	r7, sp, #0
   39              		.cfi_def_cfa_register 7
-  59:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  60:main.c        **** 	prvHardwareSetup();
-  40              		.loc 1 60 0
+  60:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  61:main.c        **** 	prvHardwareSetup();
+  40              		.loc 1 61 0
   41 0004 FFF7FEFF 		bl	prvHardwareSetup
-  61:main.c        ****     
-  62:main.c        ****     vNutrientsInit(); //initialize Nutrients control task and parameteres
-  42              		.loc 1 62 0
-  43 0008 FFF7FEFF 		bl	vNutrientsInit
-  63:main.c        ****      
-  64:main.c        ****     
-  65:main.c        ****     
-  66:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
-  67:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
-  68:main.c        **** 	vTaskStartScheduler();
-  44              		.loc 1 68 0
+  62:main.c        ****     
+  63:main.c        ****     //vNutrientsInit(); //initialize Nutrients control task and parameteres
+  64:main.c        ****      
+  65:main.c        ****     vLightInit(); //initialize Light control task and parameters
+  42              		.loc 1 65 0
+  43 0008 FFF7FEFF 		bl	vLightInit
+  66:main.c        ****     
+  67:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
+  68:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
+  69:main.c        **** 	vTaskStartScheduler();
+  44              		.loc 1 69 0
   45 000c FFF7FEFF 		bl	vTaskStartScheduler
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 3
+
+
   46              	.L2:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 3
-
-
-  69:main.c        **** 
-  70:main.c        ****     
+  70:main.c        **** 
   71:main.c        ****     
-  72:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
-  73:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
-  74:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
-  75:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
-  76:main.c        **** 	for( ;; );
-  47              		.loc 1 76 0 discriminator 1
+  72:main.c        ****     
+  73:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
+  74:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
+  75:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
+  76:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
+  77:main.c        **** 	for( ;; );
+  47              		.loc 1 77 0 discriminator 1
   48 0010 FEE7     		b	.L2
   49              		.cfi_endproc
   50              	.LFE68:
@@ -141,16 +142,16 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   56              		.type	prvHardwareSetup, %function
   57              	prvHardwareSetup:
   58              	.LFB69:
-  77:main.c        **** }
-  78:main.c        **** /*---------------------------------------------------------------------------*/
-  79:main.c        **** 
+  78:main.c        **** }
+  79:main.c        **** /*---------------------------------------------------------------------------*/
   80:main.c        **** 
   81:main.c        **** 
   82:main.c        **** 
   83:main.c        **** 
-  84:main.c        **** void prvHardwareSetup( void )
-  85:main.c        **** {
-  59              		.loc 1 85 0
+  84:main.c        **** 
+  85:main.c        **** void prvHardwareSetup( void )
+  86:main.c        **** {
+  59              		.loc 1 86 0
   60              		.cfi_startproc
   61              		@ args = 0, pretend = 0, frame = 0
   62              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -160,60 +161,60 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   66              		.cfi_offset 14, -4
   67 0002 00AF     		add	r7, sp, #0
   68              		.cfi_def_cfa_register 7
-  86:main.c        **** /* Port layer functions that need to be copied into the vector table. */
-  87:main.c        **** extern void xPortPendSVHandler( void );
-  88:main.c        **** extern void xPortSysTickHandler( void );
-  89:main.c        **** extern void vPortSVCHandler( void );
-  90:main.c        **** extern cyisraddress CyRamVectors[];
-  91:main.c        **** 
+  87:main.c        **** /* Port layer functions that need to be copied into the vector table. */
+  88:main.c        **** extern void xPortPendSVHandler( void );
+  89:main.c        **** extern void xPortSysTickHandler( void );
+  90:main.c        **** extern void vPortSVCHandler( void );
+  91:main.c        **** extern cyisraddress CyRamVectors[];
   92:main.c        **** 
   93:main.c        **** 
-  94:main.c        **** 	/* Install the OS Interrupt Handlers. */
-  95:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
-  69              		.loc 1 95 0
+  94:main.c        **** 
+  95:main.c        **** 	/* Install the OS Interrupt Handlers. */
+  96:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
+  69              		.loc 1 96 0
   70 0004 0A4B     		ldr	r3, .L4
   71 0006 0B4A     		ldr	r2, .L4+4
   72 0008 DA62     		str	r2, [r3, #44]
-  96:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
-  73              		.loc 1 96 0
+  97:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
+  73              		.loc 1 97 0
   74 000a 094B     		ldr	r3, .L4
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 4
+
+
   75 000c 0A4A     		ldr	r2, .L4+8
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 4
-
-
   76 000e 9A63     		str	r2, [r3, #56]
-  97:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
-  77              		.loc 1 97 0
+  98:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
+  77              		.loc 1 98 0
   78 0010 074B     		ldr	r3, .L4
   79 0012 0A4A     		ldr	r2, .L4+12
   80 0014 DA63     		str	r2, [r3, #60]
-  98:main.c        **** 
-  99:main.c        ****     
- 100:main.c        **** 	/* Start-up the peripherals. */
- 101:main.c        ****     
+  99:main.c        **** 
+ 100:main.c        ****     
+ 101:main.c        **** 	/* Start-up the peripherals. */
  102:main.c        ****     
- 103:main.c        ****     PWM_PERISTALTISK_1_Start(); //start PWM module 1
-  81              		.loc 1 103 0
+ 103:main.c        ****     
+ 104:main.c        ****     PWM_PERISTALTISK_1_Start(); //start PWM module 1
+  81              		.loc 1 104 0
   82 0016 FFF7FEFF 		bl	PWM_PERISTALTISK_1_Start
- 104:main.c        ****     PWM_PERISTALTISK_2_Start(); //start PWM module 2
-  83              		.loc 1 104 0
+ 105:main.c        ****     PWM_PERISTALTISK_2_Start(); //start PWM module 2
+  83              		.loc 1 105 0
   84 001a FFF7FEFF 		bl	PWM_PERISTALTISK_2_Start
- 105:main.c        ****     ADC_PH_Start(); //start ADC_PH module
-  85              		.loc 1 105 0
+ 106:main.c        ****     ADC_PH_Start(); //start ADC_PH module
+  85              		.loc 1 106 0
   86 001e FFF7FEFF 		bl	ADC_PH_Start
- 106:main.c        ****     
- 107:main.c        ****     /* Startup One_Wire. */
- 108:main.c        **** 
- 109:main.c        ****     DS18x8_Start(); // Starting DS18x8 module
-  87              		.loc 1 109 0
+ 107:main.c        ****     
+ 108:main.c        ****     /* Startup One_Wire. */
+ 109:main.c        **** 
+ 110:main.c        ****     DS18x8_Start(); // Starting DS18x8 module
+  87              		.loc 1 110 0
   88 0022 FFF7FEFF 		bl	DS18x8_Start
- 110:main.c        ****    
- 111:main.c        ****     
- 112:main.c        ****     SW_UART_TEST_USB_Start();
-  89              		.loc 1 112 0
+ 111:main.c        ****    
+ 112:main.c        ****     
+ 113:main.c        ****     SW_UART_TEST_USB_Start();
+  89              		.loc 1 113 0
   90 0026 FFF7FEFF 		bl	SW_UART_TEST_USB_Start
- 113:main.c        **** }
-  91              		.loc 1 113 0
+ 114:main.c        **** }
+  91              		.loc 1 114 0
   92 002a 00BF     		nop
   93 002c 80BD     		pop	{r7, pc}
   94              	.L5:
@@ -234,15 +235,15 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  109              		.type	vApplicationStackOverflowHook, %function
  110              	vApplicationStackOverflowHook:
  111              	.LFB70:
- 114:main.c        **** /*---------------------------------------------------------------------------*/
- 115:main.c        **** 
+ 115:main.c        **** /*---------------------------------------------------------------------------*/
  116:main.c        **** 
- 117:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 5
+ 117:main.c        **** 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 5
 
 
- 118:main.c        **** {
- 112              		.loc 1 118 0
+ 118:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+ 119:main.c        **** {
+ 112              		.loc 1 119 0
  113              		.cfi_startproc
  114              		@ args = 0, pretend = 0, frame = 16
  115              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -297,10 +298,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   36:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------
   37:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Port specific definitions.
   38:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 6
+
+
   39:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 6
-
-
   40:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * given hardware and compiler.
   41:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
   42:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * These settings should not be altered.
@@ -357,10 +358,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
   93:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portYIELD_FROM_ISR( x ) portEND_SWITCHING_ISR( x )
   94:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
   95:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 7
+
+
   96:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Critical section management. */
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 7
-
-
   97:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortEnterCritical( void );
   98:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortExitCritical( void );
   99:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
@@ -417,10 +418,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  150:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  151:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
  152:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 8
+
+
  153:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 8
-
-
  154:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  155:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef configASSERT
  156:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	void vPortValidateInterruptPriority( void );
@@ -477,16 +478,16 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  138              		.thumb
  139              		.syntax unified
  140 001a FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 9
+
+
  141              	.L7:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 9
-
-
  142              	.LBE7:
  143              	.LBE6:
- 119:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
- 120:main.c        **** 	taskDISABLE_INTERRUPTS();
- 121:main.c        **** 	for( ;; );
- 144              		.loc 1 121 0 discriminator 1
+ 120:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
+ 121:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 122:main.c        **** 	for( ;; );
+ 144              		.loc 1 122 0 discriminator 1
  145 001c FEE7     		b	.L7
  146              		.cfi_endproc
  147              	.LFE70:
@@ -499,12 +500,12 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  154              		.type	vApplicationMallocFailedHook, %function
  155              	vApplicationMallocFailedHook:
  156              	.LFB71:
- 122:main.c        **** }
- 123:main.c        **** /*---------------------------------------------------------------------------*/
- 124:main.c        **** 
- 125:main.c        **** void vApplicationMallocFailedHook( void )
- 126:main.c        **** {
- 157              		.loc 1 126 0
+ 123:main.c        **** }
+ 124:main.c        **** /*---------------------------------------------------------------------------*/
+ 125:main.c        **** 
+ 126:main.c        **** void vApplicationMallocFailedHook( void )
+ 127:main.c        **** {
+ 157              		.loc 1 127 0
  158              		.cfi_startproc
  159              		@ args = 0, pretend = 0, frame = 8
  160              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -533,14 +534,14 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  183              	.L9:
  184              	.LBE9:
  185              	.LBE8:
- 127:main.c        **** 	/* The heap space has been execeeded. */
- 128:main.c        **** 	taskDISABLE_INTERRUPTS();
- 129:main.c        **** 	for( ;; );
- 186              		.loc 1 129 0 discriminator 1
+ 128:main.c        **** 	/* The heap space has been execeeded. */
+ 129:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 130:main.c        **** 	for( ;; );
+ 186              		.loc 1 130 0 discriminator 1
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 10
+
+
  187 0018 FEE7     		b	.L9
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 10
-
-
  188              		.cfi_endproc
  189              	.LFE71:
  190              		.size	vApplicationMallocFailedHook, .-vApplicationMallocFailedHook
@@ -561,15 +562,15 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  205 000b 01       		.uleb128 0x1
  206 000c 08000000 		.4byte	.LASF35
  207 0010 0C       		.byte	0xc
- 208 0011 76020000 		.4byte	.LASF36
- 209 0015 A5010000 		.4byte	.LASF37
+ 208 0011 6A020000 		.4byte	.LASF36
+ 209 0015 D6010000 		.4byte	.LASF37
  210 0019 00000000 		.4byte	.Ldebug_ranges0+0
  211 001d 00000000 		.4byte	0
  212 0021 00000000 		.4byte	.Ldebug_line0
  213 0025 02       		.uleb128 0x2
  214 0026 01       		.byte	0x1
  215 0027 06       		.byte	0x6
- 216 0028 DF020000 		.4byte	.LASF0
+ 216 0028 D3020000 		.4byte	.LASF0
  217 002c 02       		.uleb128 0x2
  218 002d 01       		.byte	0x1
  219 002e 08       		.byte	0x8
@@ -577,7 +578,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  221 0033 02       		.uleb128 0x2
  222 0034 02       		.byte	0x2
  223 0035 05       		.byte	0x5
- 224 0036 99020000 		.4byte	.LASF2
+ 224 0036 8D020000 		.4byte	.LASF2
  225 003a 02       		.uleb128 0x2
  226 003b 02       		.byte	0x2
  227 003c 07       		.byte	0x7
@@ -590,27 +591,27 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  234 004c 02       		.uleb128 0x2
  235 004d 04       		.byte	0x4
  236 004e 05       		.byte	0x5
- 237 004f CA020000 		.4byte	.LASF4
+ 237 004f BE020000 		.4byte	.LASF4
  238 0053 03       		.uleb128 0x3
  239 0054 20010000 		.4byte	.LASF6
  240 0058 03       		.byte	0x3
  241 0059 41       		.byte	0x41
  242 005a 5E000000 		.4byte	0x5e
  243 005e 02       		.uleb128 0x2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 11
+
+
  244 005f 04       		.byte	0x4
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 11
-
-
  245 0060 07       		.byte	0x7
  246 0061 2B010000 		.4byte	.LASF7
  247 0065 02       		.uleb128 0x2
  248 0066 08       		.byte	0x8
  249 0067 05       		.byte	0x5
- 250 0068 68020000 		.4byte	.LASF8
+ 250 0068 5C020000 		.4byte	.LASF8
  251 006c 02       		.uleb128 0x2
  252 006d 08       		.byte	0x8
  253 006e 07       		.byte	0x7
- 254 006f 16020000 		.4byte	.LASF9
+ 254 006f B2010000 		.4byte	.LASF9
  255 0073 04       		.uleb128 0x4
  256 0074 04       		.byte	0x4
  257 0075 05       		.byte	0x5
@@ -618,19 +619,19 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  259 007a 02       		.uleb128 0x2
  260 007b 04       		.byte	0x4
  261 007c 07       		.byte	0x7
- 262 007d 09020000 		.4byte	.LASF10
+ 262 007d A5010000 		.4byte	.LASF10
  263 0081 03       		.uleb128 0x3
- 264 0082 57020000 		.4byte	.LASF11
+ 264 0082 4B020000 		.4byte	.LASF11
  265 0086 04       		.byte	0x4
  266 0087 2C       		.byte	0x2c
  267 0088 41000000 		.4byte	0x41
  268 008c 03       		.uleb128 0x3
- 269 008d C1020000 		.4byte	.LASF12
+ 269 008d B5020000 		.4byte	.LASF12
  270 0091 04       		.byte	0x4
  271 0092 30       		.byte	0x30
  272 0093 53000000 		.4byte	0x53
  273 0097 05       		.uleb128 0x5
- 274 0098 AE020000 		.4byte	.LASF13
+ 274 0098 A2020000 		.4byte	.LASF13
  275 009c 05       		.byte	0x5
  276 009d E401     		.2byte	0x1e4
  277 009f 2C000000 		.4byte	0x2c
@@ -650,17 +651,17 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  291 00bd 02       		.uleb128 0x2
  292 00be 01       		.byte	0x1
  293 00bf 08       		.byte	0x8
- 294 00c0 7D020000 		.4byte	.LASF17
+ 294 00c0 71020000 		.4byte	.LASF17
  295 00c4 06       		.uleb128 0x6
  296 00c5 97000000 		.4byte	0x97
  297 00c9 05       		.uleb128 0x5
- 298 00ca 2D020000 		.4byte	.LASF18
+ 298 00ca C9010000 		.4byte	.LASF18
  299 00ce 05       		.byte	0x5
  300 00cf A002     		.2byte	0x2a0
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 12
+
+
  301 00d1 D5000000 		.4byte	0xd5
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 12
-
-
  302 00d5 07       		.uleb128 0x7
  303 00d6 04       		.byte	0x4
  304 00d7 DB000000 		.4byte	0xdb
@@ -668,11 +669,11 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  306 00dc 02       		.uleb128 0x2
  307 00dd 08       		.byte	0x8
  308 00de 04       		.byte	0x4
- 309 00df D3020000 		.4byte	.LASF19
+ 309 00df C7020000 		.4byte	.LASF19
  310 00e3 02       		.uleb128 0x2
  311 00e4 04       		.byte	0x4
  312 00e5 07       		.byte	0x7
- 313 00e6 5F020000 		.4byte	.LASF20
+ 313 00e6 53020000 		.4byte	.LASF20
  314 00ea 07       		.uleb128 0x7
  315 00eb 04       		.byte	0x4
  316 00ec BD000000 		.4byte	0xbd
@@ -696,7 +697,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  334 0113 02       		.byte	0x2
  335 0114 00       		.byte	0
  336 0115 03       		.uleb128 0x3
- 337 0116 B4020000 		.4byte	.LASF23
+ 337 0116 A8020000 		.4byte	.LASF23
  338 011a 07       		.byte	0x7
  339 011b 46       		.byte	0x46
  340 011c 20010000 		.4byte	0x120
@@ -717,22 +718,22 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  355 013d C3       		.byte	0xc3
  356 013e 8C000000 		.4byte	0x8c
  357 0142 00       		.byte	0
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 13
+
+
  358 0143 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 13
-
-
  359 0144 8C010000 		.4byte	.LASF42
  360 0148 01       		.byte	0x1
- 361 0149 39       		.byte	0x39
+ 361 0149 3A       		.byte	0x3a
  362 014a 73000000 		.4byte	0x73
  363 014e 00000000 		.4byte	.LFB68
  364 0152 12000000 		.4byte	.LFE68-.LFB68
  365 0156 01       		.uleb128 0x1
  366 0157 9C       		.byte	0x9c
  367 0158 0F       		.uleb128 0xf
- 368 0159 09030000 		.4byte	.LASF43
+ 368 0159 FD020000 		.4byte	.LASF43
  369 015d 01       		.byte	0x1
- 370 015e 54       		.byte	0x54
+ 370 015e 55       		.byte	0x55
  371 015f 00000000 		.4byte	.LFB69
  372 0163 40000000 		.4byte	.LFE69-.LFB69
  373 0167 01       		.uleb128 0x1
@@ -741,19 +742,19 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  376 016d 10       		.uleb128 0x10
  377 016e DC000000 		.4byte	.LASF24
  378 0172 01       		.byte	0x1
- 379 0173 57       		.byte	0x57
+ 379 0173 58       		.byte	0x58
  380 0174 10       		.uleb128 0x10
  381 0175 91010000 		.4byte	.LASF25
  382 0179 01       		.byte	0x1
- 383 017a 58       		.byte	0x58
+ 383 017a 59       		.byte	0x59
  384 017b 10       		.uleb128 0x10
- 385 017c 82020000 		.4byte	.LASF26
+ 385 017c 76020000 		.4byte	.LASF26
  386 0180 01       		.byte	0x1
- 387 0181 59       		.byte	0x59
+ 387 0181 5A       		.byte	0x5a
  388 0182 11       		.uleb128 0x11
  389 0183 A7000000 		.4byte	.LASF31
  390 0187 01       		.byte	0x1
- 391 0188 5A       		.byte	0x5a
+ 391 0188 5B       		.byte	0x5b
  392 0189 8E010000 		.4byte	0x18e
  393 018d 00       		.byte	0
  394 018e 12       		.uleb128 0x12
@@ -762,29 +763,29 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  397 0197 13       		.uleb128 0x13
  398 0198 00       		.byte	0
  399 0199 14       		.uleb128 0x14
- 400 019a EB020000 		.4byte	.LASF29
+ 400 019a DF020000 		.4byte	.LASF29
  401 019e 01       		.byte	0x1
- 402 019f 75       		.byte	0x75
+ 402 019f 76       		.byte	0x76
  403 01a0 00000000 		.4byte	.LFB70
  404 01a4 1E000000 		.4byte	.LFE70-.LFB70
  405 01a8 01       		.uleb128 0x1
  406 01a9 9C       		.byte	0x9c
  407 01aa ED010000 		.4byte	0x1ed
  408 01ae 15       		.uleb128 0x15
- 409 01af 92020000 		.4byte	.LASF27
+ 409 01af 86020000 		.4byte	.LASF27
  410 01b3 01       		.byte	0x1
- 411 01b4 75       		.byte	0x75
+ 411 01b4 76       		.byte	0x76
  412 01b5 15010000 		.4byte	0x115
  413 01b9 02       		.uleb128 0x2
  414 01ba 91       		.byte	0x91
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 14
+
+
  415 01bb 6C       		.sleb128 -20
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 14
-
-
  416 01bc 15       		.uleb128 0x15
- 417 01bd A3020000 		.4byte	.LASF28
+ 417 01bd 97020000 		.4byte	.LASF28
  418 01c1 01       		.byte	0x1
- 419 01c2 75       		.byte	0x75
+ 419 01c2 76       		.byte	0x76
  420 01c3 EA000000 		.4byte	0xea
  421 01c7 02       		.uleb128 0x2
  422 01c8 91       		.byte	0x91
@@ -794,7 +795,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  426 01cf 0A000000 		.4byte	.LBB6
  427 01d3 12000000 		.4byte	.LBE6-.LBB6
  428 01d7 01       		.byte	0x1
- 429 01d8 78       		.byte	0x78
+ 429 01d8 79       		.byte	0x79
  430 01d9 17       		.uleb128 0x17
  431 01da 0A000000 		.4byte	.LBB7
  432 01de 12000000 		.4byte	.LBE7-.LBB7
@@ -807,9 +808,9 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  439 01eb 00       		.byte	0
  440 01ec 00       		.byte	0
  441 01ed 14       		.uleb128 0x14
- 442 01ee 3A020000 		.4byte	.LASF30
+ 442 01ee 2E020000 		.4byte	.LASF30
  443 01f2 01       		.byte	0x1
- 444 01f3 7D       		.byte	0x7d
+ 444 01f3 7E       		.byte	0x7e
  445 01f4 00000000 		.4byte	.LFB71
  446 01f8 1A000000 		.4byte	.LFE71-.LFB71
  447 01fc 01       		.uleb128 0x1
@@ -820,7 +821,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  452 0207 06000000 		.4byte	.LBB8
  453 020b 12000000 		.4byte	.LBE8-.LBB8
  454 020f 01       		.byte	0x1
- 455 0210 80       		.byte	0x80
+ 455 0210 81       		.byte	0x81
  456 0211 17       		.uleb128 0x17
  457 0212 06000000 		.4byte	.LBB9
  458 0216 12000000 		.4byte	.LBE9-.LBB9
@@ -837,10 +838,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  469 022a 35020000 		.4byte	0x235
  470 022e 19       		.uleb128 0x19
  471 022f E3000000 		.4byte	0xe3
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 15
+
+
  472 0233 07       		.byte	0x7
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 15
-
-
  473 0234 00       		.byte	0
  474 0235 1A       		.uleb128 0x1a
  475 0236 04010000 		.4byte	.LASF32
@@ -868,7 +869,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  497 0268 11       		.uleb128 0x11
  498 0269 A7000000 		.4byte	.LASF31
  499 026d 01       		.byte	0x1
- 500 026e 5A       		.byte	0x5a
+ 500 026e 5B       		.byte	0x5b
  501 026f 8E010000 		.4byte	0x18e
  502 0273 00       		.byte	0
  503              		.section	.debug_abbrev,"",%progbits
@@ -897,10 +898,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  526 0015 00       		.byte	0
  527 0016 0B       		.uleb128 0xb
  528 0017 0B       		.uleb128 0xb
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 16
+
+
  529 0018 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 16
-
-
  530 0019 0B       		.uleb128 0xb
  531 001a 03       		.uleb128 0x3
  532 001b 0E       		.uleb128 0xe
@@ -957,10 +958,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  583 004e 0B       		.uleb128 0xb
  584 004f 49       		.uleb128 0x49
  585 0050 13       		.uleb128 0x13
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 17
+
+
  586 0051 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 17
-
-
  587 0052 00       		.byte	0
  588 0053 08       		.uleb128 0x8
  589 0054 15       		.uleb128 0x15
@@ -1017,10 +1018,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  640 0087 0B       		.uleb128 0xb
  641 0088 3B       		.uleb128 0x3b
  642 0089 0B       		.uleb128 0xb
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 18
+
+
  643 008a 27       		.uleb128 0x27
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 18
-
-
  644 008b 19       		.uleb128 0x19
  645 008c 20       		.uleb128 0x20
  646 008d 0B       		.uleb128 0xb
@@ -1077,10 +1078,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  697 00c1 0B       		.uleb128 0xb
  698 00c2 27       		.uleb128 0x27
  699 00c3 19       		.uleb128 0x19
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 19
+
+
  700 00c4 11       		.uleb128 0x11
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 19
-
-
  701 00c5 01       		.uleb128 0x1
  702 00c6 12       		.uleb128 0x12
  703 00c7 06       		.uleb128 0x6
@@ -1137,10 +1138,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  754 00fb 00       		.byte	0
  755 00fc 13       		.uleb128 0x13
  756 00fd 21       		.uleb128 0x21
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 20
+
+
  757 00fe 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 20
-
-
  758 00ff 00       		.byte	0
  759 0100 00       		.byte	0
  760 0101 14       		.uleb128 0x14
@@ -1197,10 +1198,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  811 0135 59       		.uleb128 0x59
  812 0136 0B       		.uleb128 0xb
  813 0137 00       		.byte	0
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 21
+
+
  814 0138 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 21
-
-
  815 0139 17       		.uleb128 0x17
  816 013a 0B       		.uleb128 0xb
  817 013b 01       		.byte	0x1
@@ -1257,10 +1258,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  868 016e 49       		.uleb128 0x49
  869 016f 13       		.uleb128 0x13
  870 0170 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 22
+
+
  871 0171 19       		.uleb128 0x19
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 22
-
-
  872 0172 3C       		.uleb128 0x3c
  873 0173 19       		.uleb128 0x19
  874 0174 00       		.byte	0
@@ -1317,10 +1318,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  914      6973696F 
  914      6E203233 
  914      37373135 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 23
+
+
  915 006e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 23
-
-
  915      66756E63 
  915      74696F6E 
  915      2D736563 
@@ -1377,10 +1378,10 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  936              	.LASF6:
  937 0120 5F5F7569 		.ascii	"__uint32_t\000"
  937      6E743332 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 24
+
+
  937      5F7400
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 24
-
-
  938              	.LASF7:
  939 012b 6C6F6E67 		.ascii	"long unsigned int\000"
  939      20756E73 
@@ -1424,115 +1425,113 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 1
  955      5469636B 
  955      48616E64 
  955      6C657200 
- 956              	.LASF37:
- 957 01a5 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
- 957      73657273 
- 957      5C6D6167 
- 957      39345C44 
- 957      65736B74 
- 958 01d2 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
- 958      72746963 
- 958      616C5F66 
- 958      61726D5C 
- 958      52544F53 
- 959 0203 63796473 		.ascii	"cydsn\000"
- 959      6E00
- 960              	.LASF10:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 25
+ 956              	.LASF10:
+ 957 01a5 756E7369 		.ascii	"unsigned int\000"
+ 957      676E6564 
+ 957      20696E74 
+ 957      00
+ 958              	.LASF9:
+ 959 01b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 959      206C6F6E 
+ 959      6720756E 
+ 959      7369676E 
+ 959      65642069 
+ 960              	.LASF18:
+ 961 01c9 63796973 		.ascii	"cyisraddress\000"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 25
 
 
- 961 0209 756E7369 		.ascii	"unsigned int\000"
- 961      676E6564 
- 961      20696E74 
+ 961      72616464 
+ 961      72657373 
  961      00
- 962              	.LASF9:
- 963 0216 6C6F6E67 		.ascii	"long long unsigned int\000"
- 963      206C6F6E 
- 963      6720756E 
- 963      7369676E 
- 963      65642069 
- 964              	.LASF18:
- 965 022d 63796973 		.ascii	"cyisraddress\000"
- 965      72616464 
- 965      72657373 
- 965      00
- 966              	.LASF30:
- 967 023a 76417070 		.ascii	"vApplicationMallocFailedHook\000"
- 967      6C696361 
- 967      74696F6E 
- 967      4D616C6C 
- 967      6F634661 
- 968              	.LASF11:
- 969 0257 696E7433 		.ascii	"int32_t\000"
- 969      325F7400 
- 970              	.LASF20:
- 971 025f 73697A65 		.ascii	"sizetype\000"
- 971      74797065 
- 971      00
- 972              	.LASF8:
- 973 0268 6C6F6E67 		.ascii	"long long int\000"
- 973      206C6F6E 
- 973      6720696E 
- 973      7400
- 974              	.LASF36:
- 975 0276 6D61696E 		.ascii	"main.c\000"
- 975      2E6300
- 976              	.LASF17:
- 977 027d 63686172 		.ascii	"char\000"
- 977      00
- 978              	.LASF26:
- 979 0282 76506F72 		.ascii	"vPortSVCHandler\000"
- 979      74535643 
- 979      48616E64 
- 979      6C657200 
- 980              	.LASF27:
- 981 0292 70785461 		.ascii	"pxTask\000"
- 981      736B00
- 982              	.LASF2:
- 983 0299 73686F72 		.ascii	"short int\000"
- 983      7420696E 
- 983      7400
- 984              	.LASF28:
- 985 02a3 70635461 		.ascii	"pcTaskName\000"
- 985      736B4E61 
- 985      6D6500
- 986              	.LASF13:
- 987 02ae 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciwnt7Z.s 			page 26
+ 962              	.LASF37:
+ 963 01d6 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
+ 963      73657273 
+ 963      5C6B7269 
+ 963      73745C44 
+ 963      6F63756D 
+ 964 0204 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 964      544F535F 
+ 964      54454D50 
+ 964      4C415445 
+ 964      2D6D6173 
+ 965              	.LASF30:
+ 966 022e 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 966      6C696361 
+ 966      74696F6E 
+ 966      4D616C6C 
+ 966      6F634661 
+ 967              	.LASF11:
+ 968 024b 696E7433 		.ascii	"int32_t\000"
+ 968      325F7400 
+ 969              	.LASF20:
+ 970 0253 73697A65 		.ascii	"sizetype\000"
+ 970      74797065 
+ 970      00
+ 971              	.LASF8:
+ 972 025c 6C6F6E67 		.ascii	"long long int\000"
+ 972      206C6F6E 
+ 972      6720696E 
+ 972      7400
+ 973              	.LASF36:
+ 974 026a 6D61696E 		.ascii	"main.c\000"
+ 974      2E6300
+ 975              	.LASF17:
+ 976 0271 63686172 		.ascii	"char\000"
+ 976      00
+ 977              	.LASF26:
+ 978 0276 76506F72 		.ascii	"vPortSVCHandler\000"
+ 978      74535643 
+ 978      48616E64 
+ 978      6C657200 
+ 979              	.LASF27:
+ 980 0286 70785461 		.ascii	"pxTask\000"
+ 980      736B00
+ 981              	.LASF2:
+ 982 028d 73686F72 		.ascii	"short int\000"
+ 982      7420696E 
+ 982      7400
+ 983              	.LASF28:
+ 984 0297 70635461 		.ascii	"pcTaskName\000"
+ 984      736B4E61 
+ 984      6D6500
+ 985              	.LASF13:
+ 986 02a2 75696E74 		.ascii	"uint8\000"
+ 986      3800
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccmzbYEc.s 			page 26
 
 
- 987      3800
- 988              	.LASF23:
- 989 02b4 5461736B 		.ascii	"TaskHandle_t\000"
- 989      48616E64 
- 989      6C655F74 
- 989      00
- 990              	.LASF12:
- 991 02c1 75696E74 		.ascii	"uint32_t\000"
- 991      33325F74 
- 991      00
- 992              	.LASF4:
- 993 02ca 6C6F6E67 		.ascii	"long int\000"
- 993      20696E74 
- 993      00
- 994              	.LASF19:
- 995 02d3 6C6F6E67 		.ascii	"long double\000"
- 995      20646F75 
- 995      626C6500 
- 996              	.LASF0:
- 997 02df 7369676E 		.ascii	"signed char\000"
- 997      65642063 
- 997      68617200 
- 998              	.LASF29:
- 999 02eb 76417070 		.ascii	"vApplicationStackOverflowHook\000"
- 999      6C696361 
- 999      74696F6E 
- 999      53746163 
- 999      6B4F7665 
- 1000              	.LASF43:
- 1001 0309 70727648 		.ascii	"prvHardwareSetup\000"
- 1001      61726477 
- 1001      61726553 
- 1001      65747570 
- 1001      00
- 1002              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 987              	.LASF23:
+ 988 02a8 5461736B 		.ascii	"TaskHandle_t\000"
+ 988      48616E64 
+ 988      6C655F74 
+ 988      00
+ 989              	.LASF12:
+ 990 02b5 75696E74 		.ascii	"uint32_t\000"
+ 990      33325F74 
+ 990      00
+ 991              	.LASF4:
+ 992 02be 6C6F6E67 		.ascii	"long int\000"
+ 992      20696E74 
+ 992      00
+ 993              	.LASF19:
+ 994 02c7 6C6F6E67 		.ascii	"long double\000"
+ 994      20646F75 
+ 994      626C6500 
+ 995              	.LASF0:
+ 996 02d3 7369676E 		.ascii	"signed char\000"
+ 996      65642063 
+ 996      68617200 
+ 997              	.LASF29:
+ 998 02df 76417070 		.ascii	"vApplicationStackOverflowHook\000"
+ 998      6C696361 
+ 998      74696F6E 
+ 998      53746163 
+ 998      6B4F7665 
+ 999              	.LASF43:
+ 1000 02fd 70727648 		.ascii	"prvHardwareSetup\000"
+ 1000      61726477 
+ 1000      61726553 
+ 1000      65747570 
+ 1000      00
+ 1001              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

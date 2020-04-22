@@ -1,0 +1,1230 @@
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Light.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.global	iLightArrayle
+  22              		.section	.rodata
+  23              		.align	2
+  24              		.type	iLightArrayle, %object
+  25              		.size	iLightArrayle, 4
+  26              	iLightArrayle:
+  27 0000 05000000 		.word	5
+  28              		.comm	Light,5,4
+  29              		.comm	xQueueLightValue,4,4
+  30              		.align	2
+  31              	.LC0:
+  32 0004 4C696768 		.ascii	"Light\000"
+  32      7400
+  33              		.section	.text.vLightInit,"ax",%progbits
+  34              		.align	2
+  35              		.global	vLightInit
+  36              		.thumb
+  37              		.thumb_func
+  38              		.type	vLightInit, %function
+  39              	vLightInit:
+  40              	.LFB68:
+  41              		.file 1 "Light.c"
+   1:Light.c       **** /* ========================================
+   2:Light.c       ****  *
+   3:Light.c       ****  * Copyright YOUR COMPANY, THE YEAR
+   4:Light.c       ****  * All Rights Reserved
+   5:Light.c       ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Light.c       ****  *
+   7:Light.c       ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Light.c       ****  * WHICH IS THE PROPERTY OF your company.
+   9:Light.c       ****  *
+  10:Light.c       ****  * ========================================
+  11:Light.c       **** */
+  12:Light.c       **** 
+  13:Light.c       **** /* [] END OF FILE */
+  14:Light.c       **** 
+  15:Light.c       **** #include "FreeRTOS.h"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 2
+
+
+  16:Light.c       **** #include "light.h"
+  17:Light.c       **** #include "task.h"
+  18:Light.c       **** #include "queue.h"
+  19:Light.c       **** 
+  20:Light.c       **** const int iLightArrayle = 5;
+  21:Light.c       **** uint8 Light[5]; // variable contains measured light value
+  22:Light.c       **** 
+  23:Light.c       **** QueueHandle_t xQueueLightValue;
+  24:Light.c       **** 
+  25:Light.c       **** void vLightInit(){
+  42              		.loc 1 25 0
+  43              		.cfi_startproc
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+  46 0000 80B5     		push	{r7, lr}
+  47              		.cfi_def_cfa_offset 8
+  48              		.cfi_offset 7, -8
+  49              		.cfi_offset 14, -4
+  50 0002 82B0     		sub	sp, sp, #8
+  51              		.cfi_def_cfa_offset 16
+  52 0004 02AF     		add	r7, sp, #8
+  53              		.cfi_def_cfa 7, 8
+  26:Light.c       ****     
+  27:Light.c       ****     xQueueLightValue = xQueueCreate(1, sizeof(uint8));
+  54              		.loc 1 27 0
+  55 0006 0022     		movs	r2, #0
+  56 0008 0121     		movs	r1, #1
+  57 000a 0120     		movs	r0, #1
+  58 000c FFF7FEFF 		bl	xQueueGenericCreate
+  59 0010 0246     		mov	r2, r0
+  60 0012 094B     		ldr	r3, .L2
+  61 0014 1A60     		str	r2, [r3]
+  28:Light.c       ****     
+  29:Light.c       ****     xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 2 , NULL);
+  62              		.loc 1 29 0
+  63 0016 0023     		movs	r3, #0
+  64 0018 0193     		str	r3, [sp, #4]
+  65 001a 0223     		movs	r3, #2
+  66 001c 0093     		str	r3, [sp]
+  67 001e 0023     		movs	r3, #0
+  68 0020 4FF47A72 		mov	r2, #1000
+  69 0024 0549     		ldr	r1, .L2+4
+  70 0026 0648     		ldr	r0, .L2+8
+  71 0028 FFF7FEFF 		bl	xTaskCreate
+  30:Light.c       ****     
+  31:Light.c       ****     /*Initialize test tasks*/
+  32:Light.c       ****     #if LIGHTTEST == 1
+  33:Light.c       ****         vTestLightTaskInit();
+  72              		.loc 1 33 0
+  73 002c FFF7FEFF 		bl	vTestLightTaskInit
+  34:Light.c       ****     #endif
+  35:Light.c       **** }
+  74              		.loc 1 35 0
+  75 0030 00BF     		nop
+  76 0032 BD46     		mov	sp, r7
+  77              		.cfi_def_cfa_register 13
+  78              		@ sp needed
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 3
+
+
+  79 0034 80BD     		pop	{r7, pc}
+  80              	.L3:
+  81 0036 00BF     		.align	2
+  82              	.L2:
+  83 0038 00000000 		.word	xQueueLightValue
+  84 003c 04000000 		.word	.LC0
+  85 0040 00000000 		.word	vTaskLightMeasure
+  86              		.cfi_endproc
+  87              	.LFE68:
+  88              		.size	vLightInit, .-vLightInit
+  89              		.section	.text.vTaskLightMeasure,"ax",%progbits
+  90              		.align	2
+  91              		.global	vTaskLightMeasure
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	vTaskLightMeasure, %function
+  95              	vTaskLightMeasure:
+  96              	.LFB69:
+  36:Light.c       **** 
+  37:Light.c       **** 
+  38:Light.c       **** void vTaskLightMeasure(){
+  97              		.loc 1 38 0
+  98              		.cfi_startproc
+  99              		@ args = 0, pretend = 0, frame = 16
+ 100              		@ frame_needed = 1, uses_anonymous_args = 0
+ 101 0000 80B5     		push	{r7, lr}
+ 102              		.cfi_def_cfa_offset 8
+ 103              		.cfi_offset 7, -8
+ 104              		.cfi_offset 14, -4
+ 105 0002 84B0     		sub	sp, sp, #16
+ 106              		.cfi_def_cfa_offset 24
+ 107 0004 00AF     		add	r7, sp, #0
+ 108              		.cfi_def_cfa_register 7
+  39:Light.c       ****     Pin_5V_out_Write(1u);
+ 109              		.loc 1 39 0
+ 110 0006 0120     		movs	r0, #1
+ 111 0008 FFF7FEFF 		bl	Pin_5V_out_Write
+  40:Light.c       ****     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
+ 112              		.loc 1 40 0
+ 113 000c 42F21073 		movw	r3, #10000
+ 114 0010 BB60     		str	r3, [r7, #8]
+ 115              	.L7:
+ 116              	.LBB2:
+  41:Light.c       ****     
+  42:Light.c       ****     for(;;){
+  43:Light.c       ****         for(int i = 0;i < iLightArrayle;i++){
+ 117              		.loc 1 43 0
+ 118 0012 0023     		movs	r3, #0
+ 119 0014 FB60     		str	r3, [r7, #12]
+ 120 0016 18E0     		b	.L5
+ 121              	.L6:
+ 122              	.LBB3:
+  44:Light.c       ****             uint8 LightRead = Pin_LIGHT_in_Read();
+ 123              		.loc 1 44 0 discriminator 3
+ 124 0018 FFF7FEFF 		bl	Pin_LIGHT_in_Read
+ 125 001c 0346     		mov	r3, r0
+ 126 001e FB71     		strb	r3, [r7, #7]
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 4
+
+
+  45:Light.c       ****             Light[i] = LightRead;
+ 127              		.loc 1 45 0 discriminator 3
+ 128 0020 0C4A     		ldr	r2, .L8
+ 129 0022 FB68     		ldr	r3, [r7, #12]
+ 130 0024 1344     		add	r3, r3, r2
+ 131 0026 FA79     		ldrb	r2, [r7, #7]
+ 132 0028 1A70     		strb	r2, [r3]
+  46:Light.c       ****             xQueueSendToBack(xQueueLightValue, &Light[i], portMAX_DELAY);
+ 133              		.loc 1 46 0 discriminator 3
+ 134 002a 0B4B     		ldr	r3, .L8+4
+ 135 002c 1868     		ldr	r0, [r3]
+ 136 002e FB68     		ldr	r3, [r7, #12]
+ 137 0030 084A     		ldr	r2, .L8
+ 138 0032 9918     		adds	r1, r3, r2
+ 139 0034 0023     		movs	r3, #0
+ 140 0036 4FF0FF32 		mov	r2, #-1
+ 141 003a FFF7FEFF 		bl	xQueueGenericSend
+  47:Light.c       ****             vTaskDelay(xDelayms);
+ 142              		.loc 1 47 0 discriminator 3
+ 143 003e B868     		ldr	r0, [r7, #8]
+ 144 0040 FFF7FEFF 		bl	vTaskDelay
+ 145              	.LBE3:
+  43:Light.c       ****             uint8 LightRead = Pin_LIGHT_in_Read();
+ 146              		.loc 1 43 0 discriminator 3
+ 147 0044 FB68     		ldr	r3, [r7, #12]
+ 148 0046 0133     		adds	r3, r3, #1
+ 149 0048 FB60     		str	r3, [r7, #12]
+ 150              	.L5:
+  43:Light.c       ****             uint8 LightRead = Pin_LIGHT_in_Read();
+ 151              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 152 004a 0522     		movs	r2, #5
+ 153 004c FB68     		ldr	r3, [r7, #12]
+ 154 004e 9342     		cmp	r3, r2
+ 155 0050 E2DB     		blt	.L6
+ 156              	.LBE2:
+  48:Light.c       ****         }    
+  49:Light.c       ****     }
+ 157              		.loc 1 49 0 is_stmt 1
+ 158 0052 DEE7     		b	.L7
+ 159              	.L9:
+ 160              		.align	2
+ 161              	.L8:
+ 162 0054 00000000 		.word	Light
+ 163 0058 00000000 		.word	xQueueLightValue
+ 164              		.cfi_endproc
+ 165              	.LFE69:
+ 166              		.size	vTaskLightMeasure, .-vTaskLightMeasure
+ 167              		.section	.rodata
+ 168 000a 0000     		.align	2
+ 169              	.LC1:
+ 170 000c 54657374 		.ascii	"TestLight\000"
+ 170      4C696768 
+ 170      7400
+ 171              		.section	.text.vTestLightTaskInit,"ax",%progbits
+ 172              		.align	2
+ 173              		.global	vTestLightTaskInit
+ 174              		.thumb
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 5
+
+
+ 175              		.thumb_func
+ 176              		.type	vTestLightTaskInit, %function
+ 177              	vTestLightTaskInit:
+ 178              	.LFB70:
+  50:Light.c       **** }
+  51:Light.c       **** 
+  52:Light.c       **** void vTestLightTaskInit(){
+ 179              		.loc 1 52 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 1, uses_anonymous_args = 0
+ 183 0000 80B5     		push	{r7, lr}
+ 184              		.cfi_def_cfa_offset 8
+ 185              		.cfi_offset 7, -8
+ 186              		.cfi_offset 14, -4
+ 187 0002 82B0     		sub	sp, sp, #8
+ 188              		.cfi_def_cfa_offset 16
+ 189 0004 02AF     		add	r7, sp, #8
+ 190              		.cfi_def_cfa 7, 8
+  53:Light.c       ****     xTaskCreate(vTestLightTask, "TestLight", 1000, NULL, 2, NULL);
+ 191              		.loc 1 53 0
+ 192 0006 0023     		movs	r3, #0
+ 193 0008 0193     		str	r3, [sp, #4]
+ 194 000a 0223     		movs	r3, #2
+ 195 000c 0093     		str	r3, [sp]
+ 196 000e 0023     		movs	r3, #0
+ 197 0010 4FF47A72 		mov	r2, #1000
+ 198 0014 0349     		ldr	r1, .L11
+ 199 0016 0448     		ldr	r0, .L11+4
+ 200 0018 FFF7FEFF 		bl	xTaskCreate
+  54:Light.c       **** }    
+ 201              		.loc 1 54 0
+ 202 001c 00BF     		nop
+ 203 001e BD46     		mov	sp, r7
+ 204              		.cfi_def_cfa_register 13
+ 205              		@ sp needed
+ 206 0020 80BD     		pop	{r7, pc}
+ 207              	.L12:
+ 208 0022 00BF     		.align	2
+ 209              	.L11:
+ 210 0024 0C000000 		.word	.LC1
+ 211 0028 00000000 		.word	vTestLightTask
+ 212              		.cfi_endproc
+ 213              	.LFE70:
+ 214              		.size	vTestLightTaskInit, .-vTestLightTaskInit
+ 215              		.section	.rodata
+ 216 0016 0000     		.align	2
+ 217              	.LC2:
+ 218 0018 4C696768 		.ascii	"Light Value: \000"
+ 218      74205661 
+ 218      6C75653A 
+ 218      2000
+ 219 0026 0000     		.align	2
+ 220              	.LC3:
+ 221 0028 0A00     		.ascii	"\012\000"
+ 222              		.section	.text.vTestLightTask,"ax",%progbits
+ 223              		.align	2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 6
+
+
+ 224              		.global	vTestLightTask
+ 225              		.thumb
+ 226              		.thumb_func
+ 227              		.type	vTestLightTask, %function
+ 228              	vTestLightTask:
+ 229              	.LFB71:
+  55:Light.c       **** 
+  56:Light.c       **** void vTestLightTask(){
+ 230              		.loc 1 56 0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 8
+ 233              		@ frame_needed = 1, uses_anonymous_args = 0
+ 234 0000 80B5     		push	{r7, lr}
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 7, -8
+ 237              		.cfi_offset 14, -4
+ 238 0002 82B0     		sub	sp, sp, #8
+ 239              		.cfi_def_cfa_offset 16
+ 240 0004 00AF     		add	r7, sp, #0
+ 241              		.cfi_def_cfa_register 7
+ 242              	.L14:
+  57:Light.c       ****     uint8 TestLightValue;
+  58:Light.c       ****     for(;;){
+  59:Light.c       ****         xQueueReceive(xQueueLightValue, &TestLightValue, portMAX_DELAY);
+ 243              		.loc 1 59 0 discriminator 1
+ 244 0006 0A4B     		ldr	r3, .L15
+ 245 0008 1B68     		ldr	r3, [r3]
+ 246 000a F91D     		adds	r1, r7, #7
+ 247 000c 4FF0FF32 		mov	r2, #-1
+ 248 0010 1846     		mov	r0, r3
+ 249 0012 FFF7FEFF 		bl	xQueueReceive
+  60:Light.c       ****         SW_UART_TEST_USB_PutString("Light Value: ");
+ 250              		.loc 1 60 0 discriminator 1
+ 251 0016 0748     		ldr	r0, .L15+4
+ 252 0018 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  61:Light.c       ****         SW_UART_TEST_USB_PutHexInt(TestLightValue);
+ 253              		.loc 1 61 0 discriminator 1
+ 254 001c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 255 001e 9BB2     		uxth	r3, r3
+ 256 0020 1846     		mov	r0, r3
+ 257 0022 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+  62:Light.c       ****         SW_UART_TEST_USB_PutString("\n");
+ 258              		.loc 1 62 0 discriminator 1
+ 259 0026 0448     		ldr	r0, .L15+8
+ 260 0028 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  63:Light.c       ****     }    
+ 261              		.loc 1 63 0 discriminator 1
+ 262 002c EBE7     		b	.L14
+ 263              	.L16:
+ 264 002e 00BF     		.align	2
+ 265              	.L15:
+ 266 0030 00000000 		.word	xQueueLightValue
+ 267 0034 18000000 		.word	.LC2
+ 268 0038 28000000 		.word	.LC3
+ 269              		.cfi_endproc
+ 270              	.LFE71:
+ 271              		.size	vTestLightTask, .-vTestLightTask
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 7
+
+
+ 272              		.text
+ 273              	.Letext0:
+ 274              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 275              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 276              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 277              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ 278              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 279              		.file 7 ".\\Source\\include/queue.h"
+ 280              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 281              		.section	.debug_info,"",%progbits
+ 282              	.Ldebug_info0:
+ 283 0000 63020000 		.4byte	0x263
+ 284 0004 0400     		.2byte	0x4
+ 285 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 286 000a 04       		.byte	0x4
+ 287 000b 01       		.uleb128 0x1
+ 288 000c 18000000 		.4byte	.LASF40
+ 289 0010 0C       		.byte	0xc
+ 290 0011 9B010000 		.4byte	.LASF41
+ 291 0015 DF010000 		.4byte	.LASF42
+ 292 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 293 001d 00000000 		.4byte	0
+ 294 0021 00000000 		.4byte	.Ldebug_line0
+ 295 0025 02       		.uleb128 0x2
+ 296 0026 04       		.byte	0x4
+ 297 0027 05       		.byte	0x5
+ 298 0028 696E7400 		.ascii	"int\000"
+ 299 002c 03       		.uleb128 0x3
+ 300 002d 04       		.byte	0x4
+ 301 002e 07       		.byte	0x7
+ 302 002f B3010000 		.4byte	.LASF0
+ 303 0033 03       		.uleb128 0x3
+ 304 0034 08       		.byte	0x8
+ 305 0035 05       		.byte	0x5
+ 306 0036 57020000 		.4byte	.LASF1
+ 307 003a 03       		.uleb128 0x3
+ 308 003b 08       		.byte	0x8
+ 309 003c 04       		.byte	0x4
+ 310 003d BB020000 		.4byte	.LASF2
+ 311 0041 03       		.uleb128 0x3
+ 312 0042 01       		.byte	0x1
+ 313 0043 06       		.byte	0x6
+ 314 0044 C7020000 		.4byte	.LASF3
+ 315 0048 04       		.uleb128 0x4
+ 316 0049 06000000 		.4byte	.LASF7
+ 317 004d 02       		.byte	0x2
+ 318 004e 1D       		.byte	0x1d
+ 319 004f 53000000 		.4byte	0x53
+ 320 0053 03       		.uleb128 0x3
+ 321 0054 01       		.byte	0x1
+ 322 0055 08       		.byte	0x8
+ 323 0056 26010000 		.4byte	.LASF4
+ 324 005a 03       		.uleb128 0x3
+ 325 005b 02       		.byte	0x2
+ 326 005c 05       		.byte	0x5
+ 327 005d 7D020000 		.4byte	.LASF5
+ 328 0061 03       		.uleb128 0x3
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 8
+
+
+ 329 0062 02       		.byte	0x2
+ 330 0063 07       		.byte	0x7
+ 331 0064 46010000 		.4byte	.LASF6
+ 332 0068 04       		.uleb128 0x4
+ 333 0069 CB000000 		.4byte	.LASF8
+ 334 006d 02       		.byte	0x2
+ 335 006e 3F       		.byte	0x3f
+ 336 006f 73000000 		.4byte	0x73
+ 337 0073 03       		.uleb128 0x3
+ 338 0074 04       		.byte	0x4
+ 339 0075 05       		.byte	0x5
+ 340 0076 B2020000 		.4byte	.LASF9
+ 341 007a 04       		.uleb128 0x4
+ 342 007b 89010000 		.4byte	.LASF10
+ 343 007f 02       		.byte	0x2
+ 344 0080 41       		.byte	0x41
+ 345 0081 85000000 		.4byte	0x85
+ 346 0085 03       		.uleb128 0x3
+ 347 0086 04       		.byte	0x4
+ 348 0087 07       		.byte	0x7
+ 349 0088 34010000 		.4byte	.LASF11
+ 350 008c 03       		.uleb128 0x3
+ 351 008d 08       		.byte	0x8
+ 352 008e 07       		.byte	0x7
+ 353 008f C0010000 		.4byte	.LASF12
+ 354 0093 04       		.uleb128 0x4
+ 355 0094 D7010000 		.4byte	.LASF13
+ 356 0098 03       		.byte	0x3
+ 357 0099 18       		.byte	0x18
+ 358 009a 48000000 		.4byte	0x48
+ 359 009e 04       		.uleb128 0x4
+ 360 009f 46020000 		.4byte	.LASF14
+ 361 00a3 03       		.byte	0x3
+ 362 00a4 2C       		.byte	0x2c
+ 363 00a5 68000000 		.4byte	0x68
+ 364 00a9 04       		.uleb128 0x4
+ 365 00aa A9020000 		.4byte	.LASF15
+ 366 00ae 03       		.byte	0x3
+ 367 00af 30       		.byte	0x30
+ 368 00b0 7A000000 		.4byte	0x7a
+ 369 00b4 05       		.uleb128 0x5
+ 370 00b5 98020000 		.4byte	.LASF16
+ 371 00b9 04       		.byte	0x4
+ 372 00ba E401     		.2byte	0x1e4
+ 373 00bc 53000000 		.4byte	0x53
+ 374 00c0 05       		.uleb128 0x5
+ 375 00c1 94010000 		.4byte	.LASF17
+ 376 00c5 04       		.byte	0x4
+ 377 00c6 E501     		.2byte	0x1e5
+ 378 00c8 61000000 		.4byte	0x61
+ 379 00cc 03       		.uleb128 0x3
+ 380 00cd 04       		.byte	0x4
+ 381 00ce 04       		.byte	0x4
+ 382 00cf 08010000 		.4byte	.LASF18
+ 383 00d3 03       		.uleb128 0x3
+ 384 00d4 08       		.byte	0x8
+ 385 00d5 04       		.byte	0x4
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 9
+
+
+ 386 00d6 E3000000 		.4byte	.LASF19
+ 387 00da 03       		.uleb128 0x3
+ 388 00db 01       		.byte	0x1
+ 389 00dc 08       		.byte	0x8
+ 390 00dd 65020000 		.4byte	.LASF20
+ 391 00e1 06       		.uleb128 0x6
+ 392 00e2 B4000000 		.4byte	0xb4
+ 393 00e6 03       		.uleb128 0x3
+ 394 00e7 04       		.byte	0x4
+ 395 00e8 07       		.byte	0x7
+ 396 00e9 4E020000 		.4byte	.LASF21
+ 397 00ed 07       		.uleb128 0x7
+ 398 00ee F9000000 		.4byte	.LASF43
+ 399 00f2 04       		.byte	0x4
+ 400 00f3 05       		.byte	0x5
+ 401 00f4 30       		.byte	0x30
+ 402 00f5 12010000 		.4byte	0x112
+ 403 00f9 08       		.uleb128 0x8
+ 404 00fa BF000000 		.4byte	.LASF22
+ 405 00fe 05       		.byte	0x5
+ 406 00ff 31       		.byte	0x31
+ 407 0100 C0000000 		.4byte	0xc0
+ 408 0104 00       		.byte	0
+ 409 0105 08       		.uleb128 0x8
+ 410 0106 10000000 		.4byte	.LASF23
+ 411 010a 05       		.byte	0x5
+ 412 010b 32       		.byte	0x32
+ 413 010c B4000000 		.4byte	0xb4
+ 414 0110 02       		.byte	0x2
+ 415 0111 00       		.byte	0
+ 416 0112 04       		.uleb128 0x4
+ 417 0113 DC020000 		.4byte	.LASF24
+ 418 0117 06       		.byte	0x6
+ 419 0118 38       		.byte	0x38
+ 420 0119 73000000 		.4byte	0x73
+ 421 011d 04       		.uleb128 0x4
+ 422 011e B4000000 		.4byte	.LASF25
+ 423 0122 06       		.byte	0x6
+ 424 0123 3F       		.byte	0x3f
+ 425 0124 A9000000 		.4byte	0xa9
+ 426 0128 04       		.uleb128 0x4
+ 427 0129 D5000000 		.4byte	.LASF26
+ 428 012d 07       		.byte	0x7
+ 429 012e 30       		.byte	0x30
+ 430 012f 33010000 		.4byte	0x133
+ 431 0133 09       		.uleb128 0x9
+ 432 0134 04       		.byte	0x4
+ 433 0135 39010000 		.4byte	0x139
+ 434 0139 0A       		.uleb128 0xa
+ 435 013a A3010000 		.4byte	.LASF44
+ 436 013e 0B       		.uleb128 0xb
+ 437 013f 9E020000 		.4byte	.LASF29
+ 438 0143 01       		.byte	0x1
+ 439 0144 19       		.byte	0x19
+ 440 0145 00000000 		.4byte	.LFB68
+ 441 0149 44000000 		.4byte	.LFE68-.LFB68
+ 442 014d 01       		.uleb128 0x1
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 10
+
+
+ 443 014e 9C       		.byte	0x9c
+ 444 014f 0C       		.uleb128 0xc
+ 445 0150 66010000 		.4byte	.LASF31
+ 446 0154 01       		.byte	0x1
+ 447 0155 26       		.byte	0x26
+ 448 0156 00000000 		.4byte	.LFB69
+ 449 015a 5C000000 		.4byte	.LFE69-.LFB69
+ 450 015e 01       		.uleb128 0x1
+ 451 015f 9C       		.byte	0x9c
+ 452 0160 A1010000 		.4byte	0x1a1
+ 453 0164 0D       		.uleb128 0xd
+ 454 0165 D3020000 		.4byte	.LASF27
+ 455 0169 01       		.byte	0x1
+ 456 016a 28       		.byte	0x28
+ 457 016b A1010000 		.4byte	0x1a1
+ 458 016f 02       		.uleb128 0x2
+ 459 0170 91       		.byte	0x91
+ 460 0171 70       		.sleb128 -16
+ 461 0172 0E       		.uleb128 0xe
+ 462 0173 12000000 		.4byte	.LBB2
+ 463 0177 40000000 		.4byte	.LBE2-.LBB2
+ 464 017b 0F       		.uleb128 0xf
+ 465 017c 6900     		.ascii	"i\000"
+ 466 017e 01       		.byte	0x1
+ 467 017f 2B       		.byte	0x2b
+ 468 0180 25000000 		.4byte	0x25
+ 469 0184 02       		.uleb128 0x2
+ 470 0185 91       		.byte	0x91
+ 471 0186 74       		.sleb128 -12
+ 472 0187 0E       		.uleb128 0xe
+ 473 0188 18000000 		.4byte	.LBB3
+ 474 018c 2C000000 		.4byte	.LBE3-.LBB3
+ 475 0190 0D       		.uleb128 0xd
+ 476 0191 1C010000 		.4byte	.LASF28
+ 477 0195 01       		.byte	0x1
+ 478 0196 2C       		.byte	0x2c
+ 479 0197 B4000000 		.4byte	0xb4
+ 480 019b 02       		.uleb128 0x2
+ 481 019c 91       		.byte	0x91
+ 482 019d 6F       		.sleb128 -17
+ 483 019e 00       		.byte	0
+ 484 019f 00       		.byte	0
+ 485 01a0 00       		.byte	0
+ 486 01a1 10       		.uleb128 0x10
+ 487 01a2 1D010000 		.4byte	0x11d
+ 488 01a6 0B       		.uleb128 0xb
+ 489 01a7 6A020000 		.4byte	.LASF30
+ 490 01ab 01       		.byte	0x1
+ 491 01ac 34       		.byte	0x34
+ 492 01ad 00000000 		.4byte	.LFB70
+ 493 01b1 2C000000 		.4byte	.LFE70-.LFB70
+ 494 01b5 01       		.uleb128 0x1
+ 495 01b6 9C       		.byte	0x9c
+ 496 01b7 0C       		.uleb128 0xc
+ 497 01b8 EA000000 		.4byte	.LASF32
+ 498 01bc 01       		.byte	0x1
+ 499 01bd 38       		.byte	0x38
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 11
+
+
+ 500 01be 00000000 		.4byte	.LFB71
+ 501 01c2 3C000000 		.4byte	.LFE71-.LFB71
+ 502 01c6 01       		.uleb128 0x1
+ 503 01c7 9C       		.byte	0x9c
+ 504 01c8 DB010000 		.4byte	0x1db
+ 505 01cc 0D       		.uleb128 0xd
+ 506 01cd 37020000 		.4byte	.LASF33
+ 507 01d1 01       		.byte	0x1
+ 508 01d2 39       		.byte	0x39
+ 509 01d3 B4000000 		.4byte	0xb4
+ 510 01d7 02       		.uleb128 0x2
+ 511 01d8 91       		.byte	0x91
+ 512 01d9 77       		.sleb128 -9
+ 513 01da 00       		.byte	0
+ 514 01db 11       		.uleb128 0x11
+ 515 01dc ED000000 		.4byte	0xed
+ 516 01e0 EB010000 		.4byte	0x1eb
+ 517 01e4 12       		.uleb128 0x12
+ 518 01e5 E6000000 		.4byte	0xe6
+ 519 01e9 07       		.byte	0x7
+ 520 01ea 00       		.byte	0
+ 521 01eb 13       		.uleb128 0x13
+ 522 01ec 0E010000 		.4byte	.LASF34
+ 523 01f0 05       		.byte	0x5
+ 524 01f1 34       		.byte	0x34
+ 525 01f2 DB010000 		.4byte	0x1db
+ 526 01f6 05       		.uleb128 0x5
+ 527 01f7 03       		.byte	0x3
+ 528 01f8 00000000 		.4byte	DS18x8_Sensor
+ 529 01fc 13       		.uleb128 0x13
+ 530 01fd 87020000 		.4byte	.LASF35
+ 531 0201 05       		.byte	0x5
+ 532 0202 39       		.byte	0x39
+ 533 0203 E1000000 		.4byte	0xe1
+ 534 0207 05       		.uleb128 0x5
+ 535 0208 03       		.byte	0x3
+ 536 0209 00000000 		.4byte	DS18x8_DataReady
+ 537 020d 14       		.uleb128 0x14
+ 538 020e 59010000 		.4byte	.LASF36
+ 539 0212 08       		.byte	0x8
+ 540 0213 1207     		.2byte	0x712
+ 541 0215 19020000 		.4byte	0x219
+ 542 0219 06       		.uleb128 0x6
+ 543 021a 9E000000 		.4byte	0x9e
+ 544 021e 13       		.uleb128 0x13
+ 545 021f A6000000 		.4byte	.LASF37
+ 546 0223 01       		.byte	0x1
+ 547 0224 14       		.byte	0x14
+ 548 0225 2F020000 		.4byte	0x22f
+ 549 0229 05       		.uleb128 0x5
+ 550 022a 03       		.byte	0x3
+ 551 022b 00000000 		.4byte	iLightArrayle
+ 552 022f 10       		.uleb128 0x10
+ 553 0230 25000000 		.4byte	0x25
+ 554 0234 11       		.uleb128 0x11
+ 555 0235 B4000000 		.4byte	0xb4
+ 556 0239 44020000 		.4byte	0x244
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 12
+
+
+ 557 023d 12       		.uleb128 0x12
+ 558 023e E6000000 		.4byte	0xe6
+ 559 0242 04       		.byte	0x4
+ 560 0243 00       		.byte	0
+ 561 0244 13       		.uleb128 0x13
+ 562 0245 00000000 		.4byte	.LASF38
+ 563 0249 01       		.byte	0x1
+ 564 024a 15       		.byte	0x15
+ 565 024b 34020000 		.4byte	0x234
+ 566 024f 05       		.uleb128 0x5
+ 567 0250 03       		.byte	0x3
+ 568 0251 00000000 		.4byte	Light
+ 569 0255 13       		.uleb128 0x13
+ 570 0256 78010000 		.4byte	.LASF39
+ 571 025a 01       		.byte	0x1
+ 572 025b 17       		.byte	0x17
+ 573 025c 28010000 		.4byte	0x128
+ 574 0260 05       		.uleb128 0x5
+ 575 0261 03       		.byte	0x3
+ 576 0262 00000000 		.4byte	xQueueLightValue
+ 577 0266 00       		.byte	0
+ 578              		.section	.debug_abbrev,"",%progbits
+ 579              	.Ldebug_abbrev0:
+ 580 0000 01       		.uleb128 0x1
+ 581 0001 11       		.uleb128 0x11
+ 582 0002 01       		.byte	0x1
+ 583 0003 25       		.uleb128 0x25
+ 584 0004 0E       		.uleb128 0xe
+ 585 0005 13       		.uleb128 0x13
+ 586 0006 0B       		.uleb128 0xb
+ 587 0007 03       		.uleb128 0x3
+ 588 0008 0E       		.uleb128 0xe
+ 589 0009 1B       		.uleb128 0x1b
+ 590 000a 0E       		.uleb128 0xe
+ 591 000b 55       		.uleb128 0x55
+ 592 000c 17       		.uleb128 0x17
+ 593 000d 11       		.uleb128 0x11
+ 594 000e 01       		.uleb128 0x1
+ 595 000f 10       		.uleb128 0x10
+ 596 0010 17       		.uleb128 0x17
+ 597 0011 00       		.byte	0
+ 598 0012 00       		.byte	0
+ 599 0013 02       		.uleb128 0x2
+ 600 0014 24       		.uleb128 0x24
+ 601 0015 00       		.byte	0
+ 602 0016 0B       		.uleb128 0xb
+ 603 0017 0B       		.uleb128 0xb
+ 604 0018 3E       		.uleb128 0x3e
+ 605 0019 0B       		.uleb128 0xb
+ 606 001a 03       		.uleb128 0x3
+ 607 001b 08       		.uleb128 0x8
+ 608 001c 00       		.byte	0
+ 609 001d 00       		.byte	0
+ 610 001e 03       		.uleb128 0x3
+ 611 001f 24       		.uleb128 0x24
+ 612 0020 00       		.byte	0
+ 613 0021 0B       		.uleb128 0xb
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 13
+
+
+ 614 0022 0B       		.uleb128 0xb
+ 615 0023 3E       		.uleb128 0x3e
+ 616 0024 0B       		.uleb128 0xb
+ 617 0025 03       		.uleb128 0x3
+ 618 0026 0E       		.uleb128 0xe
+ 619 0027 00       		.byte	0
+ 620 0028 00       		.byte	0
+ 621 0029 04       		.uleb128 0x4
+ 622 002a 16       		.uleb128 0x16
+ 623 002b 00       		.byte	0
+ 624 002c 03       		.uleb128 0x3
+ 625 002d 0E       		.uleb128 0xe
+ 626 002e 3A       		.uleb128 0x3a
+ 627 002f 0B       		.uleb128 0xb
+ 628 0030 3B       		.uleb128 0x3b
+ 629 0031 0B       		.uleb128 0xb
+ 630 0032 49       		.uleb128 0x49
+ 631 0033 13       		.uleb128 0x13
+ 632 0034 00       		.byte	0
+ 633 0035 00       		.byte	0
+ 634 0036 05       		.uleb128 0x5
+ 635 0037 16       		.uleb128 0x16
+ 636 0038 00       		.byte	0
+ 637 0039 03       		.uleb128 0x3
+ 638 003a 0E       		.uleb128 0xe
+ 639 003b 3A       		.uleb128 0x3a
+ 640 003c 0B       		.uleb128 0xb
+ 641 003d 3B       		.uleb128 0x3b
+ 642 003e 05       		.uleb128 0x5
+ 643 003f 49       		.uleb128 0x49
+ 644 0040 13       		.uleb128 0x13
+ 645 0041 00       		.byte	0
+ 646 0042 00       		.byte	0
+ 647 0043 06       		.uleb128 0x6
+ 648 0044 35       		.uleb128 0x35
+ 649 0045 00       		.byte	0
+ 650 0046 49       		.uleb128 0x49
+ 651 0047 13       		.uleb128 0x13
+ 652 0048 00       		.byte	0
+ 653 0049 00       		.byte	0
+ 654 004a 07       		.uleb128 0x7
+ 655 004b 13       		.uleb128 0x13
+ 656 004c 01       		.byte	0x1
+ 657 004d 03       		.uleb128 0x3
+ 658 004e 0E       		.uleb128 0xe
+ 659 004f 0B       		.uleb128 0xb
+ 660 0050 0B       		.uleb128 0xb
+ 661 0051 3A       		.uleb128 0x3a
+ 662 0052 0B       		.uleb128 0xb
+ 663 0053 3B       		.uleb128 0x3b
+ 664 0054 0B       		.uleb128 0xb
+ 665 0055 01       		.uleb128 0x1
+ 666 0056 13       		.uleb128 0x13
+ 667 0057 00       		.byte	0
+ 668 0058 00       		.byte	0
+ 669 0059 08       		.uleb128 0x8
+ 670 005a 0D       		.uleb128 0xd
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 14
+
+
+ 671 005b 00       		.byte	0
+ 672 005c 03       		.uleb128 0x3
+ 673 005d 0E       		.uleb128 0xe
+ 674 005e 3A       		.uleb128 0x3a
+ 675 005f 0B       		.uleb128 0xb
+ 676 0060 3B       		.uleb128 0x3b
+ 677 0061 0B       		.uleb128 0xb
+ 678 0062 49       		.uleb128 0x49
+ 679 0063 13       		.uleb128 0x13
+ 680 0064 38       		.uleb128 0x38
+ 681 0065 0B       		.uleb128 0xb
+ 682 0066 00       		.byte	0
+ 683 0067 00       		.byte	0
+ 684 0068 09       		.uleb128 0x9
+ 685 0069 0F       		.uleb128 0xf
+ 686 006a 00       		.byte	0
+ 687 006b 0B       		.uleb128 0xb
+ 688 006c 0B       		.uleb128 0xb
+ 689 006d 49       		.uleb128 0x49
+ 690 006e 13       		.uleb128 0x13
+ 691 006f 00       		.byte	0
+ 692 0070 00       		.byte	0
+ 693 0071 0A       		.uleb128 0xa
+ 694 0072 13       		.uleb128 0x13
+ 695 0073 00       		.byte	0
+ 696 0074 03       		.uleb128 0x3
+ 697 0075 0E       		.uleb128 0xe
+ 698 0076 3C       		.uleb128 0x3c
+ 699 0077 19       		.uleb128 0x19
+ 700 0078 00       		.byte	0
+ 701 0079 00       		.byte	0
+ 702 007a 0B       		.uleb128 0xb
+ 703 007b 2E       		.uleb128 0x2e
+ 704 007c 00       		.byte	0
+ 705 007d 3F       		.uleb128 0x3f
+ 706 007e 19       		.uleb128 0x19
+ 707 007f 03       		.uleb128 0x3
+ 708 0080 0E       		.uleb128 0xe
+ 709 0081 3A       		.uleb128 0x3a
+ 710 0082 0B       		.uleb128 0xb
+ 711 0083 3B       		.uleb128 0x3b
+ 712 0084 0B       		.uleb128 0xb
+ 713 0085 11       		.uleb128 0x11
+ 714 0086 01       		.uleb128 0x1
+ 715 0087 12       		.uleb128 0x12
+ 716 0088 06       		.uleb128 0x6
+ 717 0089 40       		.uleb128 0x40
+ 718 008a 18       		.uleb128 0x18
+ 719 008b 9642     		.uleb128 0x2116
+ 720 008d 19       		.uleb128 0x19
+ 721 008e 00       		.byte	0
+ 722 008f 00       		.byte	0
+ 723 0090 0C       		.uleb128 0xc
+ 724 0091 2E       		.uleb128 0x2e
+ 725 0092 01       		.byte	0x1
+ 726 0093 3F       		.uleb128 0x3f
+ 727 0094 19       		.uleb128 0x19
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 15
+
+
+ 728 0095 03       		.uleb128 0x3
+ 729 0096 0E       		.uleb128 0xe
+ 730 0097 3A       		.uleb128 0x3a
+ 731 0098 0B       		.uleb128 0xb
+ 732 0099 3B       		.uleb128 0x3b
+ 733 009a 0B       		.uleb128 0xb
+ 734 009b 11       		.uleb128 0x11
+ 735 009c 01       		.uleb128 0x1
+ 736 009d 12       		.uleb128 0x12
+ 737 009e 06       		.uleb128 0x6
+ 738 009f 40       		.uleb128 0x40
+ 739 00a0 18       		.uleb128 0x18
+ 740 00a1 9642     		.uleb128 0x2116
+ 741 00a3 19       		.uleb128 0x19
+ 742 00a4 01       		.uleb128 0x1
+ 743 00a5 13       		.uleb128 0x13
+ 744 00a6 00       		.byte	0
+ 745 00a7 00       		.byte	0
+ 746 00a8 0D       		.uleb128 0xd
+ 747 00a9 34       		.uleb128 0x34
+ 748 00aa 00       		.byte	0
+ 749 00ab 03       		.uleb128 0x3
+ 750 00ac 0E       		.uleb128 0xe
+ 751 00ad 3A       		.uleb128 0x3a
+ 752 00ae 0B       		.uleb128 0xb
+ 753 00af 3B       		.uleb128 0x3b
+ 754 00b0 0B       		.uleb128 0xb
+ 755 00b1 49       		.uleb128 0x49
+ 756 00b2 13       		.uleb128 0x13
+ 757 00b3 02       		.uleb128 0x2
+ 758 00b4 18       		.uleb128 0x18
+ 759 00b5 00       		.byte	0
+ 760 00b6 00       		.byte	0
+ 761 00b7 0E       		.uleb128 0xe
+ 762 00b8 0B       		.uleb128 0xb
+ 763 00b9 01       		.byte	0x1
+ 764 00ba 11       		.uleb128 0x11
+ 765 00bb 01       		.uleb128 0x1
+ 766 00bc 12       		.uleb128 0x12
+ 767 00bd 06       		.uleb128 0x6
+ 768 00be 00       		.byte	0
+ 769 00bf 00       		.byte	0
+ 770 00c0 0F       		.uleb128 0xf
+ 771 00c1 34       		.uleb128 0x34
+ 772 00c2 00       		.byte	0
+ 773 00c3 03       		.uleb128 0x3
+ 774 00c4 08       		.uleb128 0x8
+ 775 00c5 3A       		.uleb128 0x3a
+ 776 00c6 0B       		.uleb128 0xb
+ 777 00c7 3B       		.uleb128 0x3b
+ 778 00c8 0B       		.uleb128 0xb
+ 779 00c9 49       		.uleb128 0x49
+ 780 00ca 13       		.uleb128 0x13
+ 781 00cb 02       		.uleb128 0x2
+ 782 00cc 18       		.uleb128 0x18
+ 783 00cd 00       		.byte	0
+ 784 00ce 00       		.byte	0
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 16
+
+
+ 785 00cf 10       		.uleb128 0x10
+ 786 00d0 26       		.uleb128 0x26
+ 787 00d1 00       		.byte	0
+ 788 00d2 49       		.uleb128 0x49
+ 789 00d3 13       		.uleb128 0x13
+ 790 00d4 00       		.byte	0
+ 791 00d5 00       		.byte	0
+ 792 00d6 11       		.uleb128 0x11
+ 793 00d7 01       		.uleb128 0x1
+ 794 00d8 01       		.byte	0x1
+ 795 00d9 49       		.uleb128 0x49
+ 796 00da 13       		.uleb128 0x13
+ 797 00db 01       		.uleb128 0x1
+ 798 00dc 13       		.uleb128 0x13
+ 799 00dd 00       		.byte	0
+ 800 00de 00       		.byte	0
+ 801 00df 12       		.uleb128 0x12
+ 802 00e0 21       		.uleb128 0x21
+ 803 00e1 00       		.byte	0
+ 804 00e2 49       		.uleb128 0x49
+ 805 00e3 13       		.uleb128 0x13
+ 806 00e4 2F       		.uleb128 0x2f
+ 807 00e5 0B       		.uleb128 0xb
+ 808 00e6 00       		.byte	0
+ 809 00e7 00       		.byte	0
+ 810 00e8 13       		.uleb128 0x13
+ 811 00e9 34       		.uleb128 0x34
+ 812 00ea 00       		.byte	0
+ 813 00eb 03       		.uleb128 0x3
+ 814 00ec 0E       		.uleb128 0xe
+ 815 00ed 3A       		.uleb128 0x3a
+ 816 00ee 0B       		.uleb128 0xb
+ 817 00ef 3B       		.uleb128 0x3b
+ 818 00f0 0B       		.uleb128 0xb
+ 819 00f1 49       		.uleb128 0x49
+ 820 00f2 13       		.uleb128 0x13
+ 821 00f3 3F       		.uleb128 0x3f
+ 822 00f4 19       		.uleb128 0x19
+ 823 00f5 02       		.uleb128 0x2
+ 824 00f6 18       		.uleb128 0x18
+ 825 00f7 00       		.byte	0
+ 826 00f8 00       		.byte	0
+ 827 00f9 14       		.uleb128 0x14
+ 828 00fa 34       		.uleb128 0x34
+ 829 00fb 00       		.byte	0
+ 830 00fc 03       		.uleb128 0x3
+ 831 00fd 0E       		.uleb128 0xe
+ 832 00fe 3A       		.uleb128 0x3a
+ 833 00ff 0B       		.uleb128 0xb
+ 834 0100 3B       		.uleb128 0x3b
+ 835 0101 05       		.uleb128 0x5
+ 836 0102 49       		.uleb128 0x49
+ 837 0103 13       		.uleb128 0x13
+ 838 0104 3F       		.uleb128 0x3f
+ 839 0105 19       		.uleb128 0x19
+ 840 0106 3C       		.uleb128 0x3c
+ 841 0107 19       		.uleb128 0x19
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 17
+
+
+ 842 0108 00       		.byte	0
+ 843 0109 00       		.byte	0
+ 844 010a 00       		.byte	0
+ 845              		.section	.debug_aranges,"",%progbits
+ 846 0000 34000000 		.4byte	0x34
+ 847 0004 0200     		.2byte	0x2
+ 848 0006 00000000 		.4byte	.Ldebug_info0
+ 849 000a 04       		.byte	0x4
+ 850 000b 00       		.byte	0
+ 851 000c 0000     		.2byte	0
+ 852 000e 0000     		.2byte	0
+ 853 0010 00000000 		.4byte	.LFB68
+ 854 0014 44000000 		.4byte	.LFE68-.LFB68
+ 855 0018 00000000 		.4byte	.LFB69
+ 856 001c 5C000000 		.4byte	.LFE69-.LFB69
+ 857 0020 00000000 		.4byte	.LFB70
+ 858 0024 2C000000 		.4byte	.LFE70-.LFB70
+ 859 0028 00000000 		.4byte	.LFB71
+ 860 002c 3C000000 		.4byte	.LFE71-.LFB71
+ 861 0030 00000000 		.4byte	0
+ 862 0034 00000000 		.4byte	0
+ 863              		.section	.debug_ranges,"",%progbits
+ 864              	.Ldebug_ranges0:
+ 865 0000 00000000 		.4byte	.LFB68
+ 866 0004 44000000 		.4byte	.LFE68
+ 867 0008 00000000 		.4byte	.LFB69
+ 868 000c 5C000000 		.4byte	.LFE69
+ 869 0010 00000000 		.4byte	.LFB70
+ 870 0014 2C000000 		.4byte	.LFE70
+ 871 0018 00000000 		.4byte	.LFB71
+ 872 001c 3C000000 		.4byte	.LFE71
+ 873 0020 00000000 		.4byte	0
+ 874 0024 00000000 		.4byte	0
+ 875              		.section	.debug_line,"",%progbits
+ 876              	.Ldebug_line0:
+ 877 0000 27020000 		.section	.debug_str,"MS",%progbits,1
+ 877      0200A201 
+ 877      00000201 
+ 877      FB0E0D00 
+ 877      01010101 
+ 878              	.LASF38:
+ 879 0000 4C696768 		.ascii	"Light\000"
+ 879      7400
+ 880              	.LASF7:
+ 881 0006 5F5F7569 		.ascii	"__uint8_t\000"
+ 881      6E74385F 
+ 881      7400
+ 882              	.LASF23:
+ 883 0010 70726573 		.ascii	"present\000"
+ 883      656E7400 
+ 884              	.LASF40:
+ 885 0018 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 885      43313120 
+ 885      352E342E 
+ 885      31203230 
+ 885      31363036 
+ 886 004b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 18
+
+
+ 886      20726576 
+ 886      6973696F 
+ 886      6E203233 
+ 886      37373135 
+ 887 007e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 887      66756E63 
+ 887      74696F6E 
+ 887      2D736563 
+ 887      74696F6E 
+ 888              	.LASF37:
+ 889 00a6 694C6967 		.ascii	"iLightArrayle\000"
+ 889      68744172 
+ 889      7261796C 
+ 889      6500
+ 890              	.LASF25:
+ 891 00b4 5469636B 		.ascii	"TickType_t\000"
+ 891      54797065 
+ 891      5F7400
+ 892              	.LASF22:
+ 893 00bf 54656D70 		.ascii	"Temperature\000"
+ 893      65726174 
+ 893      75726500 
+ 894              	.LASF8:
+ 895 00cb 5F5F696E 		.ascii	"__int32_t\000"
+ 895      7433325F 
+ 895      7400
+ 896              	.LASF26:
+ 897 00d5 51756575 		.ascii	"QueueHandle_t\000"
+ 897      6548616E 
+ 897      646C655F 
+ 897      7400
+ 898              	.LASF19:
+ 899 00e3 646F7562 		.ascii	"double\000"
+ 899      6C6500
+ 900              	.LASF32:
+ 901 00ea 76546573 		.ascii	"vTestLightTask\000"
+ 901      744C6967 
+ 901      68745461 
+ 901      736B00
+ 902              	.LASF43:
+ 903 00f9 44533138 		.ascii	"DS18x8_TSensor\000"
+ 903      78385F54 
+ 903      53656E73 
+ 903      6F7200
+ 904              	.LASF18:
+ 905 0108 666C6F61 		.ascii	"float\000"
+ 905      7400
+ 906              	.LASF34:
+ 907 010e 44533138 		.ascii	"DS18x8_Sensor\000"
+ 907      78385F53 
+ 907      656E736F 
+ 907      7200
+ 908              	.LASF28:
+ 909 011c 4C696768 		.ascii	"LightRead\000"
+ 909      74526561 
+ 909      6400
+ 910              	.LASF4:
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 19
+
+
+ 911 0126 756E7369 		.ascii	"unsigned char\000"
+ 911      676E6564 
+ 911      20636861 
+ 911      7200
+ 912              	.LASF11:
+ 913 0134 6C6F6E67 		.ascii	"long unsigned int\000"
+ 913      20756E73 
+ 913      69676E65 
+ 913      6420696E 
+ 913      7400
+ 914              	.LASF6:
+ 915 0146 73686F72 		.ascii	"short unsigned int\000"
+ 915      7420756E 
+ 915      7369676E 
+ 915      65642069 
+ 915      6E7400
+ 916              	.LASF36:
+ 917 0159 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 917      52784275 
+ 917      66666572 
+ 917      00
+ 918              	.LASF31:
+ 919 0166 76546173 		.ascii	"vTaskLightMeasure\000"
+ 919      6B4C6967 
+ 919      68744D65 
+ 919      61737572 
+ 919      6500
+ 920              	.LASF39:
+ 921 0178 78517565 		.ascii	"xQueueLightValue\000"
+ 921      75654C69 
+ 921      67687456 
+ 921      616C7565 
+ 921      00
+ 922              	.LASF10:
+ 923 0189 5F5F7569 		.ascii	"__uint32_t\000"
+ 923      6E743332 
+ 923      5F7400
+ 924              	.LASF17:
+ 925 0194 75696E74 		.ascii	"uint16\000"
+ 925      313600
+ 926              	.LASF41:
+ 927 019b 4C696768 		.ascii	"Light.c\000"
+ 927      742E6300 
+ 928              	.LASF44:
+ 929 01a3 51756575 		.ascii	"QueueDefinition\000"
+ 929      65446566 
+ 929      696E6974 
+ 929      696F6E00 
+ 930              	.LASF0:
+ 931 01b3 756E7369 		.ascii	"unsigned int\000"
+ 931      676E6564 
+ 931      20696E74 
+ 931      00
+ 932              	.LASF12:
+ 933 01c0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 933      206C6F6E 
+ 933      6720756E 
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 20
+
+
+ 933      7369676E 
+ 933      65642069 
+ 934              	.LASF13:
+ 935 01d7 75696E74 		.ascii	"uint8_t\000"
+ 935      385F7400 
+ 936              	.LASF42:
+ 937 01df 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
+ 937      73657273 
+ 937      5C6B7269 
+ 937      73745C44 
+ 937      6F63756D 
+ 938 020d 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 938      544F535F 
+ 938      54454D50 
+ 938      4C415445 
+ 938      2D6D6173 
+ 939              	.LASF33:
+ 940 0237 54657374 		.ascii	"TestLightValue\000"
+ 940      4C696768 
+ 940      7456616C 
+ 940      756500
+ 941              	.LASF14:
+ 942 0246 696E7433 		.ascii	"int32_t\000"
+ 942      325F7400 
+ 943              	.LASF21:
+ 944 024e 73697A65 		.ascii	"sizetype\000"
+ 944      74797065 
+ 944      00
+ 945              	.LASF1:
+ 946 0257 6C6F6E67 		.ascii	"long long int\000"
+ 946      206C6F6E 
+ 946      6720696E 
+ 946      7400
+ 947              	.LASF20:
+ 948 0265 63686172 		.ascii	"char\000"
+ 948      00
+ 949              	.LASF30:
+ 950 026a 76546573 		.ascii	"vTestLightTaskInit\000"
+ 950      744C6967 
+ 950      68745461 
+ 950      736B496E 
+ 950      697400
+ 951              	.LASF5:
+ 952 027d 73686F72 		.ascii	"short int\000"
+ 952      7420696E 
+ 952      7400
+ 953              	.LASF35:
+ 954 0287 44533138 		.ascii	"DS18x8_DataReady\000"
+ 954      78385F44 
+ 954      61746152 
+ 954      65616479 
+ 954      00
+ 955              	.LASF16:
+ 956 0298 75696E74 		.ascii	"uint8\000"
+ 956      3800
+ 957              	.LASF29:
+ 958 029e 764C6967 		.ascii	"vLightInit\000"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2k5QF5.s 			page 21
+
+
+ 958      6874496E 
+ 958      697400
+ 959              	.LASF15:
+ 960 02a9 75696E74 		.ascii	"uint32_t\000"
+ 960      33325F74 
+ 960      00
+ 961              	.LASF9:
+ 962 02b2 6C6F6E67 		.ascii	"long int\000"
+ 962      20696E74 
+ 962      00
+ 963              	.LASF2:
+ 964 02bb 6C6F6E67 		.ascii	"long double\000"
+ 964      20646F75 
+ 964      626C6500 
+ 965              	.LASF3:
+ 966 02c7 7369676E 		.ascii	"signed char\000"
+ 966      65642063 
+ 966      68617200 
+ 967              	.LASF27:
+ 968 02d3 7844656C 		.ascii	"xDelayms\000"
+ 968      61796D73 
+ 968      00
+ 969              	.LASF24:
+ 970 02dc 42617365 		.ascii	"BaseType_t\000"
+ 970      54797065 
+ 970      5F7400
+ 971              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

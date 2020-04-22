@@ -1,5 +1,5 @@
 # PlanteModul
-# 2020-04-21 07:45:32Z
+# 2020-04-22 09:33:07Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -12,4 +12,6 @@ set_io "Pin_PERIPUMP_OUT_1(0)" iocell 2 6
 set_io "Pin_PERIPUMP_OUT_3(0)" iocell 0 4
 set_io "Pin_pH_in(0)" iocell 0 3
 set_io "\SW_UART_TEST_USB:tx(0)\" iocell 12 7
+set_io "Pin_5V_out(0)" iocell 0 2
+set_io "Pin_LightTestLED(0)" iocell 2 1
 set_location "\ADC_PH:ADC_SAR\" sarcell -1 -1 0

@@ -468,7 +468,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Path Begin     : \PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/z0_comb
 Path End       : \PWM_PERISTALTISK_2:PWMUDB:genblk8:stsreg\/status_2
 Capture Clock  : \PWM_PERISTALTISK_2:PWMUDB:genblk8:stsreg\/clock
-Path slack     : 78114242p
+Path slack     : 78114241p
 
 Capture Clock Arrival Time                            0
 + Clock path delay                                    0
@@ -479,9 +479,9 @@ End-of-path required time (ps)                 78124500
 
 Launch Clock Arrival Time                       0
 + Clock path delay                          0
-+ Data path delay                       10258
++ Data path delay                       10259
 -------------------------------------   ----- 
-End-of-path arrival time (ps)           10258
+End-of-path arrival time (ps)           10259
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -492,10 +492,10 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Data path
 pin name                                             model name     delay     AT     slack  edge  Fanout
 ---------------------------------------------------  -------------  -----  -----  --------  ----  ------
-\PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/z0_comb     datapathcell2   2290   2290  78114242  RISE       1
-\PWM_PERISTALTISK_2:PWMUDB:status_2\/main_1          macrocell2      2303   4593  78114242  RISE       1
-\PWM_PERISTALTISK_2:PWMUDB:status_2\/q               macrocell2      3350   7943  78114242  RISE       1
-\PWM_PERISTALTISK_2:PWMUDB:genblk8:stsreg\/status_2  statusicell2    2315  10258  78114242  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/z0_comb     datapathcell2   2290   2290  78114241  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:status_2\/main_1          macrocell2      2303   4593  78114241  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:status_2\/q               macrocell2      3350   7943  78114241  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:genblk8:stsreg\/status_2  statusicell2    2316  10259  78114241  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -534,7 +534,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Data path
 pin name                                            model name     delay     AT     slack  edge  Fanout
 --------------------------------------------------  -------------  -----  -----  --------  ----  ------
-\PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/z0_comb    datapathcell2   2290   2290  78114242  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/z0_comb    datapathcell2   2290   2290  78114241  RISE       1
 \PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/cs_addr_2  datapathcell2   2285   4575  78114365  RISE       1
 
 Capture Clock Path
@@ -614,7 +614,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Data path
 pin name                                            model name     delay     AT     slack  edge  Fanout
 --------------------------------------------------  -------------  -----  -----  --------  ----  ------
-\PWM_PERISTALTISK_2:PWMUDB:runmode_enable\/q        macrocell13     1250   1250  78114710  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:runmode_enable\/q        macrocell13     1250   1250  78114709  RISE       1
 \PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\/cs_addr_1  datapathcell2   2886   4136  78114804  RISE       1
 
 Capture Clock Path
@@ -934,7 +934,7 @@ ClockBlock/dclk_glb_0                                      clockblockcell      0
 Data path
 pin name                                      model name   delay     AT     slack  edge  Fanout
 --------------------------------------------  -----------  -----  -----  --------  ----  ------
-\PWM_PERISTALTISK_2:PWMUDB:runmode_enable\/q  macrocell13   1250   1250  78114710  RISE       1
+\PWM_PERISTALTISK_2:PWMUDB:runmode_enable\/q  macrocell13   1250   1250  78114709  RISE       1
 Net_158/main_0                                macrocell16   2881   4131  78117359  RISE       1
 
 Capture Clock Path
@@ -1438,7 +1438,7 @@ ClockBlock/dclk_glb_1                                      clockblockcell      0
 Path Begin     : \DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u0\/z0
 Path End       : \DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\/status_0
 Capture Clock  : \DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\/clock
-Path slack     : 999984977p
+Path slack     : 999984976p
 
 Capture Clock Arrival Time                                                    0
 + Clock path delay                                                            0
@@ -1449,9 +1449,9 @@ End-of-path required time (ps)                                        999999500
 
 Launch Clock Arrival Time                       0
 + Clock path delay                          0
-+ Data path delay                       14523
++ Data path delay                       14524
 -------------------------------------   ----- 
-End-of-path arrival time (ps)           14523
+End-of-path arrival time (ps)           14524
  
 Launch Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout
@@ -1465,9 +1465,9 @@ pin name                                              model name     delay     A
 \DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u0\/z0       datapathcell3    760    760  999983139  RISE       1
 \DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u1\/z0i      datapathcell4      0    760  999983139  RISE       1
 \DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u1\/z0_comb  datapathcell4   2740   3500  999983139  RISE       1
-\DS18x8:TimerDelay:TimerUDB:status_tc\/main_2         macrocell3      3468   6968  999984977  RISE       1
-\DS18x8:TimerDelay:TimerUDB:status_tc\/q              macrocell3      3350  10318  999984977  RISE       1
-\DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\/status_0   statusicell3    4205  14523  999984977  RISE       1
+\DS18x8:TimerDelay:TimerUDB:status_tc\/main_2         macrocell3      3468   6968  999984976  RISE       1
+\DS18x8:TimerDelay:TimerUDB:status_tc\/q              macrocell3      3350  10318  999984976  RISE       1
+\DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\/status_0   statusicell3    4205  14524  999984976  RISE       1
 
 Capture Clock Path
 pin name                                                   model name      delay     AT  edge  Fanout

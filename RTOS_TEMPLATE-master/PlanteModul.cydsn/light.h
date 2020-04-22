@@ -12,14 +12,28 @@
 
 /* [] END OF FILE */
 
-#ifndef NUTRIENTS_H 
-    #define NUTRIENTS_H 
-    #define NUTRIENTSTEST 1 //set this to 0 to disable Debug/test
+#ifndef LIGHT_H 
+    #define LIGHT_H 
+    #define LIGHTTEST 1 //set this to 0 to disable Debug/test
     
     
+    /*
+    This function initializes all of the light tasks.
+    @Param[out]:
+	@Param[in]
+    */
+    void vLightInit();
     
     
-    #if NUTRIENTSTEST == 1
+    /*
+    This task controls the measurement of light with the light sensor.
+    @Param[out]:
+	@Param[in]
+    */
+    void vTaskLightMeasure();
+    
+    
+    #if LIGHTTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         
         /*
@@ -30,5 +44,15 @@
     
         All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
         */
+        
+        /*
+        This function initializes all of the light test tasks.
+        @Param[out]:
+	    @Param[in]
+        */
+        void vTestLightTaskInit();
+        
+        
+        void vTestLightTask();
     #endif
 #endif
