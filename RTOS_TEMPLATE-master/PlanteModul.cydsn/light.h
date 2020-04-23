@@ -39,6 +39,8 @@
     */
     void vTaskLightController();
     
+    void RTCSetup();
+    
     
     #if LIGHTTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
