@@ -285,6 +285,9 @@ Discarded input sections
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
  .text.vTestTaskUARTDataTransmit
                 0x00000000       0x68 .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
+ .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Air.o
+ .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Air.o
+ .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\Air.o
  .text          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
  .data          0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
  .bss           0x00000000        0x0 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
@@ -930,6 +933,7 @@ LOAD .\CortexM3\ARM_GCC_541\Debug\port.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\heap_2.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\main.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
+LOAD .\CortexM3\ARM_GCC_541\Debug\Air.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
 LOAD .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -1774,7 +1778,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xa2dc
+.debug_info     0x00000000     0xa2d8
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x35c .\CortexM3\ARM_GCC_541\Debug\list.o
  .debug_info    0x0000035c     0x1156 .\CortexM3\ARM_GCC_541\Debug\queue.o
@@ -1804,10 +1808,10 @@ END GROUP
  .debug_info    0x00009505       0xd7 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_SEL.o)
  .debug_info    0x000095dc       0xd7 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_Trigger.o)
  .debug_info    0x000096b3      0x241 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_isr_DataReady.o)
- .debug_info    0x000098f4       0xb2 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
- .debug_info    0x000099a6       0xbd .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB_AsmGnu.o)
- .debug_info    0x00009a63      0x3b9 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
- .debug_info    0x00009e1c      0x4c0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
+ .debug_info    0x000098f4       0xb0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
+ .debug_info    0x000099a4       0xbb .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB_AsmGnu.o)
+ .debug_info    0x00009a5f      0x3b9 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+ .debug_info    0x00009e18      0x4c0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
 
 .debug_abbrev   0x00000000     0x282c
  *(.debug_abbrev)
@@ -1855,6 +1859,7 @@ END GROUP
  .debug_line    0x00001ddf      0x2e6 .\CortexM3\ARM_GCC_541\Debug\heap_2.o
  .debug_line    0x000020c5      0x21c .\CortexM3\ARM_GCC_541\Debug\main.o
  .debug_line    0x000022e1      0x2eb .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
+ .debug_line    0x000025cc        0x0 .\CortexM3\ARM_GCC_541\Debug\Air.o
  .debug_line    0x000025cc      0x7b6 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
  .debug_line    0x00002d82      0x205 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .debug_line    0x00002f87      0x141 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -1919,68 +1924,70 @@ END GROUP
  .debug_frame   0x0000492c       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
  .debug_frame   0x0000494c       0x28 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcat.o)
 
-.debug_str      0x00000000     0x44a6
+.debug_str      0x00000000     0x44aa
  *(.debug_str)
- .debug_str     0x00000000      0x304 .\CortexM3\ARM_GCC_541\Debug\list.o
-                                0x36c (size before relaxing)
- .debug_str     0x00000304      0x52a .\CortexM3\ARM_GCC_541\Debug\queue.o
-                                0x98d (size before relaxing)
- .debug_str     0x0000082e      0x346 .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
-                                0x7d2 (size before relaxing)
- .debug_str     0x00000b74      0x967 .\CortexM3\ARM_GCC_541\Debug\tasks.o
-                                0xf7c (size before relaxing)
- .debug_str     0x000014db       0x10 .\CortexM3\ARM_GCC_541\Debug\timers.o
-                                0x21b (size before relaxing)
- .debug_str     0x000014eb      0x11c .\CortexM3\ARM_GCC_541\Debug\port.o
-                                0x3d0 (size before relaxing)
- .debug_str     0x00001607      0x130 .\CortexM3\ARM_GCC_541\Debug\heap_2.o
-                                0x3d4 (size before relaxing)
- .debug_str     0x00001737       0x5c .\CortexM3\ARM_GCC_541\Debug\main.o
-                                0x31a (size before relaxing)
- .debug_str     0x00001793      0x241 .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
-                                0x4c3 (size before relaxing)
- .debug_str     0x000019d4      0x75c .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
-                                0xe1e (size before relaxing)
- .debug_str     0x00002130      0x15a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
-                                0x32b (size before relaxing)
- .debug_str     0x0000228a       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
-                                0x206 (size before relaxing)
- .debug_str     0x000022ff      0x103 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
-                                0x2f9 (size before relaxing)
- .debug_str     0x00002402      0x7fd .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
-                                0xa0c (size before relaxing)
- .debug_str     0x00002bff      0x371 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
-                                0x565 (size before relaxing)
- .debug_str     0x00002f70      0x2d8 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_1.o)
-                                0x480 (size before relaxing)
- .debug_str     0x00003248      0x25c .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_2.o)
-                                0x43d (size before relaxing)
- .debug_str     0x000034a4      0x218 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH.o)
-                                0x417 (size before relaxing)
- .debug_str     0x000036bc       0x2f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_INT.o)
-                                0x1b7 (size before relaxing)
- .debug_str     0x000036eb      0x1ff .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_theACLK.o)
-                                0x3ad (size before relaxing)
- .debug_str     0x000038ea      0x18f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB.o)
-                                0x33c (size before relaxing)
- .debug_str     0x00003a79      0x19c .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8.o)
-                                0x3bf (size before relaxing)
- .debug_str     0x00003c15       0x66 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_DRV.o)
-                                0x201 (size before relaxing)
- .debug_str     0x00003c7b       0xd0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_StatusReg_BUS.o)
-                                0x28c (size before relaxing)
- .debug_str     0x00003d4b      0x26f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_TimerDelay.o)
-                                0x449 (size before relaxing)
- .debug_str     0x00003fba       0x66 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_SEL.o)
-                                0x201 (size before relaxing)
- .debug_str     0x00004020       0x51 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_Trigger.o)
-                                0x1ec (size before relaxing)
- .debug_str     0x00004071      0x1b8 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_isr_DataReady.o)
-                                0x39a (size before relaxing)
- .debug_str     0x00004229      0x156 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+ .debug_str     0x00000000      0x302 .\CortexM3\ARM_GCC_541\Debug\list.o
+                                0x36a (size before relaxing)
+ .debug_str     0x00000302      0x52a .\CortexM3\ARM_GCC_541\Debug\queue.o
+                                0x98b (size before relaxing)
+ .debug_str     0x0000082c      0x346 .\CortexM3\ARM_GCC_541\Debug\stream_buffer.o
+                                0x7d0 (size before relaxing)
+ .debug_str     0x00000b72      0x967 .\CortexM3\ARM_GCC_541\Debug\tasks.o
+                                0xf7a (size before relaxing)
+ .debug_str     0x000014d9       0x10 .\CortexM3\ARM_GCC_541\Debug\timers.o
+                                0x219 (size before relaxing)
+ .debug_str     0x000014e9      0x11c .\CortexM3\ARM_GCC_541\Debug\port.o
+                                0x3ce (size before relaxing)
+ .debug_str     0x00001605      0x130 .\CortexM3\ARM_GCC_541\Debug\heap_2.o
+                                0x3d2 (size before relaxing)
+ .debug_str     0x00001735       0x5c .\CortexM3\ARM_GCC_541\Debug\main.o
+                                0x318 (size before relaxing)
+ .debug_str     0x00001791      0x241 .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
+                                0x4c1 (size before relaxing)
+ .debug_str     0x000019d2        0x6 .\CortexM3\ARM_GCC_541\Debug\Air.o
+                                 0xf6 (size before relaxing)
+ .debug_str     0x000019d8      0x75c .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
+                                0xe1c (size before relaxing)
+ .debug_str     0x00002134      0x15a .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
                                 0x329 (size before relaxing)
- .debug_str     0x0000437f      0x127 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
-                                0x323 (size before relaxing)
+ .debug_str     0x0000228e       0x75 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                                0x204 (size before relaxing)
+ .debug_str     0x00002303      0x103 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                                0x2f7 (size before relaxing)
+ .debug_str     0x00002406      0x7fd .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
+                                0xa0a (size before relaxing)
+ .debug_str     0x00002c03      0x371 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
+                                0x563 (size before relaxing)
+ .debug_str     0x00002f74      0x2d8 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_1.o)
+                                0x47e (size before relaxing)
+ .debug_str     0x0000324c      0x25c .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_2.o)
+                                0x43b (size before relaxing)
+ .debug_str     0x000034a8      0x218 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH.o)
+                                0x415 (size before relaxing)
+ .debug_str     0x000036c0       0x2f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_INT.o)
+                                0x1b5 (size before relaxing)
+ .debug_str     0x000036ef      0x1ff .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_theACLK.o)
+                                0x3ab (size before relaxing)
+ .debug_str     0x000038ee      0x18f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB.o)
+                                0x33a (size before relaxing)
+ .debug_str     0x00003a7d      0x19c .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8.o)
+                                0x3bd (size before relaxing)
+ .debug_str     0x00003c19       0x66 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_DRV.o)
+                                0x1ff (size before relaxing)
+ .debug_str     0x00003c7f       0xd0 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_StatusReg_BUS.o)
+                                0x28a (size before relaxing)
+ .debug_str     0x00003d4f      0x26f .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_TimerDelay.o)
+                                0x447 (size before relaxing)
+ .debug_str     0x00003fbe       0x66 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_SEL.o)
+                                0x1ff (size before relaxing)
+ .debug_str     0x00004024       0x51 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_Trigger.o)
+                                0x1ea (size before relaxing)
+ .debug_str     0x00004075      0x1b8 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_isr_DataReady.o)
+                                0x398 (size before relaxing)
+ .debug_str     0x0000422d      0x156 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+                                0x327 (size before relaxing)
+ .debug_str     0x00004383      0x127 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
+                                0x321 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)
@@ -2030,6 +2037,7 @@ END GROUP
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\heap_2.o
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\main.o
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
+ .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\Air.o
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .comment       0x0000006e       0x6f .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
@@ -2095,90 +2103,92 @@ END GROUP
  .ARM.attributes
                 0x000001fd       0x33 .\CortexM3\ARM_GCC_541\Debug\Nutrients.o
  .ARM.attributes
-                0x00000230       0x33 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
+                0x00000230       0x33 .\CortexM3\ARM_GCC_541\Debug\Air.o
  .ARM.attributes
-                0x00000263       0x33 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00000263       0x33 .\CortexM3\ARM_GCC_541\Debug\mpu_wrappers.o
  .ARM.attributes
-                0x00000296       0x33 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
+                0x00000296       0x33 .\CortexM3\ARM_GCC_541\Debug\cyfitter_cfg.o
  .ARM.attributes
-                0x000002c9       0x33 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
+                0x000002c9       0x33 .\CortexM3\ARM_GCC_541\Debug\cymetadata.o
  .ARM.attributes
-                0x000002fc       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
+                0x000002fc       0x33 .\CortexM3\ARM_GCC_541\Debug\Cm3Start.o
  .ARM.attributes
-                0x0000032f       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
+                0x0000032f       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyLib.o)
  .ARM.attributes
-                0x00000362       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_1.o)
+                0x00000362       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(cyPm.o)
  .ARM.attributes
-                0x00000395       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_2.o)
+                0x00000395       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_1.o)
  .ARM.attributes
-                0x000003c8       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH.o)
+                0x000003c8       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(PWM_PERISTALTISK_2.o)
  .ARM.attributes
-                0x000003fb       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_INT.o)
+                0x000003fb       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH.o)
  .ARM.attributes
-                0x0000042e       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_theACLK.o)
+                0x0000042e       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_INT.o)
  .ARM.attributes
-                0x00000461       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB.o)
+                0x00000461       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(ADC_PH_theACLK.o)
  .ARM.attributes
-                0x00000494       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8.o)
+                0x00000494       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB.o)
  .ARM.attributes
-                0x000004c7       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_DRV.o)
+                0x000004c7       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8.o)
  .ARM.attributes
-                0x000004fa       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_StatusReg_BUS.o)
+                0x000004fa       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_DRV.o)
  .ARM.attributes
-                0x0000052d       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_TimerDelay.o)
+                0x0000052d       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_StatusReg_BUS.o)
  .ARM.attributes
-                0x00000560       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_SEL.o)
+                0x00000560       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_TimerDelay.o)
  .ARM.attributes
-                0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_Trigger.o)
+                0x00000593       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_ControlReg_SEL.o)
  .ARM.attributes
-                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_isr_DataReady.o)
+                0x000005c6       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_Trigger.o)
  .ARM.attributes
-                0x000005f9       0x21 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
+                0x000005f9       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(DS18x8_isr_DataReady.o)
  .ARM.attributes
-                0x0000061a       0x21 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB_AsmGnu.o)
+                0x0000062c       0x21 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyBootAsmGnu.o)
  .ARM.attributes
-                0x0000063b       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
+                0x0000064d       0x21 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(SW_UART_TEST_USB_AsmGnu.o)
  .ARM.attributes
-                0x0000066e       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
+                0x0000066e       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CyFlash.o)
  .ARM.attributes
-                0x000006a1       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivsi3.o)
+                0x000006a1       0x33 .\CortexM3\ARM_GCC_541\Debug\PlanteModul.a(CySpc.o)
  .ARM.attributes
-                0x000006be       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x000006d4       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivsi3.o)
  .ARM.attributes
-                0x000006db       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x000006f1       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x000006f8       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x0000070e       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubdf3.o)
  .ARM.attributes
-                0x00000715       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
+                0x0000072b       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivdf3.o)
  .ARM.attributes
-                0x00000732       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x00000748       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_truncdfsf2.o)
  .ARM.attributes
-                0x0000074f       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x00000765       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_addsubsf3.o)
  .ARM.attributes
-                0x0000076c       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
+                0x00000782       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_muldivsf3.o)
  .ARM.attributes
-                0x00000789       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
+                0x0000079f       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_arm_fixunssfsi.o)
  .ARM.attributes
-                0x000007a6       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
+                0x000007bc       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x000007d3       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x000007d9       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m\libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000800       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
+                0x00000806       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x0000082d       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x00000833       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x0000085a       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
+                0x00000860       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000887       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x0000088d       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x000008b4       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x000008ba       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy-stub.o)
  .ARM.attributes
-                0x000008e1       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcat.o)
+                0x000008e7       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000090e       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+                0x00000914       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcat.o)
  .ARM.attributes
-                0x0000093b       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
+                0x00000941       0x2d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtend.o
+ .ARM.attributes
+                0x0000096e       0x1d c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv7-m/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)
-OUTPUT(C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\CortexM3\ARM_GCC_541\Debug\PlanteModul.elf elf32-littlearm)
+OUTPUT(C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\CortexM3\ARM_GCC_541\Debug\PlanteModul.elf elf32-littlearm)
