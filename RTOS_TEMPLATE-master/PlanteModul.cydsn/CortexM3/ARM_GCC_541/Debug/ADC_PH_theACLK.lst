@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 1
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
   28:Generated_Source\PSoC5/ADC_PH_theACLK.c **** 
   29:Generated_Source\PSoC5/ADC_PH_theACLK.c **** 
   30:Generated_Source\PSoC5/ADC_PH_theACLK.c **** /*******************************************************************************
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 2
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 2
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
   31:Generated_Source\PSoC5/ADC_PH_theACLK.c **** * Function Name: ADC_PH_theACLK_Start
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
   62 002a 7047     		bx	lr
   63              	.L3:
   64              		.align	2
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 3
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 3
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
   65              	.L2:
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
   95 0010 DBB2     		uxtb	r3, r3
   96 0012 1370     		strb	r3, [r2]
   75:Generated_Source\PSoC5/ADC_PH_theACLK.c **** 	ADC_PH_theACLK_CLKSTBY &= (uint8)(~ADC_PH_theACLK_CLKSTBY_MASK);
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 4
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 4
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
   97              		.loc 1 75 0
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
   97:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *  None
   98:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *
   99:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *******************************************************************************/
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 5
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 5
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  100:Generated_Source\PSoC5/ADC_PH_theACLK.c **** void ADC_PH_theACLK_StopBlock(void) 
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  164 0028 1D4B     		ldr	r3, .L11+16
  165 002a 1B78     		ldrb	r3, [r3]
  166 002c DBB2     		uxtb	r3, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 6
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 6
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  167 002e 03F07F03 		and	r3, r3, #127
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  133:Generated_Source\PSoC5/ADC_PH_theACLK.c **** #if HAS_CLKDIST_LD_DISABLE
  134:Generated_Source\PSoC5/ADC_PH_theACLK.c ****         /* Clear the disable bit */
  135:Generated_Source\PSoC5/ADC_PH_theACLK.c ****         CLK_DIST_LD = 0x00u;
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 7
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 7
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  208              		.loc 1 135 0
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  147:Generated_Source\PSoC5/ADC_PH_theACLK.c **** * Summary:
  148:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *  Sets whether the clock is active in standby mode.
  149:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 8
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 8
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  150:Generated_Source\PSoC5/ADC_PH_theACLK.c **** * Parameters:
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  286 002e DBB2     		uxtb	r3, r3
  287 0030 1370     		strb	r3, [r2]
  288              	.L16:
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 9
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 9
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  289              		.loc 1 167 0
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  315              		.loc 1 195 0
  316              		.cfi_startproc
  317              		@ args = 0, pretend = 0, frame = 16
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 10
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 10
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  318              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  362 0046 1AD1     		bne	.L21
  363              	.L22:
  206:Generated_Source\PSoC5/ADC_PH_theACLK.c ****         {
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 11
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 11
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  207:Generated_Source\PSoC5/ADC_PH_theACLK.c ****             /* Moving to/from SSS requires correct ordering to prevent halting the clock    */
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  225:Generated_Source\PSoC5/ADC_PH_theACLK.c ****         {
  226:Generated_Source\PSoC5/ADC_PH_theACLK.c **** 			
  227:Generated_Source\PSoC5/ADC_PH_theACLK.c ****             if (enabled != 0u)
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 12
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 12
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  398              		.loc 1 227 0
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  246:Generated_Source\PSoC5/ADC_PH_theACLK.c ****                     CY_SET_REG16(CYREG_CLKDIST_WRK0, oldDivider);
  434              		.loc 1 246 0 is_stmt 1
  435 00ba 294A     		ldr	r2, .L33+28
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 13
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 13
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  436 00bc BB89     		ldrh	r3, [r7, #12]	@ movhi
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  265:Generated_Source\PSoC5/ADC_PH_theACLK.c ****                 /* If the clock is still enabled, use the shadow registers */
  266:Generated_Source\PSoC5/ADC_PH_theACLK.c ****                 CY_SET_REG16(CYREG_CLKDIST_WRK0, clkDivider);
  472              		.loc 1 266 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 14
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 14
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  473 00fa 194A     		ldr	r2, .L33+28
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  512 0130 FB7A     		ldrb	r3, [r7, #11]
  513 0132 1343     		orrs	r3, r3, r2
  514 0134 DBB2     		uxtb	r3, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 15
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 15
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  515 0136 0B70     		strb	r3, [r1]
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  550              		.cfi_startproc
  551              		@ args = 0, pretend = 0, frame = 0
  552              		@ frame_needed = 1, uses_anonymous_args = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 16
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 16
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  553              		@ link register save eliminated.
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  319:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *   - CYCLK_DUTY  Enable 50% duty cycle output. When enabled, the output clock
  320:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *                 is asserted for approximately half of its period. When
  321:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *                 disabled, the output clock is asserted for one period of the
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 17
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 17
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  322:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *                 source clock.
@@ -1018,7 +1086,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  627              	.L40:
  628 0030 02410040 		.word	1073758466
  629              		.cfi_endproc
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 18
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 18
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  630              	.LFE6:
@@ -1078,7 +1150,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  651              		.cfi_def_cfa_register 7
  652 0006 0346     		mov	r3, r0
  653 0008 FB71     		strb	r3, [r7, #7]
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 19
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 19
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  369:Generated_Source\PSoC5/ADC_PH_theACLK.c ****     ADC_PH_theACLK_MOD_SRC &= (uint8)(~modeBitMask) | (uint8)(~(uint8)(ADC_PH_theACLK_MODE_MASK));
@@ -1138,7 +1214,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  384:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *  Bit mask representing the enabled mode bits. See the SetModeRegister and
  385:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *  ClearModeRegister descriptions for details about the mode bits.
  386:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 20
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 20
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  387:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *******************************************************************************/
@@ -1198,7 +1278,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  401:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *
  402:Generated_Source\PSoC5/ADC_PH_theACLK.c **** * Parameters:
  403:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *  clkSource:  For PSoC 3 and PSoC 5 devices, clkSource should be one of the
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 21
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 21
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  404:Generated_Source\PSoC5/ADC_PH_theACLK.c **** *   following input sources:
@@ -1258,7 +1342,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  765 0028 002B     		cmp	r3, #0
  766 002a 16D1     		bne	.L50
  426:Generated_Source\PSoC5/ADC_PH_theACLK.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 22
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 22
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  427:Generated_Source\PSoC5/ADC_PH_theACLK.c ****         /* Switching to Master and divider is 1, set SSS, which will output master, */
@@ -1318,7 +1406,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  807 006e 144B     		ldr	r3, .L53
  808 0070 1B78     		ldrb	r3, [r3]
  809 0072 DBB2     		uxtb	r3, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 23
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 23
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  438:Generated_Source\PSoC5/ADC_PH_theACLK.c ****             (ADC_PH_theACLK_MOD_SRC & (uint8)(~ADC_PH_theACLK_SRC_SEL_MSK)) | clkSource;
@@ -1378,7 +1470,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  854 00be 00BF     		.align	2
  855              	.L53:
  856 00c0 02410040 		.word	1073758466
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 24
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 24
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  857              		.cfi_endproc
@@ -1438,7 +1534,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  891              		.cfi_def_cfa_offset 0
  892 0016 7047     		bx	lr
  893              	.L58:
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 25
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 25
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  894              		.align	2
@@ -1498,7 +1598,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  494:Generated_Source\PSoC5/ADC_PH_theACLK.c ****     ADC_PH_theACLK_PHASE = clkPhase & ADC_PH_theACLK_PHASE_MASK;
  922              		.loc 1 494 0
  923 000a 054A     		ldr	r2, .L60
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 26
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 26
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  924 000c FB79     		ldrb	r3, [r7, #7]
@@ -1558,7 +1662,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  958              		@ link register save eliminated.
  959 0000 80B4     		push	{r7}
  960              		.cfi_def_cfa_offset 4
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 27
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 27
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  961              		.cfi_offset 7, -4
@@ -1618,7 +1726,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1013 0035 05       		.byte	0x5
  1014 0036 36000000 		.4byte	.LASF2
  1015 003a 02       		.uleb128 0x2
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 28
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 28
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1016 003b 02       		.byte	0x2
@@ -1678,7 +1790,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1070 00a4 05       		.uleb128 0x5
  1071 00a5 6B000000 		.4byte	0x6b
  1072 00a9 04       		.uleb128 0x4
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 29
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 29
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1073 00aa 08000000 		.4byte	.LASF15
@@ -1738,7 +1854,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1127 0120 A2010000 		.4byte	.LASF21
  1128 0124 01       		.byte	0x1
  1129 0125 9D       		.byte	0x9d
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 30
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 30
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1130 0126 6B000000 		.4byte	0x6b
@@ -1797,8 +1917,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1183 0188 74       		.sleb128 -12
  1184 0189 00       		.byte	0
  1185 018a 0C       		.uleb128 0xc
+<<<<<<< HEAD
  1186 018b CB020000 		.4byte	.LASF30
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 31
+=======
+ 1186 018b 2F030000 		.4byte	.LASF30
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 31
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1187 018f 01       		.byte	0x1
@@ -1858,7 +1983,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1241 0207 01       		.byte	0x1
  1242 0208 A301     		.2byte	0x1a3
  1243 020a 00000000 		.4byte	.LFB9
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 32
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 32
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1244 020e C4000000 		.4byte	.LFE9-.LFB9
@@ -1918,7 +2047,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1298 0280 77       		.sleb128 -9
  1299 0281 00       		.byte	0
  1300 0282 0C       		.uleb128 0xc
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 33
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 33
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1301 0283 52010000 		.4byte	.LASF39
@@ -1978,7 +2111,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1355 002b 00       		.byte	0
  1356 002c 03       		.uleb128 0x3
  1357 002d 0E       		.uleb128 0xe
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 34
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 34
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1358 002e 3A       		.uleb128 0x3a
@@ -2038,7 +2175,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1412 0065 06       		.uleb128 0x6
  1413 0066 40       		.uleb128 0x40
  1414 0067 18       		.uleb128 0x18
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 35
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 35
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1415 0068 9742     		.uleb128 0x2117
@@ -2098,7 +2239,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1469 009f 3B       		.uleb128 0x3b
  1470 00a0 0B       		.uleb128 0xb
  1471 00a1 27       		.uleb128 0x27
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 36
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 36
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1472 00a2 19       		.uleb128 0x19
@@ -2158,7 +2303,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1526 00da 06       		.uleb128 0x6
  1527 00db 40       		.uleb128 0x40
  1528 00dc 18       		.uleb128 0x18
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 37
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 37
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1529 00dd 9742     		.uleb128 0x2117
@@ -2218,7 +2367,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1583 0115 05       		.uleb128 0x5
  1584 0116 49       		.uleb128 0x49
  1585 0117 13       		.uleb128 0x13
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 38
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 38
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1586 0118 02       		.uleb128 0x2
@@ -2278,7 +2431,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1640 002c 18000000 		.4byte	.LFE5
  1641 0030 00000000 		.4byte	.LFB6
  1642 0034 34000000 		.4byte	.LFE6
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 39
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 39
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1643 0038 00000000 		.4byte	.LFB7
@@ -2338,7 +2495,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1673 00c5 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  1673      66756E63 
  1673      74696F6E 
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 40
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 40
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1673      2D736563 
@@ -2398,7 +2559,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1698              	.LASF21:
  1699 01a2 73746174 		.ascii	"state\000"
  1699      6500
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 41
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 41
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1700              	.LASF38:
@@ -2458,7 +2623,11 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1721      50485F74 
  1721      68654143 
  1721      4C4B5F53 
+<<<<<<< HEAD
 ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 42
+=======
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 42
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
 
 
  1721      65744469 
@@ -2482,6 +2651,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1731 02c0 6F6C6444 		.ascii	"oldDivider\000"
  1731      69766964 
  1731      657200
+<<<<<<< HEAD
  1732              	.LASF30:
  1733 02cb 4144435F 		.ascii	"ADC_PH_theACLK_GetDividerRegister\000"
  1733      50485F74 
@@ -2524,6 +2694,51 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccniU2ah.s 			page 1
  1746      6D5C5254 
  1746      4F535F54 
  1747 0386 64736E00 		.ascii	"dsn\000"
+=======
+ 1732              	.LASF42:
+ 1733 02cb 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 1733      73657273 
+ 1733      5C6D6167 
+ 1733      39345C44 
+ 1733      65736B74 
+ 1734 02f8 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 1734      72746963 
+ 1734      616C5F66 
+ 1734      61726D5C 
+ 1734      52544F53 
+ 1735 0329 63796473 		.ascii	"cydsn\000"
+ 1735      6E00
+ 1736              	.LASF30:
+ 1737 032f 4144435F 		.ascii	"ADC_PH_theACLK_GetDividerRegister\000"
+ 1737      50485F74 
+ 1737      68654143 
+ 1737      4C4B5F47 
+ 1737      65744469 
+ 1738              	.LASF16:
+ 1739 0351 4144435F 		.ascii	"ADC_PH_theACLK_Start\000"
+ 1739      50485F74 
+ 1739      68654143 
+ 1739      4C4B5F53 
+ 1739      74617274 
+ 1740              	.LASF14:
+ 1741 0366 72656738 		.ascii	"reg8\000"
+ 1741      00
+ 1742              	.LASF5:
+ 1743 036b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1743      20756E73 
+ 1743      69676E65 
+ 1743      6420696E 
+ 1743      7400
+ 1744              	.LASF12:
+ 1745 037d 646F7562 		.ascii	"double\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccMMBqcd.s 			page 43
+
+
+ 1745      6C6500
+ 1746              	.LASF25:
+ 1747 0384 656E6162 		.ascii	"enabled\000"
+ 1747      6C656400 
+>>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
  1748              	.LASF36:
  1749 038a 4144435F 		.ascii	"ADC_PH_theACLK_GetSourceRegister\000"
  1749      50485F74 
