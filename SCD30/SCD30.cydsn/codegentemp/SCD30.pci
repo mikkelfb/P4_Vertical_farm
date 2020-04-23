@@ -1,0 +1,12 @@
+# SCD30
+# 2020-04-22 16:21:06Z
+
+# IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 0
+# IO_1@[IOP=(1)][IoId=(1)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 1
+# IO_3@[IOP=(1)][IoId=(3)] is reserved: SWDDebugEnabled
+dont_use_io iocell 1 3
+set_io "SDA_PIN(0)" iocell 12 1
+set_io "SCL_PIN(0)" iocell 12 0
+set_io "\UART:tx(0)\" iocell 12 7
