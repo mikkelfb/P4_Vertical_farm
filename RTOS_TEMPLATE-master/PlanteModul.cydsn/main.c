@@ -112,6 +112,8 @@ extern cyisraddress CyRamVectors[];
     
     SW_UART_TEST_USB_Start();
     
+       
+    RTC_Start();
 }
 /*---------------------------------------------------------------------------*/
 
