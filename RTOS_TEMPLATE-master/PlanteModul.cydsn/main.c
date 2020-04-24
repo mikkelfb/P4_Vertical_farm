@@ -37,6 +37,7 @@
 
 /* Plantemodul includes */
 #include "Nutrients.h"
+#include "Air.h"
 
 
 /* The time between cycles of the 'check' functionality (defined within the
@@ -60,6 +61,8 @@ int main( void )
 	prvHardwareSetup();
     
     vNutrientsInit(); //initialize Nutrients control task and parameteres
+    
+    vAirInit();
      
     
     
@@ -95,21 +98,23 @@ extern cyisraddress CyRamVectors[];
 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
+    
+    
+    /* Startup One_Wire and I2C. */
+    SW_UART_TEST_USB_Start();
+    I2C_Start();
 
     
 	/* Start-up the peripherals. */
-    
-    
+        
     PWM_PERISTALTISK_1_Start(); //start PWM module 1
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
-    
-    /* Startup One_Wire. */
-
     DS18x8_Start(); // Starting DS18x8 module
-   
+    vInitSCD30(2);
     
-    SW_UART_TEST_USB_Start();
+    
+    
 }
 /*---------------------------------------------------------------------------*/
 

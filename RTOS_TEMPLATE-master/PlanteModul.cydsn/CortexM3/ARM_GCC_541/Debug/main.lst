@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 1
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 1
 
 
    1              		.syntax unified
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   26:main.c        ****  */
   27:main.c        **** 
   28:main.c        **** 
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 2
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 2
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 2
 
 
   29:main.c        **** 
@@ -80,26 +72,27 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   37:main.c        **** 
   38:main.c        **** /* Plantemodul includes */
   39:main.c        **** #include "Nutrients.h"
-  40:main.c        **** 
+  40:main.c        **** #include "Air.h"
   41:main.c        **** 
-  42:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
-  43:main.c        **** tick hook. */
-  44:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
-  45:main.c        **** #define mainCOM_LED							( 3 )
-  46:main.c        **** 
-  47:main.c        **** /* The number of nano seconds between each processor clock. */
-  48:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
-  49:main.c        **** 
-  50:main.c        **** /*
-  51:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
-  52:main.c        ****  */
-  53:main.c        **** static void prvHardwareSetup( void );
-  54:main.c        **** /*---------------------------------------------------------------------------*/
-  55:main.c        **** 
+  42:main.c        **** 
+  43:main.c        **** /* The time between cycles of the 'check' functionality (defined within the
+  44:main.c        **** tick hook. */
+  45:main.c        **** #define mainCHECK_DELAY						( ( TickType_t ) 5000 / portTICK_PERIOD_MS )
+  46:main.c        **** #define mainCOM_LED							( 3 )
+  47:main.c        **** 
+  48:main.c        **** /* The number of nano seconds between each processor clock. */
+  49:main.c        **** #define mainNS_PER_CLOCK ( ( unsigned long ) ( ( 1.0 / ( double ) configCPU_CLOCK_HZ ) * 1000000000
+  50:main.c        **** 
+  51:main.c        **** /*
+  52:main.c        ****  * Installs the RTOS interrupt handlers and starts the peripherals.
+  53:main.c        ****  */
+  54:main.c        **** static void prvHardwareSetup( void );
+  55:main.c        **** /*---------------------------------------------------------------------------*/
   56:main.c        **** 
-  57:main.c        **** int main( void )
-  58:main.c        **** {
-  30              		.loc 1 58 0
+  57:main.c        **** 
+  58:main.c        **** int main( void )
+  59:main.c        **** {
+  30              		.loc 1 59 0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -109,176 +102,175 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   37              		.cfi_offset 14, -4
   38 0002 00AF     		add	r7, sp, #0
   39              		.cfi_def_cfa_register 7
-  59:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-  60:main.c        **** 	prvHardwareSetup();
-  40              		.loc 1 60 0
+  60:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+  61:main.c        **** 	prvHardwareSetup();
+  40              		.loc 1 61 0
   41 0004 FFF7FEFF 		bl	prvHardwareSetup
-  61:main.c        ****     
-  62:main.c        ****     vNutrientsInit(); //initialize Nutrients control task and parameteres
-  42              		.loc 1 62 0
+  62:main.c        ****     
+  63:main.c        ****     vNutrientsInit(); //initialize Nutrients control task and parameteres
+  42              		.loc 1 63 0
   43 0008 FFF7FEFF 		bl	vNutrientsInit
-  63:main.c        ****      
   64:main.c        ****     
-  65:main.c        ****     
-  66:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
-  67:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
-  68:main.c        **** 	vTaskStartScheduler();
-  44              		.loc 1 68 0
-  45 000c FFF7FEFF 		bl	vTaskStartScheduler
-  46              	.L2:
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 3
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 3
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+  65:main.c        ****     vAirInit();
+  44              		.loc 1 65 0
+  45 000c FFF7FEFF 		bl	vAirInit
+  66:main.c        ****      
+  67:main.c        ****     
+  68:main.c        ****     
+  69:main.c        **** 	/* Will only get here if there was insufficient memory to create the idle
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 3
 
 
-  69:main.c        **** 
-  70:main.c        ****     
-  71:main.c        ****     
-  72:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
-  73:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
-  74:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
-  75:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
-  76:main.c        **** 	for( ;; );
-  47              		.loc 1 76 0 discriminator 1
-  48 0010 FEE7     		b	.L2
-  49              		.cfi_endproc
-  50              	.LFE68:
-  51              		.size	main, .-main
-  52 0012 00BF     		.section	.text.prvHardwareSetup,"ax",%progbits
-  53              		.align	2
-  54              		.thumb
-  55              		.thumb_func
-  56              		.type	prvHardwareSetup, %function
-  57              	prvHardwareSetup:
-  58              	.LFB69:
-  77:main.c        **** }
-  78:main.c        **** /*---------------------------------------------------------------------------*/
-  79:main.c        **** 
-  80:main.c        **** 
-  81:main.c        **** 
+  70:main.c        ****     task.  The idle task is created within vTaskStartScheduler(). */
+  71:main.c        **** 	vTaskStartScheduler();
+  46              		.loc 1 71 0
+  47 0010 FFF7FEFF 		bl	vTaskStartScheduler
+  48              	.L2:
+  72:main.c        **** 
+  73:main.c        ****     
+  74:main.c        ****     
+  75:main.c        **** 	/* Should never reach here as the kernel will now be running.  If
+  76:main.c        **** 	vTaskStartScheduler() does return then it is very likely that there was
+  77:main.c        **** 	insufficient (FreeRTOS) heap space available to create all the tasks,
+  78:main.c        **** 	including the idle task that is created within vTaskStartScheduler() itself. */
+  79:main.c        **** 	for( ;; );
+  49              		.loc 1 79 0 discriminator 1
+  50 0014 FEE7     		b	.L2
+  51              		.cfi_endproc
+  52              	.LFE68:
+  53              		.size	main, .-main
+  54 0016 00BF     		.section	.text.prvHardwareSetup,"ax",%progbits
+  55              		.align	2
+  56              		.thumb
+  57              		.thumb_func
+  58              		.type	prvHardwareSetup, %function
+  59              	prvHardwareSetup:
+  60              	.LFB69:
+  80:main.c        **** }
+  81:main.c        **** /*---------------------------------------------------------------------------*/
   82:main.c        **** 
   83:main.c        **** 
-  84:main.c        **** void prvHardwareSetup( void )
-  85:main.c        **** {
-  59              		.loc 1 85 0
-  60              		.cfi_startproc
-  61              		@ args = 0, pretend = 0, frame = 0
-  62              		@ frame_needed = 1, uses_anonymous_args = 0
-  63 0000 80B5     		push	{r7, lr}
-  64              		.cfi_def_cfa_offset 8
-  65              		.cfi_offset 7, -8
-  66              		.cfi_offset 14, -4
-  67 0002 00AF     		add	r7, sp, #0
-  68              		.cfi_def_cfa_register 7
-  86:main.c        **** /* Port layer functions that need to be copied into the vector table. */
-  87:main.c        **** extern void xPortPendSVHandler( void );
-  88:main.c        **** extern void xPortSysTickHandler( void );
-  89:main.c        **** extern void vPortSVCHandler( void );
-  90:main.c        **** extern cyisraddress CyRamVectors[];
-  91:main.c        **** 
-  92:main.c        **** 
-  93:main.c        **** 
-  94:main.c        **** 	/* Install the OS Interrupt Handlers. */
-  95:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
-  69              		.loc 1 95 0
-  70 0004 0A4B     		ldr	r3, .L4
-  71 0006 0B4A     		ldr	r2, .L4+4
-  72 0008 DA62     		str	r2, [r3, #44]
-  96:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
-  73              		.loc 1 96 0
-  74 000a 094B     		ldr	r3, .L4
-  75 000c 0A4A     		ldr	r2, .L4+8
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 4
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 4
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+  84:main.c        **** 
+  85:main.c        **** 
+  86:main.c        **** 
+  87:main.c        **** void prvHardwareSetup( void )
+  88:main.c        **** {
+  61              		.loc 1 88 0
+  62              		.cfi_startproc
+  63              		@ args = 0, pretend = 0, frame = 0
+  64              		@ frame_needed = 1, uses_anonymous_args = 0
+  65 0000 80B5     		push	{r7, lr}
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 7, -8
+  68              		.cfi_offset 14, -4
+  69 0002 00AF     		add	r7, sp, #0
+  70              		.cfi_def_cfa_register 7
+  89:main.c        **** /* Port layer functions that need to be copied into the vector table. */
+  90:main.c        **** extern void xPortPendSVHandler( void );
+  91:main.c        **** extern void xPortSysTickHandler( void );
+  92:main.c        **** extern void vPortSVCHandler( void );
+  93:main.c        **** extern cyisraddress CyRamVectors[];
+  94:main.c        **** 
+  95:main.c        **** 
+  96:main.c        **** 
+  97:main.c        **** 	/* Install the OS Interrupt Handlers. */
+  98:main.c        **** 	CyRamVectors[ 11 ] = ( cyisraddress ) vPortSVCHandler;
+  71              		.loc 1 98 0
+  72 0004 0C4B     		ldr	r3, .L4
+  73 0006 0D4A     		ldr	r2, .L4+4
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 4
 
 
-  76 000e 9A63     		str	r2, [r3, #56]
-  97:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
-  77              		.loc 1 97 0
-  78 0010 074B     		ldr	r3, .L4
-  79 0012 0A4A     		ldr	r2, .L4+12
-  80 0014 DA63     		str	r2, [r3, #60]
-  98:main.c        **** 
-  99:main.c        ****     
- 100:main.c        **** 	/* Start-up the peripherals. */
+  74 0008 DA62     		str	r2, [r3, #44]
+  99:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
+  75              		.loc 1 99 0
+  76 000a 0B4B     		ldr	r3, .L4
+  77 000c 0C4A     		ldr	r2, .L4+8
+  78 000e 9A63     		str	r2, [r3, #56]
+ 100:main.c        **** 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
+  79              		.loc 1 100 0
+  80 0010 094B     		ldr	r3, .L4
+  81 0012 0C4A     		ldr	r2, .L4+12
+  82 0014 DA63     		str	r2, [r3, #60]
  101:main.c        ****     
  102:main.c        ****     
- 103:main.c        ****     PWM_PERISTALTISK_1_Start(); //start PWM module 1
-  81              		.loc 1 103 0
-  82 0016 FFF7FEFF 		bl	PWM_PERISTALTISK_1_Start
- 104:main.c        ****     PWM_PERISTALTISK_2_Start(); //start PWM module 2
+ 103:main.c        ****     /* Startup One_Wire and I2C. */
+ 104:main.c        ****     SW_UART_TEST_USB_Start();
   83              		.loc 1 104 0
-  84 001a FFF7FEFF 		bl	PWM_PERISTALTISK_2_Start
- 105:main.c        ****     ADC_PH_Start(); //start ADC_PH module
+  84 0016 FFF7FEFF 		bl	SW_UART_TEST_USB_Start
+ 105:main.c        ****     I2C_Start();
   85              		.loc 1 105 0
-  86 001e FFF7FEFF 		bl	ADC_PH_Start
- 106:main.c        ****     
- 107:main.c        ****     /* Startup One_Wire. */
- 108:main.c        **** 
- 109:main.c        ****     DS18x8_Start(); // Starting DS18x8 module
-  87              		.loc 1 109 0
-  88 0022 FFF7FEFF 		bl	DS18x8_Start
- 110:main.c        ****    
- 111:main.c        ****     
- 112:main.c        ****     SW_UART_TEST_USB_Start();
-  89              		.loc 1 112 0
-  90 0026 FFF7FEFF 		bl	SW_UART_TEST_USB_Start
- 113:main.c        **** }
-  91              		.loc 1 113 0
-  92 002a 00BF     		nop
-  93 002c 80BD     		pop	{r7, pc}
-  94              	.L5:
-  95 002e 00BF     		.align	2
-  96              	.L4:
-  97 0030 00000000 		.word	CyRamVectors
-  98 0034 00000000 		.word	vPortSVCHandler
-  99 0038 00000000 		.word	xPortPendSVHandler
- 100 003c 00000000 		.word	xPortSysTickHandler
- 101              		.cfi_endproc
- 102              	.LFE69:
- 103              		.size	prvHardwareSetup, .-prvHardwareSetup
- 104              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
- 105              		.align	2
- 106              		.global	vApplicationStackOverflowHook
- 107              		.thumb
- 108              		.thumb_func
- 109              		.type	vApplicationStackOverflowHook, %function
- 110              	vApplicationStackOverflowHook:
- 111              	.LFB70:
- 114:main.c        **** /*---------------------------------------------------------------------------*/
- 115:main.c        **** 
- 116:main.c        **** 
- 117:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 5
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 5
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+  86 001a FFF7FEFF 		bl	I2C_Start
+ 106:main.c        **** 
+ 107:main.c        ****     
+ 108:main.c        **** 	/* Start-up the peripherals. */
+ 109:main.c        ****         
+ 110:main.c        ****     PWM_PERISTALTISK_1_Start(); //start PWM module 1
+  87              		.loc 1 110 0
+  88 001e FFF7FEFF 		bl	PWM_PERISTALTISK_1_Start
+ 111:main.c        ****     PWM_PERISTALTISK_2_Start(); //start PWM module 2
+  89              		.loc 1 111 0
+  90 0022 FFF7FEFF 		bl	PWM_PERISTALTISK_2_Start
+ 112:main.c        ****     ADC_PH_Start(); //start ADC_PH module
+  91              		.loc 1 112 0
+  92 0026 FFF7FEFF 		bl	ADC_PH_Start
+ 113:main.c        ****     DS18x8_Start(); // Starting DS18x8 module
+  93              		.loc 1 113 0
+  94 002a FFF7FEFF 		bl	DS18x8_Start
+ 114:main.c        ****     vInitSCD30(2);
+  95              		.loc 1 114 0
+  96 002e 0220     		movs	r0, #2
+  97 0030 FFF7FEFF 		bl	vInitSCD30
+ 115:main.c        ****     
+ 116:main.c        ****     
+ 117:main.c        ****     
+ 118:main.c        **** }
+  98              		.loc 1 118 0
+  99 0034 00BF     		nop
+ 100 0036 80BD     		pop	{r7, pc}
+ 101              	.L5:
+ 102              		.align	2
+ 103              	.L4:
+ 104 0038 00000000 		.word	CyRamVectors
+ 105 003c 00000000 		.word	vPortSVCHandler
+ 106 0040 00000000 		.word	xPortPendSVHandler
+ 107 0044 00000000 		.word	xPortSysTickHandler
+ 108              		.cfi_endproc
+ 109              	.LFE69:
+ 110              		.size	prvHardwareSetup, .-prvHardwareSetup
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 5
 
 
- 118:main.c        **** {
- 112              		.loc 1 118 0
- 113              		.cfi_startproc
- 114              		@ args = 0, pretend = 0, frame = 16
- 115              		@ frame_needed = 1, uses_anonymous_args = 0
- 116              		@ link register save eliminated.
- 117 0000 80B4     		push	{r7}
- 118              		.cfi_def_cfa_offset 4
- 119              		.cfi_offset 7, -4
- 120 0002 85B0     		sub	sp, sp, #20
- 121              		.cfi_def_cfa_offset 24
- 122 0004 00AF     		add	r7, sp, #0
- 123              		.cfi_def_cfa_register 7
- 124 0006 7860     		str	r0, [r7, #4]
- 125 0008 3960     		str	r1, [r7]
- 126              	.LBB6:
- 127              	.LBB7:
- 128              		.file 2 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 111              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
+ 112              		.align	2
+ 113              		.global	vApplicationStackOverflowHook
+ 114              		.thumb
+ 115              		.thumb_func
+ 116              		.type	vApplicationStackOverflowHook, %function
+ 117              	vApplicationStackOverflowHook:
+ 118              	.LFB70:
+ 119:main.c        **** /*---------------------------------------------------------------------------*/
+ 120:main.c        **** 
+ 121:main.c        **** 
+ 122:main.c        **** void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+ 123:main.c        **** {
+ 119              		.loc 1 123 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 16
+ 122              		@ frame_needed = 1, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 80B4     		push	{r7}
+ 125              		.cfi_def_cfa_offset 4
+ 126              		.cfi_offset 7, -4
+ 127 0002 85B0     		sub	sp, sp, #20
+ 128              		.cfi_def_cfa_offset 24
+ 129 0004 00AF     		add	r7, sp, #0
+ 130              		.cfi_def_cfa_register 7
+ 131 0006 7860     		str	r0, [r7, #4]
+ 132 0008 3960     		str	r1, [r7]
+ 133              	.LBB6:
+ 134              	.LBB7:
+ 135              		.file 2 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
    1:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*
    2:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FreeRTOS Kernel V10.3.1
    3:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.
@@ -306,6 +298,9 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   25:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * 1 tab == 4 spaces!
   26:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  */
   27:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 6
+
+
   28:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   29:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef PORTMACRO_H
   30:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define PORTMACRO_H
@@ -318,13 +313,6 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   37:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * Port specific definitions.
   38:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
   39:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * The settings in this file configure FreeRTOS correctly for the
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 6
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 6
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
-
-
   40:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * given hardware and compiler.
   41:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
   42:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * These settings should not be altered.
@@ -370,6 +358,9 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   82:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
   83:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 																				\
   84:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 7
+
+
   85:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	within the specified behaviour for the architecture. */						\
   86:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
   87:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "isb" );													\
@@ -382,13 +373,6 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
   94:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
   95:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   96:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Critical section management. */
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 7
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 7
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
-
-
   97:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortEnterCritical( void );
   98:.\Source\portable\GCC\ARM_CM3/portmacro.h **** extern void vPortExitCritical( void );
   99:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSET_INTERRUPT_MASK_FROM_ISR()		ulPortRaiseBASEPRI()
@@ -434,6 +418,9 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
  139:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
  140:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
  141:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#endif
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 8
+
+
  142:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  143:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
  144:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
@@ -446,13 +433,6 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
  151:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #endif /* configUSE_PORT_OPTIMISED_TASK_SELECTION */
  152:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  153:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /*-----------------------------------------------------------*/
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 8
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 8
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
-
-
  154:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  155:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef configASSERT
  156:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	void vPortValidateInterruptPriority( void );
@@ -497,1160 +477,1073 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 1
  195:.\Source\portable\GCC\ARM_CM3/portmacro.h **** uint32_t ulNewBASEPRI;
  196:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  197:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
- 129              		.loc 2 197 0
- 130              		.syntax unified
- 131              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
- 132 000a 4FF0A003 			mov r3, #160												
- 133 000e 83F31188 		msr basepri, r3											
- 134 0012 BFF36F8F 		isb														
- 135 0016 BFF34F8F 		dsb														
- 136              	
- 137              	@ 0 "" 2
- 138              		.thumb
- 139              		.syntax unified
- 140 001a FB60     		str	r3, [r7, #12]
- 141              	.L7:
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 9
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 9
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 136              		.loc 2 197 0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 9
 
 
- 142              	.LBE7:
- 143              	.LBE6:
- 119:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
- 120:main.c        **** 	taskDISABLE_INTERRUPTS();
- 121:main.c        **** 	for( ;; );
- 144              		.loc 1 121 0 discriminator 1
- 145 001c FEE7     		b	.L7
- 146              		.cfi_endproc
- 147              	.LFE70:
- 148              		.size	vApplicationStackOverflowHook, .-vApplicationStackOverflowHook
- 149 001e 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
- 150              		.align	2
- 151              		.global	vApplicationMallocFailedHook
- 152              		.thumb
- 153              		.thumb_func
- 154              		.type	vApplicationMallocFailedHook, %function
- 155              	vApplicationMallocFailedHook:
- 156              	.LFB71:
- 122:main.c        **** }
- 123:main.c        **** /*---------------------------------------------------------------------------*/
- 124:main.c        **** 
- 125:main.c        **** void vApplicationMallocFailedHook( void )
- 126:main.c        **** {
- 157              		.loc 1 126 0
- 158              		.cfi_startproc
- 159              		@ args = 0, pretend = 0, frame = 8
- 160              		@ frame_needed = 1, uses_anonymous_args = 0
- 161              		@ link register save eliminated.
- 162 0000 80B4     		push	{r7}
- 163              		.cfi_def_cfa_offset 4
- 164              		.cfi_offset 7, -4
- 165 0002 83B0     		sub	sp, sp, #12
- 166              		.cfi_def_cfa_offset 16
- 167 0004 00AF     		add	r7, sp, #0
- 168              		.cfi_def_cfa_register 7
- 169              	.LBB8:
- 170              	.LBB9:
- 171              		.loc 2 197 0
- 172              		.syntax unified
- 173              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
- 174 0006 4FF0A003 			mov r3, #160												
- 175 000a 83F31188 		msr basepri, r3											
- 176 000e BFF36F8F 		isb														
- 177 0012 BFF34F8F 		dsb														
- 178              	
- 179              	@ 0 "" 2
- 180              		.thumb
- 181              		.syntax unified
- 182 0016 7B60     		str	r3, [r7, #4]
- 183              	.L9:
- 184              	.LBE9:
- 185              	.LBE8:
- 127:main.c        **** 	/* The heap space has been execeeded. */
- 128:main.c        **** 	taskDISABLE_INTERRUPTS();
- 129:main.c        **** 	for( ;; );
- 186              		.loc 1 129 0 discriminator 1
- 187 0018 FEE7     		b	.L9
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 10
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 10
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 137              		.syntax unified
+ 138              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 139 000a 4FF0A003 			mov r3, #160												
+ 140 000e 83F31188 		msr basepri, r3											
+ 141 0012 BFF36F8F 		isb														
+ 142 0016 BFF34F8F 		dsb														
+ 143              	
+ 144              	@ 0 "" 2
+ 145              		.thumb
+ 146              		.syntax unified
+ 147 001a FB60     		str	r3, [r7, #12]
+ 148              	.L7:
+ 149              	.LBE7:
+ 150              	.LBE6:
+ 124:main.c        **** 	/* The stack space has been execeeded for a task, considering allocating more. */
+ 125:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 126:main.c        **** 	for( ;; );
+ 151              		.loc 1 126 0 discriminator 1
+ 152 001c FEE7     		b	.L7
+ 153              		.cfi_endproc
+ 154              	.LFE70:
+ 155              		.size	vApplicationStackOverflowHook, .-vApplicationStackOverflowHook
+ 156 001e 00BF     		.section	.text.vApplicationMallocFailedHook,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	vApplicationMallocFailedHook
+ 159              		.thumb
+ 160              		.thumb_func
+ 161              		.type	vApplicationMallocFailedHook, %function
+ 162              	vApplicationMallocFailedHook:
+ 163              	.LFB71:
+ 127:main.c        **** }
+ 128:main.c        **** /*---------------------------------------------------------------------------*/
+ 129:main.c        **** 
+ 130:main.c        **** void vApplicationMallocFailedHook( void )
+ 131:main.c        **** {
+ 164              		.loc 1 131 0
+ 165              		.cfi_startproc
+ 166              		@ args = 0, pretend = 0, frame = 8
+ 167              		@ frame_needed = 1, uses_anonymous_args = 0
+ 168              		@ link register save eliminated.
+ 169 0000 80B4     		push	{r7}
+ 170              		.cfi_def_cfa_offset 4
+ 171              		.cfi_offset 7, -4
+ 172 0002 83B0     		sub	sp, sp, #12
+ 173              		.cfi_def_cfa_offset 16
+ 174 0004 00AF     		add	r7, sp, #0
+ 175              		.cfi_def_cfa_register 7
+ 176              	.LBB8:
+ 177              	.LBB9:
+ 178              		.loc 2 197 0
+ 179              		.syntax unified
+ 180              	@ 197 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
+ 181 0006 4FF0A003 			mov r3, #160												
+ 182 000a 83F31188 		msr basepri, r3											
+ 183 000e BFF36F8F 		isb														
+ 184 0012 BFF34F8F 		dsb														
+ 185              	
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 10
 
 
- 188              		.cfi_endproc
- 189              	.LFE71:
- 190              		.size	vApplicationMallocFailedHook, .-vApplicationMallocFailedHook
- 191 001a 00BF     		.text
- 192              	.Letext0:
- 193              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 194              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 195              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
- 196              		.file 6 "Generated_Source\\PSoC5/DS18x8.h"
- 197              		.file 7 ".\\Source\\include/task.h"
- 198              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
- 199              		.section	.debug_info,"",%progbits
- 200              	.Ldebug_info0:
- 201 0000 70020000 		.4byte	0x270
- 202 0004 0400     		.2byte	0x4
- 203 0006 00000000 		.4byte	.Ldebug_abbrev0
- 204 000a 04       		.byte	0x4
- 205 000b 01       		.uleb128 0x1
- 206 000c 08000000 		.4byte	.LASF35
- 207 0010 0C       		.byte	0xc
- 208 0011 74020000 		.4byte	.LASF36
- 209 0015 D6010000 		.4byte	.LASF37
- 210 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 211 001d 00000000 		.4byte	0
- 212 0021 00000000 		.4byte	.Ldebug_line0
- 213 0025 02       		.uleb128 0x2
- 214 0026 01       		.byte	0x1
- 215 0027 06       		.byte	0x6
- 216 0028 DD020000 		.4byte	.LASF0
- 217 002c 02       		.uleb128 0x2
- 218 002d 01       		.byte	0x1
- 219 002e 08       		.byte	0x8
- 220 002f 12010000 		.4byte	.LASF1
- 221 0033 02       		.uleb128 0x2
- 222 0034 02       		.byte	0x2
- 223 0035 05       		.byte	0x5
- 224 0036 97020000 		.4byte	.LASF2
- 225 003a 02       		.uleb128 0x2
- 226 003b 02       		.byte	0x2
- 227 003c 07       		.byte	0x7
- 228 003d 3D010000 		.4byte	.LASF3
- 229 0041 03       		.uleb128 0x3
- 230 0042 C0000000 		.4byte	.LASF5
- 231 0046 03       		.byte	0x3
- 232 0047 3F       		.byte	0x3f
- 233 0048 4C000000 		.4byte	0x4c
- 234 004c 02       		.uleb128 0x2
- 235 004d 04       		.byte	0x4
- 236 004e 05       		.byte	0x5
- 237 004f C8020000 		.4byte	.LASF4
- 238 0053 03       		.uleb128 0x3
- 239 0054 20010000 		.4byte	.LASF6
- 240 0058 03       		.byte	0x3
- 241 0059 41       		.byte	0x41
- 242 005a 5E000000 		.4byte	0x5e
- 243 005e 02       		.uleb128 0x2
- 244 005f 04       		.byte	0x4
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 11
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 11
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 186              	@ 0 "" 2
+ 187              		.thumb
+ 188              		.syntax unified
+ 189 0016 7B60     		str	r3, [r7, #4]
+ 190              	.L9:
+ 191              	.LBE9:
+ 192              	.LBE8:
+ 132:main.c        **** 	/* The heap space has been execeeded. */
+ 133:main.c        **** 	taskDISABLE_INTERRUPTS();
+ 134:main.c        **** 	for( ;; );
+ 193              		.loc 1 134 0 discriminator 1
+ 194 0018 FEE7     		b	.L9
+ 195              		.cfi_endproc
+ 196              	.LFE71:
+ 197              		.size	vApplicationMallocFailedHook, .-vApplicationMallocFailedHook
+ 198 001a 00BF     		.text
+ 199              	.Letext0:
+ 200              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 201              		.file 4 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 202              		.file 5 "Generated_Source\\PSoC5/cytypes.h"
+ 203              		.file 6 "Generated_Source\\PSoC5/DS18x8.h"
+ 204              		.file 7 ".\\Source\\include/task.h"
+ 205              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 206              		.section	.debug_info,"",%progbits
+ 207              	.Ldebug_info0:
+ 208 0000 70020000 		.4byte	0x270
+ 209 0004 0400     		.2byte	0x4
+ 210 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 211 000a 04       		.byte	0x4
+ 212 000b 01       		.uleb128 0x1
+ 213 000c 08000000 		.4byte	.LASF35
+ 214 0010 0C       		.byte	0xc
+ 215 0011 74020000 		.4byte	.LASF36
+ 216 0015 D6010000 		.4byte	.LASF37
+ 217 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 218 001d 00000000 		.4byte	0
+ 219 0021 00000000 		.4byte	.Ldebug_line0
+ 220 0025 02       		.uleb128 0x2
+ 221 0026 01       		.byte	0x1
+ 222 0027 06       		.byte	0x6
+ 223 0028 DD020000 		.4byte	.LASF0
+ 224 002c 02       		.uleb128 0x2
+ 225 002d 01       		.byte	0x1
+ 226 002e 08       		.byte	0x8
+ 227 002f 12010000 		.4byte	.LASF1
+ 228 0033 02       		.uleb128 0x2
+ 229 0034 02       		.byte	0x2
+ 230 0035 05       		.byte	0x5
+ 231 0036 97020000 		.4byte	.LASF2
+ 232 003a 02       		.uleb128 0x2
+ 233 003b 02       		.byte	0x2
+ 234 003c 07       		.byte	0x7
+ 235 003d 3D010000 		.4byte	.LASF3
+ 236 0041 03       		.uleb128 0x3
+ 237 0042 C0000000 		.4byte	.LASF5
+ 238 0046 03       		.byte	0x3
+ 239 0047 3F       		.byte	0x3f
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 11
 
 
- 245 0060 07       		.byte	0x7
- 246 0061 2B010000 		.4byte	.LASF7
- 247 0065 02       		.uleb128 0x2
- 248 0066 08       		.byte	0x8
- 249 0067 05       		.byte	0x5
- 250 0068 66020000 		.4byte	.LASF8
- 251 006c 02       		.uleb128 0x2
- 252 006d 08       		.byte	0x8
- 253 006e 07       		.byte	0x7
- 254 006f B2010000 		.4byte	.LASF9
- 255 0073 04       		.uleb128 0x4
- 256 0074 04       		.byte	0x4
- 257 0075 05       		.byte	0x5
- 258 0076 696E7400 		.ascii	"int\000"
- 259 007a 02       		.uleb128 0x2
- 260 007b 04       		.byte	0x4
- 261 007c 07       		.byte	0x7
- 262 007d A5010000 		.4byte	.LASF10
- 263 0081 03       		.uleb128 0x3
- 264 0082 55020000 		.4byte	.LASF11
- 265 0086 04       		.byte	0x4
- 266 0087 2C       		.byte	0x2c
- 267 0088 41000000 		.4byte	0x41
- 268 008c 03       		.uleb128 0x3
- 269 008d BF020000 		.4byte	.LASF12
- 270 0091 04       		.byte	0x4
- 271 0092 30       		.byte	0x30
- 272 0093 53000000 		.4byte	0x53
- 273 0097 05       		.uleb128 0x5
- 274 0098 AC020000 		.4byte	.LASF13
- 275 009c 05       		.byte	0x5
- 276 009d E401     		.2byte	0x1e4
- 277 009f 2C000000 		.4byte	0x2c
- 278 00a3 05       		.uleb128 0x5
- 279 00a4 71010000 		.4byte	.LASF14
- 280 00a8 05       		.byte	0x5
- 281 00a9 E501     		.2byte	0x1e5
- 282 00ab 3A000000 		.4byte	0x3a
- 283 00af 02       		.uleb128 0x2
- 284 00b0 04       		.byte	0x4
- 285 00b1 04       		.byte	0x4
- 286 00b2 FE000000 		.4byte	.LASF15
- 287 00b6 02       		.uleb128 0x2
- 288 00b7 08       		.byte	0x8
- 289 00b8 04       		.byte	0x4
- 290 00b9 5D010000 		.4byte	.LASF16
- 291 00bd 02       		.uleb128 0x2
- 292 00be 01       		.byte	0x1
- 293 00bf 08       		.byte	0x8
- 294 00c0 7B020000 		.4byte	.LASF17
- 295 00c4 06       		.uleb128 0x6
- 296 00c5 97000000 		.4byte	0x97
- 297 00c9 05       		.uleb128 0x5
- 298 00ca C9010000 		.4byte	.LASF18
- 299 00ce 05       		.byte	0x5
- 300 00cf A002     		.2byte	0x2a0
- 301 00d1 D5000000 		.4byte	0xd5
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 12
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 12
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 240 0048 4C000000 		.4byte	0x4c
+ 241 004c 02       		.uleb128 0x2
+ 242 004d 04       		.byte	0x4
+ 243 004e 05       		.byte	0x5
+ 244 004f C8020000 		.4byte	.LASF4
+ 245 0053 03       		.uleb128 0x3
+ 246 0054 20010000 		.4byte	.LASF6
+ 247 0058 03       		.byte	0x3
+ 248 0059 41       		.byte	0x41
+ 249 005a 5E000000 		.4byte	0x5e
+ 250 005e 02       		.uleb128 0x2
+ 251 005f 04       		.byte	0x4
+ 252 0060 07       		.byte	0x7
+ 253 0061 2B010000 		.4byte	.LASF7
+ 254 0065 02       		.uleb128 0x2
+ 255 0066 08       		.byte	0x8
+ 256 0067 05       		.byte	0x5
+ 257 0068 66020000 		.4byte	.LASF8
+ 258 006c 02       		.uleb128 0x2
+ 259 006d 08       		.byte	0x8
+ 260 006e 07       		.byte	0x7
+ 261 006f B2010000 		.4byte	.LASF9
+ 262 0073 04       		.uleb128 0x4
+ 263 0074 04       		.byte	0x4
+ 264 0075 05       		.byte	0x5
+ 265 0076 696E7400 		.ascii	"int\000"
+ 266 007a 02       		.uleb128 0x2
+ 267 007b 04       		.byte	0x4
+ 268 007c 07       		.byte	0x7
+ 269 007d A5010000 		.4byte	.LASF10
+ 270 0081 03       		.uleb128 0x3
+ 271 0082 55020000 		.4byte	.LASF11
+ 272 0086 04       		.byte	0x4
+ 273 0087 2C       		.byte	0x2c
+ 274 0088 41000000 		.4byte	0x41
+ 275 008c 03       		.uleb128 0x3
+ 276 008d BF020000 		.4byte	.LASF12
+ 277 0091 04       		.byte	0x4
+ 278 0092 30       		.byte	0x30
+ 279 0093 53000000 		.4byte	0x53
+ 280 0097 05       		.uleb128 0x5
+ 281 0098 AC020000 		.4byte	.LASF13
+ 282 009c 05       		.byte	0x5
+ 283 009d E401     		.2byte	0x1e4
+ 284 009f 2C000000 		.4byte	0x2c
+ 285 00a3 05       		.uleb128 0x5
+ 286 00a4 71010000 		.4byte	.LASF14
+ 287 00a8 05       		.byte	0x5
+ 288 00a9 E501     		.2byte	0x1e5
+ 289 00ab 3A000000 		.4byte	0x3a
+ 290 00af 02       		.uleb128 0x2
+ 291 00b0 04       		.byte	0x4
+ 292 00b1 04       		.byte	0x4
+ 293 00b2 FE000000 		.4byte	.LASF15
+ 294 00b6 02       		.uleb128 0x2
+ 295 00b7 08       		.byte	0x8
+ 296 00b8 04       		.byte	0x4
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 12
 
 
- 302 00d5 07       		.uleb128 0x7
- 303 00d6 04       		.byte	0x4
- 304 00d7 DB000000 		.4byte	0xdb
- 305 00db 08       		.uleb128 0x8
- 306 00dc 02       		.uleb128 0x2
- 307 00dd 08       		.byte	0x8
- 308 00de 04       		.byte	0x4
- 309 00df D1020000 		.4byte	.LASF19
- 310 00e3 02       		.uleb128 0x2
- 311 00e4 04       		.byte	0x4
- 312 00e5 07       		.byte	0x7
- 313 00e6 5D020000 		.4byte	.LASF20
- 314 00ea 07       		.uleb128 0x7
- 315 00eb 04       		.byte	0x4
- 316 00ec BD000000 		.4byte	0xbd
- 317 00f0 09       		.uleb128 0x9
- 318 00f1 EF000000 		.4byte	.LASF38
- 319 00f5 04       		.byte	0x4
- 320 00f6 06       		.byte	0x6
- 321 00f7 30       		.byte	0x30
- 322 00f8 15010000 		.4byte	0x115
- 323 00fc 0A       		.uleb128 0xa
- 324 00fd B4000000 		.4byte	.LASF21
- 325 0101 06       		.byte	0x6
- 326 0102 31       		.byte	0x31
- 327 0103 A3000000 		.4byte	0xa3
- 328 0107 00       		.byte	0
- 329 0108 0A       		.uleb128 0xa
- 330 0109 00000000 		.4byte	.LASF22
- 331 010d 06       		.byte	0x6
- 332 010e 32       		.byte	0x32
- 333 010f 97000000 		.4byte	0x97
- 334 0113 02       		.byte	0x2
- 335 0114 00       		.byte	0
- 336 0115 03       		.uleb128 0x3
- 337 0116 B2020000 		.4byte	.LASF23
- 338 011a 07       		.byte	0x7
- 339 011b 46       		.byte	0x46
- 340 011c 20010000 		.4byte	0x120
- 341 0120 07       		.uleb128 0x7
- 342 0121 04       		.byte	0x4
- 343 0122 26010000 		.4byte	0x126
- 344 0126 0B       		.uleb128 0xb
- 345 0127 78010000 		.4byte	.LASF39
- 346 012b 0C       		.uleb128 0xc
- 347 012c CA000000 		.4byte	.LASF40
- 348 0130 02       		.byte	0x2
- 349 0131 C1       		.byte	0xc1
- 350 0132 03       		.byte	0x3
- 351 0133 43010000 		.4byte	0x143
- 352 0137 0D       		.uleb128 0xd
- 353 0138 64010000 		.4byte	.LASF41
- 354 013c 02       		.byte	0x2
- 355 013d C3       		.byte	0xc3
- 356 013e 8C000000 		.4byte	0x8c
- 357 0142 00       		.byte	0
- 358 0143 0E       		.uleb128 0xe
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 13
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 13
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 297 00b9 5D010000 		.4byte	.LASF16
+ 298 00bd 02       		.uleb128 0x2
+ 299 00be 01       		.byte	0x1
+ 300 00bf 08       		.byte	0x8
+ 301 00c0 7B020000 		.4byte	.LASF17
+ 302 00c4 06       		.uleb128 0x6
+ 303 00c5 97000000 		.4byte	0x97
+ 304 00c9 05       		.uleb128 0x5
+ 305 00ca C9010000 		.4byte	.LASF18
+ 306 00ce 05       		.byte	0x5
+ 307 00cf A002     		.2byte	0x2a0
+ 308 00d1 D5000000 		.4byte	0xd5
+ 309 00d5 07       		.uleb128 0x7
+ 310 00d6 04       		.byte	0x4
+ 311 00d7 DB000000 		.4byte	0xdb
+ 312 00db 08       		.uleb128 0x8
+ 313 00dc 02       		.uleb128 0x2
+ 314 00dd 08       		.byte	0x8
+ 315 00de 04       		.byte	0x4
+ 316 00df D1020000 		.4byte	.LASF19
+ 317 00e3 02       		.uleb128 0x2
+ 318 00e4 04       		.byte	0x4
+ 319 00e5 07       		.byte	0x7
+ 320 00e6 5D020000 		.4byte	.LASF20
+ 321 00ea 07       		.uleb128 0x7
+ 322 00eb 04       		.byte	0x4
+ 323 00ec BD000000 		.4byte	0xbd
+ 324 00f0 09       		.uleb128 0x9
+ 325 00f1 EF000000 		.4byte	.LASF38
+ 326 00f5 04       		.byte	0x4
+ 327 00f6 06       		.byte	0x6
+ 328 00f7 30       		.byte	0x30
+ 329 00f8 15010000 		.4byte	0x115
+ 330 00fc 0A       		.uleb128 0xa
+ 331 00fd B4000000 		.4byte	.LASF21
+ 332 0101 06       		.byte	0x6
+ 333 0102 31       		.byte	0x31
+ 334 0103 A3000000 		.4byte	0xa3
+ 335 0107 00       		.byte	0
+ 336 0108 0A       		.uleb128 0xa
+ 337 0109 00000000 		.4byte	.LASF22
+ 338 010d 06       		.byte	0x6
+ 339 010e 32       		.byte	0x32
+ 340 010f 97000000 		.4byte	0x97
+ 341 0113 02       		.byte	0x2
+ 342 0114 00       		.byte	0
+ 343 0115 03       		.uleb128 0x3
+ 344 0116 B2020000 		.4byte	.LASF23
+ 345 011a 07       		.byte	0x7
+ 346 011b 46       		.byte	0x46
+ 347 011c 20010000 		.4byte	0x120
+ 348 0120 07       		.uleb128 0x7
+ 349 0121 04       		.byte	0x4
+ 350 0122 26010000 		.4byte	0x126
+ 351 0126 0B       		.uleb128 0xb
+ 352 0127 78010000 		.4byte	.LASF39
+ 353 012b 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 13
 
 
- 359 0144 8C010000 		.4byte	.LASF42
- 360 0148 01       		.byte	0x1
- 361 0149 39       		.byte	0x39
- 362 014a 73000000 		.4byte	0x73
- 363 014e 00000000 		.4byte	.LFB68
- 364 0152 12000000 		.4byte	.LFE68-.LFB68
- 365 0156 01       		.uleb128 0x1
- 366 0157 9C       		.byte	0x9c
- 367 0158 0F       		.uleb128 0xf
- 368 0159 07030000 		.4byte	.LASF43
- 369 015d 01       		.byte	0x1
- 370 015e 54       		.byte	0x54
- 371 015f 00000000 		.4byte	.LFB69
- 372 0163 40000000 		.4byte	.LFE69-.LFB69
- 373 0167 01       		.uleb128 0x1
- 374 0168 9C       		.byte	0x9c
- 375 0169 8E010000 		.4byte	0x18e
- 376 016d 10       		.uleb128 0x10
- 377 016e DC000000 		.4byte	.LASF24
- 378 0172 01       		.byte	0x1
- 379 0173 57       		.byte	0x57
- 380 0174 10       		.uleb128 0x10
- 381 0175 91010000 		.4byte	.LASF25
- 382 0179 01       		.byte	0x1
- 383 017a 58       		.byte	0x58
- 384 017b 10       		.uleb128 0x10
- 385 017c 80020000 		.4byte	.LASF26
- 386 0180 01       		.byte	0x1
- 387 0181 59       		.byte	0x59
- 388 0182 11       		.uleb128 0x11
- 389 0183 A7000000 		.4byte	.LASF31
- 390 0187 01       		.byte	0x1
- 391 0188 5A       		.byte	0x5a
- 392 0189 8E010000 		.4byte	0x18e
- 393 018d 00       		.byte	0
- 394 018e 12       		.uleb128 0x12
- 395 018f C9000000 		.4byte	0xc9
- 396 0193 99010000 		.4byte	0x199
- 397 0197 13       		.uleb128 0x13
- 398 0198 00       		.byte	0
- 399 0199 14       		.uleb128 0x14
- 400 019a E9020000 		.4byte	.LASF29
- 401 019e 01       		.byte	0x1
- 402 019f 75       		.byte	0x75
- 403 01a0 00000000 		.4byte	.LFB70
- 404 01a4 1E000000 		.4byte	.LFE70-.LFB70
- 405 01a8 01       		.uleb128 0x1
- 406 01a9 9C       		.byte	0x9c
- 407 01aa ED010000 		.4byte	0x1ed
- 408 01ae 15       		.uleb128 0x15
- 409 01af 90020000 		.4byte	.LASF27
- 410 01b3 01       		.byte	0x1
- 411 01b4 75       		.byte	0x75
- 412 01b5 15010000 		.4byte	0x115
- 413 01b9 02       		.uleb128 0x2
- 414 01ba 91       		.byte	0x91
- 415 01bb 6C       		.sleb128 -20
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 14
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 14
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 354 012c CA000000 		.4byte	.LASF40
+ 355 0130 02       		.byte	0x2
+ 356 0131 C1       		.byte	0xc1
+ 357 0132 03       		.byte	0x3
+ 358 0133 43010000 		.4byte	0x143
+ 359 0137 0D       		.uleb128 0xd
+ 360 0138 64010000 		.4byte	.LASF41
+ 361 013c 02       		.byte	0x2
+ 362 013d C3       		.byte	0xc3
+ 363 013e 8C000000 		.4byte	0x8c
+ 364 0142 00       		.byte	0
+ 365 0143 0E       		.uleb128 0xe
+ 366 0144 8C010000 		.4byte	.LASF42
+ 367 0148 01       		.byte	0x1
+ 368 0149 3A       		.byte	0x3a
+ 369 014a 73000000 		.4byte	0x73
+ 370 014e 00000000 		.4byte	.LFB68
+ 371 0152 16000000 		.4byte	.LFE68-.LFB68
+ 372 0156 01       		.uleb128 0x1
+ 373 0157 9C       		.byte	0x9c
+ 374 0158 0F       		.uleb128 0xf
+ 375 0159 07030000 		.4byte	.LASF43
+ 376 015d 01       		.byte	0x1
+ 377 015e 57       		.byte	0x57
+ 378 015f 00000000 		.4byte	.LFB69
+ 379 0163 48000000 		.4byte	.LFE69-.LFB69
+ 380 0167 01       		.uleb128 0x1
+ 381 0168 9C       		.byte	0x9c
+ 382 0169 8E010000 		.4byte	0x18e
+ 383 016d 10       		.uleb128 0x10
+ 384 016e DC000000 		.4byte	.LASF24
+ 385 0172 01       		.byte	0x1
+ 386 0173 5A       		.byte	0x5a
+ 387 0174 10       		.uleb128 0x10
+ 388 0175 91010000 		.4byte	.LASF25
+ 389 0179 01       		.byte	0x1
+ 390 017a 5B       		.byte	0x5b
+ 391 017b 10       		.uleb128 0x10
+ 392 017c 80020000 		.4byte	.LASF26
+ 393 0180 01       		.byte	0x1
+ 394 0181 5C       		.byte	0x5c
+ 395 0182 11       		.uleb128 0x11
+ 396 0183 A7000000 		.4byte	.LASF31
+ 397 0187 01       		.byte	0x1
+ 398 0188 5D       		.byte	0x5d
+ 399 0189 8E010000 		.4byte	0x18e
+ 400 018d 00       		.byte	0
+ 401 018e 12       		.uleb128 0x12
+ 402 018f C9000000 		.4byte	0xc9
+ 403 0193 99010000 		.4byte	0x199
+ 404 0197 13       		.uleb128 0x13
+ 405 0198 00       		.byte	0
+ 406 0199 14       		.uleb128 0x14
+ 407 019a E9020000 		.4byte	.LASF29
+ 408 019e 01       		.byte	0x1
+ 409 019f 7A       		.byte	0x7a
+ 410 01a0 00000000 		.4byte	.LFB70
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 14
 
 
- 416 01bc 15       		.uleb128 0x15
- 417 01bd A1020000 		.4byte	.LASF28
- 418 01c1 01       		.byte	0x1
- 419 01c2 75       		.byte	0x75
- 420 01c3 EA000000 		.4byte	0xea
- 421 01c7 02       		.uleb128 0x2
- 422 01c8 91       		.byte	0x91
- 423 01c9 68       		.sleb128 -24
- 424 01ca 16       		.uleb128 0x16
- 425 01cb 2B010000 		.4byte	0x12b
- 426 01cf 0A000000 		.4byte	.LBB6
- 427 01d3 12000000 		.4byte	.LBE6-.LBB6
- 428 01d7 01       		.byte	0x1
- 429 01d8 78       		.byte	0x78
- 430 01d9 17       		.uleb128 0x17
- 431 01da 0A000000 		.4byte	.LBB7
- 432 01de 12000000 		.4byte	.LBE7-.LBB7
- 433 01e2 18       		.uleb128 0x18
- 434 01e3 37010000 		.4byte	0x137
- 435 01e7 02       		.uleb128 0x2
- 436 01e8 91       		.byte	0x91
- 437 01e9 74       		.sleb128 -12
- 438 01ea 00       		.byte	0
- 439 01eb 00       		.byte	0
- 440 01ec 00       		.byte	0
- 441 01ed 14       		.uleb128 0x14
- 442 01ee 38020000 		.4byte	.LASF30
- 443 01f2 01       		.byte	0x1
- 444 01f3 7D       		.byte	0x7d
- 445 01f4 00000000 		.4byte	.LFB71
- 446 01f8 1A000000 		.4byte	.LFE71-.LFB71
- 447 01fc 01       		.uleb128 0x1
- 448 01fd 9C       		.byte	0x9c
- 449 01fe 25020000 		.4byte	0x225
- 450 0202 16       		.uleb128 0x16
- 451 0203 2B010000 		.4byte	0x12b
- 452 0207 06000000 		.4byte	.LBB8
- 453 020b 12000000 		.4byte	.LBE8-.LBB8
- 454 020f 01       		.byte	0x1
- 455 0210 80       		.byte	0x80
- 456 0211 17       		.uleb128 0x17
- 457 0212 06000000 		.4byte	.LBB9
- 458 0216 12000000 		.4byte	.LBE9-.LBB9
- 459 021a 18       		.uleb128 0x18
- 460 021b 37010000 		.4byte	0x137
- 461 021f 02       		.uleb128 0x2
- 462 0220 91       		.byte	0x91
- 463 0221 74       		.sleb128 -12
- 464 0222 00       		.byte	0
- 465 0223 00       		.byte	0
- 466 0224 00       		.byte	0
- 467 0225 12       		.uleb128 0x12
- 468 0226 F0000000 		.4byte	0xf0
- 469 022a 35020000 		.4byte	0x235
- 470 022e 19       		.uleb128 0x19
- 471 022f E3000000 		.4byte	0xe3
- 472 0233 07       		.byte	0x7
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 15
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 15
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 411 01a4 1E000000 		.4byte	.LFE70-.LFB70
+ 412 01a8 01       		.uleb128 0x1
+ 413 01a9 9C       		.byte	0x9c
+ 414 01aa ED010000 		.4byte	0x1ed
+ 415 01ae 15       		.uleb128 0x15
+ 416 01af 90020000 		.4byte	.LASF27
+ 417 01b3 01       		.byte	0x1
+ 418 01b4 7A       		.byte	0x7a
+ 419 01b5 15010000 		.4byte	0x115
+ 420 01b9 02       		.uleb128 0x2
+ 421 01ba 91       		.byte	0x91
+ 422 01bb 6C       		.sleb128 -20
+ 423 01bc 15       		.uleb128 0x15
+ 424 01bd A1020000 		.4byte	.LASF28
+ 425 01c1 01       		.byte	0x1
+ 426 01c2 7A       		.byte	0x7a
+ 427 01c3 EA000000 		.4byte	0xea
+ 428 01c7 02       		.uleb128 0x2
+ 429 01c8 91       		.byte	0x91
+ 430 01c9 68       		.sleb128 -24
+ 431 01ca 16       		.uleb128 0x16
+ 432 01cb 2B010000 		.4byte	0x12b
+ 433 01cf 0A000000 		.4byte	.LBB6
+ 434 01d3 12000000 		.4byte	.LBE6-.LBB6
+ 435 01d7 01       		.byte	0x1
+ 436 01d8 7D       		.byte	0x7d
+ 437 01d9 17       		.uleb128 0x17
+ 438 01da 0A000000 		.4byte	.LBB7
+ 439 01de 12000000 		.4byte	.LBE7-.LBB7
+ 440 01e2 18       		.uleb128 0x18
+ 441 01e3 37010000 		.4byte	0x137
+ 442 01e7 02       		.uleb128 0x2
+ 443 01e8 91       		.byte	0x91
+ 444 01e9 74       		.sleb128 -12
+ 445 01ea 00       		.byte	0
+ 446 01eb 00       		.byte	0
+ 447 01ec 00       		.byte	0
+ 448 01ed 14       		.uleb128 0x14
+ 449 01ee 38020000 		.4byte	.LASF30
+ 450 01f2 01       		.byte	0x1
+ 451 01f3 82       		.byte	0x82
+ 452 01f4 00000000 		.4byte	.LFB71
+ 453 01f8 1A000000 		.4byte	.LFE71-.LFB71
+ 454 01fc 01       		.uleb128 0x1
+ 455 01fd 9C       		.byte	0x9c
+ 456 01fe 25020000 		.4byte	0x225
+ 457 0202 16       		.uleb128 0x16
+ 458 0203 2B010000 		.4byte	0x12b
+ 459 0207 06000000 		.4byte	.LBB8
+ 460 020b 12000000 		.4byte	.LBE8-.LBB8
+ 461 020f 01       		.byte	0x1
+ 462 0210 85       		.byte	0x85
+ 463 0211 17       		.uleb128 0x17
+ 464 0212 06000000 		.4byte	.LBB9
+ 465 0216 12000000 		.4byte	.LBE9-.LBB9
+ 466 021a 18       		.uleb128 0x18
+ 467 021b 37010000 		.4byte	0x137
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 15
 
 
- 473 0234 00       		.byte	0
- 474 0235 1A       		.uleb128 0x1a
- 475 0236 04010000 		.4byte	.LASF32
- 476 023a 06       		.byte	0x6
- 477 023b 34       		.byte	0x34
- 478 023c 25020000 		.4byte	0x225
- 479 0240 05       		.uleb128 0x5
- 480 0241 03       		.byte	0x3
- 481 0242 00000000 		.4byte	DS18x8_Sensor
- 482 0246 1A       		.uleb128 0x1a
- 483 0247 96000000 		.4byte	.LASF33
- 484 024b 06       		.byte	0x6
- 485 024c 39       		.byte	0x39
- 486 024d C4000000 		.4byte	0xc4
- 487 0251 05       		.uleb128 0x5
- 488 0252 03       		.byte	0x3
- 489 0253 00000000 		.4byte	DS18x8_DataReady
- 490 0257 1B       		.uleb128 0x1b
- 491 0258 50010000 		.4byte	.LASF34
- 492 025c 08       		.byte	0x8
- 493 025d 1207     		.2byte	0x712
- 494 025f 63020000 		.4byte	0x263
- 495 0263 06       		.uleb128 0x6
- 496 0264 81000000 		.4byte	0x81
- 497 0268 11       		.uleb128 0x11
- 498 0269 A7000000 		.4byte	.LASF31
- 499 026d 01       		.byte	0x1
- 500 026e 5A       		.byte	0x5a
- 501 026f 8E010000 		.4byte	0x18e
- 502 0273 00       		.byte	0
- 503              		.section	.debug_abbrev,"",%progbits
- 504              	.Ldebug_abbrev0:
- 505 0000 01       		.uleb128 0x1
- 506 0001 11       		.uleb128 0x11
- 507 0002 01       		.byte	0x1
- 508 0003 25       		.uleb128 0x25
- 509 0004 0E       		.uleb128 0xe
- 510 0005 13       		.uleb128 0x13
- 511 0006 0B       		.uleb128 0xb
- 512 0007 03       		.uleb128 0x3
- 513 0008 0E       		.uleb128 0xe
- 514 0009 1B       		.uleb128 0x1b
- 515 000a 0E       		.uleb128 0xe
- 516 000b 55       		.uleb128 0x55
- 517 000c 17       		.uleb128 0x17
- 518 000d 11       		.uleb128 0x11
- 519 000e 01       		.uleb128 0x1
- 520 000f 10       		.uleb128 0x10
- 521 0010 17       		.uleb128 0x17
- 522 0011 00       		.byte	0
- 523 0012 00       		.byte	0
- 524 0013 02       		.uleb128 0x2
- 525 0014 24       		.uleb128 0x24
- 526 0015 00       		.byte	0
- 527 0016 0B       		.uleb128 0xb
- 528 0017 0B       		.uleb128 0xb
- 529 0018 3E       		.uleb128 0x3e
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 16
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 16
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 468 021f 02       		.uleb128 0x2
+ 469 0220 91       		.byte	0x91
+ 470 0221 74       		.sleb128 -12
+ 471 0222 00       		.byte	0
+ 472 0223 00       		.byte	0
+ 473 0224 00       		.byte	0
+ 474 0225 12       		.uleb128 0x12
+ 475 0226 F0000000 		.4byte	0xf0
+ 476 022a 35020000 		.4byte	0x235
+ 477 022e 19       		.uleb128 0x19
+ 478 022f E3000000 		.4byte	0xe3
+ 479 0233 07       		.byte	0x7
+ 480 0234 00       		.byte	0
+ 481 0235 1A       		.uleb128 0x1a
+ 482 0236 04010000 		.4byte	.LASF32
+ 483 023a 06       		.byte	0x6
+ 484 023b 34       		.byte	0x34
+ 485 023c 25020000 		.4byte	0x225
+ 486 0240 05       		.uleb128 0x5
+ 487 0241 03       		.byte	0x3
+ 488 0242 00000000 		.4byte	DS18x8_Sensor
+ 489 0246 1A       		.uleb128 0x1a
+ 490 0247 96000000 		.4byte	.LASF33
+ 491 024b 06       		.byte	0x6
+ 492 024c 39       		.byte	0x39
+ 493 024d C4000000 		.4byte	0xc4
+ 494 0251 05       		.uleb128 0x5
+ 495 0252 03       		.byte	0x3
+ 496 0253 00000000 		.4byte	DS18x8_DataReady
+ 497 0257 1B       		.uleb128 0x1b
+ 498 0258 50010000 		.4byte	.LASF34
+ 499 025c 08       		.byte	0x8
+ 500 025d 1207     		.2byte	0x712
+ 501 025f 63020000 		.4byte	0x263
+ 502 0263 06       		.uleb128 0x6
+ 503 0264 81000000 		.4byte	0x81
+ 504 0268 11       		.uleb128 0x11
+ 505 0269 A7000000 		.4byte	.LASF31
+ 506 026d 01       		.byte	0x1
+ 507 026e 5D       		.byte	0x5d
+ 508 026f 8E010000 		.4byte	0x18e
+ 509 0273 00       		.byte	0
+ 510              		.section	.debug_abbrev,"",%progbits
+ 511              	.Ldebug_abbrev0:
+ 512 0000 01       		.uleb128 0x1
+ 513 0001 11       		.uleb128 0x11
+ 514 0002 01       		.byte	0x1
+ 515 0003 25       		.uleb128 0x25
+ 516 0004 0E       		.uleb128 0xe
+ 517 0005 13       		.uleb128 0x13
+ 518 0006 0B       		.uleb128 0xb
+ 519 0007 03       		.uleb128 0x3
+ 520 0008 0E       		.uleb128 0xe
+ 521 0009 1B       		.uleb128 0x1b
+ 522 000a 0E       		.uleb128 0xe
+ 523 000b 55       		.uleb128 0x55
+ 524 000c 17       		.uleb128 0x17
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 16
 
 
- 530 0019 0B       		.uleb128 0xb
- 531 001a 03       		.uleb128 0x3
- 532 001b 0E       		.uleb128 0xe
- 533 001c 00       		.byte	0
- 534 001d 00       		.byte	0
- 535 001e 03       		.uleb128 0x3
- 536 001f 16       		.uleb128 0x16
- 537 0020 00       		.byte	0
- 538 0021 03       		.uleb128 0x3
- 539 0022 0E       		.uleb128 0xe
- 540 0023 3A       		.uleb128 0x3a
- 541 0024 0B       		.uleb128 0xb
- 542 0025 3B       		.uleb128 0x3b
- 543 0026 0B       		.uleb128 0xb
- 544 0027 49       		.uleb128 0x49
- 545 0028 13       		.uleb128 0x13
- 546 0029 00       		.byte	0
- 547 002a 00       		.byte	0
- 548 002b 04       		.uleb128 0x4
- 549 002c 24       		.uleb128 0x24
- 550 002d 00       		.byte	0
- 551 002e 0B       		.uleb128 0xb
- 552 002f 0B       		.uleb128 0xb
- 553 0030 3E       		.uleb128 0x3e
- 554 0031 0B       		.uleb128 0xb
- 555 0032 03       		.uleb128 0x3
- 556 0033 08       		.uleb128 0x8
- 557 0034 00       		.byte	0
- 558 0035 00       		.byte	0
- 559 0036 05       		.uleb128 0x5
- 560 0037 16       		.uleb128 0x16
- 561 0038 00       		.byte	0
- 562 0039 03       		.uleb128 0x3
- 563 003a 0E       		.uleb128 0xe
- 564 003b 3A       		.uleb128 0x3a
- 565 003c 0B       		.uleb128 0xb
- 566 003d 3B       		.uleb128 0x3b
- 567 003e 05       		.uleb128 0x5
- 568 003f 49       		.uleb128 0x49
- 569 0040 13       		.uleb128 0x13
- 570 0041 00       		.byte	0
- 571 0042 00       		.byte	0
- 572 0043 06       		.uleb128 0x6
- 573 0044 35       		.uleb128 0x35
- 574 0045 00       		.byte	0
- 575 0046 49       		.uleb128 0x49
- 576 0047 13       		.uleb128 0x13
- 577 0048 00       		.byte	0
- 578 0049 00       		.byte	0
- 579 004a 07       		.uleb128 0x7
- 580 004b 0F       		.uleb128 0xf
- 581 004c 00       		.byte	0
- 582 004d 0B       		.uleb128 0xb
- 583 004e 0B       		.uleb128 0xb
- 584 004f 49       		.uleb128 0x49
- 585 0050 13       		.uleb128 0x13
- 586 0051 00       		.byte	0
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 17
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 17
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 525 000d 11       		.uleb128 0x11
+ 526 000e 01       		.uleb128 0x1
+ 527 000f 10       		.uleb128 0x10
+ 528 0010 17       		.uleb128 0x17
+ 529 0011 00       		.byte	0
+ 530 0012 00       		.byte	0
+ 531 0013 02       		.uleb128 0x2
+ 532 0014 24       		.uleb128 0x24
+ 533 0015 00       		.byte	0
+ 534 0016 0B       		.uleb128 0xb
+ 535 0017 0B       		.uleb128 0xb
+ 536 0018 3E       		.uleb128 0x3e
+ 537 0019 0B       		.uleb128 0xb
+ 538 001a 03       		.uleb128 0x3
+ 539 001b 0E       		.uleb128 0xe
+ 540 001c 00       		.byte	0
+ 541 001d 00       		.byte	0
+ 542 001e 03       		.uleb128 0x3
+ 543 001f 16       		.uleb128 0x16
+ 544 0020 00       		.byte	0
+ 545 0021 03       		.uleb128 0x3
+ 546 0022 0E       		.uleb128 0xe
+ 547 0023 3A       		.uleb128 0x3a
+ 548 0024 0B       		.uleb128 0xb
+ 549 0025 3B       		.uleb128 0x3b
+ 550 0026 0B       		.uleb128 0xb
+ 551 0027 49       		.uleb128 0x49
+ 552 0028 13       		.uleb128 0x13
+ 553 0029 00       		.byte	0
+ 554 002a 00       		.byte	0
+ 555 002b 04       		.uleb128 0x4
+ 556 002c 24       		.uleb128 0x24
+ 557 002d 00       		.byte	0
+ 558 002e 0B       		.uleb128 0xb
+ 559 002f 0B       		.uleb128 0xb
+ 560 0030 3E       		.uleb128 0x3e
+ 561 0031 0B       		.uleb128 0xb
+ 562 0032 03       		.uleb128 0x3
+ 563 0033 08       		.uleb128 0x8
+ 564 0034 00       		.byte	0
+ 565 0035 00       		.byte	0
+ 566 0036 05       		.uleb128 0x5
+ 567 0037 16       		.uleb128 0x16
+ 568 0038 00       		.byte	0
+ 569 0039 03       		.uleb128 0x3
+ 570 003a 0E       		.uleb128 0xe
+ 571 003b 3A       		.uleb128 0x3a
+ 572 003c 0B       		.uleb128 0xb
+ 573 003d 3B       		.uleb128 0x3b
+ 574 003e 05       		.uleb128 0x5
+ 575 003f 49       		.uleb128 0x49
+ 576 0040 13       		.uleb128 0x13
+ 577 0041 00       		.byte	0
+ 578 0042 00       		.byte	0
+ 579 0043 06       		.uleb128 0x6
+ 580 0044 35       		.uleb128 0x35
+ 581 0045 00       		.byte	0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 17
 
 
- 587 0052 00       		.byte	0
- 588 0053 08       		.uleb128 0x8
- 589 0054 15       		.uleb128 0x15
- 590 0055 00       		.byte	0
- 591 0056 27       		.uleb128 0x27
- 592 0057 19       		.uleb128 0x19
- 593 0058 00       		.byte	0
- 594 0059 00       		.byte	0
- 595 005a 09       		.uleb128 0x9
- 596 005b 13       		.uleb128 0x13
- 597 005c 01       		.byte	0x1
- 598 005d 03       		.uleb128 0x3
- 599 005e 0E       		.uleb128 0xe
- 600 005f 0B       		.uleb128 0xb
- 601 0060 0B       		.uleb128 0xb
- 602 0061 3A       		.uleb128 0x3a
- 603 0062 0B       		.uleb128 0xb
- 604 0063 3B       		.uleb128 0x3b
- 605 0064 0B       		.uleb128 0xb
- 606 0065 01       		.uleb128 0x1
- 607 0066 13       		.uleb128 0x13
- 608 0067 00       		.byte	0
- 609 0068 00       		.byte	0
- 610 0069 0A       		.uleb128 0xa
- 611 006a 0D       		.uleb128 0xd
- 612 006b 00       		.byte	0
- 613 006c 03       		.uleb128 0x3
- 614 006d 0E       		.uleb128 0xe
- 615 006e 3A       		.uleb128 0x3a
- 616 006f 0B       		.uleb128 0xb
- 617 0070 3B       		.uleb128 0x3b
- 618 0071 0B       		.uleb128 0xb
- 619 0072 49       		.uleb128 0x49
- 620 0073 13       		.uleb128 0x13
- 621 0074 38       		.uleb128 0x38
- 622 0075 0B       		.uleb128 0xb
- 623 0076 00       		.byte	0
- 624 0077 00       		.byte	0
- 625 0078 0B       		.uleb128 0xb
- 626 0079 13       		.uleb128 0x13
- 627 007a 00       		.byte	0
- 628 007b 03       		.uleb128 0x3
- 629 007c 0E       		.uleb128 0xe
- 630 007d 3C       		.uleb128 0x3c
- 631 007e 19       		.uleb128 0x19
- 632 007f 00       		.byte	0
- 633 0080 00       		.byte	0
- 634 0081 0C       		.uleb128 0xc
- 635 0082 2E       		.uleb128 0x2e
- 636 0083 01       		.byte	0x1
- 637 0084 03       		.uleb128 0x3
- 638 0085 0E       		.uleb128 0xe
- 639 0086 3A       		.uleb128 0x3a
- 640 0087 0B       		.uleb128 0xb
- 641 0088 3B       		.uleb128 0x3b
- 642 0089 0B       		.uleb128 0xb
- 643 008a 27       		.uleb128 0x27
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 18
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 18
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 582 0046 49       		.uleb128 0x49
+ 583 0047 13       		.uleb128 0x13
+ 584 0048 00       		.byte	0
+ 585 0049 00       		.byte	0
+ 586 004a 07       		.uleb128 0x7
+ 587 004b 0F       		.uleb128 0xf
+ 588 004c 00       		.byte	0
+ 589 004d 0B       		.uleb128 0xb
+ 590 004e 0B       		.uleb128 0xb
+ 591 004f 49       		.uleb128 0x49
+ 592 0050 13       		.uleb128 0x13
+ 593 0051 00       		.byte	0
+ 594 0052 00       		.byte	0
+ 595 0053 08       		.uleb128 0x8
+ 596 0054 15       		.uleb128 0x15
+ 597 0055 00       		.byte	0
+ 598 0056 27       		.uleb128 0x27
+ 599 0057 19       		.uleb128 0x19
+ 600 0058 00       		.byte	0
+ 601 0059 00       		.byte	0
+ 602 005a 09       		.uleb128 0x9
+ 603 005b 13       		.uleb128 0x13
+ 604 005c 01       		.byte	0x1
+ 605 005d 03       		.uleb128 0x3
+ 606 005e 0E       		.uleb128 0xe
+ 607 005f 0B       		.uleb128 0xb
+ 608 0060 0B       		.uleb128 0xb
+ 609 0061 3A       		.uleb128 0x3a
+ 610 0062 0B       		.uleb128 0xb
+ 611 0063 3B       		.uleb128 0x3b
+ 612 0064 0B       		.uleb128 0xb
+ 613 0065 01       		.uleb128 0x1
+ 614 0066 13       		.uleb128 0x13
+ 615 0067 00       		.byte	0
+ 616 0068 00       		.byte	0
+ 617 0069 0A       		.uleb128 0xa
+ 618 006a 0D       		.uleb128 0xd
+ 619 006b 00       		.byte	0
+ 620 006c 03       		.uleb128 0x3
+ 621 006d 0E       		.uleb128 0xe
+ 622 006e 3A       		.uleb128 0x3a
+ 623 006f 0B       		.uleb128 0xb
+ 624 0070 3B       		.uleb128 0x3b
+ 625 0071 0B       		.uleb128 0xb
+ 626 0072 49       		.uleb128 0x49
+ 627 0073 13       		.uleb128 0x13
+ 628 0074 38       		.uleb128 0x38
+ 629 0075 0B       		.uleb128 0xb
+ 630 0076 00       		.byte	0
+ 631 0077 00       		.byte	0
+ 632 0078 0B       		.uleb128 0xb
+ 633 0079 13       		.uleb128 0x13
+ 634 007a 00       		.byte	0
+ 635 007b 03       		.uleb128 0x3
+ 636 007c 0E       		.uleb128 0xe
+ 637 007d 3C       		.uleb128 0x3c
+ 638 007e 19       		.uleb128 0x19
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 18
 
 
- 644 008b 19       		.uleb128 0x19
- 645 008c 20       		.uleb128 0x20
- 646 008d 0B       		.uleb128 0xb
- 647 008e 01       		.uleb128 0x1
- 648 008f 13       		.uleb128 0x13
- 649 0090 00       		.byte	0
- 650 0091 00       		.byte	0
- 651 0092 0D       		.uleb128 0xd
- 652 0093 34       		.uleb128 0x34
- 653 0094 00       		.byte	0
- 654 0095 03       		.uleb128 0x3
- 655 0096 0E       		.uleb128 0xe
- 656 0097 3A       		.uleb128 0x3a
- 657 0098 0B       		.uleb128 0xb
- 658 0099 3B       		.uleb128 0x3b
- 659 009a 0B       		.uleb128 0xb
- 660 009b 49       		.uleb128 0x49
- 661 009c 13       		.uleb128 0x13
- 662 009d 00       		.byte	0
- 663 009e 00       		.byte	0
- 664 009f 0E       		.uleb128 0xe
- 665 00a0 2E       		.uleb128 0x2e
- 666 00a1 00       		.byte	0
- 667 00a2 3F       		.uleb128 0x3f
- 668 00a3 19       		.uleb128 0x19
- 669 00a4 03       		.uleb128 0x3
- 670 00a5 0E       		.uleb128 0xe
- 671 00a6 3A       		.uleb128 0x3a
- 672 00a7 0B       		.uleb128 0xb
- 673 00a8 3B       		.uleb128 0x3b
- 674 00a9 0B       		.uleb128 0xb
- 675 00aa 27       		.uleb128 0x27
- 676 00ab 19       		.uleb128 0x19
- 677 00ac 49       		.uleb128 0x49
- 678 00ad 13       		.uleb128 0x13
- 679 00ae 11       		.uleb128 0x11
- 680 00af 01       		.uleb128 0x1
- 681 00b0 12       		.uleb128 0x12
- 682 00b1 06       		.uleb128 0x6
- 683 00b2 40       		.uleb128 0x40
- 684 00b3 18       		.uleb128 0x18
- 685 00b4 9642     		.uleb128 0x2116
- 686 00b6 19       		.uleb128 0x19
- 687 00b7 00       		.byte	0
- 688 00b8 00       		.byte	0
- 689 00b9 0F       		.uleb128 0xf
- 690 00ba 2E       		.uleb128 0x2e
- 691 00bb 01       		.byte	0x1
- 692 00bc 03       		.uleb128 0x3
- 693 00bd 0E       		.uleb128 0xe
- 694 00be 3A       		.uleb128 0x3a
- 695 00bf 0B       		.uleb128 0xb
- 696 00c0 3B       		.uleb128 0x3b
- 697 00c1 0B       		.uleb128 0xb
- 698 00c2 27       		.uleb128 0x27
- 699 00c3 19       		.uleb128 0x19
- 700 00c4 11       		.uleb128 0x11
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 19
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 19
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 639 007f 00       		.byte	0
+ 640 0080 00       		.byte	0
+ 641 0081 0C       		.uleb128 0xc
+ 642 0082 2E       		.uleb128 0x2e
+ 643 0083 01       		.byte	0x1
+ 644 0084 03       		.uleb128 0x3
+ 645 0085 0E       		.uleb128 0xe
+ 646 0086 3A       		.uleb128 0x3a
+ 647 0087 0B       		.uleb128 0xb
+ 648 0088 3B       		.uleb128 0x3b
+ 649 0089 0B       		.uleb128 0xb
+ 650 008a 27       		.uleb128 0x27
+ 651 008b 19       		.uleb128 0x19
+ 652 008c 20       		.uleb128 0x20
+ 653 008d 0B       		.uleb128 0xb
+ 654 008e 01       		.uleb128 0x1
+ 655 008f 13       		.uleb128 0x13
+ 656 0090 00       		.byte	0
+ 657 0091 00       		.byte	0
+ 658 0092 0D       		.uleb128 0xd
+ 659 0093 34       		.uleb128 0x34
+ 660 0094 00       		.byte	0
+ 661 0095 03       		.uleb128 0x3
+ 662 0096 0E       		.uleb128 0xe
+ 663 0097 3A       		.uleb128 0x3a
+ 664 0098 0B       		.uleb128 0xb
+ 665 0099 3B       		.uleb128 0x3b
+ 666 009a 0B       		.uleb128 0xb
+ 667 009b 49       		.uleb128 0x49
+ 668 009c 13       		.uleb128 0x13
+ 669 009d 00       		.byte	0
+ 670 009e 00       		.byte	0
+ 671 009f 0E       		.uleb128 0xe
+ 672 00a0 2E       		.uleb128 0x2e
+ 673 00a1 00       		.byte	0
+ 674 00a2 3F       		.uleb128 0x3f
+ 675 00a3 19       		.uleb128 0x19
+ 676 00a4 03       		.uleb128 0x3
+ 677 00a5 0E       		.uleb128 0xe
+ 678 00a6 3A       		.uleb128 0x3a
+ 679 00a7 0B       		.uleb128 0xb
+ 680 00a8 3B       		.uleb128 0x3b
+ 681 00a9 0B       		.uleb128 0xb
+ 682 00aa 27       		.uleb128 0x27
+ 683 00ab 19       		.uleb128 0x19
+ 684 00ac 49       		.uleb128 0x49
+ 685 00ad 13       		.uleb128 0x13
+ 686 00ae 11       		.uleb128 0x11
+ 687 00af 01       		.uleb128 0x1
+ 688 00b0 12       		.uleb128 0x12
+ 689 00b1 06       		.uleb128 0x6
+ 690 00b2 40       		.uleb128 0x40
+ 691 00b3 18       		.uleb128 0x18
+ 692 00b4 9642     		.uleb128 0x2116
+ 693 00b6 19       		.uleb128 0x19
+ 694 00b7 00       		.byte	0
+ 695 00b8 00       		.byte	0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 19
 
 
- 701 00c5 01       		.uleb128 0x1
- 702 00c6 12       		.uleb128 0x12
- 703 00c7 06       		.uleb128 0x6
- 704 00c8 40       		.uleb128 0x40
- 705 00c9 18       		.uleb128 0x18
- 706 00ca 9642     		.uleb128 0x2116
- 707 00cc 19       		.uleb128 0x19
- 708 00cd 01       		.uleb128 0x1
- 709 00ce 13       		.uleb128 0x13
- 710 00cf 00       		.byte	0
- 711 00d0 00       		.byte	0
- 712 00d1 10       		.uleb128 0x10
- 713 00d2 2E       		.uleb128 0x2e
- 714 00d3 00       		.byte	0
- 715 00d4 3F       		.uleb128 0x3f
- 716 00d5 19       		.uleb128 0x19
- 717 00d6 03       		.uleb128 0x3
- 718 00d7 0E       		.uleb128 0xe
- 719 00d8 3A       		.uleb128 0x3a
- 720 00d9 0B       		.uleb128 0xb
- 721 00da 3B       		.uleb128 0x3b
- 722 00db 0B       		.uleb128 0xb
- 723 00dc 27       		.uleb128 0x27
- 724 00dd 19       		.uleb128 0x19
- 725 00de 3C       		.uleb128 0x3c
- 726 00df 19       		.uleb128 0x19
- 727 00e0 00       		.byte	0
- 728 00e1 00       		.byte	0
- 729 00e2 11       		.uleb128 0x11
- 730 00e3 34       		.uleb128 0x34
- 731 00e4 00       		.byte	0
- 732 00e5 03       		.uleb128 0x3
- 733 00e6 0E       		.uleb128 0xe
- 734 00e7 3A       		.uleb128 0x3a
- 735 00e8 0B       		.uleb128 0xb
- 736 00e9 3B       		.uleb128 0x3b
- 737 00ea 0B       		.uleb128 0xb
- 738 00eb 49       		.uleb128 0x49
- 739 00ec 13       		.uleb128 0x13
- 740 00ed 3F       		.uleb128 0x3f
- 741 00ee 19       		.uleb128 0x19
- 742 00ef 3C       		.uleb128 0x3c
- 743 00f0 19       		.uleb128 0x19
- 744 00f1 00       		.byte	0
- 745 00f2 00       		.byte	0
- 746 00f3 12       		.uleb128 0x12
- 747 00f4 01       		.uleb128 0x1
- 748 00f5 01       		.byte	0x1
- 749 00f6 49       		.uleb128 0x49
- 750 00f7 13       		.uleb128 0x13
- 751 00f8 01       		.uleb128 0x1
- 752 00f9 13       		.uleb128 0x13
- 753 00fa 00       		.byte	0
- 754 00fb 00       		.byte	0
- 755 00fc 13       		.uleb128 0x13
- 756 00fd 21       		.uleb128 0x21
- 757 00fe 00       		.byte	0
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 20
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 20
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 696 00b9 0F       		.uleb128 0xf
+ 697 00ba 2E       		.uleb128 0x2e
+ 698 00bb 01       		.byte	0x1
+ 699 00bc 03       		.uleb128 0x3
+ 700 00bd 0E       		.uleb128 0xe
+ 701 00be 3A       		.uleb128 0x3a
+ 702 00bf 0B       		.uleb128 0xb
+ 703 00c0 3B       		.uleb128 0x3b
+ 704 00c1 0B       		.uleb128 0xb
+ 705 00c2 27       		.uleb128 0x27
+ 706 00c3 19       		.uleb128 0x19
+ 707 00c4 11       		.uleb128 0x11
+ 708 00c5 01       		.uleb128 0x1
+ 709 00c6 12       		.uleb128 0x12
+ 710 00c7 06       		.uleb128 0x6
+ 711 00c8 40       		.uleb128 0x40
+ 712 00c9 18       		.uleb128 0x18
+ 713 00ca 9642     		.uleb128 0x2116
+ 714 00cc 19       		.uleb128 0x19
+ 715 00cd 01       		.uleb128 0x1
+ 716 00ce 13       		.uleb128 0x13
+ 717 00cf 00       		.byte	0
+ 718 00d0 00       		.byte	0
+ 719 00d1 10       		.uleb128 0x10
+ 720 00d2 2E       		.uleb128 0x2e
+ 721 00d3 00       		.byte	0
+ 722 00d4 3F       		.uleb128 0x3f
+ 723 00d5 19       		.uleb128 0x19
+ 724 00d6 03       		.uleb128 0x3
+ 725 00d7 0E       		.uleb128 0xe
+ 726 00d8 3A       		.uleb128 0x3a
+ 727 00d9 0B       		.uleb128 0xb
+ 728 00da 3B       		.uleb128 0x3b
+ 729 00db 0B       		.uleb128 0xb
+ 730 00dc 27       		.uleb128 0x27
+ 731 00dd 19       		.uleb128 0x19
+ 732 00de 3C       		.uleb128 0x3c
+ 733 00df 19       		.uleb128 0x19
+ 734 00e0 00       		.byte	0
+ 735 00e1 00       		.byte	0
+ 736 00e2 11       		.uleb128 0x11
+ 737 00e3 34       		.uleb128 0x34
+ 738 00e4 00       		.byte	0
+ 739 00e5 03       		.uleb128 0x3
+ 740 00e6 0E       		.uleb128 0xe
+ 741 00e7 3A       		.uleb128 0x3a
+ 742 00e8 0B       		.uleb128 0xb
+ 743 00e9 3B       		.uleb128 0x3b
+ 744 00ea 0B       		.uleb128 0xb
+ 745 00eb 49       		.uleb128 0x49
+ 746 00ec 13       		.uleb128 0x13
+ 747 00ed 3F       		.uleb128 0x3f
+ 748 00ee 19       		.uleb128 0x19
+ 749 00ef 3C       		.uleb128 0x3c
+ 750 00f0 19       		.uleb128 0x19
+ 751 00f1 00       		.byte	0
+ 752 00f2 00       		.byte	0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 20
 
 
- 758 00ff 00       		.byte	0
- 759 0100 00       		.byte	0
- 760 0101 14       		.uleb128 0x14
- 761 0102 2E       		.uleb128 0x2e
- 762 0103 01       		.byte	0x1
- 763 0104 3F       		.uleb128 0x3f
- 764 0105 19       		.uleb128 0x19
- 765 0106 03       		.uleb128 0x3
- 766 0107 0E       		.uleb128 0xe
- 767 0108 3A       		.uleb128 0x3a
- 768 0109 0B       		.uleb128 0xb
- 769 010a 3B       		.uleb128 0x3b
- 770 010b 0B       		.uleb128 0xb
- 771 010c 27       		.uleb128 0x27
- 772 010d 19       		.uleb128 0x19
- 773 010e 11       		.uleb128 0x11
- 774 010f 01       		.uleb128 0x1
- 775 0110 12       		.uleb128 0x12
- 776 0111 06       		.uleb128 0x6
- 777 0112 40       		.uleb128 0x40
- 778 0113 18       		.uleb128 0x18
- 779 0114 9742     		.uleb128 0x2117
- 780 0116 19       		.uleb128 0x19
- 781 0117 01       		.uleb128 0x1
- 782 0118 13       		.uleb128 0x13
- 783 0119 00       		.byte	0
- 784 011a 00       		.byte	0
- 785 011b 15       		.uleb128 0x15
- 786 011c 05       		.uleb128 0x5
- 787 011d 00       		.byte	0
- 788 011e 03       		.uleb128 0x3
- 789 011f 0E       		.uleb128 0xe
- 790 0120 3A       		.uleb128 0x3a
- 791 0121 0B       		.uleb128 0xb
- 792 0122 3B       		.uleb128 0x3b
- 793 0123 0B       		.uleb128 0xb
- 794 0124 49       		.uleb128 0x49
- 795 0125 13       		.uleb128 0x13
- 796 0126 02       		.uleb128 0x2
- 797 0127 18       		.uleb128 0x18
- 798 0128 00       		.byte	0
- 799 0129 00       		.byte	0
- 800 012a 16       		.uleb128 0x16
- 801 012b 1D       		.uleb128 0x1d
- 802 012c 01       		.byte	0x1
- 803 012d 31       		.uleb128 0x31
- 804 012e 13       		.uleb128 0x13
- 805 012f 11       		.uleb128 0x11
- 806 0130 01       		.uleb128 0x1
- 807 0131 12       		.uleb128 0x12
- 808 0132 06       		.uleb128 0x6
- 809 0133 58       		.uleb128 0x58
- 810 0134 0B       		.uleb128 0xb
- 811 0135 59       		.uleb128 0x59
- 812 0136 0B       		.uleb128 0xb
- 813 0137 00       		.byte	0
- 814 0138 00       		.byte	0
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 21
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 21
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 753 00f3 12       		.uleb128 0x12
+ 754 00f4 01       		.uleb128 0x1
+ 755 00f5 01       		.byte	0x1
+ 756 00f6 49       		.uleb128 0x49
+ 757 00f7 13       		.uleb128 0x13
+ 758 00f8 01       		.uleb128 0x1
+ 759 00f9 13       		.uleb128 0x13
+ 760 00fa 00       		.byte	0
+ 761 00fb 00       		.byte	0
+ 762 00fc 13       		.uleb128 0x13
+ 763 00fd 21       		.uleb128 0x21
+ 764 00fe 00       		.byte	0
+ 765 00ff 00       		.byte	0
+ 766 0100 00       		.byte	0
+ 767 0101 14       		.uleb128 0x14
+ 768 0102 2E       		.uleb128 0x2e
+ 769 0103 01       		.byte	0x1
+ 770 0104 3F       		.uleb128 0x3f
+ 771 0105 19       		.uleb128 0x19
+ 772 0106 03       		.uleb128 0x3
+ 773 0107 0E       		.uleb128 0xe
+ 774 0108 3A       		.uleb128 0x3a
+ 775 0109 0B       		.uleb128 0xb
+ 776 010a 3B       		.uleb128 0x3b
+ 777 010b 0B       		.uleb128 0xb
+ 778 010c 27       		.uleb128 0x27
+ 779 010d 19       		.uleb128 0x19
+ 780 010e 11       		.uleb128 0x11
+ 781 010f 01       		.uleb128 0x1
+ 782 0110 12       		.uleb128 0x12
+ 783 0111 06       		.uleb128 0x6
+ 784 0112 40       		.uleb128 0x40
+ 785 0113 18       		.uleb128 0x18
+ 786 0114 9742     		.uleb128 0x2117
+ 787 0116 19       		.uleb128 0x19
+ 788 0117 01       		.uleb128 0x1
+ 789 0118 13       		.uleb128 0x13
+ 790 0119 00       		.byte	0
+ 791 011a 00       		.byte	0
+ 792 011b 15       		.uleb128 0x15
+ 793 011c 05       		.uleb128 0x5
+ 794 011d 00       		.byte	0
+ 795 011e 03       		.uleb128 0x3
+ 796 011f 0E       		.uleb128 0xe
+ 797 0120 3A       		.uleb128 0x3a
+ 798 0121 0B       		.uleb128 0xb
+ 799 0122 3B       		.uleb128 0x3b
+ 800 0123 0B       		.uleb128 0xb
+ 801 0124 49       		.uleb128 0x49
+ 802 0125 13       		.uleb128 0x13
+ 803 0126 02       		.uleb128 0x2
+ 804 0127 18       		.uleb128 0x18
+ 805 0128 00       		.byte	0
+ 806 0129 00       		.byte	0
+ 807 012a 16       		.uleb128 0x16
+ 808 012b 1D       		.uleb128 0x1d
+ 809 012c 01       		.byte	0x1
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 21
 
 
- 815 0139 17       		.uleb128 0x17
- 816 013a 0B       		.uleb128 0xb
- 817 013b 01       		.byte	0x1
- 818 013c 11       		.uleb128 0x11
- 819 013d 01       		.uleb128 0x1
- 820 013e 12       		.uleb128 0x12
- 821 013f 06       		.uleb128 0x6
- 822 0140 00       		.byte	0
- 823 0141 00       		.byte	0
- 824 0142 18       		.uleb128 0x18
- 825 0143 34       		.uleb128 0x34
- 826 0144 00       		.byte	0
- 827 0145 31       		.uleb128 0x31
- 828 0146 13       		.uleb128 0x13
- 829 0147 02       		.uleb128 0x2
- 830 0148 18       		.uleb128 0x18
- 831 0149 00       		.byte	0
- 832 014a 00       		.byte	0
- 833 014b 19       		.uleb128 0x19
- 834 014c 21       		.uleb128 0x21
- 835 014d 00       		.byte	0
- 836 014e 49       		.uleb128 0x49
- 837 014f 13       		.uleb128 0x13
- 838 0150 2F       		.uleb128 0x2f
- 839 0151 0B       		.uleb128 0xb
- 840 0152 00       		.byte	0
- 841 0153 00       		.byte	0
- 842 0154 1A       		.uleb128 0x1a
- 843 0155 34       		.uleb128 0x34
- 844 0156 00       		.byte	0
- 845 0157 03       		.uleb128 0x3
- 846 0158 0E       		.uleb128 0xe
- 847 0159 3A       		.uleb128 0x3a
- 848 015a 0B       		.uleb128 0xb
- 849 015b 3B       		.uleb128 0x3b
- 850 015c 0B       		.uleb128 0xb
- 851 015d 49       		.uleb128 0x49
- 852 015e 13       		.uleb128 0x13
- 853 015f 3F       		.uleb128 0x3f
- 854 0160 19       		.uleb128 0x19
- 855 0161 02       		.uleb128 0x2
- 856 0162 18       		.uleb128 0x18
- 857 0163 00       		.byte	0
- 858 0164 00       		.byte	0
- 859 0165 1B       		.uleb128 0x1b
- 860 0166 34       		.uleb128 0x34
- 861 0167 00       		.byte	0
- 862 0168 03       		.uleb128 0x3
- 863 0169 0E       		.uleb128 0xe
- 864 016a 3A       		.uleb128 0x3a
- 865 016b 0B       		.uleb128 0xb
- 866 016c 3B       		.uleb128 0x3b
- 867 016d 05       		.uleb128 0x5
- 868 016e 49       		.uleb128 0x49
- 869 016f 13       		.uleb128 0x13
- 870 0170 3F       		.uleb128 0x3f
- 871 0171 19       		.uleb128 0x19
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 22
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 22
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 810 012d 31       		.uleb128 0x31
+ 811 012e 13       		.uleb128 0x13
+ 812 012f 11       		.uleb128 0x11
+ 813 0130 01       		.uleb128 0x1
+ 814 0131 12       		.uleb128 0x12
+ 815 0132 06       		.uleb128 0x6
+ 816 0133 58       		.uleb128 0x58
+ 817 0134 0B       		.uleb128 0xb
+ 818 0135 59       		.uleb128 0x59
+ 819 0136 0B       		.uleb128 0xb
+ 820 0137 00       		.byte	0
+ 821 0138 00       		.byte	0
+ 822 0139 17       		.uleb128 0x17
+ 823 013a 0B       		.uleb128 0xb
+ 824 013b 01       		.byte	0x1
+ 825 013c 11       		.uleb128 0x11
+ 826 013d 01       		.uleb128 0x1
+ 827 013e 12       		.uleb128 0x12
+ 828 013f 06       		.uleb128 0x6
+ 829 0140 00       		.byte	0
+ 830 0141 00       		.byte	0
+ 831 0142 18       		.uleb128 0x18
+ 832 0143 34       		.uleb128 0x34
+ 833 0144 00       		.byte	0
+ 834 0145 31       		.uleb128 0x31
+ 835 0146 13       		.uleb128 0x13
+ 836 0147 02       		.uleb128 0x2
+ 837 0148 18       		.uleb128 0x18
+ 838 0149 00       		.byte	0
+ 839 014a 00       		.byte	0
+ 840 014b 19       		.uleb128 0x19
+ 841 014c 21       		.uleb128 0x21
+ 842 014d 00       		.byte	0
+ 843 014e 49       		.uleb128 0x49
+ 844 014f 13       		.uleb128 0x13
+ 845 0150 2F       		.uleb128 0x2f
+ 846 0151 0B       		.uleb128 0xb
+ 847 0152 00       		.byte	0
+ 848 0153 00       		.byte	0
+ 849 0154 1A       		.uleb128 0x1a
+ 850 0155 34       		.uleb128 0x34
+ 851 0156 00       		.byte	0
+ 852 0157 03       		.uleb128 0x3
+ 853 0158 0E       		.uleb128 0xe
+ 854 0159 3A       		.uleb128 0x3a
+ 855 015a 0B       		.uleb128 0xb
+ 856 015b 3B       		.uleb128 0x3b
+ 857 015c 0B       		.uleb128 0xb
+ 858 015d 49       		.uleb128 0x49
+ 859 015e 13       		.uleb128 0x13
+ 860 015f 3F       		.uleb128 0x3f
+ 861 0160 19       		.uleb128 0x19
+ 862 0161 02       		.uleb128 0x2
+ 863 0162 18       		.uleb128 0x18
+ 864 0163 00       		.byte	0
+ 865 0164 00       		.byte	0
+ 866 0165 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 22
 
 
- 872 0172 3C       		.uleb128 0x3c
- 873 0173 19       		.uleb128 0x19
- 874 0174 00       		.byte	0
- 875 0175 00       		.byte	0
- 876 0176 00       		.byte	0
- 877              		.section	.debug_aranges,"",%progbits
- 878 0000 34000000 		.4byte	0x34
- 879 0004 0200     		.2byte	0x2
- 880 0006 00000000 		.4byte	.Ldebug_info0
- 881 000a 04       		.byte	0x4
- 882 000b 00       		.byte	0
- 883 000c 0000     		.2byte	0
- 884 000e 0000     		.2byte	0
- 885 0010 00000000 		.4byte	.LFB68
- 886 0014 12000000 		.4byte	.LFE68-.LFB68
- 887 0018 00000000 		.4byte	.LFB69
- 888 001c 40000000 		.4byte	.LFE69-.LFB69
- 889 0020 00000000 		.4byte	.LFB70
- 890 0024 1E000000 		.4byte	.LFE70-.LFB70
- 891 0028 00000000 		.4byte	.LFB71
- 892 002c 1A000000 		.4byte	.LFE71-.LFB71
- 893 0030 00000000 		.4byte	0
- 894 0034 00000000 		.4byte	0
- 895              		.section	.debug_ranges,"",%progbits
- 896              	.Ldebug_ranges0:
- 897 0000 00000000 		.4byte	.LFB68
- 898 0004 12000000 		.4byte	.LFE68
- 899 0008 00000000 		.4byte	.LFB69
- 900 000c 40000000 		.4byte	.LFE69
- 901 0010 00000000 		.4byte	.LFB70
- 902 0014 1E000000 		.4byte	.LFE70
- 903 0018 00000000 		.4byte	.LFB71
- 904 001c 1A000000 		.4byte	.LFE71
- 905 0020 00000000 		.4byte	0
- 906 0024 00000000 		.4byte	0
- 907              		.section	.debug_line,"",%progbits
- 908              	.Ldebug_line0:
- 909 0000 18020000 		.section	.debug_str,"MS",%progbits,1
- 909      0200A001 
- 909      00000201 
- 909      FB0E0D00 
- 909      01010101 
- 910              	.LASF22:
- 911 0000 70726573 		.ascii	"present\000"
- 911      656E7400 
- 912              	.LASF35:
- 913 0008 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 913      43313120 
- 913      352E342E 
- 913      31203230 
- 913      31363036 
- 914 003b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 914      20726576 
- 914      6973696F 
- 914      6E203233 
- 914      37373135 
- 915 006e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 23
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 23
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 867 0166 34       		.uleb128 0x34
+ 868 0167 00       		.byte	0
+ 869 0168 03       		.uleb128 0x3
+ 870 0169 0E       		.uleb128 0xe
+ 871 016a 3A       		.uleb128 0x3a
+ 872 016b 0B       		.uleb128 0xb
+ 873 016c 3B       		.uleb128 0x3b
+ 874 016d 05       		.uleb128 0x5
+ 875 016e 49       		.uleb128 0x49
+ 876 016f 13       		.uleb128 0x13
+ 877 0170 3F       		.uleb128 0x3f
+ 878 0171 19       		.uleb128 0x19
+ 879 0172 3C       		.uleb128 0x3c
+ 880 0173 19       		.uleb128 0x19
+ 881 0174 00       		.byte	0
+ 882 0175 00       		.byte	0
+ 883 0176 00       		.byte	0
+ 884              		.section	.debug_aranges,"",%progbits
+ 885 0000 34000000 		.4byte	0x34
+ 886 0004 0200     		.2byte	0x2
+ 887 0006 00000000 		.4byte	.Ldebug_info0
+ 888 000a 04       		.byte	0x4
+ 889 000b 00       		.byte	0
+ 890 000c 0000     		.2byte	0
+ 891 000e 0000     		.2byte	0
+ 892 0010 00000000 		.4byte	.LFB68
+ 893 0014 16000000 		.4byte	.LFE68-.LFB68
+ 894 0018 00000000 		.4byte	.LFB69
+ 895 001c 48000000 		.4byte	.LFE69-.LFB69
+ 896 0020 00000000 		.4byte	.LFB70
+ 897 0024 1E000000 		.4byte	.LFE70-.LFB70
+ 898 0028 00000000 		.4byte	.LFB71
+ 899 002c 1A000000 		.4byte	.LFE71-.LFB71
+ 900 0030 00000000 		.4byte	0
+ 901 0034 00000000 		.4byte	0
+ 902              		.section	.debug_ranges,"",%progbits
+ 903              	.Ldebug_ranges0:
+ 904 0000 00000000 		.4byte	.LFB68
+ 905 0004 16000000 		.4byte	.LFE68
+ 906 0008 00000000 		.4byte	.LFB69
+ 907 000c 48000000 		.4byte	.LFE69
+ 908 0010 00000000 		.4byte	.LFB70
+ 909 0014 1E000000 		.4byte	.LFE70
+ 910 0018 00000000 		.4byte	.LFB71
+ 911 001c 1A000000 		.4byte	.LFE71
+ 912 0020 00000000 		.4byte	0
+ 913 0024 00000000 		.4byte	0
+ 914              		.section	.debug_line,"",%progbits
+ 915              	.Ldebug_line0:
+ 916 0000 1A020000 		.section	.debug_str,"MS",%progbits,1
+ 916      0200A001 
+ 916      00000201 
+ 916      FB0E0D00 
+ 916      01010101 
+ 917              	.LASF22:
+ 918 0000 70726573 		.ascii	"present\000"
+ 918      656E7400 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 23
 
 
- 915      66756E63 
- 915      74696F6E 
- 915      2D736563 
- 915      74696F6E 
- 916              	.LASF33:
- 917 0096 44533138 		.ascii	"DS18x8_DataReady\000"
- 917      78385F44 
- 917      61746152 
- 917      65616479 
- 917      00
- 918              	.LASF31:
- 919 00a7 43795261 		.ascii	"CyRamVectors\000"
- 919      6D566563 
- 919      746F7273 
- 919      00
- 920              	.LASF21:
- 921 00b4 54656D70 		.ascii	"Temperature\000"
- 921      65726174 
- 921      75726500 
- 922              	.LASF5:
- 923 00c0 5F5F696E 		.ascii	"__int32_t\000"
- 923      7433325F 
- 923      7400
- 924              	.LASF40:
- 925 00ca 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
- 925      74526169 
- 925      73654241 
- 925      53455052 
- 925      4900
- 926              	.LASF24:
- 927 00dc 78506F72 		.ascii	"xPortPendSVHandler\000"
- 927      7450656E 
- 927      64535648 
- 927      616E646C 
- 927      657200
- 928              	.LASF38:
- 929 00ef 44533138 		.ascii	"DS18x8_TSensor\000"
- 929      78385F54 
- 929      53656E73 
- 929      6F7200
- 930              	.LASF15:
- 931 00fe 666C6F61 		.ascii	"float\000"
- 931      7400
- 932              	.LASF32:
- 933 0104 44533138 		.ascii	"DS18x8_Sensor\000"
- 933      78385F53 
- 933      656E736F 
- 933      7200
- 934              	.LASF1:
- 935 0112 756E7369 		.ascii	"unsigned char\000"
- 935      676E6564 
- 935      20636861 
- 935      7200
- 936              	.LASF6:
- 937 0120 5F5F7569 		.ascii	"__uint32_t\000"
- 937      6E743332 
- 937      5F7400
-<<<<<<< HEAD
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 24
-=======
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 24
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 919              	.LASF35:
+ 920 0008 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 920      43313120 
+ 920      352E342E 
+ 920      31203230 
+ 920      31363036 
+ 921 003b 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 921      20726576 
+ 921      6973696F 
+ 921      6E203233 
+ 921      37373135 
+ 922 006e 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 922      66756E63 
+ 922      74696F6E 
+ 922      2D736563 
+ 922      74696F6E 
+ 923              	.LASF33:
+ 924 0096 44533138 		.ascii	"DS18x8_DataReady\000"
+ 924      78385F44 
+ 924      61746152 
+ 924      65616479 
+ 924      00
+ 925              	.LASF31:
+ 926 00a7 43795261 		.ascii	"CyRamVectors\000"
+ 926      6D566563 
+ 926      746F7273 
+ 926      00
+ 927              	.LASF21:
+ 928 00b4 54656D70 		.ascii	"Temperature\000"
+ 928      65726174 
+ 928      75726500 
+ 929              	.LASF5:
+ 930 00c0 5F5F696E 		.ascii	"__int32_t\000"
+ 930      7433325F 
+ 930      7400
+ 931              	.LASF40:
+ 932 00ca 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
+ 932      74526169 
+ 932      73654241 
+ 932      53455052 
+ 932      4900
+ 933              	.LASF24:
+ 934 00dc 78506F72 		.ascii	"xPortPendSVHandler\000"
+ 934      7450656E 
+ 934      64535648 
+ 934      616E646C 
+ 934      657200
+ 935              	.LASF38:
+ 936 00ef 44533138 		.ascii	"DS18x8_TSensor\000"
+ 936      78385F54 
+ 936      53656E73 
+ 936      6F7200
+ 937              	.LASF15:
+ 938 00fe 666C6F61 		.ascii	"float\000"
+ 938      7400
+ 939              	.LASF32:
+ 940 0104 44533138 		.ascii	"DS18x8_Sensor\000"
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 24
 
 
- 938              	.LASF7:
- 939 012b 6C6F6E67 		.ascii	"long unsigned int\000"
- 939      20756E73 
- 939      69676E65 
- 939      6420696E 
- 939      7400
- 940              	.LASF3:
- 941 013d 73686F72 		.ascii	"short unsigned int\000"
- 941      7420756E 
- 941      7369676E 
- 941      65642069 
- 941      6E7400
- 942              	.LASF34:
- 943 0150 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 943      52784275 
- 943      66666572 
- 943      00
- 944              	.LASF16:
- 945 015d 646F7562 		.ascii	"double\000"
- 945      6C6500
- 946              	.LASF41:
- 947 0164 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 947      77424153 
- 947      45505249 
- 947      00
- 948              	.LASF14:
- 949 0171 75696E74 		.ascii	"uint16\000"
- 949      313600
- 950              	.LASF39:
- 951 0178 74736B54 		.ascii	"tskTaskControlBlock\000"
- 951      61736B43 
- 951      6F6E7472 
- 951      6F6C426C 
- 951      6F636B00 
- 952              	.LASF42:
- 953 018c 6D61696E 		.ascii	"main\000"
- 953      00
- 954              	.LASF25:
- 955 0191 78506F72 		.ascii	"xPortSysTickHandler\000"
- 955      74537973 
- 955      5469636B 
- 955      48616E64 
- 955      6C657200 
-<<<<<<< HEAD
- 956              	.LASF10:
- 957 01a5 756E7369 		.ascii	"unsigned int\000"
- 957      676E6564 
- 957      20696E74 
- 957      00
- 958              	.LASF9:
- 959 01b2 6C6F6E67 		.ascii	"long long unsigned int\000"
- 959      206C6F6E 
- 959      6720756E 
- 959      7369676E 
- 959      65642069 
- 960              	.LASF18:
- 961 01c9 63796973 		.ascii	"cyisraddress\000"
- 961      72616464 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 25
-=======
- 956              	.LASF37:
- 957 01a5 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
- 957      73657273 
- 957      5C6D6167 
- 957      39345C44 
- 957      65736B74 
- 958 01d2 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
- 958      72746963 
- 958      616C5F66 
- 958      61726D5C 
- 958      52544F53 
- 959 0203 63796473 		.ascii	"cydsn\000"
- 959      6E00
- 960              	.LASF10:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 25
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 940      78385F53 
+ 940      656E736F 
+ 940      7200
+ 941              	.LASF1:
+ 942 0112 756E7369 		.ascii	"unsigned char\000"
+ 942      676E6564 
+ 942      20636861 
+ 942      7200
+ 943              	.LASF6:
+ 944 0120 5F5F7569 		.ascii	"__uint32_t\000"
+ 944      6E743332 
+ 944      5F7400
+ 945              	.LASF7:
+ 946 012b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 946      20756E73 
+ 946      69676E65 
+ 946      6420696E 
+ 946      7400
+ 947              	.LASF3:
+ 948 013d 73686F72 		.ascii	"short unsigned int\000"
+ 948      7420756E 
+ 948      7369676E 
+ 948      65642069 
+ 948      6E7400
+ 949              	.LASF34:
+ 950 0150 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 950      52784275 
+ 950      66666572 
+ 950      00
+ 951              	.LASF16:
+ 952 015d 646F7562 		.ascii	"double\000"
+ 952      6C6500
+ 953              	.LASF41:
+ 954 0164 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 954      77424153 
+ 954      45505249 
+ 954      00
+ 955              	.LASF14:
+ 956 0171 75696E74 		.ascii	"uint16\000"
+ 956      313600
+ 957              	.LASF39:
+ 958 0178 74736B54 		.ascii	"tskTaskControlBlock\000"
+ 958      61736B43 
+ 958      6F6E7472 
+ 958      6F6C426C 
+ 958      6F636B00 
+ 959              	.LASF42:
+ 960 018c 6D61696E 		.ascii	"main\000"
+ 960      00
+ 961              	.LASF25:
+ 962 0191 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 962      74537973 
+ 962      5469636B 
+ 962      48616E64 
+ 962      6C657200 
+ 963              	.LASF10:
+ 964 01a5 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 25
 
 
- 961      72657373 
- 961      00
- 962              	.LASF37:
- 963 01d6 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
- 963      73657273 
- 963      5C477573 
- 963      74615C4F 
- 963      6E654472 
- 964 0203 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
- 964      6963616C 
- 964      5F666172 
- 964      6D5C5254 
- 964      4F535F54 
- 965 0234 64736E00 		.ascii	"dsn\000"
- 966              	.LASF30:
- 967 0238 76417070 		.ascii	"vApplicationMallocFailedHook\000"
- 967      6C696361 
- 967      74696F6E 
- 967      4D616C6C 
- 967      6F634661 
- 968              	.LASF11:
- 969 0255 696E7433 		.ascii	"int32_t\000"
- 969      325F7400 
- 970              	.LASF20:
- 971 025d 73697A65 		.ascii	"sizetype\000"
- 971      74797065 
- 971      00
- 972              	.LASF8:
- 973 0266 6C6F6E67 		.ascii	"long long int\000"
- 973      206C6F6E 
- 973      6720696E 
- 973      7400
- 974              	.LASF36:
- 975 0274 6D61696E 		.ascii	"main.c\000"
- 975      2E6300
- 976              	.LASF17:
- 977 027b 63686172 		.ascii	"char\000"
- 977      00
- 978              	.LASF26:
- 979 0280 76506F72 		.ascii	"vPortSVCHandler\000"
- 979      74535643 
- 979      48616E64 
- 979      6C657200 
- 980              	.LASF27:
- 981 0290 70785461 		.ascii	"pxTask\000"
- 981      736B00
- 982              	.LASF2:
- 983 0297 73686F72 		.ascii	"short int\000"
- 983      7420696E 
- 983      7400
- 984              	.LASF28:
- 985 02a1 70635461 		.ascii	"pcTaskName\000"
- 985      736B4E61 
- 985      6D6500
- 986              	.LASF13:
-<<<<<<< HEAD
- 987 02ac 75696E74 		.ascii	"uint8\000"
- 987      3800
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\cctvexZy.s 			page 26
-=======
- 987 02ae 75696E74 		.ascii	"uint8\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccI55c6Z.s 			page 26
->>>>>>> e8e69b4d3ec318abfa601bc443398956ad360754
+ 964      676E6564 
+ 964      20696E74 
+ 964      00
+ 965              	.LASF9:
+ 966 01b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 966      206C6F6E 
+ 966      6720756E 
+ 966      7369676E 
+ 966      65642069 
+ 967              	.LASF18:
+ 968 01c9 63796973 		.ascii	"cyisraddress\000"
+ 968      72616464 
+ 968      72657373 
+ 968      00
+ 969              	.LASF37:
+ 970 01d6 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
+ 970      73657273 
+ 970      5C477573 
+ 970      74615C4F 
+ 970      6E654472 
+ 971 0203 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
+ 971      6963616C 
+ 971      5F666172 
+ 971      6D5C5254 
+ 971      4F535F54 
+ 972 0234 64736E00 		.ascii	"dsn\000"
+ 973              	.LASF30:
+ 974 0238 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 974      6C696361 
+ 974      74696F6E 
+ 974      4D616C6C 
+ 974      6F634661 
+ 975              	.LASF11:
+ 976 0255 696E7433 		.ascii	"int32_t\000"
+ 976      325F7400 
+ 977              	.LASF20:
+ 978 025d 73697A65 		.ascii	"sizetype\000"
+ 978      74797065 
+ 978      00
+ 979              	.LASF8:
+ 980 0266 6C6F6E67 		.ascii	"long long int\000"
+ 980      206C6F6E 
+ 980      6720696E 
+ 980      7400
+ 981              	.LASF36:
+ 982 0274 6D61696E 		.ascii	"main.c\000"
+ 982      2E6300
+ 983              	.LASF17:
+ 984 027b 63686172 		.ascii	"char\000"
+ 984      00
+ 985              	.LASF26:
+ 986 0280 76506F72 		.ascii	"vPortSVCHandler\000"
+ 986      74535643 
+ 986      48616E64 
+ 986      6C657200 
+ 987              	.LASF27:
+ 988 0290 70785461 		.ascii	"pxTask\000"
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccm6a1Ga.s 			page 26
 
 
- 988              	.LASF23:
- 989 02b2 5461736B 		.ascii	"TaskHandle_t\000"
- 989      48616E64 
- 989      6C655F74 
- 989      00
- 990              	.LASF12:
- 991 02bf 75696E74 		.ascii	"uint32_t\000"
- 991      33325F74 
- 991      00
- 992              	.LASF4:
- 993 02c8 6C6F6E67 		.ascii	"long int\000"
- 993      20696E74 
- 993      00
- 994              	.LASF19:
- 995 02d1 6C6F6E67 		.ascii	"long double\000"
- 995      20646F75 
- 995      626C6500 
- 996              	.LASF0:
- 997 02dd 7369676E 		.ascii	"signed char\000"
- 997      65642063 
- 997      68617200 
- 998              	.LASF29:
- 999 02e9 76417070 		.ascii	"vApplicationStackOverflowHook\000"
- 999      6C696361 
- 999      74696F6E 
- 999      53746163 
- 999      6B4F7665 
- 1000              	.LASF43:
- 1001 0307 70727648 		.ascii	"prvHardwareSetup\000"
- 1001      61726477 
- 1001      61726553 
- 1001      65747570 
- 1001      00
- 1002              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 988      736B00
+ 989              	.LASF2:
+ 990 0297 73686F72 		.ascii	"short int\000"
+ 990      7420696E 
+ 990      7400
+ 991              	.LASF28:
+ 992 02a1 70635461 		.ascii	"pcTaskName\000"
+ 992      736B4E61 
+ 992      6D6500
+ 993              	.LASF13:
+ 994 02ac 75696E74 		.ascii	"uint8\000"
+ 994      3800
+ 995              	.LASF23:
+ 996 02b2 5461736B 		.ascii	"TaskHandle_t\000"
+ 996      48616E64 
+ 996      6C655F74 
+ 996      00
+ 997              	.LASF12:
+ 998 02bf 75696E74 		.ascii	"uint32_t\000"
+ 998      33325F74 
+ 998      00
+ 999              	.LASF4:
+ 1000 02c8 6C6F6E67 		.ascii	"long int\000"
+ 1000      20696E74 
+ 1000      00
+ 1001              	.LASF19:
+ 1002 02d1 6C6F6E67 		.ascii	"long double\000"
+ 1002      20646F75 
+ 1002      626C6500 
+ 1003              	.LASF0:
+ 1004 02dd 7369676E 		.ascii	"signed char\000"
+ 1004      65642063 
+ 1004      68617200 
+ 1005              	.LASF29:
+ 1006 02e9 76417070 		.ascii	"vApplicationStackOverflowHook\000"
+ 1006      6C696361 
+ 1006      74696F6E 
+ 1006      53746163 
+ 1006      6B4F7665 
+ 1007              	.LASF43:
+ 1008 0307 70727648 		.ascii	"prvHardwareSetup\000"
+ 1008      61726477 
+ 1008      61726553 
+ 1008      65747570 
+ 1008      00
+ 1009              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

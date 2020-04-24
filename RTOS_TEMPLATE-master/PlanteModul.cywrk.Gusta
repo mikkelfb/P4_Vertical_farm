@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul\Header Files\Air.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul\Source Files\Nutrients.c">
 <ExpandedNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
@@ -52,6 +52,7 @@
 <v>PlanteModul\PlanteModul\Header Files\device.h</v>
 <v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
+<v>PlanteModul\PlanteModul\Header Files\SCD30.h</v>
 <v>PlanteModul\PlanteModul\Source Files</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\heap_2.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\list.c</v>
@@ -63,6 +64,7 @@
 <v>PlanteModul\PlanteModul\Source Files\Air.c</v>
 <v>PlanteModul\PlanteModul\Source Files\main.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
+<v>PlanteModul\PlanteModul\Source Files\SCD30.c</v>
 <v>PlanteModul\PlanteModul\Generated_Source</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -85,11 +87,13 @@
 <v>PlanteModul\PlanteModul\Header Files\device.h</v>
 <v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
+<v>PlanteModul\PlanteModul\Header Files\SCD30.h</v>
 <v>PlanteModul\PlanteModul\Source Files</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel</v>
 <v>PlanteModul\PlanteModul\Source Files\Air.c</v>
 <v>PlanteModul\PlanteModul\Source Files\main.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
+<v>PlanteModul\PlanteModul\Source Files\SCD30.c</v>
 <v>PlanteModul\PlanteModul\Generated_Source</v>
 <v>PlanteModul\PlanteModul\Generated_Source\PSoC5</v>
 </VisibleNodeIds>
@@ -123,7 +127,6 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Air.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_DS18.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
@@ -148,7 +151,12 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_Trigger.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_Trigger_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_2.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_DS18.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu_wrappers.lst</v>
@@ -164,6 +172,9 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SCD30.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SW_UART_TEST_USB.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SW_UART_TEST_USB_AsmGnu.lst</v>
@@ -179,40 +190,6 @@
 <VisibleNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
-<v>PlanteModul\PlanteModul\CortexM3</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_INT.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_IRQ.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Air.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_DS18.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_clock_delay.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_ControlReg_DRV.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_ControlReg_DRV_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_ControlReg_SEL.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_ControlReg_SEL_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_isr_DataReady.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_StatusReg_BUS.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_TimerDelay.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_TimerDelay_PM.lst</v>
-<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_Trigger.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -229,14 +206,10 @@
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
 <v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
-<v>PlanteModul\PlanteModul\cy_isr_v1_70.pdf</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
-<v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
 <v>PlanteModul\PlanteModul\I2C_v3_50.pdf</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>
@@ -250,14 +223,10 @@
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
 <v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
-<v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
-<v>PlanteModul\PlanteModul\cy_isr_v1_70.pdf</v>
+<v>PlanteModul\PlanteModul\cy_clock_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
-<v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
 <v>PlanteModul\PlanteModul\I2C_v3_50.pdf</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>

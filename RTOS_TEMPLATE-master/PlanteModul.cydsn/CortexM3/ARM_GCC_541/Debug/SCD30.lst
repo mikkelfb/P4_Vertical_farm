@@ -1,0 +1,2454 @@
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"SCD30.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.global	devAddr
+  22              		.data
+  23              		.type	devAddr, %object
+  24              		.size	devAddr, 1
+  25              	devAddr:
+  26 0000 61       		.byte	97
+  27              		.section	.text.SCD30_initialize,"ax",%progbits
+  28              		.align	2
+  29              		.global	SCD30_initialize
+  30              		.thumb
+  31              		.thumb_func
+  32              		.type	SCD30_initialize, %function
+  33              	SCD30_initialize:
+  34              	.LFB63:
+  35              		.file 1 "..\\..\\SCD30\\SCD30.cydsn\\SCD30.c"
+   1:..\..\SCD30\SCD30.cydsn/SCD30.c **** /* ========================================
+   2:..\..\SCD30\SCD30.cydsn/SCD30.c ****  *
+   3:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * All Rights Reserved
+   5:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:..\..\SCD30\SCD30.cydsn/SCD30.c ****  *
+   7:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:..\..\SCD30\SCD30.cydsn/SCD30.c ****  *
+  10:..\..\SCD30\SCD30.cydsn/SCD30.c ****  * ========================================
+  11:..\..\SCD30\SCD30.cydsn/SCD30.c **** */
+  12:..\..\SCD30\SCD30.cydsn/SCD30.c **** #include "project.h"
+  13:..\..\SCD30\SCD30.cydsn/SCD30.c **** #include "SCD30.h"
+  14:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  15:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  16:..\..\SCD30\SCD30.cydsn/SCD30.c ****      uint8_t devAddr = SCD30_I2C_ADDRESS;
+  17:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  18:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  19:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_initialize(void) {
+  36              		.loc 1 19 0
+  37              		.cfi_startproc
+  38              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 2
+
+
+  39              		@ frame_needed = 1, uses_anonymous_args = 0
+  40 0000 80B5     		push	{r7, lr}
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0002 00AF     		add	r7, sp, #0
+  45              		.cfi_def_cfa_register 7
+  20:..\..\SCD30\SCD30.cydsn/SCD30.c ****     //Set temperature offset。
+  21:..\..\SCD30\SCD30.cydsn/SCD30.c ****     //setTemperatureOffset(0);
+  22:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  23:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_setMeasurementInterval(2); // 2 seconds between measurements
+  46              		.loc 1 23 0
+  47 0004 0220     		movs	r0, #2
+  48 0006 FFF7FEFF 		bl	SCD30_setMeasurementInterval
+  24:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_startPeriodicMeasurment(); // start periodic measuments
+  49              		.loc 1 24 0
+  50 000a FFF7FEFF 		bl	SCD30_startPeriodicMeasurment
+  25:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  26:..\..\SCD30\SCD30.cydsn/SCD30.c ****     //setAutoSelfCalibration(true); // Enable auto-self-calibration
+  27:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+  51              		.loc 1 27 0
+  52 000e 00BF     		nop
+  53 0010 80BD     		pop	{r7, pc}
+  54              		.cfi_endproc
+  55              	.LFE63:
+  56              		.size	SCD30_initialize, .-SCD30_initialize
+  57 0012 00BF     		.section	.text.SCD30_setTemperatureOffset,"ax",%progbits
+  58              		.align	2
+  59              		.global	SCD30_setTemperatureOffset
+  60              		.thumb
+  61              		.thumb_func
+  62              		.type	SCD30_setTemperatureOffset, %function
+  63              	SCD30_setTemperatureOffset:
+  64              	.LFB64:
+  28:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  29:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  30:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_setTemperatureOffset(uint16_t offset) {
+  65              		.loc 1 30 0
+  66              		.cfi_startproc
+  67              		@ args = 0, pretend = 0, frame = 8
+  68              		@ frame_needed = 1, uses_anonymous_args = 0
+  69 0000 80B5     		push	{r7, lr}
+  70              		.cfi_def_cfa_offset 8
+  71              		.cfi_offset 7, -8
+  72              		.cfi_offset 14, -4
+  73 0002 82B0     		sub	sp, sp, #8
+  74              		.cfi_def_cfa_offset 16
+  75 0004 00AF     		add	r7, sp, #0
+  76              		.cfi_def_cfa_register 7
+  77 0006 0346     		mov	r3, r0
+  78 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  31:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeCommandWithArguments(SCD30_SET_TEMP_OFFSET, offset);
+  79              		.loc 1 31 0
+  80 000a FB88     		ldrh	r3, [r7, #6]
+  81 000c 1946     		mov	r1, r3
+  82 000e 45F20340 		movw	r0, #21507
+  83 0012 FFF7FEFF 		bl	SCD30_writeCommandWithArguments
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 3
+
+
+  32:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+  84              		.loc 1 32 0
+  85 0016 00BF     		nop
+  86 0018 0837     		adds	r7, r7, #8
+  87              		.cfi_def_cfa_offset 8
+  88 001a BD46     		mov	sp, r7
+  89              		.cfi_def_cfa_register 13
+  90              		@ sp needed
+  91 001c 80BD     		pop	{r7, pc}
+  92              		.cfi_endproc
+  93              	.LFE64:
+  94              		.size	SCD30_setTemperatureOffset, .-SCD30_setTemperatureOffset
+  95 001e 00BF     		.section	.text.SCD30_isAvailable,"ax",%progbits
+  96              		.align	2
+  97              		.global	SCD30_isAvailable
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.type	SCD30_isAvailable, %function
+ 101              	SCD30_isAvailable:
+ 102              	.LFB65:
+  33:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  34:..\..\SCD30\SCD30.cydsn/SCD30.c **** _Bool SCD30_isAvailable(void) {
+ 103              		.loc 1 34 0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 1, uses_anonymous_args = 0
+ 107 0000 80B5     		push	{r7, lr}
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 7, -8
+ 110              		.cfi_offset 14, -4
+ 111 0002 00AF     		add	r7, sp, #0
+ 112              		.cfi_def_cfa_register 7
+  35:..\..\SCD30\SCD30.cydsn/SCD30.c ****     return SCD30_readRegister(SCD30_GET_DATA_READY);
+ 113              		.loc 1 35 0
+ 114 0004 40F20220 		movw	r0, #514
+ 115 0008 FFF7FEFF 		bl	SCD30_readRegister
+ 116 000c 0346     		mov	r3, r0
+ 117 000e 002B     		cmp	r3, #0
+ 118 0010 14BF     		ite	ne
+ 119 0012 0123     		movne	r3, #1
+ 120 0014 0023     		moveq	r3, #0
+ 121 0016 DBB2     		uxtb	r3, r3
+  36:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 122              		.loc 1 36 0
+ 123 0018 1846     		mov	r0, r3
+ 124 001a 80BD     		pop	{r7, pc}
+ 125              		.cfi_endproc
+ 126              	.LFE65:
+ 127              		.size	SCD30_isAvailable, .-SCD30_isAvailable
+ 128              		.section	.text.SCD30_setAutoSelfCalibration,"ax",%progbits
+ 129              		.align	2
+ 130              		.global	SCD30_setAutoSelfCalibration
+ 131              		.thumb
+ 132              		.thumb_func
+ 133              		.type	SCD30_setAutoSelfCalibration, %function
+ 134              	SCD30_setAutoSelfCalibration:
+ 135              	.LFB66:
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 4
+
+
+  37:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  38:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_setAutoSelfCalibration(_Bool enable) {
+ 136              		.loc 1 38 0
+ 137              		.cfi_startproc
+ 138              		@ args = 0, pretend = 0, frame = 8
+ 139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 140 0000 80B5     		push	{r7, lr}
+ 141              		.cfi_def_cfa_offset 8
+ 142              		.cfi_offset 7, -8
+ 143              		.cfi_offset 14, -4
+ 144 0002 82B0     		sub	sp, sp, #8
+ 145              		.cfi_def_cfa_offset 16
+ 146 0004 00AF     		add	r7, sp, #0
+ 147              		.cfi_def_cfa_register 7
+ 148 0006 0346     		mov	r3, r0
+ 149 0008 FB71     		strb	r3, [r7, #7]
+  39:..\..\SCD30\SCD30.cydsn/SCD30.c ****     if (enable) {
+ 150              		.loc 1 39 0
+ 151 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 152 000c 002B     		cmp	r3, #0
+ 153 000e 05D0     		beq	.L6
+  40:..\..\SCD30\SCD30.cydsn/SCD30.c ****         SCD30_writeCommandWithArguments(SCD30_AUTOMATIC_SELF_CALIBRATION, 1);    //Activate continu
+ 154              		.loc 1 40 0
+ 155 0010 0121     		movs	r1, #1
+ 156 0012 45F20630 		movw	r0, #21254
+ 157 0016 FFF7FEFF 		bl	SCD30_writeCommandWithArguments
+  41:..\..\SCD30\SCD30.cydsn/SCD30.c ****     } else {
+  42:..\..\SCD30\SCD30.cydsn/SCD30.c ****         SCD30_writeCommandWithArguments(SCD30_AUTOMATIC_SELF_CALIBRATION, 0);    //Deactivate conti
+  43:..\..\SCD30\SCD30.cydsn/SCD30.c ****     }
+  44:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 158              		.loc 1 44 0
+ 159 001a 04E0     		b	.L8
+ 160              	.L6:
+  42:..\..\SCD30\SCD30.cydsn/SCD30.c ****     }
+ 161              		.loc 1 42 0
+ 162 001c 0021     		movs	r1, #0
+ 163 001e 45F20630 		movw	r0, #21254
+ 164 0022 FFF7FEFF 		bl	SCD30_writeCommandWithArguments
+ 165              	.L8:
+ 166              		.loc 1 44 0
+ 167 0026 00BF     		nop
+ 168 0028 0837     		adds	r7, r7, #8
+ 169              		.cfi_def_cfa_offset 8
+ 170 002a BD46     		mov	sp, r7
+ 171              		.cfi_def_cfa_register 13
+ 172              		@ sp needed
+ 173 002c 80BD     		pop	{r7, pc}
+ 174              		.cfi_endproc
+ 175              	.LFE66:
+ 176              		.size	SCD30_setAutoSelfCalibration, .-SCD30_setAutoSelfCalibration
+ 177 002e 00BF     		.section	.text.SCD30_setMeasurementInterval,"ax",%progbits
+ 178              		.align	2
+ 179              		.global	SCD30_setMeasurementInterval
+ 180              		.thumb
+ 181              		.thumb_func
+ 182              		.type	SCD30_setMeasurementInterval, %function
+ 183              	SCD30_setMeasurementInterval:
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 5
+
+
+ 184              	.LFB67:
+  45:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  46:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_setMeasurementInterval(uint16_t interval) {
+ 185              		.loc 1 46 0
+ 186              		.cfi_startproc
+ 187              		@ args = 0, pretend = 0, frame = 8
+ 188              		@ frame_needed = 1, uses_anonymous_args = 0
+ 189 0000 80B5     		push	{r7, lr}
+ 190              		.cfi_def_cfa_offset 8
+ 191              		.cfi_offset 7, -8
+ 192              		.cfi_offset 14, -4
+ 193 0002 82B0     		sub	sp, sp, #8
+ 194              		.cfi_def_cfa_offset 16
+ 195 0004 00AF     		add	r7, sp, #0
+ 196              		.cfi_def_cfa_register 7
+ 197 0006 0346     		mov	r3, r0
+ 198 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  47:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeCommandWithArguments(SCD30_SET_MEASUREMENT_INTERVAL, interval);
+ 199              		.loc 1 47 0
+ 200 000a FB88     		ldrh	r3, [r7, #6]
+ 201 000c 1946     		mov	r1, r3
+ 202 000e 4FF48C40 		mov	r0, #17920
+ 203 0012 FFF7FEFF 		bl	SCD30_writeCommandWithArguments
+  48:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 204              		.loc 1 48 0
+ 205 0016 00BF     		nop
+ 206 0018 0837     		adds	r7, r7, #8
+ 207              		.cfi_def_cfa_offset 8
+ 208 001a BD46     		mov	sp, r7
+ 209              		.cfi_def_cfa_register 13
+ 210              		@ sp needed
+ 211 001c 80BD     		pop	{r7, pc}
+ 212              		.cfi_endproc
+ 213              	.LFE67:
+ 214              		.size	SCD30_setMeasurementInterval, .-SCD30_setMeasurementInterval
+ 215 001e 00BF     		.section	.text.SCD30_startPeriodicMeasurment,"ax",%progbits
+ 216              		.align	2
+ 217              		.global	SCD30_startPeriodicMeasurment
+ 218              		.thumb
+ 219              		.thumb_func
+ 220              		.type	SCD30_startPeriodicMeasurment, %function
+ 221              	SCD30_startPeriodicMeasurment:
+ 222              	.LFB68:
+  49:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  50:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_startPeriodicMeasurment(void) {
+ 223              		.loc 1 50 0
+ 224              		.cfi_startproc
+ 225              		@ args = 0, pretend = 0, frame = 0
+ 226              		@ frame_needed = 1, uses_anonymous_args = 0
+ 227 0000 80B5     		push	{r7, lr}
+ 228              		.cfi_def_cfa_offset 8
+ 229              		.cfi_offset 7, -8
+ 230              		.cfi_offset 14, -4
+ 231 0002 00AF     		add	r7, sp, #0
+ 232              		.cfi_def_cfa_register 7
+  51:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeCommandWithArguments(SCD30_CONTINUOUS_MEASUREMENT, 0x0000);
+ 233              		.loc 1 51 0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 6
+
+
+ 234 0004 0021     		movs	r1, #0
+ 235 0006 1020     		movs	r0, #16
+ 236 0008 FFF7FEFF 		bl	SCD30_writeCommandWithArguments
+  52:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 237              		.loc 1 52 0
+ 238 000c 00BF     		nop
+ 239 000e 80BD     		pop	{r7, pc}
+ 240              		.cfi_endproc
+ 241              	.LFE68:
+ 242              		.size	SCD30_startPeriodicMeasurment, .-SCD30_startPeriodicMeasurment
+ 243              		.section	.text.SCD30_stopMeasurement,"ax",%progbits
+ 244              		.align	2
+ 245              		.global	SCD30_stopMeasurement
+ 246              		.thumb
+ 247              		.thumb_func
+ 248              		.type	SCD30_stopMeasurement, %function
+ 249              	SCD30_stopMeasurement:
+ 250              	.LFB69:
+  53:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  54:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_stopMeasurement(void) {
+ 251              		.loc 1 54 0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 1, uses_anonymous_args = 0
+ 255 0000 80B5     		push	{r7, lr}
+ 256              		.cfi_def_cfa_offset 8
+ 257              		.cfi_offset 7, -8
+ 258              		.cfi_offset 14, -4
+ 259 0002 00AF     		add	r7, sp, #0
+ 260              		.cfi_def_cfa_register 7
+  55:..\..\SCD30\SCD30.cydsn/SCD30.c ****    SCD30_writeCommand(SCD30_STOP_MEASUREMENT);
+ 261              		.loc 1 55 0
+ 262 0004 4FF48270 		mov	r0, #260
+ 263 0008 FFF7FEFF 		bl	SCD30_writeCommand
+  56:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 264              		.loc 1 56 0
+ 265 000c 00BF     		nop
+ 266 000e 80BD     		pop	{r7, pc}
+ 267              		.cfi_endproc
+ 268              	.LFE69:
+ 269              		.size	SCD30_stopMeasurement, .-SCD30_stopMeasurement
+ 270              		.section	.text.SCD30_getCarbonDioxideConcentration,"ax",%progbits
+ 271              		.align	2
+ 272              		.global	SCD30_getCarbonDioxideConcentration
+ 273              		.thumb
+ 274              		.thumb_func
+ 275              		.type	SCD30_getCarbonDioxideConcentration, %function
+ 276              	SCD30_getCarbonDioxideConcentration:
+ 277              	.LFB70:
+  57:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  58:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_getCarbonDioxideConcentration(float* result) {
+ 278              		.loc 1 58 0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 56
+ 281              		@ frame_needed = 1, uses_anonymous_args = 0
+ 282 0000 80B5     		push	{r7, lr}
+ 283              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 7
+
+
+ 284              		.cfi_offset 7, -8
+ 285              		.cfi_offset 14, -4
+ 286 0002 8EB0     		sub	sp, sp, #56
+ 287              		.cfi_def_cfa_offset 64
+ 288 0004 00AF     		add	r7, sp, #0
+ 289              		.cfi_def_cfa_register 7
+ 290 0006 7860     		str	r0, [r7, #4]
+  59:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint8_t buf[18] = { 0 };
+ 291              		.loc 1 59 0
+ 292 0008 07F11803 		add	r3, r7, #24
+ 293 000c 0022     		movs	r2, #0
+ 294 000e 1A60     		str	r2, [r3]
+ 295 0010 5A60     		str	r2, [r3, #4]
+ 296 0012 9A60     		str	r2, [r3, #8]
+ 297 0014 DA60     		str	r2, [r3, #12]
+ 298 0016 1A82     		strh	r2, [r3, #16]	@ movhi
+  60:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint32_t co2U32 = 0;
+ 299              		.loc 1 60 0
+ 300 0018 0023     		movs	r3, #0
+ 301 001a 7B61     		str	r3, [r7, #20]
+  61:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint32_t tempU32 = 0;
+ 302              		.loc 1 61 0
+ 303 001c 0023     		movs	r3, #0
+ 304 001e 3B61     		str	r3, [r7, #16]
+  62:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint32_t humU32 = 0;
+ 305              		.loc 1 62 0
+ 306 0020 0023     		movs	r3, #0
+ 307 0022 FB60     		str	r3, [r7, #12]
+  63:..\..\SCD30\SCD30.cydsn/SCD30.c ****     float co2Concentration = 0;
+ 308              		.loc 1 63 0
+ 309 0024 4FF00003 		mov	r3, #0
+ 310 0028 7B63     		str	r3, [r7, #52]	@ float
+  64:..\..\SCD30\SCD30.cydsn/SCD30.c ****     float temperature = 0;
+ 311              		.loc 1 64 0
+ 312 002a 4FF00003 		mov	r3, #0
+ 313 002e 3B63     		str	r3, [r7, #48]	@ float
+  65:..\..\SCD30\SCD30.cydsn/SCD30.c ****     float humidity = 0;
+ 314              		.loc 1 65 0
+ 315 0030 4FF00003 		mov	r3, #0
+ 316 0034 FB62     		str	r3, [r7, #44]	@ float
+  66:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  67:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeCommand(SCD30_READ_MEASUREMENT);
+ 317              		.loc 1 67 0
+ 318 0036 4FF44070 		mov	r0, #768
+ 319 003a FFF7FEFF 		bl	SCD30_writeCommand
+  68:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_readBuffer(buf, 18);
+ 320              		.loc 1 68 0
+ 321 003e 07F11803 		add	r3, r7, #24
+ 322 0042 1221     		movs	r1, #18
+ 323 0044 1846     		mov	r0, r3
+ 324 0046 FFF7FEFF 		bl	SCD30_readBuffer
+  69:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  70:..\..\SCD30\SCD30.cydsn/SCD30.c ****     co2U32 = (uint32_t)((((uint32_t)buf[0]) << 24) | (((uint32_t)buf[1]) << 16) |
+ 325              		.loc 1 70 0
+ 326 004a 3B7E     		ldrb	r3, [r7, #24]	@ zero_extendqisi2
+ 327 004c 1A06     		lsls	r2, r3, #24
+ 328 004e 7B7E     		ldrb	r3, [r7, #25]	@ zero_extendqisi2
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 8
+
+
+ 329 0050 1B04     		lsls	r3, r3, #16
+ 330 0052 1A43     		orrs	r2, r2, r3
+  71:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[3]) << 8) | ((uint32_t)buf[4]));
+ 331              		.loc 1 71 0
+ 332 0054 FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
+ 333 0056 1B02     		lsls	r3, r3, #8
+  70:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[3]) << 8) | ((uint32_t)buf[4]));
+ 334              		.loc 1 70 0
+ 335 0058 1343     		orrs	r3, r3, r2
+ 336              		.loc 1 71 0
+ 337 005a 3A7F     		ldrb	r2, [r7, #28]	@ zero_extendqisi2
+  70:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[3]) << 8) | ((uint32_t)buf[4]));
+ 338              		.loc 1 70 0
+ 339 005c 1343     		orrs	r3, r3, r2
+ 340 005e 7B61     		str	r3, [r7, #20]
+  72:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  73:..\..\SCD30\SCD30.cydsn/SCD30.c ****     tempU32 = (uint32_t)((((uint32_t)buf[6]) << 24) | (((uint32_t)buf[7]) << 16) |
+ 341              		.loc 1 73 0
+ 342 0060 BB7F     		ldrb	r3, [r7, #30]	@ zero_extendqisi2
+ 343 0062 1A06     		lsls	r2, r3, #24
+ 344 0064 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 345 0066 1B04     		lsls	r3, r3, #16
+ 346 0068 1A43     		orrs	r2, r2, r3
+  74:..\..\SCD30\SCD30.cydsn/SCD30.c ****                          (((uint32_t)buf[9]) << 8) | ((uint32_t)buf[10]));
+ 347              		.loc 1 74 0
+ 348 006a 97F82130 		ldrb	r3, [r7, #33]	@ zero_extendqisi2
+ 349 006e 1B02     		lsls	r3, r3, #8
+  73:..\..\SCD30\SCD30.cydsn/SCD30.c ****                          (((uint32_t)buf[9]) << 8) | ((uint32_t)buf[10]));
+ 350              		.loc 1 73 0
+ 351 0070 1343     		orrs	r3, r3, r2
+ 352              		.loc 1 74 0
+ 353 0072 97F82220 		ldrb	r2, [r7, #34]	@ zero_extendqisi2
+  73:..\..\SCD30\SCD30.cydsn/SCD30.c ****                          (((uint32_t)buf[9]) << 8) | ((uint32_t)buf[10]));
+ 354              		.loc 1 73 0
+ 355 0076 1343     		orrs	r3, r3, r2
+ 356 0078 3B61     		str	r3, [r7, #16]
+  75:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  76:..\..\SCD30\SCD30.cydsn/SCD30.c ****     humU32 = (uint32_t)((((uint32_t)buf[12]) << 24) | (((uint32_t)buf[13]) << 16) |
+ 357              		.loc 1 76 0
+ 358 007a 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 359 007e 1A06     		lsls	r2, r3, #24
+ 360 0080 97F82530 		ldrb	r3, [r7, #37]	@ zero_extendqisi2
+ 361 0084 1B04     		lsls	r3, r3, #16
+ 362 0086 1A43     		orrs	r2, r2, r3
+  77:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[15]) << 8) | ((uint32_t)buf[16]));
+ 363              		.loc 1 77 0
+ 364 0088 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
+ 365 008c 1B02     		lsls	r3, r3, #8
+  76:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[15]) << 8) | ((uint32_t)buf[16]));
+ 366              		.loc 1 76 0
+ 367 008e 1343     		orrs	r3, r3, r2
+ 368              		.loc 1 77 0
+ 369 0090 97F82820 		ldrb	r2, [r7, #40]	@ zero_extendqisi2
+  76:..\..\SCD30\SCD30.cydsn/SCD30.c ****                         (((uint32_t)buf[15]) << 8) | ((uint32_t)buf[16]));
+ 370              		.loc 1 76 0
+ 371 0094 1343     		orrs	r3, r3, r2
+ 372 0096 FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 9
+
+
+  78:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  79:..\..\SCD30\SCD30.cydsn/SCD30.c ****     memcpy(&result[0], &co2U32, sizeof(co2Concentration));
+ 373              		.loc 1 79 0
+ 374 0098 07F11403 		add	r3, r7, #20
+ 375 009c 0422     		movs	r2, #4
+ 376 009e 1946     		mov	r1, r3
+ 377 00a0 7868     		ldr	r0, [r7, #4]
+ 378 00a2 FFF7FEFF 		bl	memcpy
+  80:..\..\SCD30\SCD30.cydsn/SCD30.c ****     memcpy(&result[1], &tempU32, sizeof(temperature));
+ 379              		.loc 1 80 0
+ 380 00a6 7B68     		ldr	r3, [r7, #4]
+ 381 00a8 0433     		adds	r3, r3, #4
+ 382 00aa 07F11001 		add	r1, r7, #16
+ 383 00ae 0422     		movs	r2, #4
+ 384 00b0 1846     		mov	r0, r3
+ 385 00b2 FFF7FEFF 		bl	memcpy
+  81:..\..\SCD30\SCD30.cydsn/SCD30.c ****     memcpy(&result[2], &humU32, sizeof(humidity));
+ 386              		.loc 1 81 0
+ 387 00b6 7B68     		ldr	r3, [r7, #4]
+ 388 00b8 0833     		adds	r3, r3, #8
+ 389 00ba 07F10C01 		add	r1, r7, #12
+ 390 00be 0422     		movs	r2, #4
+ 391 00c0 1846     		mov	r0, r3
+ 392 00c2 FFF7FEFF 		bl	memcpy
+  82:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  83:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 393              		.loc 1 83 0
+ 394 00c6 00BF     		nop
+ 395 00c8 3837     		adds	r7, r7, #56
+ 396              		.cfi_def_cfa_offset 8
+ 397 00ca BD46     		mov	sp, r7
+ 398              		.cfi_def_cfa_register 13
+ 399              		@ sp needed
+ 400 00cc 80BD     		pop	{r7, pc}
+ 401              		.cfi_endproc
+ 402              	.LFE70:
+ 403              		.size	SCD30_getCarbonDioxideConcentration, .-SCD30_getCarbonDioxideConcentration
+ 404 00ce 00BF     		.section	.text.SCD30_writeCommand,"ax",%progbits
+ 405              		.align	2
+ 406              		.global	SCD30_writeCommand
+ 407              		.thumb
+ 408              		.thumb_func
+ 409              		.type	SCD30_writeCommand, %function
+ 410              	SCD30_writeCommand:
+ 411              	.LFB71:
+  84:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+  85:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_writeCommand(uint16_t command) {
+ 412              		.loc 1 85 0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 16
+ 415              		@ frame_needed = 1, uses_anonymous_args = 0
+ 416 0000 80B5     		push	{r7, lr}
+ 417              		.cfi_def_cfa_offset 8
+ 418              		.cfi_offset 7, -8
+ 419              		.cfi_offset 14, -4
+ 420 0002 84B0     		sub	sp, sp, #16
+ 421              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 10
+
+
+ 422 0004 00AF     		add	r7, sp, #0
+ 423              		.cfi_def_cfa_register 7
+ 424 0006 0346     		mov	r3, r0
+ 425 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  86:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint8_t buf [2];
+  87:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[0] = command >> 8;
+ 426              		.loc 1 87 0
+ 427 000a FB88     		ldrh	r3, [r7, #6]
+ 428 000c 1B0A     		lsrs	r3, r3, #8
+ 429 000e 9BB2     		uxth	r3, r3
+ 430 0010 DBB2     		uxtb	r3, r3
+ 431 0012 3B73     		strb	r3, [r7, #12]
+  88:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[1] = command;
+ 432              		.loc 1 88 0
+ 433 0014 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 434 0016 DBB2     		uxtb	r3, r3
+ 435 0018 7B73     		strb	r3, [r7, #13]
+  89:..\..\SCD30\SCD30.cydsn/SCD30.c ****     
+  90:..\..\SCD30\SCD30.cydsn/SCD30.c ****     I2C_MasterWriteBuf(SCD30_I2C_ADDRESS, buf, 2, I2C_MODE_COMPLETE_XFER);
+ 436              		.loc 1 90 0
+ 437 001a 07F10C01 		add	r1, r7, #12
+ 438 001e 0023     		movs	r3, #0
+ 439 0020 0222     		movs	r2, #2
+ 440 0022 6120     		movs	r0, #97
+ 441 0024 FFF7FEFF 		bl	I2C_MasterWriteBuf
+ 442              	.L16:
+  91:..\..\SCD30\SCD30.cydsn/SCD30.c ****     for(;;){
+  92:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if(0u != (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+ 443              		.loc 1 92 0
+ 444 0028 FFF7FEFF 		bl	I2C_MasterStatus
+ 445 002c 0346     		mov	r3, r0
+ 446 002e 03F00203 		and	r3, r3, #2
+ 447 0032 002B     		cmp	r3, #0
+ 448 0034 00D1     		bne	.L18
+  93:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 {
+  94:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 break;
+  95:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 }
+  96:..\..\SCD30\SCD30.cydsn/SCD30.c ****             }
+ 449              		.loc 1 96 0
+ 450 0036 F7E7     		b	.L16
+ 451              	.L18:
+  94:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 }
+ 452              		.loc 1 94 0
+ 453 0038 00BF     		nop
+  97:..\..\SCD30\SCD30.cydsn/SCD30.c ****          //         UART_PutHexInt(command);             UART_PutString("Command Written");       U
+  98:..\..\SCD30\SCD30.cydsn/SCD30.c **** I2C_MasterClearStatus();
+ 454              		.loc 1 98 0
+ 455 003a FFF7FEFF 		bl	I2C_MasterClearStatus
+  99:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 456              		.loc 1 99 0
+ 457 003e 00BF     		nop
+ 458 0040 1037     		adds	r7, r7, #16
+ 459              		.cfi_def_cfa_offset 8
+ 460 0042 BD46     		mov	sp, r7
+ 461              		.cfi_def_cfa_register 13
+ 462              		@ sp needed
+ 463 0044 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 11
+
+
+ 464              		.cfi_endproc
+ 465              	.LFE71:
+ 466              		.size	SCD30_writeCommand, .-SCD30_writeCommand
+ 467 0046 00BF     		.section	.text.SCD30_writeCommandWithArguments,"ax",%progbits
+ 468              		.align	2
+ 469              		.global	SCD30_writeCommandWithArguments
+ 470              		.thumb
+ 471              		.thumb_func
+ 472              		.type	SCD30_writeCommandWithArguments, %function
+ 473              	SCD30_writeCommandWithArguments:
+ 474              	.LFB72:
+ 100:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 101:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_writeCommandWithArguments(uint16_t command, uint16_t arguments) {
+ 475              		.loc 1 101 0
+ 476              		.cfi_startproc
+ 477              		@ args = 0, pretend = 0, frame = 16
+ 478              		@ frame_needed = 1, uses_anonymous_args = 0
+ 479 0000 80B5     		push	{r7, lr}
+ 480              		.cfi_def_cfa_offset 8
+ 481              		.cfi_offset 7, -8
+ 482              		.cfi_offset 14, -4
+ 483 0002 84B0     		sub	sp, sp, #16
+ 484              		.cfi_def_cfa_offset 24
+ 485 0004 00AF     		add	r7, sp, #0
+ 486              		.cfi_def_cfa_register 7
+ 487 0006 0346     		mov	r3, r0
+ 488 0008 0A46     		mov	r2, r1
+ 489 000a FB80     		strh	r3, [r7, #6]	@ movhi
+ 490 000c 1346     		mov	r3, r2	@ movhi
+ 491 000e BB80     		strh	r3, [r7, #4]	@ movhi
+ 102:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint8_t checkSum, buf[5] = { 0 };
+ 492              		.loc 1 102 0
+ 493 0010 07F10803 		add	r3, r7, #8
+ 494 0014 0022     		movs	r2, #0
+ 495 0016 1A60     		str	r2, [r3]
+ 496 0018 1A71     		strb	r2, [r3, #4]
+ 103:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 104:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[0] = command >> 8;
+ 497              		.loc 1 104 0
+ 498 001a FB88     		ldrh	r3, [r7, #6]
+ 499 001c 1B0A     		lsrs	r3, r3, #8
+ 500 001e 9BB2     		uxth	r3, r3
+ 501 0020 DBB2     		uxtb	r3, r3
+ 502 0022 3B72     		strb	r3, [r7, #8]
+ 105:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[1] = command;
+ 503              		.loc 1 105 0
+ 504 0024 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 505 0026 DBB2     		uxtb	r3, r3
+ 506 0028 7B72     		strb	r3, [r7, #9]
+ 106:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[2] = arguments >> 8;
+ 507              		.loc 1 106 0
+ 508 002a BB88     		ldrh	r3, [r7, #4]
+ 509 002c 1B0A     		lsrs	r3, r3, #8
+ 510 002e 9BB2     		uxth	r3, r3
+ 511 0030 DBB2     		uxtb	r3, r3
+ 512 0032 BB72     		strb	r3, [r7, #10]
+ 107:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[3] = arguments;
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 12
+
+
+ 513              		.loc 1 107 0
+ 514 0034 BB88     		ldrh	r3, [r7, #4]	@ movhi
+ 515 0036 DBB2     		uxtb	r3, r3
+ 516 0038 FB72     		strb	r3, [r7, #11]
+ 108:..\..\SCD30\SCD30.cydsn/SCD30.c ****     checkSum = SCD30_calculateCrc(&buf[2], 2);
+ 517              		.loc 1 108 0
+ 518 003a 07F10803 		add	r3, r7, #8
+ 519 003e 0233     		adds	r3, r3, #2
+ 520 0040 0221     		movs	r1, #2
+ 521 0042 1846     		mov	r0, r3
+ 522 0044 FFF7FEFF 		bl	SCD30_calculateCrc
+ 523 0048 0346     		mov	r3, r0
+ 524 004a FB73     		strb	r3, [r7, #15]
+ 109:..\..\SCD30\SCD30.cydsn/SCD30.c ****     buf[4] = checkSum;
+ 525              		.loc 1 109 0
+ 526 004c FB7B     		ldrb	r3, [r7, #15]
+ 527 004e 3B73     		strb	r3, [r7, #12]
+ 110:..\..\SCD30\SCD30.cydsn/SCD30.c ****                                              //   for(int k = 0; k <= 4; )
+ 111:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeBuffer(buf, 5);
+ 528              		.loc 1 111 0
+ 529 0050 07F10803 		add	r3, r7, #8
+ 530 0054 0521     		movs	r1, #5
+ 531 0056 1846     		mov	r0, r3
+ 532 0058 FFF7FEFF 		bl	SCD30_writeBuffer
+ 112:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 533              		.loc 1 112 0
+ 534 005c 00BF     		nop
+ 535 005e 1037     		adds	r7, r7, #16
+ 536              		.cfi_def_cfa_offset 8
+ 537 0060 BD46     		mov	sp, r7
+ 538              		.cfi_def_cfa_register 13
+ 539              		@ sp needed
+ 540 0062 80BD     		pop	{r7, pc}
+ 541              		.cfi_endproc
+ 542              	.LFE72:
+ 543              		.size	SCD30_writeCommandWithArguments, .-SCD30_writeCommandWithArguments
+ 544              		.section	.text.SCD30_readRegister,"ax",%progbits
+ 545              		.align	2
+ 546              		.global	SCD30_readRegister
+ 547              		.thumb
+ 548              		.thumb_func
+ 549              		.type	SCD30_readRegister, %function
+ 550              	SCD30_readRegister:
+ 551              	.LFB73:
+ 113:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 114:..\..\SCD30\SCD30.cydsn/SCD30.c **** uint16_t SCD30_readRegister(uint16_t command) {
+ 552              		.loc 1 114 0
+ 553              		.cfi_startproc
+ 554              		@ args = 0, pretend = 0, frame = 16
+ 555              		@ frame_needed = 1, uses_anonymous_args = 0
+ 556 0000 80B5     		push	{r7, lr}
+ 557              		.cfi_def_cfa_offset 8
+ 558              		.cfi_offset 7, -8
+ 559              		.cfi_offset 14, -4
+ 560 0002 84B0     		sub	sp, sp, #16
+ 561              		.cfi_def_cfa_offset 24
+ 562 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 13
+
+
+ 563              		.cfi_def_cfa_register 7
+ 564 0006 0346     		mov	r3, r0
+ 565 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 115:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint8_t buf[3] = { 0 };
+ 566              		.loc 1 115 0
+ 567 000a 07F10C03 		add	r3, r7, #12
+ 568 000e 0021     		movs	r1, #0
+ 569 0010 0A46     		mov	r2, r1	@ movhi
+ 570 0012 1A80     		strh	r2, [r3]	@ movhi
+ 571 0014 0A46     		mov	r2, r1
+ 572 0016 9A70     		strb	r2, [r3, #2]
+ 116:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 117:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_writeCommand(command);
+ 573              		.loc 1 117 0
+ 574 0018 FB88     		ldrh	r3, [r7, #6]
+ 575 001a 1846     		mov	r0, r3
+ 576 001c FFF7FEFF 		bl	SCD30_writeCommand
+ 118:..\..\SCD30\SCD30.cydsn/SCD30.c ****     SCD30_readBuffer(buf, 3);
+ 577              		.loc 1 118 0
+ 578 0020 07F10C03 		add	r3, r7, #12
+ 579 0024 0321     		movs	r1, #3
+ 580 0026 1846     		mov	r0, r3
+ 581 0028 FFF7FEFF 		bl	SCD30_readBuffer
+ 119:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 120:..\..\SCD30\SCD30.cydsn/SCD30.c ****     return ((((uint16_t)buf[0]) << 8) | buf[1]);
+ 582              		.loc 1 120 0
+ 583 002c 3B7B     		ldrb	r3, [r7, #12]	@ zero_extendqisi2
+ 584 002e 1B02     		lsls	r3, r3, #8
+ 585 0030 1AB2     		sxth	r2, r3
+ 586 0032 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 587 0034 1BB2     		sxth	r3, r3
+ 588 0036 1343     		orrs	r3, r3, r2
+ 589 0038 1BB2     		sxth	r3, r3
+ 590 003a 9BB2     		uxth	r3, r3
+ 121:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 591              		.loc 1 121 0
+ 592 003c 1846     		mov	r0, r3
+ 593 003e 1037     		adds	r7, r7, #16
+ 594              		.cfi_def_cfa_offset 8
+ 595 0040 BD46     		mov	sp, r7
+ 596              		.cfi_def_cfa_register 13
+ 597              		@ sp needed
+ 598 0042 80BD     		pop	{r7, pc}
+ 599              		.cfi_endproc
+ 600              	.LFE73:
+ 601              		.size	SCD30_readRegister, .-SCD30_readRegister
+ 602              		.section	.text.SCD30_writeBuffer,"ax",%progbits
+ 603              		.align	2
+ 604              		.global	SCD30_writeBuffer
+ 605              		.thumb
+ 606              		.thumb_func
+ 607              		.type	SCD30_writeBuffer, %function
+ 608              	SCD30_writeBuffer:
+ 609              	.LFB74:
+ 122:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 123:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_writeBuffer(uint8_t* data, uint8_t len) 
+ 124:..\..\SCD30\SCD30.cydsn/SCD30.c **** {
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 14
+
+
+ 610              		.loc 1 124 0
+ 611              		.cfi_startproc
+ 612              		@ args = 0, pretend = 0, frame = 8
+ 613              		@ frame_needed = 1, uses_anonymous_args = 0
+ 614 0000 80B5     		push	{r7, lr}
+ 615              		.cfi_def_cfa_offset 8
+ 616              		.cfi_offset 7, -8
+ 617              		.cfi_offset 14, -4
+ 618 0002 82B0     		sub	sp, sp, #8
+ 619              		.cfi_def_cfa_offset 16
+ 620 0004 00AF     		add	r7, sp, #0
+ 621              		.cfi_def_cfa_register 7
+ 622 0006 7860     		str	r0, [r7, #4]
+ 623 0008 0B46     		mov	r3, r1
+ 624 000a FB70     		strb	r3, [r7, #3]
+ 125:..\..\SCD30\SCD30.cydsn/SCD30.c ****     I2C_MasterWriteBuf(SCD30_I2C_ADDRESS, data, len, I2C_MODE_COMPLETE_XFER);
+ 625              		.loc 1 125 0
+ 626 000c FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+ 627 000e 0023     		movs	r3, #0
+ 628 0010 7968     		ldr	r1, [r7, #4]
+ 629 0012 6120     		movs	r0, #97
+ 630 0014 FFF7FEFF 		bl	I2C_MasterWriteBuf
+ 631              	.L25:
+ 126:..\..\SCD30\SCD30.cydsn/SCD30.c ****     for(;;){
+ 127:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if(0u != (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+ 632              		.loc 1 127 0
+ 633 0018 FFF7FEFF 		bl	I2C_MasterStatus
+ 634 001c 0346     		mov	r3, r0
+ 635 001e 03F00203 		and	r3, r3, #2
+ 636 0022 002B     		cmp	r3, #0
+ 637 0024 00D1     		bne	.L27
+ 128:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 {
+ 129:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 break;
+ 130:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 }
+ 131:..\..\SCD30\SCD30.cydsn/SCD30.c ****             }  
+ 638              		.loc 1 131 0
+ 639 0026 F7E7     		b	.L25
+ 640              	.L27:
+ 129:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 }
+ 641              		.loc 1 129 0
+ 642 0028 00BF     		nop
+ 132:..\..\SCD30\SCD30.cydsn/SCD30.c **** /*   
+ 133:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("Data Written:");
+ 134:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("\n");
+ 135:..\..\SCD30\SCD30.cydsn/SCD30.c **** for (int k=0; k<len; k++)
+ 136:..\..\SCD30\SCD30.cydsn/SCD30.c **** {
+ 137:..\..\SCD30\SCD30.cydsn/SCD30.c ****     UART_PutHexByte(data[k]);
+ 138:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 139:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("\n");
+ 140:..\..\SCD30\SCD30.cydsn/SCD30.c **** */
+ 141:..\..\SCD30\SCD30.cydsn/SCD30.c **** I2C_MasterClearStatus();
+ 643              		.loc 1 141 0
+ 644 002a FFF7FEFF 		bl	I2C_MasterClearStatus
+ 142:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 645              		.loc 1 142 0
+ 646 002e 00BF     		nop
+ 647 0030 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 15
+
+
+ 648              		.cfi_def_cfa_offset 8
+ 649 0032 BD46     		mov	sp, r7
+ 650              		.cfi_def_cfa_register 13
+ 651              		@ sp needed
+ 652 0034 80BD     		pop	{r7, pc}
+ 653              		.cfi_endproc
+ 654              	.LFE74:
+ 655              		.size	SCD30_writeBuffer, .-SCD30_writeBuffer
+ 656 0036 00BF     		.section	.text.SCD30_readBuffer,"ax",%progbits
+ 657              		.align	2
+ 658              		.global	SCD30_readBuffer
+ 659              		.thumb
+ 660              		.thumb_func
+ 661              		.type	SCD30_readBuffer, %function
+ 662              	SCD30_readBuffer:
+ 663              	.LFB75:
+ 143:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 144:..\..\SCD30\SCD30.cydsn/SCD30.c **** void SCD30_readBuffer(uint8_t* data, uint8_t len) 
+ 145:..\..\SCD30\SCD30.cydsn/SCD30.c **** {
+ 664              		.loc 1 145 0
+ 665              		.cfi_startproc
+ 666              		@ args = 0, pretend = 0, frame = 8
+ 667              		@ frame_needed = 1, uses_anonymous_args = 0
+ 668 0000 80B5     		push	{r7, lr}
+ 669              		.cfi_def_cfa_offset 8
+ 670              		.cfi_offset 7, -8
+ 671              		.cfi_offset 14, -4
+ 672 0002 82B0     		sub	sp, sp, #8
+ 673              		.cfi_def_cfa_offset 16
+ 674 0004 00AF     		add	r7, sp, #0
+ 675              		.cfi_def_cfa_register 7
+ 676 0006 7860     		str	r0, [r7, #4]
+ 677 0008 0B46     		mov	r3, r1
+ 678 000a FB70     		strb	r3, [r7, #3]
+ 146:..\..\SCD30\SCD30.cydsn/SCD30.c ****     CyDelay(50);
+ 679              		.loc 1 146 0
+ 680 000c 3220     		movs	r0, #50
+ 681 000e FFF7FEFF 		bl	CyDelay
+ 147:..\..\SCD30\SCD30.cydsn/SCD30.c ****     
+ 148:..\..\SCD30\SCD30.cydsn/SCD30.c ****     I2C_MasterReadBuf(SCD30_I2C_ADDRESS, data, len, I2C_MODE_COMPLETE_XFER);
+ 682              		.loc 1 148 0
+ 683 0012 FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+ 684 0014 0023     		movs	r3, #0
+ 685 0016 7968     		ldr	r1, [r7, #4]
+ 686 0018 6120     		movs	r0, #97
+ 687 001a FFF7FEFF 		bl	I2C_MasterReadBuf
+ 688              	.L31:
+ 149:..\..\SCD30\SCD30.cydsn/SCD30.c ****     for(;;){
+ 150:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if(0u != (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT)){
+ 689              		.loc 1 150 0
+ 690 001e FFF7FEFF 		bl	I2C_MasterStatus
+ 691 0022 0346     		mov	r3, r0
+ 692 0024 03F00103 		and	r3, r3, #1
+ 693 0028 002B     		cmp	r3, #0
+ 694 002a 00D1     		bne	.L33
+ 151:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 break;
+ 152:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 }
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 16
+
+
+ 153:..\..\SCD30\SCD30.cydsn/SCD30.c ****             }
+ 695              		.loc 1 153 0
+ 696 002c F7E7     		b	.L31
+ 697              	.L33:
+ 151:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 break;
+ 698              		.loc 1 151 0
+ 699 002e 00BF     		nop
+ 154:..\..\SCD30\SCD30.cydsn/SCD30.c **** /*
+ 155:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("Data Read:");
+ 156:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("\n");
+ 157:..\..\SCD30\SCD30.cydsn/SCD30.c **** for(int k=0; k<len; k++)
+ 158:..\..\SCD30\SCD30.cydsn/SCD30.c **** {
+ 159:..\..\SCD30\SCD30.cydsn/SCD30.c ****     UART_PutHexByte(data[k]);
+ 160:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 161:..\..\SCD30\SCD30.cydsn/SCD30.c **** UART_PutString("\n");
+ 162:..\..\SCD30\SCD30.cydsn/SCD30.c **** */
+ 163:..\..\SCD30\SCD30.cydsn/SCD30.c **** I2C_MasterClearStatus();
+ 700              		.loc 1 163 0
+ 701 0030 FFF7FEFF 		bl	I2C_MasterClearStatus
+ 164:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 702              		.loc 1 164 0
+ 703 0034 00BF     		nop
+ 704 0036 0837     		adds	r7, r7, #8
+ 705              		.cfi_def_cfa_offset 8
+ 706 0038 BD46     		mov	sp, r7
+ 707              		.cfi_def_cfa_register 13
+ 708              		@ sp needed
+ 709 003a 80BD     		pop	{r7, pc}
+ 710              		.cfi_endproc
+ 711              	.LFE75:
+ 712              		.size	SCD30_readBuffer, .-SCD30_readBuffer
+ 713              		.section	.text.SCD30_calculateCrc,"ax",%progbits
+ 714              		.align	2
+ 715              		.global	SCD30_calculateCrc
+ 716              		.thumb
+ 717              		.thumb_func
+ 718              		.type	SCD30_calculateCrc, %function
+ 719              	SCD30_calculateCrc:
+ 720              	.LFB76:
+ 165:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 166:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 167:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 168:..\..\SCD30\SCD30.cydsn/SCD30.c **** uint8_t SCD30_calculateCrc(uint8_t data[], uint8_t len) {
+ 721              		.loc 1 168 0
+ 722              		.cfi_startproc
+ 723              		@ args = 0, pretend = 0, frame = 16
+ 724              		@ frame_needed = 1, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726 0000 80B4     		push	{r7}
+ 727              		.cfi_def_cfa_offset 4
+ 728              		.cfi_offset 7, -4
+ 729 0002 85B0     		sub	sp, sp, #20
+ 730              		.cfi_def_cfa_offset 24
+ 731 0004 00AF     		add	r7, sp, #0
+ 732              		.cfi_def_cfa_register 7
+ 733 0006 7860     		str	r0, [r7, #4]
+ 734 0008 0B46     		mov	r3, r1
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 17
+
+
+ 735 000a FB70     		strb	r3, [r7, #3]
+ 169:..\..\SCD30\SCD30.cydsn/SCD30.c ****     uint8_t bit, byteCtr, crc = 0xff;
+ 736              		.loc 1 169 0
+ 737 000c FF23     		movs	r3, #255
+ 738 000e 7B73     		strb	r3, [r7, #13]
+ 170:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 171:..\..\SCD30\SCD30.cydsn/SCD30.c ****     // calculates 8-Bit checksum with given polynomial
+ 172:..\..\SCD30\SCD30.cydsn/SCD30.c ****     for (byteCtr = 0; byteCtr < len; byteCtr ++) {
+ 739              		.loc 1 172 0
+ 740 0010 0023     		movs	r3, #0
+ 741 0012 BB73     		strb	r3, [r7, #14]
+ 742 0014 20E0     		b	.L35
+ 743              	.L40:
+ 173:..\..\SCD30\SCD30.cydsn/SCD30.c ****         crc ^= (data[byteCtr]);
+ 744              		.loc 1 173 0
+ 745 0016 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 746 0018 7A68     		ldr	r2, [r7, #4]
+ 747 001a 1344     		add	r3, r3, r2
+ 748 001c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 749 001e 7B7B     		ldrb	r3, [r7, #13]
+ 750 0020 5340     		eors	r3, r3, r2
+ 751 0022 7B73     		strb	r3, [r7, #13]
+ 174:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 175:..\..\SCD30\SCD30.cydsn/SCD30.c ****         for (bit = 8; bit > 0; -- bit) {
+ 752              		.loc 1 175 0
+ 753 0024 0823     		movs	r3, #8
+ 754 0026 FB73     		strb	r3, [r7, #15]
+ 755 0028 10E0     		b	.L36
+ 756              	.L39:
+ 176:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if (crc & 0x80) {
+ 757              		.loc 1 176 0
+ 758 002a 97F90D30 		ldrsb	r3, [r7, #13]
+ 759 002e 002B     		cmp	r3, #0
+ 760 0030 06DA     		bge	.L37
+ 177:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 crc = (crc << 1) ^ SCD30_POLYNOMIAL;
+ 761              		.loc 1 177 0
+ 762 0032 7B7B     		ldrb	r3, [r7, #13]
+ 763 0034 5B00     		lsls	r3, r3, #1
+ 764 0036 DBB2     		uxtb	r3, r3
+ 765 0038 83F03103 		eor	r3, r3, #49
+ 766 003c 7B73     		strb	r3, [r7, #13]
+ 767 003e 02E0     		b	.L38
+ 768              	.L37:
+ 178:..\..\SCD30\SCD30.cydsn/SCD30.c ****             } else {
+ 179:..\..\SCD30\SCD30.cydsn/SCD30.c ****                 crc = (crc << 1);
+ 769              		.loc 1 179 0
+ 770 0040 7B7B     		ldrb	r3, [r7, #13]
+ 771 0042 5B00     		lsls	r3, r3, #1
+ 772 0044 7B73     		strb	r3, [r7, #13]
+ 773              	.L38:
+ 175:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if (crc & 0x80) {
+ 774              		.loc 1 175 0 discriminator 2
+ 775 0046 FB7B     		ldrb	r3, [r7, #15]
+ 776 0048 013B     		subs	r3, r3, #1
+ 777 004a FB73     		strb	r3, [r7, #15]
+ 778              	.L36:
+ 175:..\..\SCD30\SCD30.cydsn/SCD30.c ****             if (crc & 0x80) {
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 18
+
+
+ 779              		.loc 1 175 0 is_stmt 0 discriminator 1
+ 780 004c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 781 004e 002B     		cmp	r3, #0
+ 782 0050 EBD1     		bne	.L39
+ 172:..\..\SCD30\SCD30.cydsn/SCD30.c ****         crc ^= (data[byteCtr]);
+ 783              		.loc 1 172 0 is_stmt 1 discriminator 2
+ 784 0052 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 785 0054 0133     		adds	r3, r3, #1
+ 786 0056 BB73     		strb	r3, [r7, #14]
+ 787              	.L35:
+ 172:..\..\SCD30\SCD30.cydsn/SCD30.c ****         crc ^= (data[byteCtr]);
+ 788              		.loc 1 172 0 is_stmt 0 discriminator 1
+ 789 0058 BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 790 005a FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 791 005c 9A42     		cmp	r2, r3
+ 792 005e DAD3     		bcc	.L40
+ 180:..\..\SCD30\SCD30.cydsn/SCD30.c ****             }
+ 181:..\..\SCD30\SCD30.cydsn/SCD30.c ****         }
+ 182:..\..\SCD30\SCD30.cydsn/SCD30.c ****     }
+ 183:..\..\SCD30\SCD30.cydsn/SCD30.c **** 
+ 184:..\..\SCD30\SCD30.cydsn/SCD30.c ****     return crc;
+ 793              		.loc 1 184 0 is_stmt 1
+ 794 0060 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 185:..\..\SCD30\SCD30.cydsn/SCD30.c **** }
+ 795              		.loc 1 185 0
+ 796 0062 1846     		mov	r0, r3
+ 797 0064 1437     		adds	r7, r7, #20
+ 798              		.cfi_def_cfa_offset 4
+ 799 0066 BD46     		mov	sp, r7
+ 800              		.cfi_def_cfa_register 13
+ 801              		@ sp needed
+ 802 0068 80BC     		pop	{r7}
+ 803              		.cfi_restore 7
+ 804              		.cfi_def_cfa_offset 0
+ 805 006a 7047     		bx	lr
+ 806              		.cfi_endproc
+ 807              	.LFE76:
+ 808              		.size	SCD30_calculateCrc, .-SCD30_calculateCrc
+ 809              		.text
+ 810              	.Letext0:
+ 811              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 812              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 813              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 814              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ 815              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 816              		.section	.debug_info,"",%progbits
+ 817              	.Ldebug_info0:
+ 818 0000 80040000 		.4byte	0x480
+ 819 0004 0400     		.2byte	0x4
+ 820 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 821 000a 04       		.byte	0x4
+ 822 000b 01       		.uleb128 0x1
+ 823 000c 66000000 		.4byte	.LASF59
+ 824 0010 0C       		.byte	0xc
+ 825 0011 47010000 		.4byte	.LASF60
+ 826 0015 93030000 		.4byte	.LASF61
+ 827 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 19
+
+
+ 828 001d 00000000 		.4byte	0
+ 829 0021 00000000 		.4byte	.Ldebug_line0
+ 830 0025 02       		.uleb128 0x2
+ 831 0026 01       		.byte	0x1
+ 832 0027 06       		.byte	0x6
+ 833 0028 F1010000 		.4byte	.LASF0
+ 834 002c 03       		.uleb128 0x3
+ 835 002d 97010000 		.4byte	.LASF3
+ 836 0031 02       		.byte	0x2
+ 837 0032 1D       		.byte	0x1d
+ 838 0033 37000000 		.4byte	0x37
+ 839 0037 02       		.uleb128 0x2
+ 840 0038 01       		.byte	0x1
+ 841 0039 08       		.byte	0x8
+ 842 003a E3010000 		.4byte	.LASF1
+ 843 003e 02       		.uleb128 0x2
+ 844 003f 02       		.byte	0x2
+ 845 0040 05       		.byte	0x5
+ 846 0041 20000000 		.4byte	.LASF2
+ 847 0045 03       		.uleb128 0x3
+ 848 0046 1F010000 		.4byte	.LASF4
+ 849 004a 02       		.byte	0x2
+ 850 004b 2B       		.byte	0x2b
+ 851 004c 50000000 		.4byte	0x50
+ 852 0050 02       		.uleb128 0x2
+ 853 0051 02       		.byte	0x2
+ 854 0052 07       		.byte	0x7
+ 855 0053 75020000 		.4byte	.LASF5
+ 856 0057 03       		.uleb128 0x3
+ 857 0058 57030000 		.4byte	.LASF6
+ 858 005c 02       		.byte	0x2
+ 859 005d 3F       		.byte	0x3f
+ 860 005e 62000000 		.4byte	0x62
+ 861 0062 02       		.uleb128 0x2
+ 862 0063 04       		.byte	0x4
+ 863 0064 05       		.byte	0x5
+ 864 0065 B0020000 		.4byte	.LASF7
+ 865 0069 03       		.uleb128 0x3
+ 866 006a 14010000 		.4byte	.LASF8
+ 867 006e 02       		.byte	0x2
+ 868 006f 41       		.byte	0x41
+ 869 0070 74000000 		.4byte	0x74
+ 870 0074 02       		.uleb128 0x2
+ 871 0075 04       		.byte	0x4
+ 872 0076 07       		.byte	0x7
+ 873 0077 D5020000 		.4byte	.LASF9
+ 874 007b 02       		.uleb128 0x2
+ 875 007c 08       		.byte	0x8
+ 876 007d 05       		.byte	0x5
+ 877 007e 7A010000 		.4byte	.LASF10
+ 878 0082 02       		.uleb128 0x2
+ 879 0083 08       		.byte	0x8
+ 880 0084 07       		.byte	0x7
+ 881 0085 FD010000 		.4byte	.LASF11
+ 882 0089 04       		.uleb128 0x4
+ 883 008a 04       		.byte	0x4
+ 884 008b 05       		.byte	0x5
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 20
+
+
+ 885 008c 696E7400 		.ascii	"int\000"
+ 886 0090 02       		.uleb128 0x2
+ 887 0091 04       		.byte	0x4
+ 888 0092 07       		.byte	0x7
+ 889 0093 1D020000 		.4byte	.LASF12
+ 890 0097 03       		.uleb128 0x3
+ 891 0098 61030000 		.4byte	.LASF13
+ 892 009c 03       		.byte	0x3
+ 893 009d 18       		.byte	0x18
+ 894 009e 2C000000 		.4byte	0x2c
+ 895 00a2 03       		.uleb128 0x3
+ 896 00a3 2A020000 		.4byte	.LASF14
+ 897 00a7 03       		.byte	0x3
+ 898 00a8 24       		.byte	0x24
+ 899 00a9 45000000 		.4byte	0x45
+ 900 00ad 03       		.uleb128 0x3
+ 901 00ae B9020000 		.4byte	.LASF15
+ 902 00b2 03       		.byte	0x3
+ 903 00b3 2C       		.byte	0x2c
+ 904 00b4 57000000 		.4byte	0x57
+ 905 00b8 03       		.uleb128 0x3
+ 906 00b9 14020000 		.4byte	.LASF16
+ 907 00bd 03       		.byte	0x3
+ 908 00be 30       		.byte	0x30
+ 909 00bf 69000000 		.4byte	0x69
+ 910 00c3 05       		.uleb128 0x5
+ 911 00c4 6E010000 		.4byte	.LASF17
+ 912 00c8 04       		.byte	0x4
+ 913 00c9 E401     		.2byte	0x1e4
+ 914 00cb 37000000 		.4byte	0x37
+ 915 00cf 05       		.uleb128 0x5
+ 916 00d0 40010000 		.4byte	.LASF18
+ 917 00d4 04       		.byte	0x4
+ 918 00d5 E501     		.2byte	0x1e5
+ 919 00d7 50000000 		.4byte	0x50
+ 920 00db 02       		.uleb128 0x2
+ 921 00dc 04       		.byte	0x4
+ 922 00dd 04       		.byte	0x4
+ 923 00de 74010000 		.4byte	.LASF19
+ 924 00e2 02       		.uleb128 0x2
+ 925 00e3 08       		.byte	0x8
+ 926 00e4 04       		.byte	0x4
+ 927 00e5 8C030000 		.4byte	.LASF20
+ 928 00e9 02       		.uleb128 0x2
+ 929 00ea 01       		.byte	0x1
+ 930 00eb 08       		.byte	0x8
+ 931 00ec A5020000 		.4byte	.LASF21
+ 932 00f0 06       		.uleb128 0x6
+ 933 00f1 C3000000 		.4byte	0xc3
+ 934 00f5 02       		.uleb128 0x2
+ 935 00f6 08       		.byte	0x8
+ 936 00f7 04       		.byte	0x4
+ 937 00f8 CF010000 		.4byte	.LASF22
+ 938 00fc 02       		.uleb128 0x2
+ 939 00fd 04       		.byte	0x4
+ 940 00fe 07       		.byte	0x7
+ 941 00ff 2A000000 		.4byte	.LASF23
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 21
+
+
+ 942 0103 07       		.uleb128 0x7
+ 943 0104 C1020000 		.4byte	.LASF62
+ 944 0108 04       		.byte	0x4
+ 945 0109 05       		.byte	0x5
+ 946 010a 30       		.byte	0x30
+ 947 010b 28010000 		.4byte	0x128
+ 948 010f 08       		.uleb128 0x8
+ 949 0110 80030000 		.4byte	.LASF24
+ 950 0114 05       		.byte	0x5
+ 951 0115 31       		.byte	0x31
+ 952 0116 CF000000 		.4byte	0xcf
+ 953 011a 00       		.byte	0
+ 954 011b 08       		.uleb128 0x8
+ 955 011c 69030000 		.4byte	.LASF25
+ 956 0120 05       		.byte	0x5
+ 957 0121 32       		.byte	0x32
+ 958 0122 C3000000 		.4byte	0xc3
+ 959 0126 02       		.byte	0x2
+ 960 0127 00       		.byte	0
+ 961 0128 09       		.uleb128 0x9
+ 962 0129 64020000 		.4byte	.LASF33
+ 963 012d 01       		.byte	0x1
+ 964 012e 13       		.byte	0x13
+ 965 012f 00000000 		.4byte	.LFB63
+ 966 0133 12000000 		.4byte	.LFE63-.LFB63
+ 967 0137 01       		.uleb128 0x1
+ 968 0138 9C       		.byte	0x9c
+ 969 0139 0A       		.uleb128 0xa
+ 970 013a 03030000 		.4byte	.LASF27
+ 971 013e 01       		.byte	0x1
+ 972 013f 1E       		.byte	0x1e
+ 973 0140 00000000 		.4byte	.LFB64
+ 974 0144 1E000000 		.4byte	.LFE64-.LFB64
+ 975 0148 01       		.uleb128 0x1
+ 976 0149 9C       		.byte	0x9c
+ 977 014a 5D010000 		.4byte	0x15d
+ 978 014e 0B       		.uleb128 0xb
+ 979 014f 90010000 		.4byte	.LASF29
+ 980 0153 01       		.byte	0x1
+ 981 0154 1E       		.byte	0x1e
+ 982 0155 A2000000 		.4byte	0xa2
+ 983 0159 02       		.uleb128 0x2
+ 984 015a 91       		.byte	0x91
+ 985 015b 76       		.sleb128 -10
+ 986 015c 00       		.byte	0
+ 987 015d 0C       		.uleb128 0xc
+ 988 015e 0E000000 		.4byte	.LASF63
+ 989 0162 01       		.byte	0x1
+ 990 0163 22       		.byte	0x22
+ 991 0164 72010000 		.4byte	0x172
+ 992 0168 00000000 		.4byte	.LFB65
+ 993 016c 1C000000 		.4byte	.LFE65-.LFB65
+ 994 0170 01       		.uleb128 0x1
+ 995 0171 9C       		.byte	0x9c
+ 996 0172 02       		.uleb128 0x2
+ 997 0173 01       		.byte	0x1
+ 998 0174 02       		.byte	0x2
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 22
+
+
+ 999 0175 AA020000 		.4byte	.LASF26
+ 1000 0179 0A       		.uleb128 0xa
+ 1001 017a B2010000 		.4byte	.LASF28
+ 1002 017e 01       		.byte	0x1
+ 1003 017f 26       		.byte	0x26
+ 1004 0180 00000000 		.4byte	.LFB66
+ 1005 0184 2E000000 		.4byte	.LFE66-.LFB66
+ 1006 0188 01       		.uleb128 0x1
+ 1007 0189 9C       		.byte	0x9c
+ 1008 018a 9D010000 		.4byte	0x19d
+ 1009 018e 0B       		.uleb128 0xb
+ 1010 018f 67010000 		.4byte	.LASF30
+ 1011 0193 01       		.byte	0x1
+ 1012 0194 26       		.byte	0x26
+ 1013 0195 72010000 		.4byte	0x172
+ 1014 0199 02       		.uleb128 0x2
+ 1015 019a 91       		.byte	0x91
+ 1016 019b 77       		.sleb128 -9
+ 1017 019c 00       		.byte	0
+ 1018 019d 0A       		.uleb128 0xa
+ 1019 019e 88020000 		.4byte	.LASF31
+ 1020 01a2 01       		.byte	0x1
+ 1021 01a3 2E       		.byte	0x2e
+ 1022 01a4 00000000 		.4byte	.LFB67
+ 1023 01a8 1E000000 		.4byte	.LFE67-.LFB67
+ 1024 01ac 01       		.uleb128 0x1
+ 1025 01ad 9C       		.byte	0x9c
+ 1026 01ae C1010000 		.4byte	0x1c1
+ 1027 01b2 0B       		.uleb128 0xb
+ 1028 01b3 FA020000 		.4byte	.LASF32
+ 1029 01b7 01       		.byte	0x1
+ 1030 01b8 2E       		.byte	0x2e
+ 1031 01b9 A2000000 		.4byte	0xa2
+ 1032 01bd 02       		.uleb128 0x2
+ 1033 01be 91       		.byte	0x91
+ 1034 01bf 76       		.sleb128 -10
+ 1035 01c0 00       		.byte	0
+ 1036 01c1 09       		.uleb128 0x9
+ 1037 01c2 33020000 		.4byte	.LASF34
+ 1038 01c6 01       		.byte	0x1
+ 1039 01c7 32       		.byte	0x32
+ 1040 01c8 00000000 		.4byte	.LFB68
+ 1041 01cc 10000000 		.4byte	.LFE68-.LFB68
+ 1042 01d0 01       		.uleb128 0x1
+ 1043 01d1 9C       		.byte	0x9c
+ 1044 01d2 09       		.uleb128 0x9
+ 1045 01d3 2A010000 		.4byte	.LASF35
+ 1046 01d7 01       		.byte	0x1
+ 1047 01d8 36       		.byte	0x36
+ 1048 01d9 00000000 		.4byte	.LFB69
+ 1049 01dd 10000000 		.4byte	.LFE69-.LFB69
+ 1050 01e1 01       		.uleb128 0x1
+ 1051 01e2 9C       		.byte	0x9c
+ 1052 01e3 0A       		.uleb128 0xa
+ 1053 01e4 2A030000 		.4byte	.LASF36
+ 1054 01e8 01       		.byte	0x1
+ 1055 01e9 3A       		.byte	0x3a
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 23
+
+
+ 1056 01ea 00000000 		.4byte	.LFB70
+ 1057 01ee CE000000 		.4byte	.LFE70-.LFB70
+ 1058 01f2 01       		.uleb128 0x1
+ 1059 01f3 9C       		.byte	0x9c
+ 1060 01f4 69020000 		.4byte	0x269
+ 1061 01f8 0B       		.uleb128 0xb
+ 1062 01f9 07000000 		.4byte	.LASF37
+ 1063 01fd 01       		.byte	0x1
+ 1064 01fe 3A       		.byte	0x3a
+ 1065 01ff 69020000 		.4byte	0x269
+ 1066 0203 02       		.uleb128 0x2
+ 1067 0204 91       		.byte	0x91
+ 1068 0205 44       		.sleb128 -60
+ 1069 0206 0D       		.uleb128 0xd
+ 1070 0207 62756600 		.ascii	"buf\000"
+ 1071 020b 01       		.byte	0x1
+ 1072 020c 3B       		.byte	0x3b
+ 1073 020d 6F020000 		.4byte	0x26f
+ 1074 0211 02       		.uleb128 0x2
+ 1075 0212 91       		.byte	0x91
+ 1076 0213 58       		.sleb128 -40
+ 1077 0214 0E       		.uleb128 0xe
+ 1078 0215 00000000 		.4byte	.LASF38
+ 1079 0219 01       		.byte	0x1
+ 1080 021a 3C       		.byte	0x3c
+ 1081 021b B8000000 		.4byte	0xb8
+ 1082 021f 02       		.uleb128 0x2
+ 1083 0220 91       		.byte	0x91
+ 1084 0221 54       		.sleb128 -44
+ 1085 0222 0E       		.uleb128 0xe
+ 1086 0223 DB010000 		.4byte	.LASF39
+ 1087 0227 01       		.byte	0x1
+ 1088 0228 3D       		.byte	0x3d
+ 1089 0229 B8000000 		.4byte	0xb8
+ 1090 022d 02       		.uleb128 0x2
+ 1091 022e 91       		.byte	0x91
+ 1092 022f 50       		.sleb128 -48
+ 1093 0230 0E       		.uleb128 0xe
+ 1094 0231 71030000 		.4byte	.LASF40
+ 1095 0235 01       		.byte	0x1
+ 1096 0236 3E       		.byte	0x3e
+ 1097 0237 B8000000 		.4byte	0xb8
+ 1098 023b 02       		.uleb128 0x2
+ 1099 023c 91       		.byte	0x91
+ 1100 023d 4C       		.sleb128 -52
+ 1101 023e 0E       		.uleb128 0xe
+ 1102 023f A1010000 		.4byte	.LASF41
+ 1103 0243 01       		.byte	0x1
+ 1104 0244 3F       		.byte	0x3f
+ 1105 0245 DB000000 		.4byte	0xdb
+ 1106 0249 02       		.uleb128 0x2
+ 1107 024a 91       		.byte	0x91
+ 1108 024b 74       		.sleb128 -12
+ 1109 024c 0E       		.uleb128 0xe
+ 1110 024d 1E030000 		.4byte	.LASF42
+ 1111 0251 01       		.byte	0x1
+ 1112 0252 40       		.byte	0x40
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 24
+
+
+ 1113 0253 DB000000 		.4byte	0xdb
+ 1114 0257 02       		.uleb128 0x2
+ 1115 0258 91       		.byte	0x91
+ 1116 0259 70       		.sleb128 -16
+ 1117 025a 0E       		.uleb128 0xe
+ 1118 025b 4E030000 		.4byte	.LASF43
+ 1119 025f 01       		.byte	0x1
+ 1120 0260 41       		.byte	0x41
+ 1121 0261 DB000000 		.4byte	0xdb
+ 1122 0265 02       		.uleb128 0x2
+ 1123 0266 91       		.byte	0x91
+ 1124 0267 6C       		.sleb128 -20
+ 1125 0268 00       		.byte	0
+ 1126 0269 0F       		.uleb128 0xf
+ 1127 026a 04       		.byte	0x4
+ 1128 026b DB000000 		.4byte	0xdb
+ 1129 026f 10       		.uleb128 0x10
+ 1130 0270 97000000 		.4byte	0x97
+ 1131 0274 7F020000 		.4byte	0x27f
+ 1132 0278 11       		.uleb128 0x11
+ 1133 0279 FC000000 		.4byte	0xfc
+ 1134 027d 11       		.byte	0x11
+ 1135 027e 00       		.byte	0
+ 1136 027f 0A       		.uleb128 0xa
+ 1137 0280 E7020000 		.4byte	.LASF44
+ 1138 0284 01       		.byte	0x1
+ 1139 0285 55       		.byte	0x55
+ 1140 0286 00000000 		.4byte	.LFB71
+ 1141 028a 46000000 		.4byte	.LFE71-.LFB71
+ 1142 028e 01       		.uleb128 0x1
+ 1143 028f 9C       		.byte	0x9c
+ 1144 0290 B1020000 		.4byte	0x2b1
+ 1145 0294 0B       		.uleb128 0xb
+ 1146 0295 26040000 		.4byte	.LASF45
+ 1147 0299 01       		.byte	0x1
+ 1148 029a 55       		.byte	0x55
+ 1149 029b A2000000 		.4byte	0xa2
+ 1150 029f 02       		.uleb128 0x2
+ 1151 02a0 91       		.byte	0x91
+ 1152 02a1 6E       		.sleb128 -18
+ 1153 02a2 0D       		.uleb128 0xd
+ 1154 02a3 62756600 		.ascii	"buf\000"
+ 1155 02a7 01       		.byte	0x1
+ 1156 02a8 56       		.byte	0x56
+ 1157 02a9 B1020000 		.4byte	0x2b1
+ 1158 02ad 02       		.uleb128 0x2
+ 1159 02ae 91       		.byte	0x91
+ 1160 02af 74       		.sleb128 -12
+ 1161 02b0 00       		.byte	0
+ 1162 02b1 10       		.uleb128 0x10
+ 1163 02b2 97000000 		.4byte	0x97
+ 1164 02b6 C1020000 		.4byte	0x2c1
+ 1165 02ba 11       		.uleb128 0x11
+ 1166 02bb FC000000 		.4byte	0xfc
+ 1167 02bf 01       		.byte	0x1
+ 1168 02c0 00       		.byte	0
+ 1169 02c1 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 25
+
+
+ 1170 02c2 F4000000 		.4byte	.LASF46
+ 1171 02c6 01       		.byte	0x1
+ 1172 02c7 65       		.byte	0x65
+ 1173 02c8 00000000 		.4byte	.LFB72
+ 1174 02cc 64000000 		.4byte	.LFE72-.LFB72
+ 1175 02d0 01       		.uleb128 0x1
+ 1176 02d1 9C       		.byte	0x9c
+ 1177 02d2 0F030000 		.4byte	0x30f
+ 1178 02d6 0B       		.uleb128 0xb
+ 1179 02d7 26040000 		.4byte	.LASF45
+ 1180 02db 01       		.byte	0x1
+ 1181 02dc 65       		.byte	0x65
+ 1182 02dd A2000000 		.4byte	0xa2
+ 1183 02e1 02       		.uleb128 0x2
+ 1184 02e2 91       		.byte	0x91
+ 1185 02e3 6E       		.sleb128 -18
+ 1186 02e4 0B       		.uleb128 0xb
+ 1187 02e5 0B040000 		.4byte	.LASF47
+ 1188 02e9 01       		.byte	0x1
+ 1189 02ea 65       		.byte	0x65
+ 1190 02eb A2000000 		.4byte	0xa2
+ 1191 02ef 02       		.uleb128 0x2
+ 1192 02f0 91       		.byte	0x91
+ 1193 02f1 6C       		.sleb128 -20
+ 1194 02f2 0E       		.uleb128 0xe
+ 1195 02f3 02040000 		.4byte	.LASF48
+ 1196 02f7 01       		.byte	0x1
+ 1197 02f8 66       		.byte	0x66
+ 1198 02f9 97000000 		.4byte	0x97
+ 1199 02fd 02       		.uleb128 0x2
+ 1200 02fe 91       		.byte	0x91
+ 1201 02ff 77       		.sleb128 -9
+ 1202 0300 0D       		.uleb128 0xd
+ 1203 0301 62756600 		.ascii	"buf\000"
+ 1204 0305 01       		.byte	0x1
+ 1205 0306 66       		.byte	0x66
+ 1206 0307 0F030000 		.4byte	0x30f
+ 1207 030b 02       		.uleb128 0x2
+ 1208 030c 91       		.byte	0x91
+ 1209 030d 70       		.sleb128 -16
+ 1210 030e 00       		.byte	0
+ 1211 030f 10       		.uleb128 0x10
+ 1212 0310 97000000 		.4byte	0x97
+ 1213 0314 1F030000 		.4byte	0x31f
+ 1214 0318 11       		.uleb128 0x11
+ 1215 0319 FC000000 		.4byte	0xfc
+ 1216 031d 04       		.byte	0x4
+ 1217 031e 00       		.byte	0
+ 1218 031f 12       		.uleb128 0x12
+ 1219 0320 53000000 		.4byte	.LASF52
+ 1220 0324 01       		.byte	0x1
+ 1221 0325 72       		.byte	0x72
+ 1222 0326 A2000000 		.4byte	0xa2
+ 1223 032a 00000000 		.4byte	.LFB73
+ 1224 032e 44000000 		.4byte	.LFE73-.LFB73
+ 1225 0332 01       		.uleb128 0x1
+ 1226 0333 9C       		.byte	0x9c
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 26
+
+
+ 1227 0334 55030000 		.4byte	0x355
+ 1228 0338 0B       		.uleb128 0xb
+ 1229 0339 26040000 		.4byte	.LASF45
+ 1230 033d 01       		.byte	0x1
+ 1231 033e 72       		.byte	0x72
+ 1232 033f A2000000 		.4byte	0xa2
+ 1233 0343 02       		.uleb128 0x2
+ 1234 0344 91       		.byte	0x91
+ 1235 0345 6E       		.sleb128 -18
+ 1236 0346 0D       		.uleb128 0xd
+ 1237 0347 62756600 		.ascii	"buf\000"
+ 1238 034b 01       		.byte	0x1
+ 1239 034c 73       		.byte	0x73
+ 1240 034d 55030000 		.4byte	0x355
+ 1241 0351 02       		.uleb128 0x2
+ 1242 0352 91       		.byte	0x91
+ 1243 0353 74       		.sleb128 -12
+ 1244 0354 00       		.byte	0
+ 1245 0355 10       		.uleb128 0x10
+ 1246 0356 97000000 		.4byte	0x97
+ 1247 035a 65030000 		.4byte	0x365
+ 1248 035e 11       		.uleb128 0x11
+ 1249 035f FC000000 		.4byte	0xfc
+ 1250 0363 02       		.byte	0x2
+ 1251 0364 00       		.byte	0
+ 1252 0365 0A       		.uleb128 0xa
+ 1253 0366 41000000 		.4byte	.LASF49
+ 1254 036a 01       		.byte	0x1
+ 1255 036b 7B       		.byte	0x7b
+ 1256 036c 00000000 		.4byte	.LFB74
+ 1257 0370 36000000 		.4byte	.LFE74-.LFB74
+ 1258 0374 01       		.uleb128 0x1
+ 1259 0375 9C       		.byte	0x9c
+ 1260 0376 97030000 		.4byte	0x397
+ 1261 037a 0B       		.uleb128 0xb
+ 1262 037b D0020000 		.4byte	.LASF50
+ 1263 037f 01       		.byte	0x1
+ 1264 0380 7B       		.byte	0x7b
+ 1265 0381 97030000 		.4byte	0x397
+ 1266 0385 02       		.uleb128 0x2
+ 1267 0386 91       		.byte	0x91
+ 1268 0387 74       		.sleb128 -12
+ 1269 0388 13       		.uleb128 0x13
+ 1270 0389 6C656E00 		.ascii	"len\000"
+ 1271 038d 01       		.byte	0x1
+ 1272 038e 7B       		.byte	0x7b
+ 1273 038f 97000000 		.4byte	0x97
+ 1274 0393 02       		.uleb128 0x2
+ 1275 0394 91       		.byte	0x91
+ 1276 0395 73       		.sleb128 -13
+ 1277 0396 00       		.byte	0
+ 1278 0397 0F       		.uleb128 0xf
+ 1279 0398 04       		.byte	0x4
+ 1280 0399 97000000 		.4byte	0x97
+ 1281 039d 0A       		.uleb128 0xa
+ 1282 039e 2E040000 		.4byte	.LASF51
+ 1283 03a2 01       		.byte	0x1
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 27
+
+
+ 1284 03a3 90       		.byte	0x90
+ 1285 03a4 00000000 		.4byte	.LFB75
+ 1286 03a8 3C000000 		.4byte	.LFE75-.LFB75
+ 1287 03ac 01       		.uleb128 0x1
+ 1288 03ad 9C       		.byte	0x9c
+ 1289 03ae CF030000 		.4byte	0x3cf
+ 1290 03b2 0B       		.uleb128 0xb
+ 1291 03b3 D0020000 		.4byte	.LASF50
+ 1292 03b7 01       		.byte	0x1
+ 1293 03b8 90       		.byte	0x90
+ 1294 03b9 97030000 		.4byte	0x397
+ 1295 03bd 02       		.uleb128 0x2
+ 1296 03be 91       		.byte	0x91
+ 1297 03bf 74       		.sleb128 -12
+ 1298 03c0 13       		.uleb128 0x13
+ 1299 03c1 6C656E00 		.ascii	"len\000"
+ 1300 03c5 01       		.byte	0x1
+ 1301 03c6 90       		.byte	0x90
+ 1302 03c7 97000000 		.4byte	0x97
+ 1303 03cb 02       		.uleb128 0x2
+ 1304 03cc 91       		.byte	0x91
+ 1305 03cd 73       		.sleb128 -13
+ 1306 03ce 00       		.byte	0
+ 1307 03cf 14       		.uleb128 0x14
+ 1308 03d0 51020000 		.4byte	.LASF53
+ 1309 03d4 01       		.byte	0x1
+ 1310 03d5 A8       		.byte	0xa8
+ 1311 03d6 97000000 		.4byte	0x97
+ 1312 03da 00000000 		.4byte	.LFB76
+ 1313 03de 6C000000 		.4byte	.LFE76-.LFB76
+ 1314 03e2 01       		.uleb128 0x1
+ 1315 03e3 9C       		.byte	0x9c
+ 1316 03e4 2F040000 		.4byte	0x42f
+ 1317 03e8 0B       		.uleb128 0xb
+ 1318 03e9 D0020000 		.4byte	.LASF50
+ 1319 03ed 01       		.byte	0x1
+ 1320 03ee A8       		.byte	0xa8
+ 1321 03ef 97030000 		.4byte	0x397
+ 1322 03f3 02       		.uleb128 0x2
+ 1323 03f4 91       		.byte	0x91
+ 1324 03f5 6C       		.sleb128 -20
+ 1325 03f6 13       		.uleb128 0x13
+ 1326 03f7 6C656E00 		.ascii	"len\000"
+ 1327 03fb 01       		.byte	0x1
+ 1328 03fc A8       		.byte	0xa8
+ 1329 03fd 97000000 		.4byte	0x97
+ 1330 0401 02       		.uleb128 0x2
+ 1331 0402 91       		.byte	0x91
+ 1332 0403 6B       		.sleb128 -21
+ 1333 0404 0D       		.uleb128 0xd
+ 1334 0405 62697400 		.ascii	"bit\000"
+ 1335 0409 01       		.byte	0x1
+ 1336 040a A9       		.byte	0xa9
+ 1337 040b 97000000 		.4byte	0x97
+ 1338 040f 02       		.uleb128 0x2
+ 1339 0410 91       		.byte	0x91
+ 1340 0411 77       		.sleb128 -9
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 28
+
+
+ 1341 0412 0E       		.uleb128 0xe
+ 1342 0413 88010000 		.4byte	.LASF54
+ 1343 0417 01       		.byte	0x1
+ 1344 0418 A9       		.byte	0xa9
+ 1345 0419 97000000 		.4byte	0x97
+ 1346 041d 02       		.uleb128 0x2
+ 1347 041e 91       		.byte	0x91
+ 1348 041f 76       		.sleb128 -10
+ 1349 0420 0D       		.uleb128 0xd
+ 1350 0421 63726300 		.ascii	"crc\000"
+ 1351 0425 01       		.byte	0x1
+ 1352 0426 A9       		.byte	0xa9
+ 1353 0427 97000000 		.4byte	0x97
+ 1354 042b 02       		.uleb128 0x2
+ 1355 042c 91       		.byte	0x91
+ 1356 042d 75       		.sleb128 -11
+ 1357 042e 00       		.byte	0
+ 1358 042f 10       		.uleb128 0x10
+ 1359 0430 03010000 		.4byte	0x103
+ 1360 0434 3F040000 		.4byte	0x43f
+ 1361 0438 11       		.uleb128 0x11
+ 1362 0439 FC000000 		.4byte	0xfc
+ 1363 043d 07       		.byte	0x7
+ 1364 043e 00       		.byte	0
+ 1365 043f 15       		.uleb128 0x15
+ 1366 0440 33000000 		.4byte	.LASF55
+ 1367 0444 05       		.byte	0x5
+ 1368 0445 34       		.byte	0x34
+ 1369 0446 2F040000 		.4byte	0x42f
+ 1370 044a 05       		.uleb128 0x5
+ 1371 044b 03       		.byte	0x3
+ 1372 044c 00000000 		.4byte	DS18x8_Sensor
+ 1373 0450 15       		.uleb128 0x15
+ 1374 0451 15040000 		.4byte	.LASF56
+ 1375 0455 05       		.byte	0x5
+ 1376 0456 39       		.byte	0x39
+ 1377 0457 F0000000 		.4byte	0xf0
+ 1378 045b 05       		.uleb128 0x5
+ 1379 045c 03       		.byte	0x3
+ 1380 045d 00000000 		.4byte	DS18x8_DataReady
+ 1381 0461 16       		.uleb128 0x16
+ 1382 0462 F5030000 		.4byte	.LASF57
+ 1383 0466 06       		.byte	0x6
+ 1384 0467 1207     		.2byte	0x712
+ 1385 0469 6D040000 		.4byte	0x46d
+ 1386 046d 06       		.uleb128 0x6
+ 1387 046e AD000000 		.4byte	0xad
+ 1388 0472 15       		.uleb128 0x15
+ 1389 0473 78030000 		.4byte	.LASF58
+ 1390 0477 01       		.byte	0x1
+ 1391 0478 10       		.byte	0x10
+ 1392 0479 97000000 		.4byte	0x97
+ 1393 047d 05       		.uleb128 0x5
+ 1394 047e 03       		.byte	0x3
+ 1395 047f 00000000 		.4byte	devAddr
+ 1396 0483 00       		.byte	0
+ 1397              		.section	.debug_abbrev,"",%progbits
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 29
+
+
+ 1398              	.Ldebug_abbrev0:
+ 1399 0000 01       		.uleb128 0x1
+ 1400 0001 11       		.uleb128 0x11
+ 1401 0002 01       		.byte	0x1
+ 1402 0003 25       		.uleb128 0x25
+ 1403 0004 0E       		.uleb128 0xe
+ 1404 0005 13       		.uleb128 0x13
+ 1405 0006 0B       		.uleb128 0xb
+ 1406 0007 03       		.uleb128 0x3
+ 1407 0008 0E       		.uleb128 0xe
+ 1408 0009 1B       		.uleb128 0x1b
+ 1409 000a 0E       		.uleb128 0xe
+ 1410 000b 55       		.uleb128 0x55
+ 1411 000c 17       		.uleb128 0x17
+ 1412 000d 11       		.uleb128 0x11
+ 1413 000e 01       		.uleb128 0x1
+ 1414 000f 10       		.uleb128 0x10
+ 1415 0010 17       		.uleb128 0x17
+ 1416 0011 00       		.byte	0
+ 1417 0012 00       		.byte	0
+ 1418 0013 02       		.uleb128 0x2
+ 1419 0014 24       		.uleb128 0x24
+ 1420 0015 00       		.byte	0
+ 1421 0016 0B       		.uleb128 0xb
+ 1422 0017 0B       		.uleb128 0xb
+ 1423 0018 3E       		.uleb128 0x3e
+ 1424 0019 0B       		.uleb128 0xb
+ 1425 001a 03       		.uleb128 0x3
+ 1426 001b 0E       		.uleb128 0xe
+ 1427 001c 00       		.byte	0
+ 1428 001d 00       		.byte	0
+ 1429 001e 03       		.uleb128 0x3
+ 1430 001f 16       		.uleb128 0x16
+ 1431 0020 00       		.byte	0
+ 1432 0021 03       		.uleb128 0x3
+ 1433 0022 0E       		.uleb128 0xe
+ 1434 0023 3A       		.uleb128 0x3a
+ 1435 0024 0B       		.uleb128 0xb
+ 1436 0025 3B       		.uleb128 0x3b
+ 1437 0026 0B       		.uleb128 0xb
+ 1438 0027 49       		.uleb128 0x49
+ 1439 0028 13       		.uleb128 0x13
+ 1440 0029 00       		.byte	0
+ 1441 002a 00       		.byte	0
+ 1442 002b 04       		.uleb128 0x4
+ 1443 002c 24       		.uleb128 0x24
+ 1444 002d 00       		.byte	0
+ 1445 002e 0B       		.uleb128 0xb
+ 1446 002f 0B       		.uleb128 0xb
+ 1447 0030 3E       		.uleb128 0x3e
+ 1448 0031 0B       		.uleb128 0xb
+ 1449 0032 03       		.uleb128 0x3
+ 1450 0033 08       		.uleb128 0x8
+ 1451 0034 00       		.byte	0
+ 1452 0035 00       		.byte	0
+ 1453 0036 05       		.uleb128 0x5
+ 1454 0037 16       		.uleb128 0x16
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 30
+
+
+ 1455 0038 00       		.byte	0
+ 1456 0039 03       		.uleb128 0x3
+ 1457 003a 0E       		.uleb128 0xe
+ 1458 003b 3A       		.uleb128 0x3a
+ 1459 003c 0B       		.uleb128 0xb
+ 1460 003d 3B       		.uleb128 0x3b
+ 1461 003e 05       		.uleb128 0x5
+ 1462 003f 49       		.uleb128 0x49
+ 1463 0040 13       		.uleb128 0x13
+ 1464 0041 00       		.byte	0
+ 1465 0042 00       		.byte	0
+ 1466 0043 06       		.uleb128 0x6
+ 1467 0044 35       		.uleb128 0x35
+ 1468 0045 00       		.byte	0
+ 1469 0046 49       		.uleb128 0x49
+ 1470 0047 13       		.uleb128 0x13
+ 1471 0048 00       		.byte	0
+ 1472 0049 00       		.byte	0
+ 1473 004a 07       		.uleb128 0x7
+ 1474 004b 13       		.uleb128 0x13
+ 1475 004c 01       		.byte	0x1
+ 1476 004d 03       		.uleb128 0x3
+ 1477 004e 0E       		.uleb128 0xe
+ 1478 004f 0B       		.uleb128 0xb
+ 1479 0050 0B       		.uleb128 0xb
+ 1480 0051 3A       		.uleb128 0x3a
+ 1481 0052 0B       		.uleb128 0xb
+ 1482 0053 3B       		.uleb128 0x3b
+ 1483 0054 0B       		.uleb128 0xb
+ 1484 0055 01       		.uleb128 0x1
+ 1485 0056 13       		.uleb128 0x13
+ 1486 0057 00       		.byte	0
+ 1487 0058 00       		.byte	0
+ 1488 0059 08       		.uleb128 0x8
+ 1489 005a 0D       		.uleb128 0xd
+ 1490 005b 00       		.byte	0
+ 1491 005c 03       		.uleb128 0x3
+ 1492 005d 0E       		.uleb128 0xe
+ 1493 005e 3A       		.uleb128 0x3a
+ 1494 005f 0B       		.uleb128 0xb
+ 1495 0060 3B       		.uleb128 0x3b
+ 1496 0061 0B       		.uleb128 0xb
+ 1497 0062 49       		.uleb128 0x49
+ 1498 0063 13       		.uleb128 0x13
+ 1499 0064 38       		.uleb128 0x38
+ 1500 0065 0B       		.uleb128 0xb
+ 1501 0066 00       		.byte	0
+ 1502 0067 00       		.byte	0
+ 1503 0068 09       		.uleb128 0x9
+ 1504 0069 2E       		.uleb128 0x2e
+ 1505 006a 00       		.byte	0
+ 1506 006b 3F       		.uleb128 0x3f
+ 1507 006c 19       		.uleb128 0x19
+ 1508 006d 03       		.uleb128 0x3
+ 1509 006e 0E       		.uleb128 0xe
+ 1510 006f 3A       		.uleb128 0x3a
+ 1511 0070 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 31
+
+
+ 1512 0071 3B       		.uleb128 0x3b
+ 1513 0072 0B       		.uleb128 0xb
+ 1514 0073 27       		.uleb128 0x27
+ 1515 0074 19       		.uleb128 0x19
+ 1516 0075 11       		.uleb128 0x11
+ 1517 0076 01       		.uleb128 0x1
+ 1518 0077 12       		.uleb128 0x12
+ 1519 0078 06       		.uleb128 0x6
+ 1520 0079 40       		.uleb128 0x40
+ 1521 007a 18       		.uleb128 0x18
+ 1522 007b 9642     		.uleb128 0x2116
+ 1523 007d 19       		.uleb128 0x19
+ 1524 007e 00       		.byte	0
+ 1525 007f 00       		.byte	0
+ 1526 0080 0A       		.uleb128 0xa
+ 1527 0081 2E       		.uleb128 0x2e
+ 1528 0082 01       		.byte	0x1
+ 1529 0083 3F       		.uleb128 0x3f
+ 1530 0084 19       		.uleb128 0x19
+ 1531 0085 03       		.uleb128 0x3
+ 1532 0086 0E       		.uleb128 0xe
+ 1533 0087 3A       		.uleb128 0x3a
+ 1534 0088 0B       		.uleb128 0xb
+ 1535 0089 3B       		.uleb128 0x3b
+ 1536 008a 0B       		.uleb128 0xb
+ 1537 008b 27       		.uleb128 0x27
+ 1538 008c 19       		.uleb128 0x19
+ 1539 008d 11       		.uleb128 0x11
+ 1540 008e 01       		.uleb128 0x1
+ 1541 008f 12       		.uleb128 0x12
+ 1542 0090 06       		.uleb128 0x6
+ 1543 0091 40       		.uleb128 0x40
+ 1544 0092 18       		.uleb128 0x18
+ 1545 0093 9642     		.uleb128 0x2116
+ 1546 0095 19       		.uleb128 0x19
+ 1547 0096 01       		.uleb128 0x1
+ 1548 0097 13       		.uleb128 0x13
+ 1549 0098 00       		.byte	0
+ 1550 0099 00       		.byte	0
+ 1551 009a 0B       		.uleb128 0xb
+ 1552 009b 05       		.uleb128 0x5
+ 1553 009c 00       		.byte	0
+ 1554 009d 03       		.uleb128 0x3
+ 1555 009e 0E       		.uleb128 0xe
+ 1556 009f 3A       		.uleb128 0x3a
+ 1557 00a0 0B       		.uleb128 0xb
+ 1558 00a1 3B       		.uleb128 0x3b
+ 1559 00a2 0B       		.uleb128 0xb
+ 1560 00a3 49       		.uleb128 0x49
+ 1561 00a4 13       		.uleb128 0x13
+ 1562 00a5 02       		.uleb128 0x2
+ 1563 00a6 18       		.uleb128 0x18
+ 1564 00a7 00       		.byte	0
+ 1565 00a8 00       		.byte	0
+ 1566 00a9 0C       		.uleb128 0xc
+ 1567 00aa 2E       		.uleb128 0x2e
+ 1568 00ab 00       		.byte	0
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 32
+
+
+ 1569 00ac 3F       		.uleb128 0x3f
+ 1570 00ad 19       		.uleb128 0x19
+ 1571 00ae 03       		.uleb128 0x3
+ 1572 00af 0E       		.uleb128 0xe
+ 1573 00b0 3A       		.uleb128 0x3a
+ 1574 00b1 0B       		.uleb128 0xb
+ 1575 00b2 3B       		.uleb128 0x3b
+ 1576 00b3 0B       		.uleb128 0xb
+ 1577 00b4 27       		.uleb128 0x27
+ 1578 00b5 19       		.uleb128 0x19
+ 1579 00b6 49       		.uleb128 0x49
+ 1580 00b7 13       		.uleb128 0x13
+ 1581 00b8 11       		.uleb128 0x11
+ 1582 00b9 01       		.uleb128 0x1
+ 1583 00ba 12       		.uleb128 0x12
+ 1584 00bb 06       		.uleb128 0x6
+ 1585 00bc 40       		.uleb128 0x40
+ 1586 00bd 18       		.uleb128 0x18
+ 1587 00be 9642     		.uleb128 0x2116
+ 1588 00c0 19       		.uleb128 0x19
+ 1589 00c1 00       		.byte	0
+ 1590 00c2 00       		.byte	0
+ 1591 00c3 0D       		.uleb128 0xd
+ 1592 00c4 34       		.uleb128 0x34
+ 1593 00c5 00       		.byte	0
+ 1594 00c6 03       		.uleb128 0x3
+ 1595 00c7 08       		.uleb128 0x8
+ 1596 00c8 3A       		.uleb128 0x3a
+ 1597 00c9 0B       		.uleb128 0xb
+ 1598 00ca 3B       		.uleb128 0x3b
+ 1599 00cb 0B       		.uleb128 0xb
+ 1600 00cc 49       		.uleb128 0x49
+ 1601 00cd 13       		.uleb128 0x13
+ 1602 00ce 02       		.uleb128 0x2
+ 1603 00cf 18       		.uleb128 0x18
+ 1604 00d0 00       		.byte	0
+ 1605 00d1 00       		.byte	0
+ 1606 00d2 0E       		.uleb128 0xe
+ 1607 00d3 34       		.uleb128 0x34
+ 1608 00d4 00       		.byte	0
+ 1609 00d5 03       		.uleb128 0x3
+ 1610 00d6 0E       		.uleb128 0xe
+ 1611 00d7 3A       		.uleb128 0x3a
+ 1612 00d8 0B       		.uleb128 0xb
+ 1613 00d9 3B       		.uleb128 0x3b
+ 1614 00da 0B       		.uleb128 0xb
+ 1615 00db 49       		.uleb128 0x49
+ 1616 00dc 13       		.uleb128 0x13
+ 1617 00dd 02       		.uleb128 0x2
+ 1618 00de 18       		.uleb128 0x18
+ 1619 00df 00       		.byte	0
+ 1620 00e0 00       		.byte	0
+ 1621 00e1 0F       		.uleb128 0xf
+ 1622 00e2 0F       		.uleb128 0xf
+ 1623 00e3 00       		.byte	0
+ 1624 00e4 0B       		.uleb128 0xb
+ 1625 00e5 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 33
+
+
+ 1626 00e6 49       		.uleb128 0x49
+ 1627 00e7 13       		.uleb128 0x13
+ 1628 00e8 00       		.byte	0
+ 1629 00e9 00       		.byte	0
+ 1630 00ea 10       		.uleb128 0x10
+ 1631 00eb 01       		.uleb128 0x1
+ 1632 00ec 01       		.byte	0x1
+ 1633 00ed 49       		.uleb128 0x49
+ 1634 00ee 13       		.uleb128 0x13
+ 1635 00ef 01       		.uleb128 0x1
+ 1636 00f0 13       		.uleb128 0x13
+ 1637 00f1 00       		.byte	0
+ 1638 00f2 00       		.byte	0
+ 1639 00f3 11       		.uleb128 0x11
+ 1640 00f4 21       		.uleb128 0x21
+ 1641 00f5 00       		.byte	0
+ 1642 00f6 49       		.uleb128 0x49
+ 1643 00f7 13       		.uleb128 0x13
+ 1644 00f8 2F       		.uleb128 0x2f
+ 1645 00f9 0B       		.uleb128 0xb
+ 1646 00fa 00       		.byte	0
+ 1647 00fb 00       		.byte	0
+ 1648 00fc 12       		.uleb128 0x12
+ 1649 00fd 2E       		.uleb128 0x2e
+ 1650 00fe 01       		.byte	0x1
+ 1651 00ff 3F       		.uleb128 0x3f
+ 1652 0100 19       		.uleb128 0x19
+ 1653 0101 03       		.uleb128 0x3
+ 1654 0102 0E       		.uleb128 0xe
+ 1655 0103 3A       		.uleb128 0x3a
+ 1656 0104 0B       		.uleb128 0xb
+ 1657 0105 3B       		.uleb128 0x3b
+ 1658 0106 0B       		.uleb128 0xb
+ 1659 0107 27       		.uleb128 0x27
+ 1660 0108 19       		.uleb128 0x19
+ 1661 0109 49       		.uleb128 0x49
+ 1662 010a 13       		.uleb128 0x13
+ 1663 010b 11       		.uleb128 0x11
+ 1664 010c 01       		.uleb128 0x1
+ 1665 010d 12       		.uleb128 0x12
+ 1666 010e 06       		.uleb128 0x6
+ 1667 010f 40       		.uleb128 0x40
+ 1668 0110 18       		.uleb128 0x18
+ 1669 0111 9642     		.uleb128 0x2116
+ 1670 0113 19       		.uleb128 0x19
+ 1671 0114 01       		.uleb128 0x1
+ 1672 0115 13       		.uleb128 0x13
+ 1673 0116 00       		.byte	0
+ 1674 0117 00       		.byte	0
+ 1675 0118 13       		.uleb128 0x13
+ 1676 0119 05       		.uleb128 0x5
+ 1677 011a 00       		.byte	0
+ 1678 011b 03       		.uleb128 0x3
+ 1679 011c 08       		.uleb128 0x8
+ 1680 011d 3A       		.uleb128 0x3a
+ 1681 011e 0B       		.uleb128 0xb
+ 1682 011f 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 34
+
+
+ 1683 0120 0B       		.uleb128 0xb
+ 1684 0121 49       		.uleb128 0x49
+ 1685 0122 13       		.uleb128 0x13
+ 1686 0123 02       		.uleb128 0x2
+ 1687 0124 18       		.uleb128 0x18
+ 1688 0125 00       		.byte	0
+ 1689 0126 00       		.byte	0
+ 1690 0127 14       		.uleb128 0x14
+ 1691 0128 2E       		.uleb128 0x2e
+ 1692 0129 01       		.byte	0x1
+ 1693 012a 3F       		.uleb128 0x3f
+ 1694 012b 19       		.uleb128 0x19
+ 1695 012c 03       		.uleb128 0x3
+ 1696 012d 0E       		.uleb128 0xe
+ 1697 012e 3A       		.uleb128 0x3a
+ 1698 012f 0B       		.uleb128 0xb
+ 1699 0130 3B       		.uleb128 0x3b
+ 1700 0131 0B       		.uleb128 0xb
+ 1701 0132 27       		.uleb128 0x27
+ 1702 0133 19       		.uleb128 0x19
+ 1703 0134 49       		.uleb128 0x49
+ 1704 0135 13       		.uleb128 0x13
+ 1705 0136 11       		.uleb128 0x11
+ 1706 0137 01       		.uleb128 0x1
+ 1707 0138 12       		.uleb128 0x12
+ 1708 0139 06       		.uleb128 0x6
+ 1709 013a 40       		.uleb128 0x40
+ 1710 013b 18       		.uleb128 0x18
+ 1711 013c 9742     		.uleb128 0x2117
+ 1712 013e 19       		.uleb128 0x19
+ 1713 013f 01       		.uleb128 0x1
+ 1714 0140 13       		.uleb128 0x13
+ 1715 0141 00       		.byte	0
+ 1716 0142 00       		.byte	0
+ 1717 0143 15       		.uleb128 0x15
+ 1718 0144 34       		.uleb128 0x34
+ 1719 0145 00       		.byte	0
+ 1720 0146 03       		.uleb128 0x3
+ 1721 0147 0E       		.uleb128 0xe
+ 1722 0148 3A       		.uleb128 0x3a
+ 1723 0149 0B       		.uleb128 0xb
+ 1724 014a 3B       		.uleb128 0x3b
+ 1725 014b 0B       		.uleb128 0xb
+ 1726 014c 49       		.uleb128 0x49
+ 1727 014d 13       		.uleb128 0x13
+ 1728 014e 3F       		.uleb128 0x3f
+ 1729 014f 19       		.uleb128 0x19
+ 1730 0150 02       		.uleb128 0x2
+ 1731 0151 18       		.uleb128 0x18
+ 1732 0152 00       		.byte	0
+ 1733 0153 00       		.byte	0
+ 1734 0154 16       		.uleb128 0x16
+ 1735 0155 34       		.uleb128 0x34
+ 1736 0156 00       		.byte	0
+ 1737 0157 03       		.uleb128 0x3
+ 1738 0158 0E       		.uleb128 0xe
+ 1739 0159 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 35
+
+
+ 1740 015a 0B       		.uleb128 0xb
+ 1741 015b 3B       		.uleb128 0x3b
+ 1742 015c 05       		.uleb128 0x5
+ 1743 015d 49       		.uleb128 0x49
+ 1744 015e 13       		.uleb128 0x13
+ 1745 015f 3F       		.uleb128 0x3f
+ 1746 0160 19       		.uleb128 0x19
+ 1747 0161 3C       		.uleb128 0x3c
+ 1748 0162 19       		.uleb128 0x19
+ 1749 0163 00       		.byte	0
+ 1750 0164 00       		.byte	0
+ 1751 0165 00       		.byte	0
+ 1752              		.section	.debug_aranges,"",%progbits
+ 1753 0000 84000000 		.4byte	0x84
+ 1754 0004 0200     		.2byte	0x2
+ 1755 0006 00000000 		.4byte	.Ldebug_info0
+ 1756 000a 04       		.byte	0x4
+ 1757 000b 00       		.byte	0
+ 1758 000c 0000     		.2byte	0
+ 1759 000e 0000     		.2byte	0
+ 1760 0010 00000000 		.4byte	.LFB63
+ 1761 0014 12000000 		.4byte	.LFE63-.LFB63
+ 1762 0018 00000000 		.4byte	.LFB64
+ 1763 001c 1E000000 		.4byte	.LFE64-.LFB64
+ 1764 0020 00000000 		.4byte	.LFB65
+ 1765 0024 1C000000 		.4byte	.LFE65-.LFB65
+ 1766 0028 00000000 		.4byte	.LFB66
+ 1767 002c 2E000000 		.4byte	.LFE66-.LFB66
+ 1768 0030 00000000 		.4byte	.LFB67
+ 1769 0034 1E000000 		.4byte	.LFE67-.LFB67
+ 1770 0038 00000000 		.4byte	.LFB68
+ 1771 003c 10000000 		.4byte	.LFE68-.LFB68
+ 1772 0040 00000000 		.4byte	.LFB69
+ 1773 0044 10000000 		.4byte	.LFE69-.LFB69
+ 1774 0048 00000000 		.4byte	.LFB70
+ 1775 004c CE000000 		.4byte	.LFE70-.LFB70
+ 1776 0050 00000000 		.4byte	.LFB71
+ 1777 0054 46000000 		.4byte	.LFE71-.LFB71
+ 1778 0058 00000000 		.4byte	.LFB72
+ 1779 005c 64000000 		.4byte	.LFE72-.LFB72
+ 1780 0060 00000000 		.4byte	.LFB73
+ 1781 0064 44000000 		.4byte	.LFE73-.LFB73
+ 1782 0068 00000000 		.4byte	.LFB74
+ 1783 006c 36000000 		.4byte	.LFE74-.LFB74
+ 1784 0070 00000000 		.4byte	.LFB75
+ 1785 0074 3C000000 		.4byte	.LFE75-.LFB75
+ 1786 0078 00000000 		.4byte	.LFB76
+ 1787 007c 6C000000 		.4byte	.LFE76-.LFB76
+ 1788 0080 00000000 		.4byte	0
+ 1789 0084 00000000 		.4byte	0
+ 1790              		.section	.debug_ranges,"",%progbits
+ 1791              	.Ldebug_ranges0:
+ 1792 0000 00000000 		.4byte	.LFB63
+ 1793 0004 12000000 		.4byte	.LFE63
+ 1794 0008 00000000 		.4byte	.LFB64
+ 1795 000c 1E000000 		.4byte	.LFE64
+ 1796 0010 00000000 		.4byte	.LFB65
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 36
+
+
+ 1797 0014 1C000000 		.4byte	.LFE65
+ 1798 0018 00000000 		.4byte	.LFB66
+ 1799 001c 2E000000 		.4byte	.LFE66
+ 1800 0020 00000000 		.4byte	.LFB67
+ 1801 0024 1E000000 		.4byte	.LFE67
+ 1802 0028 00000000 		.4byte	.LFB68
+ 1803 002c 10000000 		.4byte	.LFE68
+ 1804 0030 00000000 		.4byte	.LFB69
+ 1805 0034 10000000 		.4byte	.LFE69
+ 1806 0038 00000000 		.4byte	.LFB70
+ 1807 003c CE000000 		.4byte	.LFE70
+ 1808 0040 00000000 		.4byte	.LFB71
+ 1809 0044 46000000 		.4byte	.LFE71
+ 1810 0048 00000000 		.4byte	.LFB72
+ 1811 004c 64000000 		.4byte	.LFE72
+ 1812 0050 00000000 		.4byte	.LFB73
+ 1813 0054 44000000 		.4byte	.LFE73
+ 1814 0058 00000000 		.4byte	.LFB74
+ 1815 005c 36000000 		.4byte	.LFE74
+ 1816 0060 00000000 		.4byte	.LFB75
+ 1817 0064 3C000000 		.4byte	.LFE75
+ 1818 0068 00000000 		.4byte	.LFB76
+ 1819 006c 6C000000 		.4byte	.LFE76
+ 1820 0070 00000000 		.4byte	0
+ 1821 0074 00000000 		.4byte	0
+ 1822              		.section	.debug_line,"",%progbits
+ 1823              	.Ldebug_line0:
+ 1824 0000 C7020000 		.section	.debug_str,"MS",%progbits,1
+ 1824      02007101 
+ 1824      00000201 
+ 1824      FB0E0D00 
+ 1824      01010101 
+ 1825              	.LASF38:
+ 1826 0000 636F3255 		.ascii	"co2U32\000"
+ 1826      333200
+ 1827              	.LASF37:
+ 1828 0007 72657375 		.ascii	"result\000"
+ 1828      6C7400
+ 1829              	.LASF63:
+ 1830 000e 53434433 		.ascii	"SCD30_isAvailable\000"
+ 1830      305F6973 
+ 1830      41766169 
+ 1830      6C61626C 
+ 1830      6500
+ 1831              	.LASF2:
+ 1832 0020 73686F72 		.ascii	"short int\000"
+ 1832      7420696E 
+ 1832      7400
+ 1833              	.LASF23:
+ 1834 002a 73697A65 		.ascii	"sizetype\000"
+ 1834      74797065 
+ 1834      00
+ 1835              	.LASF55:
+ 1836 0033 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1836      78385F53 
+ 1836      656E736F 
+ 1836      7200
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 37
+
+
+ 1837              	.LASF49:
+ 1838 0041 53434433 		.ascii	"SCD30_writeBuffer\000"
+ 1838      305F7772 
+ 1838      69746542 
+ 1838      75666665 
+ 1838      7200
+ 1839              	.LASF52:
+ 1840 0053 53434433 		.ascii	"SCD30_readRegister\000"
+ 1840      305F7265 
+ 1840      61645265 
+ 1840      67697374 
+ 1840      657200
+ 1841              	.LASF59:
+ 1842 0066 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1842      43313120 
+ 1842      352E342E 
+ 1842      31203230 
+ 1842      31363036 
+ 1843 0099 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1843      20726576 
+ 1843      6973696F 
+ 1843      6E203233 
+ 1843      37373135 
+ 1844 00cc 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1844      66756E63 
+ 1844      74696F6E 
+ 1844      2D736563 
+ 1844      74696F6E 
+ 1845              	.LASF46:
+ 1846 00f4 53434433 		.ascii	"SCD30_writeCommandWithArguments\000"
+ 1846      305F7772 
+ 1846      69746543 
+ 1846      6F6D6D61 
+ 1846      6E645769 
+ 1847              	.LASF8:
+ 1848 0114 5F5F7569 		.ascii	"__uint32_t\000"
+ 1848      6E743332 
+ 1848      5F7400
+ 1849              	.LASF4:
+ 1850 011f 5F5F7569 		.ascii	"__uint16_t\000"
+ 1850      6E743136 
+ 1850      5F7400
+ 1851              	.LASF35:
+ 1852 012a 53434433 		.ascii	"SCD30_stopMeasurement\000"
+ 1852      305F7374 
+ 1852      6F704D65 
+ 1852      61737572 
+ 1852      656D656E 
+ 1853              	.LASF18:
+ 1854 0140 75696E74 		.ascii	"uint16\000"
+ 1854      313600
+ 1855              	.LASF60:
+ 1856 0147 2E2E5C2E 		.ascii	"..\\..\\SCD30\\SCD30.cydsn\\SCD30.c\000"
+ 1856      2E5C5343 
+ 1856      4433305C 
+ 1856      53434433 
+ 1856      302E6379 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 38
+
+
+ 1857              	.LASF30:
+ 1858 0167 656E6162 		.ascii	"enable\000"
+ 1858      6C6500
+ 1859              	.LASF17:
+ 1860 016e 75696E74 		.ascii	"uint8\000"
+ 1860      3800
+ 1861              	.LASF19:
+ 1862 0174 666C6F61 		.ascii	"float\000"
+ 1862      7400
+ 1863              	.LASF10:
+ 1864 017a 6C6F6E67 		.ascii	"long long int\000"
+ 1864      206C6F6E 
+ 1864      6720696E 
+ 1864      7400
+ 1865              	.LASF54:
+ 1866 0188 62797465 		.ascii	"byteCtr\000"
+ 1866      43747200 
+ 1867              	.LASF29:
+ 1868 0190 6F666673 		.ascii	"offset\000"
+ 1868      657400
+ 1869              	.LASF3:
+ 1870 0197 5F5F7569 		.ascii	"__uint8_t\000"
+ 1870      6E74385F 
+ 1870      7400
+ 1871              	.LASF41:
+ 1872 01a1 636F3243 		.ascii	"co2Concentration\000"
+ 1872      6F6E6365 
+ 1872      6E747261 
+ 1872      74696F6E 
+ 1872      00
+ 1873              	.LASF28:
+ 1874 01b2 53434433 		.ascii	"SCD30_setAutoSelfCalibration\000"
+ 1874      305F7365 
+ 1874      74417574 
+ 1874      6F53656C 
+ 1874      6643616C 
+ 1875              	.LASF22:
+ 1876 01cf 6C6F6E67 		.ascii	"long double\000"
+ 1876      20646F75 
+ 1876      626C6500 
+ 1877              	.LASF39:
+ 1878 01db 74656D70 		.ascii	"tempU32\000"
+ 1878      55333200 
+ 1879              	.LASF1:
+ 1880 01e3 756E7369 		.ascii	"unsigned char\000"
+ 1880      676E6564 
+ 1880      20636861 
+ 1880      7200
+ 1881              	.LASF0:
+ 1882 01f1 7369676E 		.ascii	"signed char\000"
+ 1882      65642063 
+ 1882      68617200 
+ 1883              	.LASF11:
+ 1884 01fd 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1884      206C6F6E 
+ 1884      6720756E 
+ 1884      7369676E 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 39
+
+
+ 1884      65642069 
+ 1885              	.LASF16:
+ 1886 0214 75696E74 		.ascii	"uint32_t\000"
+ 1886      33325F74 
+ 1886      00
+ 1887              	.LASF12:
+ 1888 021d 756E7369 		.ascii	"unsigned int\000"
+ 1888      676E6564 
+ 1888      20696E74 
+ 1888      00
+ 1889              	.LASF14:
+ 1890 022a 75696E74 		.ascii	"uint16_t\000"
+ 1890      31365F74 
+ 1890      00
+ 1891              	.LASF34:
+ 1892 0233 53434433 		.ascii	"SCD30_startPeriodicMeasurment\000"
+ 1892      305F7374 
+ 1892      61727450 
+ 1892      6572696F 
+ 1892      6469634D 
+ 1893              	.LASF53:
+ 1894 0251 53434433 		.ascii	"SCD30_calculateCrc\000"
+ 1894      305F6361 
+ 1894      6C63756C 
+ 1894      61746543 
+ 1894      726300
+ 1895              	.LASF33:
+ 1896 0264 53434433 		.ascii	"SCD30_initialize\000"
+ 1896      305F696E 
+ 1896      69746961 
+ 1896      6C697A65 
+ 1896      00
+ 1897              	.LASF5:
+ 1898 0275 73686F72 		.ascii	"short unsigned int\000"
+ 1898      7420756E 
+ 1898      7369676E 
+ 1898      65642069 
+ 1898      6E7400
+ 1899              	.LASF31:
+ 1900 0288 53434433 		.ascii	"SCD30_setMeasurementInterval\000"
+ 1900      305F7365 
+ 1900      744D6561 
+ 1900      73757265 
+ 1900      6D656E74 
+ 1901              	.LASF21:
+ 1902 02a5 63686172 		.ascii	"char\000"
+ 1902      00
+ 1903              	.LASF26:
+ 1904 02aa 5F426F6F 		.ascii	"_Bool\000"
+ 1904      6C00
+ 1905              	.LASF7:
+ 1906 02b0 6C6F6E67 		.ascii	"long int\000"
+ 1906      20696E74 
+ 1906      00
+ 1907              	.LASF15:
+ 1908 02b9 696E7433 		.ascii	"int32_t\000"
+ 1908      325F7400 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 40
+
+
+ 1909              	.LASF62:
+ 1910 02c1 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1910      78385F54 
+ 1910      53656E73 
+ 1910      6F7200
+ 1911              	.LASF50:
+ 1912 02d0 64617461 		.ascii	"data\000"
+ 1912      00
+ 1913              	.LASF9:
+ 1914 02d5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1914      20756E73 
+ 1914      69676E65 
+ 1914      6420696E 
+ 1914      7400
+ 1915              	.LASF44:
+ 1916 02e7 53434433 		.ascii	"SCD30_writeCommand\000"
+ 1916      305F7772 
+ 1916      69746543 
+ 1916      6F6D6D61 
+ 1916      6E6400
+ 1917              	.LASF32:
+ 1918 02fa 696E7465 		.ascii	"interval\000"
+ 1918      7276616C 
+ 1918      00
+ 1919              	.LASF27:
+ 1920 0303 53434433 		.ascii	"SCD30_setTemperatureOffset\000"
+ 1920      305F7365 
+ 1920      7454656D 
+ 1920      70657261 
+ 1920      74757265 
+ 1921              	.LASF42:
+ 1922 031e 74656D70 		.ascii	"temperature\000"
+ 1922      65726174 
+ 1922      75726500 
+ 1923              	.LASF36:
+ 1924 032a 53434433 		.ascii	"SCD30_getCarbonDioxideConcentration\000"
+ 1924      305F6765 
+ 1924      74436172 
+ 1924      626F6E44 
+ 1924      696F7869 
+ 1925              	.LASF43:
+ 1926 034e 68756D69 		.ascii	"humidity\000"
+ 1926      64697479 
+ 1926      00
+ 1927              	.LASF6:
+ 1928 0357 5F5F696E 		.ascii	"__int32_t\000"
+ 1928      7433325F 
+ 1928      7400
+ 1929              	.LASF13:
+ 1930 0361 75696E74 		.ascii	"uint8_t\000"
+ 1930      385F7400 
+ 1931              	.LASF25:
+ 1932 0369 70726573 		.ascii	"present\000"
+ 1932      656E7400 
+ 1933              	.LASF40:
+ 1934 0371 68756D55 		.ascii	"humU32\000"
+ 1934      333200
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccX8cHGx.s 			page 41
+
+
+ 1935              	.LASF58:
+ 1936 0378 64657641 		.ascii	"devAddr\000"
+ 1936      64647200 
+ 1937              	.LASF24:
+ 1938 0380 54656D70 		.ascii	"Temperature\000"
+ 1938      65726174 
+ 1938      75726500 
+ 1939              	.LASF20:
+ 1940 038c 646F7562 		.ascii	"double\000"
+ 1940      6C6500
+ 1941              	.LASF61:
+ 1942 0393 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
+ 1942      73657273 
+ 1942      5C477573 
+ 1942      74615C4F 
+ 1942      6E654472 
+ 1943 03c0 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
+ 1943      6963616C 
+ 1943      5F666172 
+ 1943      6D5C5254 
+ 1943      4F535F54 
+ 1944 03f1 64736E00 		.ascii	"dsn\000"
+ 1945              	.LASF57:
+ 1946 03f5 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1946      52784275 
+ 1946      66666572 
+ 1946      00
+ 1947              	.LASF48:
+ 1948 0402 63686563 		.ascii	"checkSum\000"
+ 1948      6B53756D 
+ 1948      00
+ 1949              	.LASF47:
+ 1950 040b 61726775 		.ascii	"arguments\000"
+ 1950      6D656E74 
+ 1950      7300
+ 1951              	.LASF56:
+ 1952 0415 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1952      78385F44 
+ 1952      61746152 
+ 1952      65616479 
+ 1952      00
+ 1953              	.LASF45:
+ 1954 0426 636F6D6D 		.ascii	"command\000"
+ 1954      616E6400 
+ 1955              	.LASF51:
+ 1956 042e 53434433 		.ascii	"SCD30_readBuffer\000"
+ 1956      305F7265 
+ 1956      61644275 
+ 1956      66666572 
+ 1956      00
+ 1957              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

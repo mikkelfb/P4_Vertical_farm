@@ -15,5 +15,67 @@
 #include "Air.h"
 #include "task.h"
 #include "queue.h"
+#include "SCD30.h"
 
+float SCD30Results [3] = {0};
+
+QueueHandle_t xQueueSCD30[3]; 
+
+
+void vAirInit(){
+    xTaskCreate(vTaskGetMeasSCD30, "SCD30", 1000 , NULL , 10 , NULL);
+    
+    
+    xQueueSCD30[0] = xQueueCreate(1, sizeof(float));
+    xQueueSCD30[1] = xQueueCreate(1, sizeof(float));
+    xQueueSCD30[2] = xQueueCreate(1, sizeof(float));
+    
+    #if AIRTEST == 1
+        vAirTestTaskInit();
+    #endif
+}
+
+
+void vInitSCD30(uint16_t interval){
+    SCD30_setMeasurementInterval(interval); // takes the input and calibrates the sensor with the req. time interval
+    SCD30_startPeriodicMeasurment(); // read it and weep
+}
+
+void vTaskGetMeasSCD30(){
+    if (SCD30_isAvailable())
+     {
+       SCD30_getCarbonDioxideConcentration(SCD30Results); // Reading the data and storing them in SCD30Results            
+        
+        xQueueSendToBack(xQueueSCD30[0], &SCD30Results[0], portMAX_DELAY);
+        xQueueSendToBack(xQueueSCD30[1], &SCD30Results[1], portMAX_DELAY);
+        xQueueSendToBack(xQueueSCD30[2], &SCD30Results[2], portMAX_DELAY);
+    
+    }
+}
+
+
+// ----- Test tasks ----- //
+
+void vAirTestTaskInit(){
+xTaskCreate(vTaskTestSCD30, "SCD30Test", 1000, NULL, 10, NULL);
+}
+
+void vTaskTestSCD30(){
+    float testResults[3];
+    xQueueReceive(xQueueSCD30[0],&testResults[0], portMAX_DELAY);
+    xQueueReceive(xQueueSCD30[1],&testResults[1], portMAX_DELAY);
+    xQueueReceive(xQueueSCD30[2],&testResults[2], portMAX_DELAY);
+
+    SW_UART_TEST_USB_PutString("CO2: ");
+    SW_UART_TEST_USB_PutHexInt(testResults[0]);
+    SW_UART_TEST_USB_PutString("\n");
+    SW_UART_TEST_USB_PutString("TEMP: ");
+    SW_UART_TEST_USB_PutHexInt(testResults[1]);
+    SW_UART_TEST_USB_PutString("\n");
+    SW_UART_TEST_USB_PutString("RH: ");
+    SW_UART_TEST_USB_PutHexInt(testResults[2]);
+    SW_UART_TEST_USB_PutString("\n");
+    SW_UART_TEST_USB_PutString("\n");
+    SW_UART_TEST_USB_PutString("\n");
+}
 /* [] END OF FILE */
