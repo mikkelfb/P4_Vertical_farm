@@ -83,12 +83,19 @@ void SCD30_getCarbonDioxideConcentration(float* result) {
 }
 
 void SCD30_writeCommand(uint16_t command) {
-   I2C_MasterSendStart(SCD30_I2C_ADDRESS, SCD30_WRITE_HEADER);
- //  I2C_MasterWriteByte(SCD30_WRITE_HEADER);
-   I2C_MasterWriteByte(command >> 8); // MSB
-   I2C_MasterWriteByte(command); // LSB
-   I2C_MasterSendStop();
-                  UART_PutHexInt(command);             UART_PutString("Command Written");       UART_PutString(" \n ");
+    uint8_t buf [2];
+    buf[0] = command >> 8;
+    buf[1] = command;
+    
+    I2C_MasterWriteBuf(SCD30_I2C_ADDRESS, buf, 2, I2C_MODE_COMPLETE_XFER);
+    for(;;){
+            if(0u != (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+                {
+                break;
+                }
+            }
+         //         UART_PutHexInt(command);             UART_PutString("Command Written");       UART_PutString(" \n ");
+I2C_MasterClearStatus();
 }
 
 void SCD30_writeCommandWithArguments(uint16_t command, uint16_t arguments) {
@@ -115,23 +122,14 @@ uint16_t SCD30_readRegister(uint16_t command) {
 
 void SCD30_writeBuffer(uint8_t* data, uint8_t len) 
 {
-    int status = I2C_MasterSendStart(SCD30_I2C_ADDRESS, I2C_WRITE_XFER_MODE);
-    
-    if (I2C_MSTR_NO_ERROR == status)
-        {
-      //  I2C_MasterWriteByte(SCD30_WRITE_HEADER);
-        for(int i = 0; i< len; i++)
-            {
-            status = I2C_MasterWriteByte(data[i]);
-            if(status != I2C_MSTR_NO_ERROR)
+    I2C_MasterWriteBuf(SCD30_I2C_ADDRESS, data, len, I2C_MODE_COMPLETE_XFER);
+    for(;;){
+            if(0u != (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
                 {
                 break;
                 }
-            }   
-       }
-I2C_MasterSendStop();
-
-
+            }  
+/*   
 UART_PutString("Data Written:");
 UART_PutString("\n");
 for (int k=0; k<len; k++)
@@ -139,32 +137,21 @@ for (int k=0; k<len; k++)
     UART_PutHexByte(data[k]);
 }
 UART_PutString("\n");
+*/
+I2C_MasterClearStatus();
 }
 
 void SCD30_readBuffer(uint8_t* data, uint8_t len) 
 {
-    int status = I2C_MasterSendStart(SCD30_I2C_ADDRESS, I2C_READ_XFER_MODE);
+    CyDelay(50);
     
-    if (I2C_MSTR_NO_ERROR == status)
-    { 
-       // I2C_MasterWriteByte(SCD30_READ_HEADER);
-        for(int i=0; i<len; i++)
-        {
-            if(i < (len - 1))
-            {
-                data[i] = I2C_MasterReadByte(I2C_ACK_DATA);
+    I2C_MasterReadBuf(SCD30_I2C_ADDRESS, data, len, I2C_MODE_COMPLETE_XFER);
+    for(;;){
+            if(0u != (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT)){
+                break;
+                }
             }
-            else
-            {
-                data[i] = I2C_MasterReadByte(I2C_NAK_DATA);
-                
-            }
-            
-         }
-    }
-I2C_MasterSendStop();
-
-
+/*
 UART_PutString("Data Read:");
 UART_PutString("\n");
 for(int k=0; k<len; k++)
@@ -172,6 +159,8 @@ for(int k=0; k<len; k++)
     UART_PutHexByte(data[k]);
 }
 UART_PutString("\n");
+*/
+I2C_MasterClearStatus();
 }
 
 
