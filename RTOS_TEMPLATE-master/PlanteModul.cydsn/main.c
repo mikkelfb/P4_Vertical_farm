@@ -111,7 +111,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
     DS18x8_Start(); // Starting DS18x8 module
-    vInitSCD30(2);
+    vInitSCD30(2); // Starting SCD30 sensor and setting meas interval to every 2nd sec
     
     
     

@@ -44,8 +44,7 @@ void vInitSCD30(uint16_t interval){
 void vTaskGetMeasSCD30(){
     if (SCD30_isAvailable())
      {
-       SCD30_getCarbonDioxideConcentration(SCD30Results); // Reading the data and storing them in SCD30Results            
-        
+       SCD30_getCarbonDioxideConcentration(SCD30Results); // Reading the data and storing them in SCD30Results 
         xQueueSendToBack(xQueueSCD30[0], &SCD30Results[0], portMAX_DELAY);
         xQueueSendToBack(xQueueSCD30[1], &SCD30Results[1], portMAX_DELAY);
         xQueueSendToBack(xQueueSCD30[2], &SCD30Results[2], portMAX_DELAY);

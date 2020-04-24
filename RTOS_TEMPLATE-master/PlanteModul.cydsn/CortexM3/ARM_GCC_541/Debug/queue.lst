@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
   25:Source/queue.c ****  * 1 tab == 4 spaces!
   26:Source/queue.c ****  */
   27:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 2
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 2
 
 
   28:Source/queue.c **** #include <stdlib.h>
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
   82:Source/queue.c **** #define queueMUTEX_GIVE_BLOCK_TIME		 ( ( TickType_t ) 0U )
   83:Source/queue.c **** 
   84:Source/queue.c **** #if( configUSE_PREEMPTION == 0 )
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 3
 
 
   85:Source/queue.c **** 	/* If the cooperative scheduler is being used then a yield should not be
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  139:Source/queue.c **** /*
  140:Source/queue.c ****  * The queue registry is just a means for kernel aware debuggers to locate
  141:Source/queue.c ****  * queue structures.  It has no other purpose so is an optional component.
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 4
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 4
 
 
  142:Source/queue.c ****  */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  196:Source/queue.c **** /*
  197:Source/queue.c ****  * Copies an item out of a queue.
  198:Source/queue.c ****  */
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 5
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 5
 
 
  199:Source/queue.c **** static void prvCopyDataFromQueue( Queue_t * const pxQueue, void * const pvBuffer ) PRIVILEGED_FUNCT
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  253:Source/queue.c **** /*-----------------------------------------------------------*/
  254:Source/queue.c **** 
  255:Source/queue.c **** BaseType_t xQueueGenericReset( QueueHandle_t xQueue, BaseType_t xNewQueue )
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 6
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 6
 
 
  256:Source/queue.c **** {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
   74 003c DB6B     		ldr	r3, [r3, #60]
   75 003e 013B     		subs	r3, r3, #1
   76 0040 F968     		ldr	r1, [r7, #12]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 7
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 7
 
 
   77 0042 096C     		ldr	r1, [r1, #64]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  116 0088 BFF36F8F 		isb
  117              	@ 0 "" 2
  118              		.thumb
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 8
 
 
  119              		.syntax unified
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  149              		.cfi_endproc
  150              	.LFE68:
  151              		.size	xQueueGenericReset, .-xQueueGenericReset
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 9
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 9
 
 
  152              		.section	.text.xQueueGenericCreate,"ax",%progbits
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  352:Source/queue.c **** 			prvInitialiseNewQueue( uxQueueLength, uxItemSize, pucQueueStorage, ucQueueType, pxNewQueue );
  353:Source/queue.c **** 		}
  354:Source/queue.c **** 		else
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 10
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 10
 
 
  355:Source/queue.c **** 		{
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  388:Source/queue.c **** 		is safe.  In other cases alignment requirements are not strict (one or
  389:Source/queue.c **** 		two bytes). */
  390:Source/queue.c **** 		pxNewQueue = ( Queue_t * ) pvPortMalloc( sizeof( Queue_t ) + xQueueSizeInBytes ); /*lint !e9087 !
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 11
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 11
 
 
  181              		.loc 1 390 0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  209 0046 BB69     		ldr	r3, [r7, #24]
  417:Source/queue.c **** 	}
  210              		.loc 1 417 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 12
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 12
 
 
  211 0048 1846     		mov	r0, r3
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  248              		.loc 1 434 0
  249 0014 BB69     		ldr	r3, [r7, #24]
  250 0016 BA69     		ldr	r2, [r7, #24]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 13
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 13
 
 
  251 0018 1A60     		str	r2, [r3]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  278 003c 80BD     		pop	{r7, pc}
  279              		.cfi_endproc
  280              	.LFE70:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 14
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 14
 
 
  281              		.size	prvInitialiseNewQueue, .-prvInitialiseNewQueue
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  479:Source/queue.c **** 
  480:Source/queue.c **** 			traceCREATE_MUTEX( pxNewQueue );
  481:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 15
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 15
 
 
  482:Source/queue.c **** 			/* Start with the semaphore in the expected state. */
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  356 0006 0346     		mov	r3, r0
  357 0008 FB71     		strb	r3, [r7, #7]
  498:Source/queue.c **** 	QueueHandle_t xNewQueue;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 16
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 16
 
 
  499:Source/queue.c **** 	const UBaseType_t uxMutexLength = ( UBaseType_t ) 1, uxMutexSize = ( UBaseType_t ) 0;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  517:Source/queue.c **** 		/* Prevent compiler warnings about unused parameters if
  518:Source/queue.c **** 		configUSE_TRACE_FACILITY does not equal 1. */
  519:Source/queue.c **** 		( void ) ucQueueType;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 17
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 17
 
 
  520:Source/queue.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  574:Source/queue.c **** 			pxReturn = ( ( Queue_t * ) xSemaphore )->u.xSemaphore.xMutexHolder;
  575:Source/queue.c **** 		}
  576:Source/queue.c **** 		else
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 18
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 18
 
 
  577:Source/queue.c **** 		{
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  607:Source/queue.c **** 			the task handle, therefore no underflow check is required.  Also,
  608:Source/queue.c **** 			uxRecursiveCallCount is only modified by the mutex holder, and as
  609:Source/queue.c **** 			there can only be one, no mutual exclusion is required to modify the
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 19
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 19
 
 
  610:Source/queue.c **** 			uxRecursiveCallCount member. */
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  445              		.loc 1 636 0
  446 0042 FB68     		ldr	r3, [r7, #12]
  637:Source/queue.c **** 	}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 20
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 20
 
 
  447              		.loc 1 637 0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  655:Source/queue.c **** 
  656:Source/queue.c **** 		if( pxMutex->u.xSemaphore.xMutexHolder == xTaskGetCurrentTaskHandle() )
  484              		.loc 1 656 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 21
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 21
 
 
  485 000e BB68     		ldr	r3, [r7, #8]
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  678:Source/queue.c **** 		return xReturn;
  518              		.loc 1 678 0
  519 0046 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 22
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 22
 
 
  679:Source/queue.c **** 	}
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  714:Source/queue.c **** 	QueueHandle_t xQueueCreateCountingSemaphore( const UBaseType_t uxMaxCount, const UBaseType_t uxIni
  715:Source/queue.c **** 	{
  539              		.loc 1 715 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 23
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 23
 
 
  540              		.cfi_startproc
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  574 0028 BD46     		mov	sp, r7
  575              		.cfi_def_cfa_register 13
  576              		@ sp needed
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 24
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 24
 
 
  577 002a 80BD     		pop	{r7, pc}
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  755:Source/queue.c **** 
  756:Source/queue.c **** 	/*lint -save -e904 This function relaxes the coding standard somewhat to
  757:Source/queue.c **** 	allow return statements within the function itself.  This is done in the
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 25
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 25
 
 
  758:Source/queue.c **** 	interest of execution time efficiency. */
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  798:Source/queue.c **** 					else
  799:Source/queue.c **** 					{
  800:Source/queue.c **** 						/* If there was a task waiting for data to arrive on the
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 26
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 26
 
 
  801:Source/queue.c **** 						queue then unblock it now. */
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  641 0046 FFF7FEFF 		bl	xTaskRemoveFromEventList
  642 004a 0346     		mov	r3, r0
  643 004c 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 27
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 27
 
 
  644 004e 13D0     		beq	.L34
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  860:Source/queue.c **** 					else
  861:Source/queue.c **** 					{
  862:Source/queue.c **** 						mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 28
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 28
 
 
  863:Source/queue.c **** 					}
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  889:Source/queue.c **** 				}
  890:Source/queue.c **** 				else
  891:Source/queue.c **** 				{
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 29
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 29
 
 
  892:Source/queue.c **** 					/* Entry time was already set. */
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  908:Source/queue.c **** 			if( prvIsQueueFull( pxQueue ) != pdFALSE )
  744              		.loc 1 908 0
  745 00f2 386A     		ldr	r0, [r7, #32]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 30
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 30
 
 
  746 00f4 FFF7FEFF 		bl	prvIsQueueFull
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  929:Source/queue.c **** 			}
  930:Source/queue.c **** 			else
  931:Source/queue.c **** 			{
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 31
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 31
 
 
  932:Source/queue.c **** 				/* Try again. */
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  948:Source/queue.c **** /*-----------------------------------------------------------*/
  949:Source/queue.c **** 
  950:Source/queue.c **** BaseType_t xQueueGenericSendFromISR( QueueHandle_t xQueue, const void * const pvItemToQueue, BaseTy
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 32
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 32
 
 
  951:Source/queue.c **** {
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
   29:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifndef PORTMACRO_H
   30:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define PORTMACRO_H
   31:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 33
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 33
 
 
   32:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #ifdef __cplusplus
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
   86:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "dsb" ::: "memory" );										\
   87:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile( "isb" );													\
   88:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 34
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 34
 
 
   89:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  143:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Store/clear the ready priorities in a bit map. */
  144:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRECORD_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) |= ( 1UL 
  145:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#define portRESET_READY_PRIORITY( uxPriority, uxReadyPriorities ) ( uxReadyPriorities ) &= ~( 1UL 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 35
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 35
 
 
  146:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  200:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	msr basepri, %0											\n" \
  201:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	isb														\n" \
  202:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		"	dsb														\n" \
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 36
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 36
 
 
  203:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		:"=r" (ulNewBASEPRI) : "i" ( configMAX_SYSCALL_INTERRUPT_PRIORITY ) : "memory"
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  968:Source/queue.c **** 	Only FreeRTOS functions that end in FromISR can be called from interrupts
  969:Source/queue.c **** 	that have been assigned a priority at or (logically) below the maximum
  970:Source/queue.c **** 	system call	interrupt priority.  FreeRTOS maintains a separate interrupt
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 37
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 37
 
 
  971:Source/queue.c **** 	safe API to ensure interrupt entry is as fast and as simple as possible.
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  997:Source/queue.c **** 			/* The event list is not altered if the queue is locked.  This will
  998:Source/queue.c **** 			be done when the queue is unlocked later. */
  999:Source/queue.c **** 			if( cTxLock == queueUNLOCKED )
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 38
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 38
 
 
  886              		.loc 1 999 0
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1050:Source/queue.c **** 								mtCOVERAGE_TEST_MARKER();
 1051:Source/queue.c **** 							}
 1052:Source/queue.c **** 						}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 39
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 39
 
 
 1053:Source/queue.c **** 						else
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1084:Source/queue.c **** 					}
 1085:Source/queue.c **** 					
 1086:Source/queue.c **** 					/* Not used in this path. */
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 40
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 40
 
 
 1087:Source/queue.c **** 					( void ) uxPreviousMessagesWaiting;
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  943              		.syntax unified
  944              	.LBE27:
  945              	.LBE26:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 41
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 41
 
 
 1104:Source/queue.c **** 		}
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  986              		.loc 2 213 0
  987              		.syntax unified
  988              	@ 213 ".\Source\portable\GCC\ARM_CM3/portmacro.h" 1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 42
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 42
 
 
  989 000e EFF31182 			mrs r2, basepri											
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1152:Source/queue.c **** 	{
 1153:Source/queue.c **** 		const UBaseType_t uxMessagesWaiting = pxQueue->uxMessagesWaiting;
  1007              		.loc 1 1153 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 43
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 43
 
 
  1008 002a 3B6A     		ldr	r3, [r7, #32]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1185:Source/queue.c **** 							if( pxHigherPriorityTaskWoken != NULL )
 1186:Source/queue.c **** 							{
 1187:Source/queue.c **** 								*pxHigherPriorityTaskWoken = pdTRUE;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 44
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 44
 
 
 1188:Source/queue.c **** 							}
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1041 0066 0346     		mov	r3, r0
  1042 0068 002B     		cmp	r3, #0
  1043 006a 0DD0     		beq	.L61
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 45
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 45
 
 
 1232:Source/queue.c **** 						{
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1066 008c 01E0     		b	.L62
  1067              	.L59:
 1264:Source/queue.c **** 		}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 46
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 46
 
 
 1265:Source/queue.c **** 		else
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1108              		.loc 1 1278 0
  1109              		.cfi_startproc
  1110              		@ args = 0, pretend = 0, frame = 40
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 47
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 47
 
 
  1111              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1307:Source/queue.c **** 			/* Is there data in the queue now?  To be running the calling task
 1308:Source/queue.c **** 			must be the highest priority task wanting to access the queue. */
 1309:Source/queue.c **** 			if( uxMessagesWaiting > ( UBaseType_t ) 0 )
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 48
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 48
 
 
  1137              		.loc 1 1309 0
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1324:Source/queue.c **** 					}
 1325:Source/queue.c **** 					else
 1326:Source/queue.c **** 					{
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 49
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 49
 
 
 1327:Source/queue.c **** 						mtCOVERAGE_TEST_MARKER();
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1204              	.L69:
  1205              	.LBE34:
 1354:Source/queue.c **** 				}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 50
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 50
 
 
 1355:Source/queue.c **** 				else
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1243 00d4 23D1     		bne	.L72
 1372:Source/queue.c **** 		{
 1373:Source/queue.c **** 			/* The timeout has not expired.  If the queue is still empty place
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 51
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 51
 
 
 1374:Source/queue.c **** 			the task on the list of tasks waiting to receive from the queue. */
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1392:Source/queue.c **** 				data. */
 1393:Source/queue.c **** 				prvUnlockQueue( pxQueue );
  1280              		.loc 1 1393 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 52
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 52
 
 
  1281 0112 386A     		ldr	r0, [r7, #32]
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1313              		.cfi_endproc
  1314              	.LFE79:
  1315              		.size	xQueueReceive, .-xQueueReceive
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 53
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 53
 
 
  1316              		.section	.text.xQueueSemaphoreTake,"ax",%progbits
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1438:Source/queue.c **** 		configASSERT( !( ( xTaskGetSchedulerState() == taskSCHEDULER_SUSPENDED ) && ( xTicksToWait != 0 )
 1439:Source/queue.c **** 	}
 1440:Source/queue.c **** 	#endif
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 54
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 54
 
 
 1441:Source/queue.c **** 
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1372 003c FB69     		ldr	r3, [r7, #28]
  1373 003e 9A60     		str	r2, [r3, #8]
  1374              	.L82:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 55
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 55
 
 
 1471:Source/queue.c **** 					}
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1402              		.loc 1 1497 0
  1403 0068 FFF7FEFF 		bl	vPortExitCritical
 1498:Source/queue.c **** 				return pdPASS;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 56
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 56
 
 
  1404              		.loc 1 1498 0
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1526:Source/queue.c **** 				else
 1527:Source/queue.c **** 				{
 1528:Source/queue.c **** 					/* Entry time was already set. */
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 57
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 57
 
 
 1529:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1545:Source/queue.c **** 			count is 0 then enter the Blocked state to wait for a semaphore to
 1546:Source/queue.c **** 			become available.  As semaphores are implemented with queues the
 1547:Source/queue.c **** 			queue being empty is equivalent to the semaphore count being 0. */
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 58
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 58
 
 
 1548:Source/queue.c **** 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1500 011a FFF7FEFF 		bl	prvUnlockQueue
 1571:Source/queue.c **** 				if( xTaskResumeAll() == pdFALSE )
  1501              		.loc 1 1571 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 59
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 59
 
 
  1502 011e FFF7FEFF 		bl	xTaskResumeAll
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1595:Source/queue.c **** 			expired.  Otherwise return to attempt to take the semaphore that is
 1596:Source/queue.c **** 			known to be available.  As semaphores are implemented by queues the
 1597:Source/queue.c **** 			queue being empty is equivalent to the semaphore count being 0. */
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 60
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 60
 
 
 1598:Source/queue.c **** 			if( prvIsQueueEmpty( pxQueue ) != pdFALSE )
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1625:Source/queue.c **** 				return errQUEUE_EMPTY;
  1560              		.loc 1 1625 0
  1561 0182 0023     		movs	r3, #0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 61
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 61
 
 
  1562              	.L96:
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1603 000e 7B62     		str	r3, [r7, #36]
 1639:Source/queue.c **** TimeOut_t xTimeOut;
 1640:Source/queue.c **** int8_t *pcOriginalReadPosition;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 62
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 62
 
 
 1641:Source/queue.c **** Queue_t * const pxQueue = xQueue;
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1676:Source/queue.c **** 				prvCopyDataFromQueue( pxQueue, pvBuffer );
  1623              		.loc 1 1676 0
  1624 002a B968     		ldr	r1, [r7, #8]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 63
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 63
 
 
  1625 002c 386A     		ldr	r0, [r7, #32]
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1698:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
 1699:Source/queue.c **** 				}
 1700:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 64
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 64
 
 
 1701:Source/queue.c **** 				taskEXIT_CRITICAL();
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1726:Source/queue.c **** 				}
 1727:Source/queue.c **** 			}
 1728:Source/queue.c **** 		}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 65
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 65
 
 
 1729:Source/queue.c **** 		taskEXIT_CRITICAL();
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1727 00dc FFF7FEFF 		bl	prvIsQueueEmpty
  1728 00e0 0346     		mov	r3, r0
  1729 00e2 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 66
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 66
 
 
  1730 00e4 17D0     		beq	.L108
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1765 011c FFF7FEFF 		bl	xTaskResumeAll
  1766 0120 78E7     		b	.L111
  1767              	.L107:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 67
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 67
 
 
 1762:Source/queue.c **** 			}
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1801              		.thumb_func
  1802              		.type	xQueueReceiveFromISR, %function
  1803              	xQueueReceiveFromISR:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 68
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 68
 
 
  1804              	.LFB82:
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1796:Source/queue.c **** 	above the maximum system call priority are kept permanently enabled, even
 1797:Source/queue.c **** 	when the RTOS kernel is in a critical section, but cannot make any calls to
 1798:Source/queue.c **** 	FreeRTOS API functions.  If configASSERT() is defined in FreeRTOSConfig.h
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 69
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 69
 
 
 1799:Source/queue.c **** 	then portASSERT_IF_INTERRUPT_PRIORITY_INVALID() will result in an assertion
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1828:Source/queue.c **** 			if( cRxLock == queueUNLOCKED )
  1868              		.loc 1 1828 0
  1869 0050 97F91B30 		ldrsb	r3, [r7, #27]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 70
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 70
 
 
  1870 0054 B3F1FF3F 		cmp	r3, #-1
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1858:Source/queue.c **** 				knows that data was removed while it was locked. */
 1859:Source/queue.c **** 				pxQueue->cRxLock = ( int8_t ) ( cRxLock + 1 );
  1895              		.loc 1 1859 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 71
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 71
 
 
  1896 0080 FB7E     		ldrb	r3, [r7, #27]	@ zero_extendqisi2
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1936              		@ sp needed
  1937 00aa 80BD     		pop	{r7, pc}
  1938              		.cfi_endproc
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 72
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 72
 
 
  1939              	.LFE82:
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  1983 0026 3B69     		ldr	r3, [r7, #16]
  1984              	.LBE45:
  1985              	.LBE44:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 73
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 73
 
 
 1882:Source/queue.c **** 
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2005              		.loc 1 1916 0
  2006 0046 0123     		movs	r3, #1
  2007 0048 7B62     		str	r3, [r7, #36]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 74
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 74
 
 
  2008 004a 01E0     		b	.L125
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1930:Source/queue.c **** UBaseType_t uxQueueMessagesWaiting( const QueueHandle_t xQueue )
 1931:Source/queue.c **** {
  2049              		.loc 1 1931 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 75
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 75
 
 
  2050              		.cfi_startproc
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 1945:Source/queue.c **** 
 1946:Source/queue.c **** UBaseType_t uxQueueSpacesAvailable( const QueueHandle_t xQueue )
 1947:Source/queue.c **** {
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 76
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 76
 
 
  2091              		.loc 1 1947 0
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2132              		.align	2
  2133              		.global	uxQueueMessagesWaitingFromISR
  2134              		.thumb
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 77
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 77
 
 
  2135              		.thumb_func
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2177              		.global	vQueueDelete
  2178              		.thumb
  2179              		.thumb_func
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 78
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 78
 
 
  2180              		.type	vQueueDelete, %function
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2002:Source/queue.c **** 		else
 2003:Source/queue.c **** 		{
 2004:Source/queue.c **** 			mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 79
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 79
 
 
 2005:Source/queue.c **** 		}
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2041:Source/queue.c **** 		return ( ( Queue_t * ) xQueue )->ucQueueType;
 2042:Source/queue.c **** 	}
 2043:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 80
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 80
 
 
 2044:Source/queue.c **** #endif /* configUSE_TRACE_FACILITY */
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2068:Source/queue.c **** 		return uxHighestPriorityOfWaitingTasks;
  2253              		.loc 1 2068 0
  2254 0022 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 81
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 81
 
 
 2069:Source/queue.c **** 	}
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2296 0012 9B6B     		ldr	r3, [r3, #56]
  2297 0014 3B61     		str	r3, [r7, #16]
 2082:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 82
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 82
 
 
 2083:Source/queue.c **** 	if( pxQueue->uxItemSize == ( UBaseType_t ) 0 )
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2103:Source/queue.c **** 		pxQueue->pcWriteTo += pxQueue->uxItemSize; /*lint !e9016 Pointer arithmetic on char types ok, esp
  2332              		.loc 1 2103 0
  2333 0050 FB68     		ldr	r3, [r7, #12]
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 83
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 83
 
 
  2334 0052 5A68     		ldr	r2, [r3, #4]
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2374 0098 FB68     		ldr	r3, [r7, #12]
  2375 009a 1B68     		ldr	r3, [r3]
  2376 009c 9A42     		cmp	r2, r3
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 84
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 84
 
 
  2377 009e 07D2     		bcs	.L142
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2401              		.loc 1 2147 0
  2402 00c2 3B69     		ldr	r3, [r7, #16]
  2403 00c4 5A1C     		adds	r2, r3, #1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 85
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 85
 
 
  2404 00c6 FB68     		ldr	r3, [r7, #12]
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2448 0016 7B68     		ldr	r3, [r7, #4]
  2449 0018 1B6C     		ldr	r3, [r3, #64]
  2450 001a 1A44     		add	r2, r2, r3
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 86
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 86
 
 
  2451 001c 7B68     		ldr	r3, [r7, #4]
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2170:Source/queue.c **** 
 2171:Source/queue.c **** static void prvUnlockQueue( Queue_t * const pxQueue )
 2172:Source/queue.c **** {
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 87
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 87
 
 
  2493              		.loc 1 2172 0
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2204:Source/queue.c **** 				else
 2205:Source/queue.c **** 				{
 2206:Source/queue.c **** 					/* Tasks that are removed from the event list will get
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 88
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 88
 
 
 2207:Source/queue.c **** 					added to the pending ready list as the scheduler is still
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2245:Source/queue.c **** 				else
 2246:Source/queue.c **** 				{
 2247:Source/queue.c **** 					break;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 89
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 89
 
 
 2248:Source/queue.c **** 				}
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2565 0060 7B68     		ldr	r3, [r7, #4]
  2566 0062 1B69     		ldr	r3, [r3, #16]
  2567 0064 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 90
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 90
 
 
  2568 0066 12D0     		beq	.L160
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2600              		.loc 1 2287 0
  2601 0098 FFF7FEFF 		bl	vPortExitCritical
 2288:Source/queue.c **** }
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 91
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 91
 
 
  2602              		.loc 1 2288 0
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2300:Source/queue.c **** 		}
 2301:Source/queue.c **** 		else
 2302:Source/queue.c **** 		{
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 92
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 92
 
 
 2303:Source/queue.c **** 			xReturn = pdFALSE;
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2686 0008 7B68     		ldr	r3, [r7, #4]
  2687 000a BB60     		str	r3, [r7, #8]
 2316:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 93
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 93
 
 
 2317:Source/queue.c **** 	configASSERT( pxQueue );
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2726              		.cfi_startproc
  2727              		@ args = 0, pretend = 0, frame = 16
  2728              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 94
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 94
 
 
  2729 0000 80B5     		push	{r7, lr}
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2766              		@ sp needed
  2767 002e 80BD     		pop	{r7, pc}
  2768              		.cfi_endproc
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 95
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 95
 
 
  2769              	.LFE94:
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2808 001e 0023     		movs	r3, #0
  2809 0020 FB60     		str	r3, [r7, #12]
  2810              	.L175:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 96
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 96
 
 
 2365:Source/queue.c **** 	}
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2395:Source/queue.c **** 				else
 2396:Source/queue.c **** 				{
 2397:Source/queue.c **** 					portENABLE_INTERRUPTS();
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 97
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 97
 
 
 2398:Source/queue.c **** 					return errQUEUE_FULL;
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2452:Source/queue.c **** 	BaseType_t xReturn;
 2453:Source/queue.c **** 	Queue_t * const pxQueue = xQueue;
 2454:Source/queue.c **** 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 98
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 98
 
 
 2455:Source/queue.c **** 		/* If the queue is already empty we may have to block.  A critical section
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2509:Source/queue.c **** 					Instead the same pending ready list mechanism is used as if
 2510:Source/queue.c **** 					the event were caused from within an interrupt. */
 2511:Source/queue.c **** 					if( xCoRoutineRemoveFromEventList( &( pxQueue->xTasksWaitingToSend ) ) != pdFALSE )
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 99
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 99
 
 
 2512:Source/queue.c **** 					{
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2566:Source/queue.c **** 				{
 2567:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
 2568:Source/queue.c **** 				}
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 100
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 100
 
 
 2569:Source/queue.c **** 			}
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2623:Source/queue.c **** 				else
 2624:Source/queue.c **** 				{
 2625:Source/queue.c **** 					mtCOVERAGE_TEST_MARKER();
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 101
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 101
 
 
 2626:Source/queue.c **** 				}
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2858 0018 002B     		cmp	r3, #0
  2859 001a 0BD1     		bne	.L179
 2657:Source/queue.c **** 			{
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 102
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 102
 
 
 2658:Source/queue.c **** 				/* Store the information on this queue. */
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2899 004c 00000000 		.word	xQueueRegistry
  2900              		.cfi_endproc
  2901              	.LFE96:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 103
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 103
 
 
  2902              		.size	vQueueAddToRegistry, .-vQueueAddToRegistry
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2940 0020 05D1     		bne	.L186
 2687:Source/queue.c **** 			{
 2688:Source/queue.c **** 				pcReturn = xQueueRegistry[ ux ].pcQueueName;
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 104
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 104
 
 
  2941              		.loc 1 2688 0
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  2983              		.thumb_func
  2984              		.type	vQueueUnregisterQueue, %function
  2985              	vQueueUnregisterQueue:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 105
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 105
 
 
  2986              	.LFB98:
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
 2720:Source/queue.c **** 				added again. */
 2721:Source/queue.c **** 				xQueueRegistry[ ux ].xHandle = ( QueueHandle_t ) 0;
  3019              		.loc 1 2721 0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 106
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 106
 
 
  3020 0028 084A     		ldr	r2, .L197
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3063              		.file 7 "Generated_Source\\PSoC5/DS18x8.h"
  3064              		.file 8 ".\\Source\\include/list.h"
  3065              		.file 9 ".\\Source\\include/task.h"
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 107
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 107
 
 
  3066              		.file 10 ".\\Source\\include/queue.h"
@@ -6372,13 +6372,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3074 000b 01       		.uleb128 0x1
  3075 000c 14010000 		.4byte	.LASF147
  3076 0010 0C       		.byte	0xc
- 3077 0011 9B020000 		.4byte	.LASF148
- 3078 0015 18020000 		.4byte	.LASF149
+ 3077 0011 39020000 		.4byte	.LASF148
+ 3078 0015 F0070000 		.4byte	.LASF149
  3079 0019 00000000 		.4byte	.Ldebug_ranges0+0
  3080 001d 00000000 		.4byte	0
  3081 0021 00000000 		.4byte	.Ldebug_line0
  3082 0025 02       		.uleb128 0x2
- 3083 0026 02040000 		.4byte	.LASF3
+ 3083 0026 A0030000 		.4byte	.LASF3
  3084 002a 03       		.byte	0x3
  3085 002b D8       		.byte	0xd8
  3086 002c 30000000 		.4byte	0x30
@@ -6393,40 +6393,40 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3095 003e 03       		.uleb128 0x3
  3096 003f 08       		.byte	0x8
  3097 0040 05       		.byte	0x5
- 3098 0041 CE050000 		.4byte	.LASF1
+ 3098 0041 6C050000 		.4byte	.LASF1
  3099 0045 03       		.uleb128 0x3
  3100 0046 08       		.byte	0x8
  3101 0047 04       		.byte	0x4
- 3102 0048 0A070000 		.4byte	.LASF2
+ 3102 0048 A8060000 		.4byte	.LASF2
  3103 004c 02       		.uleb128 0x2
- 3104 004d E7060000 		.4byte	.LASF4
+ 3104 004d 85060000 		.4byte	.LASF4
  3105 0051 04       		.byte	0x4
  3106 0052 1B       		.byte	0x1b
  3107 0053 57000000 		.4byte	0x57
  3108 0057 03       		.uleb128 0x3
  3109 0058 01       		.byte	0x1
  3110 0059 06       		.byte	0x6
- 3111 005a 1B090000 		.4byte	.LASF5
+ 3111 005a 1D090000 		.4byte	.LASF5
  3112 005e 02       		.uleb128 0x2
- 3113 005f 03080000 		.4byte	.LASF6
+ 3113 005f A1070000 		.4byte	.LASF6
  3114 0063 04       		.byte	0x4
  3115 0064 1D       		.byte	0x1d
  3116 0065 69000000 		.4byte	0x69
  3117 0069 03       		.uleb128 0x3
  3118 006a 01       		.byte	0x1
  3119 006b 08       		.byte	0x8
- 3120 006c 6B080000 		.4byte	.LASF7
+ 3120 006c 6D080000 		.4byte	.LASF7
  3121 0070 03       		.uleb128 0x3
  3122 0071 02       		.byte	0x2
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 108
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 108
 
 
  3123 0072 05       		.byte	0x5
- 3124 0073 81070000 		.4byte	.LASF8
+ 3124 0073 1F070000 		.4byte	.LASF8
  3125 0077 03       		.uleb128 0x3
  3126 0078 02       		.byte	0x2
  3127 0079 07       		.byte	0x7
- 3128 007a 27090000 		.4byte	.LASF9
+ 3128 007a 29090000 		.4byte	.LASF9
  3129 007e 02       		.uleb128 0x2
  3130 007f EB000000 		.4byte	.LASF10
  3131 0083 04       		.byte	0x4
@@ -6435,30 +6435,30 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3134 0089 03       		.uleb128 0x3
  3135 008a 04       		.byte	0x4
  3136 008b 05       		.byte	0x5
- 3137 008c 96070000 		.4byte	.LASF11
+ 3137 008c 34070000 		.4byte	.LASF11
  3138 0090 02       		.uleb128 0x2
- 3139 0091 79080000 		.4byte	.LASF12
+ 3139 0091 7B080000 		.4byte	.LASF12
  3140 0095 04       		.byte	0x4
  3141 0096 41       		.byte	0x41
  3142 0097 9B000000 		.4byte	0x9b
  3143 009b 03       		.uleb128 0x3
  3144 009c 04       		.byte	0x4
  3145 009d 07       		.byte	0x7
- 3146 009e 26080000 		.4byte	.LASF13
+ 3146 009e C4070000 		.4byte	.LASF13
  3147 00a2 03       		.uleb128 0x3
  3148 00a3 08       		.byte	0x8
  3149 00a4 07       		.byte	0x7
- 3150 00a5 52030000 		.4byte	.LASF14
+ 3150 00a5 F0020000 		.4byte	.LASF14
  3151 00a9 03       		.uleb128 0x3
  3152 00aa 04       		.byte	0x4
  3153 00ab 07       		.byte	0x7
- 3154 00ac 1D080000 		.4byte	.LASF15
+ 3154 00ac BB070000 		.4byte	.LASF15
  3155 00b0 05       		.uleb128 0x5
  3156 00b1 04       		.byte	0x4
  3157 00b2 03       		.uleb128 0x3
  3158 00b3 01       		.byte	0x1
  3159 00b4 08       		.byte	0x8
- 3160 00b5 C0040000 		.4byte	.LASF16
+ 3160 00b5 5E040000 		.4byte	.LASF16
  3161 00b9 06       		.uleb128 0x6
  3162 00ba 04       		.byte	0x4
  3163 00bb BF000000 		.4byte	0xbf
@@ -6469,46 +6469,46 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3168 00c6 CA000000 		.4byte	0xca
  3169 00ca 08       		.uleb128 0x8
  3170 00cb 02       		.uleb128 0x2
- 3171 00cc 01030000 		.4byte	.LASF17
+ 3171 00cc 9F020000 		.4byte	.LASF17
  3172 00d0 05       		.byte	0x5
  3173 00d1 14       		.byte	0x14
  3174 00d2 4C000000 		.4byte	0x4c
  3175 00d6 02       		.uleb128 0x2
- 3176 00d7 72050000 		.4byte	.LASF18
+ 3176 00d7 10050000 		.4byte	.LASF18
  3177 00db 05       		.byte	0x5
  3178 00dc 18       		.byte	0x18
  3179 00dd 5E000000 		.4byte	0x5e
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 109
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 109
 
 
  3180 00e1 02       		.uleb128 0x2
- 3181 00e2 38080000 		.4byte	.LASF19
+ 3181 00e2 D6070000 		.4byte	.LASF19
  3182 00e6 05       		.byte	0x5
  3183 00e7 2C       		.byte	0x2c
  3184 00e8 7E000000 		.4byte	0x7e
  3185 00ec 02       		.uleb128 0x2
- 3186 00ed F8020000 		.4byte	.LASF20
+ 3186 00ed 96020000 		.4byte	.LASF20
  3187 00f1 05       		.byte	0x5
  3188 00f2 30       		.byte	0x30
  3189 00f3 90000000 		.4byte	0x90
  3190 00f7 09       		.uleb128 0x9
- 3191 00f8 4E090000 		.4byte	.LASF21
+ 3191 00f8 50090000 		.4byte	.LASF21
  3192 00fc 06       		.byte	0x6
  3193 00fd E401     		.2byte	0x1e4
  3194 00ff 69000000 		.4byte	0x69
  3195 0103 09       		.uleb128 0x9
- 3196 0104 3E050000 		.4byte	.LASF22
+ 3196 0104 DC040000 		.4byte	.LASF22
  3197 0108 06       		.byte	0x6
  3198 0109 E501     		.2byte	0x1e5
  3199 010b 77000000 		.4byte	0x77
  3200 010f 03       		.uleb128 0x3
  3201 0110 04       		.byte	0x4
  3202 0111 04       		.byte	0x4
- 3203 0112 3C030000 		.4byte	.LASF23
+ 3203 0112 DA020000 		.4byte	.LASF23
  3204 0116 03       		.uleb128 0x3
  3205 0117 08       		.byte	0x8
  3206 0118 04       		.byte	0x4
- 3207 0119 54090000 		.4byte	.LASF24
+ 3207 0119 56090000 		.4byte	.LASF24
  3208 011d 0A       		.uleb128 0xa
  3209 011e F7000000 		.4byte	0xf7
  3210 0122 0B       		.uleb128 0xb
@@ -6518,33 +6518,33 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3214 0129 30       		.byte	0x30
  3215 012a 47010000 		.4byte	0x147
  3216 012e 0C       		.uleb128 0xc
- 3217 012f F0060000 		.4byte	.LASF25
+ 3217 012f 8E060000 		.4byte	.LASF25
  3218 0133 07       		.byte	0x7
  3219 0134 31       		.byte	0x31
  3220 0135 03010000 		.4byte	0x103
  3221 0139 00       		.byte	0
  3222 013a 0C       		.uleb128 0xc
- 3223 013b 8D050000 		.4byte	.LASF26
+ 3223 013b 2B050000 		.4byte	.LASF26
  3224 013f 07       		.byte	0x7
  3225 0140 32       		.byte	0x32
  3226 0141 F7000000 		.4byte	0xf7
  3227 0145 02       		.byte	0x2
  3228 0146 00       		.byte	0
  3229 0147 02       		.uleb128 0x2
- 3230 0148 EF050000 		.4byte	.LASF27
+ 3230 0148 8D050000 		.4byte	.LASF27
  3231 014c 02       		.byte	0x2
  3232 014d 38       		.byte	0x38
  3233 014e 89000000 		.4byte	0x89
  3234 0152 02       		.uleb128 0x2
- 3235 0153 FA040000 		.4byte	.LASF28
+ 3235 0153 98040000 		.4byte	.LASF28
  3236 0157 02       		.byte	0x2
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 110
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 110
 
 
  3237 0158 39       		.byte	0x39
  3238 0159 9B000000 		.4byte	0x9b
  3239 015d 02       		.uleb128 0x2
- 3240 015e DC060000 		.4byte	.LASF29
+ 3240 015e 7A060000 		.4byte	.LASF29
  3241 0162 02       		.byte	0x2
  3242 0163 3F       		.byte	0x3f
  3243 0164 EC000000 		.4byte	0xec
@@ -6558,31 +6558,31 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3251 0175 8C       		.byte	0x8c
  3252 0176 B7010000 		.4byte	0x1b7
  3253 017a 0C       		.uleb128 0xc
- 3254 017b 8B070000 		.4byte	.LASF32
+ 3254 017b 29070000 		.4byte	.LASF32
  3255 017f 08       		.byte	0x8
  3256 0180 8F       		.byte	0x8f
  3257 0181 5D010000 		.4byte	0x15d
  3258 0185 00       		.byte	0
  3259 0186 0C       		.uleb128 0xc
- 3260 0187 35060000 		.4byte	.LASF33
+ 3260 0187 D3050000 		.4byte	.LASF33
  3261 018b 08       		.byte	0x8
  3262 018c 90       		.byte	0x90
  3263 018d B7010000 		.4byte	0x1b7
  3264 0191 04       		.byte	0x4
  3265 0192 0C       		.uleb128 0xc
- 3266 0193 A7030000 		.4byte	.LASF34
+ 3266 0193 45030000 		.4byte	.LASF34
  3267 0197 08       		.byte	0x8
  3268 0198 91       		.byte	0x91
  3269 0199 B7010000 		.4byte	0x1b7
  3270 019d 08       		.byte	0x8
  3271 019e 0C       		.uleb128 0xc
- 3272 019f B7080000 		.4byte	.LASF35
+ 3272 019f B9080000 		.4byte	.LASF35
  3273 01a3 08       		.byte	0x8
  3274 01a4 92       		.byte	0x92
  3275 01a5 B0000000 		.4byte	0xb0
  3276 01a9 0C       		.byte	0xc
  3277 01aa 0C       		.uleb128 0xc
- 3278 01ab 44070000 		.4byte	.LASF36
+ 3278 01ab E2060000 		.4byte	.LASF36
  3279 01af 08       		.byte	0x8
  3280 01b0 93       		.byte	0x93
  3281 01b1 EE010000 		.4byte	0x1ee
@@ -6592,13 +6592,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3285 01b8 04       		.byte	0x4
  3286 01b9 6E010000 		.4byte	0x16e
  3287 01bd 0B       		.uleb128 0xb
- 3288 01be 44040000 		.4byte	.LASF37
+ 3288 01be E2030000 		.4byte	.LASF37
  3289 01c2 14       		.byte	0x14
  3290 01c3 08       		.byte	0x8
  3291 01c4 A4       		.byte	0xa4
  3292 01c5 EE010000 		.4byte	0x1ee
  3293 01c9 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 111
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 111
 
 
  3294 01ca 00000000 		.4byte	.LASF38
@@ -6613,7 +6613,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3303 01dc 40020000 		.4byte	0x240
  3304 01e0 04       		.byte	0x4
  3305 01e1 0C       		.uleb128 0xc
- 3306 01e2 35050000 		.4byte	.LASF40
+ 3306 01e2 D3040000 		.4byte	.LASF40
  3307 01e6 08       		.byte	0x8
  3308 01e7 A9       		.byte	0xa9
  3309 01e8 30020000 		.4byte	0x230
@@ -6623,42 +6623,42 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3313 01ef 04       		.byte	0x4
  3314 01f0 BD010000 		.4byte	0x1bd
  3315 01f4 02       		.uleb128 0x2
- 3316 01f5 C5040000 		.4byte	.LASF41
+ 3316 01f5 63040000 		.4byte	.LASF41
  3317 01f9 08       		.byte	0x8
  3318 01fa 96       		.byte	0x96
  3319 01fb 6E010000 		.4byte	0x16e
  3320 01ff 0B       		.uleb128 0xb
- 3321 0200 26040000 		.4byte	.LASF42
+ 3321 0200 C4030000 		.4byte	.LASF42
  3322 0204 0C       		.byte	0xc
  3323 0205 08       		.byte	0x8
  3324 0206 98       		.byte	0x98
  3325 0207 30020000 		.4byte	0x230
  3326 020b 0C       		.uleb128 0xc
- 3327 020c 8B070000 		.4byte	.LASF32
+ 3327 020c 29070000 		.4byte	.LASF32
  3328 0210 08       		.byte	0x8
  3329 0211 9B       		.byte	0x9b
  3330 0212 5D010000 		.4byte	0x15d
  3331 0216 00       		.byte	0
  3332 0217 0C       		.uleb128 0xc
- 3333 0218 35060000 		.4byte	.LASF33
+ 3333 0218 D3050000 		.4byte	.LASF33
  3334 021c 08       		.byte	0x8
  3335 021d 9C       		.byte	0x9c
  3336 021e B7010000 		.4byte	0x1b7
  3337 0222 04       		.byte	0x4
  3338 0223 0C       		.uleb128 0xc
- 3339 0224 A7030000 		.4byte	.LASF34
+ 3339 0224 45030000 		.4byte	.LASF34
  3340 0228 08       		.byte	0x8
  3341 0229 9D       		.byte	0x9d
  3342 022a B7010000 		.4byte	0x1b7
  3343 022e 08       		.byte	0x8
  3344 022f 00       		.byte	0
  3345 0230 02       		.uleb128 0x2
- 3346 0231 63050000 		.4byte	.LASF43
+ 3346 0231 01050000 		.4byte	.LASF43
  3347 0235 08       		.byte	0x8
  3348 0236 9F       		.byte	0x9f
  3349 0237 FF010000 		.4byte	0x1ff
  3350 023b 0A       		.uleb128 0xa
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 112
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 112
 
 
  3351 023c 52010000 		.4byte	0x152
@@ -6666,12 +6666,12 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3353 0241 04       		.byte	0x4
  3354 0242 F4010000 		.4byte	0x1f4
  3355 0246 02       		.uleb128 0x2
- 3356 0247 BA060000 		.4byte	.LASF44
+ 3356 0247 58060000 		.4byte	.LASF44
  3357 024b 08       		.byte	0x8
  3358 024c AB       		.byte	0xab
  3359 024d BD010000 		.4byte	0x1bd
  3360 0251 02       		.uleb128 0x2
- 3361 0252 72060000 		.4byte	.LASF45
+ 3361 0252 10060000 		.4byte	.LASF45
  3362 0256 09       		.byte	0x9
  3363 0257 46       		.byte	0x46
  3364 0258 5C020000 		.4byte	0x25c
@@ -6693,19 +6693,19 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3380 027a 47010000 		.4byte	0x147
  3381 027e 00       		.byte	0
  3382 027f 0C       		.uleb128 0xc
- 3383 0280 11060000 		.4byte	.LASF48
+ 3383 0280 AF050000 		.4byte	.LASF48
  3384 0284 09       		.byte	0x9
  3385 0285 69       		.byte	0x69
  3386 0286 5D010000 		.4byte	0x15d
  3387 028a 04       		.byte	0x4
  3388 028b 00       		.byte	0
  3389 028c 02       		.uleb128 0x2
- 3390 028d 51060000 		.4byte	.LASF49
+ 3390 028d EF050000 		.4byte	.LASF49
  3391 0291 09       		.byte	0x9
  3392 0292 6A       		.byte	0x6a
  3393 0293 67020000 		.4byte	0x267
  3394 0297 02       		.uleb128 0x2
- 3395 0298 27050000 		.4byte	.LASF50
+ 3395 0298 C5040000 		.4byte	.LASF50
  3396 029c 0A       		.byte	0xa
  3397 029d 30       		.byte	0x30
  3398 029e A2020000 		.4byte	0x2a2
@@ -6713,22 +6713,22 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3400 02a3 04       		.byte	0x4
  3401 02a4 A8020000 		.4byte	0x2a8
  3402 02a8 0B       		.uleb128 0xb
- 3403 02a9 42030000 		.4byte	.LASF51
+ 3403 02a9 E0020000 		.4byte	.LASF51
  3404 02ad 48       		.byte	0x48
  3405 02ae 01       		.byte	0x1
  3406 02af 61       		.byte	0x61
  3407 02b0 2B030000 		.4byte	0x32b
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 113
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 113
 
 
  3408 02b4 0C       		.uleb128 0xc
- 3409 02b5 BF080000 		.4byte	.LASF52
+ 3409 02b5 C1080000 		.4byte	.LASF52
  3410 02b9 01       		.byte	0x1
  3411 02ba 63       		.byte	0x63
  3412 02bb 50030000 		.4byte	0x350
  3413 02bf 00       		.byte	0
  3414 02c0 0C       		.uleb128 0xc
- 3415 02c1 D2060000 		.4byte	.LASF53
+ 3415 02c1 70060000 		.4byte	.LASF53
  3416 02c5 01       		.byte	0x1
  3417 02c6 64       		.byte	0x64
  3418 02c7 50030000 		.4byte	0x350
@@ -6752,25 +6752,25 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3436 02e9 46020000 		.4byte	0x246
  3437 02ed 24       		.byte	0x24
  3438 02ee 0C       		.uleb128 0xc
- 3439 02ef B2030000 		.4byte	.LASF56
+ 3439 02ef 50030000 		.4byte	.LASF56
  3440 02f3 01       		.byte	0x1
  3441 02f4 6F       		.byte	0x6f
  3442 02f5 3B020000 		.4byte	0x23b
  3443 02f9 38       		.byte	0x38
  3444 02fa 0C       		.uleb128 0xc
- 3445 02fb 78070000 		.4byte	.LASF57
+ 3445 02fb 16070000 		.4byte	.LASF57
  3446 02ff 01       		.byte	0x1
  3447 0300 70       		.byte	0x70
  3448 0301 52010000 		.4byte	0x152
  3449 0305 3C       		.byte	0x3c
  3450 0306 0C       		.uleb128 0xc
- 3451 0307 98040000 		.4byte	.LASF58
+ 3451 0307 36040000 		.4byte	.LASF58
  3452 030b 01       		.byte	0x1
  3453 030c 71       		.byte	0x71
  3454 030d 52010000 		.4byte	0x152
  3455 0311 40       		.byte	0x40
  3456 0312 0C       		.uleb128 0xc
- 3457 0313 65090000 		.4byte	.LASF59
+ 3457 0313 67090000 		.4byte	.LASF59
  3458 0317 01       		.byte	0x1
  3459 0318 73       		.byte	0x73
  3460 0319 B0030000 		.4byte	0x3b0
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3462 031e 0C       		.uleb128 0xc
  3463 031f CD010000 		.4byte	.LASF60
  3464 0323 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 114
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 114
 
 
  3465 0324 74       		.byte	0x74
@@ -6786,19 +6786,19 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3467 0329 45       		.byte	0x45
  3468 032a 00       		.byte	0
  3469 032b 0B       		.uleb128 0xb
- 3470 032c DF040000 		.4byte	.LASF61
+ 3470 032c 7D040000 		.4byte	.LASF61
  3471 0330 08       		.byte	0x8
  3472 0331 01       		.byte	0x1
  3473 0332 43       		.byte	0x43
  3474 0333 50030000 		.4byte	0x350
  3475 0337 0C       		.uleb128 0xc
- 3476 0338 FC070000 		.4byte	.LASF62
+ 3476 0338 9A070000 		.4byte	.LASF62
  3477 033c 01       		.byte	0x1
  3478 033d 45       		.byte	0x45
  3479 033e 50030000 		.4byte	0x350
  3480 0342 00       		.byte	0
  3481 0343 0C       		.uleb128 0xc
- 3482 0344 AA020000 		.4byte	.LASF63
+ 3482 0344 48020000 		.4byte	.LASF63
  3483 0348 01       		.byte	0x1
  3484 0349 46       		.byte	0x46
  3485 034a 50030000 		.4byte	0x350
@@ -6808,7 +6808,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3489 0351 04       		.byte	0x4
  3490 0352 CB000000 		.4byte	0xcb
  3491 0356 02       		.uleb128 0x2
- 3492 0357 5F070000 		.4byte	.LASF64
+ 3492 0357 FD060000 		.4byte	.LASF64
  3493 035b 01       		.byte	0x1
  3494 035c 47       		.byte	0x47
  3495 035d 2B030000 		.4byte	0x32b
@@ -6819,7 +6819,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3500 0368 49       		.byte	0x49
  3501 0369 86030000 		.4byte	0x386
  3502 036d 0C       		.uleb128 0xc
- 3503 036e 41090000 		.4byte	.LASF66
+ 3503 036e 43090000 		.4byte	.LASF66
  3504 0372 01       		.byte	0x1
  3505 0373 4B       		.byte	0x4b
  3506 0374 51020000 		.4byte	0x251
@@ -6838,19 +6838,19 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3519 038d 61030000 		.4byte	0x361
  3520 0391 0F       		.uleb128 0xf
  3521 0392 08       		.byte	0x8
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 115
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 115
 
 
  3522 0393 01       		.byte	0x1
  3523 0394 66       		.byte	0x66
  3524 0395 B0030000 		.4byte	0x3b0
  3525 0399 10       		.uleb128 0x10
- 3526 039a 35030000 		.4byte	.LASF69
+ 3526 039a D3020000 		.4byte	.LASF69
  3527 039e 01       		.byte	0x1
  3528 039f 68       		.byte	0x68
  3529 03a0 56030000 		.4byte	0x356
  3530 03a4 10       		.uleb128 0x10
- 3531 03a5 C4030000 		.4byte	.LASF70
+ 3531 03a5 62030000 		.4byte	.LASF70
  3532 03a9 01       		.byte	0x1
  3533 03aa 69       		.byte	0x69
  3534 03ab 86030000 		.4byte	0x386
@@ -6858,7 +6858,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3536 03b0 0A       		.uleb128 0xa
  3537 03b1 CB000000 		.4byte	0xcb
  3538 03b5 02       		.uleb128 0x2
- 3539 03b6 3A090000 		.4byte	.LASF71
+ 3539 03b6 3C090000 		.4byte	.LASF71
  3540 03ba 01       		.byte	0x1
  3541 03bb 83       		.byte	0x83
  3542 03bc A8020000 		.4byte	0x2a8
@@ -6874,31 +6874,31 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3552 03d2 94       		.byte	0x94
  3553 03d3 F0030000 		.4byte	0x3f0
  3554 03d7 0C       		.uleb128 0xc
- 3555 03d8 1A040000 		.4byte	.LASF74
+ 3555 03d8 B8030000 		.4byte	.LASF74
  3556 03dc 01       		.byte	0x1
  3557 03dd 96       		.byte	0x96
  3558 03de B9000000 		.4byte	0xb9
  3559 03e2 00       		.byte	0
  3560 03e3 0C       		.uleb128 0xc
- 3561 03e4 12040000 		.4byte	.LASF75
+ 3561 03e4 B0030000 		.4byte	.LASF75
  3562 03e8 01       		.byte	0x1
  3563 03e9 97       		.byte	0x97
  3564 03ea 97020000 		.4byte	0x297
  3565 03ee 04       		.byte	0x4
  3566 03ef 00       		.byte	0
  3567 03f0 02       		.uleb128 0x2
- 3568 03f1 7A050000 		.4byte	.LASF76
+ 3568 03f1 18050000 		.4byte	.LASF76
  3569 03f5 01       		.byte	0x1
  3570 03f6 98       		.byte	0x98
  3571 03f7 CB030000 		.4byte	0x3cb
  3572 03fb 02       		.uleb128 0x2
- 3573 03fc 7A020000 		.4byte	.LASF77
+ 3573 03fc 18020000 		.4byte	.LASF77
  3574 0400 01       		.byte	0x1
  3575 0401 9D       		.byte	0x9d
  3576 0402 F0030000 		.4byte	0x3f0
  3577 0406 11       		.uleb128 0x11
- 3578 0407 BB050000 		.4byte	.LASF151
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 116
+ 3578 0407 59050000 		.4byte	.LASF151
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 116
 
 
  3579 040b 02       		.byte	0x2
@@ -6907,30 +6907,30 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3582 0411 03       		.byte	0x3
  3583 0412 2D040000 		.4byte	0x42d
  3584 0416 12       		.uleb128 0x12
- 3585 0417 23030000 		.4byte	.LASF78
+ 3585 0417 C1020000 		.4byte	.LASF78
  3586 041b 02       		.byte	0x2
  3587 041c D3       		.byte	0xd3
  3588 041d EC000000 		.4byte	0xec
  3589 0421 12       		.uleb128 0x12
- 3590 0422 ED040000 		.4byte	.LASF79
+ 3590 0422 8B040000 		.4byte	.LASF79
  3591 0426 02       		.byte	0x2
  3592 0427 D3       		.byte	0xd3
  3593 0428 EC000000 		.4byte	0xec
  3594 042c 00       		.byte	0
  3595 042d 13       		.uleb128 0x13
- 3596 042e 63040000 		.4byte	.LASF152
+ 3596 042e 01040000 		.4byte	.LASF152
  3597 0432 02       		.byte	0x2
  3598 0433 E5       		.byte	0xe5
  3599 0434 03       		.byte	0x3
  3600 0435 45040000 		.4byte	0x445
  3601 0439 14       		.uleb128 0x14
- 3602 043a 7F060000 		.4byte	.LASF153
+ 3602 043a 1D060000 		.4byte	.LASF153
  3603 043e 02       		.byte	0x2
  3604 043f E5       		.byte	0xe5
  3605 0440 EC000000 		.4byte	0xec
  3606 0444 00       		.byte	0
  3607 0445 15       		.uleb128 0x15
- 3608 0446 EE080000 		.4byte	.LASF81
+ 3608 0446 F0080000 		.4byte	.LASF81
  3609 044a 01       		.byte	0x1
  3610 044b FF       		.byte	0xff
  3611 044c 47010000 		.4byte	0x147
@@ -6940,7 +6940,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3615 0459 9C       		.byte	0x9c
  3616 045a 8A040000 		.4byte	0x48a
  3617 045e 16       		.uleb128 0x16
- 3618 045f 35030000 		.4byte	.LASF69
+ 3618 045f D3020000 		.4byte	.LASF69
  3619 0463 01       		.byte	0x1
  3620 0464 FF       		.byte	0xff
  3621 0465 97020000 		.4byte	0x297
@@ -6948,7 +6948,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3623 046a 91       		.byte	0x91
  3624 046b 6C       		.sleb128 -20
  3625 046c 16       		.uleb128 0x16
- 3626 046d 3C060000 		.4byte	.LASF80
+ 3626 046d DA050000 		.4byte	.LASF80
  3627 0471 01       		.byte	0x1
  3628 0472 FF       		.byte	0xff
  3629 0473 47010000 		.4byte	0x147
@@ -6956,9 +6956,9 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3631 0478 91       		.byte	0x91
  3632 0479 68       		.sleb128 -24
  3633 047a 17       		.uleb128 0x17
- 3634 047b 0D080000 		.4byte	.LASF85
+ 3634 047b AB070000 		.4byte	.LASF85
  3635 047f 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 117
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 117
 
 
  3636 0480 0101     		.2byte	0x101
@@ -6973,7 +6973,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3645 0490 07       		.uleb128 0x7
  3646 0491 8A040000 		.4byte	0x48a
  3647 0495 18       		.uleb128 0x18
- 3648 0496 95050000 		.4byte	.LASF82
+ 3648 0496 33050000 		.4byte	.LASF82
  3649 049a 01       		.byte	0x1
  3650 049b 7001     		.2byte	0x170
  3651 049d 97020000 		.4byte	0x297
@@ -6983,7 +6983,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3655 04aa 9C       		.byte	0x9c
  3656 04ab 0A050000 		.4byte	0x50a
  3657 04af 19       		.uleb128 0x19
- 3658 04b0 FC060000 		.4byte	.LASF83
+ 3658 04b0 9A060000 		.4byte	.LASF83
  3659 04b4 01       		.byte	0x1
  3660 04b5 7001     		.2byte	0x170
  3661 04b7 0A050000 		.4byte	0x50a
@@ -6991,7 +6991,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3663 04bc 91       		.byte	0x91
  3664 04bd 64       		.sleb128 -28
  3665 04be 19       		.uleb128 0x19
- 3666 04bf 98040000 		.4byte	.LASF58
+ 3666 04bf 36040000 		.4byte	.LASF58
  3667 04c3 01       		.byte	0x1
  3668 04c4 7001     		.2byte	0x170
  3669 04c6 0A050000 		.4byte	0x50a
@@ -6999,7 +6999,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3671 04cb 91       		.byte	0x91
  3672 04cc 60       		.sleb128 -32
  3673 04cd 19       		.uleb128 0x19
- 3674 04ce AE060000 		.4byte	.LASF84
+ 3674 04ce 4C060000 		.4byte	.LASF84
  3675 04d2 01       		.byte	0x1
  3676 04d3 7001     		.2byte	0x170
  3677 04d5 0F050000 		.4byte	0x50f
@@ -7015,10 +7015,10 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3687 04e9 91       		.byte	0x91
  3688 04ea 70       		.sleb128 -16
  3689 04eb 17       		.uleb128 0x17
- 3690 04ec AC070000 		.4byte	.LASF87
+ 3690 04ec 4A070000 		.4byte	.LASF87
  3691 04f0 01       		.byte	0x1
  3692 04f1 7301     		.2byte	0x173
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 118
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 118
 
 
  3693 04f3 25000000 		.4byte	0x25
@@ -7026,7 +7026,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3695 04f8 91       		.byte	0x91
  3696 04f9 74       		.sleb128 -12
  3697 04fa 17       		.uleb128 0x17
- 3698 04fb FA050000 		.4byte	.LASF88
+ 3698 04fb 98050000 		.4byte	.LASF88
  3699 04ff 01       		.byte	0x1
  3700 0500 7401     		.2byte	0x174
  3701 0502 68010000 		.4byte	0x168
@@ -7039,7 +7039,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3708 050f 07       		.uleb128 0x7
  3709 0510 D6000000 		.4byte	0xd6
  3710 0514 1A       		.uleb128 0x1a
- 3711 0515 E2020000 		.4byte	.LASF89
+ 3711 0515 80020000 		.4byte	.LASF89
  3712 0519 01       		.byte	0x1
  3713 051a A601     		.2byte	0x1a6
  3714 051c 00000000 		.4byte	.LFB70
@@ -7048,7 +7048,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3717 0525 9C       		.byte	0x9c
  3718 0526 76050000 		.4byte	0x576
  3719 052a 19       		.uleb128 0x19
- 3720 052b FC060000 		.4byte	.LASF83
+ 3720 052b 9A060000 		.4byte	.LASF83
  3721 052f 01       		.byte	0x1
  3722 0530 A601     		.2byte	0x1a6
  3723 0532 0A050000 		.4byte	0x50a
@@ -7056,7 +7056,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3725 0537 91       		.byte	0x91
  3726 0538 74       		.sleb128 -12
  3727 0539 19       		.uleb128 0x19
- 3728 053a 98040000 		.4byte	.LASF58
+ 3728 053a 36040000 		.4byte	.LASF58
  3729 053e 01       		.byte	0x1
  3730 053f A601     		.2byte	0x1a6
  3731 0541 0A050000 		.4byte	0x50a
@@ -7064,7 +7064,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3733 0546 91       		.byte	0x91
  3734 0547 70       		.sleb128 -16
  3735 0548 19       		.uleb128 0x19
- 3736 0549 FA050000 		.4byte	.LASF88
+ 3736 0549 98050000 		.4byte	.LASF88
  3737 054d 01       		.byte	0x1
  3738 054e A601     		.2byte	0x1a6
  3739 0550 68010000 		.4byte	0x168
@@ -7072,13 +7072,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3741 0555 91       		.byte	0x91
  3742 0556 6C       		.sleb128 -20
  3743 0557 19       		.uleb128 0x19
- 3744 0558 AE060000 		.4byte	.LASF84
+ 3744 0558 4C060000 		.4byte	.LASF84
  3745 055c 01       		.byte	0x1
  3746 055d A601     		.2byte	0x1a6
  3747 055f 0F050000 		.4byte	0x50f
  3748 0563 02       		.uleb128 0x2
  3749 0564 91       		.byte	0x91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 119
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 119
 
 
  3750 0565 6B       		.sleb128 -21
@@ -7092,7 +7092,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3758 0574 00       		.sleb128 0
  3759 0575 00       		.byte	0
  3760 0576 1A       		.uleb128 0x1a
- 3761 0577 DC050000 		.4byte	.LASF90
+ 3761 0577 7A050000 		.4byte	.LASF90
  3762 057b 01       		.byte	0x1
  3763 057c D201     		.2byte	0x1d2
  3764 057e 00000000 		.4byte	.LFB71
@@ -7110,7 +7110,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3776 059a 74       		.sleb128 -12
  3777 059b 00       		.byte	0
  3778 059c 18       		.uleb128 0x18
- 3779 059d A9050000 		.4byte	.LASF91
+ 3779 059d 47050000 		.4byte	.LASF91
  3780 05a1 01       		.byte	0x1
  3781 05a2 F001     		.2byte	0x1f0
  3782 05a4 97020000 		.4byte	0x297
@@ -7120,7 +7120,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3786 05b1 9C       		.byte	0x9c
  3787 05b2 F3050000 		.4byte	0x5f3
  3788 05b6 19       		.uleb128 0x19
- 3789 05b7 AE060000 		.4byte	.LASF84
+ 3789 05b7 4C060000 		.4byte	.LASF84
  3790 05bb 01       		.byte	0x1
  3791 05bc F001     		.2byte	0x1f0
  3792 05be 0F050000 		.4byte	0x50f
@@ -7128,7 +7128,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3794 05c3 91       		.byte	0x91
  3795 05c4 67       		.sleb128 -25
  3796 05c5 17       		.uleb128 0x17
- 3797 05c6 3C060000 		.4byte	.LASF80
+ 3797 05c6 DA050000 		.4byte	.LASF80
  3798 05ca 01       		.byte	0x1
  3799 05cb F201     		.2byte	0x1f2
  3800 05cd 97020000 		.4byte	0x297
@@ -7136,9 +7136,9 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3802 05d2 91       		.byte	0x91
  3803 05d3 6C       		.sleb128 -20
  3804 05d4 17       		.uleb128 0x17
- 3805 05d5 B2040000 		.4byte	.LASF92
+ 3805 05d5 50040000 		.4byte	.LASF92
  3806 05d9 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 120
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 120
 
 
  3807 05da F301     		.2byte	0x1f3
@@ -7147,7 +7147,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3810 05e1 91       		.byte	0x91
  3811 05e2 74       		.sleb128 -12
  3812 05e3 17       		.uleb128 0x17
- 3813 05e4 08030000 		.4byte	.LASF93
+ 3813 05e4 A6020000 		.4byte	.LASF93
  3814 05e8 01       		.byte	0x1
  3815 05e9 F301     		.2byte	0x1f3
  3816 05eb 0A050000 		.4byte	0x50a
@@ -7156,7 +7156,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3819 05f1 70       		.sleb128 -16
  3820 05f2 00       		.byte	0
  3821 05f3 18       		.uleb128 0x18
- 3822 05f4 C6080000 		.4byte	.LASF94
+ 3822 05f4 C8080000 		.4byte	.LASF94
  3823 05f8 01       		.byte	0x1
  3824 05f9 4D02     		.2byte	0x24d
  3825 05fb 47010000 		.4byte	0x147
@@ -7166,7 +7166,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3829 0608 9C       		.byte	0x9c
  3830 0609 3B060000 		.4byte	0x63b
  3831 060d 19       		.uleb128 0x19
- 3832 060e 0A060000 		.4byte	.LASF95
+ 3832 060e A8050000 		.4byte	.LASF95
  3833 0612 01       		.byte	0x1
  3834 0613 4D02     		.2byte	0x24d
  3835 0615 97020000 		.4byte	0x297
@@ -7174,7 +7174,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3837 061a 91       		.byte	0x91
  3838 061b 64       		.sleb128 -28
  3839 061c 17       		.uleb128 0x17
- 3840 061d 15080000 		.4byte	.LASF96
+ 3840 061d B3070000 		.4byte	.LASF96
  3841 0621 01       		.byte	0x1
  3842 0622 4F02     		.2byte	0x24f
  3843 0624 47010000 		.4byte	0x147
@@ -7191,20 +7191,20 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3854 0639 68       		.sleb128 -24
  3855 063a 00       		.byte	0
  3856 063b 18       		.uleb128 0x18
- 3857 063c 2B070000 		.4byte	.LASF98
+ 3857 063c C9060000 		.4byte	.LASF98
  3858 0640 01       		.byte	0x1
  3859 0641 8402     		.2byte	0x284
  3860 0643 47010000 		.4byte	0x147
  3861 0647 00000000 		.4byte	.LFB74
  3862 064b 50000000 		.4byte	.LFE74-.LFB74
  3863 064f 01       		.uleb128 0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 121
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 121
 
 
  3864 0650 9C       		.byte	0x9c
  3865 0651 92060000 		.4byte	0x692
  3866 0655 19       		.uleb128 0x19
- 3867 0656 0A060000 		.4byte	.LASF95
+ 3867 0656 A8050000 		.4byte	.LASF95
  3868 065a 01       		.byte	0x1
  3869 065b 8402     		.2byte	0x284
  3870 065d 97020000 		.4byte	0x297
@@ -7212,7 +7212,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3872 0662 91       		.byte	0x91
  3873 0663 64       		.sleb128 -28
  3874 0664 19       		.uleb128 0x19
- 3875 0665 AA080000 		.4byte	.LASF99
+ 3875 0665 AC080000 		.4byte	.LASF99
  3876 0669 01       		.byte	0x1
  3877 066a 8402     		.2byte	0x284
  3878 066c 5D010000 		.4byte	0x15d
@@ -7220,7 +7220,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3880 0671 91       		.byte	0x91
  3881 0672 60       		.sleb128 -32
  3882 0673 17       		.uleb128 0x17
- 3883 0674 15080000 		.4byte	.LASF96
+ 3883 0674 B3070000 		.4byte	.LASF96
  3884 0678 01       		.byte	0x1
  3885 0679 8602     		.2byte	0x286
  3886 067b 47010000 		.4byte	0x147
@@ -7237,7 +7237,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3897 0690 68       		.sleb128 -24
  3898 0691 00       		.byte	0
  3899 0692 18       		.uleb128 0x18
- 3900 0693 6D090000 		.4byte	.LASF100
+ 3900 0693 6F090000 		.4byte	.LASF100
  3901 0697 01       		.byte	0x1
  3902 0698 CA02     		.2byte	0x2ca
  3903 069a 97020000 		.4byte	0x297
@@ -7247,7 +7247,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3907 06a7 9C       		.byte	0x9c
  3908 06a8 DA060000 		.4byte	0x6da
  3909 06ac 19       		.uleb128 0x19
- 3910 06ad 46060000 		.4byte	.LASF101
+ 3910 06ad E4050000 		.4byte	.LASF101
  3911 06b1 01       		.byte	0x1
  3912 06b2 CA02     		.2byte	0x2ca
  3913 06b4 0A050000 		.4byte	0x50a
@@ -7255,10 +7255,10 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3915 06b9 91       		.byte	0x91
  3916 06ba 6C       		.sleb128 -20
  3917 06bb 19       		.uleb128 0x19
- 3918 06bc A3040000 		.4byte	.LASF102
+ 3918 06bc 41040000 		.4byte	.LASF102
  3919 06c0 01       		.byte	0x1
  3920 06c1 CA02     		.2byte	0x2ca
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 122
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 122
 
 
  3921 06c3 0A050000 		.4byte	0x50a
@@ -7266,7 +7266,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3923 06c8 91       		.byte	0x91
  3924 06c9 68       		.sleb128 -24
  3925 06ca 17       		.uleb128 0x17
- 3926 06cb 12040000 		.4byte	.LASF75
+ 3926 06cb B0030000 		.4byte	.LASF75
  3927 06cf 01       		.byte	0x1
  3928 06d0 CC02     		.2byte	0x2cc
  3929 06d2 97020000 		.4byte	0x297
@@ -7275,7 +7275,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3932 06d8 74       		.sleb128 -12
  3933 06d9 00       		.byte	0
  3934 06da 18       		.uleb128 0x18
- 3935 06db 86040000 		.4byte	.LASF103
+ 3935 06db 24040000 		.4byte	.LASF103
  3936 06df 01       		.byte	0x1
  3937 06e0 E402     		.2byte	0x2e4
  3938 06e2 47010000 		.4byte	0x147
@@ -7285,7 +7285,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3942 06ef 9C       		.byte	0x9c
  3943 06f0 6D070000 		.4byte	0x76d
  3944 06f4 19       		.uleb128 0x19
- 3945 06f5 35030000 		.4byte	.LASF69
+ 3945 06f5 D3020000 		.4byte	.LASF69
  3946 06f9 01       		.byte	0x1
  3947 06fa E402     		.2byte	0x2e4
  3948 06fc 97020000 		.4byte	0x297
@@ -7293,7 +7293,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3950 0701 91       		.byte	0x91
  3951 0702 5C       		.sleb128 -36
  3952 0703 19       		.uleb128 0x19
- 3953 0704 BE070000 		.4byte	.LASF104
+ 3953 0704 5C070000 		.4byte	.LASF104
  3954 0708 01       		.byte	0x1
  3955 0709 E402     		.2byte	0x2e4
  3956 070b 6D070000 		.4byte	0x76d
@@ -7301,7 +7301,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3958 0710 91       		.byte	0x91
  3959 0711 58       		.sleb128 -40
  3960 0712 19       		.uleb128 0x19
- 3961 0713 AA080000 		.4byte	.LASF99
+ 3961 0713 AC080000 		.4byte	.LASF99
  3962 0717 01       		.byte	0x1
  3963 0718 E402     		.2byte	0x2e4
  3964 071a 5D010000 		.4byte	0x15d
@@ -7317,8 +7317,8 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3974 072e 91       		.byte	0x91
  3975 072f 50       		.sleb128 -48
  3976 0730 17       		.uleb128 0x17
- 3977 0731 F4030000 		.4byte	.LASF106
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 123
+ 3977 0731 92030000 		.4byte	.LASF106
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 123
 
 
  3978 0735 01       		.byte	0x1
@@ -7328,7 +7328,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3982 073d 91       		.byte	0x91
  3983 073e 74       		.sleb128 -12
  3984 073f 17       		.uleb128 0x17
- 3985 0740 14030000 		.4byte	.LASF107
+ 3985 0740 B2020000 		.4byte	.LASF107
  3986 0744 01       		.byte	0x1
  3987 0745 E602     		.2byte	0x2e6
  3988 0747 47010000 		.4byte	0x147
@@ -7336,7 +7336,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3990 074c 91       		.byte	0x91
  3991 074d 6C       		.sleb128 -20
  3992 074e 17       		.uleb128 0x17
- 3993 074f 09040000 		.4byte	.LASF108
+ 3993 074f A7030000 		.4byte	.LASF108
  3994 0753 01       		.byte	0x1
  3995 0754 E702     		.2byte	0x2e7
  3996 0756 8C020000 		.4byte	0x28c
@@ -7344,7 +7344,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  3998 075b 91       		.byte	0x91
  3999 075c 64       		.sleb128 -28
  4000 075d 17       		.uleb128 0x17
- 4001 075e 0D080000 		.4byte	.LASF85
+ 4001 075e AB070000 		.4byte	.LASF85
  4002 0762 01       		.byte	0x1
  4003 0763 E802     		.2byte	0x2e8
  4004 0765 90040000 		.4byte	0x490
@@ -7357,7 +7357,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4011 0772 07       		.uleb128 0x7
  4012 0773 47010000 		.4byte	0x147
  4013 0777 18       		.uleb128 0x18
- 4014 0778 4A040000 		.4byte	.LASF109
+ 4014 0778 E8030000 		.4byte	.LASF109
  4015 077c 01       		.byte	0x1
  4016 077d B603     		.2byte	0x3b6
  4017 077f 47010000 		.4byte	0x147
@@ -7367,7 +7367,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4021 078c 9C       		.byte	0x9c
  4022 078d 6F080000 		.4byte	0x86f
  4023 0791 19       		.uleb128 0x19
- 4024 0792 35030000 		.4byte	.LASF69
+ 4024 0792 D3020000 		.4byte	.LASF69
  4025 0796 01       		.byte	0x1
  4026 0797 B603     		.2byte	0x3b6
  4027 0799 97020000 		.4byte	0x297
@@ -7375,10 +7375,10 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4029 079e 91       		.byte	0x91
  4030 079f 54       		.sleb128 -44
  4031 07a0 19       		.uleb128 0x19
- 4032 07a1 BE070000 		.4byte	.LASF104
+ 4032 07a1 5C070000 		.4byte	.LASF104
  4033 07a5 01       		.byte	0x1
  4034 07a6 B603     		.2byte	0x3b6
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 124
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 124
 
 
  4035 07a8 6D070000 		.4byte	0x76d
@@ -7402,7 +7402,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4053 07cb 91       		.byte	0x91
  4054 07cc 48       		.sleb128 -56
  4055 07cd 17       		.uleb128 0x17
- 4056 07ce 15080000 		.4byte	.LASF96
+ 4056 07ce B3070000 		.4byte	.LASF96
  4057 07d2 01       		.byte	0x1
  4058 07d3 B803     		.2byte	0x3b8
  4059 07d5 47010000 		.4byte	0x147
@@ -7410,7 +7410,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4061 07da 91       		.byte	0x91
  4062 07db 74       		.sleb128 -12
  4063 07dc 17       		.uleb128 0x17
- 4064 07dd CB020000 		.4byte	.LASF111
+ 4064 07dd 69020000 		.4byte	.LASF111
  4065 07e1 01       		.byte	0x1
  4066 07e2 B903     		.2byte	0x3b9
  4067 07e4 52010000 		.4byte	0x152
@@ -7418,7 +7418,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4069 07e9 91       		.byte	0x91
  4070 07ea 68       		.sleb128 -24
  4071 07eb 17       		.uleb128 0x17
- 4072 07ec 0D080000 		.4byte	.LASF85
+ 4072 07ec AB070000 		.4byte	.LASF85
  4073 07f0 01       		.byte	0x1
  4074 07f1 BA03     		.2byte	0x3ba
  4075 07f3 90040000 		.4byte	0x490
@@ -7438,7 +7438,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4089 0817 1D       		.uleb128 0x1d
  4090 0818 16040000 		.4byte	0x416
  4091 081c 02       		.uleb128 0x2
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 125
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 125
 
 
  4092 081d 91       		.byte	0x91
@@ -7463,7 +7463,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4111 0843 91       		.byte	0x91
  4112 0844 67       		.sleb128 -25
  4113 0845 17       		.uleb128 0x17
- 4114 0846 CF030000 		.4byte	.LASF112
+ 4114 0846 6D030000 		.4byte	.LASF112
  4115 084a 01       		.byte	0x1
  4116 084b DA03     		.2byte	0x3da
  4117 084d 0A050000 		.4byte	0x50a
@@ -7492,20 +7492,20 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4140 087a 07       		.uleb128 0x7
  4141 087b CB000000 		.4byte	0xcb
  4142 087f 18       		.uleb128 0x18
- 4143 0880 06050000 		.4byte	.LASF113
+ 4143 0880 A4040000 		.4byte	.LASF113
  4144 0884 01       		.byte	0x1
  4145 0885 5804     		.2byte	0x458
  4146 0887 47010000 		.4byte	0x147
  4147 088b 00000000 		.4byte	.LFB78
  4148 088f A6000000 		.4byte	.LFE78-.LFB78
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 126
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 126
 
 
  4149 0893 01       		.uleb128 0x1
  4150 0894 9C       		.byte	0x9c
  4151 0895 63090000 		.4byte	0x963
  4152 0899 19       		.uleb128 0x19
- 4153 089a 35030000 		.4byte	.LASF69
+ 4153 089a D3020000 		.4byte	.LASF69
  4154 089e 01       		.byte	0x1
  4155 089f 5804     		.2byte	0x458
  4156 08a1 97020000 		.4byte	0x297
@@ -7521,7 +7521,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4166 08b5 91       		.byte	0x91
  4167 08b6 50       		.sleb128 -48
  4168 08b7 17       		.uleb128 0x17
- 4169 08b8 15080000 		.4byte	.LASF96
+ 4169 08b8 B3070000 		.4byte	.LASF96
  4170 08bc 01       		.byte	0x1
  4171 08bd 5A04     		.2byte	0x45a
  4172 08bf 47010000 		.4byte	0x147
@@ -7529,7 +7529,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4174 08c4 91       		.byte	0x91
  4175 08c5 74       		.sleb128 -12
  4176 08c6 17       		.uleb128 0x17
- 4177 08c7 CB020000 		.4byte	.LASF111
+ 4177 08c7 69020000 		.4byte	.LASF111
  4178 08cb 01       		.byte	0x1
  4179 08cc 5B04     		.2byte	0x45b
  4180 08ce 52010000 		.4byte	0x152
@@ -7537,7 +7537,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4182 08d3 91       		.byte	0x91
  4183 08d4 68       		.sleb128 -24
  4184 08d5 17       		.uleb128 0x17
- 4185 08d6 0D080000 		.4byte	.LASF85
+ 4185 08d6 AB070000 		.4byte	.LASF85
  4186 08da 01       		.byte	0x1
  4187 08db 5C04     		.2byte	0x45c
  4188 08dd 90040000 		.4byte	0x490
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4203 0902 16040000 		.4byte	0x416
  4204 0906 02       		.uleb128 0x2
  4205 0907 91       		.byte	0x91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 127
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 127
 
 
  4206 0908 5C       		.sleb128 -36
@@ -7574,7 +7574,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4216 0918 6C000000 		.4byte	.LBE30-.LBB30
  4217 091c 49090000 		.4byte	0x949
  4218 0920 17       		.uleb128 0x17
- 4219 0921 B2030000 		.4byte	.LASF56
+ 4219 0921 50030000 		.4byte	.LASF56
  4220 0925 01       		.byte	0x1
  4221 0926 8104     		.2byte	0x481
  4222 0928 0A050000 		.4byte	0x50a
@@ -7618,10 +7618,10 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4260 0978 9C       		.byte	0x9c
  4261 0979 F1090000 		.4byte	0x9f1
  4262 097d 19       		.uleb128 0x19
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 128
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 128
 
 
- 4263 097e 35030000 		.4byte	.LASF69
+ 4263 097e D3020000 		.4byte	.LASF69
  4264 0982 01       		.byte	0x1
  4265 0983 FD04     		.2byte	0x4fd
  4266 0985 97020000 		.4byte	0x297
@@ -7629,7 +7629,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4268 098a 91       		.byte	0x91
  4269 098b 5C       		.sleb128 -36
  4270 098c 19       		.uleb128 0x19
- 4271 098d 79030000 		.4byte	.LASF115
+ 4271 098d 17030000 		.4byte	.LASF115
  4272 0991 01       		.byte	0x1
  4273 0992 FD04     		.2byte	0x4fd
  4274 0994 F1090000 		.4byte	0x9f1
@@ -7637,7 +7637,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4276 0999 91       		.byte	0x91
  4277 099a 58       		.sleb128 -40
  4278 099b 19       		.uleb128 0x19
- 4279 099c AA080000 		.4byte	.LASF99
+ 4279 099c AC080000 		.4byte	.LASF99
  4280 09a0 01       		.byte	0x1
  4281 09a1 FD04     		.2byte	0x4fd
  4282 09a3 5D010000 		.4byte	0x15d
@@ -7645,7 +7645,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4284 09a8 91       		.byte	0x91
  4285 09a9 54       		.sleb128 -44
  4286 09aa 17       		.uleb128 0x17
- 4287 09ab F4030000 		.4byte	.LASF106
+ 4287 09ab 92030000 		.4byte	.LASF106
  4288 09af 01       		.byte	0x1
  4289 09b0 FF04     		.2byte	0x4ff
  4290 09b2 47010000 		.4byte	0x147
@@ -7653,7 +7653,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4292 09b7 91       		.byte	0x91
  4293 09b8 74       		.sleb128 -12
  4294 09b9 17       		.uleb128 0x17
- 4295 09ba 09040000 		.4byte	.LASF108
+ 4295 09ba A7030000 		.4byte	.LASF108
  4296 09be 01       		.byte	0x1
  4297 09bf 0005     		.2byte	0x500
  4298 09c1 8C020000 		.4byte	0x28c
@@ -7661,7 +7661,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4300 09c6 91       		.byte	0x91
  4301 09c7 64       		.sleb128 -28
  4302 09c8 17       		.uleb128 0x17
- 4303 09c9 0D080000 		.4byte	.LASF85
+ 4303 09c9 AB070000 		.4byte	.LASF85
  4304 09cd 01       		.byte	0x1
  4305 09ce 0105     		.2byte	0x501
  4306 09d0 90040000 		.4byte	0x490
@@ -7672,13 +7672,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4311 09d8 18000000 		.4byte	.LBB34
  4312 09dc 6E000000 		.4byte	.LBE34-.LBB34
  4313 09e0 17       		.uleb128 0x17
- 4314 09e1 B2030000 		.4byte	.LASF56
+ 4314 09e1 50030000 		.4byte	.LASF56
  4315 09e5 01       		.byte	0x1
  4316 09e6 1905     		.2byte	0x519
  4317 09e8 0A050000 		.4byte	0x50a
  4318 09ec 02       		.uleb128 0x2
  4319 09ed 91       		.byte	0x91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 129
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 129
 
 
  4320 09ee 6C       		.sleb128 -20
@@ -7697,7 +7697,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4333 0a0b 9C       		.byte	0x9c
  4334 0a0c A10A0000 		.4byte	0xaa1
  4335 0a10 19       		.uleb128 0x19
- 4336 0a11 35030000 		.4byte	.LASF69
+ 4336 0a11 D3020000 		.4byte	.LASF69
  4337 0a15 01       		.byte	0x1
  4338 0a16 8A05     		.2byte	0x58a
  4339 0a18 97020000 		.4byte	0x297
@@ -7705,7 +7705,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4341 0a1d 91       		.byte	0x91
  4342 0a1e 54       		.sleb128 -44
  4343 0a1f 19       		.uleb128 0x19
- 4344 0a20 AA080000 		.4byte	.LASF99
+ 4344 0a20 AC080000 		.4byte	.LASF99
  4345 0a24 01       		.byte	0x1
  4346 0a25 8A05     		.2byte	0x58a
  4347 0a27 5D010000 		.4byte	0x15d
@@ -7713,7 +7713,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4349 0a2c 91       		.byte	0x91
  4350 0a2d 50       		.sleb128 -48
  4351 0a2e 17       		.uleb128 0x17
- 4352 0a2f F4030000 		.4byte	.LASF106
+ 4352 0a2f 92030000 		.4byte	.LASF106
  4353 0a33 01       		.byte	0x1
  4354 0a34 8C05     		.2byte	0x58c
  4355 0a36 47010000 		.4byte	0x147
@@ -7721,7 +7721,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4357 0a3b 91       		.byte	0x91
  4358 0a3c 74       		.sleb128 -12
  4359 0a3d 17       		.uleb128 0x17
- 4360 0a3e 09040000 		.4byte	.LASF108
+ 4360 0a3e A7030000 		.4byte	.LASF108
  4361 0a42 01       		.byte	0x1
  4362 0a43 8D05     		.2byte	0x58d
  4363 0a45 8C020000 		.4byte	0x28c
@@ -7729,7 +7729,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4365 0a4a 91       		.byte	0x91
  4366 0a4b 5C       		.sleb128 -36
  4367 0a4c 17       		.uleb128 0x17
- 4368 0a4d 0D080000 		.4byte	.LASF85
+ 4368 0a4d AB070000 		.4byte	.LASF85
  4369 0a51 01       		.byte	0x1
  4370 0a52 8E05     		.2byte	0x58e
  4371 0a54 90040000 		.4byte	0x490
@@ -7737,8 +7737,8 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4373 0a59 91       		.byte	0x91
  4374 0a5a 6C       		.sleb128 -20
  4375 0a5b 17       		.uleb128 0x17
- 4376 0a5c 16070000 		.4byte	.LASF117
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 130
+ 4376 0a5c B4060000 		.4byte	.LASF117
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 130
 
 
  4377 0a60 01       		.byte	0x1
@@ -7752,7 +7752,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4385 0a6f 78000000 		.4byte	.LBE35-.LBB35
  4386 0a73 870A0000 		.4byte	0xa87
  4387 0a77 17       		.uleb128 0x17
- 4388 0a78 C1060000 		.4byte	.LASF118
+ 4388 0a78 5F060000 		.4byte	.LASF118
  4389 0a7c 01       		.byte	0x1
  4390 0a7d AC05     		.2byte	0x5ac
  4391 0a7f 0A050000 		.4byte	0x50a
@@ -7764,7 +7764,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4397 0a88 6A010000 		.4byte	.LBB36
  4398 0a8c 14000000 		.4byte	.LBE36-.LBB36
  4399 0a90 17       		.uleb128 0x17
- 4400 0a91 52080000 		.4byte	.LASF119
+ 4400 0a91 54080000 		.4byte	.LASF119
  4401 0a95 01       		.byte	0x1
  4402 0a96 4906     		.2byte	0x649
  4403 0a98 52010000 		.4byte	0x152
@@ -7774,7 +7774,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4407 0a9f 00       		.byte	0
  4408 0aa0 00       		.byte	0
  4409 0aa1 18       		.uleb128 0x18
- 4410 0aa2 E9030000 		.4byte	.LASF120
+ 4410 0aa2 87030000 		.4byte	.LASF120
  4411 0aa6 01       		.byte	0x1
  4412 0aa7 6406     		.2byte	0x664
  4413 0aa9 47010000 		.4byte	0x147
@@ -7784,7 +7784,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4417 0ab6 9C       		.byte	0x9c
  4418 0ab7 3E0B0000 		.4byte	0xb3e
  4419 0abb 19       		.uleb128 0x19
- 4420 0abc 35030000 		.4byte	.LASF69
+ 4420 0abc D3020000 		.4byte	.LASF69
  4421 0ac0 01       		.byte	0x1
  4422 0ac1 6406     		.2byte	0x664
  4423 0ac3 97020000 		.4byte	0x297
@@ -7792,18 +7792,18 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4425 0ac8 91       		.byte	0x91
  4426 0ac9 5C       		.sleb128 -36
  4427 0aca 19       		.uleb128 0x19
- 4428 0acb 79030000 		.4byte	.LASF115
+ 4428 0acb 17030000 		.4byte	.LASF115
  4429 0acf 01       		.byte	0x1
  4430 0ad0 6406     		.2byte	0x664
  4431 0ad2 F1090000 		.4byte	0x9f1
  4432 0ad6 02       		.uleb128 0x2
  4433 0ad7 91       		.byte	0x91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 131
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 131
 
 
  4434 0ad8 58       		.sleb128 -40
  4435 0ad9 19       		.uleb128 0x19
- 4436 0ada AA080000 		.4byte	.LASF99
+ 4436 0ada AC080000 		.4byte	.LASF99
  4437 0ade 01       		.byte	0x1
  4438 0adf 6406     		.2byte	0x664
  4439 0ae1 5D010000 		.4byte	0x15d
@@ -7811,7 +7811,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4441 0ae6 91       		.byte	0x91
  4442 0ae7 54       		.sleb128 -44
  4443 0ae8 17       		.uleb128 0x17
- 4444 0ae9 F4030000 		.4byte	.LASF106
+ 4444 0ae9 92030000 		.4byte	.LASF106
  4445 0aed 01       		.byte	0x1
  4446 0aee 6606     		.2byte	0x666
  4447 0af0 47010000 		.4byte	0x147
@@ -7819,7 +7819,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4449 0af5 91       		.byte	0x91
  4450 0af6 74       		.sleb128 -12
  4451 0af7 17       		.uleb128 0x17
- 4452 0af8 09040000 		.4byte	.LASF108
+ 4452 0af8 A7030000 		.4byte	.LASF108
  4453 0afc 01       		.byte	0x1
  4454 0afd 6706     		.2byte	0x667
  4455 0aff 8C020000 		.4byte	0x28c
@@ -7827,7 +7827,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4457 0b04 91       		.byte	0x91
  4458 0b05 60       		.sleb128 -32
  4459 0b06 17       		.uleb128 0x17
- 4460 0b07 5B060000 		.4byte	.LASF121
+ 4460 0b07 F9050000 		.4byte	.LASF121
  4461 0b0b 01       		.byte	0x1
  4462 0b0c 6806     		.2byte	0x668
  4463 0b0e 50030000 		.4byte	0x350
@@ -7835,7 +7835,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4465 0b13 91       		.byte	0x91
  4466 0b14 68       		.sleb128 -24
  4467 0b15 17       		.uleb128 0x17
- 4468 0b16 0D080000 		.4byte	.LASF85
+ 4468 0b16 AB070000 		.4byte	.LASF85
  4469 0b1a 01       		.byte	0x1
  4470 0b1b 6906     		.2byte	0x669
  4471 0b1d 90040000 		.4byte	0x490
@@ -7846,7 +7846,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4476 0b25 18000000 		.4byte	.LBB37
  4477 0b29 72000000 		.4byte	.LBE37-.LBB37
  4478 0b2d 17       		.uleb128 0x17
- 4479 0b2e B2030000 		.4byte	.LASF56
+ 4479 0b2e 50030000 		.4byte	.LASF56
  4480 0b32 01       		.byte	0x1
  4481 0b33 8106     		.2byte	0x681
  4482 0b35 0A050000 		.4byte	0x50a
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4488 0b3e 18       		.uleb128 0x18
  4489 0b3f 5F000000 		.4byte	.LASF122
  4490 0b43 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 132
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 132
 
 
  4491 0b44 F906     		.2byte	0x6f9
@@ -7869,7 +7869,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4496 0b53 9C       		.byte	0x9c
  4497 0b54 310C0000 		.4byte	0xc31
  4498 0b58 19       		.uleb128 0x19
- 4499 0b59 35030000 		.4byte	.LASF69
+ 4499 0b59 D3020000 		.4byte	.LASF69
  4500 0b5d 01       		.byte	0x1
  4501 0b5e F906     		.2byte	0x6f9
  4502 0b60 97020000 		.4byte	0x297
@@ -7877,7 +7877,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4504 0b65 91       		.byte	0x91
  4505 0b66 54       		.sleb128 -44
  4506 0b67 19       		.uleb128 0x19
- 4507 0b68 79030000 		.4byte	.LASF115
+ 4507 0b68 17030000 		.4byte	.LASF115
  4508 0b6c 01       		.byte	0x1
  4509 0b6d F906     		.2byte	0x6f9
  4510 0b6f F1090000 		.4byte	0x9f1
@@ -7893,7 +7893,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4520 0b83 91       		.byte	0x91
  4521 0b84 4C       		.sleb128 -52
  4522 0b85 17       		.uleb128 0x17
- 4523 0b86 15080000 		.4byte	.LASF96
+ 4523 0b86 B3070000 		.4byte	.LASF96
  4524 0b8a 01       		.byte	0x1
  4525 0b8b FB06     		.2byte	0x6fb
  4526 0b8d 47010000 		.4byte	0x147
@@ -7901,7 +7901,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4528 0b92 91       		.byte	0x91
  4529 0b93 74       		.sleb128 -12
  4530 0b94 17       		.uleb128 0x17
- 4531 0b95 CB020000 		.4byte	.LASF111
+ 4531 0b95 69020000 		.4byte	.LASF111
  4532 0b99 01       		.byte	0x1
  4533 0b9a FC06     		.2byte	0x6fc
  4534 0b9c 52010000 		.4byte	0x152
@@ -7909,7 +7909,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4536 0ba1 91       		.byte	0x91
  4537 0ba2 68       		.sleb128 -24
  4538 0ba3 17       		.uleb128 0x17
- 4539 0ba4 0D080000 		.4byte	.LASF85
+ 4539 0ba4 AB070000 		.4byte	.LASF85
  4540 0ba8 01       		.byte	0x1
  4541 0ba9 FD06     		.2byte	0x6fd
  4542 0bab 90040000 		.4byte	0x490
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4545 0bb1 70       		.sleb128 -16
  4546 0bb2 1B       		.uleb128 0x1b
  4547 0bb3 06040000 		.4byte	0x406
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 133
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 133
 
 
  4548 0bb7 10000000 		.4byte	.LBB38
@@ -7946,7 +7946,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4570 0be6 70000000 		.4byte	.LBE40-.LBB40
  4571 0bea 170C0000 		.4byte	0xc17
  4572 0bee 17       		.uleb128 0x17
- 4573 0bef B2030000 		.4byte	.LASF56
+ 4573 0bef 50030000 		.4byte	.LASF56
  4574 0bf3 01       		.byte	0x1
  4575 0bf4 1407     		.2byte	0x714
  4576 0bf6 0A050000 		.4byte	0x50a
@@ -7957,7 +7957,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4581 0bfe 38000000 		.4byte	.LBB41
  4582 0c02 5A000000 		.4byte	.LBE41-.LBB41
  4583 0c06 17       		.uleb128 0x17
- 4584 0c07 65090000 		.4byte	.LASF59
+ 4584 0c07 67090000 		.4byte	.LASF59
  4585 0c0b 01       		.byte	0x1
  4586 0c0c 1907     		.2byte	0x719
  4587 0c0e 7A080000 		.4byte	0x87a
@@ -7978,12 +7978,12 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4602 0c2d 91       		.byte	0x91
  4603 0c2e 6C       		.sleb128 -20
  4604 0c2f 00       		.byte	0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 134
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 134
 
 
  4605 0c30 00       		.byte	0
  4606 0c31 18       		.uleb128 0x18
- 4607 0c32 40080000 		.4byte	.LASF123
+ 4607 0c32 DE070000 		.4byte	.LASF123
  4608 0c36 01       		.byte	0x1
  4609 0c37 5407     		.2byte	0x754
  4610 0c39 47010000 		.4byte	0x147
@@ -7993,7 +7993,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4614 0c46 9C       		.byte	0x9c
  4615 0c47 EE0C0000 		.4byte	0xcee
  4616 0c4b 19       		.uleb128 0x19
- 4617 0c4c 35030000 		.4byte	.LASF69
+ 4617 0c4c D3020000 		.4byte	.LASF69
  4618 0c50 01       		.byte	0x1
  4619 0c51 5407     		.2byte	0x754
  4620 0c53 97020000 		.4byte	0x297
@@ -8001,7 +8001,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4622 0c58 91       		.byte	0x91
  4623 0c59 54       		.sleb128 -44
  4624 0c5a 19       		.uleb128 0x19
- 4625 0c5b 79030000 		.4byte	.LASF115
+ 4625 0c5b 17030000 		.4byte	.LASF115
  4626 0c5f 01       		.byte	0x1
  4627 0c60 5407     		.2byte	0x754
  4628 0c62 F1090000 		.4byte	0x9f1
@@ -8009,7 +8009,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4630 0c67 91       		.byte	0x91
  4631 0c68 50       		.sleb128 -48
  4632 0c69 17       		.uleb128 0x17
- 4633 0c6a 15080000 		.4byte	.LASF96
+ 4633 0c6a B3070000 		.4byte	.LASF96
  4634 0c6e 01       		.byte	0x1
  4635 0c6f 5607     		.2byte	0x756
  4636 0c71 47010000 		.4byte	0x147
@@ -8017,7 +8017,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4638 0c76 91       		.byte	0x91
  4639 0c77 74       		.sleb128 -12
  4640 0c78 17       		.uleb128 0x17
- 4641 0c79 CB020000 		.4byte	.LASF111
+ 4641 0c79 69020000 		.4byte	.LASF111
  4642 0c7d 01       		.byte	0x1
  4643 0c7e 5707     		.2byte	0x757
  4644 0c80 52010000 		.4byte	0x152
@@ -8025,7 +8025,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4646 0c85 91       		.byte	0x91
  4647 0c86 68       		.sleb128 -24
  4648 0c87 17       		.uleb128 0x17
- 4649 0c88 5B060000 		.4byte	.LASF121
+ 4649 0c88 F9050000 		.4byte	.LASF121
  4650 0c8c 01       		.byte	0x1
  4651 0c8d 5807     		.2byte	0x758
  4652 0c8f 50030000 		.4byte	0x350
@@ -8033,12 +8033,12 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4654 0c94 91       		.byte	0x91
  4655 0c95 64       		.sleb128 -28
  4656 0c96 17       		.uleb128 0x17
- 4657 0c97 0D080000 		.4byte	.LASF85
+ 4657 0c97 AB070000 		.4byte	.LASF85
  4658 0c9b 01       		.byte	0x1
  4659 0c9c 5907     		.2byte	0x759
  4660 0c9e 90040000 		.4byte	0x490
  4661 0ca2 02       		.uleb128 0x2
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 135
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 135
 
 
  4662 0ca3 91       		.byte	0x91
@@ -8079,7 +8079,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4697 0cec 00       		.byte	0
  4698 0ced 00       		.byte	0
  4699 0cee 18       		.uleb128 0x18
- 4700 0cef E5070000 		.4byte	.LASF124
+ 4700 0cef 83070000 		.4byte	.LASF124
  4701 0cf3 01       		.byte	0x1
  4702 0cf4 8A07     		.2byte	0x78a
  4703 0cf6 52010000 		.4byte	0x152
@@ -8089,7 +8089,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4707 0d03 9C       		.byte	0x9c
  4708 0d04 270D0000 		.4byte	0xd27
  4709 0d08 19       		.uleb128 0x19
- 4710 0d09 35030000 		.4byte	.LASF69
+ 4710 0d09 D3020000 		.4byte	.LASF69
  4711 0d0d 01       		.byte	0x1
  4712 0d0e 8A07     		.2byte	0x78a
  4713 0d10 270D0000 		.4byte	0xd27
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4716 0d16 6C       		.sleb128 -20
  4717 0d17 17       		.uleb128 0x17
  4718 0d18 0F020000 		.4byte	.LASF125
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 136
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 136
 
 
  4719 0d1c 01       		.byte	0x1
@@ -8121,7 +8121,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4736 0d41 9C       		.byte	0x9c
  4737 0d42 740D0000 		.4byte	0xd74
  4738 0d46 19       		.uleb128 0x19
- 4739 0d47 35030000 		.4byte	.LASF69
+ 4739 0d47 D3020000 		.4byte	.LASF69
  4740 0d4b 01       		.byte	0x1
  4741 0d4c 9A07     		.2byte	0x79a
  4742 0d4e 270D0000 		.4byte	0xd27
@@ -8137,7 +8137,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4752 0d62 91       		.byte	0x91
  4753 0d63 70       		.sleb128 -16
  4754 0d64 17       		.uleb128 0x17
- 4755 0d65 0D080000 		.4byte	.LASF85
+ 4755 0d65 AB070000 		.4byte	.LASF85
  4756 0d69 01       		.byte	0x1
  4757 0d6a 9D07     		.2byte	0x79d
  4758 0d6c 90040000 		.4byte	0x490
@@ -8146,7 +8146,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4761 0d72 74       		.sleb128 -12
  4762 0d73 00       		.byte	0
  4763 0d74 21       		.uleb128 0x21
- 4764 0d75 45050000 		.4byte	.LASF127
+ 4764 0d75 E3040000 		.4byte	.LASF127
  4765 0d79 01       		.byte	0x1
  4766 0d7a AB07     		.2byte	0x7ab
  4767 0d7c 52010000 		.4byte	0x152
@@ -8156,9 +8156,9 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4771 0d89 9C       		.byte	0x9c
  4772 0d8a BC0D0000 		.4byte	0xdbc
  4773 0d8e 19       		.uleb128 0x19
- 4774 0d8f 35030000 		.4byte	.LASF69
+ 4774 0d8f D3020000 		.4byte	.LASF69
  4775 0d93 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 137
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 137
 
 
  4776 0d94 AB07     		.2byte	0x7ab
@@ -8175,7 +8175,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4787 0daa 91       		.byte	0x91
  4788 0dab 70       		.sleb128 -16
  4789 0dac 17       		.uleb128 0x17
- 4790 0dad 0D080000 		.4byte	.LASF85
+ 4790 0dad AB070000 		.4byte	.LASF85
  4791 0db1 01       		.byte	0x1
  4792 0db2 AE07     		.2byte	0x7ae
  4793 0db4 90040000 		.4byte	0x490
@@ -8184,7 +8184,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4796 0dba 74       		.sleb128 -12
  4797 0dbb 00       		.byte	0
  4798 0dbc 22       		.uleb128 0x22
- 4799 0dbd 8E020000 		.4byte	.LASF138
+ 4799 0dbd 2C020000 		.4byte	.LASF138
  4800 0dc1 01       		.byte	0x1
  4801 0dc2 B707     		.2byte	0x7b7
  4802 0dc4 00000000 		.4byte	.LFB87
@@ -8193,7 +8193,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4805 0dcd 9C       		.byte	0x9c
  4806 0dce F10D0000 		.4byte	0xdf1
  4807 0dd2 19       		.uleb128 0x19
- 4808 0dd3 35030000 		.4byte	.LASF69
+ 4808 0dd3 D3020000 		.4byte	.LASF69
  4809 0dd7 01       		.byte	0x1
  4810 0dd8 B707     		.2byte	0x7b7
  4811 0dda 97020000 		.4byte	0x297
@@ -8201,7 +8201,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4813 0ddf 91       		.byte	0x91
  4814 0de0 6C       		.sleb128 -20
  4815 0de1 17       		.uleb128 0x17
- 4816 0de2 0D080000 		.4byte	.LASF85
+ 4816 0de2 AB070000 		.4byte	.LASF85
  4817 0de6 01       		.byte	0x1
  4818 0de7 B907     		.2byte	0x7b9
  4819 0de9 90040000 		.4byte	0x490
@@ -8210,7 +8210,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4822 0def 74       		.sleb128 -12
  4823 0df0 00       		.byte	0
  4824 0df1 23       		.uleb128 0x23
- 4825 0df2 82030000 		.4byte	.LASF129
+ 4825 0df2 20030000 		.4byte	.LASF129
  4826 0df6 01       		.byte	0x1
  4827 0df7 0108     		.2byte	0x801
  4828 0df9 52010000 		.4byte	0x152
@@ -8218,12 +8218,12 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4830 0e01 2E000000 		.4byte	.LFE88-.LFB88
  4831 0e05 01       		.uleb128 0x1
  4832 0e06 9C       		.byte	0x9c
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 138
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 138
 
 
  4833 0e07 2A0E0000 		.4byte	0xe2a
  4834 0e0b 19       		.uleb128 0x19
- 4835 0e0c 0D080000 		.4byte	.LASF85
+ 4835 0e0c AB070000 		.4byte	.LASF85
  4836 0e10 01       		.byte	0x1
  4837 0e11 0108     		.2byte	0x801
  4838 0e13 350E0000 		.4byte	0xe35
@@ -8231,7 +8231,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4840 0e18 91       		.byte	0x91
  4841 0e19 6C       		.sleb128 -20
  4842 0e1a 17       		.uleb128 0x17
- 4843 0e1b 8E060000 		.4byte	.LASF128
+ 4843 0e1b 2C060000 		.4byte	.LASF128
  4844 0e1f 01       		.byte	0x1
  4845 0e20 0308     		.2byte	0x803
  4846 0e22 52010000 		.4byte	0x152
@@ -8247,7 +8247,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4856 0e35 07       		.uleb128 0x7
  4857 0e36 2A0E0000 		.4byte	0xe2a
  4858 0e3a 24       		.uleb128 0x24
- 4859 0e3b 73040000 		.4byte	.LASF130
+ 4859 0e3b 11040000 		.4byte	.LASF130
  4860 0e3f 01       		.byte	0x1
  4861 0e40 1A08     		.2byte	0x81a
  4862 0e42 47010000 		.4byte	0x147
@@ -8257,7 +8257,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4866 0e4f 9C       		.byte	0x9c
  4867 0e50 A00E0000 		.4byte	0xea0
  4868 0e54 19       		.uleb128 0x19
- 4869 0e55 0D080000 		.4byte	.LASF85
+ 4869 0e55 AB070000 		.4byte	.LASF85
  4870 0e59 01       		.byte	0x1
  4871 0e5a 1A08     		.2byte	0x81a
  4872 0e5c 90040000 		.4byte	0x490
@@ -8265,7 +8265,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4874 0e61 91       		.byte	0x91
  4875 0e62 6C       		.sleb128 -20
  4876 0e63 19       		.uleb128 0x19
- 4877 0e64 BE070000 		.4byte	.LASF104
+ 4877 0e64 5C070000 		.4byte	.LASF104
  4878 0e68 01       		.byte	0x1
  4879 0e69 1A08     		.2byte	0x81a
  4880 0e6b C4000000 		.4byte	0xc4
@@ -8273,18 +8273,18 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4882 0e70 91       		.byte	0x91
  4883 0e71 68       		.sleb128 -24
  4884 0e72 19       		.uleb128 0x19
- 4885 0e73 5B090000 		.4byte	.LASF131
+ 4885 0e73 5D090000 		.4byte	.LASF131
  4886 0e77 01       		.byte	0x1
  4887 0e78 1A08     		.2byte	0x81a
  4888 0e7a 72070000 		.4byte	0x772
  4889 0e7e 02       		.uleb128 0x2
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 139
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 139
 
 
  4890 0e7f 91       		.byte	0x91
  4891 0e80 64       		.sleb128 -28
  4892 0e81 17       		.uleb128 0x17
- 4893 0e82 15080000 		.4byte	.LASF96
+ 4893 0e82 B3070000 		.4byte	.LASF96
  4894 0e86 01       		.byte	0x1
  4895 0e87 1C08     		.2byte	0x81c
  4896 0e89 47010000 		.4byte	0x147
@@ -8292,7 +8292,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4898 0e8e 91       		.byte	0x91
  4899 0e8f 74       		.sleb128 -12
  4900 0e90 17       		.uleb128 0x17
- 4901 0e91 B2030000 		.4byte	.LASF56
+ 4901 0e91 50030000 		.4byte	.LASF56
  4902 0e95 01       		.byte	0x1
  4903 0e96 1D08     		.2byte	0x81d
  4904 0e98 52010000 		.4byte	0x152
@@ -8301,7 +8301,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4907 0e9e 70       		.sleb128 -16
  4908 0e9f 00       		.byte	0
  4909 0ea0 1A       		.uleb128 0x1a
- 4910 0ea1 84080000 		.4byte	.LASF132
+ 4910 0ea1 86080000 		.4byte	.LASF132
  4911 0ea5 01       		.byte	0x1
  4912 0ea6 6908     		.2byte	0x869
  4913 0ea8 00000000 		.4byte	.LFB90
@@ -8310,7 +8310,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4916 0eb1 9C       		.byte	0x9c
  4917 0eb2 D50E0000 		.4byte	0xed5
  4918 0eb6 19       		.uleb128 0x19
- 4919 0eb7 0D080000 		.4byte	.LASF85
+ 4919 0eb7 AB070000 		.4byte	.LASF85
  4920 0ebb 01       		.byte	0x1
  4921 0ebc 6908     		.2byte	0x869
  4922 0ebe 90040000 		.4byte	0x490
@@ -8318,7 +8318,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4924 0ec3 91       		.byte	0x91
  4925 0ec4 74       		.sleb128 -12
  4926 0ec5 19       		.uleb128 0x19
- 4927 0ec6 79030000 		.4byte	.LASF115
+ 4927 0ec6 17030000 		.4byte	.LASF115
  4928 0eca 01       		.byte	0x1
  4929 0ecb 6908     		.2byte	0x869
  4930 0ecd F1090000 		.4byte	0x9f1
@@ -8327,7 +8327,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4933 0ed3 70       		.sleb128 -16
  4934 0ed4 00       		.byte	0
  4935 0ed5 1A       		.uleb128 0x1a
- 4936 0ed6 DF080000 		.4byte	.LASF133
+ 4936 0ed6 E1080000 		.4byte	.LASF133
  4937 0eda 01       		.byte	0x1
  4938 0edb 7B08     		.2byte	0x87b
  4939 0edd 00000000 		.4byte	.LFB91
@@ -8336,9 +8336,9 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4942 0ee6 9C       		.byte	0x9c
  4943 0ee7 310F0000 		.4byte	0xf31
  4944 0eeb 19       		.uleb128 0x19
- 4945 0eec 0D080000 		.4byte	.LASF85
+ 4945 0eec AB070000 		.4byte	.LASF85
  4946 0ef0 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 140
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 140
 
 
  4947 0ef1 7B08     		.2byte	0x87b
@@ -8363,7 +8363,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4966 0f18 56000000 		.4byte	.LBB49
  4967 0f1c 42000000 		.4byte	.LBE49-.LBB49
  4968 0f20 17       		.uleb128 0x17
- 4969 0f21 65090000 		.4byte	.LASF59
+ 4969 0f21 67090000 		.4byte	.LASF59
  4970 0f25 01       		.byte	0x1
  4971 0f26 D608     		.2byte	0x8d6
  4972 0f28 CB000000 		.4byte	0xcb
@@ -8373,7 +8373,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4976 0f2f 00       		.byte	0
  4977 0f30 00       		.byte	0
  4978 0f31 24       		.uleb128 0x24
- 4979 0f32 69030000 		.4byte	.LASF134
+ 4979 0f32 07030000 		.4byte	.LASF134
  4980 0f36 01       		.byte	0x1
  4981 0f37 F308     		.2byte	0x8f3
  4982 0f39 47010000 		.4byte	0x147
@@ -8383,7 +8383,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4986 0f46 9C       		.byte	0x9c
  4987 0f47 6A0F0000 		.4byte	0xf6a
  4988 0f4b 19       		.uleb128 0x19
- 4989 0f4c 0D080000 		.4byte	.LASF85
+ 4989 0f4c AB070000 		.4byte	.LASF85
  4990 0f50 01       		.byte	0x1
  4991 0f51 F308     		.2byte	0x8f3
  4992 0f53 2A0E0000 		.4byte	0xe2a
@@ -8391,19 +8391,19 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  4994 0f58 91       		.byte	0x91
  4995 0f59 6C       		.sleb128 -20
  4996 0f5a 17       		.uleb128 0x17
- 4997 0f5b 15080000 		.4byte	.LASF96
+ 4997 0f5b B3070000 		.4byte	.LASF96
  4998 0f5f 01       		.byte	0x1
  4999 0f60 F508     		.2byte	0x8f5
  5000 0f62 47010000 		.4byte	0x147
  5001 0f66 02       		.uleb128 0x2
  5002 0f67 91       		.byte	0x91
  5003 0f68 74       		.sleb128 -12
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 141
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 141
 
 
  5004 0f69 00       		.byte	0
  5005 0f6a 21       		.uleb128 0x21
- 5006 0f6b 01090000 		.4byte	.LASF135
+ 5006 0f6b 03090000 		.4byte	.LASF135
  5007 0f6f 01       		.byte	0x1
  5008 0f70 0809     		.2byte	0x908
  5009 0f72 47010000 		.4byte	0x147
@@ -8413,7 +8413,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5013 0f7f 9C       		.byte	0x9c
  5014 0f80 B20F0000 		.4byte	0xfb2
  5015 0f84 19       		.uleb128 0x19
- 5016 0f85 35030000 		.4byte	.LASF69
+ 5016 0f85 D3020000 		.4byte	.LASF69
  5017 0f89 01       		.byte	0x1
  5018 0f8a 0809     		.2byte	0x908
  5019 0f8c 270D0000 		.4byte	0xd27
@@ -8421,7 +8421,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5021 0f91 91       		.byte	0x91
  5022 0f92 6C       		.sleb128 -20
  5023 0f93 17       		.uleb128 0x17
- 5024 0f94 15080000 		.4byte	.LASF96
+ 5024 0f94 B3070000 		.4byte	.LASF96
  5025 0f98 01       		.byte	0x1
  5026 0f99 0A09     		.2byte	0x90a
  5027 0f9b 47010000 		.4byte	0x147
@@ -8429,7 +8429,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5029 0fa0 91       		.byte	0x91
  5030 0fa1 74       		.sleb128 -12
  5031 0fa2 17       		.uleb128 0x17
- 5032 0fa3 0D080000 		.4byte	.LASF85
+ 5032 0fa3 AB070000 		.4byte	.LASF85
  5033 0fa7 01       		.byte	0x1
  5034 0fa8 0B09     		.2byte	0x90b
  5035 0faa 90040000 		.4byte	0x490
@@ -8438,7 +8438,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5038 0fb0 70       		.sleb128 -16
  5039 0fb1 00       		.byte	0
  5040 0fb2 24       		.uleb128 0x24
- 5041 0fb3 D0040000 		.4byte	.LASF136
+ 5041 0fb3 6E040000 		.4byte	.LASF136
  5042 0fb7 01       		.byte	0x1
  5043 0fb8 1B09     		.2byte	0x91b
  5044 0fba 47010000 		.4byte	0x147
@@ -8448,7 +8448,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5048 0fc7 9C       		.byte	0x9c
  5049 0fc8 EB0F0000 		.4byte	0xfeb
  5050 0fcc 19       		.uleb128 0x19
- 5051 0fcd 0D080000 		.4byte	.LASF85
+ 5051 0fcd AB070000 		.4byte	.LASF85
  5052 0fd1 01       		.byte	0x1
  5053 0fd2 1B09     		.2byte	0x91b
  5054 0fd4 2A0E0000 		.4byte	0xe2a
@@ -8456,9 +8456,9 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5056 0fd9 91       		.byte	0x91
  5057 0fda 6C       		.sleb128 -20
  5058 0fdb 17       		.uleb128 0x17
- 5059 0fdc 15080000 		.4byte	.LASF96
+ 5059 0fdc B3070000 		.4byte	.LASF96
  5060 0fe0 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 142
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 142
 
 
  5061 0fe1 1D09     		.2byte	0x91d
@@ -8468,7 +8468,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5065 0fe9 74       		.sleb128 -12
  5066 0fea 00       		.byte	0
  5067 0feb 21       		.uleb128 0x21
- 5068 0fec CC070000 		.4byte	.LASF137
+ 5068 0fec 6A070000 		.4byte	.LASF137
  5069 0ff0 01       		.byte	0x1
  5070 0ff1 3009     		.2byte	0x930
  5071 0ff3 47010000 		.4byte	0x147
@@ -8478,7 +8478,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5075 1000 9C       		.byte	0x9c
  5076 1001 33100000 		.4byte	0x1033
  5077 1005 19       		.uleb128 0x19
- 5078 1006 35030000 		.4byte	.LASF69
+ 5078 1006 D3020000 		.4byte	.LASF69
  5079 100a 01       		.byte	0x1
  5080 100b 3009     		.2byte	0x930
  5081 100d 270D0000 		.4byte	0xd27
@@ -8486,7 +8486,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5083 1012 91       		.byte	0x91
  5084 1013 6C       		.sleb128 -20
  5085 1014 17       		.uleb128 0x17
- 5086 1015 15080000 		.4byte	.LASF96
+ 5086 1015 B3070000 		.4byte	.LASF96
  5087 1019 01       		.byte	0x1
  5088 101a 3209     		.2byte	0x932
  5089 101c 47010000 		.4byte	0x147
@@ -8494,7 +8494,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5091 1021 91       		.byte	0x91
  5092 1022 74       		.sleb128 -12
  5093 1023 17       		.uleb128 0x17
- 5094 1024 0D080000 		.4byte	.LASF85
+ 5094 1024 AB070000 		.4byte	.LASF85
  5095 1028 01       		.byte	0x1
  5096 1029 3309     		.2byte	0x933
  5097 102b 90040000 		.4byte	0x490
@@ -8503,7 +8503,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5100 1031 70       		.sleb128 -16
  5101 1032 00       		.byte	0
  5102 1033 25       		.uleb128 0x25
- 5103 1034 21060000 		.4byte	.LASF139
+ 5103 1034 BF050000 		.4byte	.LASF139
  5104 1038 01       		.byte	0x1
  5105 1039 580A     		.2byte	0xa58
  5106 103b 00000000 		.4byte	.LFB96
@@ -8512,18 +8512,18 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5109 1044 9C       		.byte	0x9c
  5110 1045 76100000 		.4byte	0x1076
  5111 1049 19       		.uleb128 0x19
- 5112 104a 35030000 		.4byte	.LASF69
+ 5112 104a D3020000 		.4byte	.LASF69
  5113 104e 01       		.byte	0x1
  5114 104f 580A     		.2byte	0xa58
  5115 1051 97020000 		.4byte	0x297
  5116 1055 02       		.uleb128 0x2
  5117 1056 91       		.byte	0x91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 143
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 143
 
 
  5118 1057 6C       		.sleb128 -20
  5119 1058 19       		.uleb128 0x19
- 5120 1059 1A040000 		.4byte	.LASF74
+ 5120 1059 B8030000 		.4byte	.LASF74
  5121 105d 01       		.byte	0x1
  5122 105e 580A     		.2byte	0xa58
  5123 1060 B9000000 		.4byte	0xb9
@@ -8540,7 +8540,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5134 1074 74       		.sleb128 -12
  5135 1075 00       		.byte	0
  5136 1076 21       		.uleb128 0x21
- 5137 1077 50070000 		.4byte	.LASF140
+ 5137 1077 EE060000 		.4byte	.LASF140
  5138 107b 01       		.byte	0x1
  5139 107c 750A     		.2byte	0xa75
  5140 107e B9000000 		.4byte	0xb9
@@ -8550,7 +8550,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5144 108b 9C       		.byte	0x9c
  5145 108c BD100000 		.4byte	0x10bd
  5146 1090 19       		.uleb128 0x19
- 5147 1091 35030000 		.4byte	.LASF69
+ 5147 1091 D3020000 		.4byte	.LASF69
  5148 1095 01       		.byte	0x1
  5149 1096 750A     		.2byte	0xa75
  5150 1098 97020000 		.4byte	0x297
@@ -8566,7 +8566,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5160 10ab 91       		.byte	0x91
  5161 10ac 74       		.sleb128 -12
  5162 10ad 17       		.uleb128 0x17
- 5163 10ae 6F070000 		.4byte	.LASF141
+ 5163 10ae 0D070000 		.4byte	.LASF141
  5164 10b2 01       		.byte	0x1
  5165 10b3 780A     		.2byte	0xa78
  5166 10b5 B9000000 		.4byte	0xb9
@@ -8575,10 +8575,10 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5169 10bb 70       		.sleb128 -16
  5170 10bc 00       		.byte	0
  5171 10bd 25       		.uleb128 0x25
- 5172 10be B5020000 		.4byte	.LASF142
+ 5172 10be 53020000 		.4byte	.LASF142
  5173 10c2 01       		.byte	0x1
  5174 10c3 910A     		.2byte	0xa91
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 144
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 144
 
 
  5175 10c5 00000000 		.4byte	.LFB98
@@ -8587,7 +8587,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5178 10ce 9C       		.byte	0x9c
  5179 10cf F1100000 		.4byte	0x10f1
  5180 10d3 19       		.uleb128 0x19
- 5181 10d4 35030000 		.4byte	.LASF69
+ 5181 10d4 D3020000 		.4byte	.LASF69
  5182 10d8 01       		.byte	0x1
  5183 10d9 910A     		.2byte	0xa91
  5184 10db 97020000 		.4byte	0x297
@@ -8611,7 +8611,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5202 10ff 07       		.byte	0x7
  5203 1100 00       		.byte	0
  5204 1101 29       		.uleb128 0x29
- 5205 1102 36040000 		.4byte	.LASF143
+ 5205 1102 D4030000 		.4byte	.LASF143
  5206 1106 07       		.byte	0x7
  5207 1107 34       		.byte	0x34
  5208 1108 F1100000 		.4byte	0x10f1
@@ -8619,7 +8619,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5210 110d 03       		.byte	0x3
  5211 110e 00000000 		.4byte	DS18x8_Sensor
  5212 1112 29       		.uleb128 0x29
- 5213 1113 99080000 		.4byte	.LASF144
+ 5213 1113 9B080000 		.4byte	.LASF144
  5214 1117 07       		.byte	0x7
  5215 1118 39       		.byte	0x39
  5216 1119 1D010000 		.4byte	0x11d
@@ -8627,7 +8627,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5218 111e 03       		.byte	0x3
  5219 111f 00000000 		.4byte	DS18x8_DataReady
  5220 1123 2A       		.uleb128 0x2a
- 5221 1124 9F070000 		.4byte	.LASF145
+ 5221 1124 3D070000 		.4byte	.LASF145
  5222 1128 0B       		.byte	0xb
  5223 1129 1207     		.2byte	0x712
  5224 112b 2F110000 		.4byte	0x112f
@@ -8638,13 +8638,13 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5229 1139 44110000 		.4byte	0x1144
  5230 113d 28       		.uleb128 0x28
  5231 113e A9000000 		.4byte	0xa9
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 145
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 145
 
 
  5232 1142 09       		.byte	0x9
  5233 1143 00       		.byte	0
  5234 1144 29       		.uleb128 0x29
- 5235 1145 18050000 		.4byte	.LASF146
+ 5235 1145 B6040000 		.4byte	.LASF146
  5236 1149 01       		.byte	0x1
  5237 114a A2       		.byte	0xa2
  5238 114b 34110000 		.4byte	0x1134
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5286 0029 00       		.byte	0
  5287 002a 00       		.byte	0
  5288 002b 04       		.uleb128 0x4
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 146
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 146
 
 
  5289 002c 24       		.uleb128 0x24
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5343 0062 49       		.uleb128 0x49
  5344 0063 13       		.uleb128 0x13
  5345 0064 00       		.byte	0
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 147
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 147
 
 
  5346 0065 00       		.byte	0
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5400 009b 00       		.byte	0
  5401 009c 0F       		.uleb128 0xf
  5402 009d 17       		.uleb128 0x17
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 148
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 148
 
 
  5403 009e 01       		.byte	0x1
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5457 00d4 00       		.byte	0
  5458 00d5 00       		.byte	0
  5459 00d6 13       		.uleb128 0x13
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 149
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 149
 
 
  5460 00d7 2E       		.uleb128 0x2e
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5514 010e 00       		.byte	0
  5515 010f 00       		.byte	0
  5516 0110 16       		.uleb128 0x16
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 150
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 150
 
 
  5517 0111 05       		.uleb128 0x5
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5571 0148 00       		.byte	0
  5572 0149 00       		.byte	0
  5573 014a 19       		.uleb128 0x19
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 151
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 151
 
 
  5574 014b 05       		.uleb128 0x5
@@ -9058,7 +9058,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5628 0182 1C       		.uleb128 0x1c
  5629 0183 0B       		.uleb128 0xb
  5630 0184 01       		.byte	0x1
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 152
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 152
 
 
  5631 0185 11       		.uleb128 0x11
@@ -9118,7 +9118,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5685 01bb 19       		.uleb128 0x19
  5686 01bc 03       		.uleb128 0x3
  5687 01bd 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 153
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 153
 
 
  5688 01be 3A       		.uleb128 0x3a
@@ -9178,7 +9178,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5742 01f6 27       		.uleb128 0x27
  5743 01f7 19       		.uleb128 0x19
  5744 01f8 49       		.uleb128 0x49
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 154
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 154
 
 
  5745 01f9 13       		.uleb128 0x13
@@ -9238,7 +9238,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5799 0231 06       		.uleb128 0x6
  5800 0232 40       		.uleb128 0x40
  5801 0233 18       		.uleb128 0x18
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 155
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 155
 
 
  5802 0234 9742     		.uleb128 0x2117
@@ -9298,7 +9298,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5856 026b 00       		.byte	0
  5857 026c 00       		.byte	0
  5858 026d 2A       		.uleb128 0x2a
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 156
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 156
 
 
  5859 026e 34       		.uleb128 0x34
@@ -9358,7 +9358,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5913 0084 AC000000 		.4byte	.LFE82-.LFB82
  5914 0088 00000000 		.4byte	.LFB83
  5915 008c 64000000 		.4byte	.LFE83-.LFB83
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 157
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 157
 
 
  5916 0090 00000000 		.4byte	.LFB84
@@ -9418,7 +9418,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  5970 0050 00000000 		.4byte	.LFB78
  5971 0054 A6000000 		.4byte	.LFE78
  5972 0058 00000000 		.4byte	.LFB79
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 158
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 158
 
 
  5973 005c 44010000 		.4byte	.LFE79
@@ -9478,7 +9478,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  6020 0010 53656D61 		.ascii	"SemaphoreData\000"
  6020      70686F72 
  6020      65446174 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 159
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 159
 
 
  6020      6100
@@ -9538,7 +9538,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  6041              	.LASF39:
  6042 00ce 7078496E 		.ascii	"pxIndex\000"
  6042      64657800 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 160
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 160
 
 
  6043              	.LASF46:
@@ -9598,7 +9598,7 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  6064 01d5 784F7665 		.ascii	"xOverflowCount\000"
  6064      72666C6F 
  6064      77436F75 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 161
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 161
 
 
  6064      6E7400
@@ -9620,632 +9620,633 @@ ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 1
  6072 020f 75785265 		.ascii	"uxReturn\000"
  6072      7475726E 
  6072      00
- 6073              	.LASF149:
- 6074 0218 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
- 6074      73657273 
- 6074      5C477573 
- 6074      74615C4F 
- 6074      6E654472 
- 6075 0245 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
- 6075      6963616C 
- 6075      5F666172 
- 6075      6D5C5254 
- 6075      4F535F54 
- 6076 0276 64736E00 		.ascii	"dsn\000"
- 6077              	.LASF77:
- 6078 027a 51756575 		.ascii	"QueueRegistryItem_t\000"
- 6078      65526567 
- 6078      69737472 
- 6078      79497465 
- 6078      6D5F7400 
- 6079              	.LASF138:
- 6080 028e 76517565 		.ascii	"vQueueDelete\000"
- 6080      75654465 
- 6080      6C657465 
- 6080      00
- 6081              	.LASF148:
- 6082 029b 536F7572 		.ascii	"Source\\queue.c\000"
- 6082      63655C71 
- 6082      75657565 
- 6082      2E6300
- 6083              	.LASF63:
- 6084 02aa 70635265 		.ascii	"pcReadFrom\000"
- 6084      61644672 
- 6084      6F6D00
- 6085              	.LASF142:
- 6086 02b5 76517565 		.ascii	"vQueueUnregisterQueue\000"
- 6086      7565556E 
- 6086      72656769 
- 6086      73746572 
+ 6073              	.LASF77:
+ 6074 0218 51756575 		.ascii	"QueueRegistryItem_t\000"
+ 6074      65526567 
+ 6074      69737472 
+ 6074      79497465 
+ 6074      6D5F7400 
+ 6075              	.LASF138:
+ 6076 022c 76517565 		.ascii	"vQueueDelete\000"
+ 6076      75654465 
+ 6076      6C657465 
+ 6076      00
+ 6077              	.LASF148:
+ 6078 0239 536F7572 		.ascii	"Source\\queue.c\000"
+ 6078      63655C71 
+ 6078      75657565 
+ 6078      2E6300
+ 6079              	.LASF63:
+ 6080 0248 70635265 		.ascii	"pcReadFrom\000"
+ 6080      61644672 
+ 6080      6F6D00
+ 6081              	.LASF142:
+ 6082 0253 76517565 		.ascii	"vQueueUnregisterQueue\000"
+ 6082      7565556E 
+ 6082      72656769 
+ 6082      73746572 
+ 6082      51756575 
+ 6083              	.LASF111:
+ 6084 0269 75785361 		.ascii	"uxSavedInterruptStatus\000"
+ 6084      76656449 
+ 6084      6E746572 
+ 6084      72757074 
+ 6084      53746174 
+ 6085              	.LASF89:
+ 6086 0280 70727649 		.ascii	"prvInitialiseNewQueue\000"
+ 6086      6E697469 
+ 6086      616C6973 
+ 6086      654E6577 
  6086      51756575 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 162
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 162
 
 
- 6087              	.LASF111:
- 6088 02cb 75785361 		.ascii	"uxSavedInterruptStatus\000"
- 6088      76656449 
- 6088      6E746572 
- 6088      72757074 
- 6088      53746174 
- 6089              	.LASF89:
- 6090 02e2 70727649 		.ascii	"prvInitialiseNewQueue\000"
- 6090      6E697469 
- 6090      616C6973 
- 6090      654E6577 
- 6090      51756575 
- 6091              	.LASF20:
- 6092 02f8 75696E74 		.ascii	"uint32_t\000"
- 6092      33325F74 
- 6092      00
- 6093              	.LASF17:
- 6094 0301 696E7438 		.ascii	"int8_t\000"
- 6094      5F7400
- 6095              	.LASF93:
- 6096 0308 75784D75 		.ascii	"uxMutexSize\000"
- 6096      74657853 
- 6096      697A6500 
- 6097              	.LASF107:
- 6098 0314 78596965 		.ascii	"xYieldRequired\000"
- 6098      6C645265 
- 6098      71756972 
- 6098      656400
- 6099              	.LASF78:
- 6100 0323 756C4F72 		.ascii	"ulOriginalBASEPRI\000"
- 6100      6967696E 
- 6100      616C4241 
- 6100      53455052 
- 6100      4900
- 6101              	.LASF69:
- 6102 0335 78517565 		.ascii	"xQueue\000"
- 6102      756500
- 6103              	.LASF23:
- 6104 033c 666C6F61 		.ascii	"float\000"
- 6104      7400
- 6105              	.LASF51:
- 6106 0342 51756575 		.ascii	"QueueDefinition\000"
- 6106      65446566 
- 6106      696E6974 
- 6106      696F6E00 
- 6107              	.LASF14:
- 6108 0352 6C6F6E67 		.ascii	"long long unsigned int\000"
- 6108      206C6F6E 
- 6108      6720756E 
- 6108      7369676E 
- 6108      65642069 
- 6109              	.LASF134:
- 6110 0369 70727649 		.ascii	"prvIsQueueEmpty\000"
- 6110      73517565 
- 6110      7565456D 
- 6110      70747900 
- 6111              	.LASF115:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 163
+ 6087              	.LASF20:
+ 6088 0296 75696E74 		.ascii	"uint32_t\000"
+ 6088      33325F74 
+ 6088      00
+ 6089              	.LASF17:
+ 6090 029f 696E7438 		.ascii	"int8_t\000"
+ 6090      5F7400
+ 6091              	.LASF93:
+ 6092 02a6 75784D75 		.ascii	"uxMutexSize\000"
+ 6092      74657853 
+ 6092      697A6500 
+ 6093              	.LASF107:
+ 6094 02b2 78596965 		.ascii	"xYieldRequired\000"
+ 6094      6C645265 
+ 6094      71756972 
+ 6094      656400
+ 6095              	.LASF78:
+ 6096 02c1 756C4F72 		.ascii	"ulOriginalBASEPRI\000"
+ 6096      6967696E 
+ 6096      616C4241 
+ 6096      53455052 
+ 6096      4900
+ 6097              	.LASF69:
+ 6098 02d3 78517565 		.ascii	"xQueue\000"
+ 6098      756500
+ 6099              	.LASF23:
+ 6100 02da 666C6F61 		.ascii	"float\000"
+ 6100      7400
+ 6101              	.LASF51:
+ 6102 02e0 51756575 		.ascii	"QueueDefinition\000"
+ 6102      65446566 
+ 6102      696E6974 
+ 6102      696F6E00 
+ 6103              	.LASF14:
+ 6104 02f0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 6104      206C6F6E 
+ 6104      6720756E 
+ 6104      7369676E 
+ 6104      65642069 
+ 6105              	.LASF134:
+ 6106 0307 70727649 		.ascii	"prvIsQueueEmpty\000"
+ 6106      73517565 
+ 6106      7565456D 
+ 6106      70747900 
+ 6107              	.LASF115:
+ 6108 0317 70764275 		.ascii	"pvBuffer\000"
+ 6108      66666572 
+ 6108      00
+ 6109              	.LASF129:
+ 6110 0320 70727647 		.ascii	"prvGetDisinheritPriorityAfterTimeout\000"
+ 6110      65744469 
+ 6110      73696E68 
+ 6110      65726974 
+ 6110      5072696F 
+ 6111              	.LASF34:
+ 6112 0345 70785072 		.ascii	"pxPrevious\000"
+ 6112      6576696F 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 163
 
 
- 6112 0379 70764275 		.ascii	"pvBuffer\000"
- 6112      66666572 
- 6112      00
- 6113              	.LASF129:
- 6114 0382 70727647 		.ascii	"prvGetDisinheritPriorityAfterTimeout\000"
- 6114      65744469 
- 6114      73696E68 
- 6114      65726974 
- 6114      5072696F 
- 6115              	.LASF34:
- 6116 03a7 70785072 		.ascii	"pxPrevious\000"
- 6116      6576696F 
- 6116      757300
- 6117              	.LASF56:
- 6118 03b2 75784D65 		.ascii	"uxMessagesWaiting\000"
+ 6112      757300
+ 6113              	.LASF56:
+ 6114 0350 75784D65 		.ascii	"uxMessagesWaiting\000"
+ 6114      73736167 
+ 6114      65735761 
+ 6114      6974696E 
+ 6114      6700
+ 6115              	.LASF70:
+ 6116 0362 7853656D 		.ascii	"xSemaphore\000"
+ 6116      6170686F 
+ 6116      726500
+ 6117              	.LASF112:
+ 6118 036d 75785072 		.ascii	"uxPreviousMessagesWaiting\000"
+ 6118      6576696F 
+ 6118      75734D65 
  6118      73736167 
  6118      65735761 
- 6118      6974696E 
- 6118      6700
- 6119              	.LASF70:
- 6120 03c4 7853656D 		.ascii	"xSemaphore\000"
- 6120      6170686F 
- 6120      726500
- 6121              	.LASF112:
- 6122 03cf 75785072 		.ascii	"uxPreviousMessagesWaiting\000"
- 6122      6576696F 
- 6122      75734D65 
- 6122      73736167 
- 6122      65735761 
- 6123              	.LASF120:
- 6124 03e9 78517565 		.ascii	"xQueuePeek\000"
- 6124      75655065 
- 6124      656B00
- 6125              	.LASF106:
- 6126 03f4 78456E74 		.ascii	"xEntryTimeSet\000"
- 6126      72795469 
- 6126      6D655365 
- 6126      7400
- 6127              	.LASF3:
- 6128 0402 73697A65 		.ascii	"size_t\000"
- 6128      5F7400
- 6129              	.LASF108:
- 6130 0409 7854696D 		.ascii	"xTimeOut\000"
- 6130      654F7574 
- 6130      00
- 6131              	.LASF75:
- 6132 0412 7848616E 		.ascii	"xHandle\000"
- 6132      646C6500 
- 6133              	.LASF74:
- 6134 041a 70635175 		.ascii	"pcQueueName\000"
- 6134      6575654E 
- 6134      616D6500 
- 6135              	.LASF42:
- 6136 0426 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
- 6136      495F4C49 
- 6136      53545F49 
- 6136      54454D00 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 164
+ 6119              	.LASF120:
+ 6120 0387 78517565 		.ascii	"xQueuePeek\000"
+ 6120      75655065 
+ 6120      656B00
+ 6121              	.LASF106:
+ 6122 0392 78456E74 		.ascii	"xEntryTimeSet\000"
+ 6122      72795469 
+ 6122      6D655365 
+ 6122      7400
+ 6123              	.LASF3:
+ 6124 03a0 73697A65 		.ascii	"size_t\000"
+ 6124      5F7400
+ 6125              	.LASF108:
+ 6126 03a7 7854696D 		.ascii	"xTimeOut\000"
+ 6126      654F7574 
+ 6126      00
+ 6127              	.LASF75:
+ 6128 03b0 7848616E 		.ascii	"xHandle\000"
+ 6128      646C6500 
+ 6129              	.LASF74:
+ 6130 03b8 70635175 		.ascii	"pcQueueName\000"
+ 6130      6575654E 
+ 6130      616D6500 
+ 6131              	.LASF42:
+ 6132 03c4 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
+ 6132      495F4C49 
+ 6132      53545F49 
+ 6132      54454D00 
+ 6133              	.LASF143:
+ 6134 03d4 44533138 		.ascii	"DS18x8_Sensor\000"
+ 6134      78385F53 
+ 6134      656E736F 
+ 6134      7200
+ 6135              	.LASF37:
+ 6136 03e2 784C4953 		.ascii	"xLIST\000"
+ 6136      5400
+ 6137              	.LASF109:
+ 6138 03e8 78517565 		.ascii	"xQueueGenericSendFromISR\000"
+ 6138      75654765 
+ 6138      6E657269 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 164
 
 
- 6137              	.LASF143:
- 6138 0436 44533138 		.ascii	"DS18x8_Sensor\000"
- 6138      78385F53 
- 6138      656E736F 
- 6138      7200
- 6139              	.LASF37:
- 6140 0444 784C4953 		.ascii	"xLIST\000"
- 6140      5400
- 6141              	.LASF109:
- 6142 044a 78517565 		.ascii	"xQueueGenericSendFromISR\000"
- 6142      75654765 
- 6142      6E657269 
- 6142      6353656E 
- 6142      6446726F 
- 6143              	.LASF152:
- 6144 0463 76506F72 		.ascii	"vPortSetBASEPRI\000"
- 6144      74536574 
- 6144      42415345 
- 6144      50524900 
- 6145              	.LASF130:
- 6146 0473 70727643 		.ascii	"prvCopyDataToQueue\000"
- 6146      6F707944 
- 6146      61746154 
- 6146      6F517565 
- 6146      756500
- 6147              	.LASF103:
- 6148 0486 78517565 		.ascii	"xQueueGenericSend\000"
- 6148      75654765 
- 6148      6E657269 
- 6148      6353656E 
- 6148      6400
- 6149              	.LASF58:
- 6150 0498 75784974 		.ascii	"uxItemSize\000"
- 6150      656D5369 
- 6150      7A6500
- 6151              	.LASF102:
- 6152 04a3 7578496E 		.ascii	"uxInitialCount\000"
- 6152      69746961 
- 6152      6C436F75 
- 6152      6E7400
- 6153              	.LASF92:
- 6154 04b2 75784D75 		.ascii	"uxMutexLength\000"
- 6154      7465784C 
- 6154      656E6774 
- 6154      6800
- 6155              	.LASF16:
- 6156 04c0 63686172 		.ascii	"char\000"
- 6156      00
- 6157              	.LASF41:
- 6158 04c5 4C697374 		.ascii	"ListItem_t\000"
- 6158      4974656D 
- 6158      5F7400
- 6159              	.LASF136:
- 6160 04d0 70727649 		.ascii	"prvIsQueueFull\000"
- 6160      73517565 
- 6160      75654675 
- 6160      6C6C00
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 165
+ 6138      6353656E 
+ 6138      6446726F 
+ 6139              	.LASF152:
+ 6140 0401 76506F72 		.ascii	"vPortSetBASEPRI\000"
+ 6140      74536574 
+ 6140      42415345 
+ 6140      50524900 
+ 6141              	.LASF130:
+ 6142 0411 70727643 		.ascii	"prvCopyDataToQueue\000"
+ 6142      6F707944 
+ 6142      61746154 
+ 6142      6F517565 
+ 6142      756500
+ 6143              	.LASF103:
+ 6144 0424 78517565 		.ascii	"xQueueGenericSend\000"
+ 6144      75654765 
+ 6144      6E657269 
+ 6144      6353656E 
+ 6144      6400
+ 6145              	.LASF58:
+ 6146 0436 75784974 		.ascii	"uxItemSize\000"
+ 6146      656D5369 
+ 6146      7A6500
+ 6147              	.LASF102:
+ 6148 0441 7578496E 		.ascii	"uxInitialCount\000"
+ 6148      69746961 
+ 6148      6C436F75 
+ 6148      6E7400
+ 6149              	.LASF92:
+ 6150 0450 75784D75 		.ascii	"uxMutexLength\000"
+ 6150      7465784C 
+ 6150      656E6774 
+ 6150      6800
+ 6151              	.LASF16:
+ 6152 045e 63686172 		.ascii	"char\000"
+ 6152      00
+ 6153              	.LASF41:
+ 6154 0463 4C697374 		.ascii	"ListItem_t\000"
+ 6154      4974656D 
+ 6154      5F7400
+ 6155              	.LASF136:
+ 6156 046e 70727649 		.ascii	"prvIsQueueFull\000"
+ 6156      73517565 
+ 6156      75654675 
+ 6156      6C6C00
+ 6157              	.LASF61:
+ 6158 047d 51756575 		.ascii	"QueuePointers\000"
+ 6158      65506F69 
+ 6158      6E746572 
+ 6158      7300
+ 6159              	.LASF79:
+ 6160 048b 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 6160      77424153 
+ 6160      45505249 
+ 6160      00
+ 6161              	.LASF28:
+ 6162 0498 55426173 		.ascii	"UBaseType_t\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 165
 
 
- 6161              	.LASF61:
- 6162 04df 51756575 		.ascii	"QueuePointers\000"
- 6162      65506F69 
- 6162      6E746572 
- 6162      7300
- 6163              	.LASF79:
- 6164 04ed 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 6164      77424153 
- 6164      45505249 
- 6164      00
- 6165              	.LASF28:
- 6166 04fa 55426173 		.ascii	"UBaseType_t\000"
- 6166      65547970 
- 6166      655F7400 
- 6167              	.LASF113:
- 6168 0506 78517565 		.ascii	"xQueueGiveFromISR\000"
- 6168      75654769 
- 6168      76654672 
- 6168      6F6D4953 
- 6168      5200
- 6169              	.LASF146:
- 6170 0518 78517565 		.ascii	"xQueueRegistry\000"
- 6170      75655265 
- 6170      67697374 
- 6170      727900
- 6171              	.LASF50:
- 6172 0527 51756575 		.ascii	"QueueHandle_t\000"
- 6172      6548616E 
- 6172      646C655F 
- 6172      7400
- 6173              	.LASF40:
- 6174 0535 784C6973 		.ascii	"xListEnd\000"
- 6174      74456E64 
- 6174      00
- 6175              	.LASF22:
- 6176 053e 75696E74 		.ascii	"uint16\000"
- 6176      313600
- 6177              	.LASF127:
- 6178 0545 75785175 		.ascii	"uxQueueMessagesWaitingFromISR\000"
- 6178      6575654D 
- 6178      65737361 
- 6178      67657357 
- 6178      61697469 
- 6179              	.LASF43:
- 6180 0563 4D696E69 		.ascii	"MiniListItem_t\000"
- 6180      4C697374 
- 6180      4974656D 
- 6180      5F7400
- 6181              	.LASF18:
- 6182 0572 75696E74 		.ascii	"uint8_t\000"
- 6182      385F7400 
- 6183              	.LASF76:
- 6184 057a 78517565 		.ascii	"xQueueRegistryItem\000"
- 6184      75655265 
- 6184      67697374 
- 6184      72794974 
- 6184      656D00
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 166
+ 6162      65547970 
+ 6162      655F7400 
+ 6163              	.LASF113:
+ 6164 04a4 78517565 		.ascii	"xQueueGiveFromISR\000"
+ 6164      75654769 
+ 6164      76654672 
+ 6164      6F6D4953 
+ 6164      5200
+ 6165              	.LASF146:
+ 6166 04b6 78517565 		.ascii	"xQueueRegistry\000"
+ 6166      75655265 
+ 6166      67697374 
+ 6166      727900
+ 6167              	.LASF50:
+ 6168 04c5 51756575 		.ascii	"QueueHandle_t\000"
+ 6168      6548616E 
+ 6168      646C655F 
+ 6168      7400
+ 6169              	.LASF40:
+ 6170 04d3 784C6973 		.ascii	"xListEnd\000"
+ 6170      74456E64 
+ 6170      00
+ 6171              	.LASF22:
+ 6172 04dc 75696E74 		.ascii	"uint16\000"
+ 6172      313600
+ 6173              	.LASF127:
+ 6174 04e3 75785175 		.ascii	"uxQueueMessagesWaitingFromISR\000"
+ 6174      6575654D 
+ 6174      65737361 
+ 6174      67657357 
+ 6174      61697469 
+ 6175              	.LASF43:
+ 6176 0501 4D696E69 		.ascii	"MiniListItem_t\000"
+ 6176      4C697374 
+ 6176      4974656D 
+ 6176      5F7400
+ 6177              	.LASF18:
+ 6178 0510 75696E74 		.ascii	"uint8_t\000"
+ 6178      385F7400 
+ 6179              	.LASF76:
+ 6180 0518 78517565 		.ascii	"xQueueRegistryItem\000"
+ 6180      75655265 
+ 6180      67697374 
+ 6180      72794974 
+ 6180      656D00
+ 6181              	.LASF26:
+ 6182 052b 70726573 		.ascii	"present\000"
+ 6182      656E7400 
+ 6183              	.LASF82:
+ 6184 0533 78517565 		.ascii	"xQueueGenericCreate\000"
+ 6184      75654765 
+ 6184      6E657269 
+ 6184      63437265 
+ 6184      61746500 
+ 6185              	.LASF91:
+ 6186 0547 78517565 		.ascii	"xQueueCreateMutex\000"
+ 6186      75654372 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 166
 
 
- 6185              	.LASF26:
- 6186 058d 70726573 		.ascii	"present\000"
- 6186      656E7400 
- 6187              	.LASF82:
- 6188 0595 78517565 		.ascii	"xQueueGenericCreate\000"
- 6188      75654765 
- 6188      6E657269 
- 6188      63437265 
- 6188      61746500 
- 6189              	.LASF91:
- 6190 05a9 78517565 		.ascii	"xQueueCreateMutex\000"
- 6190      75654372 
- 6190      65617465 
- 6190      4D757465 
- 6190      7800
- 6191              	.LASF151:
- 6192 05bb 756C506F 		.ascii	"ulPortRaiseBASEPRI\000"
- 6192      72745261 
- 6192      69736542 
- 6192      41534550 
- 6192      524900
- 6193              	.LASF1:
- 6194 05ce 6C6F6E67 		.ascii	"long long int\000"
- 6194      206C6F6E 
- 6194      6720696E 
- 6194      7400
- 6195              	.LASF90:
- 6196 05dc 70727649 		.ascii	"prvInitialiseMutex\000"
- 6196      6E697469 
- 6196      616C6973 
- 6196      654D7574 
- 6196      657800
- 6197              	.LASF27:
- 6198 05ef 42617365 		.ascii	"BaseType_t\000"
- 6198      54797065 
- 6198      5F7400
- 6199              	.LASF88:
- 6200 05fa 70756351 		.ascii	"pucQueueStorage\000"
- 6200      75657565 
- 6200      53746F72 
- 6200      61676500 
- 6201              	.LASF95:
- 6202 060a 784D7574 		.ascii	"xMutex\000"
- 6202      657800
- 6203              	.LASF48:
- 6204 0611 7854696D 		.ascii	"xTimeOnEntering\000"
- 6204      654F6E45 
- 6204      6E746572 
- 6204      696E6700 
- 6205              	.LASF139:
- 6206 0621 76517565 		.ascii	"vQueueAddToRegistry\000"
- 6206      75654164 
- 6206      64546F52 
- 6206      65676973 
- 6206      74727900 
- 6207              	.LASF33:
- 6208 0635 70784E65 		.ascii	"pxNext\000"
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 167
+ 6186      65617465 
+ 6186      4D757465 
+ 6186      7800
+ 6187              	.LASF151:
+ 6188 0559 756C506F 		.ascii	"ulPortRaiseBASEPRI\000"
+ 6188      72745261 
+ 6188      69736542 
+ 6188      41534550 
+ 6188      524900
+ 6189              	.LASF1:
+ 6190 056c 6C6F6E67 		.ascii	"long long int\000"
+ 6190      206C6F6E 
+ 6190      6720696E 
+ 6190      7400
+ 6191              	.LASF90:
+ 6192 057a 70727649 		.ascii	"prvInitialiseMutex\000"
+ 6192      6E697469 
+ 6192      616C6973 
+ 6192      654D7574 
+ 6192      657800
+ 6193              	.LASF27:
+ 6194 058d 42617365 		.ascii	"BaseType_t\000"
+ 6194      54797065 
+ 6194      5F7400
+ 6195              	.LASF88:
+ 6196 0598 70756351 		.ascii	"pucQueueStorage\000"
+ 6196      75657565 
+ 6196      53746F72 
+ 6196      61676500 
+ 6197              	.LASF95:
+ 6198 05a8 784D7574 		.ascii	"xMutex\000"
+ 6198      657800
+ 6199              	.LASF48:
+ 6200 05af 7854696D 		.ascii	"xTimeOnEntering\000"
+ 6200      654F6E45 
+ 6200      6E746572 
+ 6200      696E6700 
+ 6201              	.LASF139:
+ 6202 05bf 76517565 		.ascii	"vQueueAddToRegistry\000"
+ 6202      75654164 
+ 6202      64546F52 
+ 6202      65676973 
+ 6202      74727900 
+ 6203              	.LASF33:
+ 6204 05d3 70784E65 		.ascii	"pxNext\000"
+ 6204      787400
+ 6205              	.LASF80:
+ 6206 05da 784E6577 		.ascii	"xNewQueue\000"
+ 6206      51756575 
+ 6206      6500
+ 6207              	.LASF101:
+ 6208 05e4 75784D61 		.ascii	"uxMaxCount\000"
+ 6208      78436F75 
+ 6208      6E7400
+ 6209              	.LASF49:
+ 6210 05ef 54696D65 		.ascii	"TimeOut_t\000"
+ 6210      4F75745F 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 167
 
 
- 6208      787400
- 6209              	.LASF80:
- 6210 063c 784E6577 		.ascii	"xNewQueue\000"
- 6210      51756575 
- 6210      6500
- 6211              	.LASF101:
- 6212 0646 75784D61 		.ascii	"uxMaxCount\000"
- 6212      78436F75 
- 6212      6E7400
- 6213              	.LASF49:
- 6214 0651 54696D65 		.ascii	"TimeOut_t\000"
- 6214      4F75745F 
- 6214      7400
- 6215              	.LASF121:
- 6216 065b 70634F72 		.ascii	"pcOriginalReadPosition\000"
- 6216      6967696E 
- 6216      616C5265 
- 6216      6164506F 
- 6216      73697469 
- 6217              	.LASF45:
- 6218 0672 5461736B 		.ascii	"TaskHandle_t\000"
- 6218      48616E64 
- 6218      6C655F74 
- 6218      00
- 6219              	.LASF153:
- 6220 067f 756C4E65 		.ascii	"ulNewMaskValue\000"
- 6220      774D6173 
- 6220      6B56616C 
- 6220      756500
- 6221              	.LASF128:
- 6222 068e 75784869 		.ascii	"uxHighestPriorityOfWaitingTasks\000"
- 6222      67686573 
- 6222      74507269 
- 6222      6F726974 
- 6222      794F6657 
- 6223              	.LASF84:
- 6224 06ae 75635175 		.ascii	"ucQueueType\000"
- 6224      65756554 
- 6224      79706500 
- 6225              	.LASF44:
- 6226 06ba 4C697374 		.ascii	"List_t\000"
- 6226      5F7400
- 6227              	.LASF118:
- 6228 06c1 75785365 		.ascii	"uxSemaphoreCount\000"
- 6228      6D617068 
- 6228      6F726543 
- 6228      6F756E74 
- 6228      00
- 6229              	.LASF53:
- 6230 06d2 70635772 		.ascii	"pcWriteTo\000"
- 6230      69746554 
- 6230      6F00
- 6231              	.LASF29:
- 6232 06dc 5469636B 		.ascii	"TickType_t\000"
- 6232      54797065 
- 6232      5F7400
- 6233              	.LASF4:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 168
+ 6210      7400
+ 6211              	.LASF121:
+ 6212 05f9 70634F72 		.ascii	"pcOriginalReadPosition\000"
+ 6212      6967696E 
+ 6212      616C5265 
+ 6212      6164506F 
+ 6212      73697469 
+ 6213              	.LASF45:
+ 6214 0610 5461736B 		.ascii	"TaskHandle_t\000"
+ 6214      48616E64 
+ 6214      6C655F74 
+ 6214      00
+ 6215              	.LASF153:
+ 6216 061d 756C4E65 		.ascii	"ulNewMaskValue\000"
+ 6216      774D6173 
+ 6216      6B56616C 
+ 6216      756500
+ 6217              	.LASF128:
+ 6218 062c 75784869 		.ascii	"uxHighestPriorityOfWaitingTasks\000"
+ 6218      67686573 
+ 6218      74507269 
+ 6218      6F726974 
+ 6218      794F6657 
+ 6219              	.LASF84:
+ 6220 064c 75635175 		.ascii	"ucQueueType\000"
+ 6220      65756554 
+ 6220      79706500 
+ 6221              	.LASF44:
+ 6222 0658 4C697374 		.ascii	"List_t\000"
+ 6222      5F7400
+ 6223              	.LASF118:
+ 6224 065f 75785365 		.ascii	"uxSemaphoreCount\000"
+ 6224      6D617068 
+ 6224      6F726543 
+ 6224      6F756E74 
+ 6224      00
+ 6225              	.LASF53:
+ 6226 0670 70635772 		.ascii	"pcWriteTo\000"
+ 6226      69746554 
+ 6226      6F00
+ 6227              	.LASF29:
+ 6228 067a 5469636B 		.ascii	"TickType_t\000"
+ 6228      54797065 
+ 6228      5F7400
+ 6229              	.LASF4:
+ 6230 0685 5F5F696E 		.ascii	"__int8_t\000"
+ 6230      74385F74 
+ 6230      00
+ 6231              	.LASF25:
+ 6232 068e 54656D70 		.ascii	"Temperature\000"
+ 6232      65726174 
+ 6232      75726500 
+ 6233              	.LASF83:
+ 6234 069a 75785175 		.ascii	"uxQueueLength\000"
+ 6234      6575654C 
+ 6234      656E6774 
+ 6234      6800
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 168
 
 
- 6234 06e7 5F5F696E 		.ascii	"__int8_t\000"
- 6234      74385F74 
- 6234      00
- 6235              	.LASF25:
- 6236 06f0 54656D70 		.ascii	"Temperature\000"
- 6236      65726174 
- 6236      75726500 
- 6237              	.LASF83:
- 6238 06fc 75785175 		.ascii	"uxQueueLength\000"
- 6238      6575654C 
- 6238      656E6774 
- 6238      6800
- 6239              	.LASF2:
- 6240 070a 6C6F6E67 		.ascii	"long double\000"
- 6240      20646F75 
- 6240      626C6500 
- 6241              	.LASF117:
- 6242 0716 78496E68 		.ascii	"xInheritanceOccurred\000"
- 6242      65726974 
- 6242      616E6365 
- 6242      4F636375 
- 6242      72726564 
- 6243              	.LASF98:
- 6244 072b 78517565 		.ascii	"xQueueTakeMutexRecursive\000"
- 6244      75655461 
- 6244      6B654D75 
- 6244      74657852 
- 6244      65637572 
- 6245              	.LASF36:
- 6246 0744 7076436F 		.ascii	"pvContainer\000"
- 6246      6E746169 
- 6246      6E657200 
- 6247              	.LASF140:
- 6248 0750 70635175 		.ascii	"pcQueueGetName\000"
- 6248      65756547 
- 6248      65744E61 
- 6248      6D6500
- 6249              	.LASF64:
- 6250 075f 51756575 		.ascii	"QueuePointers_t\000"
- 6250      65506F69 
- 6250      6E746572 
- 6250      735F7400 
- 6251              	.LASF141:
- 6252 076f 70635265 		.ascii	"pcReturn\000"
- 6252      7475726E 
- 6252      00
- 6253              	.LASF57:
- 6254 0778 75784C65 		.ascii	"uxLength\000"
- 6254      6E677468 
- 6254      00
- 6255              	.LASF8:
- 6256 0781 73686F72 		.ascii	"short int\000"
- 6256      7420696E 
- 6256      7400
- 6257              	.LASF32:
- 6258 078b 78497465 		.ascii	"xItemValue\000"
- 6258      6D56616C 
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 169
+ 6235              	.LASF2:
+ 6236 06a8 6C6F6E67 		.ascii	"long double\000"
+ 6236      20646F75 
+ 6236      626C6500 
+ 6237              	.LASF117:
+ 6238 06b4 78496E68 		.ascii	"xInheritanceOccurred\000"
+ 6238      65726974 
+ 6238      616E6365 
+ 6238      4F636375 
+ 6238      72726564 
+ 6239              	.LASF98:
+ 6240 06c9 78517565 		.ascii	"xQueueTakeMutexRecursive\000"
+ 6240      75655461 
+ 6240      6B654D75 
+ 6240      74657852 
+ 6240      65637572 
+ 6241              	.LASF36:
+ 6242 06e2 7076436F 		.ascii	"pvContainer\000"
+ 6242      6E746169 
+ 6242      6E657200 
+ 6243              	.LASF140:
+ 6244 06ee 70635175 		.ascii	"pcQueueGetName\000"
+ 6244      65756547 
+ 6244      65744E61 
+ 6244      6D6500
+ 6245              	.LASF64:
+ 6246 06fd 51756575 		.ascii	"QueuePointers_t\000"
+ 6246      65506F69 
+ 6246      6E746572 
+ 6246      735F7400 
+ 6247              	.LASF141:
+ 6248 070d 70635265 		.ascii	"pcReturn\000"
+ 6248      7475726E 
+ 6248      00
+ 6249              	.LASF57:
+ 6250 0716 75784C65 		.ascii	"uxLength\000"
+ 6250      6E677468 
+ 6250      00
+ 6251              	.LASF8:
+ 6252 071f 73686F72 		.ascii	"short int\000"
+ 6252      7420696E 
+ 6252      7400
+ 6253              	.LASF32:
+ 6254 0729 78497465 		.ascii	"xItemValue\000"
+ 6254      6D56616C 
+ 6254      756500
+ 6255              	.LASF11:
+ 6256 0734 6C6F6E67 		.ascii	"long int\000"
+ 6256      20696E74 
+ 6256      00
+ 6257              	.LASF145:
+ 6258 073d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 6258      52784275 
+ 6258      66666572 
+ 6258      00
+ 6259              	.LASF87:
+ 6260 074a 78517565 		.ascii	"xQueueSizeInBytes\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 169
 
 
- 6258      756500
- 6259              	.LASF11:
- 6260 0796 6C6F6E67 		.ascii	"long int\000"
- 6260      20696E74 
- 6260      00
- 6261              	.LASF145:
- 6262 079f 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 6262      52784275 
- 6262      66666572 
- 6262      00
- 6263              	.LASF87:
- 6264 07ac 78517565 		.ascii	"xQueueSizeInBytes\000"
- 6264      75655369 
- 6264      7A65496E 
- 6264      42797465 
- 6264      7300
- 6265              	.LASF104:
- 6266 07be 70764974 		.ascii	"pvItemToQueue\000"
- 6266      656D546F 
- 6266      51756575 
- 6266      6500
- 6267              	.LASF137:
- 6268 07cc 78517565 		.ascii	"xQueueIsQueueFullFromISR\000"
- 6268      75654973 
- 6268      51756575 
- 6268      6546756C 
- 6268      6C46726F 
- 6269              	.LASF124:
- 6270 07e5 75785175 		.ascii	"uxQueueMessagesWaiting\000"
- 6270      6575654D 
- 6270      65737361 
- 6270      67657357 
- 6270      61697469 
- 6271              	.LASF62:
- 6272 07fc 70635461 		.ascii	"pcTail\000"
- 6272      696C00
- 6273              	.LASF6:
- 6274 0803 5F5F7569 		.ascii	"__uint8_t\000"
- 6274      6E74385F 
- 6274      7400
- 6275              	.LASF85:
- 6276 080d 70785175 		.ascii	"pxQueue\000"
- 6276      65756500 
- 6277              	.LASF96:
- 6278 0815 78526574 		.ascii	"xReturn\000"
- 6278      75726E00 
- 6279              	.LASF15:
- 6280 081d 73697A65 		.ascii	"sizetype\000"
- 6280      74797065 
- 6280      00
- 6281              	.LASF13:
- 6282 0826 6C6F6E67 		.ascii	"long unsigned int\000"
- 6282      20756E73 
- 6282      69676E65 
- 6282      6420696E 
- 6282      7400
- 6283              	.LASF19:
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 170
+ 6260      75655369 
+ 6260      7A65496E 
+ 6260      42797465 
+ 6260      7300
+ 6261              	.LASF104:
+ 6262 075c 70764974 		.ascii	"pvItemToQueue\000"
+ 6262      656D546F 
+ 6262      51756575 
+ 6262      6500
+ 6263              	.LASF137:
+ 6264 076a 78517565 		.ascii	"xQueueIsQueueFullFromISR\000"
+ 6264      75654973 
+ 6264      51756575 
+ 6264      6546756C 
+ 6264      6C46726F 
+ 6265              	.LASF124:
+ 6266 0783 75785175 		.ascii	"uxQueueMessagesWaiting\000"
+ 6266      6575654D 
+ 6266      65737361 
+ 6266      67657357 
+ 6266      61697469 
+ 6267              	.LASF62:
+ 6268 079a 70635461 		.ascii	"pcTail\000"
+ 6268      696C00
+ 6269              	.LASF6:
+ 6270 07a1 5F5F7569 		.ascii	"__uint8_t\000"
+ 6270      6E74385F 
+ 6270      7400
+ 6271              	.LASF85:
+ 6272 07ab 70785175 		.ascii	"pxQueue\000"
+ 6272      65756500 
+ 6273              	.LASF96:
+ 6274 07b3 78526574 		.ascii	"xReturn\000"
+ 6274      75726E00 
+ 6275              	.LASF15:
+ 6276 07bb 73697A65 		.ascii	"sizetype\000"
+ 6276      74797065 
+ 6276      00
+ 6277              	.LASF13:
+ 6278 07c4 6C6F6E67 		.ascii	"long unsigned int\000"
+ 6278      20756E73 
+ 6278      69676E65 
+ 6278      6420696E 
+ 6278      7400
+ 6279              	.LASF19:
+ 6280 07d6 696E7433 		.ascii	"int32_t\000"
+ 6280      325F7400 
+ 6281              	.LASF123:
+ 6282 07de 78517565 		.ascii	"xQueuePeekFromISR\000"
+ 6282      75655065 
+ 6282      656B4672 
+ 6282      6F6D4953 
+ 6282      5200
+ 6283              	.LASF149:
+ 6284 07f0 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 6284      73657273 
+ 6284      5C6D6167 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 170
 
 
- 6284 0838 696E7433 		.ascii	"int32_t\000"
- 6284      325F7400 
- 6285              	.LASF123:
- 6286 0840 78517565 		.ascii	"xQueuePeekFromISR\000"
- 6286      75655065 
- 6286      656B4672 
- 6286      6F6D4953 
- 6286      5200
+ 6284      39345C44 
+ 6284      65736B74 
+ 6285 081d 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 6285      72746963 
+ 6285      616C5F66 
+ 6285      61726D5C 
+ 6285      52544F53 
+ 6286 084e 63796473 		.ascii	"cydsn\000"
+ 6286      6E00
  6287              	.LASF119:
- 6288 0852 75784869 		.ascii	"uxHighestWaitingPriority\000"
+ 6288 0854 75784869 		.ascii	"uxHighestWaitingPriority\000"
  6288      67686573 
  6288      74576169 
  6288      74696E67 
  6288      5072696F 
  6289              	.LASF7:
- 6290 086b 756E7369 		.ascii	"unsigned char\000"
+ 6290 086d 756E7369 		.ascii	"unsigned char\000"
  6290      676E6564 
  6290      20636861 
  6290      7200
  6291              	.LASF12:
- 6292 0879 5F5F7569 		.ascii	"__uint32_t\000"
+ 6292 087b 5F5F7569 		.ascii	"__uint32_t\000"
  6292      6E743332 
  6292      5F7400
  6293              	.LASF132:
- 6294 0884 70727643 		.ascii	"prvCopyDataFromQueue\000"
+ 6294 0886 70727643 		.ascii	"prvCopyDataFromQueue\000"
  6294      6F707944 
  6294      61746146 
  6294      726F6D51 
  6294      75657565 
  6295              	.LASF144:
- 6296 0899 44533138 		.ascii	"DS18x8_DataReady\000"
+ 6296 089b 44533138 		.ascii	"DS18x8_DataReady\000"
  6296      78385F44 
  6296      61746152 
  6296      65616479 
  6296      00
  6297              	.LASF99:
- 6298 08aa 78546963 		.ascii	"xTicksToWait\000"
+ 6298 08ac 78546963 		.ascii	"xTicksToWait\000"
  6298      6B73546F 
  6298      57616974 
  6298      00
  6299              	.LASF35:
- 6300 08b7 70764F77 		.ascii	"pvOwner\000"
+ 6300 08b9 70764F77 		.ascii	"pvOwner\000"
  6300      6E657200 
  6301              	.LASF52:
- 6302 08bf 70634865 		.ascii	"pcHead\000"
+ 6302 08c1 70634865 		.ascii	"pcHead\000"
  6302      616400
  6303              	.LASF94:
- 6304 08c6 78517565 		.ascii	"xQueueGiveMutexRecursive\000"
+ 6304 08c8 78517565 		.ascii	"xQueueGiveMutexRecursive\000"
  6304      75654769 
  6304      76654D75 
  6304      74657852 
  6304      65637572 
  6305              	.LASF133:
- 6306 08df 70727655 		.ascii	"prvUnlockQueue\000"
+ 6306 08e1 70727655 		.ascii	"prvUnlockQueue\000"
  6306      6E6C6F63 
  6306      6B517565 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccVeXDT1.s 			page 171
+
+
  6306      756500
-ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccZaLKCj.s 			page 171
-
-
  6307              	.LASF81:
- 6308 08ee 78517565 		.ascii	"xQueueGenericReset\000"
+ 6308 08f0 78517565 		.ascii	"xQueueGenericReset\000"
  6308      75654765 
  6308      6E657269 
  6308      63526573 
  6308      657400
  6309              	.LASF135:
- 6310 0901 78517565 		.ascii	"xQueueIsQueueEmptyFromISR\000"
+ 6310 0903 78517565 		.ascii	"xQueueIsQueueEmptyFromISR\000"
  6310      75654973 
  6310      51756575 
  6310      65456D70 
  6310      74794672 
  6311              	.LASF5:
- 6312 091b 7369676E 		.ascii	"signed char\000"
+ 6312 091d 7369676E 		.ascii	"signed char\000"
  6312      65642063 
  6312      68617200 
  6313              	.LASF9:
- 6314 0927 73686F72 		.ascii	"short unsigned int\000"
+ 6314 0929 73686F72 		.ascii	"short unsigned int\000"
  6314      7420756E 
  6314      7369676E 
  6314      65642069 
  6314      6E7400
  6315              	.LASF71:
- 6316 093a 78515545 		.ascii	"xQUEUE\000"
+ 6316 093c 78515545 		.ascii	"xQUEUE\000"
  6316      554500
  6317              	.LASF66:
- 6318 0941 784D7574 		.ascii	"xMutexHolder\000"
+ 6318 0943 784D7574 		.ascii	"xMutexHolder\000"
  6318      6578486F 
  6318      6C646572 
  6318      00
  6319              	.LASF21:
- 6320 094e 75696E74 		.ascii	"uint8\000"
+ 6320 0950 75696E74 		.ascii	"uint8\000"
  6320      3800
  6321              	.LASF24:
- 6322 0954 646F7562 		.ascii	"double\000"
+ 6322 0956 646F7562 		.ascii	"double\000"
  6322      6C6500
  6323              	.LASF131:
- 6324 095b 78506F73 		.ascii	"xPosition\000"
+ 6324 095d 78506F73 		.ascii	"xPosition\000"
  6324      6974696F 
  6324      6E00
  6325              	.LASF59:
- 6326 0965 6352784C 		.ascii	"cRxLock\000"
+ 6326 0967 6352784C 		.ascii	"cRxLock\000"
  6326      6F636B00 
  6327              	.LASF100:
- 6328 096d 78517565 		.ascii	"xQueueCreateCountingSemaphore\000"
+ 6328 096f 78517565 		.ascii	"xQueueCreateCountingSemaphore\000"
  6328      75654372 
  6328      65617465 
  6328      436F756E 
