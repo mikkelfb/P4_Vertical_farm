@@ -185,7 +185,7 @@ void vTaskWaterTemp(){
 /*
     Task for testing existing implementations.
 
-    DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+    DO NOT delete this functions/tasks, but comment them out if they aren't nexessary 
     for your current implementation/testing
     
     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
