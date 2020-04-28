@@ -39,6 +39,9 @@
     */
     void vTaskLightController();
     
+    /* this task turns LED on and off as needed */
+    void vTaskLEDcontrol();
+    
     void RTCSetup();
     
     

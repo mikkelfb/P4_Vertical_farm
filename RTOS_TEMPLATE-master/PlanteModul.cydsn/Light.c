@@ -19,7 +19,8 @@
 
 uint8 Light; // Variable contains measured light value
 uint8 Time;
-_Bool bLEDState;
+_Bool bLEDCMD;
+_Bool bLEDstate;
 _Bool bAlarmState = 0;
 uint8 ClockAddr = 9; // Address for Arduino clock
 
@@ -63,6 +64,9 @@ void vLightInit(){
         and regulate the LED based on the sensor value. 
         The task is created with priority 2. */
     xTaskCreate(vTaskLightController, "Light controller", 100, NULL, 2, NULL);
+    
+    /*  Create the LED task to turn on and off the LED */
+    xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 2, NULL);
     
     /*Initialize test tasks*/
     #if LIGHTTEST == 1
@@ -116,17 +120,17 @@ void vTaskLightController(){
         if((CurrentTime.Hour >= LightCycle[0]) && (CurrentTime.Hour < LightCycle[1])){
             
             // some code that turns on the LED
-            bLEDState = 1;
-            SW_UART_TEST_USB_PutString("Within active hours of light cycle: TRUE \n");
+            bLEDCMD = 1;
+            //SW_UART_TEST_USB_PutString("Within active hours of light cycle: TRUE \n");
             vTaskDelay(xShortDelayms);
             
             if(Light == 0){
                 // The LED are on, all is good
-                SW_UART_TEST_USB_PutString("Enough light: TRUE \n \n");
+                //SW_UART_TEST_USB_PutString("Enough light: TRUE \n \n");
             }
             else if(Light == 1){
                 // The LED are not on, all is not good
-                SW_UART_TEST_USB_PutString("Enough light: FALSE \n \n");
+                //SW_UART_TEST_USB_PutString("Enough light: FALSE \n \n");
                 // some code to force turn on LED and send alarm
             }
             else{
@@ -135,15 +139,35 @@ void vTaskLightController(){
         }
         else{
             // The LED should not be on
-            bLEDState = 0;
+            bLEDCMD = 0;
             // some code to turn off LED
             
-            SW_UART_TEST_USB_PutString("Within active hours of light cycle: FALSE \n \n");
+            //SW_UART_TEST_USB_PutString("Within active hours of light cycle: FALSE \n \n");
         }    
     vTaskDelay(xDelayms); 
     }
 }
 
+
+void vTaskLEDcontrol(){
+    
+    for(;;){
+        if ( bLEDCMD == 1 && bLEDstate == 0){
+            //tænd
+            bLEDstate = 1;
+        }
+        
+        else if (bLEDCMD == 0 && bLEDstate == 1){
+            //sluk
+            bLEDstate = 0;
+        }
+        SW_UART_TEST_USB_PutString("bLEDstate: ");
+        SW_UART_TEST_USB_PutHexByte(bLEDstate);
+        SW_UART_TEST_USB_PutString(" /n");
+        
+        
+    }   
+}
 
 /* --- TEST TASK --- */
 

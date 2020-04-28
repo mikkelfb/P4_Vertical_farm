@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
    9:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
   10:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * You may use this file only in accordance with the license, terms, conditions,
   11:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * disclaimers, and limitations in the end user license agreement accompanying
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 2
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 2
 
 
   12:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * the software package with which this file was provided.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
   56:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****     }
   57              		.loc 1 56 0
   58 0004 00BF     		nop
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 3
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 3
 
 
   59 0006 BD46     		mov	sp, r7
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
   93:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                                                                                 SW_UART_TEST_USB_PO
   94:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                 CY_SYS_PINS_SET_DRIVE_MODE(portConfigAddr, pin, CY_SYS_PINS_DM_STRONG);
   95:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                 portDataRegAddr = SW_UART_TEST_USB_PORT_CNF_BASE + (SW_UART_TEST_USB_PORT_CNF_SIZE 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 4
 
 
   96:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                                                                                 SW_UART_TEST_USB_PO
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  102              		.thumb
  103              		.thumb_func
  104              		.type	SW_UART_TEST_USB_PutString, %function
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 5
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 5
 
 
  105              	SW_UART_TEST_USB_PutString:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  150:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****         current = string[stringIndex];
  134              		.loc 1 150 0
  135 001c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 6
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 6
 
 
  136 001e 7A68     		ldr	r2, [r7, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  172:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** {
  168              		.loc 1 172 0
  169              		.cfi_startproc
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 7
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 7
 
 
  170              		@ args = 0, pretend = 0, frame = 16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  215              		.section	.text.SW_UART_TEST_USB_PutHexByte,"ax",%progbits
  216              		.align	2
  217              		.global	SW_UART_TEST_USB_PutHexByte
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 8
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 8
 
 
  218              		.thumb
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  248 001e 03F00F03 		and	r3, r3, #15
  249 0022 044A     		ldr	r2, .L10
  250 0024 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 9
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 9
 
 
  251 0026 1846     		mov	r0, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  284 0002 82B0     		sub	sp, sp, #8
  285              		.cfi_def_cfa_offset 16
  286 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 10
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 10
 
 
  287              		.cfi_def_cfa_register 7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  245:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** {
  321              		.loc 1 245 0
  322              		.cfi_startproc
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 11
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 11
 
 
  323              		@ args = 0, pretend = 0, frame = 0
@@ -646,22 +646,22 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  358 000b 01       		.uleb128 0x1
  359 000c 34000000 		.4byte	.LASF36
  360 0010 0C       		.byte	0xc
- 361 0011 26020000 		.4byte	.LASF37
- 362 0015 9D010000 		.4byte	.LASF38
+ 361 0011 CE010000 		.4byte	.LASF37
+ 362 0015 FD010000 		.4byte	.LASF38
  363 0019 00000000 		.4byte	.Ldebug_ranges0+0
  364 001d 00000000 		.4byte	0
  365 0021 00000000 		.4byte	.Ldebug_line0
  366 0025 02       		.uleb128 0x2
  367 0026 01       		.byte	0x1
  368 0027 06       		.byte	0x6
- 369 0028 91010000 		.4byte	.LASF0
+ 369 0028 7A010000 		.4byte	.LASF0
  370 002c 02       		.uleb128 0x2
  371 002d 01       		.byte	0x1
  372 002e 08       		.byte	0x8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 12
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 12
 
 
- 373 002f 77010000 		.4byte	.LASF1
+ 373 002f 60010000 		.4byte	.LASF1
  374 0033 02       		.uleb128 0x2
  375 0034 02       		.byte	0x2
  376 0035 05       		.byte	0x5
@@ -669,15 +669,15 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  378 003a 02       		.uleb128 0x2
  379 003b 02       		.byte	0x2
  380 003c 07       		.byte	0x7
- 381 003d 13020000 		.4byte	.LASF3
+ 381 003d BB010000 		.4byte	.LASF3
  382 0041 02       		.uleb128 0x2
  383 0042 04       		.byte	0x4
  384 0043 05       		.byte	0x5
- 385 0044 42010000 		.4byte	.LASF4
+ 385 0044 2B010000 		.4byte	.LASF4
  386 0048 02       		.uleb128 0x2
  387 0049 04       		.byte	0x4
  388 004a 07       		.byte	0x7
- 389 004b 67020000 		.4byte	.LASF5
+ 389 004b 66020000 		.4byte	.LASF5
  390 004f 02       		.uleb128 0x2
  391 0050 08       		.byte	0x8
  392 0051 05       		.byte	0x5
@@ -685,7 +685,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  394 0056 02       		.uleb128 0x2
  395 0057 08       		.byte	0x8
  396 0058 07       		.byte	0x7
- 397 0059 2B010000 		.4byte	.LASF7
+ 397 0059 86010000 		.4byte	.LASF7
  398 005d 03       		.uleb128 0x3
  399 005e 04       		.byte	0x4
  400 005f 05       		.byte	0x5
@@ -693,7 +693,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  402 0064 02       		.uleb128 0x2
  403 0065 04       		.byte	0x4
  404 0066 07       		.byte	0x7
- 405 0067 FE010000 		.4byte	.LASF8
+ 405 0067 A6010000 		.4byte	.LASF8
  406 006b 04       		.uleb128 0x4
  407 006c E4000000 		.4byte	.LASF9
  408 0070 02       		.byte	0x2
@@ -705,7 +705,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  414 007d E501     		.2byte	0x1e5
  415 007f 3A000000 		.4byte	0x3a
  416 0083 04       		.uleb128 0x4
- 417 0084 60020000 		.4byte	.LASF11
+ 417 0084 5F020000 		.4byte	.LASF11
  418 0088 02       		.byte	0x2
  419 0089 E601     		.2byte	0x1e6
  420 008b 48000000 		.4byte	0x48
@@ -716,9 +716,9 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  425 0096 02       		.uleb128 0x2
  426 0097 08       		.byte	0x8
  427 0098 04       		.byte	0x4
- 428 0099 79020000 		.4byte	.LASF13
+ 428 0099 78020000 		.4byte	.LASF13
  429 009d 04       		.uleb128 0x4
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 13
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 13
 
 
  430 009e 2E000000 		.4byte	.LASF14
@@ -728,7 +728,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  434 00a9 02       		.uleb128 0x2
  435 00aa 01       		.byte	0x1
  436 00ab 08       		.byte	0x8
- 437 00ac 50020000 		.4byte	.LASF15
+ 437 00ac F8010000 		.4byte	.LASF15
  438 00b0 05       		.uleb128 0x5
  439 00b1 EA000000 		.4byte	.LASF16
  440 00b5 01       		.byte	0x1
@@ -746,7 +746,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  452 00d0 01       		.uleb128 0x1
  453 00d1 9C       		.byte	0x9c
  454 00d2 06       		.uleb128 0x6
- 455 00d3 52010000 		.4byte	.LASF20
+ 455 00d3 3B010000 		.4byte	.LASF20
  456 00d7 01       		.byte	0x1
  457 00d8 8D       		.byte	0x8d
  458 00d9 00000000 		.4byte	.LFB2
@@ -755,7 +755,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  461 00e2 9C       		.byte	0x9c
  462 00e3 12010000 		.4byte	0x112
  463 00e7 07       		.uleb128 0x7
- 464 00e8 4B010000 		.4byte	.LASF22
+ 464 00e8 34010000 		.4byte	.LASF22
  465 00ec 01       		.byte	0x1
  466 00ed 8D       		.byte	0x8d
  467 00ee 12010000 		.4byte	0x112
@@ -763,7 +763,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  469 00f3 91       		.byte	0x91
  470 00f4 6C       		.sleb128 -20
  471 00f5 08       		.uleb128 0x8
- 472 00f6 85010000 		.4byte	.LASF18
+ 472 00f6 6E010000 		.4byte	.LASF18
  473 00fa 01       		.byte	0x1
  474 00fb 8F       		.byte	0x8f
  475 00fc 6B000000 		.4byte	0x6b
@@ -771,14 +771,14 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  477 0101 91       		.byte	0x91
  478 0102 77       		.sleb128 -9
  479 0103 08       		.uleb128 0x8
- 480 0104 0B020000 		.4byte	.LASF19
+ 480 0104 B3010000 		.4byte	.LASF19
  481 0108 01       		.byte	0x1
  482 0109 90       		.byte	0x90
  483 010a 9D000000 		.4byte	0x9d
  484 010e 02       		.uleb128 0x2
  485 010f 91       		.byte	0x91
  486 0110 76       		.sleb128 -10
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 14
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 14
 
 
  487 0111 00       		.byte	0
@@ -788,7 +788,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  491 0118 0A       		.uleb128 0xa
  492 0119 9D000000 		.4byte	0x9d
  493 011d 06       		.uleb128 0x6
- 494 011e 86020000 		.4byte	.LASF21
+ 494 011e 85020000 		.4byte	.LASF21
  495 0122 01       		.byte	0x1
  496 0123 AB       		.byte	0xab
  497 0124 00000000 		.4byte	.LFB3
@@ -797,7 +797,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  500 012d 9C       		.byte	0x9c
  501 012e 5D010000 		.4byte	0x15d
  502 0132 07       		.uleb128 0x7
- 503 0133 80020000 		.4byte	.LASF23
+ 503 0133 7F020000 		.4byte	.LASF23
  504 0137 01       		.byte	0x1
  505 0138 AB       		.byte	0xab
  506 0139 5D010000 		.4byte	0x15d
@@ -805,7 +805,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  508 013e 91       		.byte	0x91
  509 013f 6C       		.sleb128 -20
  510 0140 07       		.uleb128 0x7
- 511 0141 A0020000 		.4byte	.LASF24
+ 511 0141 9F020000 		.4byte	.LASF24
  512 0145 01       		.byte	0x1
  513 0146 AB       		.byte	0xab
  514 0147 83000000 		.4byte	0x83
@@ -813,7 +813,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  516 014c 91       		.byte	0x91
  517 014d 68       		.sleb128 -24
  518 014e 08       		.uleb128 0x8
- 519 014f 55020000 		.4byte	.LASF25
+ 519 014f 54020000 		.4byte	.LASF25
  520 0153 01       		.byte	0x1
  521 0154 AD       		.byte	0xad
  522 0155 83000000 		.4byte	0x83
@@ -827,7 +827,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  530 0163 0A       		.uleb128 0xa
  531 0164 6B000000 		.4byte	0x6b
  532 0168 06       		.uleb128 0x6
- 533 0169 C3020000 		.4byte	.LASF26
+ 533 0169 C2020000 		.4byte	.LASF26
  534 016d 01       		.byte	0x1
  535 016e C6       		.byte	0xc6
  536 016f 00000000 		.4byte	.LFB4
@@ -836,9 +836,9 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  539 0178 9C       		.byte	0x9c
  540 0179 9D010000 		.4byte	0x19d
  541 017d 07       		.uleb128 0x7
- 542 017e 6D010000 		.4byte	.LASF27
+ 542 017e 56010000 		.4byte	.LASF27
  543 0182 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 15
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 15
 
 
  544 0183 C6       		.byte	0xc6
@@ -847,7 +847,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  547 0189 91       		.byte	0x91
  548 018a 77       		.sleb128 -9
  549 018b 08       		.uleb128 0x8
- 550 018c DF020000 		.4byte	.LASF28
+ 550 018c DE020000 		.4byte	.LASF28
  551 0190 01       		.byte	0x1
  552 0191 C8       		.byte	0xc8
  553 0192 B4010000 		.4byte	0x1b4
@@ -878,7 +878,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  578 01c9 9C       		.byte	0x9c
  579 01ca DD010000 		.4byte	0x1dd
  580 01ce 07       		.uleb128 0x7
- 581 01cf F5010000 		.4byte	.LASF31
+ 581 01cf 9D010000 		.4byte	.LASF31
  582 01d3 01       		.byte	0x1
  583 01d4 DF       		.byte	0xdf
  584 01d5 77000000 		.4byte	0x77
@@ -887,7 +887,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  587 01db 76       		.sleb128 -10
  588 01dc 00       		.byte	0
  589 01dd 0D       		.uleb128 0xd
- 590 01de AA020000 		.4byte	.LASF32
+ 590 01de A9020000 		.4byte	.LASF32
  591 01e2 01       		.byte	0x1
  592 01e3 F4       		.byte	0xf4
  593 01e4 00000000 		.4byte	.LFB6
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  598 01ef C9000000 		.4byte	.LASF33
  599 01f3 01       		.byte	0x1
  600 01f4 12       		.byte	0x12
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 16
 
 
  601 01f5 83000000 		.4byte	0x83
@@ -906,7 +906,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  603 01fa 03       		.byte	0x3
  604 01fb 00000000 		.4byte	SW_UART_TEST_USB_pinNumber
  605 01ff 0E       		.uleb128 0xe
- 606 0200 11030000 		.4byte	.LASF34
+ 606 0200 10030000 		.4byte	.LASF34
  607 0204 01       		.byte	0x1
  608 0205 13       		.byte	0x13
  609 0206 83000000 		.4byte	0x83
@@ -914,7 +914,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  611 020b 03       		.byte	0x3
  612 020c 00000000 		.4byte	SW_UART_TEST_USB_pinPortNumber
  613 0210 0E       		.uleb128 0xe
- 614 0211 F4020000 		.4byte	.LASF35
+ 614 0211 F3020000 		.4byte	.LASF35
  615 0215 01       		.byte	0x1
  616 0216 17       		.byte	0x17
  617 0217 83000000 		.4byte	0x83
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  655 001f 24       		.uleb128 0x24
  656 0020 00       		.byte	0
  657 0021 0B       		.uleb128 0xb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 17
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 17
 
 
  658 0022 0B       		.uleb128 0xb
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  712 0059 27       		.uleb128 0x27
  713 005a 19       		.uleb128 0x19
  714 005b 11       		.uleb128 0x11
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 18
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 18
 
 
  715 005c 01       		.uleb128 0x1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  769 0093 13       		.uleb128 0x13
  770 0094 00       		.byte	0
  771 0095 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 19
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 19
 
 
  772 0096 0B       		.uleb128 0xb
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  826 00cd 02       		.uleb128 0x2
  827 00ce 18       		.uleb128 0x18
  828 00cf 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 20
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 20
 
 
  829 00d0 00       		.byte	0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  877      54455354 
  877      5F555342 
  877      5F507574 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 21
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 21
 
 
  878              	.LASF2:
@@ -1258,146 +1258,146 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 1
  900              	.LASF6:
  901 011d 6C6F6E67 		.ascii	"long long int\000"
  901      206C6F6E 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 22
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 22
 
 
  901      6720696E 
  901      7400
- 902              	.LASF7:
- 903 012b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 903      206C6F6E 
- 903      6720756E 
- 903      7369676E 
- 903      65642069 
- 904              	.LASF4:
- 905 0142 6C6F6E67 		.ascii	"long int\000"
- 905      20696E74 
- 905      00
- 906              	.LASF22:
- 907 014b 73747269 		.ascii	"string\000"
- 907      6E6700
- 908              	.LASF20:
- 909 0152 53575F55 		.ascii	"SW_UART_TEST_USB_PutString\000"
- 909      4152545F 
- 909      54455354 
- 909      5F555342 
- 909      5F507574 
- 910              	.LASF27:
- 911 016d 74784865 		.ascii	"txHexByte\000"
- 911      78427974 
- 911      6500
- 912              	.LASF1:
- 913 0177 756E7369 		.ascii	"unsigned char\000"
- 913      676E6564 
- 913      20636861 
- 913      7200
- 914              	.LASF18:
- 915 0185 73747269 		.ascii	"stringIndex\000"
- 915      6E67496E 
- 915      64657800 
- 916              	.LASF0:
- 917 0191 7369676E 		.ascii	"signed char\000"
- 917      65642063 
- 917      68617200 
- 918              	.LASF38:
- 919 019d 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
- 919      73657273 
- 919      5C6B7269 
- 919      73745C44 
- 919      6F63756D 
- 920 01cb 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 920      544F535F 
- 920      54454D50 
- 920      4C415445 
- 920      2D6D6173 
- 921              	.LASF31:
- 922 01f5 74784865 		.ascii	"txHexInt\000"
- 922      78496E74 
- 922      00
- 923              	.LASF8:
- 924 01fe 756E7369 		.ascii	"unsigned int\000"
- 924      676E6564 
- 924      20696E74 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 23
+ 902              	.LASF4:
+ 903 012b 6C6F6E67 		.ascii	"long int\000"
+ 903      20696E74 
+ 903      00
+ 904              	.LASF22:
+ 905 0134 73747269 		.ascii	"string\000"
+ 905      6E6700
+ 906              	.LASF20:
+ 907 013b 53575F55 		.ascii	"SW_UART_TEST_USB_PutString\000"
+ 907      4152545F 
+ 907      54455354 
+ 907      5F555342 
+ 907      5F507574 
+ 908              	.LASF27:
+ 909 0156 74784865 		.ascii	"txHexByte\000"
+ 909      78427974 
+ 909      6500
+ 910              	.LASF1:
+ 911 0160 756E7369 		.ascii	"unsigned char\000"
+ 911      676E6564 
+ 911      20636861 
+ 911      7200
+ 912              	.LASF18:
+ 913 016e 73747269 		.ascii	"stringIndex\000"
+ 913      6E67496E 
+ 913      64657800 
+ 914              	.LASF0:
+ 915 017a 7369676E 		.ascii	"signed char\000"
+ 915      65642063 
+ 915      68617200 
+ 916              	.LASF7:
+ 917 0186 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 917      206C6F6E 
+ 917      6720756E 
+ 917      7369676E 
+ 917      65642069 
+ 918              	.LASF31:
+ 919 019d 74784865 		.ascii	"txHexInt\000"
+ 919      78496E74 
+ 919      00
+ 920              	.LASF8:
+ 921 01a6 756E7369 		.ascii	"unsigned int\000"
+ 921      676E6564 
+ 921      20696E74 
+ 921      00
+ 922              	.LASF19:
+ 923 01b3 63757272 		.ascii	"current\000"
+ 923      656E7400 
+ 924              	.LASF3:
+ 925 01bb 73686F72 		.ascii	"short unsigned int\000"
+ 925      7420756E 
+ 925      7369676E 
+ 925      65642069 
+ 925      6E7400
+ 926              	.LASF37:
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 23
 
 
- 924      00
- 925              	.LASF19:
- 926 020b 63757272 		.ascii	"current\000"
- 926      656E7400 
- 927              	.LASF3:
- 928 0213 73686F72 		.ascii	"short unsigned int\000"
- 928      7420756E 
- 928      7369676E 
- 928      65642069 
- 928      6E7400
- 929              	.LASF37:
- 930 0226 47656E65 		.ascii	"Generated_Source\\PSoC5\\SW_UART_TEST_USB.c\000"
- 930      72617465 
- 930      645F536F 
- 930      75726365 
- 930      5C50536F 
- 931              	.LASF15:
- 932 0250 63686172 		.ascii	"char\000"
- 932      00
+ 927 01ce 47656E65 		.ascii	"Generated_Source\\PSoC5\\SW_UART_TEST_USB.c\000"
+ 927      72617465 
+ 927      645F536F 
+ 927      75726365 
+ 927      5C50536F 
+ 928              	.LASF15:
+ 929 01f8 63686172 		.ascii	"char\000"
+ 929      00
+ 930              	.LASF38:
+ 931 01fd 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
+ 931      73657273 
+ 931      5C456D69 
+ 931      6C5C446F 
+ 931      63756D65 
+ 932 022b 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 932      4F535F54 
+ 932      454D504C 
+ 932      4154452D 
+ 932      6D617374 
  933              	.LASF25:
- 934 0255 61727261 		.ascii	"arrayIndex\000"
+ 934 0254 61727261 		.ascii	"arrayIndex\000"
  934      79496E64 
  934      657800
  935              	.LASF11:
- 936 0260 75696E74 		.ascii	"uint32\000"
+ 936 025f 75696E74 		.ascii	"uint32\000"
  936      333200
  937              	.LASF5:
- 938 0267 6C6F6E67 		.ascii	"long unsigned int\000"
+ 938 0266 6C6F6E67 		.ascii	"long unsigned int\000"
  938      20756E73 
  938      69676E65 
  938      6420696E 
  938      7400
  939              	.LASF13:
- 940 0279 646F7562 		.ascii	"double\000"
+ 940 0278 646F7562 		.ascii	"double\000"
  940      6C6500
  941              	.LASF23:
- 942 0280 61727261 		.ascii	"array\000"
+ 942 027f 61727261 		.ascii	"array\000"
  942      7900
  943              	.LASF21:
- 944 0286 53575F55 		.ascii	"SW_UART_TEST_USB_PutArray\000"
+ 944 0285 53575F55 		.ascii	"SW_UART_TEST_USB_PutArray\000"
  944      4152545F 
  944      54455354 
  944      5F555342 
  944      5F507574 
  945              	.LASF24:
- 946 02a0 62797465 		.ascii	"byteCount\000"
+ 946 029f 62797465 		.ascii	"byteCount\000"
  946      436F756E 
  946      7400
  947              	.LASF32:
- 948 02aa 53575F55 		.ascii	"SW_UART_TEST_USB_PutCRLF\000"
+ 948 02a9 53575F55 		.ascii	"SW_UART_TEST_USB_PutCRLF\000"
  948      4152545F 
  948      54455354 
  948      5F555342 
  948      5F507574 
  949              	.LASF26:
- 950 02c3 53575F55 		.ascii	"SW_UART_TEST_USB_PutHexByte\000"
+ 950 02c2 53575F55 		.ascii	"SW_UART_TEST_USB_PutHexByte\000"
  950      4152545F 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccK6Ho65.s 			page 24
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccfAM130.s 			page 24
 
 
  950      54455354 
  950      5F555342 
  950      5F507574 
  951              	.LASF28:
- 952 02df 53575F55 		.ascii	"SW_UART_TEST_USB_hex\000"
+ 952 02de 53575F55 		.ascii	"SW_UART_TEST_USB_hex\000"
  952      4152545F 
  952      54455354 
  952      5F555342 
  952      5F686578 
  953              	.LASF35:
- 954 02f4 53575F55 		.ascii	"SW_UART_TEST_USB_pinDrAdress\000"
+ 954 02f3 53575F55 		.ascii	"SW_UART_TEST_USB_pinDrAdress\000"
  954      4152545F 
  954      54455354 
  954      5F555342 
  954      5F70696E 
  955              	.LASF34:
- 956 0311 53575F55 		.ascii	"SW_UART_TEST_USB_pinPortNumber\000"
+ 956 0310 53575F55 		.ascii	"SW_UART_TEST_USB_pinPortNumber\000"
  956      4152545F 
  956      54455354 
  956      5F555342 

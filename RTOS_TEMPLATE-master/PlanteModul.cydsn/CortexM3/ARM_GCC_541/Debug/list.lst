@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
   26:Source/list.c ****  */
   27:Source/list.c **** 
   28:Source/list.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 2
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 2
 
 
   29:Source/list.c **** #include <stdlib.h>
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
   61 002c 1A61     		str	r2, [r3, #16]
   52:Source/list.c **** 
   53:Source/list.c **** 	pxList->uxNumberOfItems = ( UBaseType_t ) 0U;
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 3
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 3
 
 
   62              		.loc 1 53 0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  104 000c 1A61     		str	r2, [r3, #16]
   66:Source/list.c **** 
   67:Source/list.c **** 	/* Write known values into the list item if
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 4
 
 
   68:Source/list.c **** 	configUSE_LIST_DATA_INTEGRITY_CHECK_BYTES is set to 1. */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
   82:Source/list.c **** 	listTEST_LIST_ITEM_INTEGRITY( pxNewListItem );
   83:Source/list.c **** 
   84:Source/list.c **** 	/* Insert a new list item into pxList, but rather than sort the list,
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 5
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 5
 
 
   85:Source/list.c **** 	makes the new list item the last item to be removed by a call to
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  183 0044 7047     		bx	lr
  184              		.cfi_endproc
  185              	.LFE70:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 6
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 6
 
 
  186              		.size	vListInsertEnd, .-vListInsertEnd
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  124:Source/list.c **** 		pxIterator = pxList->xListEnd.pxPrevious;
  217              		.loc 1 124 0
  218 0018 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 7
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 7
 
 
  219 001a 1B69     		ldr	r3, [r3, #16]
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  156:Source/list.c **** 
  157:Source/list.c **** 	pxNewListItem->pxNext = pxIterator->pxNext;
  242              		.loc 1 157 0 is_stmt 1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 8
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 8
 
 
  243 003a FB68     		ldr	r3, [r7, #12]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  287              		.thumb
  288              		.thumb_func
  289              		.type	uxListRemove, %function
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 9
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 9
 
 
  290              	uxListRemove:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  185:Source/list.c **** 		pxList->pxIndex = pxItemToRemove->pxPrevious;
  327              		.loc 1 185 0
  328 002c 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 10
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 10
 
 
  329 002e 9A68     		ldr	r2, [r3, #8]
@@ -598,21 +598,21 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  372 0004 0400     		.2byte	0x4
  373 0006 00000000 		.4byte	.Ldebug_abbrev0
  374 000a 04       		.byte	0x4
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 11
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 11
 
 
  375 000b 01       		.uleb128 0x1
  376 000c 13000000 		.4byte	.LASF52
  377 0010 0C       		.byte	0xc
  378 0011 E5000000 		.4byte	.LASF53
- 379 0015 21020000 		.4byte	.LASF54
+ 379 0015 26010000 		.4byte	.LASF54
  380 0019 00000000 		.4byte	.Ldebug_ranges0+0
  381 001d 00000000 		.4byte	0
  382 0021 00000000 		.4byte	.Ldebug_line0
  383 0025 02       		.uleb128 0x2
  384 0026 04       		.byte	0x4
  385 0027 07       		.byte	0x7
- 386 0028 DB010000 		.4byte	.LASF0
+ 386 0028 32020000 		.4byte	.LASF0
  387 002c 03       		.uleb128 0x3
  388 002d 04       		.byte	0x4
  389 002e 05       		.byte	0x5
@@ -620,27 +620,27 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  391 0033 02       		.uleb128 0x2
  392 0034 08       		.byte	0x8
  393 0035 05       		.byte	0x5
- 394 0036 B3020000 		.4byte	.LASF1
+ 394 0036 B2020000 		.4byte	.LASF1
  395 003a 02       		.uleb128 0x2
  396 003b 08       		.byte	0x8
  397 003c 04       		.byte	0x4
- 398 003d 8B020000 		.4byte	.LASF2
+ 398 003d 8A020000 		.4byte	.LASF2
  399 0041 02       		.uleb128 0x2
  400 0042 01       		.byte	0x1
  401 0043 06       		.byte	0x6
- 402 0044 21030000 		.4byte	.LASF3
+ 402 0044 20030000 		.4byte	.LASF3
  403 0048 02       		.uleb128 0x2
  404 0049 01       		.byte	0x1
  405 004a 08       		.byte	0x8
- 406 004b 3A010000 		.4byte	.LASF4
+ 406 004b 91010000 		.4byte	.LASF4
  407 004f 02       		.uleb128 0x2
  408 0050 02       		.byte	0x2
  409 0051 05       		.byte	0x5
- 410 0052 D1020000 		.4byte	.LASF5
+ 410 0052 D0020000 		.4byte	.LASF5
  411 0056 02       		.uleb128 0x2
  412 0057 02       		.byte	0x2
  413 0058 07       		.byte	0x7
- 414 0059 A0020000 		.4byte	.LASF6
+ 414 0059 9F020000 		.4byte	.LASF6
  415 005d 04       		.uleb128 0x4
  416 005e D0000000 		.4byte	.LASF8
  417 0062 02       		.byte	0x2
@@ -649,61 +649,61 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  420 0068 02       		.uleb128 0x2
  421 0069 04       		.byte	0x4
  422 006a 05       		.byte	0x5
- 423 006b FB020000 		.4byte	.LASF7
+ 423 006b FA020000 		.4byte	.LASF7
  424 006f 04       		.uleb128 0x4
- 425 0070 A3010000 		.4byte	.LASF9
+ 425 0070 FA010000 		.4byte	.LASF9
  426 0074 02       		.byte	0x2
  427 0075 41       		.byte	0x41
  428 0076 7A000000 		.4byte	0x7a
  429 007a 02       		.uleb128 0x2
  430 007b 04       		.byte	0x4
  431 007c 07       		.byte	0x7
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 12
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 12
 
 
- 432 007d 48010000 		.4byte	.LASF10
+ 432 007d 9F010000 		.4byte	.LASF10
  433 0081 02       		.uleb128 0x2
  434 0082 08       		.byte	0x8
  435 0083 07       		.byte	0x7
- 436 0084 0A020000 		.4byte	.LASF11
+ 436 0084 61020000 		.4byte	.LASF11
  437 0088 02       		.uleb128 0x2
  438 0089 04       		.byte	0x4
  439 008a 07       		.byte	0x7
- 440 008b 97020000 		.4byte	.LASF12
+ 440 008b 96020000 		.4byte	.LASF12
  441 008f 05       		.uleb128 0x5
  442 0090 04       		.byte	0x4
  443 0091 02       		.uleb128 0x2
  444 0092 01       		.byte	0x1
  445 0093 08       		.byte	0x8
- 446 0094 C1020000 		.4byte	.LASF13
+ 446 0094 C0020000 		.4byte	.LASF13
  447 0098 04       		.uleb128 0x4
  448 0099 1E010000 		.4byte	.LASF14
  449 009d 03       		.byte	0x3
  450 009e 2C       		.byte	0x2c
  451 009f 5D000000 		.4byte	0x5d
  452 00a3 04       		.uleb128 0x4
- 453 00a4 F2020000 		.4byte	.LASF15
+ 453 00a4 F1020000 		.4byte	.LASF15
  454 00a8 03       		.byte	0x3
  455 00a9 30       		.byte	0x30
  456 00aa 6F000000 		.4byte	0x6f
  457 00ae 06       		.uleb128 0x6
- 458 00af EC020000 		.4byte	.LASF16
+ 458 00af EB020000 		.4byte	.LASF16
  459 00b3 04       		.byte	0x4
  460 00b4 E401     		.2byte	0x1e4
  461 00b6 48000000 		.4byte	0x48
  462 00ba 06       		.uleb128 0x6
- 463 00bb AE010000 		.4byte	.LASF17
+ 463 00bb 05020000 		.4byte	.LASF17
  464 00bf 04       		.byte	0x4
  465 00c0 E501     		.2byte	0x1e5
  466 00c2 56000000 		.4byte	0x56
  467 00c6 02       		.uleb128 0x2
  468 00c7 04       		.byte	0x4
  469 00c8 04       		.byte	0x4
- 470 00c9 26010000 		.4byte	.LASF18
+ 470 00c9 7D010000 		.4byte	.LASF18
  471 00cd 02       		.uleb128 0x2
  472 00ce 08       		.byte	0x8
  473 00cf 04       		.byte	0x4
- 474 00d0 9C010000 		.4byte	.LASF19
+ 474 00d0 F3010000 		.4byte	.LASF19
  475 00d4 07       		.uleb128 0x7
  476 00d5 AE000000 		.4byte	0xae
  477 00d9 08       		.uleb128 0x8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  486 00eb 31       		.byte	0x31
  487 00ec BA000000 		.4byte	0xba
  488 00f0 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 13
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 13
 
 
  489 00f1 09       		.uleb128 0x9
@@ -729,7 +729,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  494 00fc 02       		.byte	0x2
  495 00fd 00       		.byte	0
  496 00fe 04       		.uleb128 0x4
- 497 00ff 3A030000 		.4byte	.LASF22
+ 497 00ff 39030000 		.4byte	.LASF22
  498 0103 06       		.byte	0x6
  499 0104 39       		.byte	0x39
  500 0105 7A000000 		.4byte	0x7a
@@ -751,13 +751,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  516 0127 09010000 		.4byte	0x109
  517 012b 00       		.byte	0
  518 012c 09       		.uleb128 0x9
- 519 012d D4010000 		.4byte	.LASF27
+ 519 012d 2B020000 		.4byte	.LASF27
  520 0131 07       		.byte	0x7
  521 0132 90       		.byte	0x90
  522 0133 5D010000 		.4byte	0x15d
  523 0137 04       		.byte	0x4
  524 0138 09       		.uleb128 0x9
- 525 0139 69010000 		.4byte	.LASF28
+ 525 0139 C0010000 		.4byte	.LASF28
  526 013d 07       		.byte	0x7
  527 013e 91       		.byte	0x91
  528 013f 5D010000 		.4byte	0x15d
@@ -778,17 +778,17 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  543 015d 0A       		.uleb128 0xa
  544 015e 04       		.byte	0x4
  545 015f 14010000 		.4byte	0x114
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 14
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 14
 
 
  546 0163 08       		.uleb128 0x8
- 547 0164 34030000 		.4byte	.LASF31
+ 547 0164 33030000 		.4byte	.LASF31
  548 0168 14       		.byte	0x14
  549 0169 07       		.byte	0x7
  550 016a A4       		.byte	0xa4
  551 016b 94010000 		.4byte	0x194
  552 016f 09       		.uleb128 0x9
- 553 0170 B5010000 		.4byte	.LASF32
+ 553 0170 0C020000 		.4byte	.LASF32
  554 0174 07       		.byte	0x7
  555 0175 A7       		.byte	0xa7
  556 0176 E1010000 		.4byte	0x1e1
@@ -810,12 +810,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  572 0195 04       		.byte	0x4
  573 0196 63010000 		.4byte	0x163
  574 019a 04       		.uleb128 0x4
- 575 019b 80020000 		.4byte	.LASF35
+ 575 019b 7F020000 		.4byte	.LASF35
  576 019f 07       		.byte	0x7
  577 01a0 96       		.byte	0x96
  578 01a1 14010000 		.4byte	0x114
  579 01a5 08       		.uleb128 0x8
- 580 01a6 11030000 		.4byte	.LASF36
+ 580 01a6 10030000 		.4byte	.LASF36
  581 01aa 0C       		.byte	0xc
  582 01ab 07       		.byte	0x7
  583 01ac 98       		.byte	0x98
@@ -827,18 +827,18 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  589 01b8 09010000 		.4byte	0x109
  590 01bc 00       		.byte	0
  591 01bd 09       		.uleb128 0x9
- 592 01be D4010000 		.4byte	.LASF27
+ 592 01be 2B020000 		.4byte	.LASF27
  593 01c2 07       		.byte	0x7
  594 01c3 9C       		.byte	0x9c
  595 01c4 5D010000 		.4byte	0x15d
  596 01c8 04       		.byte	0x4
  597 01c9 09       		.uleb128 0x9
- 598 01ca 69010000 		.4byte	.LASF28
+ 598 01ca C0010000 		.4byte	.LASF28
  599 01ce 07       		.byte	0x7
  600 01cf 9D       		.byte	0x9d
  601 01d0 5D010000 		.4byte	0x15d
  602 01d4 08       		.byte	0x8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 15
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 15
 
 
  603 01d5 00       		.byte	0
@@ -853,12 +853,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  612 01e7 04       		.byte	0x4
  613 01e8 9A010000 		.4byte	0x19a
  614 01ec 04       		.uleb128 0x4
- 615 01ed 95010000 		.4byte	.LASF38
+ 615 01ed EC010000 		.4byte	.LASF38
  616 01f1 07       		.byte	0x7
  617 01f2 AB       		.byte	0xab
  618 01f3 63010000 		.4byte	0x163
  619 01f7 0B       		.uleb128 0xb
- 620 01f8 E8010000 		.4byte	.LASF39
+ 620 01f8 3F020000 		.4byte	.LASF39
  621 01fc 01       		.byte	0x1
  622 01fd 25       		.byte	0x25
  623 01fe 00000000 		.4byte	.LFB68
@@ -867,7 +867,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  626 0207 9C       		.byte	0x9c
  627 0208 1B020000 		.4byte	0x21b
  628 020c 0C       		.uleb128 0xc
- 629 020d 2D030000 		.4byte	.LASF41
+ 629 020d 2C030000 		.4byte	.LASF41
  630 0211 01       		.byte	0x1
  631 0212 25       		.byte	0x25
  632 0213 21020000 		.4byte	0x221
@@ -881,7 +881,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  640 0221 0D       		.uleb128 0xd
  641 0222 1B020000 		.4byte	0x21b
  642 0226 0B       		.uleb128 0xb
- 643 0227 81010000 		.4byte	.LASF40
+ 643 0227 D8010000 		.4byte	.LASF40
  644 022b 01       		.byte	0x1
  645 022c 3E       		.byte	0x3e
  646 022d 00000000 		.4byte	.LFB69
@@ -890,7 +890,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  649 0236 9C       		.byte	0x9c
  650 0237 4A020000 		.4byte	0x24a
  651 023b 0C       		.uleb128 0xc
- 652 023c 79020000 		.4byte	.LASF42
+ 652 023c 78020000 		.4byte	.LASF42
  653 0240 01       		.byte	0x1
  654 0241 3E       		.byte	0x3e
  655 0242 4A020000 		.4byte	0x24a
@@ -898,13 +898,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  657 0247 91       		.byte	0x91
  658 0248 74       		.sleb128 -12
  659 0249 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 16
 
 
  660 024a 0D       		.uleb128 0xd
  661 024b E6010000 		.4byte	0x1e6
  662 024f 0B       		.uleb128 0xb
- 663 0250 C5010000 		.4byte	.LASF43
+ 663 0250 1C020000 		.4byte	.LASF43
  664 0254 01       		.byte	0x1
  665 0255 4A       		.byte	0x4a
  666 0256 00000000 		.4byte	.LFB70
@@ -913,7 +913,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  669 025f 9C       		.byte	0x9c
  670 0260 8F020000 		.4byte	0x28f
  671 0264 0C       		.uleb128 0xc
- 672 0265 2D030000 		.4byte	.LASF41
+ 672 0265 2C030000 		.4byte	.LASF41
  673 0269 01       		.byte	0x1
  674 026a 4A       		.byte	0x4a
  675 026b 21020000 		.4byte	0x221
@@ -921,7 +921,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  677 0270 91       		.byte	0x91
  678 0271 6C       		.sleb128 -20
  679 0272 0C       		.uleb128 0xc
- 680 0273 46030000 		.4byte	.LASF44
+ 680 0273 45030000 		.4byte	.LASF44
  681 0277 01       		.byte	0x1
  682 0278 4A       		.byte	0x4a
  683 0279 4A020000 		.4byte	0x24a
@@ -938,7 +938,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  694 028d 74       		.sleb128 -12
  695 028e 00       		.byte	0
  696 028f 0B       		.uleb128 0xb
- 697 0290 54030000 		.4byte	.LASF45
+ 697 0290 53030000 		.4byte	.LASF45
  698 0294 01       		.byte	0x1
  699 0295 67       		.byte	0x67
  700 0296 00000000 		.4byte	.LFB71
@@ -947,7 +947,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  703 029f 9C       		.byte	0x9c
  704 02a0 DD020000 		.4byte	0x2dd
  705 02a4 0C       		.uleb128 0xc
- 706 02a5 2D030000 		.4byte	.LASF41
+ 706 02a5 2C030000 		.4byte	.LASF41
  707 02a9 01       		.byte	0x1
  708 02aa 67       		.byte	0x67
  709 02ab 21020000 		.4byte	0x221
@@ -955,10 +955,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  711 02b0 91       		.byte	0x91
  712 02b1 6C       		.sleb128 -20
  713 02b2 0C       		.uleb128 0xc
- 714 02b3 46030000 		.4byte	.LASF44
+ 714 02b3 45030000 		.4byte	.LASF44
  715 02b7 01       		.byte	0x1
  716 02b8 67       		.byte	0x67
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 17
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 17
 
 
  717 02b9 4A020000 		.4byte	0x24a
@@ -966,7 +966,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  719 02be 91       		.byte	0x91
  720 02bf 68       		.sleb128 -24
  721 02c0 0E       		.uleb128 0xe
- 722 02c1 C6020000 		.4byte	.LASF46
+ 722 02c1 C5020000 		.4byte	.LASF46
  723 02c5 01       		.byte	0x1
  724 02c6 69       		.byte	0x69
  725 02c7 E6010000 		.4byte	0x1e6
@@ -974,7 +974,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  727 02cc 91       		.byte	0x91
  728 02cd 74       		.sleb128 -12
  729 02ce 0E       		.uleb128 0xe
- 730 02cf F8010000 		.4byte	.LASF47
+ 730 02cf 4F020000 		.4byte	.LASF47
  731 02d3 01       		.byte	0x1
  732 02d4 6A       		.byte	0x6a
  733 02d5 DD020000 		.4byte	0x2dd
@@ -985,7 +985,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  738 02dd 0D       		.uleb128 0xd
  739 02de 09010000 		.4byte	0x109
  740 02e2 0F       		.uleb128 0xf
- 741 02e3 04030000 		.4byte	.LASF55
+ 741 02e3 03030000 		.4byte	.LASF55
  742 02e7 01       		.byte	0x1
  743 02e8 AA       		.byte	0xaa
  744 02e9 FE000000 		.4byte	0xfe
@@ -995,7 +995,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  748 02f6 9C       		.byte	0x9c
  749 02f7 18030000 		.4byte	0x318
  750 02fb 0C       		.uleb128 0xc
- 751 02fc 5A010000 		.4byte	.LASF48
+ 751 02fc B1010000 		.4byte	.LASF48
  752 0300 01       		.byte	0x1
  753 0301 AA       		.byte	0xaa
  754 0302 4A020000 		.4byte	0x24a
@@ -1003,7 +1003,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  756 0307 91       		.byte	0x91
  757 0308 6C       		.sleb128 -20
  758 0309 0E       		.uleb128 0xe
- 759 030a 2D030000 		.4byte	.LASF41
+ 759 030a 2C030000 		.4byte	.LASF41
  760 030e 01       		.byte	0x1
  761 030f AE       		.byte	0xae
  762 0310 21020000 		.4byte	0x221
@@ -1018,11 +1018,11 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  771 0322 88000000 		.4byte	0x88
  772 0326 07       		.byte	0x7
  773 0327 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 18
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 18
 
 
  774 0328 12       		.uleb128 0x12
- 775 0329 2C010000 		.4byte	.LASF49
+ 775 0329 83010000 		.4byte	.LASF49
  776 032d 05       		.byte	0x5
  777 032e 34       		.byte	0x34
  778 032f 18030000 		.4byte	0x318
@@ -1030,7 +1030,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  780 0334 03       		.byte	0x3
  781 0335 00000000 		.4byte	DS18x8_Sensor
  782 0339 12       		.uleb128 0x12
- 783 033a DB020000 		.4byte	.LASF50
+ 783 033a DA020000 		.4byte	.LASF50
  784 033e 05       		.byte	0x5
  785 033f 39       		.byte	0x39
  786 0340 D4000000 		.4byte	0xd4
@@ -1038,7 +1038,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  788 0345 03       		.byte	0x3
  789 0346 00000000 		.4byte	DS18x8_DataReady
  790 034a 13       		.uleb128 0x13
- 791 034b 74010000 		.4byte	.LASF51
+ 791 034b CB010000 		.4byte	.LASF51
  792 034f 08       		.byte	0x8
  793 0350 1207     		.2byte	0x712
  794 0352 56030000 		.4byte	0x356
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  828 001c 00       		.byte	0
  829 001d 00       		.byte	0
  830 001e 03       		.uleb128 0x3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 19
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 19
 
 
  831 001f 24       		.uleb128 0x24
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  885 0055 0E       		.uleb128 0xe
  886 0056 0B       		.uleb128 0xb
  887 0057 0B       		.uleb128 0xb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 20
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 20
 
 
  888 0058 3A       		.uleb128 0x3a
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  942 008f 13       		.uleb128 0x13
  943 0090 00       		.byte	0
  944 0091 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 21
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 21
 
 
  945 0092 0C       		.uleb128 0xc
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  999 00c8 12       		.uleb128 0x12
  1000 00c9 06       		.uleb128 0x6
  1001 00ca 40       		.uleb128 0x40
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 22
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 22
 
 
  1002 00cb 18       		.uleb128 0x18
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  1056 0102 19       		.uleb128 0x19
  1057 0103 3C       		.uleb128 0x3c
  1058 0104 19       		.uleb128 0x19
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 23
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 23
 
 
  1059 0105 00       		.byte	0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  1104      352E342E 
  1104      31203230 
  1104      31363036 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 24
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 24
 
 
  1105 0046 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
@@ -1438,202 +1438,202 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 1
  1128      6F7200
  1129              	.LASF14:
  1130 011e 696E7433 		.ascii	"int32_t\000"
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 25
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 25
 
 
  1130      325F7400 
- 1131              	.LASF18:
- 1132 0126 666C6F61 		.ascii	"float\000"
- 1132      7400
- 1133              	.LASF49:
- 1134 012c 44533138 		.ascii	"DS18x8_Sensor\000"
- 1134      78385F53 
- 1134      656E736F 
- 1134      7200
- 1135              	.LASF4:
- 1136 013a 756E7369 		.ascii	"unsigned char\000"
- 1136      676E6564 
- 1136      20636861 
- 1136      7200
- 1137              	.LASF10:
- 1138 0148 6C6F6E67 		.ascii	"long unsigned int\000"
- 1138      20756E73 
- 1138      69676E65 
- 1138      6420696E 
- 1138      7400
- 1139              	.LASF48:
- 1140 015a 70784974 		.ascii	"pxItemToRemove\000"
- 1140      656D546F 
- 1140      52656D6F 
- 1140      766500
- 1141              	.LASF28:
- 1142 0169 70785072 		.ascii	"pxPrevious\000"
- 1142      6576696F 
- 1142      757300
- 1143              	.LASF51:
- 1144 0174 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1144      52784275 
- 1144      66666572 
- 1144      00
- 1145              	.LASF40:
- 1146 0181 764C6973 		.ascii	"vListInitialiseItem\000"
- 1146      74496E69 
- 1146      7469616C 
- 1146      69736549 
- 1146      74656D00 
- 1147              	.LASF38:
- 1148 0195 4C697374 		.ascii	"List_t\000"
- 1148      5F7400
- 1149              	.LASF19:
- 1150 019c 646F7562 		.ascii	"double\000"
- 1150      6C6500
- 1151              	.LASF9:
- 1152 01a3 5F5F7569 		.ascii	"__uint32_t\000"
- 1152      6E743332 
- 1152      5F7400
- 1153              	.LASF17:
- 1154 01ae 75696E74 		.ascii	"uint16\000"
- 1154      313600
- 1155              	.LASF32:
- 1156 01b5 75784E75 		.ascii	"uxNumberOfItems\000"
- 1156      6D626572 
- 1156      4F664974 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 26
+ 1131              	.LASF54:
+ 1132 0126 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
+ 1132      73657273 
+ 1132      5C456D69 
+ 1132      6C5C446F 
+ 1132      63756D65 
+ 1133 0154 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 1133      4F535F54 
+ 1133      454D504C 
+ 1133      4154452D 
+ 1133      6D617374 
+ 1134              	.LASF18:
+ 1135 017d 666C6F61 		.ascii	"float\000"
+ 1135      7400
+ 1136              	.LASF49:
+ 1137 0183 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1137      78385F53 
+ 1137      656E736F 
+ 1137      7200
+ 1138              	.LASF4:
+ 1139 0191 756E7369 		.ascii	"unsigned char\000"
+ 1139      676E6564 
+ 1139      20636861 
+ 1139      7200
+ 1140              	.LASF10:
+ 1141 019f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1141      20756E73 
+ 1141      69676E65 
+ 1141      6420696E 
+ 1141      7400
+ 1142              	.LASF48:
+ 1143 01b1 70784974 		.ascii	"pxItemToRemove\000"
+ 1143      656D546F 
+ 1143      52656D6F 
+ 1143      766500
+ 1144              	.LASF28:
+ 1145 01c0 70785072 		.ascii	"pxPrevious\000"
+ 1145      6576696F 
+ 1145      757300
+ 1146              	.LASF51:
+ 1147 01cb 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1147      52784275 
+ 1147      66666572 
+ 1147      00
+ 1148              	.LASF40:
+ 1149 01d8 764C6973 		.ascii	"vListInitialiseItem\000"
+ 1149      74496E69 
+ 1149      7469616C 
+ 1149      69736549 
+ 1149      74656D00 
+ 1150              	.LASF38:
+ 1151 01ec 4C697374 		.ascii	"List_t\000"
+ 1151      5F7400
+ 1152              	.LASF19:
+ 1153 01f3 646F7562 		.ascii	"double\000"
+ 1153      6C6500
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 26
 
 
- 1156      656D7300 
- 1157              	.LASF43:
- 1158 01c5 764C6973 		.ascii	"vListInsertEnd\000"
- 1158      74496E73 
- 1158      65727445 
- 1158      6E6400
- 1159              	.LASF27:
- 1160 01d4 70784E65 		.ascii	"pxNext\000"
- 1160      787400
- 1161              	.LASF0:
- 1162 01db 756E7369 		.ascii	"unsigned int\000"
- 1162      676E6564 
- 1162      20696E74 
- 1162      00
- 1163              	.LASF39:
- 1164 01e8 764C6973 		.ascii	"vListInitialise\000"
- 1164      74496E69 
- 1164      7469616C 
- 1164      69736500 
- 1165              	.LASF47:
- 1166 01f8 7856616C 		.ascii	"xValueOfInsertion\000"
- 1166      75654F66 
- 1166      496E7365 
- 1166      7274696F 
- 1166      6E00
- 1167              	.LASF11:
- 1168 020a 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1168      206C6F6E 
- 1168      6720756E 
- 1168      7369676E 
- 1168      65642069 
- 1169              	.LASF54:
- 1170 0221 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
- 1170      73657273 
- 1170      5C6B7269 
- 1170      73745C44 
- 1170      6F63756D 
- 1171 024f 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 1171      544F535F 
- 1171      54454D50 
- 1171      4C415445 
- 1171      2D6D6173 
+ 1154              	.LASF9:
+ 1155 01fa 5F5F7569 		.ascii	"__uint32_t\000"
+ 1155      6E743332 
+ 1155      5F7400
+ 1156              	.LASF17:
+ 1157 0205 75696E74 		.ascii	"uint16\000"
+ 1157      313600
+ 1158              	.LASF32:
+ 1159 020c 75784E75 		.ascii	"uxNumberOfItems\000"
+ 1159      6D626572 
+ 1159      4F664974 
+ 1159      656D7300 
+ 1160              	.LASF43:
+ 1161 021c 764C6973 		.ascii	"vListInsertEnd\000"
+ 1161      74496E73 
+ 1161      65727445 
+ 1161      6E6400
+ 1162              	.LASF27:
+ 1163 022b 70784E65 		.ascii	"pxNext\000"
+ 1163      787400
+ 1164              	.LASF0:
+ 1165 0232 756E7369 		.ascii	"unsigned int\000"
+ 1165      676E6564 
+ 1165      20696E74 
+ 1165      00
+ 1166              	.LASF39:
+ 1167 023f 764C6973 		.ascii	"vListInitialise\000"
+ 1167      74496E69 
+ 1167      7469616C 
+ 1167      69736500 
+ 1168              	.LASF47:
+ 1169 024f 7856616C 		.ascii	"xValueOfInsertion\000"
+ 1169      75654F66 
+ 1169      496E7365 
+ 1169      7274696F 
+ 1169      6E00
+ 1170              	.LASF11:
+ 1171 0261 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1171      206C6F6E 
+ 1171      6720756E 
+ 1171      7369676E 
+ 1171      65642069 
  1172              	.LASF42:
- 1173 0279 70784974 		.ascii	"pxItem\000"
+ 1173 0278 70784974 		.ascii	"pxItem\000"
  1173      656D00
  1174              	.LASF35:
- 1175 0280 4C697374 		.ascii	"ListItem_t\000"
+ 1175 027f 4C697374 		.ascii	"ListItem_t\000"
  1175      4974656D 
  1175      5F7400
  1176              	.LASF2:
- 1177 028b 6C6F6E67 		.ascii	"long double\000"
+ 1177 028a 6C6F6E67 		.ascii	"long double\000"
  1177      20646F75 
  1177      626C6500 
  1178              	.LASF12:
- 1179 0297 73697A65 		.ascii	"sizetype\000"
+ 1179 0296 73697A65 		.ascii	"sizetype\000"
  1179      74797065 
  1179      00
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 27
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 27
 
 
  1180              	.LASF6:
- 1181 02a0 73686F72 		.ascii	"short unsigned int\000"
+ 1181 029f 73686F72 		.ascii	"short unsigned int\000"
  1181      7420756E 
  1181      7369676E 
  1181      65642069 
  1181      6E7400
  1182              	.LASF1:
- 1183 02b3 6C6F6E67 		.ascii	"long long int\000"
+ 1183 02b2 6C6F6E67 		.ascii	"long long int\000"
  1183      206C6F6E 
  1183      6720696E 
  1183      7400
  1184              	.LASF13:
- 1185 02c1 63686172 		.ascii	"char\000"
+ 1185 02c0 63686172 		.ascii	"char\000"
  1185      00
  1186              	.LASF46:
- 1187 02c6 70784974 		.ascii	"pxIterator\000"
+ 1187 02c5 70784974 		.ascii	"pxIterator\000"
  1187      65726174 
  1187      6F7200
  1188              	.LASF5:
- 1189 02d1 73686F72 		.ascii	"short int\000"
+ 1189 02d0 73686F72 		.ascii	"short int\000"
  1189      7420696E 
  1189      7400
  1190              	.LASF50:
- 1191 02db 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1191 02da 44533138 		.ascii	"DS18x8_DataReady\000"
  1191      78385F44 
  1191      61746152 
  1191      65616479 
  1191      00
  1192              	.LASF16:
- 1193 02ec 75696E74 		.ascii	"uint8\000"
+ 1193 02eb 75696E74 		.ascii	"uint8\000"
  1193      3800
  1194              	.LASF15:
- 1195 02f2 75696E74 		.ascii	"uint32_t\000"
+ 1195 02f1 75696E74 		.ascii	"uint32_t\000"
  1195      33325F74 
  1195      00
  1196              	.LASF7:
- 1197 02fb 6C6F6E67 		.ascii	"long int\000"
+ 1197 02fa 6C6F6E67 		.ascii	"long int\000"
  1197      20696E74 
  1197      00
  1198              	.LASF55:
- 1199 0304 75784C69 		.ascii	"uxListRemove\000"
+ 1199 0303 75784C69 		.ascii	"uxListRemove\000"
  1199      73745265 
  1199      6D6F7665 
  1199      00
  1200              	.LASF36:
- 1201 0311 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
+ 1201 0310 784D494E 		.ascii	"xMINI_LIST_ITEM\000"
  1201      495F4C49 
  1201      53545F49 
  1201      54454D00 
  1202              	.LASF3:
- 1203 0321 7369676E 		.ascii	"signed char\000"
+ 1203 0320 7369676E 		.ascii	"signed char\000"
  1203      65642063 
  1203      68617200 
  1204              	.LASF41:
- 1205 032d 70784C69 		.ascii	"pxList\000"
+ 1205 032c 70784C69 		.ascii	"pxList\000"
  1205      737400
  1206              	.LASF31:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccDichjY.s 			page 28
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccliSnw9.s 			page 28
 
 
- 1207 0334 784C4953 		.ascii	"xLIST\000"
+ 1207 0333 784C4953 		.ascii	"xLIST\000"
  1207      5400
  1208              	.LASF22:
- 1209 033a 55426173 		.ascii	"UBaseType_t\000"
+ 1209 0339 55426173 		.ascii	"UBaseType_t\000"
  1209      65547970 
  1209      655F7400 
  1210              	.LASF44:
- 1211 0346 70784E65 		.ascii	"pxNewListItem\000"
+ 1211 0345 70784E65 		.ascii	"pxNewListItem\000"
  1211      774C6973 
  1211      74497465 
  1211      6D00
  1212              	.LASF45:
- 1213 0354 764C6973 		.ascii	"vListInsert\000"
+ 1213 0353 764C6973 		.ascii	"vListInsert\000"
  1213      74496E73 
  1213      65727400 
  1214              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
   29:Generated_Source\PSoC5/cyfitter_cfg.c **** #if defined(__GNUC__) || defined(__ARMCC_VERSION)
   30:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED 
   31:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYPACKED_ATTR __attribute__ ((packed))
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 2
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 2
 
 
   32:Generated_Source\PSoC5/cyfitter_cfg.c ****     #define CYALIGNED __attribute__ ((aligned))
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
   35 0002 82B0     		sub	sp, sp, #8
   36              		.cfi_def_cfa_offset 16
   37 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 3
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 3
 
 
   38              		.cfi_def_cfa_register 7
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
   86:Generated_Source\PSoC5/cyfitter_cfg.c **** }
   84              		.loc 1 86 0
   85 0016 00BF     		nop
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 4
 
 
   86 0018 1037     		adds	r7, r7, #16
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  133 001e 00BF     		.section	.text.CyClockStartupError,"ax",%progbits
  134              		.align	2
  135              		.thumb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 5
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 5
 
 
  136              		.thumb_func
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  129:Generated_Source\PSoC5/cyfitter_cfg.c ****     errorCode = errorCode;
  130:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  131:Generated_Source\PSoC5/cyfitter_cfg.c ****     /* If we have a clock startup error (bad MHz crystal, PLL lock, etc.),  */
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 6
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 6
 
 
  132:Generated_Source\PSoC5/cyfitter_cfg.c ****     /* we will end up here to allow the customer to implement something to  */
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  174:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  175:Generated_Source\PSoC5/cyfitter_cfg.c **** /* CYDEV_CLKDIST_ACFG0_CFG0 Address: CYREG_CLKDIST_ACFG0_CFG0 Size (bytes): 4 */
  176:Generated_Source\PSoC5/cyfitter_cfg.c **** #define BS_CYDEV_CLKDIST_ACFG0_CFG0_VAL ((const uint8 CYFAR *)0x48000488u)
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 7
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 7
 
 
  177:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  201:Generated_Source\PSoC5/cyfitter_cfg.c **** 		uint8 count = (uint8)baseAddr;
  197              		.loc 1 201 0
  198 0020 BB68     		ldr	r3, [r7, #8]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 8
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 8
 
 
  199 0022 FB73     		strb	r3, [r7, #15]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  244 0066 1D2B     		cmp	r3, #29
  245 0068 D4D9     		bls	.L10
  208:Generated_Source\PSoC5/cyfitter_cfg.c **** 		}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 9
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 9
 
 
  209:Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  278              		.cfi_def_cfa_register 7
  231:Generated_Source\PSoC5/cyfitter_cfg.c **** 	uint8 x32TrHold;
  232:Generated_Source\PSoC5/cyfitter_cfg.c **** 	uint32 timeout;
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 10
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 10
 
 
  233:Generated_Source\PSoC5/cyfitter_cfg.c **** 	uint8 pllLock;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  250:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_CR), 0x08u);
  316              		.loc 1 250 0
  317 0046 4FF04023 		mov	r3, #1073758208
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 11
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 11
 
 
  318 004a 0822     		movs	r2, #8
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  358 008a 002B     		cmp	r3, #0
  359 008c EED0     		beq	.L14
  360              	.L13:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 12
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 12
 
 
  262:Generated_Source\PSoC5/cyfitter_cfg.c **** 	}
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  400 00ce 1343     		orrs	r3, r3, r2
  401 00d0 DBB2     		uxtb	r3, r3
  402 00d2 03F00303 		and	r3, r3, #3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 13
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 13
 
 
  403 00d6 FB70     		strb	r3, [r7, #3]
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  441              		.loc 1 289 0
  442 0112 2A4B     		ldr	r3, .L19+88
  443 0114 4822     		movs	r2, #72
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 14
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 14
 
 
  444 0116 1A70     		strb	r2, [r3]
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  490 0162 00BF     		.align	2
  491              	.L19:
  492 0164 98460040 		.word	1073759896
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 15
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 15
 
 
  493 0168 80400040 		.word	1073758336
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  315:Generated_Source\PSoC5/cyfitter_cfg.c **** *  void
  316:Generated_Source\PSoC5/cyfitter_cfg.c **** *
  317:Generated_Source\PSoC5/cyfitter_cfg.c **** *******************************************************************************/
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 16
 
 
  318:Generated_Source\PSoC5/cyfitter_cfg.c **** static void AnalogSetDefault(void);
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  573 003a 134A     		ldr	r2, .L22+8
  574 003c 7B79     		ldrb	r3, [r7, #5]
  575 003e 43F00303 		orr	r3, r3, #3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 17
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 17
 
 
  576 0042 DBB2     		uxtb	r3, r3
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  621 0084 F8460040 		.word	1073759992
  622 0088 F9460040 		.word	1073759993
  623 008c 6E580040 		.word	1073764462
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 18
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 18
 
 
  624 0090 6F580040 		.word	1073764463
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  656 000a 0B4B     		ldr	r3, .L27
  657 000c 1B78     		ldrb	r3, [r3]
  658 000e FB73     		strb	r3, [r7, #15]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 19
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 19
 
 
  360:Generated_Source\PSoC5/cyfitter_cfg.c **** 	if (enabled != 0u)
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  703              	.LFB8:
  370:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  371:Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 20
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 20
 
 
  372:Generated_Source\PSoC5/cyfitter_cfg.c **** 
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  730 0016 1370     		strb	r3, [r2]
  731              	.LBB3:
  400:Generated_Source\PSoC5/cyfitter_cfg.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 21
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 21
 
 
  401:Generated_Source\PSoC5/cyfitter_cfg.c **** 	{
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  748 002e 3B69     		ldr	r3, [r7, #16]
  749 0030 1A68     		ldr	r2, [r3]	@ unaligned
  750 0032 3B69     		ldr	r3, [r7, #16]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 22
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 22
 
 
  751 0034 9B88     		ldrh	r3, [r3, #4]	@ unaligned
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  794 0076 1343     		orrs	r3, r3, r2
  795 0078 7B80     		strh	r3, [r7, #2]	@ movhi
  448:Generated_Source\PSoC5/cyfitter_cfg.c **** 			CYCONFIGCPY(destPtr, srcPtr, numBytes);
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 23
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 23
 
 
  796              		.loc 1 448 0 discriminator 3
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  461:Generated_Source\PSoC5/cyfitter_cfg.c **** 		CY_SET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_CFG0, CY_GET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_CFG
  836              		.loc 1 461 0
  837 00c2 294A     		ldr	r2, .L34+32
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 24
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 24
 
 
  838 00c4 284B     		ldr	r3, .L34+32
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  473:Generated_Source\PSoC5/cyfitter_cfg.c **** 
  474:Generated_Source\PSoC5/cyfitter_cfg.c **** 	/* Set Flash Cycles based on max possible frequency in case a glitch occurs during ClockSetup(). *
  475:Generated_Source\PSoC5/cyfitter_cfg.c **** 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CACHE_CC_CTL), (((CYDEV_INSTRUCT_CACHE_ENABLED) != 0) ? 0x61
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 25
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 25
 
 
  881              		.loc 1 475 0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  923 0170 60040048 		.word	1207960672
  924 0174 00510040 		.word	1073762560
  925 0178 6C040048 		.word	1207960684
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 26
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 26
 
 
  926 017c C0510040 		.word	1073762752
@@ -1552,13 +1552,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  974 0006 00000000 		.4byte	.Ldebug_abbrev0
  975 000a 04       		.byte	0x4
  976 000b 01       		.uleb128 0x1
- 977 000c 83000000 		.4byte	.LASF52
+ 977 000c 2B000000 		.4byte	.LASF52
  978 0010 0C       		.byte	0xc
- 979 0011 13030000 		.4byte	.LASF53
- 980 0015 2B000000 		.4byte	.LASF54
+ 979 0011 12030000 		.4byte	.LASF53
+ 980 0015 8A020000 		.4byte	.LASF54
  981 0019 00000000 		.4byte	.Ldebug_ranges0+0
  982 001d 00000000 		.4byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 27
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 27
 
 
  983 0021 00000000 		.4byte	.Ldebug_line0
@@ -1574,58 +1574,58 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  993 0037 04       		.uleb128 0x4
  994 0038 04       		.byte	0x4
  995 0039 07       		.byte	0x7
- 996 003a CA010000 		.4byte	.LASF0
+ 996 003a 72010000 		.4byte	.LASF0
  997 003e 04       		.uleb128 0x4
  998 003f 08       		.byte	0x8
  999 0040 05       		.byte	0x5
- 1000 0041 4F010000 		.4byte	.LASF1
+ 1000 0041 F7000000 		.4byte	.LASF1
  1001 0045 04       		.uleb128 0x4
  1002 0046 08       		.byte	0x8
  1003 0047 04       		.byte	0x4
- 1004 0048 50020000 		.4byte	.LASF2
+ 1004 0048 F8010000 		.4byte	.LASF2
  1005 004c 04       		.uleb128 0x4
  1006 004d 01       		.byte	0x1
  1007 004e 06       		.byte	0x6
- 1008 004f 5D010000 		.4byte	.LASF3
+ 1008 004f 05010000 		.4byte	.LASF3
  1009 0053 04       		.uleb128 0x4
  1010 0054 01       		.byte	0x1
  1011 0055 08       		.byte	0x8
- 1012 0056 A3020000 		.4byte	.LASF4
+ 1012 0056 4B020000 		.4byte	.LASF4
  1013 005a 04       		.uleb128 0x4
  1014 005b 02       		.byte	0x2
  1015 005c 05       		.byte	0x5
- 1016 005d B1020000 		.4byte	.LASF5
+ 1016 005d 59020000 		.4byte	.LASF5
  1017 0061 04       		.uleb128 0x4
  1018 0062 02       		.byte	0x2
  1019 0063 07       		.byte	0x7
- 1020 0064 1E020000 		.4byte	.LASF6
+ 1020 0064 C6010000 		.4byte	.LASF6
  1021 0068 04       		.uleb128 0x4
  1022 0069 04       		.byte	0x4
  1023 006a 05       		.byte	0x5
- 1024 006b 88010000 		.4byte	.LASF7
+ 1024 006b 30010000 		.4byte	.LASF7
  1025 006f 04       		.uleb128 0x4
  1026 0070 04       		.byte	0x4
  1027 0071 07       		.byte	0x7
- 1028 0072 E0010000 		.4byte	.LASF8
+ 1028 0072 88010000 		.4byte	.LASF8
  1029 0076 04       		.uleb128 0x4
  1030 0077 08       		.byte	0x8
  1031 0078 07       		.byte	0x7
- 1032 0079 1C010000 		.4byte	.LASF9
+ 1032 0079 C4000000 		.4byte	.LASF9
  1033 007d 04       		.uleb128 0x4
  1034 007e 04       		.byte	0x4
  1035 007f 07       		.byte	0x7
- 1036 0080 47020000 		.4byte	.LASF10
+ 1036 0080 EF010000 		.4byte	.LASF10
  1037 0084 05       		.uleb128 0x5
  1038 0085 04       		.byte	0x4
  1039 0086 04       		.uleb128 0x4
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 28
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 28
 
 
  1040 0087 01       		.byte	0x1
  1041 0088 08       		.byte	0x8
- 1042 0089 D6020000 		.4byte	.LASF11
+ 1042 0089 7E020000 		.4byte	.LASF11
  1043 008d 06       		.uleb128 0x6
- 1044 008e 97010000 		.4byte	.LASF13
+ 1044 008e 3F010000 		.4byte	.LASF13
  1045 0092 03       		.byte	0x3
  1046 0093 E401     		.2byte	0x1e4
  1047 0095 53000000 		.4byte	0x53
@@ -1635,34 +1635,34 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1051 009f E501     		.2byte	0x1e5
  1052 00a1 61000000 		.4byte	0x61
  1053 00a5 06       		.uleb128 0x6
- 1054 00a6 A4010000 		.4byte	.LASF15
+ 1054 00a6 4C010000 		.4byte	.LASF15
  1055 00aa 03       		.byte	0x3
  1056 00ab E601     		.2byte	0x1e6
  1057 00ad 6F000000 		.4byte	0x6f
  1058 00b1 04       		.uleb128 0x4
  1059 00b2 04       		.byte	0x4
  1060 00b3 04       		.byte	0x4
- 1061 00b4 90020000 		.4byte	.LASF16
+ 1061 00b4 38020000 		.4byte	.LASF16
  1062 00b8 04       		.uleb128 0x4
  1063 00b9 08       		.byte	0x8
  1064 00ba 04       		.byte	0x4
- 1065 00bb 9D010000 		.4byte	.LASF17
+ 1065 00bb 45010000 		.4byte	.LASF17
  1066 00bf 06       		.uleb128 0x6
- 1067 00c0 9E020000 		.4byte	.LASF18
+ 1067 00c0 46020000 		.4byte	.LASF18
  1068 00c4 03       		.byte	0x3
  1069 00c5 8E02     		.2byte	0x28e
  1070 00c7 CB000000 		.4byte	0xcb
  1071 00cb 07       		.uleb128 0x7
  1072 00cc 8D000000 		.4byte	0x8d
  1073 00d0 06       		.uleb128 0x6
- 1074 00d1 91010000 		.4byte	.LASF19
+ 1074 00d1 39010000 		.4byte	.LASF19
  1075 00d5 03       		.byte	0x3
  1076 00d6 8F02     		.2byte	0x28f
  1077 00d8 DC000000 		.4byte	0xdc
  1078 00dc 07       		.uleb128 0x7
  1079 00dd 99000000 		.4byte	0x99
  1080 00e1 06       		.uleb128 0x6
- 1081 00e2 31020000 		.4byte	.LASF20
+ 1081 00e2 D9010000 		.4byte	.LASF20
  1082 00e6 03       		.byte	0x3
  1083 00e7 9002     		.2byte	0x290
  1084 00e9 ED000000 		.4byte	0xed
@@ -1674,28 +1674,28 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1090 00f5 97       		.byte	0x97
  1091 00f6 13010000 		.4byte	0x113
  1092 00fa 09       		.uleb128 0x9
- 1093 00fb F8020000 		.4byte	.LASF21
+ 1093 00fb F7020000 		.4byte	.LASF21
  1094 00ff 01       		.byte	0x1
  1095 0100 99       		.byte	0x99
  1096 0101 8D000000 		.4byte	0x8d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 29
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 29
 
 
  1097 0105 00       		.byte	0
  1098 0106 09       		.uleb128 0x9
- 1099 0107 C4010000 		.4byte	.LASF22
+ 1099 0107 6C010000 		.4byte	.LASF22
  1100 010b 01       		.byte	0x1
  1101 010c 9A       		.byte	0x9a
  1102 010d 8D000000 		.4byte	0x8d
  1103 0111 01       		.byte	0x1
  1104 0112 00       		.byte	0
  1105 0113 03       		.uleb128 0x3
- 1106 0114 C3020000 		.4byte	.LASF23
+ 1106 0114 6B020000 		.4byte	.LASF23
  1107 0118 01       		.byte	0x1
  1108 0119 9B       		.byte	0x9b
  1109 011a F2000000 		.4byte	0xf2
  1110 011e 0A       		.uleb128 0xa
- 1111 011f 69010000 		.4byte	.LASF24
+ 1111 011f 11010000 		.4byte	.LASF24
  1112 0123 01       		.byte	0x1
  1113 0124 4C       		.byte	0x4c
  1114 0125 00000000 		.4byte	.LFB0
@@ -1721,7 +1721,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1134 014a 70       		.sleb128 -16
  1135 014b 00       		.byte	0
  1136 014c 0A       		.uleb128 0xa
- 1137 014d 07030000 		.4byte	.LASF25
+ 1137 014d 06030000 		.4byte	.LASF25
  1138 0151 01       		.byte	0x1
  1139 0152 53       		.byte	0x53
  1140 0153 00000000 		.4byte	.LFB1
@@ -1730,7 +1730,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1143 015c 9C       		.byte	0x9c
  1144 015d 8A010000 		.4byte	0x18a
  1145 0161 0C       		.uleb128 0xc
- 1146 0162 8B020000 		.4byte	.LASF26
+ 1146 0162 33020000 		.4byte	.LASF26
  1147 0166 01       		.byte	0x1
  1148 0167 53       		.byte	0x53
  1149 0168 84000000 		.4byte	0x84
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1151 016d 91       		.byte	0x91
  1152 016e 74       		.sleb128 -12
  1153 016f 0B       		.uleb128 0xb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 30
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 30
 
 
  1154 0170 73726300 		.ascii	"src\000"
@@ -1762,7 +1762,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1172 018c 90010000 		.4byte	0x190
  1173 0190 0E       		.uleb128 0xe
  1174 0191 0A       		.uleb128 0xa
- 1175 0192 37020000 		.4byte	.LASF27
+ 1175 0192 DF010000 		.4byte	.LASF27
  1176 0196 01       		.byte	0x1
  1177 0197 5A       		.byte	0x5a
  1178 0198 00000000 		.4byte	.LFB2
@@ -1771,7 +1771,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1181 01a1 9C       		.byte	0x9c
  1182 01a2 CF010000 		.4byte	0x1cf
  1183 01a6 0C       		.uleb128 0xc
- 1184 01a7 8B020000 		.4byte	.LASF26
+ 1184 01a7 33020000 		.4byte	.LASF26
  1185 01ab 01       		.byte	0x1
  1186 01ac 5A       		.byte	0x5a
  1187 01ad 84000000 		.4byte	0x84
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1208 01cf 0F       		.uleb128 0xf
  1209 01d0 17000000 		.4byte	.LASF28
  1210 01d4 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 31
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 31
 
 
  1211 01d5 7E       		.byte	0x7e
@@ -1808,7 +1808,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1215 01df 9C       		.byte	0x9c
  1216 01e0 F3010000 		.4byte	0x1f3
  1217 01e4 0C       		.uleb128 0xc
- 1218 01e5 7E010000 		.4byte	.LASF29
+ 1218 01e5 26010000 		.4byte	.LASF29
  1219 01e9 01       		.byte	0x1
  1220 01ea 7E       		.byte	0x7e
  1221 01eb 8D000000 		.4byte	0x8d
@@ -1817,7 +1817,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1224 01f1 77       		.sleb128 -9
  1225 01f2 00       		.byte	0
  1226 01f3 0F       		.uleb128 0xf
- 1227 01f4 07020000 		.4byte	.LASF30
+ 1227 01f4 AF010000 		.4byte	.LASF30
  1228 01f8 01       		.byte	0x1
  1229 01f9 C2       		.byte	0xc2
  1230 01fa 00000000 		.4byte	.LFB4
@@ -1826,7 +1826,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1233 0203 9C       		.byte	0x9c
  1234 0204 63020000 		.4byte	0x263
  1235 0208 0C       		.uleb128 0xc
- 1236 0209 33010000 		.4byte	.LASF31
+ 1236 0209 DB000000 		.4byte	.LASF31
  1237 020d 01       		.byte	0x1
  1238 020e C2       		.byte	0xc2
  1239 020f 63020000 		.4byte	0x263
@@ -1834,7 +1834,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1241 0214 91       		.byte	0x91
  1242 0215 64       		.sleb128 -28
  1243 0216 0C       		.uleb128 0xc
- 1244 0217 11010000 		.4byte	.LASF32
+ 1244 0217 B9000000 		.4byte	.LASF32
  1245 021b 01       		.byte	0x1
  1246 021c C2       		.byte	0xc2
  1247 021d 6E020000 		.4byte	0x26e
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1265 023a 91       		.byte	0x91
  1266 023b 70       		.sleb128 -16
  1267 023c 11       		.uleb128 0x11
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 32
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 32
 
 
  1268 023d 14000000 		.4byte	.LBB2
@@ -1872,7 +1872,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1276 0251 91       		.byte	0x91
  1277 0252 68       		.sleb128 -24
  1278 0253 12       		.uleb128 0x12
- 1279 0254 AB010000 		.4byte	.LASF34
+ 1279 0254 53010000 		.4byte	.LASF34
  1280 0258 01       		.byte	0x1
  1281 0259 C9       		.byte	0xc9
  1282 025a 8D000000 		.4byte	0x8d
@@ -1892,7 +1892,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1296 0274 13       		.uleb128 0x13
  1297 0275 13010000 		.4byte	0x113
  1298 0279 0A       		.uleb128 0xa
- 1299 027a 73010000 		.4byte	.LASF35
+ 1299 027a 1B010000 		.4byte	.LASF35
  1300 027e 01       		.byte	0x1
  1301 027f E5       		.byte	0xe5
  1302 0280 00000000 		.4byte	.LFB5
@@ -1901,7 +1901,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1305 0289 9C       		.byte	0x9c
  1306 028a B9020000 		.4byte	0x2b9
  1307 028e 12       		.uleb128 0x12
- 1308 028f BA010000 		.4byte	.LASF36
+ 1308 028f 62010000 		.4byte	.LASF36
  1309 0293 01       		.byte	0x1
  1310 0294 E7       		.byte	0xe7
  1311 0295 8D000000 		.4byte	0x8d
@@ -1909,7 +1909,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1313 029a 91       		.byte	0x91
  1314 029b 72       		.sleb128 -14
  1315 029c 12       		.uleb128 0x12
- 1316 029d F2010000 		.4byte	.LASF37
+ 1316 029d 9A010000 		.4byte	.LASF37
  1317 02a1 01       		.byte	0x1
  1318 02a2 E8       		.byte	0xe8
  1319 02a3 A5000000 		.4byte	0xa5
@@ -1917,8 +1917,8 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1321 02a8 91       		.byte	0x91
  1322 02a9 74       		.sleb128 -12
  1323 02aa 12       		.uleb128 0x12
- 1324 02ab BB020000 		.4byte	.LASF38
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 33
+ 1324 02ab 63020000 		.4byte	.LASF38
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 33
 
 
  1325 02af 01       		.byte	0x1
@@ -1929,7 +1929,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1330 02b7 73       		.sleb128 -13
  1331 02b8 00       		.byte	0
  1332 02b9 14       		.uleb128 0x14
- 1333 02ba 3E010000 		.4byte	.LASF39
+ 1333 02ba E6000000 		.4byte	.LASF39
  1334 02be 01       		.byte	0x1
  1335 02bf 3F01     		.2byte	0x13f
  1336 02c1 00000000 		.4byte	.LFB6
@@ -1938,7 +1938,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1339 02ca 9C       		.byte	0x9c
  1340 02cb FD020000 		.4byte	0x2fd
  1341 02cf 15       		.uleb128 0x15
- 1342 02d0 5C020000 		.4byte	.LASF40
+ 1342 02d0 04020000 		.4byte	.LASF40
  1343 02d4 01       		.byte	0x1
  1344 02d5 4101     		.2byte	0x141
  1345 02d7 8D000000 		.4byte	0x8d
@@ -1963,7 +1963,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1364 02fb 75       		.sleb128 -11
  1365 02fc 00       		.byte	0
  1366 02fd 17       		.uleb128 0x17
- 1367 02fe E2020000 		.4byte	.LASF55
+ 1367 02fe E1020000 		.4byte	.LASF55
  1368 0302 01       		.byte	0x1
  1369 0303 6501     		.2byte	0x165
  1370 0305 00000000 		.4byte	.LFB7
@@ -1972,18 +1972,18 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1373 030e 9C       		.byte	0x9c
  1374 030f 32030000 		.4byte	0x332
  1375 0313 18       		.uleb128 0x18
- 1376 0314 FF020000 		.4byte	.LASF41
+ 1376 0314 FE020000 		.4byte	.LASF41
  1377 0318 01       		.byte	0x1
  1378 0319 6501     		.2byte	0x165
  1379 031b 8D000000 		.4byte	0x8d
  1380 031f 02       		.uleb128 0x2
  1381 0320 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 34
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 34
 
 
  1382 0321 6F       		.sleb128 -17
  1383 0322 15       		.uleb128 0x15
- 1384 0323 B1010000 		.4byte	.LASF42
+ 1384 0323 59010000 		.4byte	.LASF42
  1385 0327 01       		.byte	0x1
  1386 0328 6701     		.2byte	0x167
  1387 032a 8D000000 		.4byte	0x8d
@@ -1992,7 +1992,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1390 0330 77       		.sleb128 -9
  1391 0331 00       		.byte	0
  1392 0332 19       		.uleb128 0x19
- 1393 0333 51030000 		.4byte	.LASF56
+ 1393 0333 50030000 		.4byte	.LASF56
  1394 0337 01       		.byte	0x1
  1395 0338 8701     		.2byte	0x187
  1396 033a 00000000 		.4byte	.LFB8
@@ -2008,20 +2008,20 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1406 0350 9301     		.2byte	0x193
  1407 0352 71030000 		.4byte	0x371
  1408 0356 1B       		.uleb128 0x1b
- 1409 0357 39030000 		.4byte	.LASF43
+ 1409 0357 38030000 		.4byte	.LASF43
  1410 035b 01       		.byte	0x1
  1411 035c 9401     		.2byte	0x194
  1412 035e 84000000 		.4byte	0x84
  1413 0362 00       		.byte	0
  1414 0363 1B       		.uleb128 0x1b
- 1415 0364 19020000 		.4byte	.LASF44
+ 1415 0364 C1010000 		.4byte	.LASF44
  1416 0368 01       		.byte	0x1
  1417 0369 9501     		.2byte	0x195
  1418 036b 99000000 		.4byte	0x99
  1419 036f 04       		.byte	0x4
  1420 0370 00       		.byte	0
  1421 0371 06       		.uleb128 0x6
- 1422 0372 6E020000 		.4byte	.LASF45
+ 1422 0372 16020000 		.4byte	.LASF45
  1423 0376 01       		.byte	0x1
  1424 0377 9601     		.2byte	0x196
  1425 0379 4D030000 		.4byte	0x34d
@@ -2031,14 +2031,14 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1429 0380 9901     		.2byte	0x199
  1430 0382 AE030000 		.4byte	0x3ae
  1431 0386 1B       		.uleb128 0x1b
- 1432 0387 8B020000 		.4byte	.LASF26
+ 1432 0387 33020000 		.4byte	.LASF26
  1433 038b 01       		.byte	0x1
  1434 038c 9A01     		.2byte	0x19a
  1435 038e 84000000 		.4byte	0x84
  1436 0392 00       		.byte	0
  1437 0393 1C       		.uleb128 0x1c
  1438 0394 73726300 		.ascii	"src\000"
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 35
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 35
 
 
  1439 0398 01       		.byte	0x1
@@ -2046,14 +2046,14 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1441 039b 8A010000 		.4byte	0x18a
  1442 039f 04       		.byte	0x4
  1443 03a0 1B       		.uleb128 0x1b
- 1444 03a1 19020000 		.4byte	.LASF44
+ 1444 03a1 C1010000 		.4byte	.LASF44
  1445 03a5 01       		.byte	0x1
  1446 03a6 9C01     		.2byte	0x19c
  1447 03a8 99000000 		.4byte	0x99
  1448 03ac 08       		.byte	0x8
  1449 03ad 00       		.byte	0
  1450 03ae 06       		.uleb128 0x6
- 1451 03af FA010000 		.4byte	.LASF46
+ 1451 03af A2010000 		.4byte	.LASF46
  1452 03b3 01       		.byte	0x1
  1453 03b4 9D01     		.2byte	0x19d
  1454 03b6 7D030000 		.4byte	0x37d
@@ -2067,7 +2067,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1462 03ca 13       		.uleb128 0x13
  1463 03cb 71030000 		.4byte	0x371
  1464 03cf 15       		.uleb128 0x15
- 1465 03d0 7B020000 		.4byte	.LASF47
+ 1465 03d0 23020000 		.4byte	.LASF47
  1466 03d4 01       		.byte	0x1
  1467 03d5 9F01     		.2byte	0x19f
  1468 03d7 E1030000 		.4byte	0x3e1
@@ -2086,7 +2086,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1481 03f6 13       		.uleb128 0x13
  1482 03f7 AE030000 		.4byte	0x3ae
  1483 03fb 15       		.uleb128 0x15
- 1484 03fc 41030000 		.4byte	.LASF48
+ 1484 03fc 40030000 		.4byte	.LASF48
  1485 0400 01       		.byte	0x1
  1486 0401 AB01     		.2byte	0x1ab
  1487 0403 0D040000 		.4byte	0x40d
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1493 0412 16       		.uleb128 0x16
  1494 0413 6900     		.ascii	"i\000"
  1495 0415 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 36
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 36
 
 
  1496 0416 B001     		.2byte	0x1b0
@@ -2137,7 +2137,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1529 0459 04       		.byte	0x4
  1530 045a F6030000 		.4byte	0x3f6
  1531 045e 15       		.uleb128 0x15
- 1532 045f 96020000 		.4byte	.LASF49
+ 1532 045f 3E020000 		.4byte	.LASF49
  1533 0463 01       		.byte	0x1
  1534 0464 BD01     		.2byte	0x1bd
  1535 0466 84000000 		.4byte	0x84
@@ -2145,7 +2145,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1537 046b 91       		.byte	0x91
  1538 046c 68       		.sleb128 -24
  1539 046d 15       		.uleb128 0x15
- 1540 046e DB020000 		.4byte	.LASF50
+ 1540 046e 83020000 		.4byte	.LASF50
  1541 0472 01       		.byte	0x1
  1542 0473 BE01     		.2byte	0x1be
  1543 0475 8A010000 		.4byte	0x18a
@@ -2153,12 +2153,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1545 047a 91       		.byte	0x91
  1546 047b 64       		.sleb128 -28
  1547 047c 15       		.uleb128 0x15
- 1548 047d D7010000 		.4byte	.LASF51
+ 1548 047d 7F010000 		.4byte	.LASF51
  1549 0481 01       		.byte	0x1
  1550 0482 BF01     		.2byte	0x1bf
  1551 0484 99000000 		.4byte	0x99
  1552 0488 02       		.uleb128 0x2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 37
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 37
 
 
  1553 0489 91       		.byte	0x91
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1607 002e 0B       		.uleb128 0xb
  1608 002f 0B       		.uleb128 0xb
  1609 0030 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 38
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 38
 
 
  1610 0031 0B       		.uleb128 0xb
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1664 0067 49       		.uleb128 0x49
  1665 0068 13       		.uleb128 0x13
  1666 0069 38       		.uleb128 0x38
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 39
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 39
 
 
  1667 006a 0B       		.uleb128 0xb
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1721 00a1 00       		.byte	0
  1722 00a2 00       		.byte	0
  1723 00a3 0D       		.uleb128 0xd
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 40
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 40
 
 
  1724 00a4 0F       		.uleb128 0xf
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1778 00db 11       		.uleb128 0x11
  1779 00dc 01       		.uleb128 0x1
  1780 00dd 12       		.uleb128 0x12
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 41
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 41
 
 
  1781 00de 06       		.uleb128 0x6
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1835 0115 0B       		.uleb128 0xb
  1836 0116 3B       		.uleb128 0x3b
  1837 0117 05       		.uleb128 0x5
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 42
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 42
 
 
  1838 0118 49       		.uleb128 0x49
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1892 014f 05       		.uleb128 0x5
  1893 0150 49       		.uleb128 0x49
  1894 0151 13       		.uleb128 0x13
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 43
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 43
 
 
  1895 0152 02       		.uleb128 0x2
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  1949 0189 00       		.byte	0
  1950 018a 1C       		.uleb128 0x1c
  1951 018b 0D       		.uleb128 0xd
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 44
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 44
 
 
  1952 018c 00       		.byte	0
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  2006 001c 1E000000 		.4byte	.LFE1-.LFB1
  2007 0020 00000000 		.4byte	.LFB2
  2008 0024 1E000000 		.4byte	.LFE2-.LFB2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 45
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 45
 
 
  2009 0028 00000000 		.4byte	.LFB3
@@ -2698,259 +2698,259 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 1
  2055 0017 4379436C 		.ascii	"CyClockStartupError\000"
  2055      6F636B53 
  2055      74617274 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 46
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 46
 
 
  2055      75704572 
  2055      726F7200 
- 2056              	.LASF54:
- 2057 002b 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
- 2057      73657273 
- 2057      5C6B7269 
- 2057      73745C44 
- 2057      6F63756D 
- 2058 0059 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 2058      544F535F 
- 2058      54454D50 
- 2058      4C415445 
- 2058      2D6D6173 
- 2059              	.LASF52:
- 2060 0083 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 2060      43313120 
- 2060      352E342E 
- 2060      31203230 
- 2060      31363036 
- 2061 00b6 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 2061      20726576 
- 2061      6973696F 
- 2061      6E203233 
- 2061      37373135 
- 2062 00e9 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 2062      66756E63 
- 2062      74696F6E 
- 2062      2D736563 
- 2062      74696F6E 
- 2063              	.LASF32:
- 2064 0111 64617461 		.ascii	"data_table\000"
- 2064      5F746162 
- 2064      6C6500
- 2065              	.LASF9:
- 2066 011c 6C6F6E67 		.ascii	"long long unsigned int\000"
- 2066      206C6F6E 
- 2066      6720756E 
- 2066      7369676E 
- 2066      65642069 
- 2067              	.LASF31:
- 2068 0133 61646472 		.ascii	"addr_table\000"
- 2068      5F746162 
- 2068      6C6500
- 2069              	.LASF39:
- 2070 013e 416E616C 		.ascii	"AnalogSetDefault\000"
- 2070      6F675365 
- 2070      74446566 
- 2070      61756C74 
- 2070      00
- 2071              	.LASF1:
- 2072 014f 6C6F6E67 		.ascii	"long long int\000"
- 2072      206C6F6E 
- 2072      6720696E 
- 2072      7400
- 2073              	.LASF3:
- 2074 015d 7369676E 		.ascii	"signed char\000"
- 2074      65642063 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 47
+ 2056              	.LASF52:
+ 2057 002b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2057      43313120 
+ 2057      352E342E 
+ 2057      31203230 
+ 2057      31363036 
+ 2058 005e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2058      20726576 
+ 2058      6973696F 
+ 2058      6E203233 
+ 2058      37373135 
+ 2059 0091 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 2059      66756E63 
+ 2059      74696F6E 
+ 2059      2D736563 
+ 2059      74696F6E 
+ 2060              	.LASF32:
+ 2061 00b9 64617461 		.ascii	"data_table\000"
+ 2061      5F746162 
+ 2061      6C6500
+ 2062              	.LASF9:
+ 2063 00c4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2063      206C6F6E 
+ 2063      6720756E 
+ 2063      7369676E 
+ 2063      65642069 
+ 2064              	.LASF31:
+ 2065 00db 61646472 		.ascii	"addr_table\000"
+ 2065      5F746162 
+ 2065      6C6500
+ 2066              	.LASF39:
+ 2067 00e6 416E616C 		.ascii	"AnalogSetDefault\000"
+ 2067      6F675365 
+ 2067      74446566 
+ 2067      61756C74 
+ 2067      00
+ 2068              	.LASF1:
+ 2069 00f7 6C6F6E67 		.ascii	"long long int\000"
+ 2069      206C6F6E 
+ 2069      6720696E 
+ 2069      7400
+ 2070              	.LASF3:
+ 2071 0105 7369676E 		.ascii	"signed char\000"
+ 2071      65642063 
+ 2071      68617200 
+ 2072              	.LASF24:
+ 2073 0111 43594D45 		.ascii	"CYMEMZERO\000"
+ 2073      4D5A4552 
+ 2073      4F00
+ 2074              	.LASF35:
+ 2075 011b 436C6F63 		.ascii	"ClockSetup\000"
+ 2075      6B536574 
+ 2075      757000
+ 2076              	.LASF29:
+ 2077 0126 6572726F 		.ascii	"errorCode\000"
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 47
 
 
- 2074      68617200 
- 2075              	.LASF24:
- 2076 0169 43594D45 		.ascii	"CYMEMZERO\000"
- 2076      4D5A4552 
- 2076      4F00
- 2077              	.LASF35:
- 2078 0173 436C6F63 		.ascii	"ClockSetup\000"
- 2078      6B536574 
- 2078      757000
- 2079              	.LASF29:
- 2080 017e 6572726F 		.ascii	"errorCode\000"
- 2080      72436F64 
- 2080      6500
- 2081              	.LASF7:
- 2082 0188 6C6F6E67 		.ascii	"long int\000"
- 2082      20696E74 
- 2082      00
- 2083              	.LASF19:
- 2084 0191 72656731 		.ascii	"reg16\000"
- 2084      3600
- 2085              	.LASF13:
- 2086 0197 75696E74 		.ascii	"uint8\000"
- 2086      3800
- 2087              	.LASF17:
- 2088 019d 646F7562 		.ascii	"double\000"
- 2088      6C6500
- 2089              	.LASF15:
- 2090 01a4 75696E74 		.ascii	"uint32\000"
- 2090      333200
- 2091              	.LASF34:
- 2092 01ab 636F756E 		.ascii	"count\000"
- 2092      7400
- 2093              	.LASF42:
- 2094 01b1 72656756 		.ascii	"regValue\000"
- 2094      616C7565 
- 2094      00
- 2095              	.LASF36:
- 2096 01ba 78333254 		.ascii	"x32TrHold\000"
- 2096      72486F6C 
- 2096      6400
- 2097              	.LASF22:
- 2098 01c4 76616C75 		.ascii	"value\000"
- 2098      6500
- 2099              	.LASF0:
- 2100 01ca 756E7369 		.ascii	"unsigned int\000"
- 2100      676E6564 
- 2100      20696E74 
- 2100      00
- 2101              	.LASF51:
- 2102 01d7 6E756D42 		.ascii	"numBytes\000"
- 2102      79746573 
- 2102      00
- 2103              	.LASF8:
- 2104 01e0 6C6F6E67 		.ascii	"long unsigned int\000"
- 2104      20756E73 
- 2104      69676E65 
- 2104      6420696E 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 48
+ 2077      72436F64 
+ 2077      6500
+ 2078              	.LASF7:
+ 2079 0130 6C6F6E67 		.ascii	"long int\000"
+ 2079      20696E74 
+ 2079      00
+ 2080              	.LASF19:
+ 2081 0139 72656731 		.ascii	"reg16\000"
+ 2081      3600
+ 2082              	.LASF13:
+ 2083 013f 75696E74 		.ascii	"uint8\000"
+ 2083      3800
+ 2084              	.LASF17:
+ 2085 0145 646F7562 		.ascii	"double\000"
+ 2085      6C6500
+ 2086              	.LASF15:
+ 2087 014c 75696E74 		.ascii	"uint32\000"
+ 2087      333200
+ 2088              	.LASF34:
+ 2089 0153 636F756E 		.ascii	"count\000"
+ 2089      7400
+ 2090              	.LASF42:
+ 2091 0159 72656756 		.ascii	"regValue\000"
+ 2091      616C7565 
+ 2091      00
+ 2092              	.LASF36:
+ 2093 0162 78333254 		.ascii	"x32TrHold\000"
+ 2093      72486F6C 
+ 2093      6400
+ 2094              	.LASF22:
+ 2095 016c 76616C75 		.ascii	"value\000"
+ 2095      6500
+ 2096              	.LASF0:
+ 2097 0172 756E7369 		.ascii	"unsigned int\000"
+ 2097      676E6564 
+ 2097      20696E74 
+ 2097      00
+ 2098              	.LASF51:
+ 2099 017f 6E756D42 		.ascii	"numBytes\000"
+ 2099      79746573 
+ 2099      00
+ 2100              	.LASF8:
+ 2101 0188 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2101      20756E73 
+ 2101      69676E65 
+ 2101      6420696E 
+ 2101      7400
+ 2102              	.LASF37:
+ 2103 019a 74696D65 		.ascii	"timeout\000"
+ 2103      6F757400 
+ 2104              	.LASF46:
+ 2105 01a2 6366675F 		.ascii	"cfg_memcpy_t\000"
+ 2105      6D656D63 
+ 2105      70795F74 
+ 2105      00
+ 2106              	.LASF30:
+ 2107 01af 6366675F 		.ascii	"cfg_write_bytes32\000"
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 48
 
 
- 2104      7400
- 2105              	.LASF37:
- 2106 01f2 74696D65 		.ascii	"timeout\000"
- 2106      6F757400 
- 2107              	.LASF46:
- 2108 01fa 6366675F 		.ascii	"cfg_memcpy_t\000"
- 2108      6D656D63 
- 2108      70795F74 
- 2108      00
- 2109              	.LASF30:
- 2110 0207 6366675F 		.ascii	"cfg_write_bytes32\000"
- 2110      77726974 
- 2110      655F6279 
- 2110      74657333 
- 2110      3200
- 2111              	.LASF44:
- 2112 0219 73697A65 		.ascii	"size\000"
- 2112      00
- 2113              	.LASF6:
- 2114 021e 73686F72 		.ascii	"short unsigned int\000"
- 2114      7420756E 
- 2114      7369676E 
- 2114      65642069 
- 2114      6E7400
- 2115              	.LASF20:
- 2116 0231 72656733 		.ascii	"reg32\000"
- 2116      3200
- 2117              	.LASF27:
- 2118 0237 4359434F 		.ascii	"CYCONFIGCPYCODE\000"
- 2118      4E464947 
- 2118      43505943 
- 2118      4F444500 
- 2119              	.LASF10:
- 2120 0247 73697A65 		.ascii	"sizetype\000"
- 2120      74797065 
- 2120      00
- 2121              	.LASF2:
- 2122 0250 6C6F6E67 		.ascii	"long double\000"
- 2122      20646F75 
- 2122      626C6500 
- 2123              	.LASF40:
- 2124 025c 62675F78 		.ascii	"bg_xover_inl_trim\000"
- 2124      6F766572 
- 2124      5F696E6C 
- 2124      5F747269 
- 2124      6D00
- 2125              	.LASF45:
- 2126 026e 6366675F 		.ascii	"cfg_memset_t\000"
- 2126      6D656D73 
- 2126      65745F74 
- 2126      00
- 2127              	.LASF47:
- 2128 027b 6366675F 		.ascii	"cfg_memset_list\000"
- 2128      6D656D73 
- 2128      65745F6C 
- 2128      69737400 
- 2129              	.LASF26:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 49
+ 2107      77726974 
+ 2107      655F6279 
+ 2107      74657333 
+ 2107      3200
+ 2108              	.LASF44:
+ 2109 01c1 73697A65 		.ascii	"size\000"
+ 2109      00
+ 2110              	.LASF6:
+ 2111 01c6 73686F72 		.ascii	"short unsigned int\000"
+ 2111      7420756E 
+ 2111      7369676E 
+ 2111      65642069 
+ 2111      6E7400
+ 2112              	.LASF20:
+ 2113 01d9 72656733 		.ascii	"reg32\000"
+ 2113      3200
+ 2114              	.LASF27:
+ 2115 01df 4359434F 		.ascii	"CYCONFIGCPYCODE\000"
+ 2115      4E464947 
+ 2115      43505943 
+ 2115      4F444500 
+ 2116              	.LASF10:
+ 2117 01ef 73697A65 		.ascii	"sizetype\000"
+ 2117      74797065 
+ 2117      00
+ 2118              	.LASF2:
+ 2119 01f8 6C6F6E67 		.ascii	"long double\000"
+ 2119      20646F75 
+ 2119      626C6500 
+ 2120              	.LASF40:
+ 2121 0204 62675F78 		.ascii	"bg_xover_inl_trim\000"
+ 2121      6F766572 
+ 2121      5F696E6C 
+ 2121      5F747269 
+ 2121      6D00
+ 2122              	.LASF45:
+ 2123 0216 6366675F 		.ascii	"cfg_memset_t\000"
+ 2123      6D656D73 
+ 2123      65745F74 
+ 2123      00
+ 2124              	.LASF47:
+ 2125 0223 6366675F 		.ascii	"cfg_memset_list\000"
+ 2125      6D656D73 
+ 2125      65745F6C 
+ 2125      69737400 
+ 2126              	.LASF26:
+ 2127 0233 64657374 		.ascii	"dest\000"
+ 2127      00
+ 2128              	.LASF16:
+ 2129 0238 666C6F61 		.ascii	"float\000"
+ 2129      7400
+ 2130              	.LASF49:
+ 2131 023e 64657374 		.ascii	"destPtr\000"
+ 2131      50747200 
+ 2132              	.LASF18:
+ 2133 0246 72656738 		.ascii	"reg8\000"
+ 2133      00
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 49
 
 
- 2130 028b 64657374 		.ascii	"dest\000"
- 2130      00
- 2131              	.LASF16:
- 2132 0290 666C6F61 		.ascii	"float\000"
- 2132      7400
- 2133              	.LASF49:
- 2134 0296 64657374 		.ascii	"destPtr\000"
- 2134      50747200 
- 2135              	.LASF18:
- 2136 029e 72656738 		.ascii	"reg8\000"
- 2136      00
- 2137              	.LASF4:
- 2138 02a3 756E7369 		.ascii	"unsigned char\000"
- 2138      676E6564 
- 2138      20636861 
- 2138      7200
- 2139              	.LASF5:
- 2140 02b1 73686F72 		.ascii	"short int\000"
- 2140      7420696E 
- 2140      7400
- 2141              	.LASF38:
- 2142 02bb 706C6C4C 		.ascii	"pllLock\000"
- 2142      6F636B00 
- 2143              	.LASF23:
- 2144 02c3 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
- 2144      66675F61 
- 2144      64647276 
- 2144      616C7565 
- 2144      5F7400
- 2145              	.LASF11:
- 2146 02d6 63686172 		.ascii	"char\000"
- 2146      00
- 2147              	.LASF50:
- 2148 02db 73726350 		.ascii	"srcPtr\000"
- 2148      747200
+ 2134              	.LASF4:
+ 2135 024b 756E7369 		.ascii	"unsigned char\000"
+ 2135      676E6564 
+ 2135      20636861 
+ 2135      7200
+ 2136              	.LASF5:
+ 2137 0259 73686F72 		.ascii	"short int\000"
+ 2137      7420696E 
+ 2137      7400
+ 2138              	.LASF38:
+ 2139 0263 706C6C4C 		.ascii	"pllLock\000"
+ 2139      6F636B00 
+ 2140              	.LASF23:
+ 2141 026b 63795F63 		.ascii	"cy_cfg_addrvalue_t\000"
+ 2141      66675F61 
+ 2141      64647276 
+ 2141      616C7565 
+ 2141      5F7400
+ 2142              	.LASF11:
+ 2143 027e 63686172 		.ascii	"char\000"
+ 2143      00
+ 2144              	.LASF50:
+ 2145 0283 73726350 		.ascii	"srcPtr\000"
+ 2145      747200
+ 2146              	.LASF54:
+ 2147 028a 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
+ 2147      73657273 
+ 2147      5C456D69 
+ 2147      6C5C446F 
+ 2147      63756D65 
+ 2148 02b8 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 2148      4F535F54 
+ 2148      454D504C 
+ 2148      4154452D 
+ 2148      6D617374 
  2149              	.LASF55:
- 2150 02e2 53657441 		.ascii	"SetAnalogRoutingPumps\000"
+ 2150 02e1 53657441 		.ascii	"SetAnalogRoutingPumps\000"
  2150      6E616C6F 
  2150      67526F75 
  2150      74696E67 
  2150      50756D70 
  2151              	.LASF21:
- 2152 02f8 6F666673 		.ascii	"offset\000"
+ 2152 02f7 6F666673 		.ascii	"offset\000"
  2152      657400
  2153              	.LASF41:
- 2154 02ff 656E6162 		.ascii	"enabled\000"
+ 2154 02fe 656E6162 		.ascii	"enabled\000"
  2154      6C656400 
  2155              	.LASF25:
- 2156 0307 4359434F 		.ascii	"CYCONFIGCPY\000"
+ 2156 0306 4359434F 		.ascii	"CYCONFIGCPY\000"
  2156      4E464947 
  2156      43505900 
  2157              	.LASF53:
- 2158 0313 47656E65 		.ascii	"Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
+ 2158 0312 47656E65 		.ascii	"Generated_Source\\PSoC5\\cyfitter_cfg.c\000"
  2158      72617465 
  2158      645F536F 
  2158      75726365 
  2158      5C50536F 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccqcobee.s 			page 50
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqXL3W.s 			page 50
 
 
  2159              	.LASF43:
- 2160 0339 61646472 		.ascii	"address\000"
+ 2160 0338 61646472 		.ascii	"address\000"
  2160      65737300 
  2161              	.LASF48:
- 2162 0341 6366675F 		.ascii	"cfg_memcpy_list\000"
+ 2162 0340 6366675F 		.ascii	"cfg_memcpy_list\000"
  2162      6D656D63 
  2162      70795F6C 
  2162      69737400 
  2163              	.LASF56:
- 2164 0351 63796669 		.ascii	"cyfitter_cfg\000"
+ 2164 0350 63796669 		.ascii	"cyfitter_cfg\000"
  2164      74746572 
  2164      5F636667 
  2164      00

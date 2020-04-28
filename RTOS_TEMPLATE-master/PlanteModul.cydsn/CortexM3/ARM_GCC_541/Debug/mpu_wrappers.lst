@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
   26:Source\portable\Common/mpu_wrappers.c ****  */
   27:Source\portable\Common/mpu_wrappers.c **** 
   28:Source\portable\Common/mpu_wrappers.c **** /*
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 2
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 2
 
 
   29:Source\portable\Common/mpu_wrappers.c ****  * Implementation of the wrapper functions used to raise the processor privilege
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
   44 000a 7860     		str	r0, [r7, #4]
   69:Source\portable\Common/mpu_wrappers.c **** 
   70:Source\portable\Common/mpu_wrappers.c **** 	/* If the processor is not already privileged, raise privilege. */
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 3
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 3
 
 
   71:Source\portable\Common/mpu_wrappers.c **** 	if( xRunningPrivileged != pdTRUE )
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
   82:Source\portable\Common/mpu_wrappers.c **** 	if( xRunningPrivileged != pdTRUE )
   88              		.loc 1 82 0
   89 0008 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 4
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 4
 
 
   90 000a 012B     		cmp	r3, #1
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
   94:Source\portable\Common/mpu_wrappers.c **** 
   95:Source\portable\Common/mpu_wrappers.c **** 		xReturn = xTaskCreateRestricted( pxTaskDefinition, pxCreatedTask );
  133              		.loc 1 95 0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 5
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 5
 
 
  134 0010 3968     		ldr	r1, [r7]
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  166 0000 80B5     		push	{r7, lr}
  167              		.cfi_def_cfa_offset 8
  168              		.cfi_offset 7, -8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 6
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 6
 
 
  169              		.cfi_offset 14, -4
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  216              	.LFB72:
  125:Source\portable\Common/mpu_wrappers.c **** #endif /* configSUPPORT_DYNAMIC_ALLOCATION */
  126:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 7
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 7
 
 
  127:Source\portable\Common/mpu_wrappers.c **** 
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  250              	.LFE72:
  251              		.size	MPU_vTaskAllocateMPURegions, .-MPU_vTaskAllocateMPURegions
  252 0026 00BF     		.section	.text.MPU_vTaskDelete,"ax",%progbits
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 8
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 8
 
 
  253              		.align	2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  297              		.thumb_func
  298              		.type	MPU_vTaskDelayUntil, %function
  299              	MPU_vTaskDelayUntil:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 9
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 9
 
 
  300              	.LFB74:
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  343              	.LFB75:
  169:Source\portable\Common/mpu_wrappers.c **** #endif
  170:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 10
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 10
 
 
  171:Source\portable\Common/mpu_wrappers.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  376              		.size	MPU_vTaskDelay, .-MPU_vTaskDelay
  377 0022 00BF     		.section	.text.MPU_uxTaskPriorityGet,"ax",%progbits
  378              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 11
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 11
 
 
  379              		.global	MPU_uxTaskPriorityGet
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  420              		.size	MPU_uxTaskPriorityGet, .-MPU_uxTaskPriorityGet
  421 0026 00BF     		.section	.text.MPU_vTaskPrioritySet,"ax",%progbits
  422              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 12
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 12
 
 
  423              		.global	MPU_vTaskPrioritySet
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  466              		.global	MPU_eTaskGetState
  467              		.thumb
  468              		.thumb_func
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 13
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 13
 
 
  469              		.type	MPU_eTaskGetState, %function
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  510              		.align	2
  511              		.global	MPU_vTaskSuspend
  512              		.thumb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 14
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 14
 
 
  513              		.thumb_func
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  534 000e 7868     		ldr	r0, [r7, #4]
  535 0010 FFF7FEFF 		bl	vTaskSuspend
  263:Source\portable\Common/mpu_wrappers.c **** 		vPortResetPrivilege( xRunningPrivileged );
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 15
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 15
 
 
  536              		.loc 1 263 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  579 0016 FFF7FEFF 		bl	vPortResetPrivilege
  275:Source\portable\Common/mpu_wrappers.c **** 	}
  580              		.loc 1 275 0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 16
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 16
 
 
  581 001a 00BF     		nop
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  625              		@ sp needed
  626 001c 80BD     		pop	{r7, pc}
  627              		.cfi_endproc
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 17
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 17
 
 
  628              	.LFE81:
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  671              		.size	MPU_xTaskResumeAll, .-MPU_xTaskResumeAll
  672 0022 00BF     		.section	.text.MPU_xTaskGetTickCount,"ax",%progbits
  673              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 18
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 18
 
 
  674              		.global	MPU_xTaskGetTickCount
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  717              		.thumb
  718              		.thumb_func
  719              		.type	MPU_uxTaskGetNumberOfTasks, %function
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 19
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 19
 
 
  720              	MPU_uxTaskGetNumberOfTasks:
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  763              	.LFB85:
  319:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
  320:Source\portable\Common/mpu_wrappers.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 20
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 20
 
 
  321:Source\portable\Common/mpu_wrappers.c **** char * MPU_pcTaskGetName( TaskHandle_t xTaskToQuery ) /* FREERTOS_SYSTEM_CALL */
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  331:Source\portable\Common/mpu_wrappers.c **** 
  332:Source\portable\Common/mpu_wrappers.c **** #if ( INCLUDE_xTaskGetHandle == 1 )
  333:Source\portable\Common/mpu_wrappers.c **** 	TaskHandle_t MPU_xTaskGetHandle( const char *pcNameToQuery ) /* FREERTOS_SYSTEM_CALL */
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 21
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 21
 
 
  334:Source\portable\Common/mpu_wrappers.c **** 	{
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  388:Source\portable\Common/mpu_wrappers.c **** #endif
  389:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
  390:Source\portable\Common/mpu_wrappers.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 22
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 22
 
 
  391:Source\portable\Common/mpu_wrappers.c **** #if ( configUSE_APPLICATION_TASK_TAG == 1 )
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  445:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xRunningPrivileged = xPortRaisePrivilege();
  446:Source\portable\Common/mpu_wrappers.c **** 
  447:Source\portable\Common/mpu_wrappers.c **** 		uxReturn = uxTaskGetSystemState( pxTaskStatusArray, uxArraySize, pulTotalRunTime );
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 23
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 23
 
 
  448:Source\portable\Common/mpu_wrappers.c **** 		vPortResetPrivilege( xRunningPrivileged );
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  847              		.thumb
  848              		.thumb_func
  849              		.type	MPU_uxTaskGetStackHighWaterMark, %function
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 24
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 24
 
 
  850              	MPU_uxTaskGetStackHighWaterMark:
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  892              		.thumb_func
  893              		.type	MPU_vTaskSetTimeOutState, %function
  894              	MPU_vTaskSetTimeOutState:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 25
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 25
 
 
  895              	.LFB88:
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  905              		.cfi_def_cfa_offset 24
  906 0004 00AF     		add	r7, sp, #0
  907              		.cfi_def_cfa_register 7
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 26
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 26
 
 
  908 0006 7860     		str	r0, [r7, #4]
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  951              		.loc 1 529 0
  952 000a FFF7FEFF 		bl	xPortRaisePrivilege
  953 000e F860     		str	r0, [r7, #12]
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 27
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 27
 
 
  530:Source\portable\Common/mpu_wrappers.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  998 000c 1346     		mov	r3, r2
  999 000e FB71     		strb	r3, [r7, #7]
  540:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xReturn;
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 28
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 28
 
 
  541:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xRunningPrivileged = xPortRaisePrivilege();
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1042 0002 86B0     		sub	sp, sp, #24
  1043              		.cfi_def_cfa_offset 32
  1044 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 29
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 29
 
 
  1045              		.cfi_def_cfa_register 7
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1086              		@ args = 0, pretend = 0, frame = 16
  1087              		@ frame_needed = 1, uses_anonymous_args = 0
  1088 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 30
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 30
 
 
  1089              		.cfi_def_cfa_offset 8
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1130              		.loc 1 578 0
  1131              		.cfi_startproc
  1132              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 31
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 31
 
 
  1133              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1174              		.loc 1 591 0
  1175              		.cfi_startproc
  1176              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 32
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 32
 
 
  1177              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  603:Source\portable\Common/mpu_wrappers.c **** 	QueueHandle_t MPU_xQueueGenericCreate( UBaseType_t uxQueueLength, UBaseType_t uxItemSize, uint8_t 
  604:Source\portable\Common/mpu_wrappers.c **** 	{
  1220              		.loc 1 604 0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 33
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 33
 
 
  1221              		.cfi_startproc
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1268              	MPU_xQueueGenericReset:
  1269              	.LFB96:
  612:Source\portable\Common/mpu_wrappers.c **** #endif
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 34
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 34
 
 
  613:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1300              		.cfi_def_cfa_offset 8
  1301 0026 BD46     		mov	sp, r7
  1302              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 35
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 35
 
 
  1303              		@ sp needed
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  647:Source\portable\Common/mpu_wrappers.c **** }
  1347              		.loc 1 647 0
  1348 002a 1846     		mov	r0, r3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 36
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 36
 
 
  1349 002c 1837     		adds	r7, r7, #24
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1392 001e 1846     		mov	r0, r3
  1393 0020 1037     		adds	r7, r7, #16
  1394              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 37
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 37
 
 
  1395 0022 BD46     		mov	sp, r7
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1438              		.cfi_def_cfa_offset 8
  1439 0022 BD46     		mov	sp, r7
  1440              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 38
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 38
 
 
  1441              		@ sp needed
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1484 0026 1846     		mov	r0, r3
  1485 0028 1837     		adds	r7, r7, #24
  1486              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 39
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 39
 
 
  1487 002a BD46     		mov	sp, r7
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  691:Source\portable\Common/mpu_wrappers.c **** }
  1531              		.loc 1 691 0
  1532 0026 1846     		mov	r0, r3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 40
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 40
 
 
  1533 0028 1837     		adds	r7, r7, #24
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  702:Source\portable\Common/mpu_wrappers.c **** }
  1577              		.loc 1 702 0
  1578 0022 1846     		mov	r0, r3
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 41
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 41
 
 
  1579 0024 1037     		adds	r7, r7, #16
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  723:Source\portable\Common/mpu_wrappers.c **** 
  724:Source\portable\Common/mpu_wrappers.c **** 		xReturn = xQueueCreateMutex( ucQueueType );
  1613              		.loc 1 724 0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 42
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 42
 
 
  1614 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1646 0000 80B5     		push	{r7, lr}
  1647              		.cfi_def_cfa_offset 8
  1648              		.cfi_offset 7, -8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 43
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 43
 
 
  1649              		.cfi_offset 14, -4
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  762:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xRunningPrivileged = xPortRaisePrivilege();
  763:Source\portable\Common/mpu_wrappers.c **** 
  764:Source\portable\Common/mpu_wrappers.c **** 		xReturn = xQueueCreateCountingSemaphoreStatic( uxMaxCount, uxInitialCount, pxStaticQueue );
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 44
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 44
 
 
  765:Source\portable\Common/mpu_wrappers.c **** 		vPortResetPrivilege( xRunningPrivileged );
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1726              		.section	.text.MPU_xQueueGiveMutexRecursive,"ax",%progbits
  1727              		.align	2
  1728              		.global	MPU_xQueueGiveMutexRecursive
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 45
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 45
 
 
  1729              		.thumb
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1770 0026 00BF     		.section	.text.MPU_vQueueAddToRegistry,"ax",%progbits
  1771              		.align	2
  1772              		.global	MPU_vQueueAddToRegistry
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 46
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 46
 
 
  1773              		.thumb
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  843:Source\portable\Common/mpu_wrappers.c **** 		vPortResetPrivilege( xRunningPrivileged );
  844:Source\portable\Common/mpu_wrappers.c **** 		return xReturn;
  845:Source\portable\Common/mpu_wrappers.c **** 	}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 47
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 47
 
 
  846:Source\portable\Common/mpu_wrappers.c **** #endif
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1820              	.LFB108:
  858:Source\portable\Common/mpu_wrappers.c **** #endif
  859:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 48
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 48
 
 
  860:Source\portable\Common/mpu_wrappers.c **** 
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  873:Source\portable\Common/mpu_wrappers.c **** #if configQUEUE_REGISTRY_SIZE > 0
  874:Source\portable\Common/mpu_wrappers.c **** 	const char *MPU_pcQueueGetName( QueueHandle_t xQueue ) /* FREERTOS_SYSTEM_CALL */
  875:Source\portable\Common/mpu_wrappers.c **** 	{
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 49
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 49
 
 
  1862              		.loc 1 875 0
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  886:Source\portable\Common/mpu_wrappers.c **** 
  887:Source\portable\Common/mpu_wrappers.c **** void MPU_vQueueDelete( QueueHandle_t xQueue ) /* FREERTOS_SYSTEM_CALL */
  888:Source\portable\Common/mpu_wrappers.c **** {
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 50
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 50
 
 
  1906              		.loc 1 888 0
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1949              		@ args = 0, pretend = 0, frame = 16
  1950              		@ frame_needed = 1, uses_anonymous_args = 0
  1951 0000 80B5     		push	{r7, lr}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 51
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 51
 
 
  1952              		.cfi_def_cfa_offset 8
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  1991              		.loc 1 914 0
  1992              		.cfi_startproc
  1993              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 52
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 52
 
 
  1994              		@ frame_needed = 1, uses_anonymous_args = 0
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2036 0000 80B5     		push	{r7, lr}
  2037              		.cfi_def_cfa_offset 8
  2038              		.cfi_offset 7, -8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 53
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 53
 
 
  2039              		.cfi_offset 14, -4
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2081 0004 00AF     		add	r7, sp, #0
  2082              		.cfi_def_cfa_register 7
  939:Source\portable\Common/mpu_wrappers.c **** 	size_t xReturn;
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 54
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 54
 
 
  940:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xRunningPrivileged = xPortRaisePrivilege();
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  964:Source\portable\Common/mpu_wrappers.c **** 
  965:Source\portable\Common/mpu_wrappers.c **** #if( ( configSUPPORT_STATIC_ALLOCATION == 1 ) && ( configUSE_TIMERS == 1 ) )
  966:Source\portable\Common/mpu_wrappers.c **** 	TimerHandle_t MPU_xTimerCreateStatic( const char * const pcTimerName, const TickType_t xTimerPerio
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 55
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 55
 
 
  967:Source\portable\Common/mpu_wrappers.c **** 	{
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
 1021:Source\portable\Common/mpu_wrappers.c **** 	TaskHandle_t xReturn;
 1022:Source\portable\Common/mpu_wrappers.c **** 	BaseType_t xRunningPrivileged = xPortRaisePrivilege();
 1023:Source\portable\Common/mpu_wrappers.c **** 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 56
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 56
 
 
 1024:Source\portable\Common/mpu_wrappers.c **** 		xReturn = xTimerGetTimerDaemonTaskHandle();
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
 1078:Source\portable\Common/mpu_wrappers.c **** 
 1079:Source\portable\Common/mpu_wrappers.c **** 		return pcReturn;
 1080:Source\portable\Common/mpu_wrappers.c **** 	}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 57
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 57
 
 
 1081:Source\portable\Common/mpu_wrappers.c **** #endif
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2119              		.cfi_offset 7, -8
  2120              		.cfi_offset 14, -4
  2121 0002 82B0     		sub	sp, sp, #8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 58
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 58
 
 
  2122              		.cfi_def_cfa_offset 16
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
 1150:Source\portable\Common/mpu_wrappers.c **** 	}
 1151:Source\portable\Common/mpu_wrappers.c **** #endif
 1152:Source\portable\Common/mpu_wrappers.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 59
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 59
 
 
 1153:Source\portable\Common/mpu_wrappers.c **** 
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2198              		.size	MPU_xEventGroupWaitBits, .-MPU_xEventGroupWaitBits
  2199 0036 00BF     		.section	.text.MPU_xEventGroupClearBits,"ax",%progbits
  2200              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 60
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 60
 
 
  2201              		.global	MPU_xEventGroupClearBits
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2243              	.LFE117:
  2244              		.size	MPU_xEventGroupClearBits, .-MPU_xEventGroupClearBits
  2245              		.section	.text.MPU_xEventGroupSetBits,"ax",%progbits
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 61
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 61
 
 
  2246              		.align	2
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2288              		.cfi_endproc
  2289              	.LFE118:
  2290              		.size	MPU_xEventGroupSetBits, .-MPU_xEventGroupSetBits
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 62
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 62
 
 
  2291              		.section	.text.MPU_xEventGroupSync,"ax",%progbits
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2333              		.cfi_def_cfa_offset 8
  2334 002e BD46     		mov	sp, r7
  2335              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 63
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 63
 
 
  2336              		@ sp needed
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2381              		.size	MPU_vEventGroupDelete, .-MPU_vEventGroupDelete
  2382 0022 00BF     		.section	.text.MPU_xStreamBufferSend,"ax",%progbits
  2383              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 64
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 64
 
 
  2384              		.global	MPU_xStreamBufferSend
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2426              		.cfi_def_cfa_register 13
  2427              		@ sp needed
  2428 0030 80BD     		pop	{r7, pc}
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 65
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 65
 
 
  2429              		.cfi_endproc
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2471              		@ sp needed
  2472 0024 80BD     		pop	{r7, pc}
  2473              		.cfi_endproc
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 66
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 66
 
 
  2474              	.LFE122:
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2516 002a 1846     		mov	r0, r3
  2517 002c 1837     		adds	r7, r7, #24
  2518              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 67
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 67
 
 
  2519 002e BD46     		mov	sp, r7
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2564              		.cfi_endproc
  2565              	.LFE124:
  2566              		.size	MPU_vStreamBufferDelete, .-MPU_vStreamBufferDelete
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 68
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 68
 
 
  2567 0022 00BF     		.section	.text.MPU_xStreamBufferIsFull,"ax",%progbits
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2609              	.LFE125:
  2610              		.size	MPU_xStreamBufferIsFull, .-MPU_xStreamBufferIsFull
  2611 0026 00BF     		.section	.text.MPU_xStreamBufferIsEmpty,"ax",%progbits
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 69
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 69
 
 
  2612              		.align	2
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2654              		.size	MPU_xStreamBufferIsEmpty, .-MPU_xStreamBufferIsEmpty
  2655 0026 00BF     		.section	.text.MPU_xStreamBufferReset,"ax",%progbits
  2656              		.align	2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 70
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 70
 
 
  2657              		.global	MPU_xStreamBufferReset
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2699 0026 00BF     		.section	.text.MPU_xStreamBufferSpacesAvailable,"ax",%progbits
  2700              		.align	2
  2701              		.global	MPU_xStreamBufferSpacesAvailable
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 71
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 71
 
 
  2702              		.thumb
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2744              		.align	2
  2745              		.global	MPU_xStreamBufferBytesAvailable
  2746              		.thumb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 72
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 72
 
 
  2747              		.thumb_func
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2789              		.global	MPU_xStreamBufferSetTriggerLevel
  2790              		.thumb
  2791              		.thumb_func
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 73
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 73
 
 
  2792              		.type	MPU_xStreamBufferSetTriggerLevel, %function
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2834              		.align	2
  2835              		.global	MPU_xStreamBufferGenericCreate
  2836              		.thumb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 74
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 74
 
 
  2837              		.thumb_func
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2878              		.cfi_endproc
  2879              	.LFE131:
  2880              		.size	MPU_xStreamBufferGenericCreate, .-MPU_xStreamBufferGenericCreate
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 75
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 75
 
 
  2881 002e 00BF     		.text
@@ -4464,8 +4464,8 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2901 000b 01       		.uleb128 0x1
  2902 000c AB010000 		.4byte	.LASF204
  2903 0010 0C       		.byte	0xc
- 2904 0011 9B0C0000 		.4byte	.LASF205
- 2905 0015 B3080000 		.4byte	.LASF206
+ 2904 0011 9A0C0000 		.4byte	.LASF205
+ 2905 0015 BC0B0000 		.4byte	.LASF206
  2906 0019 00000000 		.4byte	.Ldebug_ranges0+0
  2907 001d 00000000 		.4byte	0
  2908 0021 00000000 		.4byte	.Ldebug_line0
@@ -4495,21 +4495,21 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2932 004e 06       		.byte	0x6
  2933 004f CA020000 		.4byte	.LASF3
  2934 0053 03       		.uleb128 0x3
- 2935 0054 250A0000 		.4byte	.LASF5
+ 2935 0054 DA090000 		.4byte	.LASF5
  2936 0058 03       		.byte	0x3
  2937 0059 1D       		.byte	0x1d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 76
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 76
 
 
  2938 005a 5E000000 		.4byte	0x5e
  2939 005e 04       		.uleb128 0x4
  2940 005f 01       		.byte	0x1
  2941 0060 08       		.byte	0x8
- 2942 0061 360B0000 		.4byte	.LASF6
+ 2942 0061 EB0A0000 		.4byte	.LASF6
  2943 0065 04       		.uleb128 0x4
  2944 0066 02       		.byte	0x2
  2945 0067 05       		.byte	0x5
- 2946 0068 54090000 		.4byte	.LASF7
+ 2946 0068 FC080000 		.4byte	.LASF7
  2947 006c 03       		.uleb128 0x3
  2948 006d 4A040000 		.4byte	.LASF8
  2949 0071 03       		.byte	0x3
@@ -4518,7 +4518,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2952 0077 04       		.uleb128 0x4
  2953 0078 02       		.byte	0x2
  2954 0079 07       		.byte	0x7
- 2955 007a C10C0000 		.4byte	.LASF9
+ 2955 007a C00C0000 		.4byte	.LASF9
  2956 007e 03       		.uleb128 0x3
  2957 007f 7E010000 		.4byte	.LASF10
  2958 0083 03       		.byte	0x3
@@ -4527,16 +4527,16 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2961 0089 04       		.uleb128 0x4
  2962 008a 04       		.byte	0x4
  2963 008b 05       		.byte	0x5
- 2964 008c A2090000 		.4byte	.LASF11
+ 2964 008c 4A090000 		.4byte	.LASF11
  2965 0090 03       		.uleb128 0x3
- 2966 0091 5B0B0000 		.4byte	.LASF12
+ 2966 0091 100B0000 		.4byte	.LASF12
  2967 0095 03       		.byte	0x3
  2968 0096 41       		.byte	0x41
  2969 0097 9B000000 		.4byte	0x9b
  2970 009b 04       		.uleb128 0x4
  2971 009c 04       		.byte	0x4
  2972 009d 07       		.byte	0x7
- 2973 009e AC0A0000 		.4byte	.LASF13
+ 2973 009e 610A0000 		.4byte	.LASF13
  2974 00a2 04       		.uleb128 0x4
  2975 00a3 08       		.byte	0x8
  2976 00a4 07       		.byte	0x7
@@ -4552,20 +4552,20 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  2986 00ba 24       		.byte	0x24
  2987 00bb 6C000000 		.4byte	0x6c
  2988 00bf 03       		.uleb128 0x3
- 2989 00c0 CF0A0000 		.4byte	.LASF17
+ 2989 00c0 840A0000 		.4byte	.LASF17
  2990 00c4 04       		.byte	0x4
  2991 00c5 2C       		.byte	0x2c
  2992 00c6 7E000000 		.4byte	0x7e
  2993 00ca 03       		.uleb128 0x3
  2994 00cb F6020000 		.4byte	.LASF18
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 77
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 77
 
 
  2995 00cf 04       		.byte	0x4
  2996 00d0 30       		.byte	0x30
  2997 00d1 90000000 		.4byte	0x90
  2998 00d5 05       		.uleb128 0x5
- 2999 00d6 050D0000 		.4byte	.LASF19
+ 2999 00d6 040D0000 		.4byte	.LASF19
  3000 00da 05       		.byte	0x5
  3001 00db E401     		.2byte	0x1e4
  3002 00dd 5E000000 		.4byte	0x5e
@@ -4581,7 +4581,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3012 00f4 04       		.uleb128 0x4
  3013 00f5 08       		.byte	0x8
  3014 00f6 04       		.byte	0x4
- 3015 00f7 0B0D0000 		.4byte	.LASF22
+ 3015 00f7 0A0D0000 		.4byte	.LASF22
  3016 00fb 04       		.uleb128 0x4
  3017 00fc 01       		.byte	0x1
  3018 00fd 08       		.byte	0x8
@@ -4591,7 +4591,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3022 0107 04       		.uleb128 0x4
  3023 0108 04       		.byte	0x4
  3024 0109 07       		.byte	0x7
- 3025 010a A30A0000 		.4byte	.LASF24
+ 3025 010a 580A0000 		.4byte	.LASF24
  3026 010e 07       		.uleb128 0x7
  3027 010f 04       		.byte	0x4
  3028 0110 08       		.uleb128 0x8
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3049 013a 19060000 		.4byte	.LASF26
  3050 013e 06       		.byte	0x6
  3051 013f 32       		.byte	0x32
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 78
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 78
 
 
  3052 0140 D5000000 		.4byte	0xd5
@@ -4674,16 +4674,16 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3102 01ab 50       		.byte	0x50
  3103 01ac D5010000 		.4byte	0x1d5
  3104 01b0 10       		.uleb128 0x10
- 3105 01b1 ED0A0000 		.4byte	.LASF33
+ 3105 01b1 A20A0000 		.4byte	.LASF33
  3106 01b5 00       		.byte	0
  3107 01b6 10       		.uleb128 0x10
  3108 01b7 12060000 		.4byte	.LASF34
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 79
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 79
 
 
  3109 01bb 01       		.byte	0x1
  3110 01bc 10       		.uleb128 0x10
- 3111 01bd 2C0C0000 		.4byte	.LASF35
+ 3111 01bd 2B0C0000 		.4byte	.LASF35
  3112 01c1 02       		.byte	0x2
  3113 01c2 10       		.uleb128 0x10
  3114 01c3 B2000000 		.4byte	.LASF36
@@ -4692,7 +4692,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3117 01c9 81060000 		.4byte	.LASF37
  3118 01cd 04       		.byte	0x4
  3119 01ce 10       		.uleb128 0x10
- 3120 01cf AC0B0000 		.4byte	.LASF38
+ 3120 01cf 610B0000 		.4byte	.LASF38
  3121 01d3 05       		.byte	0x5
  3122 01d4 00       		.byte	0
  3123 01d5 03       		.uleb128 0x3
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3163 0227 09       		.byte	0x9
  3164 0228 68       		.byte	0x68
  3165 0229 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 80
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 80
 
 
  3166 022d 00       		.byte	0
@@ -4761,7 +4761,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3183 024d 6F       		.byte	0x6f
  3184 024e 77020000 		.4byte	0x277
  3185 0252 0B       		.uleb128 0xb
- 3186 0253 090B0000 		.4byte	.LASF52
+ 3186 0253 BE0A0000 		.4byte	.LASF52
  3187 0257 09       		.byte	0x9
  3188 0258 71       		.byte	0x71
  3189 0259 0E010000 		.4byte	0x10e
@@ -4785,20 +4785,20 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3207 027d 74       		.byte	0x74
  3208 027e 46020000 		.4byte	0x246
  3209 0282 0A       		.uleb128 0xa
- 3210 0283 610C0000 		.4byte	.LASF56
+ 3210 0283 600C0000 		.4byte	.LASF56
  3211 0287 24       		.byte	0x24
  3212 0288 09       		.byte	0x9
  3213 0289 79       		.byte	0x79
  3214 028a E3020000 		.4byte	0x2e3
  3215 028e 0B       		.uleb128 0xb
- 3216 028f 810C0000 		.4byte	.LASF57
+ 3216 028f 800C0000 		.4byte	.LASF57
  3217 0293 09       		.byte	0x9
  3218 0294 7B       		.byte	0x7b
  3219 0295 46010000 		.4byte	0x146
  3220 0299 00       		.byte	0
  3221 029a 0B       		.uleb128 0xb
  3222 029b 39050000 		.4byte	.LASF58
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 81
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 81
 
 
  3223 029f 09       		.byte	0x9
@@ -4812,7 +4812,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3231 02ad B4000000 		.4byte	0xb4
  3232 02b1 08       		.byte	0x8
  3233 02b2 0B       		.uleb128 0xb
- 3234 02b3 81090000 		.4byte	.LASF60
+ 3234 02b3 29090000 		.4byte	.LASF60
  3235 02b7 09       		.byte	0x9
  3236 02b8 7E       		.byte	0x7e
  3237 02b9 0E010000 		.4byte	0x10e
@@ -4849,7 +4849,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3268 02fc 00       		.byte	0
  3269 02fd 00       		.byte	0
  3270 02fe 03       		.uleb128 0x3
- 3271 02ff BE0A0000 		.4byte	.LASF64
+ 3271 02ff 730A0000 		.4byte	.LASF64
  3272 0303 09       		.byte	0x9
  3273 0304 85       		.byte	0x85
  3274 0305 82020000 		.4byte	0x282
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3277 030e 0A       		.byte	0xa
  3278 030f 30       		.byte	0x30
  3279 0310 14030000 		.4byte	0x314
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 82
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 82
 
 
  3280 0314 08       		.uleb128 0x8
@@ -4867,7 +4867,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3283 031a 0E       		.uleb128 0xe
  3284 031b 64030000 		.4byte	.LASF67
  3285 031f 03       		.uleb128 0x3
- 3286 0320 C20D0000 		.4byte	.LASF68
+ 3286 0320 C10D0000 		.4byte	.LASF68
  3287 0324 0B       		.byte	0xb
  3288 0325 52       		.byte	0x52
  3289 0326 2A030000 		.4byte	0x32a
@@ -4877,7 +4877,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3293 0330 0E       		.uleb128 0xe
  3294 0331 FA050000 		.4byte	.LASF69
  3295 0335 03       		.uleb128 0x3
- 3296 0336 370A0000 		.4byte	.LASF70
+ 3296 0336 EC090000 		.4byte	.LASF70
  3297 033a 0B       		.byte	0xb
  3298 033b 5C       		.byte	0x5c
  3299 033c 83010000 		.4byte	0x183
@@ -4892,7 +4892,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3308 0351 0E       		.uleb128 0xe
  3309 0352 71040000 		.4byte	.LASF72
  3310 0356 13       		.uleb128 0x13
- 3311 0357 8E090000 		.4byte	.LASF75
+ 3311 0357 36090000 		.4byte	.LASF75
  3312 035b 01       		.byte	0x1
  3313 035c 3F       		.byte	0x3f
  3314 035d 6D010000 		.4byte	0x16d
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3334 038c 16       		.uleb128 0x16
  3335 038d 00       		.byte	0
  3336 038e 17       		.uleb128 0x17
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 83
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 83
 
 
  3337 038f 12000000 		.4byte	.LBB2
@@ -4978,12 +4978,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3391 0401 4B040000 		.4byte	0x44b
  3392 0405 02       		.uleb128 0x2
  3393 0406 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 84
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 84
 
 
  3394 0407 6C       		.sleb128 -20
  3395 0408 1A       		.uleb128 0x1a
- 3396 0409 9D0D0000 		.4byte	.LASF79
+ 3396 0409 9C0D0000 		.4byte	.LASF79
  3397 040d 01       		.byte	0x1
  3398 040e 5A       		.byte	0x5a
  3399 040f 50040000 		.4byte	0x450
@@ -4991,7 +4991,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3401 0414 91       		.byte	0x91
  3402 0415 68       		.sleb128 -24
  3403 0416 14       		.uleb128 0x14
- 3404 0417 730A0000 		.4byte	.LASF80
+ 3404 0417 280A0000 		.4byte	.LASF80
  3405 041b 01       		.byte	0x1
  3406 041c 5C       		.byte	0x5c
  3407 041d 6D010000 		.4byte	0x16d
@@ -5025,7 +5025,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3435 0451 04       		.byte	0x4
  3436 0452 8E010000 		.4byte	0x18e
  3437 0456 13       		.uleb128 0x13
- 3438 0457 4F0D0000 		.4byte	.LASF82
+ 3438 0457 4E0D0000 		.4byte	.LASF82
  3439 045b 01       		.byte	0x1
  3440 045c 74       		.byte	0x74
  3441 045d 6D010000 		.4byte	0x16d
@@ -5035,10 +5035,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3445 046a 9C       		.byte	0x9c
  3446 046b E0040000 		.4byte	0x4e0
  3447 046f 1A       		.uleb128 0x1a
- 3448 0470 810C0000 		.4byte	.LASF57
+ 3448 0470 800C0000 		.4byte	.LASF57
  3449 0474 01       		.byte	0x1
  3450 0475 74       		.byte	0x74
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 85
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 85
 
 
  3451 0476 46010000 		.4byte	0x146
@@ -5062,7 +5062,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3469 0497 91       		.byte	0x91
  3470 0498 66       		.sleb128 -26
  3471 0499 1A       		.uleb128 0x1a
- 3472 049a 81090000 		.4byte	.LASF60
+ 3472 049a 29090000 		.4byte	.LASF60
  3473 049e 01       		.byte	0x1
  3474 049f 74       		.byte	0x74
  3475 04a0 0E010000 		.4byte	0x10e
@@ -5078,7 +5078,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3485 04b3 91       		.byte	0x91
  3486 04b4 00       		.sleb128 0
  3487 04b5 1A       		.uleb128 0x1a
- 3488 04b6 9D0D0000 		.4byte	.LASF79
+ 3488 04b6 9C0D0000 		.4byte	.LASF79
  3489 04ba 01       		.byte	0x1
  3490 04bb 74       		.byte	0x74
  3491 04bc 50040000 		.4byte	0x450
@@ -5086,7 +5086,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3493 04c1 91       		.byte	0x91
  3494 04c2 04       		.sleb128 4
  3495 04c3 14       		.uleb128 0x14
- 3496 04c4 730A0000 		.4byte	.LASF80
+ 3496 04c4 280A0000 		.4byte	.LASF80
  3497 04c8 01       		.byte	0x1
  3498 04c9 76       		.byte	0x76
  3499 04ca 6D010000 		.4byte	0x16d
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3505 04d6 01       		.byte	0x1
  3506 04d7 77       		.byte	0x77
  3507 04d8 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 86
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 86
 
 
  3508 04dc 02       		.uleb128 0x2
@@ -5106,7 +5106,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3510 04de 74       		.sleb128 -12
  3511 04df 00       		.byte	0
  3512 04e0 19       		.uleb128 0x19
- 3513 04e1 C10B0000 		.4byte	.LASF84
+ 3513 04e1 760B0000 		.4byte	.LASF84
  3514 04e5 01       		.byte	0x1
  3515 04e6 8D       		.byte	0x8d
  3516 04e7 00000000 		.4byte	.LFB72
@@ -5156,9 +5156,9 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3560 0540 9C       		.byte	0x9c
  3561 0541 62050000 		.4byte	0x562
  3562 0545 1A       		.uleb128 0x1a
- 3563 0546 5E090000 		.4byte	.LASF87
+ 3563 0546 06090000 		.4byte	.LASF87
  3564 054a 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 87
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 87
 
 
  3565 054b 97       		.byte	0x97
@@ -5185,7 +5185,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3586 0572 9C       		.byte	0x9c
  3587 0573 A2050000 		.4byte	0x5a2
  3588 0577 1A       		.uleb128 0x1a
- 3589 0578 120A0000 		.4byte	.LASF89
+ 3589 0578 BA090000 		.4byte	.LASF89
  3590 057c 01       		.byte	0x1
  3591 057d A2       		.byte	0xa2
  3592 057e A8050000 		.4byte	0x5a8
@@ -5193,7 +5193,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3594 0583 91       		.byte	0x91
  3595 0584 6C       		.sleb128 -20
  3596 0585 1A       		.uleb128 0x1a
- 3597 0586 8C0C0000 		.4byte	.LASF90
+ 3597 0586 8B0C0000 		.4byte	.LASF90
  3598 058a 01       		.byte	0x1
  3599 058b A2       		.byte	0xa2
  3600 058c 83010000 		.4byte	0x183
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3619 05ae 3B030000 		.4byte	.LASF91
  3620 05b2 01       		.byte	0x1
  3621 05b3 BA       		.byte	0xba
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 88
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 88
 
 
  3622 05b4 00000000 		.4byte	.LFB75
@@ -5227,7 +5227,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3625 05bd 9C       		.byte	0x9c
  3626 05be DF050000 		.4byte	0x5df
  3627 05c2 1A       		.uleb128 0x1a
- 3628 05c3 170B0000 		.4byte	.LASF92
+ 3628 05c3 CC0A0000 		.4byte	.LASF92
  3629 05c7 01       		.byte	0x1
  3630 05c8 BA       		.byte	0xba
  3631 05c9 83010000 		.4byte	0x183
@@ -5244,7 +5244,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3642 05dd 74       		.sleb128 -12
  3643 05de 00       		.byte	0
  3644 05df 13       		.uleb128 0x13
- 3645 05e0 D70A0000 		.4byte	.LASF93
+ 3645 05e0 8C0A0000 		.4byte	.LASF93
  3646 05e4 01       		.byte	0x1
  3647 05e5 C5       		.byte	0xc5
  3648 05e6 78010000 		.4byte	0x178
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3676 0620 91       		.byte	0x91
  3677 0621 74       		.sleb128 -12
  3678 0622 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 89
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 89
 
 
  3679 0623 09       		.uleb128 0x9
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3733 068f 14       		.uleb128 0x14
  3734 0690 2D060000 		.4byte	.LASF77
  3735 0694 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 90
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 90
 
 
  3736 0695 DF       		.byte	0xdf
@@ -5365,7 +5365,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3757 06bd 9C       		.byte	0x9c
  3758 06be E1060000 		.4byte	0x6e1
  3759 06c2 1C       		.uleb128 0x1c
- 3760 06c3 020A0000 		.4byte	.LASF101
+ 3760 06c3 AA090000 		.4byte	.LASF101
  3761 06c7 01       		.byte	0x1
  3762 06c8 0201     		.2byte	0x102
  3763 06ca 8E010000 		.4byte	0x18e
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3790 0703 02       		.uleb128 0x2
  3791 0704 91       		.byte	0x91
  3792 0705 6C       		.sleb128 -20
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 91
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 91
 
 
  3793 0706 1D       		.uleb128 0x1d
@@ -5429,7 +5429,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3818 073a 74       		.sleb128 -12
  3819 073b 00       		.byte	0
  3820 073c 1E       		.uleb128 0x1e
- 3821 073d 24090000 		.4byte	.LASF105
+ 3821 073d CC080000 		.4byte	.LASF105
  3822 0741 01       		.byte	0x1
  3823 0742 2001     		.2byte	0x120
  3824 0744 6D010000 		.4byte	0x16d
@@ -5439,7 +5439,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3828 0751 9C       		.byte	0x9c
  3829 0752 75070000 		.4byte	0x775
  3830 0756 1D       		.uleb128 0x1d
- 3831 0757 730A0000 		.4byte	.LASF80
+ 3831 0757 280A0000 		.4byte	.LASF80
  3832 075b 01       		.byte	0x1
  3833 075c 2201     		.2byte	0x122
  3834 075e 6D010000 		.4byte	0x16d
@@ -5456,9 +5456,9 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3845 0773 74       		.sleb128 -12
  3846 0774 00       		.byte	0
  3847 0775 1E       		.uleb128 0x1e
- 3848 0776 870D0000 		.4byte	.LASF106
+ 3848 0776 860D0000 		.4byte	.LASF106
  3849 077a 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 92
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 92
 
 
  3850 077b 2B01     		.2byte	0x12b
@@ -5469,7 +5469,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3855 078a 9C       		.byte	0x9c
  3856 078b AE070000 		.4byte	0x7ae
  3857 078f 1D       		.uleb128 0x1d
- 3858 0790 730A0000 		.4byte	.LASF80
+ 3858 0790 280A0000 		.4byte	.LASF80
  3859 0794 01       		.byte	0x1
  3860 0795 2D01     		.2byte	0x12d
  3861 0797 83010000 		.4byte	0x183
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3904 07ed 4101     		.2byte	0x141
  3905 07ef 10010000 		.4byte	0x110
  3906 07f3 00000000 		.4byte	.LFB85
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 93
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 93
 
 
  3907 07f7 26000000 		.4byte	.LFE85-.LFB85
@@ -5534,7 +5534,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3917 080e 91       		.byte	0x91
  3918 080f 6C       		.sleb128 -20
  3919 0810 1D       		.uleb128 0x1d
- 3920 0811 37090000 		.4byte	.LASF110
+ 3920 0811 DF080000 		.4byte	.LASF110
  3921 0815 01       		.byte	0x1
  3922 0816 4301     		.2byte	0x143
  3923 0818 10010000 		.4byte	0x110
@@ -5561,7 +5561,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3944 0844 9C       		.byte	0x9c
  3945 0845 77080000 		.4byte	0x877
  3946 0849 1C       		.uleb128 0x1c
- 3947 084a 510C0000 		.4byte	.LASF112
+ 3947 084a 500C0000 		.4byte	.LASF112
  3948 084e 01       		.byte	0x1
  3949 084f C601     		.2byte	0x1c6
  3950 0851 83010000 		.4byte	0x183
@@ -5569,7 +5569,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3952 0856 91       		.byte	0x91
  3953 0857 6C       		.sleb128 -20
  3954 0858 1D       		.uleb128 0x1d
- 3955 0859 730A0000 		.4byte	.LASF80
+ 3955 0859 280A0000 		.4byte	.LASF80
  3956 085d 01       		.byte	0x1
  3957 085e C801     		.2byte	0x1c8
  3958 0860 6D010000 		.4byte	0x16d
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3961 0866 70       		.sleb128 -16
  3962 0867 1D       		.uleb128 0x1d
  3963 0868 2D060000 		.4byte	.LASF77
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 94
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 94
 
 
  3964 086c 01       		.byte	0x1
@@ -5589,7 +5589,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  3969 0875 74       		.sleb128 -12
  3970 0876 00       		.byte	0
  3971 0877 1E       		.uleb128 0x1e
- 3972 0878 D40C0000 		.4byte	.LASF113
+ 3972 0878 D30C0000 		.4byte	.LASF113
  3973 087c 01       		.byte	0x1
  3974 087d D201     		.2byte	0x1d2
  3975 087f 78010000 		.4byte	0x178
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4018 08db 0502     		.2byte	0x205
  4019 08dd FA080000 		.4byte	0x8fa
  4020 08e1 02       		.uleb128 0x2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 95
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 95
 
 
  4021 08e2 91       		.byte	0x91
@@ -5658,7 +5658,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4035 08fa 09       		.uleb128 0x9
  4036 08fb F4080000 		.4byte	0x8f4
  4037 08ff 1E       		.uleb128 0x1e
- 4038 0900 0B090000 		.4byte	.LASF116
+ 4038 0900 B3080000 		.4byte	.LASF116
  4039 0904 01       		.byte	0x1
  4040 0905 0E02     		.2byte	0x20e
  4041 0907 6D010000 		.4byte	0x16d
@@ -5684,7 +5684,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4061 0935 91       		.byte	0x91
  4062 0936 68       		.sleb128 -24
  4063 0937 1D       		.uleb128 0x1d
- 4064 0938 730A0000 		.4byte	.LASF80
+ 4064 0938 280A0000 		.4byte	.LASF80
  4065 093c 01       		.byte	0x1
  4066 093d 1002     		.2byte	0x210
  4067 093f 6D010000 		.4byte	0x16d
@@ -5698,13 +5698,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4075 094e 6D010000 		.4byte	0x16d
  4076 0952 02       		.uleb128 0x2
  4077 0953 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 96
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 96
 
 
  4078 0954 74       		.sleb128 -12
  4079 0955 00       		.byte	0
  4080 0956 1E       		.uleb128 0x1e
- 4081 0957 440B0000 		.4byte	.LASF118
+ 4081 0957 F90A0000 		.4byte	.LASF118
  4082 095b 01       		.byte	0x1
  4083 095c 1A02     		.2byte	0x21a
  4084 095e 6D010000 		.4byte	0x16d
@@ -5722,7 +5722,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4096 097d 91       		.byte	0x91
  4097 097e 6C       		.sleb128 -20
  4098 097f 1C       		.uleb128 0x1c
- 4099 0980 FA090000 		.4byte	.LASF120
+ 4099 0980 A2090000 		.4byte	.LASF120
  4100 0984 01       		.byte	0x1
  4101 0985 1A02     		.2byte	0x21a
  4102 0987 CA000000 		.4byte	0xca
@@ -5746,7 +5746,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4120 09aa 91       		.byte	0x91
  4121 09ab 60       		.sleb128 -32
  4122 09ac 1D       		.uleb128 0x1d
- 4123 09ad 730A0000 		.4byte	.LASF80
+ 4123 09ad 280A0000 		.4byte	.LASF80
  4124 09b1 01       		.byte	0x1
  4125 09b2 1C02     		.2byte	0x21c
  4126 09b4 6D010000 		.4byte	0x16d
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4132 09c0 01       		.byte	0x1
  4133 09c1 1D02     		.2byte	0x21d
  4134 09c3 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 97
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 97
 
 
  4135 09c7 02       		.uleb128 0x2
@@ -5769,7 +5769,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4140 09cc 04       		.byte	0x4
  4141 09cd CA000000 		.4byte	0xca
  4142 09d1 1E       		.uleb128 0x1e
- 4143 09d2 6D090000 		.4byte	.LASF123
+ 4143 09d2 15090000 		.4byte	.LASF123
  4144 09d6 01       		.byte	0x1
  4145 09d7 2702     		.2byte	0x227
  4146 09d9 6D010000 		.4byte	0x16d
@@ -5795,7 +5795,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4166 0a07 91       		.byte	0x91
  4167 0a08 68       		.sleb128 -24
  4168 0a09 1C       		.uleb128 0x1c
- 4169 0a0a 430A0000 		.4byte	.LASF126
+ 4169 0a0a F8090000 		.4byte	.LASF126
  4170 0a0e 01       		.byte	0x1
  4171 0a0f 2702     		.2byte	0x227
  4172 0a11 CB090000 		.4byte	0x9cb
@@ -5803,7 +5803,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4174 0a16 91       		.byte	0x91
  4175 0a17 64       		.sleb128 -28
  4176 0a18 1C       		.uleb128 0x1c
- 4177 0a19 070C0000 		.4byte	.LASF127
+ 4177 0a19 CD090000 		.4byte	.LASF127
  4178 0a1d 01       		.byte	0x1
  4179 0a1e 2702     		.2byte	0x227
  4180 0a20 83010000 		.4byte	0x183
@@ -5811,14 +5811,14 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4182 0a25 91       		.byte	0x91
  4183 0a26 60       		.sleb128 -32
  4184 0a27 1D       		.uleb128 0x1d
- 4185 0a28 730A0000 		.4byte	.LASF80
+ 4185 0a28 280A0000 		.4byte	.LASF80
  4186 0a2c 01       		.byte	0x1
  4187 0a2d 2902     		.2byte	0x229
  4188 0a2f 6D010000 		.4byte	0x16d
  4189 0a33 02       		.uleb128 0x2
  4190 0a34 91       		.byte	0x91
  4191 0a35 70       		.sleb128 -16
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 98
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 98
 
 
  4192 0a36 1D       		.uleb128 0x1d
@@ -5849,7 +5849,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4217 0a6d 91       		.byte	0x91
  4218 0a6e 6C       		.sleb128 -20
  4219 0a6f 1C       		.uleb128 0x1c
- 4220 0a70 070C0000 		.4byte	.LASF127
+ 4220 0a70 CD090000 		.4byte	.LASF127
  4221 0a74 01       		.byte	0x1
  4222 0a75 3402     		.2byte	0x234
  4223 0a77 83010000 		.4byte	0x183
@@ -5857,7 +5857,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4225 0a7c 91       		.byte	0x91
  4226 0a7d 68       		.sleb128 -24
  4227 0a7e 1D       		.uleb128 0x1d
- 4228 0a7f D50D0000 		.4byte	.LASF130
+ 4228 0a7f D40D0000 		.4byte	.LASF130
  4229 0a83 01       		.byte	0x1
  4230 0a84 3602     		.2byte	0x236
  4231 0a86 CA000000 		.4byte	0xca
@@ -5874,11 +5874,11 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4242 0a9b 74       		.sleb128 -12
  4243 0a9c 00       		.byte	0
  4244 0a9d 1E       		.uleb128 0x1e
- 4245 0a9e 350D0000 		.4byte	.LASF131
+ 4245 0a9e 340D0000 		.4byte	.LASF131
  4246 0aa2 01       		.byte	0x1
  4247 0aa3 4102     		.2byte	0x241
  4248 0aa5 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 99
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 99
 
 
  4249 0aa9 00000000 		.4byte	.LFB93
@@ -5895,7 +5895,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4260 0ac4 91       		.byte	0x91
  4261 0ac5 6C       		.sleb128 -20
  4262 0ac6 1D       		.uleb128 0x1d
- 4263 0ac7 730A0000 		.4byte	.LASF80
+ 4263 0ac7 280A0000 		.4byte	.LASF80
  4264 0acb 01       		.byte	0x1
  4265 0acc 4302     		.2byte	0x243
  4266 0ace 6D010000 		.4byte	0x16d
@@ -5912,7 +5912,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4277 0ae3 74       		.sleb128 -12
  4278 0ae4 00       		.byte	0
  4279 0ae5 1E       		.uleb128 0x1e
- 4280 0ae6 580A0000 		.4byte	.LASF132
+ 4280 0ae6 0D0A0000 		.4byte	.LASF132
  4281 0aea 01       		.byte	0x1
  4282 0aeb 4E02     		.2byte	0x24e
  4283 0aed CA000000 		.4byte	0xca
@@ -5938,10 +5938,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4303 0b1b 91       		.byte	0x91
  4304 0b1c 68       		.sleb128 -24
  4305 0b1d 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 100
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 100
 
 
- 4306 0b1e D50D0000 		.4byte	.LASF130
+ 4306 0b1e D40D0000 		.4byte	.LASF130
  4307 0b22 01       		.byte	0x1
  4308 0b23 5002     		.2byte	0x250
  4309 0b25 CA000000 		.4byte	0xca
@@ -5958,7 +5958,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4320 0b3a 74       		.sleb128 -12
  4321 0b3b 00       		.byte	0
  4322 0b3c 1E       		.uleb128 0x1e
- 4323 0b3d 8B0A0000 		.4byte	.LASF134
+ 4323 0b3d 400A0000 		.4byte	.LASF134
  4324 0b41 01       		.byte	0x1
  4325 0b42 5B02     		.2byte	0x25b
  4326 0b44 09030000 		.4byte	0x309
@@ -5992,13 +5992,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4354 0b81 91       		.byte	0x91
  4355 0b82 67       		.sleb128 -25
  4356 0b83 1D       		.uleb128 0x1d
- 4357 0b84 730A0000 		.4byte	.LASF80
+ 4357 0b84 280A0000 		.4byte	.LASF80
  4358 0b88 01       		.byte	0x1
  4359 0b89 5D02     		.2byte	0x25d
  4360 0b8b 09030000 		.4byte	0x309
  4361 0b8f 02       		.uleb128 0x2
  4362 0b90 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 101
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 101
 
 
  4363 0b91 70       		.sleb128 -16
@@ -6022,7 +6022,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4381 0bb7 9C       		.byte	0x9c
  4382 0bb8 F90B0000 		.4byte	0xbf9
  4383 0bbc 1C       		.uleb128 0x1c
- 4384 0bbd 2F0A0000 		.4byte	.LASF139
+ 4384 0bbd E4090000 		.4byte	.LASF139
  4385 0bc1 01       		.byte	0x1
  4386 0bc2 7402     		.2byte	0x274
  4387 0bc4 09030000 		.4byte	0x309
@@ -6038,7 +6038,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4397 0bd8 91       		.byte	0x91
  4398 0bd9 68       		.sleb128 -24
  4399 0bda 1D       		.uleb128 0x1d
- 4400 0bdb 730A0000 		.4byte	.LASF80
+ 4400 0bdb 280A0000 		.4byte	.LASF80
  4401 0bdf 01       		.byte	0x1
  4402 0be0 7602     		.2byte	0x276
  4403 0be2 6D010000 		.4byte	0x16d
@@ -6055,10 +6055,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4414 0bf7 74       		.sleb128 -12
  4415 0bf8 00       		.byte	0
  4416 0bf9 1E       		.uleb128 0x1e
- 4417 0bfa 120D0000 		.4byte	.LASF141
+ 4417 0bfa 110D0000 		.4byte	.LASF141
  4418 0bfe 01       		.byte	0x1
  4419 0bff 7F02     		.2byte	0x27f
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 102
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 102
 
 
  4420 0c01 6D010000 		.4byte	0x16d
@@ -6076,7 +6076,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4432 0c20 91       		.byte	0x91
  4433 0c21 6C       		.sleb128 -20
  4434 0c22 1C       		.uleb128 0x1c
- 4435 0c23 D9090000 		.4byte	.LASF143
+ 4435 0c23 81090000 		.4byte	.LASF143
  4436 0c27 01       		.byte	0x1
  4437 0c28 7F02     		.2byte	0x27f
  4438 0c2a 750C0000 		.4byte	0xc75
@@ -6084,7 +6084,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4440 0c2f 91       		.byte	0x91
  4441 0c30 68       		.sleb128 -24
  4442 0c31 1C       		.uleb128 0x1c
- 4443 0c32 070C0000 		.4byte	.LASF127
+ 4443 0c32 CD090000 		.4byte	.LASF127
  4444 0c36 01       		.byte	0x1
  4445 0c37 7F02     		.2byte	0x27f
  4446 0c39 83010000 		.4byte	0x183
@@ -6100,7 +6100,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4456 0c4d 91       		.byte	0x91
  4457 0c4e 60       		.sleb128 -32
  4458 0c4f 1D       		.uleb128 0x1d
- 4459 0c50 730A0000 		.4byte	.LASF80
+ 4459 0c50 280A0000 		.4byte	.LASF80
  4460 0c54 01       		.byte	0x1
  4461 0c55 8102     		.2byte	0x281
  4462 0c57 6D010000 		.4byte	0x16d
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4474 0c6d 00       		.byte	0
  4475 0c6e 08       		.uleb128 0x8
  4476 0c6f 04       		.byte	0x4
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 103
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 103
 
 
  4477 0c70 740C0000 		.4byte	0xc74
@@ -6136,7 +6136,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4489 0c8f 9C       		.byte	0x9c
  4490 0c90 C20C0000 		.4byte	0xcc2
  4491 0c94 1C       		.uleb128 0x1c
- 4492 0c95 2F0A0000 		.4byte	.LASF139
+ 4492 0c95 E4090000 		.4byte	.LASF139
  4493 0c99 01       		.byte	0x1
  4494 0c9a 8A02     		.2byte	0x28a
  4495 0c9c C20C0000 		.4byte	0xcc2
@@ -6163,7 +6163,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4516 0cc2 09       		.uleb128 0x9
  4517 0cc3 09030000 		.4byte	0x309
  4518 0cc7 1E       		.uleb128 0x1e
- 4519 0cc8 F70D0000 		.4byte	.LASF146
+ 4519 0cc8 F60D0000 		.4byte	.LASF146
  4520 0ccc 01       		.byte	0x1
  4521 0ccd 9502     		.2byte	0x295
  4522 0ccf 78010000 		.4byte	0x178
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4531 0ce7 9502     		.2byte	0x295
  4532 0ce9 C20C0000 		.4byte	0xcc2
  4533 0ced 02       		.uleb128 0x2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 104
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 104
 
 
  4534 0cee 91       		.byte	0x91
@@ -6201,7 +6201,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4551 0d0d 70       		.sleb128 -16
  4552 0d0e 00       		.byte	0
  4553 0d0f 1E       		.uleb128 0x1e
- 4554 0d10 5F0D0000 		.4byte	.LASF147
+ 4554 0d10 5E0D0000 		.4byte	.LASF147
  4555 0d14 01       		.byte	0x1
  4556 0d15 A002     		.2byte	0x2a0
  4557 0d17 6D010000 		.4byte	0x16d
@@ -6211,7 +6211,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4561 0d24 9C       		.byte	0x9c
  4562 0d25 750D0000 		.4byte	0xd75
  4563 0d29 1C       		.uleb128 0x1c
- 4564 0d2a 2F0A0000 		.4byte	.LASF139
+ 4564 0d2a E4090000 		.4byte	.LASF139
  4565 0d2e 01       		.byte	0x1
  4566 0d2f A002     		.2byte	0x2a0
  4567 0d31 09030000 		.4byte	0x309
@@ -6227,7 +6227,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4577 0d45 91       		.byte	0x91
  4578 0d46 68       		.sleb128 -24
  4579 0d47 1C       		.uleb128 0x1c
- 4580 0d48 070C0000 		.4byte	.LASF127
+ 4580 0d48 CD090000 		.4byte	.LASF127
  4581 0d4c 01       		.byte	0x1
  4582 0d4d A002     		.2byte	0x2a0
  4583 0d4f 83010000 		.4byte	0x183
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4588 0d57 2D060000 		.4byte	.LASF77
  4589 0d5b 01       		.byte	0x1
  4590 0d5c A202     		.2byte	0x2a2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 105
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 105
 
 
  4591 0d5e 6D010000 		.4byte	0x16d
@@ -6246,7 +6246,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4593 0d63 91       		.byte	0x91
  4594 0d64 74       		.sleb128 -12
  4595 0d65 1D       		.uleb128 0x1d
- 4596 0d66 730A0000 		.4byte	.LASF80
+ 4596 0d66 280A0000 		.4byte	.LASF80
  4597 0d6a 01       		.byte	0x1
  4598 0d6b A302     		.2byte	0x2a3
  4599 0d6d 6D010000 		.4byte	0x16d
@@ -6257,7 +6257,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4604 0d75 09       		.uleb128 0x9
  4605 0d76 0E010000 		.4byte	0x10e
  4606 0d7a 1E       		.uleb128 0x1e
- 4607 0d7b 720C0000 		.4byte	.LASF149
+ 4607 0d7b 710C0000 		.4byte	.LASF149
  4608 0d7f 01       		.byte	0x1
  4609 0d80 AB02     		.2byte	0x2ab
  4610 0d82 6D010000 		.4byte	0x16d
@@ -6283,7 +6283,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4630 0db0 91       		.byte	0x91
  4631 0db1 68       		.sleb128 -24
  4632 0db2 1C       		.uleb128 0x1c
- 4633 0db3 070C0000 		.4byte	.LASF127
+ 4633 0db3 CD090000 		.4byte	.LASF127
  4634 0db7 01       		.byte	0x1
  4635 0db8 AB02     		.2byte	0x2ab
  4636 0dba 83010000 		.4byte	0x183
@@ -6298,11 +6298,11 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4645 0dcd 02       		.uleb128 0x2
  4646 0dce 91       		.byte	0x91
  4647 0dcf 74       		.sleb128 -12
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 106
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 106
 
 
  4648 0dd0 1D       		.uleb128 0x1d
- 4649 0dd1 730A0000 		.4byte	.LASF80
+ 4649 0dd1 280A0000 		.4byte	.LASF80
  4650 0dd5 01       		.byte	0x1
  4651 0dd6 AE02     		.2byte	0x2ae
  4652 0dd8 6D010000 		.4byte	0x16d
@@ -6329,7 +6329,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4673 0e07 91       		.byte	0x91
  4674 0e08 6C       		.sleb128 -20
  4675 0e09 1C       		.uleb128 0x1c
- 4676 0e0a 070C0000 		.4byte	.LASF127
+ 4676 0e0a CD090000 		.4byte	.LASF127
  4677 0e0e 01       		.byte	0x1
  4678 0e0f B602     		.2byte	0x2b6
  4679 0e11 83010000 		.4byte	0x183
@@ -6345,7 +6345,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4689 0e25 91       		.byte	0x91
  4690 0e26 74       		.sleb128 -12
  4691 0e27 1D       		.uleb128 0x1d
- 4692 0e28 730A0000 		.4byte	.LASF80
+ 4692 0e28 280A0000 		.4byte	.LASF80
  4693 0e2c 01       		.byte	0x1
  4694 0e2d B902     		.2byte	0x2b9
  4695 0e2f 6D010000 		.4byte	0x16d
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4702 0e3c 01       		.byte	0x1
  4703 0e3d CF02     		.2byte	0x2cf
  4704 0e3f 09030000 		.4byte	0x309
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 107
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 107
 
 
  4705 0e43 00000000 		.4byte	.LFB103
@@ -6375,7 +6375,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4716 0e5e 91       		.byte	0x91
  4717 0e5f 6F       		.sleb128 -17
  4718 0e60 1D       		.uleb128 0x1d
- 4719 0e61 730A0000 		.4byte	.LASF80
+ 4719 0e61 280A0000 		.4byte	.LASF80
  4720 0e65 01       		.byte	0x1
  4721 0e66 D102     		.2byte	0x2d1
  4722 0e68 09030000 		.4byte	0x309
@@ -6404,7 +6404,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4745 0e99 9C       		.byte	0x9c
  4746 0e9a DB0E0000 		.4byte	0xedb
  4747 0e9e 1C       		.uleb128 0x1c
- 4748 0e9f 9F0B0000 		.4byte	.LASF153
+ 4748 0e9f 540B0000 		.4byte	.LASF153
  4749 0ea3 01       		.byte	0x1
  4750 0ea4 E902     		.2byte	0x2e9
  4751 0ea6 78010000 		.4byte	0x178
@@ -6418,12 +6418,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4759 0eb5 78010000 		.4byte	0x178
  4760 0eb9 02       		.uleb128 0x2
  4761 0eba 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 108
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 108
 
 
  4762 0ebb 68       		.sleb128 -24
  4763 0ebc 1D       		.uleb128 0x1d
- 4764 0ebd 730A0000 		.4byte	.LASF80
+ 4764 0ebd 280A0000 		.4byte	.LASF80
  4765 0ec1 01       		.byte	0x1
  4766 0ec2 EB02     		.2byte	0x2eb
  4767 0ec4 09030000 		.4byte	0x309
@@ -6458,7 +6458,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4796 0f02 91       		.byte	0x91
  4797 0f03 6C       		.sleb128 -20
  4798 0f04 1C       		.uleb128 0x1c
- 4799 0f05 CE090000 		.4byte	.LASF157
+ 4799 0f05 76090000 		.4byte	.LASF157
  4800 0f09 01       		.byte	0x1
  4801 0f0a 0403     		.2byte	0x304
  4802 0f0c 83010000 		.4byte	0x183
@@ -6466,7 +6466,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4804 0f11 91       		.byte	0x91
  4805 0f12 68       		.sleb128 -24
  4806 0f13 1D       		.uleb128 0x1d
- 4807 0f14 730A0000 		.4byte	.LASF80
+ 4807 0f14 280A0000 		.4byte	.LASF80
  4808 0f18 01       		.byte	0x1
  4809 0f19 0603     		.2byte	0x306
  4810 0f1b 6D010000 		.4byte	0x16d
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4816 0f27 01       		.byte	0x1
  4817 0f28 0703     		.2byte	0x307
  4818 0f2a 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 109
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 109
 
 
  4819 0f2e 02       		.uleb128 0x2
@@ -6504,7 +6504,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4839 0f59 91       		.byte	0x91
  4840 0f5a 6C       		.sleb128 -20
  4841 0f5b 1D       		.uleb128 0x1d
- 4842 0f5c 730A0000 		.4byte	.LASF80
+ 4842 0f5c 280A0000 		.4byte	.LASF80
  4843 0f60 01       		.byte	0x1
  4844 0f61 1303     		.2byte	0x313
  4845 0f63 6D010000 		.4byte	0x16d
@@ -6521,7 +6521,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4856 0f78 74       		.sleb128 -12
  4857 0f79 00       		.byte	0
  4858 0f7a 1B       		.uleb128 0x1b
- 4859 0f7b 140C0000 		.4byte	.LASF159
+ 4859 0f7b 130C0000 		.4byte	.LASF159
  4860 0f7f 01       		.byte	0x1
  4861 0f80 5203     		.2byte	0x352
  4862 0f82 00000000 		.4byte	.LFB107
@@ -6538,7 +6538,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4873 0f9d 91       		.byte	0x91
  4874 0f9e 6C       		.sleb128 -20
  4875 0f9f 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 110
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 110
 
 
  4876 0fa0 39050000 		.4byte	.LASF58
@@ -6584,7 +6584,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4916 0ff1 74       		.sleb128 -12
  4917 0ff2 00       		.byte	0
  4918 0ff3 1E       		.uleb128 0x1e
- 4919 0ff4 E7090000 		.4byte	.LASF161
+ 4919 0ff4 8F090000 		.4byte	.LASF161
  4920 0ff8 01       		.byte	0x1
  4921 0ff9 6A03     		.2byte	0x36a
  4922 0ffb 16010000 		.4byte	0x116
@@ -6598,7 +6598,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4930 1012 01       		.byte	0x1
  4931 1013 6A03     		.2byte	0x36a
  4932 1015 09030000 		.4byte	0x309
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 111
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 111
 
 
  4933 1019 02       		.uleb128 0x2
@@ -6613,7 +6613,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4942 1029 91       		.byte	0x91
  4943 102a 74       		.sleb128 -12
  4944 102b 1D       		.uleb128 0x1d
- 4945 102c 37090000 		.4byte	.LASF110
+ 4945 102c DF080000 		.4byte	.LASF110
  4946 1030 01       		.byte	0x1
  4947 1031 6D03     		.2byte	0x36d
  4948 1033 16010000 		.4byte	0x116
@@ -6622,7 +6622,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4951 1039 70       		.sleb128 -16
  4952 103a 00       		.byte	0
  4953 103b 1B       		.uleb128 0x1b
- 4954 103c 250B0000 		.4byte	.LASF162
+ 4954 103c DA0A0000 		.4byte	.LASF162
  4955 1040 01       		.byte	0x1
  4956 1041 7703     		.2byte	0x377
  4957 1043 00000000 		.4byte	.LFB110
@@ -6658,7 +6658,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  4987 1085 9C       		.byte	0x9c
  4988 1086 B8100000 		.4byte	0x10b8
  4989 108a 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 112
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 112
 
 
  4990 108b 21060000 		.4byte	.LASF164
@@ -6718,7 +6718,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5044 10f4 00000000 		.4byte	.LFB113
  5045 10f8 1E000000 		.4byte	.LFE113-.LFB113
  5046 10fc 01       		.uleb128 0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 113
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 113
 
 
  5047 10fd 9C       		.byte	0x9c
@@ -6743,7 +6743,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5066 1127 9C       		.byte	0x9c
  5067 1128 4B110000 		.4byte	0x114b
  5068 112c 1D       		.uleb128 0x1d
- 5069 112d 730A0000 		.4byte	.LASF80
+ 5069 112d 280A0000 		.4byte	.LASF80
  5070 1131 01       		.byte	0x1
  5071 1132 AB03     		.2byte	0x3ab
  5072 1134 2C000000 		.4byte	0x2c
@@ -6760,7 +6760,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5083 1149 74       		.sleb128 -12
  5084 114a 00       		.byte	0
  5085 114b 1E       		.uleb128 0x1e
- 5086 114c B8090000 		.4byte	.LASF169
+ 5086 114c 60090000 		.4byte	.LASF169
  5087 1150 01       		.byte	0x1
  5088 1151 6704     		.2byte	0x467
  5089 1153 1F030000 		.4byte	0x31f
@@ -6770,7 +6770,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5093 1160 9C       		.byte	0x9c
  5094 1161 84110000 		.4byte	0x1184
  5095 1165 1D       		.uleb128 0x1d
- 5096 1166 730A0000 		.4byte	.LASF80
+ 5096 1166 280A0000 		.4byte	.LASF80
  5097 116a 01       		.byte	0x1
  5098 116b 6904     		.2byte	0x469
  5099 116d 1F030000 		.4byte	0x31f
@@ -6778,7 +6778,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5101 1172 91       		.byte	0x91
  5102 1173 70       		.sleb128 -16
  5103 1174 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 114
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 114
 
 
  5104 1175 2D060000 		.4byte	.LASF77
@@ -6790,7 +6790,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5110 1182 74       		.sleb128 -12
  5111 1183 00       		.byte	0
  5112 1184 1E       		.uleb128 0x1e
- 5113 1185 870B0000 		.4byte	.LASF170
+ 5113 1185 3C0B0000 		.4byte	.LASF170
  5114 1189 01       		.byte	0x1
  5115 118a 8204     		.2byte	0x482
  5116 118c 35030000 		.4byte	0x335
@@ -6808,7 +6808,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5128 11ab 91       		.byte	0x91
  5129 11ac 6C       		.sleb128 -20
  5130 11ad 1C       		.uleb128 0x1c
- 5131 11ae 7B0A0000 		.4byte	.LASF172
+ 5131 11ae 300A0000 		.4byte	.LASF172
  5132 11b2 01       		.byte	0x1
  5133 11b3 8204     		.2byte	0x482
  5134 11b5 08120000 		.4byte	0x1208
@@ -6816,7 +6816,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5136 11ba 91       		.byte	0x91
  5137 11bb 68       		.sleb128 -24
  5138 11bc 1C       		.uleb128 0x1c
- 5139 11bd 280D0000 		.4byte	.LASF173
+ 5139 11bd 270D0000 		.4byte	.LASF173
  5140 11c1 01       		.byte	0x1
  5141 11c2 8204     		.2byte	0x482
  5142 11c4 0D120000 		.4byte	0x120d
@@ -6832,18 +6832,18 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5152 11d8 91       		.byte	0x91
  5153 11d9 60       		.sleb128 -32
  5154 11da 1C       		.uleb128 0x1c
- 5155 11db 070C0000 		.4byte	.LASF127
+ 5155 11db CD090000 		.4byte	.LASF127
  5156 11df 01       		.byte	0x1
  5157 11e0 8204     		.2byte	0x482
  5158 11e2 83010000 		.4byte	0x183
  5159 11e6 02       		.uleb128 0x2
  5160 11e7 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 115
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 115
 
 
  5161 11e8 00       		.sleb128 0
  5162 11e9 1D       		.uleb128 0x1d
- 5163 11ea 730A0000 		.4byte	.LASF80
+ 5163 11ea 280A0000 		.4byte	.LASF80
  5164 11ee 01       		.byte	0x1
  5165 11ef 8404     		.2byte	0x484
  5166 11f1 35030000 		.4byte	0x335
@@ -6890,7 +6890,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5207 1248 91       		.byte	0x91
  5208 1249 68       		.sleb128 -24
  5209 124a 1D       		.uleb128 0x1d
- 5210 124b 730A0000 		.4byte	.LASF80
+ 5210 124b 280A0000 		.4byte	.LASF80
  5211 124f 01       		.byte	0x1
  5212 1250 9004     		.2byte	0x490
  5213 1252 35030000 		.4byte	0x335
@@ -6898,7 +6898,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5215 1257 91       		.byte	0x91
  5216 1258 70       		.sleb128 -16
  5217 1259 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 116
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 116
 
 
  5218 125a 2D060000 		.4byte	.LASF77
@@ -6910,7 +6910,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5224 1267 74       		.sleb128 -12
  5225 1268 00       		.byte	0
  5226 1269 1E       		.uleb128 0x1e
- 5227 126a AB0D0000 		.4byte	.LASF177
+ 5227 126a AA0D0000 		.4byte	.LASF177
  5228 126e 01       		.byte	0x1
  5229 126f 9A04     		.2byte	0x49a
  5230 1271 35030000 		.4byte	0x335
@@ -6928,7 +6928,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5242 1290 91       		.byte	0x91
  5243 1291 6C       		.sleb128 -20
  5244 1292 1C       		.uleb128 0x1c
- 5245 1293 B50B0000 		.4byte	.LASF178
+ 5245 1293 6A0B0000 		.4byte	.LASF178
  5246 1297 01       		.byte	0x1
  5247 1298 9A04     		.2byte	0x49a
  5248 129a 08120000 		.4byte	0x1208
@@ -6936,7 +6936,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5250 129f 91       		.byte	0x91
  5251 12a0 68       		.sleb128 -24
  5252 12a1 1D       		.uleb128 0x1d
- 5253 12a2 730A0000 		.4byte	.LASF80
+ 5253 12a2 280A0000 		.4byte	.LASF80
  5254 12a6 01       		.byte	0x1
  5255 12a7 9C04     		.2byte	0x49c
  5256 12a9 35030000 		.4byte	0x335
@@ -6953,12 +6953,12 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5267 12be 74       		.sleb128 -12
  5268 12bf 00       		.byte	0
  5269 12c0 1E       		.uleb128 0x1e
- 5270 12c1 40090000 		.4byte	.LASF179
+ 5270 12c1 E8080000 		.4byte	.LASF179
  5271 12c5 01       		.byte	0x1
  5272 12c6 A604     		.2byte	0x4a6
  5273 12c8 35030000 		.4byte	0x335
  5274 12cc 00000000 		.4byte	.LFB119
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 117
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 117
 
 
  5275 12d0 32000000 		.4byte	.LFE119-.LFB119
@@ -6974,7 +6974,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5285 12e7 91       		.byte	0x91
  5286 12e8 6C       		.sleb128 -20
  5287 12e9 1C       		.uleb128 0x1c
- 5288 12ea B50B0000 		.4byte	.LASF178
+ 5288 12ea 6A0B0000 		.4byte	.LASF178
  5289 12ee 01       		.byte	0x1
  5290 12ef A604     		.2byte	0x4a6
  5291 12f1 08120000 		.4byte	0x1208
@@ -6982,7 +6982,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5293 12f6 91       		.byte	0x91
  5294 12f7 68       		.sleb128 -24
  5295 12f8 1C       		.uleb128 0x1c
- 5296 12f9 7B0A0000 		.4byte	.LASF172
+ 5296 12f9 300A0000 		.4byte	.LASF172
  5297 12fd 01       		.byte	0x1
  5298 12fe A604     		.2byte	0x4a6
  5299 1300 08120000 		.4byte	0x1208
@@ -6990,7 +6990,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5301 1305 91       		.byte	0x91
  5302 1306 64       		.sleb128 -28
  5303 1307 1C       		.uleb128 0x1c
- 5304 1308 070C0000 		.4byte	.LASF127
+ 5304 1308 CD090000 		.4byte	.LASF127
  5305 130c 01       		.byte	0x1
  5306 130d A604     		.2byte	0x4a6
  5307 130f 83010000 		.4byte	0x183
@@ -6998,7 +6998,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5309 1314 91       		.byte	0x91
  5310 1315 60       		.sleb128 -32
  5311 1316 1D       		.uleb128 0x1d
- 5312 1317 730A0000 		.4byte	.LASF80
+ 5312 1317 280A0000 		.4byte	.LASF80
  5313 131b 01       		.byte	0x1
  5314 131c A804     		.2byte	0x4a8
  5315 131e 35030000 		.4byte	0x335
@@ -7015,10 +7015,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5326 1333 74       		.sleb128 -12
  5327 1334 00       		.byte	0
  5328 1335 1B       		.uleb128 0x1b
- 5329 1336 710D0000 		.4byte	.LASF180
+ 5329 1336 700D0000 		.4byte	.LASF180
  5330 133a 01       		.byte	0x1
  5331 133b B204     		.2byte	0x4b2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 118
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 118
 
 
  5332 133d 00000000 		.4byte	.LFB120
@@ -7054,7 +7054,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5362 137f 9C       		.byte	0x9c
  5363 1380 DF130000 		.4byte	0x13df
  5364 1384 1C       		.uleb128 0x1c
- 5365 1385 350C0000 		.4byte	.LASF182
+ 5365 1385 340C0000 		.4byte	.LASF182
  5366 1389 01       		.byte	0x1
  5367 138a BB04     		.2byte	0x4bb
  5368 138c 40030000 		.4byte	0x340
@@ -7078,10 +7078,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5386 13af 91       		.byte	0x91
  5387 13b0 64       		.sleb128 -28
  5388 13b1 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 119
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 119
 
 
- 5389 13b2 070C0000 		.4byte	.LASF127
+ 5389 13b2 CD090000 		.4byte	.LASF127
  5390 13b6 01       		.byte	0x1
  5391 13b7 BB04     		.2byte	0x4bb
  5392 13b9 83010000 		.4byte	0x183
@@ -7089,7 +7089,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5394 13be 91       		.byte	0x91
  5395 13bf 60       		.sleb128 -32
  5396 13c0 1D       		.uleb128 0x1d
- 5397 13c1 730A0000 		.4byte	.LASF80
+ 5397 13c1 280A0000 		.4byte	.LASF80
  5398 13c5 01       		.byte	0x1
  5399 13c6 BD04     		.2byte	0x4bd
  5400 13c8 2C000000 		.4byte	0x2c
@@ -7116,7 +7116,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5421 13f4 9C       		.byte	0x9c
  5422 13f5 27140000 		.4byte	0x1427
  5423 13f9 1C       		.uleb128 0x1c
- 5424 13fa 350C0000 		.4byte	.LASF182
+ 5424 13fa 340C0000 		.4byte	.LASF182
  5425 13fe 01       		.byte	0x1
  5426 13ff C704     		.2byte	0x4c7
  5427 1401 40030000 		.4byte	0x340
@@ -7124,7 +7124,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5429 1406 91       		.byte	0x91
  5430 1407 6C       		.sleb128 -20
  5431 1408 1D       		.uleb128 0x1d
- 5432 1409 730A0000 		.4byte	.LASF80
+ 5432 1409 280A0000 		.4byte	.LASF80
  5433 140d 01       		.byte	0x1
  5434 140e C904     		.2byte	0x4c9
  5435 1410 2C000000 		.4byte	0x2c
@@ -7138,13 +7138,13 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5443 141f 6D010000 		.4byte	0x16d
  5444 1423 02       		.uleb128 0x2
  5445 1424 91       		.byte	0x91
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 120
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 120
 
 
  5446 1425 74       		.sleb128 -12
  5447 1426 00       		.byte	0
  5448 1427 1E       		.uleb128 0x1e
- 5449 1428 DE0D0000 		.4byte	.LASF186
+ 5449 1428 DD0D0000 		.4byte	.LASF186
  5450 142c 01       		.byte	0x1
  5451 142d D304     		.2byte	0x4d3
  5452 142f 2C000000 		.4byte	0x2c
@@ -7154,7 +7154,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5456 143c 9C       		.byte	0x9c
  5457 143d 9C140000 		.4byte	0x149c
  5458 1441 1C       		.uleb128 0x1c
- 5459 1442 350C0000 		.4byte	.LASF182
+ 5459 1442 340C0000 		.4byte	.LASF182
  5460 1446 01       		.byte	0x1
  5461 1447 D304     		.2byte	0x4d3
  5462 1449 40030000 		.4byte	0x340
@@ -7170,7 +7170,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5472 145d 91       		.byte	0x91
  5473 145e 68       		.sleb128 -24
  5474 145f 1C       		.uleb128 0x1c
- 5475 1460 F60A0000 		.4byte	.LASF188
+ 5475 1460 AB0A0000 		.4byte	.LASF188
  5476 1464 01       		.byte	0x1
  5477 1465 D304     		.2byte	0x4d3
  5478 1467 2C000000 		.4byte	0x2c
@@ -7178,7 +7178,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5480 146c 91       		.byte	0x91
  5481 146d 64       		.sleb128 -28
  5482 146e 1C       		.uleb128 0x1c
- 5483 146f 070C0000 		.4byte	.LASF127
+ 5483 146f CD090000 		.4byte	.LASF127
  5484 1473 01       		.byte	0x1
  5485 1474 D304     		.2byte	0x4d3
  5486 1476 83010000 		.4byte	0x183
@@ -7186,7 +7186,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5488 147b 91       		.byte	0x91
  5489 147c 60       		.sleb128 -32
  5490 147d 1D       		.uleb128 0x1d
- 5491 147e 730A0000 		.4byte	.LASF80
+ 5491 147e 280A0000 		.4byte	.LASF80
  5492 1482 01       		.byte	0x1
  5493 1483 D504     		.2byte	0x4d5
  5494 1485 2C000000 		.4byte	0x2c
@@ -7198,7 +7198,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5500 1491 01       		.byte	0x1
  5501 1492 D604     		.2byte	0x4d6
  5502 1494 6D010000 		.4byte	0x16d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 121
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 121
 
 
  5503 1498 02       		.uleb128 0x2
@@ -7215,7 +7215,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5514 14ad 9C       		.byte	0x9c
  5515 14ae D1140000 		.4byte	0x14d1
  5516 14b2 1C       		.uleb128 0x1c
- 5517 14b3 350C0000 		.4byte	.LASF182
+ 5517 14b3 340C0000 		.4byte	.LASF182
  5518 14b7 01       		.byte	0x1
  5519 14b8 DF04     		.2byte	0x4df
  5520 14ba 40030000 		.4byte	0x340
@@ -7242,7 +7242,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5541 14e6 9C       		.byte	0x9c
  5542 14e7 19150000 		.4byte	0x1519
  5543 14eb 1C       		.uleb128 0x1c
- 5544 14ec 350C0000 		.4byte	.LASF182
+ 5544 14ec 340C0000 		.4byte	.LASF182
  5545 14f0 01       		.byte	0x1
  5546 14f1 E804     		.2byte	0x4e8
  5547 14f3 40030000 		.4byte	0x340
@@ -7250,7 +7250,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5549 14f8 91       		.byte	0x91
  5550 14f9 6C       		.sleb128 -20
  5551 14fa 1D       		.uleb128 0x1d
- 5552 14fb 730A0000 		.4byte	.LASF80
+ 5552 14fb 280A0000 		.4byte	.LASF80
  5553 14ff 01       		.byte	0x1
  5554 1500 EA04     		.2byte	0x4ea
  5555 1502 6D010000 		.4byte	0x16d
@@ -7258,7 +7258,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5557 1507 91       		.byte	0x91
  5558 1508 70       		.sleb128 -16
  5559 1509 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 122
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 122
 
 
  5560 150a 2D060000 		.4byte	.LASF77
@@ -7270,7 +7270,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5566 1517 74       		.sleb128 -12
  5567 1518 00       		.byte	0
  5568 1519 1E       		.uleb128 0x1e
- 5569 151a DD0B0000 		.4byte	.LASF191
+ 5569 151a 920B0000 		.4byte	.LASF191
  5570 151e 01       		.byte	0x1
  5571 151f F404     		.2byte	0x4f4
  5572 1521 6D010000 		.4byte	0x16d
@@ -7280,7 +7280,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5576 152e 9C       		.byte	0x9c
  5577 152f 61150000 		.4byte	0x1561
  5578 1533 1C       		.uleb128 0x1c
- 5579 1534 350C0000 		.4byte	.LASF182
+ 5579 1534 340C0000 		.4byte	.LASF182
  5580 1538 01       		.byte	0x1
  5581 1539 F404     		.2byte	0x4f4
  5582 153b 40030000 		.4byte	0x340
@@ -7288,7 +7288,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5584 1540 91       		.byte	0x91
  5585 1541 6C       		.sleb128 -20
  5586 1542 1D       		.uleb128 0x1d
- 5587 1543 730A0000 		.4byte	.LASF80
+ 5587 1543 280A0000 		.4byte	.LASF80
  5588 1547 01       		.byte	0x1
  5589 1548 F604     		.2byte	0x4f6
  5590 154a 6D010000 		.4byte	0x16d
@@ -7315,10 +7315,10 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5611 1576 9C       		.byte	0x9c
  5612 1577 A9150000 		.4byte	0x15a9
  5613 157b 1C       		.uleb128 0x1c
- 5614 157c 350C0000 		.4byte	.LASF182
+ 5614 157c 340C0000 		.4byte	.LASF182
  5615 1580 01       		.byte	0x1
  5616 1581 0005     		.2byte	0x500
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 123
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 123
 
 
  5617 1583 40030000 		.4byte	0x340
@@ -7326,7 +7326,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5619 1588 91       		.byte	0x91
  5620 1589 6C       		.sleb128 -20
  5621 158a 1D       		.uleb128 0x1d
- 5622 158b 730A0000 		.4byte	.LASF80
+ 5622 158b 280A0000 		.4byte	.LASF80
  5623 158f 01       		.byte	0x1
  5624 1590 0205     		.2byte	0x502
  5625 1592 6D010000 		.4byte	0x16d
@@ -7343,7 +7343,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5636 15a7 74       		.sleb128 -12
  5637 15a8 00       		.byte	0
  5638 15a9 1E       		.uleb128 0x1e
- 5639 15aa 660B0000 		.4byte	.LASF193
+ 5639 15aa 1B0B0000 		.4byte	.LASF193
  5640 15ae 01       		.byte	0x1
  5641 15af 0C05     		.2byte	0x50c
  5642 15b1 2C000000 		.4byte	0x2c
@@ -7353,7 +7353,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5646 15be 9C       		.byte	0x9c
  5647 15bf F1150000 		.4byte	0x15f1
  5648 15c3 1C       		.uleb128 0x1c
- 5649 15c4 350C0000 		.4byte	.LASF182
+ 5649 15c4 340C0000 		.4byte	.LASF182
  5650 15c8 01       		.byte	0x1
  5651 15c9 0C05     		.2byte	0x50c
  5652 15cb 40030000 		.4byte	0x340
@@ -7361,7 +7361,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5654 15d0 91       		.byte	0x91
  5655 15d1 6C       		.sleb128 -20
  5656 15d2 1D       		.uleb128 0x1d
- 5657 15d3 730A0000 		.4byte	.LASF80
+ 5657 15d3 280A0000 		.4byte	.LASF80
  5658 15d7 01       		.byte	0x1
  5659 15d8 0E05     		.2byte	0x50e
  5660 15da 2C000000 		.4byte	0x2c
@@ -7378,7 +7378,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5671 15ef 74       		.sleb128 -12
  5672 15f0 00       		.byte	0
  5673 15f1 1E       		.uleb128 0x1e
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 124
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 124
 
 
  5674 15f2 46010000 		.4byte	.LASF194
@@ -7391,7 +7391,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5681 1606 9C       		.byte	0x9c
  5682 1607 39160000 		.4byte	0x1639
  5683 160b 1C       		.uleb128 0x1c
- 5684 160c 350C0000 		.4byte	.LASF182
+ 5684 160c 340C0000 		.4byte	.LASF182
  5685 1610 01       		.byte	0x1
  5686 1611 1805     		.2byte	0x518
  5687 1613 40030000 		.4byte	0x340
@@ -7399,7 +7399,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5689 1618 91       		.byte	0x91
  5690 1619 6C       		.sleb128 -20
  5691 161a 1D       		.uleb128 0x1d
- 5692 161b 730A0000 		.4byte	.LASF80
+ 5692 161b 280A0000 		.4byte	.LASF80
  5693 161f 01       		.byte	0x1
  5694 1620 1A05     		.2byte	0x51a
  5695 1622 2C000000 		.4byte	0x2c
@@ -7426,7 +7426,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5716 164e 9C       		.byte	0x9c
  5717 164f 90160000 		.4byte	0x1690
  5718 1653 1C       		.uleb128 0x1c
- 5719 1654 350C0000 		.4byte	.LASF182
+ 5719 1654 340C0000 		.4byte	.LASF182
  5720 1658 01       		.byte	0x1
  5721 1659 2405     		.2byte	0x524
  5722 165b 40030000 		.4byte	0x340
@@ -7434,18 +7434,18 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5724 1660 91       		.byte	0x91
  5725 1661 6C       		.sleb128 -20
  5726 1662 1C       		.uleb128 0x1c
- 5727 1663 430C0000 		.4byte	.LASF196
+ 5727 1663 420C0000 		.4byte	.LASF196
  5728 1667 01       		.byte	0x1
  5729 1668 2405     		.2byte	0x524
  5730 166a 2C000000 		.4byte	0x2c
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 125
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 125
 
 
  5731 166e 02       		.uleb128 0x2
  5732 166f 91       		.byte	0x91
  5733 1670 68       		.sleb128 -24
  5734 1671 1D       		.uleb128 0x1d
- 5735 1672 730A0000 		.4byte	.LASF80
+ 5735 1672 280A0000 		.4byte	.LASF80
  5736 1676 01       		.byte	0x1
  5737 1677 2605     		.2byte	0x526
  5738 1679 6D010000 		.4byte	0x16d
@@ -7488,7 +7488,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5775 16c6 91       		.byte	0x91
  5776 16c7 68       		.sleb128 -24
  5777 16c8 1C       		.uleb128 0x1c
- 5778 16c9 F40C0000 		.4byte	.LASF200
+ 5778 16c9 F30C0000 		.4byte	.LASF200
  5779 16cd 01       		.byte	0x1
  5780 16ce 3105     		.2byte	0x531
  5781 16d0 6D010000 		.4byte	0x16d
@@ -7496,9 +7496,9 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5783 16d5 91       		.byte	0x91
  5784 16d6 64       		.sleb128 -28
  5785 16d7 1D       		.uleb128 0x1d
- 5786 16d8 730A0000 		.4byte	.LASF80
+ 5786 16d8 280A0000 		.4byte	.LASF80
  5787 16dc 01       		.byte	0x1
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 126
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 126
 
 
  5788 16dd 3305     		.2byte	0x533
@@ -7531,7 +7531,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5815 1712 03       		.byte	0x3
  5816 1713 00000000 		.4byte	DS18x8_Sensor
  5817 1717 21       		.uleb128 0x21
- 5818 1718 F60B0000 		.4byte	.LASF202
+ 5818 1718 AB0B0000 		.4byte	.LASF202
  5819 171c 06       		.byte	0x6
  5820 171d 39       		.byte	0x39
  5821 171e 02010000 		.4byte	0x102
@@ -7539,7 +7539,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5823 1723 03       		.byte	0x3
  5824 1724 00000000 		.4byte	DS18x8_DataReady
  5825 1728 22       		.uleb128 0x22
- 5826 1729 AB090000 		.4byte	.LASF203
+ 5826 1729 53090000 		.4byte	.LASF203
  5827 172d 0D       		.byte	0xd
  5828 172e 1207     		.2byte	0x712
  5829 1730 34170000 		.4byte	0x1734
@@ -7558,7 +7558,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5842 0007 03       		.uleb128 0x3
  5843 0008 0E       		.uleb128 0xe
  5844 0009 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 127
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 127
 
 
  5845 000a 0E       		.uleb128 0xe
@@ -7618,7 +7618,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5899 0040 13       		.uleb128 0x13
  5900 0041 00       		.byte	0
  5901 0042 00       		.byte	0
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 128
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 128
 
 
  5902 0043 06       		.uleb128 0x6
@@ -7678,7 +7678,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  5956 0079 49       		.uleb128 0x49
  5957 007a 13       		.uleb128 0x13
  5958 007b 38       		.uleb128 0x38
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 129
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 129
 
 
  5959 007c 0B       		.uleb128 0xb
@@ -7738,7 +7738,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6013 00b2 01       		.byte	0x1
  6014 00b3 49       		.uleb128 0x49
  6015 00b4 13       		.uleb128 0x13
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 130
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 130
 
 
  6016 00b5 01       		.uleb128 0x1
@@ -7798,7 +7798,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6070 00ec 00       		.byte	0
  6071 00ed 15       		.uleb128 0x15
  6072 00ee 2E       		.uleb128 0x2e
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 131
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 131
 
 
  6073 00ef 01       		.byte	0x1
@@ -7858,7 +7858,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6127 0125 0E       		.uleb128 0xe
  6128 0126 3A       		.uleb128 0x3a
  6129 0127 0B       		.uleb128 0xb
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 132
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 132
 
 
  6130 0128 3B       		.uleb128 0x3b
@@ -7918,7 +7918,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6184 0160 00       		.byte	0
  6185 0161 00       		.byte	0
  6186 0162 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 133
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 133
 
 
  6187 0163 05       		.uleb128 0x5
@@ -7978,7 +7978,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6241 019a 00       		.byte	0
  6242 019b 00       		.byte	0
  6243 019c 1F       		.uleb128 0x1f
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 134
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 134
 
 
  6244 019d 26       		.uleb128 0x26
@@ -8038,7 +8038,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6298              		.section	.debug_aranges,"",%progbits
  6299 0000 14020000 		.4byte	0x214
  6300 0004 0200     		.2byte	0x2
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 135
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 135
 
 
  6301 0006 00000000 		.4byte	.Ldebug_info0
@@ -8098,7 +8098,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6355 00d4 2A000000 		.4byte	.LFE92-.LFB92
  6356 00d8 00000000 		.4byte	.LFB93
  6357 00dc 26000000 		.4byte	.LFE93-.LFB93
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 136
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 136
 
 
  6358 00e0 00000000 		.4byte	.LFB94
@@ -8158,7 +8158,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6412 01b8 00000000 		.4byte	.LFB121
  6413 01bc 32000000 		.4byte	.LFE121-.LFB121
  6414 01c0 00000000 		.4byte	.LFB122
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 137
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 137
 
 
  6415 01c4 26000000 		.4byte	.LFE122-.LFB122
@@ -8218,7 +8218,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6469 007c 22000000 		.4byte	.LFE83
  6470 0080 00000000 		.4byte	.LFB84
  6471 0084 22000000 		.4byte	.LFE84
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 138
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 138
 
 
  6472 0088 00000000 		.4byte	.LFB85
@@ -8278,7 +8278,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6526 0160 00000000 		.4byte	.LFB112
  6527 0164 22000000 		.4byte	.LFE112
  6528 0168 00000000 		.4byte	.LFB113
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 139
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 139
 
 
  6529 016c 1E000000 		.4byte	.LFE113
@@ -8338,7 +8338,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6574      75654769 
  6574      76654D75 
  6574      74657852 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 140
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 140
 
 
  6575              	.LASF163:
@@ -8398,7 +8398,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6595              	.LASF46:
  6596 00e7 44533138 		.ascii	"DS18x8_TSensor\000"
  6596      78385F54 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 141
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 141
 
 
  6596      53656E73 
@@ -8458,7 +8458,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6618      6B44656C 
  6618      6179556E 
  6618      74696C00 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 142
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 142
 
 
  6619              	.LASF204:
@@ -8518,7 +8518,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6638      75726E00 
  6639              	.LASF144:
  6640 02b3 78436F70 		.ascii	"xCopyPosition\000"
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 143
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 143
 
 
  6640      79506F73 
@@ -8578,7 +8578,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6663              	.LASF67:
  6664 0364 51756575 		.ascii	"QueueDefinition\000"
  6664      65446566 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 144
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 144
 
 
  6664      696E6974 
@@ -8638,7 +8638,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6683              	.LASF98:
  6684 0438 4D50555F 		.ascii	"MPU_eTaskGetState\000"
  6684      65546173 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 145
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 145
 
 
  6684      6B476574 
@@ -8698,7 +8698,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6706      416C6C42 
  6706      69747300 
  6707              	.LASF201:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 146
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 146
 
 
  6708 04ee 44533138 		.ascii	"DS18x8_Sensor\000"
@@ -8758,7 +8758,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6730      00
  6731              	.LASF83:
  6732 05ab 76506F72 		.ascii	"vPortResetPrivilege\000"
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 147
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 147
 
 
  6732      74526573 
@@ -8818,7 +8818,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6757              	.LASF102:
  6758 0654 4D50555F 		.ascii	"MPU_vTaskResume\000"
  6758      76546173 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 148
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 148
 
 
  6758      6B526573 
@@ -8878,7 +8878,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6780      6F726974 
  6780      7900
  6781              	.LASF27:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 149
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 149
 
 
  6782 070d 5461736B 		.ascii	"TaskFunction_t\000"
@@ -8938,7 +8938,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6804      6B537461 
  6804      746500
  6805              	.LASF109:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 150
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 150
 
 
  6806 07bd 78546173 		.ascii	"xTaskToQuery\000"
@@ -8998,7 +8998,7 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6826      78457665 
  6826      6E744772 
  6826      6F757043 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 151
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 151
 
 
  6826      6C656172 
@@ -9019,425 +9019,425 @@ ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 1
  6834 08aa 75696E74 		.ascii	"uint16_t\000"
  6834      31365F74 
  6834      00
- 6835              	.LASF206:
- 6836 08b3 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
- 6836      73657273 
- 6836      5C6B7269 
- 6836      73745C44 
- 6836      6F63756D 
- 6837 08e1 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 6837      544F535F 
- 6837      54454D50 
- 6837      4C415445 
- 6837      2D6D6173 
- 6838              	.LASF116:
- 6839 090b 4D50555F 		.ascii	"MPU_xTaskCheckForTimeOut\000"
- 6839      78546173 
- 6839      6B436865 
- 6839      636B466F 
- 6839      7254696D 
- 6840              	.LASF105:
- 6841 0924 4D50555F 		.ascii	"MPU_xTaskResumeAll\000"
- 6841      78546173 
- 6841      6B526573 
- 6841      756D6541 
- 6841      6C6C00
- 6842              	.LASF110:
- 6843 0937 70635265 		.ascii	"pcReturn\000"
- 6843      7475726E 
- 6843      00
- 6844              	.LASF179:
- 6845 0940 4D50555F 		.ascii	"MPU_xEventGroupSync\000"
- 6845      78457665 
- 6845      6E744772 
- 6845      6F757053 
- 6845      796E6300 
- 6846              	.LASF7:
- 6847 0954 73686F72 		.ascii	"short int\000"
- 6847      7420696E 
- 6847      7400
- 6848              	.LASF87:
- 6849 095e 70785461 		.ascii	"pxTaskToDelete\000"
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 152
+ 6835              	.LASF116:
+ 6836 08b3 4D50555F 		.ascii	"MPU_xTaskCheckForTimeOut\000"
+ 6836      78546173 
+ 6836      6B436865 
+ 6836      636B466F 
+ 6836      7254696D 
+ 6837              	.LASF105:
+ 6838 08cc 4D50555F 		.ascii	"MPU_xTaskResumeAll\000"
+ 6838      78546173 
+ 6838      6B526573 
+ 6838      756D6541 
+ 6838      6C6C00
+ 6839              	.LASF110:
+ 6840 08df 70635265 		.ascii	"pcReturn\000"
+ 6840      7475726E 
+ 6840      00
+ 6841              	.LASF179:
+ 6842 08e8 4D50555F 		.ascii	"MPU_xEventGroupSync\000"
+ 6842      78457665 
+ 6842      6E744772 
+ 6842      6F757053 
+ 6842      796E6300 
+ 6843              	.LASF7:
+ 6844 08fc 73686F72 		.ascii	"short int\000"
+ 6844      7420696E 
+ 6844      7400
+ 6845              	.LASF87:
+ 6846 0906 70785461 		.ascii	"pxTaskToDelete\000"
+ 6846      736B546F 
+ 6846      44656C65 
+ 6846      746500
+ 6847              	.LASF123:
+ 6848 0915 4D50555F 		.ascii	"MPU_xTaskNotifyWait\000"
+ 6848      78546173 
+ 6848      6B4E6F74 
+ 6848      69667957 
+ 6848      61697400 
+ 6849              	.LASF60:
+ 6850 0929 70765061 		.ascii	"pvParameters\000"
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 152
 
 
- 6849      736B546F 
- 6849      44656C65 
- 6849      746500
- 6850              	.LASF123:
- 6851 096d 4D50555F 		.ascii	"MPU_xTaskNotifyWait\000"
- 6851      78546173 
- 6851      6B4E6F74 
- 6851      69667957 
- 6851      61697400 
- 6852              	.LASF60:
- 6853 0981 70765061 		.ascii	"pvParameters\000"
- 6853      72616D65 
- 6853      74657273 
- 6853      00
- 6854              	.LASF75:
- 6855 098e 78506F72 		.ascii	"xPortRaisePrivilege\000"
- 6855      74526169 
- 6855      73655072 
- 6855      6976696C 
- 6855      65676500 
- 6856              	.LASF11:
- 6857 09a2 6C6F6E67 		.ascii	"long int\000"
- 6857      20696E74 
- 6857      00
- 6858              	.LASF203:
- 6859 09ab 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 6859      52784275 
- 6859      66666572 
- 6859      00
- 6860              	.LASF169:
- 6861 09b8 4D50555F 		.ascii	"MPU_xEventGroupCreate\000"
- 6861      78457665 
- 6861      6E744772 
- 6861      6F757043 
- 6861      72656174 
- 6862              	.LASF157:
- 6863 09ce 78426C6F 		.ascii	"xBlockTime\000"
- 6863      636B5469 
- 6863      6D6500
- 6864              	.LASF143:
- 6865 09d9 70764974 		.ascii	"pvItemToQueue\000"
- 6865      656D546F 
- 6865      51756575 
- 6865      6500
- 6866              	.LASF161:
- 6867 09e7 4D50555F 		.ascii	"MPU_pcQueueGetName\000"
- 6867      70635175 
- 6867      65756547 
- 6867      65744E61 
- 6867      6D6500
- 6868              	.LASF120:
- 6869 09fa 756C5661 		.ascii	"ulValue\000"
- 6869      6C756500 
- 6870              	.LASF101:
- 6871 0a02 70785461 		.ascii	"pxTaskToSuspend\000"
- 6871      736B546F 
- 6871      53757370 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 153
+ 6850      72616D65 
+ 6850      74657273 
+ 6850      00
+ 6851              	.LASF75:
+ 6852 0936 78506F72 		.ascii	"xPortRaisePrivilege\000"
+ 6852      74526169 
+ 6852      73655072 
+ 6852      6976696C 
+ 6852      65676500 
+ 6853              	.LASF11:
+ 6854 094a 6C6F6E67 		.ascii	"long int\000"
+ 6854      20696E74 
+ 6854      00
+ 6855              	.LASF203:
+ 6856 0953 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 6856      52784275 
+ 6856      66666572 
+ 6856      00
+ 6857              	.LASF169:
+ 6858 0960 4D50555F 		.ascii	"MPU_xEventGroupCreate\000"
+ 6858      78457665 
+ 6858      6E744772 
+ 6858      6F757043 
+ 6858      72656174 
+ 6859              	.LASF157:
+ 6860 0976 78426C6F 		.ascii	"xBlockTime\000"
+ 6860      636B5469 
+ 6860      6D6500
+ 6861              	.LASF143:
+ 6862 0981 70764974 		.ascii	"pvItemToQueue\000"
+ 6862      656D546F 
+ 6862      51756575 
+ 6862      6500
+ 6863              	.LASF161:
+ 6864 098f 4D50555F 		.ascii	"MPU_pcQueueGetName\000"
+ 6864      70635175 
+ 6864      65756547 
+ 6864      65744E61 
+ 6864      6D6500
+ 6865              	.LASF120:
+ 6866 09a2 756C5661 		.ascii	"ulValue\000"
+ 6866      6C756500 
+ 6867              	.LASF101:
+ 6868 09aa 70785461 		.ascii	"pxTaskToSuspend\000"
+ 6868      736B546F 
+ 6868      53757370 
+ 6868      656E6400 
+ 6869              	.LASF89:
+ 6870 09ba 70785072 		.ascii	"pxPreviousWakeTime\000"
+ 6870      6576696F 
+ 6870      75735761 
+ 6870      6B655469 
+ 6870      6D6500
+ 6871              	.LASF127:
+ 6872 09cd 78546963 		.ascii	"xTicksToWait\000"
+ 6872      6B73546F 
+ 6872      57616974 
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 153
 
 
- 6871      656E6400 
- 6872              	.LASF89:
- 6873 0a12 70785072 		.ascii	"pxPreviousWakeTime\000"
- 6873      6576696F 
- 6873      75735761 
- 6873      6B655469 
- 6873      6D6500
- 6874              	.LASF5:
- 6875 0a25 5F5F7569 		.ascii	"__uint8_t\000"
- 6875      6E74385F 
- 6875      7400
- 6876              	.LASF139:
- 6877 0a2f 70785175 		.ascii	"pxQueue\000"
- 6877      65756500 
- 6878              	.LASF70:
- 6879 0a37 4576656E 		.ascii	"EventBits_t\000"
- 6879      74426974 
- 6879      735F7400 
- 6880              	.LASF126:
- 6881 0a43 70756C4E 		.ascii	"pulNotificationValue\000"
- 6881      6F746966 
- 6881      69636174 
- 6881      696F6E56 
- 6881      616C7565 
- 6882              	.LASF132:
- 6883 0a58 4D50555F 		.ascii	"MPU_ulTaskNotifyValueClear\000"
- 6883      756C5461 
- 6883      736B4E6F 
- 6883      74696679 
- 6883      56616C75 
- 6884              	.LASF80:
- 6885 0a73 78526574 		.ascii	"xReturn\000"
- 6885      75726E00 
- 6886              	.LASF172:
- 6887 0a7b 75784269 		.ascii	"uxBitsToWaitFor\000"
- 6887      7473546F 
- 6887      57616974 
- 6887      466F7200 
- 6888              	.LASF134:
- 6889 0a8b 4D50555F 		.ascii	"MPU_xQueueGenericCreate\000"
- 6889      78517565 
- 6889      75654765 
- 6889      6E657269 
- 6889      63437265 
- 6890              	.LASF24:
- 6891 0aa3 73697A65 		.ascii	"sizetype\000"
- 6891      74797065 
- 6891      00
- 6892              	.LASF13:
- 6893 0aac 6C6F6E67 		.ascii	"long unsigned int\000"
- 6893      20756E73 
- 6893      69676E65 
- 6893      6420696E 
- 6893      7400
- 6894              	.LASF64:
- 6895 0abe 5461736B 		.ascii	"TaskParameters_t\000"
- 6895      50617261 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 154
+ 6872      00
+ 6873              	.LASF5:
+ 6874 09da 5F5F7569 		.ascii	"__uint8_t\000"
+ 6874      6E74385F 
+ 6874      7400
+ 6875              	.LASF139:
+ 6876 09e4 70785175 		.ascii	"pxQueue\000"
+ 6876      65756500 
+ 6877              	.LASF70:
+ 6878 09ec 4576656E 		.ascii	"EventBits_t\000"
+ 6878      74426974 
+ 6878      735F7400 
+ 6879              	.LASF126:
+ 6880 09f8 70756C4E 		.ascii	"pulNotificationValue\000"
+ 6880      6F746966 
+ 6880      69636174 
+ 6880      696F6E56 
+ 6880      616C7565 
+ 6881              	.LASF132:
+ 6882 0a0d 4D50555F 		.ascii	"MPU_ulTaskNotifyValueClear\000"
+ 6882      756C5461 
+ 6882      736B4E6F 
+ 6882      74696679 
+ 6882      56616C75 
+ 6883              	.LASF80:
+ 6884 0a28 78526574 		.ascii	"xReturn\000"
+ 6884      75726E00 
+ 6885              	.LASF172:
+ 6886 0a30 75784269 		.ascii	"uxBitsToWaitFor\000"
+ 6886      7473546F 
+ 6886      57616974 
+ 6886      466F7200 
+ 6887              	.LASF134:
+ 6888 0a40 4D50555F 		.ascii	"MPU_xQueueGenericCreate\000"
+ 6888      78517565 
+ 6888      75654765 
+ 6888      6E657269 
+ 6888      63437265 
+ 6889              	.LASF24:
+ 6890 0a58 73697A65 		.ascii	"sizetype\000"
+ 6890      74797065 
+ 6890      00
+ 6891              	.LASF13:
+ 6892 0a61 6C6F6E67 		.ascii	"long unsigned int\000"
+ 6892      20756E73 
+ 6892      69676E65 
+ 6892      6420696E 
+ 6892      7400
+ 6893              	.LASF64:
+ 6894 0a73 5461736B 		.ascii	"TaskParameters_t\000"
+ 6894      50617261 
+ 6894      6D657465 
+ 6894      72735F74 
+ 6894      00
+ 6895              	.LASF17:
+ 6896 0a84 696E7433 		.ascii	"int32_t\000"
+ 6896      325F7400 
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 154
 
 
- 6895      6D657465 
- 6895      72735F74 
- 6895      00
- 6896              	.LASF17:
- 6897 0acf 696E7433 		.ascii	"int32_t\000"
- 6897      325F7400 
- 6898              	.LASF93:
- 6899 0ad7 4D50555F 		.ascii	"MPU_uxTaskPriorityGet\000"
- 6899      75785461 
- 6899      736B5072 
- 6899      696F7269 
- 6899      74794765 
- 6900              	.LASF33:
- 6901 0aed 6552756E 		.ascii	"eRunning\000"
- 6901      6E696E67 
- 6901      00
- 6902              	.LASF188:
- 6903 0af6 78427566 		.ascii	"xBufferLengthBytes\000"
- 6903      6665724C 
- 6903      656E6774 
- 6903      68427974 
- 6903      657300
- 6904              	.LASF52:
- 6905 0b09 70764261 		.ascii	"pvBaseAddress\000"
- 6905      73654164 
- 6905      64726573 
- 6905      7300
- 6906              	.LASF92:
- 6907 0b17 78546963 		.ascii	"xTicksToDelay\000"
- 6907      6B73546F 
- 6907      44656C61 
- 6907      7900
- 6908              	.LASF162:
- 6909 0b25 4D50555F 		.ascii	"MPU_vQueueDelete\000"
- 6909      76517565 
- 6909      75654465 
- 6909      6C657465 
- 6909      00
- 6910              	.LASF6:
- 6911 0b36 756E7369 		.ascii	"unsigned char\000"
- 6911      676E6564 
- 6911      20636861 
- 6911      7200
- 6912              	.LASF118:
- 6913 0b44 4D50555F 		.ascii	"MPU_xTaskGenericNotify\000"
- 6913      78546173 
- 6913      6B47656E 
- 6913      65726963 
- 6913      4E6F7469 
- 6914              	.LASF12:
- 6915 0b5b 5F5F7569 		.ascii	"__uint32_t\000"
- 6915      6E743332 
- 6915      5F7400
- 6916              	.LASF193:
- 6917 0b66 4D50555F 		.ascii	"MPU_xStreamBufferSpacesAvailable\000"
- 6917      78537472 
- 6917      65616D42 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 155
+ 6897              	.LASF93:
+ 6898 0a8c 4D50555F 		.ascii	"MPU_uxTaskPriorityGet\000"
+ 6898      75785461 
+ 6898      736B5072 
+ 6898      696F7269 
+ 6898      74794765 
+ 6899              	.LASF33:
+ 6900 0aa2 6552756E 		.ascii	"eRunning\000"
+ 6900      6E696E67 
+ 6900      00
+ 6901              	.LASF188:
+ 6902 0aab 78427566 		.ascii	"xBufferLengthBytes\000"
+ 6902      6665724C 
+ 6902      656E6774 
+ 6902      68427974 
+ 6902      657300
+ 6903              	.LASF52:
+ 6904 0abe 70764261 		.ascii	"pvBaseAddress\000"
+ 6904      73654164 
+ 6904      64726573 
+ 6904      7300
+ 6905              	.LASF92:
+ 6906 0acc 78546963 		.ascii	"xTicksToDelay\000"
+ 6906      6B73546F 
+ 6906      44656C61 
+ 6906      7900
+ 6907              	.LASF162:
+ 6908 0ada 4D50555F 		.ascii	"MPU_vQueueDelete\000"
+ 6908      76517565 
+ 6908      75654465 
+ 6908      6C657465 
+ 6908      00
+ 6909              	.LASF6:
+ 6910 0aeb 756E7369 		.ascii	"unsigned char\000"
+ 6910      676E6564 
+ 6910      20636861 
+ 6910      7200
+ 6911              	.LASF118:
+ 6912 0af9 4D50555F 		.ascii	"MPU_xTaskGenericNotify\000"
+ 6912      78546173 
+ 6912      6B47656E 
+ 6912      65726963 
+ 6912      4E6F7469 
+ 6913              	.LASF12:
+ 6914 0b10 5F5F7569 		.ascii	"__uint32_t\000"
+ 6914      6E743332 
+ 6914      5F7400
+ 6915              	.LASF193:
+ 6916 0b1b 4D50555F 		.ascii	"MPU_xStreamBufferSpacesAvailable\000"
+ 6916      78537472 
+ 6916      65616D42 
+ 6916      75666665 
+ 6916      72537061 
+ 6917              	.LASF170:
+ 6918 0b3c 4D50555F 		.ascii	"MPU_xEventGroupWaitBits\000"
+ 6918      78457665 
+ 6918      6E744772 
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 155
 
 
- 6917      75666665 
- 6917      72537061 
- 6918              	.LASF170:
- 6919 0b87 4D50555F 		.ascii	"MPU_xEventGroupWaitBits\000"
- 6919      78457665 
- 6919      6E744772 
- 6919      6F757057 
- 6919      61697442 
- 6920              	.LASF153:
- 6921 0b9f 7578436F 		.ascii	"uxCountValue\000"
- 6921      756E7456 
- 6921      616C7565 
- 6921      00
- 6922              	.LASF38:
- 6923 0bac 65496E76 		.ascii	"eInvalid\000"
- 6923      616C6964 
- 6923      00
- 6924              	.LASF178:
- 6925 0bb5 75784269 		.ascii	"uxBitsToSet\000"
- 6925      7473546F 
- 6925      53657400 
- 6926              	.LASF84:
- 6927 0bc1 4D50555F 		.ascii	"MPU_vTaskAllocateMPURegions\000"
- 6927      76546173 
- 6927      6B416C6C 
- 6927      6F636174 
- 6927      654D5055 
- 6928              	.LASF191:
- 6929 0bdd 4D50555F 		.ascii	"MPU_xStreamBufferIsEmpty\000"
- 6929      78537472 
- 6929      65616D42 
- 6929      75666665 
- 6929      72497345 
- 6930              	.LASF202:
- 6931 0bf6 44533138 		.ascii	"DS18x8_DataReady\000"
- 6931      78385F44 
- 6931      61746152 
- 6931      65616479 
- 6931      00
- 6932              	.LASF127:
- 6933 0c07 78546963 		.ascii	"xTicksToWait\000"
- 6933      6B73546F 
- 6933      57616974 
- 6933      00
+ 6918      6F757057 
+ 6918      61697442 
+ 6919              	.LASF153:
+ 6920 0b54 7578436F 		.ascii	"uxCountValue\000"
+ 6920      756E7456 
+ 6920      616C7565 
+ 6920      00
+ 6921              	.LASF38:
+ 6922 0b61 65496E76 		.ascii	"eInvalid\000"
+ 6922      616C6964 
+ 6922      00
+ 6923              	.LASF178:
+ 6924 0b6a 75784269 		.ascii	"uxBitsToSet\000"
+ 6924      7473546F 
+ 6924      53657400 
+ 6925              	.LASF84:
+ 6926 0b76 4D50555F 		.ascii	"MPU_vTaskAllocateMPURegions\000"
+ 6926      76546173 
+ 6926      6B416C6C 
+ 6926      6F636174 
+ 6926      654D5055 
+ 6927              	.LASF191:
+ 6928 0b92 4D50555F 		.ascii	"MPU_xStreamBufferIsEmpty\000"
+ 6928      78537472 
+ 6928      65616D42 
+ 6928      75666665 
+ 6928      72497345 
+ 6929              	.LASF202:
+ 6930 0bab 44533138 		.ascii	"DS18x8_DataReady\000"
+ 6930      78385F44 
+ 6930      61746152 
+ 6930      65616479 
+ 6930      00
+ 6931              	.LASF206:
+ 6932 0bbc 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
+ 6932      73657273 
+ 6932      5C456D69 
+ 6932      6C5C446F 
+ 6932      63756D65 
+ 6933 0bea 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 6933      4F535F54 
+ 6933      454D504C 
+ 6933      4154452D 
+ 6933      6D617374 
  6934              	.LASF159:
- 6935 0c14 4D50555F 		.ascii	"MPU_vQueueAddToRegistry\000"
+ 6935 0c13 4D50555F 		.ascii	"MPU_vQueueAddToRegistry\000"
  6935      76517565 
  6935      75654164 
  6935      64546F52 
  6935      65676973 
  6936              	.LASF35:
- 6937 0c2c 65426C6F 		.ascii	"eBlocked\000"
+ 6937 0c2b 65426C6F 		.ascii	"eBlocked\000"
  6937      636B6564 
  6937      00
  6938              	.LASF182:
- 6939 0c35 78537472 		.ascii	"xStreamBuffer\000"
+ 6939 0c34 78537472 		.ascii	"xStreamBuffer\000"
  6939      65616D42 
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 156
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 156
 
 
  6939      75666665 
  6939      7200
  6940              	.LASF196:
- 6941 0c43 78547269 		.ascii	"xTriggerLevel\000"
+ 6941 0c42 78547269 		.ascii	"xTriggerLevel\000"
  6941      67676572 
  6941      4C657665 
  6941      6C00
  6942              	.LASF112:
- 6943 0c51 78546963 		.ascii	"xTicksToCatchUp\000"
+ 6943 0c50 78546963 		.ascii	"xTicksToCatchUp\000"
  6943      6B73546F 
  6943      43617463 
  6943      68557000 
  6944              	.LASF56:
- 6945 0c61 78544153 		.ascii	"xTASK_PARAMETERS\000"
+ 6945 0c60 78544153 		.ascii	"xTASK_PARAMETERS\000"
  6945      4B5F5041 
  6945      52414D45 
  6945      54455253 
  6945      00
  6946              	.LASF149:
- 6947 0c72 4D50555F 		.ascii	"MPU_xQueuePeek\000"
+ 6947 0c71 4D50555F 		.ascii	"MPU_xQueuePeek\000"
  6947      78517565 
  6947      75655065 
  6947      656B00
  6948              	.LASF57:
- 6949 0c81 70765461 		.ascii	"pvTaskCode\000"
+ 6949 0c80 70765461 		.ascii	"pvTaskCode\000"
  6949      736B436F 
  6949      646500
  6950              	.LASF90:
- 6951 0c8c 7854696D 		.ascii	"xTimeIncrement\000"
+ 6951 0c8b 7854696D 		.ascii	"xTimeIncrement\000"
  6951      65496E63 
  6951      72656D65 
  6951      6E7400
  6952              	.LASF205:
- 6953 0c9b 536F7572 		.ascii	"Source\\portable\\Common\\mpu_wrappers.c\000"
+ 6953 0c9a 536F7572 		.ascii	"Source\\portable\\Common\\mpu_wrappers.c\000"
  6953      63655C70 
  6953      6F727461 
  6953      626C655C 
  6953      436F6D6D 
  6954              	.LASF9:
- 6955 0cc1 73686F72 		.ascii	"short unsigned int\000"
+ 6955 0cc0 73686F72 		.ascii	"short unsigned int\000"
  6955      7420756E 
  6955      7369676E 
  6955      65642069 
  6955      6E7400
  6956              	.LASF113:
- 6957 0cd4 4D50555F 		.ascii	"MPU_uxTaskGetStackHighWaterMark\000"
+ 6957 0cd3 4D50555F 		.ascii	"MPU_uxTaskGetStackHighWaterMark\000"
  6957      75785461 
  6957      736B4765 
  6957      74537461 
  6957      636B4869 
  6958              	.LASF200:
- 6959 0cf4 7849734D 		.ascii	"xIsMessageBuffer\000"
+ 6959 0cf3 7849734D 		.ascii	"xIsMessageBuffer\000"
  6959      65737361 
  6959      67654275 
  6959      66666572 
  6959      00
  6960              	.LASF19:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 157
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 157
 
 
- 6961 0d05 75696E74 		.ascii	"uint8\000"
+ 6961 0d04 75696E74 		.ascii	"uint8\000"
  6961      3800
  6962              	.LASF22:
- 6963 0d0b 646F7562 		.ascii	"double\000"
+ 6963 0d0a 646F7562 		.ascii	"double\000"
  6963      6C6500
  6964              	.LASF141:
- 6965 0d12 4D50555F 		.ascii	"MPU_xQueueGenericSend\000"
+ 6965 0d11 4D50555F 		.ascii	"MPU_xQueueGenericSend\000"
  6965      78517565 
  6965      75654765 
  6965      6E657269 
  6965      6353656E 
  6966              	.LASF173:
- 6967 0d28 78436C65 		.ascii	"xClearOnExit\000"
+ 6967 0d27 78436C65 		.ascii	"xClearOnExit\000"
  6967      61724F6E 
  6967      45786974 
  6967      00
  6968              	.LASF131:
- 6969 0d35 4D50555F 		.ascii	"MPU_xTaskNotifyStateClear\000"
+ 6969 0d34 4D50555F 		.ascii	"MPU_xTaskNotifyStateClear\000"
  6969      78546173 
  6969      6B4E6F74 
  6969      69667953 
  6969      74617465 
  6970              	.LASF82:
- 6971 0d4f 4D50555F 		.ascii	"MPU_xTaskCreate\000"
+ 6971 0d4e 4D50555F 		.ascii	"MPU_xTaskCreate\000"
  6971      78546173 
  6971      6B437265 
  6971      61746500 
  6972              	.LASF147:
- 6973 0d5f 4D50555F 		.ascii	"MPU_xQueueReceive\000"
+ 6973 0d5e 4D50555F 		.ascii	"MPU_xQueueReceive\000"
  6973      78517565 
  6973      75655265 
  6973      63656976 
  6973      6500
  6974              	.LASF180:
- 6975 0d71 4D50555F 		.ascii	"MPU_vEventGroupDelete\000"
+ 6975 0d70 4D50555F 		.ascii	"MPU_vEventGroupDelete\000"
  6975      76457665 
  6975      6E744772 
  6975      6F757044 
  6975      656C6574 
  6976              	.LASF106:
- 6977 0d87 4D50555F 		.ascii	"MPU_xTaskGetTickCount\000"
+ 6977 0d86 4D50555F 		.ascii	"MPU_xTaskGetTickCount\000"
  6977      78546173 
  6977      6B476574 
  6977      5469636B 
  6977      436F756E 
  6978              	.LASF79:
- 6979 0d9d 70784372 		.ascii	"pxCreatedTask\000"
+ 6979 0d9c 70784372 		.ascii	"pxCreatedTask\000"
  6979      65617465 
  6979      64546173 
  6979      6B00
  6980              	.LASF177:
- 6981 0dab 4D50555F 		.ascii	"MPU_xEventGroupSetBits\000"
+ 6981 0daa 4D50555F 		.ascii	"MPU_xEventGroupSetBits\000"
  6981      78457665 
  6981      6E744772 
  6981      6F757053 
  6981      65744269 
  6982              	.LASF68:
-ARM GAS  C:\Users\krist\AppData\Local\Temp\ccJUxUxp.s 			page 158
+ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccIqmpPf.s 			page 158
 
 
- 6983 0dc2 4576656E 		.ascii	"EventGroupHandle_t\000"
+ 6983 0dc1 4576656E 		.ascii	"EventGroupHandle_t\000"
  6983      7447726F 
  6983      75704861 
  6983      6E646C65 
  6983      5F7400
  6984              	.LASF130:
- 6985 0dd5 756C5265 		.ascii	"ulReturn\000"
+ 6985 0dd4 756C5265 		.ascii	"ulReturn\000"
  6985      7475726E 
  6985      00
  6986              	.LASF186:
- 6987 0dde 4D50555F 		.ascii	"MPU_xStreamBufferReceive\000"
+ 6987 0ddd 4D50555F 		.ascii	"MPU_xStreamBufferReceive\000"
  6987      78537472 
  6987      65616D42 
  6987      75666665 
  6987      72526563 
  6988              	.LASF146:
- 6989 0df7 4D50555F 		.ascii	"MPU_uxQueueSpacesAvailable\000"
+ 6989 0df6 4D50555F 		.ascii	"MPU_uxQueueSpacesAvailable\000"
  6989      75785175 
  6989      65756553 
  6989      70616365 
