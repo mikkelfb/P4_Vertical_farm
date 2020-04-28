@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
   20:Source\portable\GCC\ARM_CM3/port.c ****  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   21:Source\portable\GCC\ARM_CM3/port.c ****  *
   22:Source\portable\GCC\ARM_CM3/port.c ****  * http://www.FreeRTOS.org
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 2
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 2
 
 
   23:Source\portable\GCC\ARM_CM3/port.c ****  * http://aws.amazon.com/freertos
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
   77:Source\portable\GCC\ARM_CM3/port.c **** 
   78:Source\portable\GCC\ARM_CM3/port.c **** /* Masks off all bits but the VECTACTIVE bits in the ICSR register. */
   79:Source\portable\GCC\ARM_CM3/port.c **** #define portVECTACTIVE_MASK					( 0xFFUL )
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 3
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 3
 
 
   80:Source\portable\GCC\ARM_CM3/port.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  134:Source\portable\GCC\ARM_CM3/port.c **** 
  135:Source\portable\GCC\ARM_CM3/port.c **** /*
  136:Source\portable\GCC\ARM_CM3/port.c ****  * The number of SysTick increments that make up one tick period.
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 4
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 4
 
 
  137:Source\portable\GCC\ARM_CM3/port.c ****  */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  176:Source\portable\GCC\ARM_CM3/port.c **** 	/* Simulate the stack frame as it would be created by a context switch
  177:Source\portable\GCC\ARM_CM3/port.c **** 	interrupt. */
  178:Source\portable\GCC\ARM_CM3/port.c **** 	pxTopOfStack--; /* Offset added to account for the way the MCU uses the stack on entry/exit of int
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 5
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 5
 
 
   51              		.loc 1 178 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
   94 004e BD46     		mov	sp, r7
   95              		.cfi_def_cfa_register 13
   96              		@ sp needed
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 6
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 6
 
 
   97 0050 80BC     		pop	{r7}
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
   14:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  *
   15:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   16:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 7
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 7
 
 
   17:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
   71:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
   72:.\Source\portable\GCC\ARM_CM3/portmacro.h **** /* Architecture specifics. */
   73:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portSTACK_GROWTH			( -1 )
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 8
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 8
 
 
   74:.\Source\portable\GCC\ARM_CM3/portmacro.h **** #define portTICK_PERIOD_MS			( ( TickType_t ) 1000 / configTICK_RATE_HZ )
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  128:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  129:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Generic helper function. */
  130:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__attribute__( ( always_inline ) ) static inline uint8_t ucPortCountLeadingZeros( uint32_t ulBitma
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 9
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 9
 
 
  131:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	{
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  185:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		xReturn = pdTRUE;
  186:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	}
  187:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 10
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 10
 
 
  188:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return xReturn;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  157              		.cfi_def_cfa_offset 4
  158 0028 BD46     		mov	sp, r7
  159              		.cfi_def_cfa_register 13
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 11
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 11
 
 
  160              		@ sp needed
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  230:Source\portable\GCC\ARM_CM3/port.c **** 					"									\n"
  231:Source\portable\GCC\ARM_CM3/port.c **** 					"	.align 4						\n"
  232:Source\portable\GCC\ARM_CM3/port.c **** 					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 12
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 12
 
 
  233:Source\portable\GCC\ARM_CM3/port.c **** 				);
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  234              		.thumb
  235              		.syntax unified
  236 001a 00BF     		nop
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 13
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 13
 
 
  237              		.cfi_endproc
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  285:Source\portable\GCC\ARM_CM3/port.c **** 		ucMaxSysCallPriority = configMAX_SYSCALL_INTERRUPT_PRIORITY & ucMaxPriorityValue;
  286:Source\portable\GCC\ARM_CM3/port.c **** 
  287:Source\portable\GCC\ARM_CM3/port.c **** 		/* Calculate the maximum acceptable priority group value for the number
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 14
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 14
 
 
  288:Source\portable\GCC\ARM_CM3/port.c **** 		of bits read back. */
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  330:Source\portable\GCC\ARM_CM3/port.c **** 	here already. */
  331:Source\portable\GCC\ARM_CM3/port.c **** 	vPortSetupTimerInterrupt();
  270              		.loc 1 331 0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 15
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 15
 
 
  271 001c FFF7FEFF 		bl	vPortSetupTimerInterrupt
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  354:Source\portable\GCC\ARM_CM3/port.c **** {
  303              		.loc 1 354 0
  304              		.cfi_startproc
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 16
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 16
 
 
  305              		@ args = 0, pretend = 0, frame = 0
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  351 000a 83F31188 		msr basepri, r3											
  352 000e BFF36F8F 		isb														
  353 0012 BFF34F8F 		dsb														
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 17
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 17
 
 
  354              	
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  378:Source\portable\GCC\ARM_CM3/port.c **** void vPortExitCritical( void )
  379:Source\portable\GCC\ARM_CM3/port.c **** {
  393              		.loc 1 379 0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 18
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 18
 
 
  394              		.cfi_startproc
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  223:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* This return will not be reached but is necessary to prevent compiler
  224:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	warnings. */
  225:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	return ulOriginalBASEPRI;
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 19
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 19
 
 
  226:.\Source\portable\GCC\ARM_CM3/portmacro.h **** }
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  460              		@ args = 0, pretend = 0, frame = 0
  461              		@ frame_needed = 1, uses_anonymous_args = 0
  391:Source\portable\GCC\ARM_CM3/port.c **** 	/* This is a naked function. */
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 20
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 20
 
 
  392:Source\portable\GCC\ARM_CM3/port.c **** 
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  415:Source\portable\GCC\ARM_CM3/port.c **** 	"	msr psp, r0							\n"
  416:Source\portable\GCC\ARM_CM3/port.c **** 	"	isb									\n"
  417:Source\portable\GCC\ARM_CM3/port.c **** 	"	bx r14								\n"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 21
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 21
 
 
  418:Source\portable\GCC\ARM_CM3/port.c **** 	"										\n"
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  428:Source\portable\GCC\ARM_CM3/port.c **** 	/* The SysTick runs at the lowest interrupt priority, so when this interrupt
  429:Source\portable\GCC\ARM_CM3/port.c **** 	executes all interrupts must be unmasked.  There is therefore no need to
  430:Source\portable\GCC\ARM_CM3/port.c **** 	save and then restore the interrupt mask value as its value is already
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 22
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 22
 
 
  431:Source\portable\GCC\ARM_CM3/port.c **** 	known. */
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  577              		.weak	vPortSetupTimerInterrupt
  578              		.thumb
  579              		.thumb_func
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 23
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 23
 
 
  580              		.type	vPortSetupTimerInterrupt, %function
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  495:Source\portable\GCC\ARM_CM3/port.c **** 			/* Re-enable interrupts - see comments above the cpsid instruction()
  496:Source\portable\GCC\ARM_CM3/port.c **** 			above. */
  497:Source\portable\GCC\ARM_CM3/port.c **** 			__asm volatile( "cpsie i" ::: "memory" );
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 24
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 24
 
 
  498:Source\portable\GCC\ARM_CM3/port.c **** 		}
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  552:Source\portable\GCC\ARM_CM3/port.c **** 			correct for the entire expected idle time) or if the SysTick is yet
  553:Source\portable\GCC\ARM_CM3/port.c **** 			to count to zero (in which case an interrupt other than the SysTick
  554:Source\portable\GCC\ARM_CM3/port.c **** 			must have brought the system out of sleep mode). */
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 25
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 25
 
 
  555:Source\portable\GCC\ARM_CM3/port.c **** 			if( ( portNVIC_SYSTICK_CTRL_REG & portNVIC_SYSTICK_COUNT_FLAG_BIT ) != 0 )
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  609:Source\portable\GCC\ARM_CM3/port.c **** 
  610:Source\portable\GCC\ARM_CM3/port.c **** #endif /* configUSE_TICKLESS_IDLE */
  611:Source\portable\GCC\ARM_CM3/port.c **** /*-----------------------------------------------------------*/
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 26
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 26
 
 
  612:Source\portable\GCC\ARM_CM3/port.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  613              		@ sp needed
  614 0022 80BC     		pop	{r7}
  615              		.cfi_restore 7
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 27
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 27
 
 
  616              		.cfi_def_cfa_offset 0
@@ -1589,8 +1589,8 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  641 000b 01       		.uleb128 0x1
  642 000c 1A000000 		.4byte	.LASF44
  643 0010 0C       		.byte	0xc
- 644 0011 49030000 		.4byte	.LASF45
- 645 0015 EA010000 		.4byte	.LASF46
+ 644 0011 47030000 		.4byte	.LASF45
+ 645 0015 2D020000 		.4byte	.LASF46
  646 0019 00000000 		.4byte	.Ldebug_ranges0+0
  647 001d 00000000 		.4byte	0
  648 0021 00000000 		.4byte	.Ldebug_line0
@@ -1601,30 +1601,30 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  653 002c 03       		.uleb128 0x3
  654 002d 04       		.byte	0x4
  655 002e 07       		.byte	0x7
- 656 002f 4E020000 		.4byte	.LASF0
+ 656 002f EA010000 		.4byte	.LASF0
  657 0033 03       		.uleb128 0x3
  658 0034 08       		.byte	0x8
  659 0035 05       		.byte	0x5
- 660 0036 C4020000 		.4byte	.LASF1
+ 660 0036 C2020000 		.4byte	.LASF1
  661 003a 03       		.uleb128 0x3
  662 003b 08       		.byte	0x8
  663 003c 04       		.byte	0x4
- 664 003d 82030000 		.4byte	.LASF2
+ 664 003d 80030000 		.4byte	.LASF2
  665 0041 03       		.uleb128 0x3
  666 0042 01       		.byte	0x1
  667 0043 06       		.byte	0x6
- 668 0044 8E030000 		.4byte	.LASF3
+ 668 0044 8C030000 		.4byte	.LASF3
  669 0048 03       		.uleb128 0x3
  670 0049 01       		.byte	0x1
  671 004a 08       		.byte	0x8
  672 004b 60010000 		.4byte	.LASF4
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 28
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 28
 
 
  673 004f 03       		.uleb128 0x3
  674 0050 02       		.byte	0x2
  675 0051 05       		.byte	0x5
- 676 0052 FE020000 		.4byte	.LASF5
+ 676 0052 FC020000 		.4byte	.LASF5
  677 0056 03       		.uleb128 0x3
  678 0057 02       		.byte	0x2
  679 0058 07       		.byte	0x7
@@ -1650,19 +1650,19 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  699 0081 03       		.uleb128 0x3
  700 0082 08       		.byte	0x8
  701 0083 07       		.byte	0x7
- 702 0084 68020000 		.4byte	.LASF11
+ 702 0084 04020000 		.4byte	.LASF11
  703 0088 04       		.uleb128 0x4
  704 0089 2F010000 		.4byte	.LASF12
  705 008d 04       		.byte	0x4
  706 008e 2C       		.byte	0x2c
  707 008f 5D000000 		.4byte	0x5d
  708 0093 04       		.uleb128 0x4
- 709 0094 31030000 		.4byte	.LASF13
+ 709 0094 2F030000 		.4byte	.LASF13
  710 0098 04       		.byte	0x4
  711 0099 30       		.byte	0x30
  712 009a 6F000000 		.4byte	0x6f
  713 009e 05       		.uleb128 0x5
- 714 009f 19030000 		.4byte	.LASF14
+ 714 009f 17030000 		.4byte	.LASF14
  715 00a3 05       		.byte	0x5
  716 00a4 E401     		.2byte	0x1e4
  717 00a6 48000000 		.4byte	0x48
@@ -1678,20 +1678,20 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  727 00bd 03       		.uleb128 0x3
  728 00be 08       		.byte	0x8
  729 00bf 04       		.byte	0x4
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 29
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 29
 
 
  730 00c0 AB010000 		.4byte	.LASF17
  731 00c4 03       		.uleb128 0x3
  732 00c5 01       		.byte	0x1
  733 00c6 08       		.byte	0x8
- 734 00c7 D2020000 		.4byte	.LASF18
+ 734 00c7 D0020000 		.4byte	.LASF18
  735 00cb 06       		.uleb128 0x6
  736 00cc 9E000000 		.4byte	0x9e
  737 00d0 03       		.uleb128 0x3
  738 00d1 04       		.byte	0x4
  739 00d2 07       		.byte	0x7
- 740 00d3 BB020000 		.4byte	.LASF19
+ 740 00d3 B9020000 		.4byte	.LASF19
  741 00d7 07       		.uleb128 0x7
  742 00d8 04       		.byte	0x4
  743 00d9 08       		.uleb128 0x8
@@ -1729,20 +1729,20 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  775 011a D7000000 		.4byte	0xd7
  776 011e 00       		.byte	0
  777 011f 04       		.uleb128 0x4
- 778 0120 D7020000 		.4byte	.LASF23
+ 778 0120 D5020000 		.4byte	.LASF23
  779 0124 02       		.byte	0x2
  780 0125 37       		.byte	0x37
  781 0126 93000000 		.4byte	0x93
  782 012a 04       		.uleb128 0x4
- 783 012b F3020000 		.4byte	.LASF24
+ 783 012b F1020000 		.4byte	.LASF24
  784 012f 02       		.byte	0x2
  785 0130 38       		.byte	0x38
  786 0131 68000000 		.4byte	0x68
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 30
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 30
 
 
  787 0135 04       		.uleb128 0x4
- 788 0136 AE030000 		.4byte	.LASF25
+ 788 0136 AC030000 		.4byte	.LASF25
  789 013a 02       		.byte	0x2
  790 013b 39       		.byte	0x39
  791 013c 7A000000 		.4byte	0x7a
@@ -1755,7 +1755,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  798 014c 04       		.byte	0x4
  799 014d 1F010000 		.4byte	0x11f
  800 0151 0D       		.uleb128 0xd
- 801 0152 7F020000 		.4byte	.LASF27
+ 801 0152 1B020000 		.4byte	.LASF27
  802 0156 02       		.byte	0x2
  803 0157 C1       		.byte	0xc1
  804 0158 03       		.byte	0x3
@@ -1773,13 +1773,13 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  816 0170 03       		.byte	0x3
  817 0171 81010000 		.4byte	0x181
  818 0175 0F       		.uleb128 0xf
- 819 0176 3A030000 		.4byte	.LASF49
+ 819 0176 38030000 		.4byte	.LASF49
  820 017a 02       		.byte	0x2
  821 017b E5       		.byte	0xe5
  822 017c 93000000 		.4byte	0x93
  823 0180 00       		.byte	0
  824 0181 10       		.uleb128 0x10
- 825 0182 BA030000 		.4byte	.LASF50
+ 825 0182 B8030000 		.4byte	.LASF50
  826 0186 01       		.byte	0x1
  827 0187 AE       		.byte	0xae
  828 0188 4B010000 		.4byte	0x14b
@@ -1789,7 +1789,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  832 0195 9C       		.byte	0x9c
  833 0196 C5010000 		.4byte	0x1c5
  834 019a 11       		.uleb128 0x11
- 835 019b 5B020000 		.4byte	.LASF29
+ 835 019b F7010000 		.4byte	.LASF29
  836 019f 01       		.byte	0x1
  837 01a0 AE       		.byte	0xae
  838 01a1 4B010000 		.4byte	0x14b
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  841 01a7 74       		.sleb128 -12
  842 01a8 11       		.uleb128 0x11
  843 01a9 A8000000 		.4byte	.LASF30
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 31
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 31
 
 
  844 01ad 01       		.byte	0x1
@@ -1817,7 +1817,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  857 01c3 6C       		.sleb128 -20
  858 01c4 00       		.byte	0
  859 01c5 12       		.uleb128 0x12
- 860 01c6 91020000 		.4byte	.LASF51
+ 860 01c6 8F020000 		.4byte	.LASF51
  861 01ca 01       		.byte	0x1
  862 01cb C0       		.byte	0xc0
  863 01cc 00000000 		.4byte	.LFB69
@@ -1851,18 +1851,18 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  891 0209 00       		.byte	0
  892 020a 00       		.byte	0
  893 020b 17       		.uleb128 0x17
- 894 020c E3020000 		.4byte	.LASF32
+ 894 020c E1020000 		.4byte	.LASF32
  895 0210 01       		.byte	0x1
  896 0211 D9       		.byte	0xd9
  897 0212 00000000 		.4byte	.LFB70
  898 0216 26000000 		.4byte	.LFE70-.LFB70
  899 021a 01       		.uleb128 0x1
  900 021b 9C       		.byte	0x9c
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 32
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 32
 
 
  901 021c 18       		.uleb128 0x18
- 902 021d 6C030000 		.4byte	.LASF52
+ 902 021d 6A030000 		.4byte	.LASF52
  903 0221 01       		.byte	0x1
  904 0222 ED       		.byte	0xed
  905 0223 00000000 		.4byte	.LFB71
@@ -1870,7 +1870,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  907 022b 01       		.uleb128 0x1
  908 022c 9C       		.byte	0x9c
  909 022d 19       		.uleb128 0x19
- 910 022e 9A030000 		.4byte	.LASF53
+ 910 022e 98030000 		.4byte	.LASF53
  911 0232 01       		.byte	0x1
  912 0233 0101     		.2byte	0x101
  913 0235 2A010000 		.4byte	0x12a
@@ -1913,12 +1913,12 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  950 028d 00       		.byte	0
  951 028e 00       		.byte	0
  952 028f 1B       		.uleb128 0x1b
- 953 0290 1F030000 		.4byte	.LASF35
+ 953 0290 1D030000 		.4byte	.LASF35
  954 0294 01       		.byte	0x1
  955 0295 7A01     		.2byte	0x17a
  956 0297 00000000 		.4byte	.LFB75
  957 029b 30000000 		.4byte	.LFE75-.LFB75
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 33
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 33
 
 
  958 029f 01       		.uleb128 0x1
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1012 031b 01       		.byte	0x1
  1013 031c BA01     		.2byte	0x1ba
  1014 031e 1D       		.uleb128 0x1d
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 34
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 34
 
 
  1015 031f 75010000 		.4byte	0x175
@@ -1988,7 +1988,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1019 0326 00       		.byte	0
  1020 0327 00       		.byte	0
  1021 0328 1A       		.uleb128 0x1a
- 1022 0329 A2020000 		.4byte	.LASF38
+ 1022 0329 A0020000 		.4byte	.LASF38
  1023 032d 01       		.byte	0x1
  1024 032e 6902     		.2byte	0x269
  1025 0330 00000000 		.4byte	.LFB78
@@ -2019,7 +2019,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1050 0367 03       		.byte	0x3
  1051 0368 00000000 		.4byte	DS18x8_Sensor
  1052 036c 22       		.uleb128 0x22
- 1053 036d 08030000 		.4byte	.LASF42
+ 1053 036d 06030000 		.4byte	.LASF42
  1054 0371 06       		.byte	0x6
  1055 0372 39       		.byte	0x39
  1056 0373 CB000000 		.4byte	0xcb
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1069              	.Ldebug_abbrev0:
  1070 0000 01       		.uleb128 0x1
  1071 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 35
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 35
 
 
  1072 0002 01       		.byte	0x1
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1126 0038 00       		.byte	0
  1127 0039 03       		.uleb128 0x3
  1128 003a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 36
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 36
 
 
  1129 003b 3A       		.uleb128 0x3a
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1183 0071 00       		.byte	0
  1184 0072 0B       		.uleb128 0xb
  1185 0073 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 37
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 37
 
 
  1186 0074 49       		.uleb128 0x49
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1240 00aa 0E       		.uleb128 0xe
  1241 00ab 3A       		.uleb128 0x3a
  1242 00ac 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 38
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 38
 
 
  1243 00ad 3B       		.uleb128 0x3b
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1297 00e4 0B       		.uleb128 0xb
  1298 00e5 3B       		.uleb128 0x3b
  1299 00e6 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 39
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 39
 
 
  1300 00e7 27       		.uleb128 0x27
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1354 011e 34       		.uleb128 0x34
  1355 011f 00       		.byte	0
  1356 0120 31       		.uleb128 0x31
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 40
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 40
 
 
  1357 0121 13       		.uleb128 0x13
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1411 0159 03       		.uleb128 0x3
  1412 015a 0E       		.uleb128 0xe
  1413 015b 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 41
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 41
 
 
  1414 015c 0B       		.uleb128 0xb
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1468 0194 01       		.uleb128 0x1
  1469 0195 12       		.uleb128 0x12
  1470 0196 06       		.uleb128 0x6
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 42
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 42
 
 
  1471 0197 40       		.uleb128 0x40
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1525 01cf 13       		.uleb128 0x13
  1526 01d0 00       		.byte	0
  1527 01d1 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 43
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 43
 
 
  1528 01d2 1F       		.uleb128 0x1f
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1582 0208 00       		.byte	0
  1583 0209 03       		.uleb128 0x3
  1584 020a 0E       		.uleb128 0xe
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 44
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 44
 
 
  1585 020b 3A       		.uleb128 0x3a
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1639 001c 1C000000 		.4byte	.LFE71
  1640 0020 00000000 		.4byte	.LFB72
  1641 0024 40000000 		.4byte	.LFE72
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 45
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 45
 
 
  1642 0028 00000000 		.4byte	.LFB73
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1670      7200
  1671              	.LASF26:
  1672 00c1 5469636B 		.ascii	"TickType_t\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 46
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 46
 
 
  1672      54797065 
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1696      6D6D7900 
  1697              	.LASF4:
  1698 0160 756E7369 		.ascii	"unsigned char\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 47
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 47
 
 
  1698      676E6564 
@@ -2807,147 +2807,146 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 1
  1716      5469636B 
  1716      48616E64 
  1716      6C657200 
- 1717              	.LASF46:
- 1718 01ea 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
- 1718      73657273 
- 1718      5C6D6167 
- 1718      39345C44 
- 1718      65736B74 
- 1719 0217 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
- 1719      72746963 
- 1719      616C5F66 
- 1719      61726D5C 
- 1719      52544F53 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 48
+ 1717              	.LASF0:
+ 1718 01ea 756E7369 		.ascii	"unsigned int\000"
+ 1718      676E6564 
+ 1718      20696E74 
+ 1718      00
+ 1719              	.LASF29:
+ 1720 01f7 7078546F 		.ascii	"pxTopOfStack\000"
+ 1720      704F6653 
+ 1720      7461636B 
+ 1720      00
+ 1721              	.LASF11:
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 48
 
 
- 1720 0248 63796473 		.ascii	"cydsn\000"
- 1720      6E00
- 1721              	.LASF0:
- 1722 024e 756E7369 		.ascii	"unsigned int\000"
- 1722      676E6564 
- 1722      20696E74 
- 1722      00
- 1723              	.LASF29:
- 1724 025b 7078546F 		.ascii	"pxTopOfStack\000"
- 1724      704F6653 
- 1724      7461636B 
- 1724      00
- 1725              	.LASF11:
- 1726 0268 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1726      206C6F6E 
- 1726      6720756E 
- 1726      7369676E 
- 1726      65642069 
- 1727              	.LASF27:
- 1728 027f 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
- 1728      74526169 
- 1728      73654241 
- 1728      53455052 
- 1728      4900
+ 1722 0204 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1722      206C6F6E 
+ 1722      6720756E 
+ 1722      7369676E 
+ 1722      65642069 
+ 1723              	.LASF27:
+ 1724 021b 76506F72 		.ascii	"vPortRaiseBASEPRI\000"
+ 1724      74526169 
+ 1724      73654241 
+ 1724      53455052 
+ 1724      4900
+ 1725              	.LASF46:
+ 1726 022d 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
+ 1726      73657273 
+ 1726      5C477573 
+ 1726      74615C4F 
+ 1726      6E654472 
+ 1727 025a 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
+ 1727      6963616C 
+ 1727      5F666172 
+ 1727      6D5C5254 
+ 1727      4F535F54 
+ 1728 028b 64736E00 		.ascii	"dsn\000"
  1729              	.LASF51:
- 1730 0291 70727654 		.ascii	"prvTaskExitError\000"
+ 1730 028f 70727654 		.ascii	"prvTaskExitError\000"
  1730      61736B45 
  1730      78697445 
  1730      72726F72 
  1730      00
  1731              	.LASF38:
- 1732 02a2 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
+ 1732 02a0 76506F72 		.ascii	"vPortSetupTimerInterrupt\000"
  1732      74536574 
  1732      75705469 
  1732      6D657249 
  1732      6E746572 
  1733              	.LASF19:
- 1734 02bb 73697A65 		.ascii	"sizetype\000"
+ 1734 02b9 73697A65 		.ascii	"sizetype\000"
  1734      74797065 
  1734      00
  1735              	.LASF1:
- 1736 02c4 6C6F6E67 		.ascii	"long long int\000"
+ 1736 02c2 6C6F6E67 		.ascii	"long long int\000"
  1736      206C6F6E 
  1736      6720696E 
  1736      7400
  1737              	.LASF18:
- 1738 02d2 63686172 		.ascii	"char\000"
+ 1738 02d0 63686172 		.ascii	"char\000"
  1738      00
  1739              	.LASF23:
- 1740 02d7 53746163 		.ascii	"StackType_t\000"
+ 1740 02d5 53746163 		.ascii	"StackType_t\000"
  1740      6B547970 
  1740      655F7400 
  1741              	.LASF32:
- 1742 02e3 76506F72 		.ascii	"vPortSVCHandler\000"
+ 1742 02e1 76506F72 		.ascii	"vPortSVCHandler\000"
  1742      74535643 
  1742      48616E64 
  1742      6C657200 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 49
-
-
  1743              	.LASF24:
- 1744 02f3 42617365 		.ascii	"BaseType_t\000"
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 49
+
+
+ 1744 02f1 42617365 		.ascii	"BaseType_t\000"
  1744      54797065 
  1744      5F7400
  1745              	.LASF5:
- 1746 02fe 73686F72 		.ascii	"short int\000"
+ 1746 02fc 73686F72 		.ascii	"short int\000"
  1746      7420696E 
  1746      7400
  1747              	.LASF42:
- 1748 0308 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1748 0306 44533138 		.ascii	"DS18x8_DataReady\000"
  1748      78385F44 
  1748      61746152 
  1748      65616479 
  1748      00
  1749              	.LASF14:
- 1750 0319 75696E74 		.ascii	"uint8\000"
+ 1750 0317 75696E74 		.ascii	"uint8\000"
  1750      3800
  1751              	.LASF35:
- 1752 031f 76506F72 		.ascii	"vPortExitCritical\000"
+ 1752 031d 76506F72 		.ascii	"vPortExitCritical\000"
  1752      74457869 
  1752      74437269 
  1752      74696361 
  1752      6C00
  1753              	.LASF13:
- 1754 0331 75696E74 		.ascii	"uint32_t\000"
+ 1754 032f 75696E74 		.ascii	"uint32_t\000"
  1754      33325F74 
  1754      00
  1755              	.LASF49:
- 1756 033a 756C4E65 		.ascii	"ulNewMaskValue\000"
+ 1756 0338 756C4E65 		.ascii	"ulNewMaskValue\000"
  1756      774D6173 
  1756      6B56616C 
  1756      756500
  1757              	.LASF45:
- 1758 0349 536F7572 		.ascii	"Source\\portable\\GCC\\ARM_CM3\\port.c\000"
+ 1758 0347 536F7572 		.ascii	"Source\\portable\\GCC\\ARM_CM3\\port.c\000"
  1758      63655C70 
  1758      6F727461 
  1758      626C655C 
  1758      4743435C 
  1759              	.LASF52:
- 1760 036c 70727650 		.ascii	"prvPortStartFirstTask\000"
+ 1760 036a 70727650 		.ascii	"prvPortStartFirstTask\000"
  1760      6F727453 
  1760      74617274 
  1760      46697273 
  1760      74546173 
  1761              	.LASF2:
- 1762 0382 6C6F6E67 		.ascii	"long double\000"
+ 1762 0380 6C6F6E67 		.ascii	"long double\000"
  1762      20646F75 
  1762      626C6500 
  1763              	.LASF3:
- 1764 038e 7369676E 		.ascii	"signed char\000"
+ 1764 038c 7369676E 		.ascii	"signed char\000"
  1764      65642063 
  1764      68617200 
  1765              	.LASF53:
- 1766 039a 78506F72 		.ascii	"xPortStartScheduler\000"
+ 1766 0398 78506F72 		.ascii	"xPortStartScheduler\000"
  1766      74537461 
  1766      72745363 
  1766      68656475 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccaGm55y.s 			page 50
-
-
  1766      6C657200 
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccDAl58C.s 			page 50
+
+
  1767              	.LASF25:
- 1768 03ae 55426173 		.ascii	"UBaseType_t\000"
+ 1768 03ac 55426173 		.ascii	"UBaseType_t\000"
  1768      65547970 
  1768      655F7400 
  1769              	.LASF50:
- 1770 03ba 7078506F 		.ascii	"pxPortInitialiseStack\000"
+ 1770 03b8 7078506F 		.ascii	"pxPortInitialiseStack\000"
  1770      7274496E 
  1770      69746961 
  1770      6C697365 

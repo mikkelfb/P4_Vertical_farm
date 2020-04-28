@@ -103,6 +103,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_1_Start(); //start PWM module 1
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
+    ADC_Flow_Start(); // start ADC_Flow module
     
     /* Startup One_Wire. */
 

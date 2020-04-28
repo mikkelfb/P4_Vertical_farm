@@ -2,7 +2,7 @@
 --	Conversion of PlanteModul.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Apr 21 09:45:30 2020
+--	Tue Apr 28 12:54:52 2020
 --
 
 USE cypress.cypress.all;
@@ -1089,210 +1089,50 @@ SIGNAL tmpFB_0__Pin_00_net_0 : bit;
 TERMINAL tmpSIOVREF__Pin_00_net_0 : bit;
 TERMINAL Net_224 : bit;
 SIGNAL tmpINTERRUPT_0__Pin_00_net_0 : bit;
-SIGNAL Net_228 : bit;
-SIGNAL \FreqDiv_DS18:not_last_reset\ : bit;
-SIGNAL Net_225 : bit;
-SIGNAL Net_226 : bit;
-SIGNAL \FreqDiv_DS18:count_1\ : bit;
-SIGNAL \FreqDiv_DS18:count_0\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_1\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_31\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_30\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_29\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_28\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_27\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_26\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_25\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_23\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_22\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_21\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_20\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_19\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_18\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_17\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_15\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_14\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_13\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_12\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_11\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_10\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_9\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_7\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_6\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_5\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_4\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_3\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:b_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_31\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_30\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_29\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_28\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_27\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_26\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_25\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_23\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_22\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_21\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_20\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_19\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_18\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_17\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_15\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_14\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_13\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_12\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_11\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_10\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_9\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_7\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_6\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_5\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_4\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_3\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODIN3_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:a_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODIN3_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_31\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_30\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_29\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_28\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_27\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_26\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_25\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_23\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_22\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_21\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_20\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_19\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_18\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_17\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_15\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_14\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_13\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_12\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_11\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_10\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_9\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_7\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_6\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_5\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_4\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_3\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:b_0\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_31\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_31\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_30\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_30\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_29\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_29\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_28\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_28\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_27\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_27\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_26\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_26\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_25\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_25\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_24\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_23\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_23\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_22\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_22\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_21\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_21\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_20\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_20\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_19\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_19\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_18\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_18\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_17\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_17\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_16\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_15\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_15\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_14\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_14\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_13\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_13\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_12\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_12\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_11\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_11\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_10\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_10\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_9\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_9\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_8\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_7\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_7\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_6\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_6\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_5\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_5\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_4\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_4\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_3\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_3\ : bit;
-SIGNAL \FreqDiv_DS18:add_vi_vv_MODGEN_3_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:s_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
-SIGNAL \FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+TERMINAL \ADC_Flow:Net_248\ : bit;
+TERMINAL \ADC_Flow:Net_235\ : bit;
+SIGNAL Net_234 : bit;
+SIGNAL \ADC_Flow:vp_ctl_0\ : bit;
+SIGNAL \ADC_Flow:vp_ctl_2\ : bit;
+SIGNAL \ADC_Flow:vn_ctl_1\ : bit;
+SIGNAL \ADC_Flow:vn_ctl_3\ : bit;
+SIGNAL \ADC_Flow:vp_ctl_1\ : bit;
+SIGNAL \ADC_Flow:vp_ctl_3\ : bit;
+SIGNAL \ADC_Flow:vn_ctl_0\ : bit;
+SIGNAL \ADC_Flow:vn_ctl_2\ : bit;
+SIGNAL \ADC_Flow:Net_385\ : bit;
+SIGNAL \ADC_Flow:Net_381\ : bit;
+SIGNAL \ADC_Flow:Net_188\ : bit;
+SIGNAL \ADC_Flow:Net_221\ : bit;
+TERMINAL Net_231 : bit;
+TERMINAL \ADC_Flow:Net_126\ : bit;
+TERMINAL \ADC_Flow:Net_215\ : bit;
+TERMINAL \ADC_Flow:Net_257\ : bit;
+SIGNAL \ADC_Flow:soc\ : bit;
+SIGNAL \ADC_Flow:Net_252\ : bit;
+SIGNAL Net_237 : bit;
+SIGNAL \ADC_Flow:Net_207_11\ : bit;
+SIGNAL \ADC_Flow:Net_207_10\ : bit;
+SIGNAL \ADC_Flow:Net_207_9\ : bit;
+SIGNAL \ADC_Flow:Net_207_8\ : bit;
+SIGNAL \ADC_Flow:Net_207_7\ : bit;
+SIGNAL \ADC_Flow:Net_207_6\ : bit;
+SIGNAL \ADC_Flow:Net_207_5\ : bit;
+SIGNAL \ADC_Flow:Net_207_4\ : bit;
+SIGNAL \ADC_Flow:Net_207_3\ : bit;
+SIGNAL \ADC_Flow:Net_207_2\ : bit;
+SIGNAL \ADC_Flow:Net_207_1\ : bit;
+SIGNAL \ADC_Flow:Net_207_0\ : bit;
+TERMINAL \ADC_Flow:Net_209\ : bit;
+TERMINAL \ADC_Flow:Net_149\ : bit;
+TERMINAL \ADC_Flow:Net_255\ : bit;
+TERMINAL \ADC_Flow:Net_368\ : bit;
+SIGNAL \ADC_Flow:Net_383\ : bit;
+SIGNAL tmpOE__Pin_Flow_Water_net_0 : bit;
+SIGNAL tmpFB_0__Pin_Flow_Water_net_0 : bit;
+SIGNAL tmpIO_0__Pin_Flow_Water_net_0 : bit;
+TERMINAL tmpSIOVREF__Pin_Flow_Water_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Pin_Flow_Water_net_0 : bit;
 SIGNAL \PWM_PERISTALTISK_1:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \PWM_PERISTALTISK_1:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \PWM_PERISTALTISK_1:PWMUDB:trig_last\\D\ : bit;
@@ -1335,10 +1175,6 @@ SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_disable\\D\ : bit;
 SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_last\\D\ : bit;
 SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_rise_detected\\D\ : bit;
 SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_fall_detected\\D\ : bit;
-SIGNAL \FreqDiv_DS18:not_last_reset\\D\ : bit;
-SIGNAL Net_226D : bit;
-SIGNAL \FreqDiv_DS18:count_1\\D\ : bit;
-SIGNAL \FreqDiv_DS18:count_0\\D\ : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -1395,17 +1231,6 @@ tmpOE__Pin_PERIPUMP_OUT_2_net_0 <=  ('1') ;
 	OR (not Net_218 and \DS18x8:TimerDelay:TimerUDB:control_7\ and \DS18x8:TimerDelay:TimerUDB:control_4\ and \DS18x8:TimerDelay:TimerUDB:trig_fall_detected\));
 
 \DS18x8:TimerDelay:TimerUDB:trig_reg\ <= ((\DS18x8:TimerDelay:TimerUDB:control_4\ and \DS18x8:TimerDelay:TimerUDB:timer_enable\ and \DS18x8:TimerDelay:TimerUDB:trig_rise_detected\));
-
-Net_226D <= ((not \FreqDiv_DS18:count_0\ and Net_226)
-	OR (\FreqDiv_DS18:count_1\ and \FreqDiv_DS18:count_0\)
-	OR not \FreqDiv_DS18:not_last_reset\);
-
-\FreqDiv_DS18:count_1\\D\ <= ((not \FreqDiv_DS18:count_1\ and \FreqDiv_DS18:not_last_reset\ and \FreqDiv_DS18:count_0\)
-	OR (not \FreqDiv_DS18:count_0\ and \FreqDiv_DS18:count_1\)
-	OR (not \FreqDiv_DS18:not_last_reset\ and \FreqDiv_DS18:count_1\));
-
-\FreqDiv_DS18:count_0\\D\ <= ((not \FreqDiv_DS18:count_0\ and \FreqDiv_DS18:not_last_reset\)
-	OR (not \FreqDiv_DS18:not_last_reset\ and \FreqDiv_DS18:count_0\));
 
 Clock_1:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -2397,29 +2222,141 @@ Pin_00:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__Pin_PERIPUMP_OUT_2_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__Pin_00_net_0);
-\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_24\);
-\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_16\);
-\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\FreqDiv_DS18:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_8\);
-Clock_DS18:cy_clock_v1_0
+\ADC_Flow:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_Flow:Net_248\,
+		signal2=>\ADC_Flow:Net_235\);
+\ADC_Flow:IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
+	PORT MAP(int_signal=>Net_234);
+\ADC_Flow:theACLK\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
-		id=>"58ddfeba-88ba-4cb0-a830-24ae33dc5194",
+		id=>"672cc9f2-fab7-4e7d-ae46-7cd1bcd00f49/696a0979-21fc-4185-bf38-6c79febcde7a",
 		source_clock_id=>"",
 		divisor=>0,
-		period=>"1E+15",
+		period=>"833333333.333333",
 		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_228,
-		dig_domain_out=>open);
-isr_DS18:cy_isr_v1_0
-	GENERIC MAP(int_type=>"00",
-		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_226);
+		is_digital=>'0')
+	PORT MAP(clock_out=>\ADC_Flow:Net_385\,
+		dig_domain_out=>\ADC_Flow:Net_381\);
+\ADC_Flow:ADC_SAR\:cy_psoc5_sar_v2_0
+	GENERIC MAP(cy_registers=>"")
+	PORT MAP(vplus=>Net_231,
+		vminus=>\ADC_Flow:Net_126\,
+		ext_pin=>\ADC_Flow:Net_215\,
+		vrefhi_out=>\ADC_Flow:Net_257\,
+		vref=>\ADC_Flow:Net_248\,
+		clock=>\ADC_Flow:Net_385\,
+		pump_clock=>\ADC_Flow:Net_385\,
+		sof_udb=>zero,
+		clk_udb=>zero,
+		vp_ctl_udb=>(zero, zero, zero, zero),
+		vn_ctl_udb=>(zero, zero, zero, zero),
+		irq=>\ADC_Flow:Net_252\,
+		next_out=>Net_237,
+		data_out=>(\ADC_Flow:Net_207_11\, \ADC_Flow:Net_207_10\, \ADC_Flow:Net_207_9\, \ADC_Flow:Net_207_8\,
+			\ADC_Flow:Net_207_7\, \ADC_Flow:Net_207_6\, \ADC_Flow:Net_207_5\, \ADC_Flow:Net_207_4\,
+			\ADC_Flow:Net_207_3\, \ADC_Flow:Net_207_2\, \ADC_Flow:Net_207_1\, \ADC_Flow:Net_207_0\),
+		eof_udb=>Net_234);
+\ADC_Flow:cy_analog_virtualmux_2_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_Flow:Net_215\,
+		signal2=>\ADC_Flow:Net_209\);
+\ADC_Flow:cy_analog_virtualmux_1_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_Flow:Net_126\,
+		signal2=>\ADC_Flow:Net_149\);
+\ADC_Flow:noconnect\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_Flow:Net_209\);
+\ADC_Flow:cy_analog_virtualmux_4_connect\:cy_connect_v1_0
+	GENERIC MAP(sig_width=>1,
+		is_net_join=>'0')
+	PORT MAP(signal1=>\ADC_Flow:Net_257\,
+		signal2=>\ADC_Flow:Net_149\);
+\ADC_Flow:cy_analog_noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_Flow:Net_255\);
+\ADC_Flow:vRef_Vdda_1\:cy_vref_v1_0
+	GENERIC MAP(guid=>"4720866E-BC14-478d-B8A0-3E44F38CADAC",
+		name=>"Vdda/2",
+		autoenable=>'1',
+		ignoresleep=>'0')
+	PORT MAP(vout=>\ADC_Flow:Net_235\);
+\ADC_Flow:noconnect_1\:cy_analog_noconnect_v1_0
+	PORT MAP(noconnect=>\ADC_Flow:Net_368\);
+Pin_Flow_Water:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"7f1206fb-6e02-4cba-8875-ebce84ceb1d0",
+		drive_mode=>"000",
+		ibuf_enabled=>"0",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"A",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Pin_PERIPUMP_OUT_2_net_0),
+		y=>(zero),
+		fb=>(tmpFB_0__Pin_Flow_Water_net_0),
+		analog=>Net_231,
+		io=>(tmpIO_0__Pin_Flow_Water_net_0),
+		siovref=>(tmpSIOVREF__Pin_Flow_Water_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>tmpOE__Pin_PERIPUMP_OUT_2_net_0,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>tmpOE__Pin_PERIPUMP_OUT_2_net_0,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__Pin_Flow_Water_net_0);
 \PWM_PERISTALTISK_1:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>tmpOE__Pin_PERIPUMP_OUT_2_net_0,
 		s=>zero,
@@ -2620,21 +2557,5 @@ isr_DS18:cy_isr_v1_0
 	PORT MAP(d=>\DS18x8:TimerDelay:TimerUDB:trig_fall_detected\\D\,
 		clk=>\DS18x8:TimerDelay:TimerUDB:ClockOutFromEnBlock\,
 		q=>\DS18x8:TimerDelay:TimerUDB:trig_fall_detected\);
-\FreqDiv_DS18:not_last_reset\:cy_dff
-	PORT MAP(d=>tmpOE__Pin_PERIPUMP_OUT_2_net_0,
-		clk=>Net_228,
-		q=>\FreqDiv_DS18:not_last_reset\);
-Net_226:cy_dff
-	PORT MAP(d=>Net_226D,
-		clk=>Net_228,
-		q=>Net_226);
-\FreqDiv_DS18:count_1\:cy_dff
-	PORT MAP(d=>\FreqDiv_DS18:count_1\\D\,
-		clk=>Net_228,
-		q=>\FreqDiv_DS18:count_1\);
-\FreqDiv_DS18:count_0\:cy_dff
-	PORT MAP(d=>\FreqDiv_DS18:count_0\\D\,
-		clk=>Net_228,
-		q=>\FreqDiv_DS18:count_0\);
 
 END R_T_L;

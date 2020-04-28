@@ -58,6 +58,13 @@
     void vTaskWaterTemp();
     
     
+    
+    /*
+    This task is for measuring the water "flow" in the system. The task writes the result as an 8 bit int. 
+    */
+    void vTaskFlowWater();
+    
+    
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         
@@ -97,5 +104,10 @@
         This function sends the water temperature data from the queue through UART. 
         */
         void vTestTaskWaterTemp();
+        
+        /*
+        This function sends the water flow data from the queue through UART.
+        */
+        void vTestFlowWater();
     #endif
 #endif

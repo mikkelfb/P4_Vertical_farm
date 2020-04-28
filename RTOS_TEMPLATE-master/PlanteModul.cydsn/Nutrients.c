@@ -21,6 +21,7 @@ struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
     uint16  iECvalue;
     uint16  iWaterTemp;
+    uint8   iFlowWater;
 };
 
 const int iSizeOfNutrients = 40; // Should be the same as the value of the array below
@@ -34,7 +35,8 @@ const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 
 QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
 QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
-QueueHandle_t xQueueWaterTemp;
+QueueHandle_t xQueueWaterTemp;     // Create a queue for sending temperatures values through UART
+QueueHandle_t xQueueFlowWater;    // Create a queue for sending flow values through UART
 
 
 const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
@@ -51,6 +53,7 @@ void vNutrientsInit() {
     
     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
     xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
+    xQueueFlowWater = xQueueCreate(1, sizeof(uint8));
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
@@ -60,7 +63,8 @@ void vNutrientsInit() {
 
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
-    xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 4 , NULL);
+    xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 2 , NULL);
+    xTaskCreate(vTaskFlowWater, "WaterFlow", 1000, NULL, 4, NULL);
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
@@ -180,6 +184,22 @@ void vTaskWaterTemp(){
         }    
     }   
 }
+
+void vTaskFlowWater()
+{
+    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
+    uint8 flowWaterResult;
+    for(;;)
+    {
+        ADC_Flow_StartConvert();
+        flowWaterResult = ADC_Flow_GetResult8();
+        xQueueSendToBack(xQueueFlowWater, &flowWaterResult, portMAX_DELAY);
+        vTaskDelay(xDelayms);
+    }
+}
+
+
+
 /* --- TEST TASK --- */
 
 /*
@@ -192,6 +212,21 @@ void vTaskWaterTemp(){
 
     
 */
+
+void vTestFlowWater()
+{
+    uint8 FlowWaterTest;
+    for(;;)
+    {
+        xQueueReceive(xQueueFlowWater, &FlowWaterTest, portMAX_DELAY);
+        SW_UART_TEST_USB_PutString("Waterflow: ");
+        SW_UART_TEST_USB_PutHexByte(FlowWaterTest);
+        SW_UART_TEST_USB_PutString("\n");
+    }
+}
+
+
+
 void vTestTaskWaterTemp(){
     uint16 WaterTempTest;
     for(;;){
@@ -206,7 +241,8 @@ void vTestTaskWaterTemp(){
 void vTestTaskInit(){
     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
    // xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
-    xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
+    //xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
+    xTaskCreate(vTestFlowWater, "Test water flow", 100, NULL, 4, NULL);
 }
 
 

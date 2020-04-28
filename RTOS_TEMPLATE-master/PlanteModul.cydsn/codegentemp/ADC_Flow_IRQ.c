@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: isr_DS18.c  
+* File Name: ADC_Flow_IRQ.c  
 * Version 1.70
 *
 *  Description:
@@ -18,15 +18,15 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <isr_DS18.h>
+#include <ADC_Flow_IRQ.h>
 
 
-#if !defined(isr_DS18__REMOVED) /* Check for removal by optimization */
+#if !defined(ADC_Flow_IRQ__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START isr_DS18_intc` */
+/* `#START ADC_Flow_IRQ_intc` */
 
 /* `#END` */
 
@@ -42,7 +42,7 @@ CY_ISR_PROTO(IntDefaultHandler);
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_Start
+* Function Name: ADC_Flow_IRQ_Start
 ********************************************************************************
 *
 * Summary:
@@ -58,24 +58,24 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   None
 *
 *******************************************************************************/
-void isr_DS18_Start(void)
+void ADC_Flow_IRQ_Start(void)
 {
     /* For all we know the interrupt is active. */
-    isr_DS18_Disable();
+    ADC_Flow_IRQ_Disable();
 
-    /* Set the ISR to point to the isr_DS18 Interrupt. */
-    isr_DS18_SetVector(&isr_DS18_Interrupt);
+    /* Set the ISR to point to the ADC_Flow_IRQ Interrupt. */
+    ADC_Flow_IRQ_SetVector(&ADC_Flow_IRQ_Interrupt);
 
     /* Set the priority. */
-    isr_DS18_SetPriority((uint8)isr_DS18_INTC_PRIOR_NUMBER);
+    ADC_Flow_IRQ_SetPriority((uint8)ADC_Flow_IRQ_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    isr_DS18_Enable();
+    ADC_Flow_IRQ_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_StartEx
+* Function Name: ADC_Flow_IRQ_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -101,24 +101,24 @@ void isr_DS18_Start(void)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_StartEx(cyisraddress address)
+void ADC_Flow_IRQ_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    isr_DS18_Disable();
+    ADC_Flow_IRQ_Disable();
 
-    /* Set the ISR to point to the isr_DS18 Interrupt. */
-    isr_DS18_SetVector(address);
+    /* Set the ISR to point to the ADC_Flow_IRQ Interrupt. */
+    ADC_Flow_IRQ_SetVector(address);
 
     /* Set the priority. */
-    isr_DS18_SetPriority((uint8)isr_DS18_INTC_PRIOR_NUMBER);
+    ADC_Flow_IRQ_SetPriority((uint8)ADC_Flow_IRQ_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    isr_DS18_Enable();
+    ADC_Flow_IRQ_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_Stop
+* Function Name: ADC_Flow_IRQ_Stop
 ********************************************************************************
 *
 * Summary:
@@ -131,22 +131,22 @@ void isr_DS18_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_Stop(void)
+void ADC_Flow_IRQ_Stop(void)
 {
     /* Disable this interrupt. */
-    isr_DS18_Disable();
+    ADC_Flow_IRQ_Disable();
 
     /* Set the ISR to point to the passive one. */
-    isr_DS18_SetVector(&IntDefaultHandler);
+    ADC_Flow_IRQ_SetVector(&IntDefaultHandler);
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_Interrupt
+* Function Name: ADC_Flow_IRQ_Interrupt
 ********************************************************************************
 *
 * Summary:
-*   The default Interrupt Service Routine for isr_DS18.
+*   The default Interrupt Service Routine for ADC_Flow_IRQ.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -157,27 +157,27 @@ void isr_DS18_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(isr_DS18_Interrupt)
+CY_ISR(ADC_Flow_IRQ_Interrupt)
 {
-    #ifdef isr_DS18_INTERRUPT_INTERRUPT_CALLBACK
-        isr_DS18_Interrupt_InterruptCallback();
-    #endif /* isr_DS18_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #ifdef ADC_Flow_IRQ_INTERRUPT_INTERRUPT_CALLBACK
+        ADC_Flow_IRQ_Interrupt_InterruptCallback();
+    #endif /* ADC_Flow_IRQ_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START isr_DS18_Interrupt` */
+    /* `#START ADC_Flow_IRQ_Interrupt` */
 
     /* `#END` */
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_SetVector
+* Function Name: ADC_Flow_IRQ_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling isr_DS18_Start
+*   Change the ISR vector for the Interrupt. Note calling ADC_Flow_IRQ_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use isr_DS18_StartEx instead.
+*   before the component has been started use ADC_Flow_IRQ_StartEx instead.
 * 
 *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
 *   used to provide consistent definition across compilers:
@@ -197,18 +197,18 @@ CY_ISR(isr_DS18_Interrupt)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_SetVector(cyisraddress address)
+void ADC_Flow_IRQ_SetVector(cyisraddress address)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_DS18__INTC_NUMBER] = address;
+    ramVectorTable[CYINT_IRQ_BASE + (uint32)ADC_Flow_IRQ__INTC_NUMBER] = address;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_GetVector
+* Function Name: ADC_Flow_IRQ_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -221,26 +221,26 @@ void isr_DS18_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress isr_DS18_GetVector(void)
+cyisraddress ADC_Flow_IRQ_GetVector(void)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    return ramVectorTable[CYINT_IRQ_BASE + (uint32)isr_DS18__INTC_NUMBER];
+    return ramVectorTable[CYINT_IRQ_BASE + (uint32)ADC_Flow_IRQ__INTC_NUMBER];
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_SetPriority
+* Function Name: ADC_Flow_IRQ_SetPriority
 ********************************************************************************
 *
 * Summary:
 *   Sets the Priority of the Interrupt. 
 *
-*   Note calling isr_DS18_Start or isr_DS18_StartEx will 
+*   Note calling ADC_Flow_IRQ_Start or ADC_Flow_IRQ_StartEx will 
 *   override any effect this API would have had. This API should only be called
-*   after isr_DS18_Start or isr_DS18_StartEx has been called. 
+*   after ADC_Flow_IRQ_Start or ADC_Flow_IRQ_StartEx has been called. 
 *   To set the initial priority for the component, use the Design-Wide Resources
 *   Interrupt Editor.
 *
@@ -255,14 +255,14 @@ cyisraddress isr_DS18_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_SetPriority(uint8 priority)
+void ADC_Flow_IRQ_SetPriority(uint8 priority)
 {
-    *isr_DS18_INTC_PRIOR = priority << 5;
+    *ADC_Flow_IRQ_INTC_PRIOR = priority << 5;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_GetPriority
+* Function Name: ADC_Flow_IRQ_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -277,19 +277,19 @@ void isr_DS18_SetPriority(uint8 priority)
 *    PSoC 4: Priority is from 0 to 3.
 *
 *******************************************************************************/
-uint8 isr_DS18_GetPriority(void)
+uint8 ADC_Flow_IRQ_GetPriority(void)
 {
     uint8 priority;
 
 
-    priority = *isr_DS18_INTC_PRIOR >> 5;
+    priority = *ADC_Flow_IRQ_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_Enable
+* Function Name: ADC_Flow_IRQ_Enable
 ********************************************************************************
 *
 * Summary:
@@ -304,15 +304,15 @@ uint8 isr_DS18_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_Enable(void)
+void ADC_Flow_IRQ_Enable(void)
 {
     /* Enable the general interrupt. */
-    *isr_DS18_INTC_SET_EN = isr_DS18__INTC_MASK;
+    *ADC_Flow_IRQ_INTC_SET_EN = ADC_Flow_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_GetState
+* Function Name: ADC_Flow_IRQ_GetState
 ********************************************************************************
 *
 * Summary:
@@ -325,15 +325,15 @@ void isr_DS18_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 isr_DS18_GetState(void)
+uint8 ADC_Flow_IRQ_GetState(void)
 {
     /* Get the state of the general interrupt. */
-    return ((*isr_DS18_INTC_SET_EN & (uint32)isr_DS18__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*ADC_Flow_IRQ_INTC_SET_EN & (uint32)ADC_Flow_IRQ__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_Disable
+* Function Name: ADC_Flow_IRQ_Disable
 ********************************************************************************
 *
 * Summary:
@@ -346,15 +346,15 @@ uint8 isr_DS18_GetState(void)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_Disable(void)
+void ADC_Flow_IRQ_Disable(void)
 {
     /* Disable the general interrupt. */
-    *isr_DS18_INTC_CLR_EN = isr_DS18__INTC_MASK;
+    *ADC_Flow_IRQ_INTC_CLR_EN = ADC_Flow_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_SetPending
+* Function Name: ADC_Flow_IRQ_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -373,14 +373,14 @@ void isr_DS18_Disable(void)
 *   interrupts).
 *
 *******************************************************************************/
-void isr_DS18_SetPending(void)
+void ADC_Flow_IRQ_SetPending(void)
 {
-    *isr_DS18_INTC_SET_PD = isr_DS18__INTC_MASK;
+    *ADC_Flow_IRQ_INTC_SET_PD = ADC_Flow_IRQ__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: isr_DS18_ClearPending
+* Function Name: ADC_Flow_IRQ_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -398,9 +398,9 @@ void isr_DS18_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void isr_DS18_ClearPending(void)
+void ADC_Flow_IRQ_ClearPending(void)
 {
-    *isr_DS18_INTC_CLR_PD = isr_DS18__INTC_MASK;
+    *ADC_Flow_IRQ_INTC_CLR_PD = ADC_Flow_IRQ__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */

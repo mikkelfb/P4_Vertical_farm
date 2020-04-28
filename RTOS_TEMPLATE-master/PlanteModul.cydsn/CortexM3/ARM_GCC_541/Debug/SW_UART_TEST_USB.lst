@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
    9:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * Copyright 2013-2015, Cypress Semiconductor Corporation.  All rights reserved.
   10:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * You may use this file only in accordance with the license, terms, conditions,
   11:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * disclaimers, and limitations in the end user license agreement accompanying
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 2
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 2
 
 
   12:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** * the software package with which this file was provided.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
   56:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****     }
   57              		.loc 1 56 0
   58 0004 00BF     		nop
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 3
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 3
 
 
   59 0006 BD46     		mov	sp, r7
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
   93:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                                                                                 SW_UART_TEST_USB_PO
   94:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                 CY_SYS_PINS_SET_DRIVE_MODE(portConfigAddr, pin, CY_SYS_PINS_DM_STRONG);
   95:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                 portDataRegAddr = SW_UART_TEST_USB_PORT_CNF_BASE + (SW_UART_TEST_USB_PORT_CNF_SIZE 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 4
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 4
 
 
   96:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****                                                                                 SW_UART_TEST_USB_PO
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  102              		.thumb
  103              		.thumb_func
  104              		.type	SW_UART_TEST_USB_PutString, %function
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 5
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 5
 
 
  105              	SW_UART_TEST_USB_PutString:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  150:Generated_Source\PSoC5/SW_UART_TEST_USB.c ****         current = string[stringIndex];
  134              		.loc 1 150 0
  135 001c FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 6
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 6
 
 
  136 001e 7A68     		ldr	r2, [r7, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  172:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** {
  168              		.loc 1 172 0
  169              		.cfi_startproc
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 7
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 7
 
 
  170              		@ args = 0, pretend = 0, frame = 16
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  215              		.section	.text.SW_UART_TEST_USB_PutHexByte,"ax",%progbits
  216              		.align	2
  217              		.global	SW_UART_TEST_USB_PutHexByte
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 8
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 8
 
 
  218              		.thumb
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  248 001e 03F00F03 		and	r3, r3, #15
  249 0022 044A     		ldr	r2, .L10
  250 0024 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 9
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 9
 
 
  251 0026 1846     		mov	r0, r3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  284 0002 82B0     		sub	sp, sp, #8
  285              		.cfi_def_cfa_offset 16
  286 0004 00AF     		add	r7, sp, #0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 10
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 10
 
 
  287              		.cfi_def_cfa_register 7
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  245:Generated_Source\PSoC5/SW_UART_TEST_USB.c **** {
  321              		.loc 1 245 0
  322              		.cfi_startproc
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 11
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 11
 
 
  323              		@ args = 0, pretend = 0, frame = 0
@@ -647,7 +647,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  359 000c 34000000 		.4byte	.LASF36
  360 0010 0C       		.byte	0xc
  361 0011 CE010000 		.4byte	.LASF37
- 362 0015 FD010000 		.4byte	.LASF38
+ 362 0015 6B020000 		.4byte	.LASF38
  363 0019 00000000 		.4byte	.Ldebug_ranges0+0
  364 001d 00000000 		.4byte	0
  365 0021 00000000 		.4byte	.Ldebug_line0
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  370 002c 02       		.uleb128 0x2
  371 002d 01       		.byte	0x1
  372 002e 08       		.byte	0x8
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 12
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 12
 
 
  373 002f 60010000 		.4byte	.LASF1
@@ -677,7 +677,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  386 0048 02       		.uleb128 0x2
  387 0049 04       		.byte	0x4
  388 004a 07       		.byte	0x7
- 389 004b 73020000 		.4byte	.LASF5
+ 389 004b 0F020000 		.4byte	.LASF5
  390 004f 02       		.uleb128 0x2
  391 0050 08       		.byte	0x8
  392 0051 05       		.byte	0x5
@@ -705,7 +705,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  414 007d E501     		.2byte	0x1e5
  415 007f 3A000000 		.4byte	0x3a
  416 0083 04       		.uleb128 0x4
- 417 0084 6C020000 		.4byte	.LASF11
+ 417 0084 08020000 		.4byte	.LASF11
  418 0088 02       		.byte	0x2
  419 0089 E601     		.2byte	0x1e6
  420 008b 48000000 		.4byte	0x48
@@ -716,9 +716,9 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  425 0096 02       		.uleb128 0x2
  426 0097 08       		.byte	0x8
  427 0098 04       		.byte	0x4
- 428 0099 85020000 		.4byte	.LASF13
+ 428 0099 21020000 		.4byte	.LASF13
  429 009d 04       		.uleb128 0x4
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 13
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 13
 
 
  430 009e 2E000000 		.4byte	.LASF14
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  484 010e 02       		.uleb128 0x2
  485 010f 91       		.byte	0x91
  486 0110 76       		.sleb128 -10
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 14
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 14
 
 
  487 0111 00       		.byte	0
@@ -788,7 +788,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  491 0118 0A       		.uleb128 0xa
  492 0119 9D000000 		.4byte	0x9d
  493 011d 06       		.uleb128 0x6
- 494 011e 92020000 		.4byte	.LASF21
+ 494 011e 2E020000 		.4byte	.LASF21
  495 0122 01       		.byte	0x1
  496 0123 AB       		.byte	0xab
  497 0124 00000000 		.4byte	.LFB3
@@ -797,7 +797,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  500 012d 9C       		.byte	0x9c
  501 012e 5D010000 		.4byte	0x15d
  502 0132 07       		.uleb128 0x7
- 503 0133 8C020000 		.4byte	.LASF23
+ 503 0133 28020000 		.4byte	.LASF23
  504 0137 01       		.byte	0x1
  505 0138 AB       		.byte	0xab
  506 0139 5D010000 		.4byte	0x15d
@@ -805,7 +805,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  508 013e 91       		.byte	0x91
  509 013f 6C       		.sleb128 -20
  510 0140 07       		.uleb128 0x7
- 511 0141 AC020000 		.4byte	.LASF24
+ 511 0141 48020000 		.4byte	.LASF24
  512 0145 01       		.byte	0x1
  513 0146 AB       		.byte	0xab
  514 0147 83000000 		.4byte	0x83
@@ -813,7 +813,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  516 014c 91       		.byte	0x91
  517 014d 68       		.sleb128 -24
  518 014e 08       		.uleb128 0x8
- 519 014f 61020000 		.4byte	.LASF25
+ 519 014f FD010000 		.4byte	.LASF25
  520 0153 01       		.byte	0x1
  521 0154 AD       		.byte	0xad
  522 0155 83000000 		.4byte	0x83
@@ -827,7 +827,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  530 0163 0A       		.uleb128 0xa
  531 0164 6B000000 		.4byte	0x6b
  532 0168 06       		.uleb128 0x6
- 533 0169 CF020000 		.4byte	.LASF26
+ 533 0169 CD020000 		.4byte	.LASF26
  534 016d 01       		.byte	0x1
  535 016e C6       		.byte	0xc6
  536 016f 00000000 		.4byte	.LFB4
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  541 017d 07       		.uleb128 0x7
  542 017e 56010000 		.4byte	.LASF27
  543 0182 01       		.byte	0x1
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 15
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 15
 
 
  544 0183 C6       		.byte	0xc6
@@ -847,7 +847,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  547 0189 91       		.byte	0x91
  548 018a 77       		.sleb128 -9
  549 018b 08       		.uleb128 0x8
- 550 018c EB020000 		.4byte	.LASF28
+ 550 018c E9020000 		.4byte	.LASF28
  551 0190 01       		.byte	0x1
  552 0191 C8       		.byte	0xc8
  553 0192 B4010000 		.4byte	0x1b4
@@ -887,7 +887,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  587 01db 76       		.sleb128 -10
  588 01dc 00       		.byte	0
  589 01dd 0D       		.uleb128 0xd
- 590 01de B6020000 		.4byte	.LASF32
+ 590 01de 52020000 		.4byte	.LASF32
  591 01e2 01       		.byte	0x1
  592 01e3 F4       		.byte	0xf4
  593 01e4 00000000 		.4byte	.LFB6
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  598 01ef C9000000 		.4byte	.LASF33
  599 01f3 01       		.byte	0x1
  600 01f4 12       		.byte	0x12
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 16
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 16
 
 
  601 01f5 83000000 		.4byte	0x83
@@ -906,7 +906,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  603 01fa 03       		.byte	0x3
  604 01fb 00000000 		.4byte	SW_UART_TEST_USB_pinNumber
  605 01ff 0E       		.uleb128 0xe
- 606 0200 1D030000 		.4byte	.LASF34
+ 606 0200 1B030000 		.4byte	.LASF34
  607 0204 01       		.byte	0x1
  608 0205 13       		.byte	0x13
  609 0206 83000000 		.4byte	0x83
@@ -914,7 +914,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  611 020b 03       		.byte	0x3
  612 020c 00000000 		.4byte	SW_UART_TEST_USB_pinPortNumber
  613 0210 0E       		.uleb128 0xe
- 614 0211 00030000 		.4byte	.LASF35
+ 614 0211 FE020000 		.4byte	.LASF35
  615 0215 01       		.byte	0x1
  616 0216 17       		.byte	0x17
  617 0217 83000000 		.4byte	0x83
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  655 001f 24       		.uleb128 0x24
  656 0020 00       		.byte	0
  657 0021 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 17
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 17
 
 
  658 0022 0B       		.uleb128 0xb
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  712 0059 27       		.uleb128 0x27
  713 005a 19       		.uleb128 0x19
  714 005b 11       		.uleb128 0x11
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 18
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 18
 
 
  715 005c 01       		.uleb128 0x1
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  769 0093 13       		.uleb128 0x13
  770 0094 00       		.byte	0
  771 0095 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 19
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 19
 
 
  772 0096 0B       		.uleb128 0xb
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  826 00cd 02       		.uleb128 0x2
  827 00ce 18       		.uleb128 0x18
  828 00cf 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 20
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 20
 
 
  829 00d0 00       		.byte	0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  877      54455354 
  877      5F555342 
  877      5F507574 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 21
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 21
 
 
  878              	.LASF2:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  900              	.LASF6:
  901 011d 6C6F6E67 		.ascii	"long long int\000"
  901      206C6F6E 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 22
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 22
 
 
  901      6720696E 
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  925      65642069 
  925      6E7400
  926              	.LASF37:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 23
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 23
 
 
  927 01ce 47656E65 		.ascii	"Generated_Source\\PSoC5\\SW_UART_TEST_USB.c\000"
@@ -1329,77 +1329,76 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 1
  928              	.LASF15:
  929 01f8 63686172 		.ascii	"char\000"
  929      00
- 930              	.LASF38:
- 931 01fd 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
- 931      73657273 
- 931      5C6D6167 
- 931      39345C44 
- 931      65736B74 
- 932 022a 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
- 932      72746963 
- 932      616C5F66 
- 932      61726D5C 
- 932      52544F53 
- 933 025b 63796473 		.ascii	"cydsn\000"
- 933      6E00
- 934              	.LASF25:
- 935 0261 61727261 		.ascii	"arrayIndex\000"
- 935      79496E64 
- 935      657800
- 936              	.LASF11:
- 937 026c 75696E74 		.ascii	"uint32\000"
- 937      333200
- 938              	.LASF5:
- 939 0273 6C6F6E67 		.ascii	"long unsigned int\000"
- 939      20756E73 
- 939      69676E65 
- 939      6420696E 
- 939      7400
- 940              	.LASF13:
- 941 0285 646F7562 		.ascii	"double\000"
- 941      6C6500
- 942              	.LASF23:
- 943 028c 61727261 		.ascii	"array\000"
- 943      7900
- 944              	.LASF21:
- 945 0292 53575F55 		.ascii	"SW_UART_TEST_USB_PutArray\000"
+ 930              	.LASF25:
+ 931 01fd 61727261 		.ascii	"arrayIndex\000"
+ 931      79496E64 
+ 931      657800
+ 932              	.LASF11:
+ 933 0208 75696E74 		.ascii	"uint32\000"
+ 933      333200
+ 934              	.LASF5:
+ 935 020f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 935      20756E73 
+ 935      69676E65 
+ 935      6420696E 
+ 935      7400
+ 936              	.LASF13:
+ 937 0221 646F7562 		.ascii	"double\000"
+ 937      6C6500
+ 938              	.LASF23:
+ 939 0228 61727261 		.ascii	"array\000"
+ 939      7900
+ 940              	.LASF21:
+ 941 022e 53575F55 		.ascii	"SW_UART_TEST_USB_PutArray\000"
+ 941      4152545F 
+ 941      54455354 
+ 941      5F555342 
+ 941      5F507574 
+ 942              	.LASF24:
+ 943 0248 62797465 		.ascii	"byteCount\000"
+ 943      436F756E 
+ 943      7400
+ 944              	.LASF32:
+ 945 0252 53575F55 		.ascii	"SW_UART_TEST_USB_PutCRLF\000"
  945      4152545F 
  945      54455354 
  945      5F555342 
  945      5F507574 
- 946              	.LASF24:
- 947 02ac 62797465 		.ascii	"byteCount\000"
- 947      436F756E 
- 947      7400
- 948              	.LASF32:
- 949 02b6 53575F55 		.ascii	"SW_UART_TEST_USB_PutCRLF\000"
- 949      4152545F 
- 949      54455354 
- 949      5F555342 
- 949      5F507574 
+ 946              	.LASF38:
+ 947 026b 433A5C55 		.ascii	"C:\\Users\\Gusta\\OneDrive\\Dokumenter\\GitHub\\P4_"
+ 947      73657273 
+ 947      5C477573 
+ 947      74615C4F 
+ 947      6E654472 
+ 948 0298 56657274 		.ascii	"Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul.cy"
+ 948      6963616C 
+ 948      5F666172 
+ 948      6D5C5254 
+ 948      4F535F54 
+ 949 02c9 64736E00 		.ascii	"dsn\000"
  950              	.LASF26:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc8HiWkZ.s 			page 24
+ 951 02cd 53575F55 		.ascii	"SW_UART_TEST_USB_PutHexByte\000"
+ARM GAS  C:\Users\Gusta\AppData\Local\Temp\ccGddP0H.s 			page 24
 
 
- 951 02cf 53575F55 		.ascii	"SW_UART_TEST_USB_PutHexByte\000"
  951      4152545F 
  951      54455354 
  951      5F555342 
  951      5F507574 
  952              	.LASF28:
- 953 02eb 53575F55 		.ascii	"SW_UART_TEST_USB_hex\000"
+ 953 02e9 53575F55 		.ascii	"SW_UART_TEST_USB_hex\000"
  953      4152545F 
  953      54455354 
  953      5F555342 
  953      5F686578 
  954              	.LASF35:
- 955 0300 53575F55 		.ascii	"SW_UART_TEST_USB_pinDrAdress\000"
+ 955 02fe 53575F55 		.ascii	"SW_UART_TEST_USB_pinDrAdress\000"
  955      4152545F 
  955      54455354 
  955      5F555342 
  955      5F70696E 
  956              	.LASF34:
- 957 031d 53575F55 		.ascii	"SW_UART_TEST_USB_pinPortNumber\000"
+ 957 031b 53575F55 		.ascii	"SW_UART_TEST_USB_pinPortNumber\000"
  957      4152545F 
  957      54455354 
  957      5F555342 
