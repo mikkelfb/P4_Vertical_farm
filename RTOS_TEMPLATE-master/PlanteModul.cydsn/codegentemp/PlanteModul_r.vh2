@@ -1,5 +1,5 @@
 -- Project:   PlanteModul
--- Generated: 04/24/2020 13:46:32
+-- Generated: 04/27/2020 15:14:42
 -- PSoC Creator  4.3
 
 ENTITY PlanteModul IS
@@ -9,8 +9,8 @@ ENTITY PlanteModul IS
         Pin_PERIPUMP_OUT_3(0)_PAD : OUT std_ulogic;
         \SW_UART_TEST_USB:tx(0)_PAD\ : OUT std_ulogic;
         Pin_00(0)_PAD : INOUT std_ulogic;
-        SDA(0)_PAD : INOUT std_ulogic;
-        SCL(0)_PAD : INOUT std_ulogic);
+        SDA_1(0)_PAD : INOUT std_ulogic;
+        SCL_1(0)_PAD : INOUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -45,16 +45,16 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL Net_231 : bit;
     ATTRIBUTE placement_force OF Net_231 : SIGNAL IS "U(2,4,B)0";
     SIGNAL Net_51 : bit;
-    ATTRIBUTE placement_force OF Net_51 : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF Net_51 : SIGNAL IS "U(2,5,A)3";
     SIGNAL Net_66 : bit;
-    ATTRIBUTE placement_force OF Net_66 : SIGNAL IS "U(2,5,A)3";
+    ATTRIBUTE placement_force OF Net_66 : SIGNAL IS "U(2,5,A)0";
     SIGNAL Pin_00(0)__PA : bit;
     SIGNAL Pin_PERIPUMP_OUT_1(0)__PA : bit;
     SIGNAL Pin_PERIPUMP_OUT_2(0)__PA : bit;
     SIGNAL Pin_PERIPUMP_OUT_3(0)__PA : bit;
     SIGNAL Pin_pH_in(0)__PA : bit;
-    SIGNAL SCL(0)__PA : bit;
-    SIGNAL SDA(0)__PA : bit;
+    SIGNAL SCL_1(0)__PA : bit;
+    SIGNAL SDA_1(0)__PA : bit;
     SIGNAL \ADC_PH:Net_207_0\ : bit;
     SIGNAL \ADC_PH:Net_207_10\ : bit;
     SIGNAL \ADC_PH:Net_207_11\ : bit;
@@ -116,7 +116,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_fall_detected\ : bit;
     ATTRIBUTE placement_force OF \DS18x8:TimerDelay:TimerUDB:trig_fall_detected\ : SIGNAL IS "U(2,4,B)3";
     SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_last\ : bit;
-    ATTRIBUTE placement_force OF \DS18x8:TimerDelay:TimerUDB:trig_last\ : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF \DS18x8:TimerDelay:TimerUDB:trig_last\ : SIGNAL IS "U(2,3,A)0";
     SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_reg\ : bit;
     ATTRIBUTE placement_force OF \DS18x8:TimerDelay:TimerUDB:trig_reg\ : SIGNAL IS "U(2,4,A)0";
     SIGNAL \DS18x8:TimerDelay:TimerUDB:trig_rise_detected\ : bit;
@@ -129,11 +129,11 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL \DS18x8:Trigger:control_6\ : bit;
     SIGNAL \DS18x8:Trigger:control_7\ : bit;
     SIGNAL \DS18x8:tmpOE__bufoe_1_net_0\ : bit;
-    SIGNAL \I2C:Net_1109_0\ : bit;
-    SIGNAL \I2C:Net_1109_1\ : bit;
-    SIGNAL \I2C:Net_643_0\ : bit;
-    SIGNAL \I2C:Net_697\ : bit;
-    SIGNAL \I2C:sda_x_wire\ : bit;
+    SIGNAL \I2C_1:Net_1109_0\ : bit;
+    SIGNAL \I2C_1:Net_1109_1\ : bit;
+    SIGNAL \I2C_1:Net_643_0\ : bit;
+    SIGNAL \I2C_1:Net_697\ : bit;
+    SIGNAL \I2C_1:sda_x_wire\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:cmp1_less\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:cmp2_less\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:control_0\ : bit;
@@ -145,15 +145,15 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:control_6\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:control_7\ : bit;
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,5,B)0";
+    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,5,B)2";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:prevCompare2\ : bit;
-    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare2\ : SIGNAL IS "U(2,5,B)2";
+    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare2\ : SIGNAL IS "U(2,5,B)0";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\ : bit;
     ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,5,A)1";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:status_0\ : SIGNAL IS "U(2,5,B)1";
+    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:status_0\ : SIGNAL IS "U(2,5,B)3";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:status_1\ : bit;
-    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:status_1\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:status_1\ : SIGNAL IS "U(2,5,B)1";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:status_2\ : bit;
     ATTRIBUTE placement_force OF \PWM_PERISTALTISK_1:PWMUDB:status_2\ : SIGNAL IS "U(2,5,A)2";
     SIGNAL \PWM_PERISTALTISK_1:PWMUDB:status_3\ : bit;
@@ -179,7 +179,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL \PWM_PERISTALTISK_2:PWMUDB:tc_i\ : bit;
     SIGNAL \\\SW_UART_TEST_USB:tx(0)\\__PA\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,4,A)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
@@ -215,10 +215,10 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE Location OF \SW_UART_TEST_USB:tx(0)\ : LABEL IS "P12[7]";
     ATTRIBUTE lib_model OF Pin_00(0) : LABEL IS "iocell6";
     ATTRIBUTE Location OF Pin_00(0) : LABEL IS "P0[0]";
-    ATTRIBUTE lib_model OF SDA(0) : LABEL IS "iocell7";
-    ATTRIBUTE Location OF SDA(0) : LABEL IS "P12[1]";
-    ATTRIBUTE lib_model OF SCL(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF SCL(0) : LABEL IS "P12[0]";
+    ATTRIBUTE lib_model OF SDA_1(0) : LABEL IS "iocell7";
+    ATTRIBUTE Location OF SDA_1(0) : LABEL IS "P12[1]";
+    ATTRIBUTE lib_model OF SCL_1(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF SCL_1(0) : LABEL IS "P12[0]";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:status_2\ : LABEL IS "macrocell1";
     ATTRIBUTE Location OF \PWM_PERISTALTISK_1:PWMUDB:status_2\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_2:PWMUDB:status_2\ : LABEL IS "macrocell2";
@@ -228,7 +228,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:trig_reg\ : LABEL IS "macrocell4";
     ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:trig_reg\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
     ATTRIBUTE Location OF \PWM_PERISTALTISK_1:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";
@@ -246,7 +246,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF \DS18x8:ControlReg_DRV:Sync:ctrl_reg\ : LABEL IS "controlcell3";
     ATTRIBUTE Location OF \DS18x8:ControlReg_DRV:Sync:ctrl_reg\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \DS18x8:StatusReg_BUS:sts:sts_reg\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \DS18x8:StatusReg_BUS:sts:sts_reg\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \DS18x8:StatusReg_BUS:sts:sts_reg\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
     ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
@@ -260,8 +260,8 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF \DS18x8:Trigger:Sync:ctrl_reg\ : LABEL IS "controlcell6";
     ATTRIBUTE Location OF \DS18x8:Trigger:Sync:ctrl_reg\ : LABEL IS "U(2,3)";
     ATTRIBUTE Location OF \DS18x8:isr_DataReady\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
-    ATTRIBUTE Location OF \I2C:I2C_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(15)]";
-    ATTRIBUTE Location OF \I2C:I2C_FF\ : LABEL IS "F(I2C,0)";
+    ATTRIBUTE Location OF \I2C_1:I2C_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(15)]";
+    ATTRIBUTE Location OF \I2C_1:I2C_FF\ : LABEL IS "F(I2C,0)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\ : LABEL IS "macrocell6";
     ATTRIBUTE Location OF \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \PWM_PERISTALTISK_1:PWMUDB:prevCompare1\ : LABEL IS "macrocell7";
@@ -293,7 +293,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:trig_disable\ : LABEL IS "macrocell20";
     ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:trig_disable\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:trig_last\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:trig_last\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:trig_last\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell22";
     ATTRIBUTE Location OF \DS18x8:TimerDelay:TimerUDB:trig_rise_detected\ : LABEL IS "U(2,4)";
     ATTRIBUTE lib_model OF \DS18x8:TimerDelay:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell23";
@@ -1210,15 +1210,15 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    SDA:logicalport
+    SDA_1:logicalport
         GENERIC MAP(
-            drive_mode => "010",
+            drive_mode => "100",
             ibuf_enabled => "1",
-            id => "99ffb4a5-fb51-43b3-b4e7-3e8c66f9ef9b",
+            id => "22863ebe-a37b-476f-b252-6e49a8c00b12",
             init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "0",
+            input_sync => "1",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -1279,39 +1279,40 @@ BEGIN
             in_clock_en => open,
             in_reset => open,
             out_clock_en => open,
-            out_reset => open);
+            out_reset => open,
+            in_clock => open);
 
-    SDA(0):iocell
+    SDA_1(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "SDA",
+            logicalport => "SDA_1",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => SDA(0)__PA,
+            pa_out => SDA_1(0)__PA,
             oe => open,
-            fb => \I2C:Net_1109_1\,
-            pin_input => \I2C:sda_x_wire\,
-            pad_out => SDA(0)_PAD,
-            pad_in => SDA(0)_PAD,
-            in_clock => open,
+            fb => \I2C_1:Net_1109_1\,
+            pin_input => \I2C_1:sda_x_wire\,
+            pad_out => SDA_1(0)_PAD,
+            pad_in => SDA_1(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
             out_clock_en => '1',
             out_reset => '0');
 
-    SCL:logicalport
+    SCL_1:logicalport
         GENERIC MAP(
-            drive_mode => "010",
+            drive_mode => "100",
             ibuf_enabled => "1",
-            id => "21f746f5-edda-48b4-8cc8-c49aeeaffc91",
+            id => "02f2cf2c-2c7a-49df-9246-7a3435c21be3",
             init_dr_st => "1",
             input_buffer_sel => "00",
             input_clk_en => 0,
-            input_sync => "0",
+            input_sync => "1",
             input_sync_mode => "0",
             intr_mode => "00",
             invert_in_clock => 0,
@@ -1372,24 +1373,25 @@ BEGIN
             in_clock_en => open,
             in_reset => open,
             out_clock_en => open,
-            out_reset => open);
+            out_reset => open,
+            in_clock => open);
 
-    SCL(0):iocell
+    SCL_1(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "SCL",
+            logicalport => "SCL_1",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => SCL(0)__PA,
+            pa_out => SCL_1(0)__PA,
             oe => open,
-            fb => \I2C:Net_1109_0\,
-            pin_input => \I2C:Net_643_0\,
-            pad_out => SCL(0)_PAD,
-            pad_in => SCL(0)_PAD,
-            in_clock => open,
+            fb => \I2C_1:Net_1109_0\,
+            pin_input => \I2C_1:Net_643_0\,
+            pad_out => SCL_1(0)_PAD,
+            pad_in => SCL_1(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -1855,25 +1857,25 @@ BEGIN
             interrupt => Net_231,
             clock => ClockBlock_BUS_CLK);
 
-    \I2C:I2C_IRQ\:interrupt
+    \I2C_1:I2C_IRQ\:interrupt
         GENERIC MAP(
             int_type => "00",
             is_nmi => 0)
         PORT MAP(
-            interrupt => \I2C:Net_697\,
+            interrupt => \I2C_1:Net_697\,
             clock => ClockBlock_BUS_CLK);
 
-    \I2C:I2C_FF\:i2ccell
+    \I2C_1:I2C_FF\:i2ccell
         GENERIC MAP(
             cy_registers => "",
             use_wakeup => 0)
         PORT MAP(
             clock => \ClockBlock.clk_bus_glb_ff__sig\,
-            scl_in => \I2C:Net_1109_0\,
-            sda_in => \I2C:Net_1109_1\,
-            scl_out => \I2C:Net_643_0\,
-            sda_out => \I2C:sda_x_wire\,
-            interrupt => \I2C:Net_697\);
+            scl_in => \I2C_1:Net_1109_0\,
+            sda_in => \I2C_1:Net_1109_1\,
+            scl_out => \I2C_1:Net_643_0\,
+            sda_out => \I2C_1:sda_x_wire\,
+            interrupt => \I2C_1:Net_697\);
 
     \PWM_PERISTALTISK_1:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(

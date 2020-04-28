@@ -46,7 +46,7 @@
           <File BuildType="BUILD" Toolchain="">Source\portable\MemMang\heap_2.c</File>
           <File BuildType="BUILD" Toolchain="">Nutrients.c</File>
           <File BuildType="BUILD" Toolchain="">Air.c</File>
-          <File BuildType="BUILD" Toolchain="">..\..\SCD30\SCD30.cydsn\SCD30.c</File>
+          <File BuildType="BUILD" Toolchain="">SCD30_v2.c</File>
           <File BuildType="BUILD" Toolchain="">FreeRTOSConfig.h</File>
           <File BuildType="BUILD" Toolchain="">device.h</File>
           <File BuildType="BUILD" Toolchain="">Source\include\deprecated_definitions.h</File>
@@ -70,7 +70,7 @@
           <File BuildType="BUILD" Toolchain="">Source\include\atomic.h</File>
           <File BuildType="BUILD" Toolchain="">Nutrients.h</File>
           <File BuildType="BUILD" Toolchain="">Air.h</File>
-          <File BuildType="BUILD" Toolchain="">..\..\SCD30\SCD30.cydsn\SCD30.h</File>
+          <File BuildType="BUILD" Toolchain="">SCD30_v2.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5">
@@ -124,14 +124,12 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_SLAVE.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_MASTER.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1.c</File>
@@ -189,12 +187,14 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger_PM.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_SLAVE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_MASTER.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_1_PVT.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_GCC_Generic">

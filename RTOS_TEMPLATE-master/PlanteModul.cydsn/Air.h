@@ -17,7 +17,7 @@
    
 #include "project.h"
 
-
+    void vTaskInitializeTask();
         
     void vAirInit(); // creates tasks and initializes air
     
@@ -30,11 +30,15 @@
     void vTaskGetMeasSCD30();
     
     
+    void vTaskTestI2C();
+    
     // ----- Test tasks here ----- //
+  
     
-    void vAirTestTaskInit(); // init for testtasks Air 
+    #if AIRTEST == 1
+        void vAirTestTaskInit(); // init for testtasks Air 
     
-    void vTaskTestSCD30(); // test task for the SCD30 sensor
+        void vTaskTestSCD30(); // test task for the SCD30 sensor
     
-    
+    #endif    
 #endif
