@@ -28,7 +28,7 @@
     
     // This task is reading temp, RH and Co2 from the SCD30 sensor
     void vTaskGetMeasSCD30();
-    
+    void vTaskTestI2C();
     
     // ----- Test tasks here ----- //
     

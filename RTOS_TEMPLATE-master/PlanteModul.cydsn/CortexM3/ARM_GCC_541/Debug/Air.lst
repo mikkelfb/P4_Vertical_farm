@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 1
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 1
 
 
    1              		.syntax unified
@@ -34,8 +34,8 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 1
   29              		.section	.rodata
   30              		.align	2
   31              	.LC0:
-  32 0000 53434433 		.ascii	"SCD30\000"
-  32      3000
+  32 0000 74657374 		.ascii	"test\000"
+  32      00
   33              		.section	.text.vAirInit,"ax",%progbits
   34              		.align	2
   35              		.global	vAirInit
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 1
   11:Air.c         **** */
   12:Air.c         **** 
   13:Air.c         **** 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 2
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 2
 
 
   14:Air.c         **** #include "FreeRTOS.h"
@@ -85,1289 +85,1383 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 1
   51              		.cfi_def_cfa_offset 16
   52 0004 02AF     		add	r7, sp, #8
   53              		.cfi_def_cfa 7, 8
-  26:Air.c         ****     xTaskCreate(vTaskGetMeasSCD30, "SCD30", 1000 , NULL , 10 , NULL);
+  26:Air.c         ****     xTaskCreate(vTaskTestI2C , "test" , 100 , NULL , 3 , NULL);
   54              		.loc 1 26 0
   55 0006 0023     		movs	r3, #0
   56 0008 0193     		str	r3, [sp, #4]
-  57 000a 0A23     		movs	r3, #10
+  57 000a 0323     		movs	r3, #3
   58 000c 0093     		str	r3, [sp]
   59 000e 0023     		movs	r3, #0
-  60 0010 4FF47A72 		mov	r2, #1000
-  61 0014 1049     		ldr	r1, .L2
-  62 0016 1148     		ldr	r0, .L2+4
-  63 0018 FFF7FEFF 		bl	xTaskCreate
-  27:Air.c         ****     
+  60 0010 6422     		movs	r2, #100
+  61 0012 0349     		ldr	r1, .L2
+  62 0014 0348     		ldr	r0, .L2+4
+  63 0016 FFF7FEFF 		bl	xTaskCreate
+  27:Air.c         ****     //xTaskCreate(vTaskGetMeasSCD30, "SCD30", 1000 , NULL , 10 , NULL);
   28:Air.c         ****     
-  29:Air.c         ****     xQueueSCD30[0] = xQueueCreate(1, sizeof(float));
-  64              		.loc 1 29 0
-  65 001c 0022     		movs	r2, #0
-  66 001e 0421     		movs	r1, #4
-  67 0020 0120     		movs	r0, #1
-  68 0022 FFF7FEFF 		bl	xQueueGenericCreate
-  69 0026 0246     		mov	r2, r0
-  70 0028 0D4B     		ldr	r3, .L2+8
-  71 002a 1A60     		str	r2, [r3]
-  30:Air.c         ****     xQueueSCD30[1] = xQueueCreate(1, sizeof(float));
-  72              		.loc 1 30 0
-  73 002c 0022     		movs	r2, #0
-  74 002e 0421     		movs	r1, #4
-  75 0030 0120     		movs	r0, #1
-  76 0032 FFF7FEFF 		bl	xQueueGenericCreate
-  77 0036 0246     		mov	r2, r0
-  78 0038 094B     		ldr	r3, .L2+8
-  79 003a 5A60     		str	r2, [r3, #4]
-  31:Air.c         ****     xQueueSCD30[2] = xQueueCreate(1, sizeof(float));
-  80              		.loc 1 31 0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 3
+  29:Air.c         ****     /*
+  30:Air.c         ****     xQueueSCD30[0] = xQueueCreate(1, sizeof(float));
+  31:Air.c         ****     xQueueSCD30[1] = xQueueCreate(1, sizeof(float));
+  32:Air.c         ****     xQueueSCD30[2] = xQueueCreate(1, sizeof(float));
+  33:Air.c         ****     
+  34:Air.c         ****     #if AIRTEST == 1
+  35:Air.c         ****         vAirTestTaskInit();
+  36:Air.c         ****     #endif*/
+  37:Air.c         **** }
+  64              		.loc 1 37 0
+  65 001a 00BF     		nop
+  66 001c BD46     		mov	sp, r7
+  67              		.cfi_def_cfa_register 13
+  68              		@ sp needed
+  69 001e 80BD     		pop	{r7, pc}
+  70              	.L3:
+  71              		.align	2
+  72              	.L2:
+  73 0020 00000000 		.word	.LC0
+  74 0024 00000000 		.word	vTaskTestI2C
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 3
 
 
-  81 003c 0022     		movs	r2, #0
-  82 003e 0421     		movs	r1, #4
-  83 0040 0120     		movs	r0, #1
-  84 0042 FFF7FEFF 		bl	xQueueGenericCreate
-  85 0046 0246     		mov	r2, r0
-  86 0048 054B     		ldr	r3, .L2+8
-  87 004a 9A60     		str	r2, [r3, #8]
-  32:Air.c         ****     
-  33:Air.c         ****     #if AIRTEST == 1
-  34:Air.c         ****         vAirTestTaskInit();
-  88              		.loc 1 34 0
-  89 004c FFF7FEFF 		bl	vAirTestTaskInit
-  35:Air.c         ****     #endif
-  36:Air.c         **** }
-  90              		.loc 1 36 0
-  91 0050 00BF     		nop
-  92 0052 BD46     		mov	sp, r7
-  93              		.cfi_def_cfa_register 13
-  94              		@ sp needed
-  95 0054 80BD     		pop	{r7, pc}
-  96              	.L3:
-  97 0056 00BF     		.align	2
-  98              	.L2:
-  99 0058 00000000 		.word	.LC0
- 100 005c 00000000 		.word	vTaskGetMeasSCD30
- 101 0060 00000000 		.word	xQueueSCD30
- 102              		.cfi_endproc
- 103              	.LFE68:
- 104              		.size	vAirInit, .-vAirInit
- 105              		.section	.text.vInitSCD30,"ax",%progbits
- 106              		.align	2
- 107              		.global	vInitSCD30
- 108              		.thumb
- 109              		.thumb_func
- 110              		.type	vInitSCD30, %function
- 111              	vInitSCD30:
- 112              	.LFB69:
-  37:Air.c         **** 
+  75              		.cfi_endproc
+  76              	.LFE68:
+  77              		.size	vAirInit, .-vAirInit
+  78              		.section	.text.vInitSCD30,"ax",%progbits
+  79              		.align	2
+  80              		.global	vInitSCD30
+  81              		.thumb
+  82              		.thumb_func
+  83              		.type	vInitSCD30, %function
+  84              	vInitSCD30:
+  85              	.LFB69:
   38:Air.c         **** 
-  39:Air.c         **** void vInitSCD30(uint16_t interval){
- 113              		.loc 1 39 0
- 114              		.cfi_startproc
- 115              		@ args = 0, pretend = 0, frame = 8
- 116              		@ frame_needed = 1, uses_anonymous_args = 0
- 117 0000 80B5     		push	{r7, lr}
- 118              		.cfi_def_cfa_offset 8
- 119              		.cfi_offset 7, -8
- 120              		.cfi_offset 14, -4
- 121 0002 82B0     		sub	sp, sp, #8
- 122              		.cfi_def_cfa_offset 16
- 123 0004 00AF     		add	r7, sp, #0
- 124              		.cfi_def_cfa_register 7
- 125 0006 0346     		mov	r3, r0
- 126 0008 FB80     		strh	r3, [r7, #6]	@ movhi
-  40:Air.c         ****     SCD30_setMeasurementInterval(interval); // takes the input and calibrates the sensor with the r
- 127              		.loc 1 40 0
- 128 000a FB88     		ldrh	r3, [r7, #6]
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 4
+  39:Air.c         **** 
+  40:Air.c         **** void vInitSCD30(uint16_t interval){
+  86              		.loc 1 40 0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 8
+  89              		@ frame_needed = 1, uses_anonymous_args = 0
+  90 0000 80B5     		push	{r7, lr}
+  91              		.cfi_def_cfa_offset 8
+  92              		.cfi_offset 7, -8
+  93              		.cfi_offset 14, -4
+  94 0002 82B0     		sub	sp, sp, #8
+  95              		.cfi_def_cfa_offset 16
+  96 0004 00AF     		add	r7, sp, #0
+  97              		.cfi_def_cfa_register 7
+  98 0006 0346     		mov	r3, r0
+  99 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  41:Air.c         ****     SCD30_setMeasurementInterval(interval); // takes the input and calibrates the sensor with the r
+ 100              		.loc 1 41 0
+ 101 000a FB88     		ldrh	r3, [r7, #6]
+ 102 000c 1846     		mov	r0, r3
+ 103 000e FFF7FEFF 		bl	SCD30_setMeasurementInterval
+  42:Air.c         ****     SCD30_startPeriodicMeasurment(); // read it and weep
+ 104              		.loc 1 42 0
+ 105 0012 FFF7FEFF 		bl	SCD30_startPeriodicMeasurment
+  43:Air.c         **** }
+ 106              		.loc 1 43 0
+ 107 0016 00BF     		nop
+ 108 0018 0837     		adds	r7, r7, #8
+ 109              		.cfi_def_cfa_offset 8
+ 110 001a BD46     		mov	sp, r7
+ 111              		.cfi_def_cfa_register 13
+ 112              		@ sp needed
+ 113 001c 80BD     		pop	{r7, pc}
+ 114              		.cfi_endproc
+ 115              	.LFE69:
+ 116              		.size	vInitSCD30, .-vInitSCD30
+ 117 001e 00BF     		.section	.text.vTaskTestI2C,"ax",%progbits
+ 118              		.align	2
+ 119              		.global	vTaskTestI2C
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	vTaskTestI2C, %function
+ 123              	vTaskTestI2C:
+ 124              	.LFB70:
+  44:Air.c         **** 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 4
 
 
- 129 000c 1846     		mov	r0, r3
- 130 000e FFF7FEFF 		bl	SCD30_setMeasurementInterval
-  41:Air.c         ****     SCD30_startPeriodicMeasurment(); // read it and weep
- 131              		.loc 1 41 0
- 132 0012 FFF7FEFF 		bl	SCD30_startPeriodicMeasurment
-  42:Air.c         **** }
- 133              		.loc 1 42 0
- 134 0016 00BF     		nop
- 135 0018 0837     		adds	r7, r7, #8
- 136              		.cfi_def_cfa_offset 8
- 137 001a BD46     		mov	sp, r7
- 138              		.cfi_def_cfa_register 13
- 139              		@ sp needed
- 140 001c 80BD     		pop	{r7, pc}
- 141              		.cfi_endproc
- 142              	.LFE69:
- 143              		.size	vInitSCD30, .-vInitSCD30
- 144              		.global	__aeabi_f2uiz
- 145 001e 00BF     		.section	.text.vTaskGetMeasSCD30,"ax",%progbits
- 146              		.align	2
- 147              		.global	vTaskGetMeasSCD30
- 148              		.thumb
- 149              		.thumb_func
- 150              		.type	vTaskGetMeasSCD30, %function
- 151              	vTaskGetMeasSCD30:
- 152              	.LFB70:
-  43:Air.c         **** 
-  44:Air.c         **** void vTaskGetMeasSCD30(){
- 153              		.loc 1 44 0
- 154              		.cfi_startproc
- 155              		@ args = 0, pretend = 0, frame = 0
- 156              		@ frame_needed = 1, uses_anonymous_args = 0
- 157 0000 80B5     		push	{r7, lr}
- 158              		.cfi_def_cfa_offset 8
- 159              		.cfi_offset 7, -8
- 160              		.cfi_offset 14, -4
- 161 0002 00AF     		add	r7, sp, #0
- 162              		.cfi_def_cfa_register 7
-  45:Air.c         ****     if (SCD30_isAvailable())
- 163              		.loc 1 45 0
- 164 0004 FFF7FEFF 		bl	SCD30_isAvailable
- 165 0008 0346     		mov	r3, r0
- 166 000a 002B     		cmp	r3, #0
- 167 000c 24D0     		beq	.L7
-  46:Air.c         ****      {
-  47:Air.c         ****        SCD30_getCarbonDioxideConcentration(SCD30Results); // Reading the data and storing them in S
- 168              		.loc 1 47 0
- 169 000e 1348     		ldr	r0, .L8
- 170 0010 FFF7FEFF 		bl	SCD30_getCarbonDioxideConcentration
-  48:Air.c         ****         SW_UART_TEST_USB_PutHexByte(SCD30Results[0]);
- 171              		.loc 1 48 0
- 172 0014 114B     		ldr	r3, .L8
- 173 0016 1B68     		ldr	r3, [r3]	@ float
- 174 0018 1846     		mov	r0, r3
- 175 001a FFF7FEFF 		bl	__aeabi_f2uiz
- 176 001e 0346     		mov	r3, r0
- 177 0020 DBB2     		uxtb	r3, r3
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 5
+  45:Air.c         **** void vTaskTestI2C(){
+ 125              		.loc 1 45 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 8
+ 128              		@ frame_needed = 1, uses_anonymous_args = 0
+ 129 0000 80B5     		push	{r7, lr}
+ 130              		.cfi_def_cfa_offset 8
+ 131              		.cfi_offset 7, -8
+ 132              		.cfi_offset 14, -4
+ 133 0002 82B0     		sub	sp, sp, #8
+ 134              		.cfi_def_cfa_offset 16
+ 135 0004 00AF     		add	r7, sp, #0
+ 136              		.cfi_def_cfa_register 7
+  46:Air.c         ****     
+  47:Air.c         ****     const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 );
+ 137              		.loc 1 47 0
+ 138 0006 4FF49673 		mov	r3, #300
+ 139 000a 7B60     		str	r3, [r7, #4]
+ 140              	.L7:
+ 141              	.LBB2:
+  48:Air.c         ****     for(;;){
+  49:Air.c         ****         unsigned char  ucMessage[]= "R";
+ 142              		.loc 1 49 0
+ 143 000c 5223     		movs	r3, #82
+ 144 000e 3B80     		strh	r3, [r7]	@ movhi
+  50:Air.c         ****      
+  51:Air.c         ****         /* Initialize buffer with packet  , slave address is 9*/
+  52:Air.c         ****         (void) I2C_1_MasterWriteBuf(0x61 , ucMessage, 1 , I2C_1_MODE_COMPLETE_XFER);
+ 145              		.loc 1 52 0
+ 146 0010 3946     		mov	r1, r7
+ 147 0012 0023     		movs	r3, #0
+ 148 0014 0122     		movs	r2, #1
+ 149 0016 6120     		movs	r0, #97
+ 150 0018 FFF7FEFF 		bl	I2C_1_MasterWriteBuf
+  53:Air.c         **** 
+  54:Air.c         ****         //Waits until master completes write transfer 
+  55:Air.c         ****         while (0u == (I2C_1_MasterStatus() & I2C_1_MSTAT_WR_CMPLT))
+ 151              		.loc 1 55 0
+ 152 001c 00BF     		nop
+ 153              	.L6:
+ 154              		.loc 1 55 0 is_stmt 0 discriminator 1
+ 155 001e FFF7FEFF 		bl	I2C_1_MasterStatus
+ 156 0022 0346     		mov	r3, r0
+ 157 0024 03F00203 		and	r3, r3, #2
+ 158 0028 002B     		cmp	r3, #0
+ 159 002a F8D0     		beq	.L6
+  56:Air.c         ****         {
+  57:Air.c         ****         } 
+  58:Air.c         ****         vTaskDelay(xDelaymsBeforeRead);
+ 160              		.loc 1 58 0 is_stmt 1
+ 161 002c 7868     		ldr	r0, [r7, #4]
+ 162 002e FFF7FEFF 		bl	vTaskDelay
+ 163              	.LBE2:
+  59:Air.c         ****     }
+ 164              		.loc 1 59 0
+ 165 0032 EBE7     		b	.L7
+ 166              		.cfi_endproc
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 5
 
 
- 178 0022 1846     		mov	r0, r3
- 179 0024 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
-  49:Air.c         ****         xQueueSendToBack(xQueueSCD30[0], &SCD30Results[0], portMAX_DELAY);
- 180              		.loc 1 49 0
- 181 0028 0D4B     		ldr	r3, .L8+4
- 182 002a 1868     		ldr	r0, [r3]
- 183 002c 0023     		movs	r3, #0
- 184 002e 4FF0FF32 		mov	r2, #-1
- 185 0032 0A49     		ldr	r1, .L8
- 186 0034 FFF7FEFF 		bl	xQueueGenericSend
-  50:Air.c         ****         xQueueSendToBack(xQueueSCD30[1], &SCD30Results[1], portMAX_DELAY);
- 187              		.loc 1 50 0
- 188 0038 094B     		ldr	r3, .L8+4
- 189 003a 5868     		ldr	r0, [r3, #4]
- 190 003c 0023     		movs	r3, #0
- 191 003e 4FF0FF32 		mov	r2, #-1
- 192 0042 0849     		ldr	r1, .L8+8
- 193 0044 FFF7FEFF 		bl	xQueueGenericSend
-  51:Air.c         ****         xQueueSendToBack(xQueueSCD30[2], &SCD30Results[2], portMAX_DELAY);
- 194              		.loc 1 51 0
- 195 0048 054B     		ldr	r3, .L8+4
- 196 004a 9868     		ldr	r0, [r3, #8]
- 197 004c 0023     		movs	r3, #0
- 198 004e 4FF0FF32 		mov	r2, #-1
- 199 0052 0549     		ldr	r1, .L8+12
- 200 0054 FFF7FEFF 		bl	xQueueGenericSend
- 201              	.L7:
-  52:Air.c         ****     
-  53:Air.c         ****     }
-  54:Air.c         **** }
- 202              		.loc 1 54 0
- 203 0058 00BF     		nop
- 204 005a 80BD     		pop	{r7, pc}
- 205              	.L9:
- 206              		.align	2
- 207              	.L8:
- 208 005c 00000000 		.word	SCD30Results
- 209 0060 00000000 		.word	xQueueSCD30
- 210 0064 04000000 		.word	SCD30Results+4
- 211 0068 08000000 		.word	SCD30Results+8
- 212              		.cfi_endproc
- 213              	.LFE70:
- 214              		.size	vTaskGetMeasSCD30, .-vTaskGetMeasSCD30
- 215              		.section	.rodata
- 216 0006 0000     		.align	2
- 217              	.LC1:
- 218 0008 53434433 		.ascii	"SCD30Test\000"
- 218      30546573 
- 218      7400
- 219              		.section	.text.vAirTestTaskInit,"ax",%progbits
- 220              		.align	2
- 221              		.global	vAirTestTaskInit
- 222              		.thumb
- 223              		.thumb_func
- 224              		.type	vAirTestTaskInit, %function
- 225              	vAirTestTaskInit:
- 226              	.LFB71:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 6
+ 167              	.LFE70:
+ 168              		.size	vTaskTestI2C, .-vTaskTestI2C
+ 169              		.section	.text.vTaskGetMeasSCD30,"ax",%progbits
+ 170              		.align	2
+ 171              		.global	vTaskGetMeasSCD30
+ 172              		.thumb
+ 173              		.thumb_func
+ 174              		.type	vTaskGetMeasSCD30, %function
+ 175              	vTaskGetMeasSCD30:
+ 176              	.LFB71:
+  60:Air.c         **** }
+  61:Air.c         **** 
+  62:Air.c         **** void vTaskGetMeasSCD30(){
+ 177              		.loc 1 62 0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 1, uses_anonymous_args = 0
+ 181 0000 80B5     		push	{r7, lr}
+ 182              		.cfi_def_cfa_offset 8
+ 183              		.cfi_offset 7, -8
+ 184              		.cfi_offset 14, -4
+ 185 0002 00AF     		add	r7, sp, #0
+ 186              		.cfi_def_cfa_register 7
+  63:Air.c         ****     if (SCD30_isAvailable())
+ 187              		.loc 1 63 0
+ 188 0004 FFF7FEFF 		bl	SCD30_isAvailable
+ 189 0008 0346     		mov	r3, r0
+ 190 000a 002B     		cmp	r3, #0
+ 191 000c 1AD0     		beq	.L10
+  64:Air.c         ****      {
+  65:Air.c         ****        SCD30_getCarbonDioxideConcentration(SCD30Results); // Reading the data and storing them in S
+ 192              		.loc 1 65 0
+ 193 000e 0E48     		ldr	r0, .L11
+ 194 0010 FFF7FEFF 		bl	SCD30_getCarbonDioxideConcentration
+  66:Air.c         ****         xQueueSendToBack(xQueueSCD30[0], &SCD30Results[0], portMAX_DELAY);
+ 195              		.loc 1 66 0
+ 196 0014 0D4B     		ldr	r3, .L11+4
+ 197 0016 1868     		ldr	r0, [r3]
+ 198 0018 0023     		movs	r3, #0
+ 199 001a 4FF0FF32 		mov	r2, #-1
+ 200 001e 0A49     		ldr	r1, .L11
+ 201 0020 FFF7FEFF 		bl	xQueueGenericSend
+  67:Air.c         ****         xQueueSendToBack(xQueueSCD30[1], &SCD30Results[1], portMAX_DELAY);
+ 202              		.loc 1 67 0
+ 203 0024 094B     		ldr	r3, .L11+4
+ 204 0026 5868     		ldr	r0, [r3, #4]
+ 205 0028 0023     		movs	r3, #0
+ 206 002a 4FF0FF32 		mov	r2, #-1
+ 207 002e 0849     		ldr	r1, .L11+8
+ 208 0030 FFF7FEFF 		bl	xQueueGenericSend
+  68:Air.c         ****         xQueueSendToBack(xQueueSCD30[2], &SCD30Results[2], portMAX_DELAY);
+ 209              		.loc 1 68 0
+ 210 0034 054B     		ldr	r3, .L11+4
+ 211 0036 9868     		ldr	r0, [r3, #8]
+ 212 0038 0023     		movs	r3, #0
+ 213 003a 4FF0FF32 		mov	r2, #-1
+ 214 003e 0549     		ldr	r1, .L11+12
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 6
 
 
-  55:Air.c         **** 
-  56:Air.c         **** 
-  57:Air.c         **** // ----- Test tasks ----- //
-  58:Air.c         **** 
-  59:Air.c         **** void vAirTestTaskInit(){
- 227              		.loc 1 59 0
- 228              		.cfi_startproc
- 229              		@ args = 0, pretend = 0, frame = 0
- 230              		@ frame_needed = 1, uses_anonymous_args = 0
- 231 0000 80B5     		push	{r7, lr}
- 232              		.cfi_def_cfa_offset 8
- 233              		.cfi_offset 7, -8
- 234              		.cfi_offset 14, -4
- 235 0002 82B0     		sub	sp, sp, #8
- 236              		.cfi_def_cfa_offset 16
- 237 0004 02AF     		add	r7, sp, #8
- 238              		.cfi_def_cfa 7, 8
-  60:Air.c         **** xTaskCreate(vTaskTestSCD30, "SCD30Test", 1000, NULL, 10, NULL);
- 239              		.loc 1 60 0
- 240 0006 0023     		movs	r3, #0
- 241 0008 0193     		str	r3, [sp, #4]
- 242 000a 0A23     		movs	r3, #10
- 243 000c 0093     		str	r3, [sp]
- 244 000e 0023     		movs	r3, #0
- 245 0010 4FF47A72 		mov	r2, #1000
- 246 0014 0349     		ldr	r1, .L11
- 247 0016 0448     		ldr	r0, .L11+4
- 248 0018 FFF7FEFF 		bl	xTaskCreate
-  61:Air.c         **** }
- 249              		.loc 1 61 0
- 250 001c 00BF     		nop
- 251 001e BD46     		mov	sp, r7
- 252              		.cfi_def_cfa_register 13
- 253              		@ sp needed
- 254 0020 80BD     		pop	{r7, pc}
- 255              	.L12:
- 256 0022 00BF     		.align	2
- 257              	.L11:
- 258 0024 08000000 		.word	.LC1
- 259 0028 00000000 		.word	vTaskTestSCD30
- 260              		.cfi_endproc
- 261              	.LFE71:
- 262              		.size	vAirTestTaskInit, .-vAirTestTaskInit
- 263              		.section	.rodata
- 264 0012 0000     		.align	2
- 265              	.LC2:
- 266 0014 434F323A 		.ascii	"CO2: \000"
- 266      2000
- 267 001a 0000     		.align	2
- 268              	.LC3:
- 269 001c 0A00     		.ascii	"\012\000"
- 270 001e 0000     		.align	2
- 271              	.LC4:
- 272 0020 54454D50 		.ascii	"TEMP: \000"
- 272      3A2000
- 273 0027 00       		.align	2
- 274              	.LC5:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 7
+ 215 0040 FFF7FEFF 		bl	xQueueGenericSend
+ 216              	.L10:
+  69:Air.c         ****     
+  70:Air.c         ****     }
+  71:Air.c         **** }
+ 217              		.loc 1 71 0
+ 218 0044 00BF     		nop
+ 219 0046 80BD     		pop	{r7, pc}
+ 220              	.L12:
+ 221              		.align	2
+ 222              	.L11:
+ 223 0048 00000000 		.word	SCD30Results
+ 224 004c 00000000 		.word	xQueueSCD30
+ 225 0050 04000000 		.word	SCD30Results+4
+ 226 0054 08000000 		.word	SCD30Results+8
+ 227              		.cfi_endproc
+ 228              	.LFE71:
+ 229              		.size	vTaskGetMeasSCD30, .-vTaskGetMeasSCD30
+ 230              		.section	.rodata
+ 231 0005 000000   		.align	2
+ 232              	.LC1:
+ 233 0008 53434433 		.ascii	"SCD30Test\000"
+ 233      30546573 
+ 233      7400
+ 234              		.section	.text.vAirTestTaskInit,"ax",%progbits
+ 235              		.align	2
+ 236              		.global	vAirTestTaskInit
+ 237              		.thumb
+ 238              		.thumb_func
+ 239              		.type	vAirTestTaskInit, %function
+ 240              	vAirTestTaskInit:
+ 241              	.LFB72:
+  72:Air.c         **** 
+  73:Air.c         **** 
+  74:Air.c         **** // ----- Test tasks ----- //
+  75:Air.c         **** 
+  76:Air.c         **** void vAirTestTaskInit(){
+ 242              		.loc 1 76 0
+ 243              		.cfi_startproc
+ 244              		@ args = 0, pretend = 0, frame = 0
+ 245              		@ frame_needed = 1, uses_anonymous_args = 0
+ 246 0000 80B5     		push	{r7, lr}
+ 247              		.cfi_def_cfa_offset 8
+ 248              		.cfi_offset 7, -8
+ 249              		.cfi_offset 14, -4
+ 250 0002 82B0     		sub	sp, sp, #8
+ 251              		.cfi_def_cfa_offset 16
+ 252 0004 02AF     		add	r7, sp, #8
+ 253              		.cfi_def_cfa 7, 8
+  77:Air.c         **** xTaskCreate(vTaskTestSCD30, "SCD30Test", 1000, NULL, 10, NULL);
+ 254              		.loc 1 77 0
+ 255 0006 0023     		movs	r3, #0
+ 256 0008 0193     		str	r3, [sp, #4]
+ 257 000a 0A23     		movs	r3, #10
+ 258 000c 0093     		str	r3, [sp]
+ 259 000e 0023     		movs	r3, #0
+ 260 0010 4FF47A72 		mov	r2, #1000
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 7
 
 
- 275 0028 52483A20 		.ascii	"RH: \000"
- 275      00
- 276              		.section	.text.vTaskTestSCD30,"ax",%progbits
- 277              		.align	2
- 278              		.global	vTaskTestSCD30
- 279              		.thumb
- 280              		.thumb_func
- 281              		.type	vTaskTestSCD30, %function
- 282              	vTaskTestSCD30:
- 283              	.LFB72:
-  62:Air.c         **** 
-  63:Air.c         **** void vTaskTestSCD30(){
- 284              		.loc 1 63 0
- 285              		.cfi_startproc
- 286              		@ args = 0, pretend = 0, frame = 16
- 287              		@ frame_needed = 1, uses_anonymous_args = 0
- 288 0000 80B5     		push	{r7, lr}
- 289              		.cfi_def_cfa_offset 8
- 290              		.cfi_offset 7, -8
- 291              		.cfi_offset 14, -4
- 292 0002 84B0     		sub	sp, sp, #16
- 293              		.cfi_def_cfa_offset 24
- 294 0004 00AF     		add	r7, sp, #0
- 295              		.cfi_def_cfa_register 7
-  64:Air.c         ****     float testResults[3];
-  65:Air.c         ****     xQueueReceive(xQueueSCD30[0],&testResults[0], portMAX_DELAY);
- 296              		.loc 1 65 0
- 297 0006 284B     		ldr	r3, .L14
- 298 0008 1B68     		ldr	r3, [r3]
- 299 000a 391D     		adds	r1, r7, #4
- 300 000c 4FF0FF32 		mov	r2, #-1
- 301 0010 1846     		mov	r0, r3
- 302 0012 FFF7FEFF 		bl	xQueueReceive
-  66:Air.c         ****     xQueueReceive(xQueueSCD30[1],&testResults[1], portMAX_DELAY);
- 303              		.loc 1 66 0
- 304 0016 244B     		ldr	r3, .L14
- 305 0018 5868     		ldr	r0, [r3, #4]
- 306 001a 3B1D     		adds	r3, r7, #4
- 307 001c 0433     		adds	r3, r3, #4
- 308 001e 4FF0FF32 		mov	r2, #-1
- 309 0022 1946     		mov	r1, r3
- 310 0024 FFF7FEFF 		bl	xQueueReceive
-  67:Air.c         ****     xQueueReceive(xQueueSCD30[2],&testResults[2], portMAX_DELAY);
- 311              		.loc 1 67 0
- 312 0028 1F4B     		ldr	r3, .L14
- 313 002a 9868     		ldr	r0, [r3, #8]
- 314 002c 3B1D     		adds	r3, r7, #4
- 315 002e 0833     		adds	r3, r3, #8
- 316 0030 4FF0FF32 		mov	r2, #-1
- 317 0034 1946     		mov	r1, r3
- 318 0036 FFF7FEFF 		bl	xQueueReceive
-  68:Air.c         **** 
-  69:Air.c         ****     SW_UART_TEST_USB_PutString("CO2: ");
- 319              		.loc 1 69 0
- 320 003a 1C48     		ldr	r0, .L14+4
- 321 003c FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  70:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[0]);
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 8
+ 261 0014 0349     		ldr	r1, .L14
+ 262 0016 0448     		ldr	r0, .L14+4
+ 263 0018 FFF7FEFF 		bl	xTaskCreate
+  78:Air.c         **** }
+ 264              		.loc 1 78 0
+ 265 001c 00BF     		nop
+ 266 001e BD46     		mov	sp, r7
+ 267              		.cfi_def_cfa_register 13
+ 268              		@ sp needed
+ 269 0020 80BD     		pop	{r7, pc}
+ 270              	.L15:
+ 271 0022 00BF     		.align	2
+ 272              	.L14:
+ 273 0024 08000000 		.word	.LC1
+ 274 0028 00000000 		.word	vTaskTestSCD30
+ 275              		.cfi_endproc
+ 276              	.LFE72:
+ 277              		.size	vAirTestTaskInit, .-vAirTestTaskInit
+ 278              		.section	.rodata
+ 279 0012 0000     		.align	2
+ 280              	.LC2:
+ 281 0014 434F323A 		.ascii	"CO2: \000"
+ 281      2000
+ 282              		.global	__aeabi_f2uiz
+ 283 001a 0000     		.align	2
+ 284              	.LC3:
+ 285 001c 0A00     		.ascii	"\012\000"
+ 286 001e 0000     		.align	2
+ 287              	.LC4:
+ 288 0020 54454D50 		.ascii	"TEMP: \000"
+ 288      3A2000
+ 289 0027 00       		.align	2
+ 290              	.LC5:
+ 291 0028 52483A20 		.ascii	"RH: \000"
+ 291      00
+ 292              		.section	.text.vTaskTestSCD30,"ax",%progbits
+ 293              		.align	2
+ 294              		.global	vTaskTestSCD30
+ 295              		.thumb
+ 296              		.thumb_func
+ 297              		.type	vTaskTestSCD30, %function
+ 298              	vTaskTestSCD30:
+ 299              	.LFB73:
+  79:Air.c         **** 
+  80:Air.c         **** void vTaskTestSCD30(){
+ 300              		.loc 1 80 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 16
+ 303              		@ frame_needed = 1, uses_anonymous_args = 0
+ 304 0000 80B5     		push	{r7, lr}
+ 305              		.cfi_def_cfa_offset 8
+ 306              		.cfi_offset 7, -8
+ 307              		.cfi_offset 14, -4
+ 308 0002 84B0     		sub	sp, sp, #16
+ 309              		.cfi_def_cfa_offset 24
+ 310 0004 00AF     		add	r7, sp, #0
+ 311              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 8
 
 
- 322              		.loc 1 70 0
- 323 0040 7B68     		ldr	r3, [r7, #4]	@ float
- 324 0042 1846     		mov	r0, r3
- 325 0044 FFF7FEFF 		bl	__aeabi_f2uiz
- 326 0048 0346     		mov	r3, r0
- 327 004a 9BB2     		uxth	r3, r3
- 328 004c 1846     		mov	r0, r3
- 329 004e FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
-  71:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
- 330              		.loc 1 71 0
- 331 0052 1748     		ldr	r0, .L14+8
- 332 0054 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  72:Air.c         ****     SW_UART_TEST_USB_PutString("TEMP: ");
- 333              		.loc 1 72 0
- 334 0058 1648     		ldr	r0, .L14+12
- 335 005a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  73:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[1]);
- 336              		.loc 1 73 0
- 337 005e BB68     		ldr	r3, [r7, #8]	@ float
- 338 0060 1846     		mov	r0, r3
- 339 0062 FFF7FEFF 		bl	__aeabi_f2uiz
- 340 0066 0346     		mov	r3, r0
- 341 0068 9BB2     		uxth	r3, r3
- 342 006a 1846     		mov	r0, r3
- 343 006c FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
-  74:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
- 344              		.loc 1 74 0
- 345 0070 0F48     		ldr	r0, .L14+8
- 346 0072 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  75:Air.c         ****     SW_UART_TEST_USB_PutString("RH: ");
- 347              		.loc 1 75 0
- 348 0076 1048     		ldr	r0, .L14+16
- 349 0078 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  76:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[2]);
- 350              		.loc 1 76 0
- 351 007c FB68     		ldr	r3, [r7, #12]	@ float
- 352 007e 1846     		mov	r0, r3
- 353 0080 FFF7FEFF 		bl	__aeabi_f2uiz
- 354 0084 0346     		mov	r3, r0
- 355 0086 9BB2     		uxth	r3, r3
- 356 0088 1846     		mov	r0, r3
- 357 008a FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
-  77:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
- 358              		.loc 1 77 0
- 359 008e 0848     		ldr	r0, .L14+8
- 360 0090 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  78:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
- 361              		.loc 1 78 0
- 362 0094 0648     		ldr	r0, .L14+8
- 363 0096 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  79:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
- 364              		.loc 1 79 0
- 365 009a 0548     		ldr	r0, .L14+8
- 366 009c FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
-  80:Air.c         **** }
- 367              		.loc 1 80 0
- 368 00a0 00BF     		nop
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 9
+  81:Air.c         ****     float testResults[3];
+  82:Air.c         ****     xQueueReceive(xQueueSCD30[0],&testResults[0], portMAX_DELAY);
+ 312              		.loc 1 82 0
+ 313 0006 284B     		ldr	r3, .L17
+ 314 0008 1B68     		ldr	r3, [r3]
+ 315 000a 391D     		adds	r1, r7, #4
+ 316 000c 4FF0FF32 		mov	r2, #-1
+ 317 0010 1846     		mov	r0, r3
+ 318 0012 FFF7FEFF 		bl	xQueueReceive
+  83:Air.c         ****     xQueueReceive(xQueueSCD30[1],&testResults[1], portMAX_DELAY);
+ 319              		.loc 1 83 0
+ 320 0016 244B     		ldr	r3, .L17
+ 321 0018 5868     		ldr	r0, [r3, #4]
+ 322 001a 3B1D     		adds	r3, r7, #4
+ 323 001c 0433     		adds	r3, r3, #4
+ 324 001e 4FF0FF32 		mov	r2, #-1
+ 325 0022 1946     		mov	r1, r3
+ 326 0024 FFF7FEFF 		bl	xQueueReceive
+  84:Air.c         ****     xQueueReceive(xQueueSCD30[2],&testResults[2], portMAX_DELAY);
+ 327              		.loc 1 84 0
+ 328 0028 1F4B     		ldr	r3, .L17
+ 329 002a 9868     		ldr	r0, [r3, #8]
+ 330 002c 3B1D     		adds	r3, r7, #4
+ 331 002e 0833     		adds	r3, r3, #8
+ 332 0030 4FF0FF32 		mov	r2, #-1
+ 333 0034 1946     		mov	r1, r3
+ 334 0036 FFF7FEFF 		bl	xQueueReceive
+  85:Air.c         **** 
+  86:Air.c         ****     SW_UART_TEST_USB_PutString("CO2: ");
+ 335              		.loc 1 86 0
+ 336 003a 1C48     		ldr	r0, .L17+4
+ 337 003c FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  87:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[0]);
+ 338              		.loc 1 87 0
+ 339 0040 7B68     		ldr	r3, [r7, #4]	@ float
+ 340 0042 1846     		mov	r0, r3
+ 341 0044 FFF7FEFF 		bl	__aeabi_f2uiz
+ 342 0048 0346     		mov	r3, r0
+ 343 004a 9BB2     		uxth	r3, r3
+ 344 004c 1846     		mov	r0, r3
+ 345 004e FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+  88:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
+ 346              		.loc 1 88 0
+ 347 0052 1748     		ldr	r0, .L17+8
+ 348 0054 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  89:Air.c         ****     SW_UART_TEST_USB_PutString("TEMP: ");
+ 349              		.loc 1 89 0
+ 350 0058 1648     		ldr	r0, .L17+12
+ 351 005a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  90:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[1]);
+ 352              		.loc 1 90 0
+ 353 005e BB68     		ldr	r3, [r7, #8]	@ float
+ 354 0060 1846     		mov	r0, r3
+ 355 0062 FFF7FEFF 		bl	__aeabi_f2uiz
+ 356 0066 0346     		mov	r3, r0
+ 357 0068 9BB2     		uxth	r3, r3
+ 358 006a 1846     		mov	r0, r3
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 9
 
 
- 369 00a2 1037     		adds	r7, r7, #16
- 370              		.cfi_def_cfa_offset 8
- 371 00a4 BD46     		mov	sp, r7
- 372              		.cfi_def_cfa_register 13
- 373              		@ sp needed
- 374 00a6 80BD     		pop	{r7, pc}
- 375              	.L15:
- 376              		.align	2
- 377              	.L14:
- 378 00a8 00000000 		.word	xQueueSCD30
- 379 00ac 14000000 		.word	.LC2
- 380 00b0 1C000000 		.word	.LC3
- 381 00b4 20000000 		.word	.LC4
- 382 00b8 28000000 		.word	.LC5
- 383              		.cfi_endproc
- 384              	.LFE72:
- 385              		.size	vTaskTestSCD30, .-vTaskTestSCD30
- 386              		.text
- 387              	.Letext0:
- 388              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 389              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 390              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 391              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
- 392              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
- 393              		.file 7 ".\\Source\\include/queue.h"
- 394              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
- 395              		.section	.debug_info,"",%progbits
- 396              	.Ldebug_info0:
- 397 0000 51020000 		.4byte	0x251
- 398 0004 0400     		.2byte	0x4
- 399 0006 00000000 		.4byte	.Ldebug_abbrev0
- 400 000a 04       		.byte	0x4
- 401 000b 01       		.uleb128 0x1
- 402 000c 1F000000 		.4byte	.LASF37
- 403 0010 0C       		.byte	0xc
- 404 0011 36020000 		.4byte	.LASF38
- 405 0015 C5010000 		.4byte	.LASF39
- 406 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 407 001d 00000000 		.4byte	0
- 408 0021 00000000 		.4byte	.Ldebug_line0
- 409 0025 02       		.uleb128 0x2
- 410 0026 04       		.byte	0x4
- 411 0027 05       		.byte	0x5
- 412 0028 696E7400 		.ascii	"int\000"
- 413 002c 03       		.uleb128 0x3
- 414 002d 04       		.byte	0x4
- 415 002e 07       		.byte	0x7
- 416 002f 29020000 		.4byte	.LASF0
- 417 0033 03       		.uleb128 0x3
- 418 0034 08       		.byte	0x8
- 419 0035 05       		.byte	0x5
- 420 0036 59020000 		.4byte	.LASF1
- 421 003a 03       		.uleb128 0x3
- 422 003b 08       		.byte	0x8
- 423 003c 04       		.byte	0x4
- 424 003d 44020000 		.4byte	.LASF2
- 425 0041 03       		.uleb128 0x3
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 10
+ 359 006c FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+  91:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
+ 360              		.loc 1 91 0
+ 361 0070 0F48     		ldr	r0, .L17+8
+ 362 0072 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  92:Air.c         ****     SW_UART_TEST_USB_PutString("RH: ");
+ 363              		.loc 1 92 0
+ 364 0076 1048     		ldr	r0, .L17+16
+ 365 0078 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  93:Air.c         ****     SW_UART_TEST_USB_PutHexInt(testResults[2]);
+ 366              		.loc 1 93 0
+ 367 007c FB68     		ldr	r3, [r7, #12]	@ float
+ 368 007e 1846     		mov	r0, r3
+ 369 0080 FFF7FEFF 		bl	__aeabi_f2uiz
+ 370 0084 0346     		mov	r3, r0
+ 371 0086 9BB2     		uxth	r3, r3
+ 372 0088 1846     		mov	r0, r3
+ 373 008a FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+  94:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
+ 374              		.loc 1 94 0
+ 375 008e 0848     		ldr	r0, .L17+8
+ 376 0090 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  95:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
+ 377              		.loc 1 95 0
+ 378 0094 0648     		ldr	r0, .L17+8
+ 379 0096 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  96:Air.c         ****     SW_UART_TEST_USB_PutString("\n");
+ 380              		.loc 1 96 0
+ 381 009a 0548     		ldr	r0, .L17+8
+ 382 009c FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  97:Air.c         **** }
+ 383              		.loc 1 97 0
+ 384 00a0 00BF     		nop
+ 385 00a2 1037     		adds	r7, r7, #16
+ 386              		.cfi_def_cfa_offset 8
+ 387 00a4 BD46     		mov	sp, r7
+ 388              		.cfi_def_cfa_register 13
+ 389              		@ sp needed
+ 390 00a6 80BD     		pop	{r7, pc}
+ 391              	.L18:
+ 392              		.align	2
+ 393              	.L17:
+ 394 00a8 00000000 		.word	xQueueSCD30
+ 395 00ac 14000000 		.word	.LC2
+ 396 00b0 1C000000 		.word	.LC3
+ 397 00b4 20000000 		.word	.LC4
+ 398 00b8 28000000 		.word	.LC5
+ 399              		.cfi_endproc
+ 400              	.LFE73:
+ 401              		.size	vTaskTestSCD30, .-vTaskTestSCD30
+ 402              		.text
+ 403              	.Letext0:
+ 404              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 405              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 406              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 407              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ 408              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 10
 
 
- 426 0042 01       		.byte	0x1
- 427 0043 06       		.byte	0x6
- 428 0044 DC020000 		.4byte	.LASF3
- 429 0048 04       		.uleb128 0x4
- 430 0049 0D000000 		.4byte	.LASF6
- 431 004d 02       		.byte	0x2
- 432 004e 1D       		.byte	0x1d
- 433 004f 53000000 		.4byte	0x53
- 434 0053 03       		.uleb128 0x3
- 435 0054 01       		.byte	0x1
- 436 0055 08       		.byte	0x8
- 437 0056 42010000 		.4byte	.LASF4
- 438 005a 03       		.uleb128 0x3
- 439 005b 02       		.byte	0x2
- 440 005c 05       		.byte	0x5
- 441 005d 8A020000 		.4byte	.LASF5
- 442 0061 04       		.uleb128 0x4
- 443 0062 82010000 		.4byte	.LASF7
- 444 0066 02       		.byte	0x2
- 445 0067 2B       		.byte	0x2b
- 446 0068 6C000000 		.4byte	0x6c
- 447 006c 03       		.uleb128 0x3
- 448 006d 02       		.byte	0x2
- 449 006e 07       		.byte	0x7
- 450 006f 62010000 		.4byte	.LASF8
- 451 0073 04       		.uleb128 0x4
- 452 0074 C4000000 		.4byte	.LASF9
- 453 0078 02       		.byte	0x2
- 454 0079 3F       		.byte	0x3f
- 455 007a 7E000000 		.4byte	0x7e
- 456 007e 03       		.uleb128 0x3
- 457 007f 04       		.byte	0x4
- 458 0080 05       		.byte	0x5
- 459 0081 CE000000 		.4byte	.LASF10
- 460 0085 04       		.uleb128 0x4
- 461 0086 A3010000 		.4byte	.LASF11
- 462 008a 02       		.byte	0x2
- 463 008b 41       		.byte	0x41
- 464 008c 90000000 		.4byte	0x90
- 465 0090 03       		.uleb128 0x3
- 466 0091 04       		.byte	0x4
- 467 0092 07       		.byte	0x7
- 468 0093 50010000 		.4byte	.LASF12
- 469 0097 03       		.uleb128 0x3
- 470 0098 08       		.byte	0x8
- 471 0099 07       		.byte	0x7
- 472 009a 2B010000 		.4byte	.LASF13
- 473 009e 04       		.uleb128 0x4
- 474 009f 3C020000 		.4byte	.LASF14
- 475 00a3 03       		.byte	0x3
- 476 00a4 18       		.byte	0x18
- 477 00a5 48000000 		.4byte	0x48
- 478 00a9 04       		.uleb128 0x4
- 479 00aa 81020000 		.4byte	.LASF15
- 480 00ae 03       		.byte	0x3
- 481 00af 24       		.byte	0x24
- 482 00b0 61000000 		.4byte	0x61
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 11
+ 409              		.file 7 ".\\Source\\include/queue.h"
+ 410              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 411              		.section	.debug_info,"",%progbits
+ 412              	.Ldebug_info0:
+ 413 0000 8C020000 		.4byte	0x28c
+ 414 0004 0400     		.2byte	0x4
+ 415 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 416 000a 04       		.byte	0x4
+ 417 000b 01       		.uleb128 0x1
+ 418 000c 15000000 		.4byte	.LASF40
+ 419 0010 0C       		.byte	0xc
+ 420 0011 28020000 		.4byte	.LASF41
+ 421 0015 38010000 		.4byte	.LASF42
+ 422 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 423 001d 00000000 		.4byte	0
+ 424 0021 00000000 		.4byte	.Ldebug_line0
+ 425 0025 02       		.uleb128 0x2
+ 426 0026 04       		.byte	0x4
+ 427 0027 05       		.byte	0x5
+ 428 0028 696E7400 		.ascii	"int\000"
+ 429 002c 03       		.uleb128 0x3
+ 430 002d 04       		.byte	0x4
+ 431 002e 07       		.byte	0x7
+ 432 002f 1B020000 		.4byte	.LASF0
+ 433 0033 03       		.uleb128 0x3
+ 434 0034 08       		.byte	0x8
+ 435 0035 05       		.byte	0x5
+ 436 0036 50020000 		.4byte	.LASF1
+ 437 003a 03       		.uleb128 0x3
+ 438 003b 08       		.byte	0x8
+ 439 003c 04       		.byte	0x4
+ 440 003d 3B020000 		.4byte	.LASF2
+ 441 0041 03       		.uleb128 0x3
+ 442 0042 01       		.byte	0x1
+ 443 0043 06       		.byte	0x6
+ 444 0044 D3020000 		.4byte	.LASF3
+ 445 0048 03       		.uleb128 0x3
+ 446 0049 01       		.byte	0x1
+ 447 004a 08       		.byte	0x8
+ 448 004b 7B010000 		.4byte	.LASF4
+ 449 004f 03       		.uleb128 0x3
+ 450 0050 02       		.byte	0x2
+ 451 0051 05       		.byte	0x5
+ 452 0052 81020000 		.4byte	.LASF5
+ 453 0056 04       		.uleb128 0x4
+ 454 0057 C5010000 		.4byte	.LASF7
+ 455 005b 02       		.byte	0x2
+ 456 005c 2B       		.byte	0x2b
+ 457 005d 61000000 		.4byte	0x61
+ 458 0061 03       		.uleb128 0x3
+ 459 0062 02       		.byte	0x2
+ 460 0063 07       		.byte	0x7
+ 461 0064 A5010000 		.4byte	.LASF6
+ 462 0068 04       		.uleb128 0x4
+ 463 0069 BA000000 		.4byte	.LASF8
+ 464 006d 02       		.byte	0x2
+ 465 006e 3F       		.byte	0x3f
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 11
 
 
- 483 00b4 04       		.uleb128 0x4
- 484 00b5 0B010000 		.4byte	.LASF16
- 485 00b9 03       		.byte	0x3
- 486 00ba 2C       		.byte	0x2c
- 487 00bb 73000000 		.4byte	0x73
- 488 00bf 04       		.uleb128 0x4
- 489 00c0 B9020000 		.4byte	.LASF17
- 490 00c4 03       		.byte	0x3
- 491 00c5 30       		.byte	0x30
- 492 00c6 85000000 		.4byte	0x85
- 493 00ca 05       		.uleb128 0x5
- 494 00cb E5000000 		.4byte	.LASF18
- 495 00cf 04       		.byte	0x4
- 496 00d0 E401     		.2byte	0x1e4
- 497 00d2 53000000 		.4byte	0x53
- 498 00d6 05       		.uleb128 0x5
- 499 00d7 AE010000 		.4byte	.LASF19
- 500 00db 04       		.byte	0x4
- 501 00dc E501     		.2byte	0x1e5
- 502 00de 6C000000 		.4byte	0x6c
- 503 00e2 03       		.uleb128 0x3
- 504 00e3 04       		.byte	0x4
- 505 00e4 04       		.byte	0x4
- 506 00e5 25010000 		.4byte	.LASF20
- 507 00e9 03       		.uleb128 0x3
- 508 00ea 08       		.byte	0x8
- 509 00eb 04       		.byte	0x4
- 510 00ec 8D010000 		.4byte	.LASF21
- 511 00f0 03       		.uleb128 0x3
- 512 00f1 01       		.byte	0x1
- 513 00f2 08       		.byte	0x8
- 514 00f3 CE020000 		.4byte	.LASF22
- 515 00f7 06       		.uleb128 0x6
- 516 00f8 CA000000 		.4byte	0xca
- 517 00fc 03       		.uleb128 0x3
- 518 00fd 04       		.byte	0x4
- 519 00fe 07       		.byte	0x7
- 520 00ff 50020000 		.4byte	.LASF23
- 521 0103 07       		.uleb128 0x7
- 522 0104 FC000000 		.4byte	.LASF40
- 523 0108 04       		.byte	0x4
- 524 0109 05       		.byte	0x5
- 525 010a 30       		.byte	0x30
- 526 010b 28010000 		.4byte	0x128
- 527 010f 08       		.uleb128 0x8
- 528 0110 B8000000 		.4byte	.LASF24
- 529 0114 05       		.byte	0x5
- 530 0115 31       		.byte	0x31
- 531 0116 D6000000 		.4byte	0xd6
- 532 011a 00       		.byte	0
- 533 011b 08       		.uleb128 0x8
- 534 011c 17000000 		.4byte	.LASF25
- 535 0120 05       		.byte	0x5
- 536 0121 32       		.byte	0x32
- 537 0122 CA000000 		.4byte	0xca
- 538 0126 02       		.byte	0x2
- 539 0127 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 12
+ 466 006f 73000000 		.4byte	0x73
+ 467 0073 03       		.uleb128 0x3
+ 468 0074 04       		.byte	0x4
+ 469 0075 05       		.byte	0x5
+ 470 0076 C4000000 		.4byte	.LASF9
+ 471 007a 04       		.uleb128 0x4
+ 472 007b E6010000 		.4byte	.LASF10
+ 473 007f 02       		.byte	0x2
+ 474 0080 41       		.byte	0x41
+ 475 0081 85000000 		.4byte	0x85
+ 476 0085 03       		.uleb128 0x3
+ 477 0086 04       		.byte	0x4
+ 478 0087 07       		.byte	0x7
+ 479 0088 93010000 		.4byte	.LASF11
+ 480 008c 03       		.uleb128 0x3
+ 481 008d 08       		.byte	0x8
+ 482 008e 07       		.byte	0x7
+ 483 008f 21010000 		.4byte	.LASF12
+ 484 0093 04       		.uleb128 0x4
+ 485 0094 78020000 		.4byte	.LASF13
+ 486 0098 03       		.byte	0x3
+ 487 0099 24       		.byte	0x24
+ 488 009a 56000000 		.4byte	0x56
+ 489 009e 04       		.uleb128 0x4
+ 490 009f 01010000 		.4byte	.LASF14
+ 491 00a3 03       		.byte	0x3
+ 492 00a4 2C       		.byte	0x2c
+ 493 00a5 68000000 		.4byte	0x68
+ 494 00a9 04       		.uleb128 0x4
+ 495 00aa B0020000 		.4byte	.LASF15
+ 496 00ae 03       		.byte	0x3
+ 497 00af 30       		.byte	0x30
+ 498 00b0 7A000000 		.4byte	0x7a
+ 499 00b4 05       		.uleb128 0x5
+ 500 00b5 DB000000 		.4byte	.LASF16
+ 501 00b9 04       		.byte	0x4
+ 502 00ba E401     		.2byte	0x1e4
+ 503 00bc 48000000 		.4byte	0x48
+ 504 00c0 05       		.uleb128 0x5
+ 505 00c1 04020000 		.4byte	.LASF17
+ 506 00c5 04       		.byte	0x4
+ 507 00c6 E501     		.2byte	0x1e5
+ 508 00c8 61000000 		.4byte	0x61
+ 509 00cc 03       		.uleb128 0x3
+ 510 00cd 04       		.byte	0x4
+ 511 00ce 04       		.byte	0x4
+ 512 00cf 1B010000 		.4byte	.LASF18
+ 513 00d3 03       		.uleb128 0x3
+ 514 00d4 08       		.byte	0x8
+ 515 00d5 04       		.byte	0x4
+ 516 00d6 D0010000 		.4byte	.LASF19
+ 517 00da 03       		.uleb128 0x3
+ 518 00db 01       		.byte	0x1
+ 519 00dc 08       		.byte	0x8
+ 520 00dd C5020000 		.4byte	.LASF20
+ 521 00e1 06       		.uleb128 0x6
+ 522 00e2 B4000000 		.4byte	0xb4
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 12
 
 
- 540 0128 04       		.uleb128 0x4
- 541 0129 E8020000 		.4byte	.LASF26
- 542 012d 06       		.byte	0x6
- 543 012e 38       		.byte	0x38
- 544 012f 7E000000 		.4byte	0x7e
- 545 0133 04       		.uleb128 0x4
- 546 0134 AD000000 		.4byte	.LASF27
- 547 0138 06       		.byte	0x6
- 548 0139 3F       		.byte	0x3f
- 549 013a BF000000 		.4byte	0xbf
- 550 013e 04       		.uleb128 0x4
- 551 013f D7000000 		.4byte	.LASF28
- 552 0143 07       		.byte	0x7
- 553 0144 30       		.byte	0x30
- 554 0145 49010000 		.4byte	0x149
- 555 0149 09       		.uleb128 0x9
- 556 014a 04       		.byte	0x4
- 557 014b 4F010000 		.4byte	0x14f
- 558 014f 0A       		.uleb128 0xa
- 559 0150 B5010000 		.4byte	.LASF41
- 560 0154 0B       		.uleb128 0xb
- 561 0155 D3020000 		.4byte	.LASF29
- 562 0159 01       		.byte	0x1
- 563 015a 19       		.byte	0x19
- 564 015b 00000000 		.4byte	.LFB68
- 565 015f 64000000 		.4byte	.LFE68-.LFB68
- 566 0163 01       		.uleb128 0x1
- 567 0164 9C       		.byte	0x9c
- 568 0165 0C       		.uleb128 0xc
- 569 0166 AE020000 		.4byte	.LASF42
- 570 016a 01       		.byte	0x1
- 571 016b 27       		.byte	0x27
- 572 016c 00000000 		.4byte	.LFB69
- 573 0170 1E000000 		.4byte	.LFE69-.LFB69
- 574 0174 01       		.uleb128 0x1
- 575 0175 9C       		.byte	0x9c
- 576 0176 89010000 		.4byte	0x189
- 577 017a 0D       		.uleb128 0xd
- 578 017b A5020000 		.4byte	.LASF43
- 579 017f 01       		.byte	0x1
- 580 0180 27       		.byte	0x27
- 581 0181 A9000000 		.4byte	0xa9
- 582 0185 02       		.uleb128 0x2
- 583 0186 91       		.byte	0x91
- 584 0187 76       		.sleb128 -10
- 585 0188 00       		.byte	0
- 586 0189 0B       		.uleb128 0xb
- 587 018a 13010000 		.4byte	.LASF30
- 588 018e 01       		.byte	0x1
- 589 018f 2C       		.byte	0x2c
- 590 0190 00000000 		.4byte	.LFB70
- 591 0194 6C000000 		.4byte	.LFE70-.LFB70
- 592 0198 01       		.uleb128 0x1
- 593 0199 9C       		.byte	0x9c
- 594 019a 0B       		.uleb128 0xb
- 595 019b EB000000 		.4byte	.LASF31
- 596 019f 01       		.byte	0x1
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 13
+ 523 00e6 03       		.uleb128 0x3
+ 524 00e7 04       		.byte	0x4
+ 525 00e8 07       		.byte	0x7
+ 526 00e9 47020000 		.4byte	.LASF21
+ 527 00ed 07       		.uleb128 0x7
+ 528 00ee F2000000 		.4byte	.LASF43
+ 529 00f2 04       		.byte	0x4
+ 530 00f3 05       		.byte	0x5
+ 531 00f4 30       		.byte	0x30
+ 532 00f5 12010000 		.4byte	0x112
+ 533 00f9 08       		.uleb128 0x8
+ 534 00fa AE000000 		.4byte	.LASF22
+ 535 00fe 05       		.byte	0x5
+ 536 00ff 31       		.byte	0x31
+ 537 0100 C0000000 		.4byte	0xc0
+ 538 0104 00       		.byte	0
+ 539 0105 08       		.uleb128 0x8
+ 540 0106 0D000000 		.4byte	.LASF23
+ 541 010a 05       		.byte	0x5
+ 542 010b 32       		.byte	0x32
+ 543 010c B4000000 		.4byte	0xb4
+ 544 0110 02       		.byte	0x2
+ 545 0111 00       		.byte	0
+ 546 0112 04       		.uleb128 0x4
+ 547 0113 DF020000 		.4byte	.LASF24
+ 548 0117 06       		.byte	0x6
+ 549 0118 38       		.byte	0x38
+ 550 0119 73000000 		.4byte	0x73
+ 551 011d 04       		.uleb128 0x4
+ 552 011e A3000000 		.4byte	.LASF25
+ 553 0122 06       		.byte	0x6
+ 554 0123 3F       		.byte	0x3f
+ 555 0124 A9000000 		.4byte	0xa9
+ 556 0128 04       		.uleb128 0x4
+ 557 0129 CD000000 		.4byte	.LASF26
+ 558 012d 07       		.byte	0x7
+ 559 012e 30       		.byte	0x30
+ 560 012f 33010000 		.4byte	0x133
+ 561 0133 09       		.uleb128 0x9
+ 562 0134 04       		.byte	0x4
+ 563 0135 39010000 		.4byte	0x139
+ 564 0139 0A       		.uleb128 0xa
+ 565 013a 0B020000 		.4byte	.LASF44
+ 566 013e 0B       		.uleb128 0xb
+ 567 013f CA020000 		.4byte	.LASF29
+ 568 0143 01       		.byte	0x1
+ 569 0144 19       		.byte	0x19
+ 570 0145 00000000 		.4byte	.LFB68
+ 571 0149 28000000 		.4byte	.LFE68-.LFB68
+ 572 014d 01       		.uleb128 0x1
+ 573 014e 9C       		.byte	0x9c
+ 574 014f 0C       		.uleb128 0xc
+ 575 0150 A5020000 		.4byte	.LASF45
+ 576 0154 01       		.byte	0x1
+ 577 0155 28       		.byte	0x28
+ 578 0156 00000000 		.4byte	.LFB69
+ 579 015a 1E000000 		.4byte	.LFE69-.LFB69
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 13
 
 
- 597 01a0 3B       		.byte	0x3b
- 598 01a1 00000000 		.4byte	.LFB71
- 599 01a5 2C000000 		.4byte	.LFE71-.LFB71
- 600 01a9 01       		.uleb128 0x1
- 601 01aa 9C       		.byte	0x9c
- 602 01ab 0E       		.uleb128 0xe
- 603 01ac 94010000 		.4byte	.LASF44
- 604 01b0 01       		.byte	0x1
- 605 01b1 3F       		.byte	0x3f
- 606 01b2 00000000 		.4byte	.LFB72
- 607 01b6 BC000000 		.4byte	.LFE72-.LFB72
- 608 01ba 01       		.uleb128 0x1
- 609 01bb 9C       		.byte	0x9c
- 610 01bc CF010000 		.4byte	0x1cf
- 611 01c0 0F       		.uleb128 0xf
- 612 01c1 75020000 		.4byte	.LASF45
- 613 01c5 01       		.byte	0x1
- 614 01c6 40       		.byte	0x40
- 615 01c7 CF010000 		.4byte	0x1cf
- 616 01cb 02       		.uleb128 0x2
- 617 01cc 91       		.byte	0x91
- 618 01cd 6C       		.sleb128 -20
- 619 01ce 00       		.byte	0
- 620 01cf 10       		.uleb128 0x10
- 621 01d0 E2000000 		.4byte	0xe2
- 622 01d4 DF010000 		.4byte	0x1df
- 623 01d8 11       		.uleb128 0x11
- 624 01d9 FC000000 		.4byte	0xfc
- 625 01dd 02       		.byte	0x2
- 626 01de 00       		.byte	0
- 627 01df 10       		.uleb128 0x10
- 628 01e0 03010000 		.4byte	0x103
- 629 01e4 EF010000 		.4byte	0x1ef
- 630 01e8 11       		.uleb128 0x11
- 631 01e9 FC000000 		.4byte	0xfc
- 632 01ed 07       		.byte	0x7
- 633 01ee 00       		.byte	0
- 634 01ef 12       		.uleb128 0x12
- 635 01f0 67020000 		.4byte	.LASF32
- 636 01f4 05       		.byte	0x5
- 637 01f5 34       		.byte	0x34
- 638 01f6 DF010000 		.4byte	0x1df
- 639 01fa 05       		.uleb128 0x5
- 640 01fb 03       		.byte	0x3
- 641 01fc 00000000 		.4byte	DS18x8_Sensor
- 642 0200 12       		.uleb128 0x12
- 643 0201 94020000 		.4byte	.LASF33
- 644 0205 05       		.byte	0x5
- 645 0206 39       		.byte	0x39
- 646 0207 F7000000 		.4byte	0xf7
- 647 020b 05       		.uleb128 0x5
- 648 020c 03       		.byte	0x3
- 649 020d 00000000 		.4byte	DS18x8_DataReady
- 650 0211 13       		.uleb128 0x13
- 651 0212 75010000 		.4byte	.LASF34
- 652 0216 08       		.byte	0x8
- 653 0217 1207     		.2byte	0x712
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 14
+ 580 015e 01       		.uleb128 0x1
+ 581 015f 9C       		.byte	0x9c
+ 582 0160 73010000 		.4byte	0x173
+ 583 0164 0D       		.uleb128 0xd
+ 584 0165 9C020000 		.4byte	.LASF46
+ 585 0169 01       		.byte	0x1
+ 586 016a 28       		.byte	0x28
+ 587 016b 93000000 		.4byte	0x93
+ 588 016f 02       		.uleb128 0x2
+ 589 0170 91       		.byte	0x91
+ 590 0171 76       		.sleb128 -10
+ 591 0172 00       		.byte	0
+ 592 0173 0E       		.uleb128 0xe
+ 593 0174 2E020000 		.4byte	.LASF32
+ 594 0178 01       		.byte	0x1
+ 595 0179 2D       		.byte	0x2d
+ 596 017a 00000000 		.4byte	.LFB70
+ 597 017e 34000000 		.4byte	.LFE70-.LFB70
+ 598 0182 01       		.uleb128 0x1
+ 599 0183 9C       		.byte	0x9c
+ 600 0184 AF010000 		.4byte	0x1af
+ 601 0188 0F       		.uleb128 0xf
+ 602 0189 F1010000 		.4byte	.LASF27
+ 603 018d 01       		.byte	0x1
+ 604 018e 2F       		.byte	0x2f
+ 605 018f AF010000 		.4byte	0x1af
+ 606 0193 02       		.uleb128 0x2
+ 607 0194 91       		.byte	0x91
+ 608 0195 74       		.sleb128 -12
+ 609 0196 10       		.uleb128 0x10
+ 610 0197 0C000000 		.4byte	.LBB2
+ 611 019b 26000000 		.4byte	.LBE2-.LBB2
+ 612 019f 0F       		.uleb128 0xf
+ 613 01a0 89010000 		.4byte	.LASF28
+ 614 01a4 01       		.byte	0x1
+ 615 01a5 31       		.byte	0x31
+ 616 01a6 B4010000 		.4byte	0x1b4
+ 617 01aa 02       		.uleb128 0x2
+ 618 01ab 91       		.byte	0x91
+ 619 01ac 70       		.sleb128 -16
+ 620 01ad 00       		.byte	0
+ 621 01ae 00       		.byte	0
+ 622 01af 11       		.uleb128 0x11
+ 623 01b0 1D010000 		.4byte	0x11d
+ 624 01b4 12       		.uleb128 0x12
+ 625 01b5 48000000 		.4byte	0x48
+ 626 01b9 C4010000 		.4byte	0x1c4
+ 627 01bd 13       		.uleb128 0x13
+ 628 01be E6000000 		.4byte	0xe6
+ 629 01c2 01       		.byte	0x1
+ 630 01c3 00       		.byte	0
+ 631 01c4 0B       		.uleb128 0xb
+ 632 01c5 09010000 		.4byte	.LASF30
+ 633 01c9 01       		.byte	0x1
+ 634 01ca 3E       		.byte	0x3e
+ 635 01cb 00000000 		.4byte	.LFB71
+ 636 01cf 58000000 		.4byte	.LFE71-.LFB71
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 14
 
 
- 654 0219 1D020000 		.4byte	0x21d
- 655 021d 06       		.uleb128 0x6
- 656 021e B4000000 		.4byte	0xb4
- 657 0222 12       		.uleb128 0x12
- 658 0223 00000000 		.4byte	.LASF35
- 659 0227 01       		.byte	0x1
- 660 0228 14       		.byte	0x14
- 661 0229 CF010000 		.4byte	0x1cf
- 662 022d 05       		.uleb128 0x5
- 663 022e 03       		.byte	0x3
- 664 022f 00000000 		.4byte	SCD30Results
- 665 0233 10       		.uleb128 0x10
- 666 0234 3E010000 		.4byte	0x13e
- 667 0238 43020000 		.4byte	0x243
- 668 023c 11       		.uleb128 0x11
- 669 023d FC000000 		.4byte	0xfc
- 670 0241 02       		.byte	0x2
- 671 0242 00       		.byte	0
- 672 0243 12       		.uleb128 0x12
- 673 0244 C2020000 		.4byte	.LASF36
- 674 0248 01       		.byte	0x1
- 675 0249 16       		.byte	0x16
- 676 024a 33020000 		.4byte	0x233
- 677 024e 05       		.uleb128 0x5
- 678 024f 03       		.byte	0x3
- 679 0250 00000000 		.4byte	xQueueSCD30
- 680 0254 00       		.byte	0
- 681              		.section	.debug_abbrev,"",%progbits
- 682              	.Ldebug_abbrev0:
- 683 0000 01       		.uleb128 0x1
- 684 0001 11       		.uleb128 0x11
- 685 0002 01       		.byte	0x1
- 686 0003 25       		.uleb128 0x25
- 687 0004 0E       		.uleb128 0xe
- 688 0005 13       		.uleb128 0x13
- 689 0006 0B       		.uleb128 0xb
- 690 0007 03       		.uleb128 0x3
- 691 0008 0E       		.uleb128 0xe
- 692 0009 1B       		.uleb128 0x1b
- 693 000a 0E       		.uleb128 0xe
- 694 000b 55       		.uleb128 0x55
- 695 000c 17       		.uleb128 0x17
- 696 000d 11       		.uleb128 0x11
- 697 000e 01       		.uleb128 0x1
- 698 000f 10       		.uleb128 0x10
- 699 0010 17       		.uleb128 0x17
- 700 0011 00       		.byte	0
- 701 0012 00       		.byte	0
- 702 0013 02       		.uleb128 0x2
- 703 0014 24       		.uleb128 0x24
- 704 0015 00       		.byte	0
- 705 0016 0B       		.uleb128 0xb
- 706 0017 0B       		.uleb128 0xb
- 707 0018 3E       		.uleb128 0x3e
- 708 0019 0B       		.uleb128 0xb
- 709 001a 03       		.uleb128 0x3
- 710 001b 08       		.uleb128 0x8
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 15
+ 637 01d3 01       		.uleb128 0x1
+ 638 01d4 9C       		.byte	0x9c
+ 639 01d5 0B       		.uleb128 0xb
+ 640 01d6 E1000000 		.4byte	.LASF31
+ 641 01da 01       		.byte	0x1
+ 642 01db 4C       		.byte	0x4c
+ 643 01dc 00000000 		.4byte	.LFB72
+ 644 01e0 2C000000 		.4byte	.LFE72-.LFB72
+ 645 01e4 01       		.uleb128 0x1
+ 646 01e5 9C       		.byte	0x9c
+ 647 01e6 0E       		.uleb128 0xe
+ 648 01e7 D7010000 		.4byte	.LASF33
+ 649 01eb 01       		.byte	0x1
+ 650 01ec 50       		.byte	0x50
+ 651 01ed 00000000 		.4byte	.LFB73
+ 652 01f1 BC000000 		.4byte	.LFE73-.LFB73
+ 653 01f5 01       		.uleb128 0x1
+ 654 01f6 9C       		.byte	0x9c
+ 655 01f7 0A020000 		.4byte	0x20a
+ 656 01fb 0F       		.uleb128 0xf
+ 657 01fc 6C020000 		.4byte	.LASF34
+ 658 0200 01       		.byte	0x1
+ 659 0201 51       		.byte	0x51
+ 660 0202 0A020000 		.4byte	0x20a
+ 661 0206 02       		.uleb128 0x2
+ 662 0207 91       		.byte	0x91
+ 663 0208 6C       		.sleb128 -20
+ 664 0209 00       		.byte	0
+ 665 020a 12       		.uleb128 0x12
+ 666 020b CC000000 		.4byte	0xcc
+ 667 020f 1A020000 		.4byte	0x21a
+ 668 0213 13       		.uleb128 0x13
+ 669 0214 E6000000 		.4byte	0xe6
+ 670 0218 02       		.byte	0x2
+ 671 0219 00       		.byte	0
+ 672 021a 12       		.uleb128 0x12
+ 673 021b ED000000 		.4byte	0xed
+ 674 021f 2A020000 		.4byte	0x22a
+ 675 0223 13       		.uleb128 0x13
+ 676 0224 E6000000 		.4byte	0xe6
+ 677 0228 07       		.byte	0x7
+ 678 0229 00       		.byte	0
+ 679 022a 14       		.uleb128 0x14
+ 680 022b 5E020000 		.4byte	.LASF35
+ 681 022f 05       		.byte	0x5
+ 682 0230 34       		.byte	0x34
+ 683 0231 1A020000 		.4byte	0x21a
+ 684 0235 05       		.uleb128 0x5
+ 685 0236 03       		.byte	0x3
+ 686 0237 00000000 		.4byte	DS18x8_Sensor
+ 687 023b 14       		.uleb128 0x14
+ 688 023c 8B020000 		.4byte	.LASF36
+ 689 0240 05       		.byte	0x5
+ 690 0241 39       		.byte	0x39
+ 691 0242 E1000000 		.4byte	0xe1
+ 692 0246 05       		.uleb128 0x5
+ 693 0247 03       		.byte	0x3
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 15
 
 
- 711 001c 00       		.byte	0
- 712 001d 00       		.byte	0
- 713 001e 03       		.uleb128 0x3
- 714 001f 24       		.uleb128 0x24
- 715 0020 00       		.byte	0
- 716 0021 0B       		.uleb128 0xb
- 717 0022 0B       		.uleb128 0xb
- 718 0023 3E       		.uleb128 0x3e
- 719 0024 0B       		.uleb128 0xb
- 720 0025 03       		.uleb128 0x3
- 721 0026 0E       		.uleb128 0xe
- 722 0027 00       		.byte	0
- 723 0028 00       		.byte	0
- 724 0029 04       		.uleb128 0x4
- 725 002a 16       		.uleb128 0x16
- 726 002b 00       		.byte	0
- 727 002c 03       		.uleb128 0x3
- 728 002d 0E       		.uleb128 0xe
- 729 002e 3A       		.uleb128 0x3a
- 730 002f 0B       		.uleb128 0xb
- 731 0030 3B       		.uleb128 0x3b
- 732 0031 0B       		.uleb128 0xb
- 733 0032 49       		.uleb128 0x49
- 734 0033 13       		.uleb128 0x13
- 735 0034 00       		.byte	0
- 736 0035 00       		.byte	0
- 737 0036 05       		.uleb128 0x5
- 738 0037 16       		.uleb128 0x16
- 739 0038 00       		.byte	0
- 740 0039 03       		.uleb128 0x3
- 741 003a 0E       		.uleb128 0xe
- 742 003b 3A       		.uleb128 0x3a
- 743 003c 0B       		.uleb128 0xb
- 744 003d 3B       		.uleb128 0x3b
- 745 003e 05       		.uleb128 0x5
- 746 003f 49       		.uleb128 0x49
- 747 0040 13       		.uleb128 0x13
- 748 0041 00       		.byte	0
- 749 0042 00       		.byte	0
- 750 0043 06       		.uleb128 0x6
- 751 0044 35       		.uleb128 0x35
- 752 0045 00       		.byte	0
- 753 0046 49       		.uleb128 0x49
- 754 0047 13       		.uleb128 0x13
- 755 0048 00       		.byte	0
- 756 0049 00       		.byte	0
- 757 004a 07       		.uleb128 0x7
- 758 004b 13       		.uleb128 0x13
- 759 004c 01       		.byte	0x1
- 760 004d 03       		.uleb128 0x3
- 761 004e 0E       		.uleb128 0xe
- 762 004f 0B       		.uleb128 0xb
- 763 0050 0B       		.uleb128 0xb
- 764 0051 3A       		.uleb128 0x3a
- 765 0052 0B       		.uleb128 0xb
- 766 0053 3B       		.uleb128 0x3b
- 767 0054 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 16
+ 694 0248 00000000 		.4byte	DS18x8_DataReady
+ 695 024c 15       		.uleb128 0x15
+ 696 024d B8010000 		.4byte	.LASF37
+ 697 0251 08       		.byte	0x8
+ 698 0252 1207     		.2byte	0x712
+ 699 0254 58020000 		.4byte	0x258
+ 700 0258 06       		.uleb128 0x6
+ 701 0259 9E000000 		.4byte	0x9e
+ 702 025d 14       		.uleb128 0x14
+ 703 025e 00000000 		.4byte	.LASF38
+ 704 0262 01       		.byte	0x1
+ 705 0263 14       		.byte	0x14
+ 706 0264 0A020000 		.4byte	0x20a
+ 707 0268 05       		.uleb128 0x5
+ 708 0269 03       		.byte	0x3
+ 709 026a 00000000 		.4byte	SCD30Results
+ 710 026e 12       		.uleb128 0x12
+ 711 026f 28010000 		.4byte	0x128
+ 712 0273 7E020000 		.4byte	0x27e
+ 713 0277 13       		.uleb128 0x13
+ 714 0278 E6000000 		.4byte	0xe6
+ 715 027c 02       		.byte	0x2
+ 716 027d 00       		.byte	0
+ 717 027e 14       		.uleb128 0x14
+ 718 027f B9020000 		.4byte	.LASF39
+ 719 0283 01       		.byte	0x1
+ 720 0284 16       		.byte	0x16
+ 721 0285 6E020000 		.4byte	0x26e
+ 722 0289 05       		.uleb128 0x5
+ 723 028a 03       		.byte	0x3
+ 724 028b 00000000 		.4byte	xQueueSCD30
+ 725 028f 00       		.byte	0
+ 726              		.section	.debug_abbrev,"",%progbits
+ 727              	.Ldebug_abbrev0:
+ 728 0000 01       		.uleb128 0x1
+ 729 0001 11       		.uleb128 0x11
+ 730 0002 01       		.byte	0x1
+ 731 0003 25       		.uleb128 0x25
+ 732 0004 0E       		.uleb128 0xe
+ 733 0005 13       		.uleb128 0x13
+ 734 0006 0B       		.uleb128 0xb
+ 735 0007 03       		.uleb128 0x3
+ 736 0008 0E       		.uleb128 0xe
+ 737 0009 1B       		.uleb128 0x1b
+ 738 000a 0E       		.uleb128 0xe
+ 739 000b 55       		.uleb128 0x55
+ 740 000c 17       		.uleb128 0x17
+ 741 000d 11       		.uleb128 0x11
+ 742 000e 01       		.uleb128 0x1
+ 743 000f 10       		.uleb128 0x10
+ 744 0010 17       		.uleb128 0x17
+ 745 0011 00       		.byte	0
+ 746 0012 00       		.byte	0
+ 747 0013 02       		.uleb128 0x2
+ 748 0014 24       		.uleb128 0x24
+ 749 0015 00       		.byte	0
+ 750 0016 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 16
 
 
- 768 0055 01       		.uleb128 0x1
- 769 0056 13       		.uleb128 0x13
- 770 0057 00       		.byte	0
- 771 0058 00       		.byte	0
- 772 0059 08       		.uleb128 0x8
- 773 005a 0D       		.uleb128 0xd
- 774 005b 00       		.byte	0
- 775 005c 03       		.uleb128 0x3
- 776 005d 0E       		.uleb128 0xe
- 777 005e 3A       		.uleb128 0x3a
- 778 005f 0B       		.uleb128 0xb
- 779 0060 3B       		.uleb128 0x3b
- 780 0061 0B       		.uleb128 0xb
- 781 0062 49       		.uleb128 0x49
- 782 0063 13       		.uleb128 0x13
- 783 0064 38       		.uleb128 0x38
- 784 0065 0B       		.uleb128 0xb
- 785 0066 00       		.byte	0
- 786 0067 00       		.byte	0
- 787 0068 09       		.uleb128 0x9
- 788 0069 0F       		.uleb128 0xf
- 789 006a 00       		.byte	0
- 790 006b 0B       		.uleb128 0xb
- 791 006c 0B       		.uleb128 0xb
- 792 006d 49       		.uleb128 0x49
- 793 006e 13       		.uleb128 0x13
- 794 006f 00       		.byte	0
- 795 0070 00       		.byte	0
- 796 0071 0A       		.uleb128 0xa
- 797 0072 13       		.uleb128 0x13
- 798 0073 00       		.byte	0
- 799 0074 03       		.uleb128 0x3
- 800 0075 0E       		.uleb128 0xe
- 801 0076 3C       		.uleb128 0x3c
- 802 0077 19       		.uleb128 0x19
- 803 0078 00       		.byte	0
- 804 0079 00       		.byte	0
- 805 007a 0B       		.uleb128 0xb
- 806 007b 2E       		.uleb128 0x2e
- 807 007c 00       		.byte	0
- 808 007d 3F       		.uleb128 0x3f
- 809 007e 19       		.uleb128 0x19
- 810 007f 03       		.uleb128 0x3
- 811 0080 0E       		.uleb128 0xe
- 812 0081 3A       		.uleb128 0x3a
- 813 0082 0B       		.uleb128 0xb
- 814 0083 3B       		.uleb128 0x3b
- 815 0084 0B       		.uleb128 0xb
- 816 0085 11       		.uleb128 0x11
- 817 0086 01       		.uleb128 0x1
- 818 0087 12       		.uleb128 0x12
- 819 0088 06       		.uleb128 0x6
- 820 0089 40       		.uleb128 0x40
- 821 008a 18       		.uleb128 0x18
- 822 008b 9642     		.uleb128 0x2116
- 823 008d 19       		.uleb128 0x19
- 824 008e 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 17
+ 751 0017 0B       		.uleb128 0xb
+ 752 0018 3E       		.uleb128 0x3e
+ 753 0019 0B       		.uleb128 0xb
+ 754 001a 03       		.uleb128 0x3
+ 755 001b 08       		.uleb128 0x8
+ 756 001c 00       		.byte	0
+ 757 001d 00       		.byte	0
+ 758 001e 03       		.uleb128 0x3
+ 759 001f 24       		.uleb128 0x24
+ 760 0020 00       		.byte	0
+ 761 0021 0B       		.uleb128 0xb
+ 762 0022 0B       		.uleb128 0xb
+ 763 0023 3E       		.uleb128 0x3e
+ 764 0024 0B       		.uleb128 0xb
+ 765 0025 03       		.uleb128 0x3
+ 766 0026 0E       		.uleb128 0xe
+ 767 0027 00       		.byte	0
+ 768 0028 00       		.byte	0
+ 769 0029 04       		.uleb128 0x4
+ 770 002a 16       		.uleb128 0x16
+ 771 002b 00       		.byte	0
+ 772 002c 03       		.uleb128 0x3
+ 773 002d 0E       		.uleb128 0xe
+ 774 002e 3A       		.uleb128 0x3a
+ 775 002f 0B       		.uleb128 0xb
+ 776 0030 3B       		.uleb128 0x3b
+ 777 0031 0B       		.uleb128 0xb
+ 778 0032 49       		.uleb128 0x49
+ 779 0033 13       		.uleb128 0x13
+ 780 0034 00       		.byte	0
+ 781 0035 00       		.byte	0
+ 782 0036 05       		.uleb128 0x5
+ 783 0037 16       		.uleb128 0x16
+ 784 0038 00       		.byte	0
+ 785 0039 03       		.uleb128 0x3
+ 786 003a 0E       		.uleb128 0xe
+ 787 003b 3A       		.uleb128 0x3a
+ 788 003c 0B       		.uleb128 0xb
+ 789 003d 3B       		.uleb128 0x3b
+ 790 003e 05       		.uleb128 0x5
+ 791 003f 49       		.uleb128 0x49
+ 792 0040 13       		.uleb128 0x13
+ 793 0041 00       		.byte	0
+ 794 0042 00       		.byte	0
+ 795 0043 06       		.uleb128 0x6
+ 796 0044 35       		.uleb128 0x35
+ 797 0045 00       		.byte	0
+ 798 0046 49       		.uleb128 0x49
+ 799 0047 13       		.uleb128 0x13
+ 800 0048 00       		.byte	0
+ 801 0049 00       		.byte	0
+ 802 004a 07       		.uleb128 0x7
+ 803 004b 13       		.uleb128 0x13
+ 804 004c 01       		.byte	0x1
+ 805 004d 03       		.uleb128 0x3
+ 806 004e 0E       		.uleb128 0xe
+ 807 004f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 17
 
 
- 825 008f 00       		.byte	0
- 826 0090 0C       		.uleb128 0xc
- 827 0091 2E       		.uleb128 0x2e
- 828 0092 01       		.byte	0x1
- 829 0093 3F       		.uleb128 0x3f
- 830 0094 19       		.uleb128 0x19
- 831 0095 03       		.uleb128 0x3
- 832 0096 0E       		.uleb128 0xe
- 833 0097 3A       		.uleb128 0x3a
- 834 0098 0B       		.uleb128 0xb
- 835 0099 3B       		.uleb128 0x3b
- 836 009a 0B       		.uleb128 0xb
- 837 009b 27       		.uleb128 0x27
- 838 009c 19       		.uleb128 0x19
- 839 009d 11       		.uleb128 0x11
- 840 009e 01       		.uleb128 0x1
- 841 009f 12       		.uleb128 0x12
- 842 00a0 06       		.uleb128 0x6
- 843 00a1 40       		.uleb128 0x40
- 844 00a2 18       		.uleb128 0x18
- 845 00a3 9642     		.uleb128 0x2116
- 846 00a5 19       		.uleb128 0x19
- 847 00a6 01       		.uleb128 0x1
- 848 00a7 13       		.uleb128 0x13
- 849 00a8 00       		.byte	0
- 850 00a9 00       		.byte	0
- 851 00aa 0D       		.uleb128 0xd
- 852 00ab 05       		.uleb128 0x5
- 853 00ac 00       		.byte	0
- 854 00ad 03       		.uleb128 0x3
- 855 00ae 0E       		.uleb128 0xe
- 856 00af 3A       		.uleb128 0x3a
- 857 00b0 0B       		.uleb128 0xb
- 858 00b1 3B       		.uleb128 0x3b
- 859 00b2 0B       		.uleb128 0xb
- 860 00b3 49       		.uleb128 0x49
- 861 00b4 13       		.uleb128 0x13
- 862 00b5 02       		.uleb128 0x2
- 863 00b6 18       		.uleb128 0x18
- 864 00b7 00       		.byte	0
- 865 00b8 00       		.byte	0
- 866 00b9 0E       		.uleb128 0xe
- 867 00ba 2E       		.uleb128 0x2e
- 868 00bb 01       		.byte	0x1
- 869 00bc 3F       		.uleb128 0x3f
- 870 00bd 19       		.uleb128 0x19
- 871 00be 03       		.uleb128 0x3
- 872 00bf 0E       		.uleb128 0xe
- 873 00c0 3A       		.uleb128 0x3a
- 874 00c1 0B       		.uleb128 0xb
- 875 00c2 3B       		.uleb128 0x3b
- 876 00c3 0B       		.uleb128 0xb
- 877 00c4 11       		.uleb128 0x11
- 878 00c5 01       		.uleb128 0x1
- 879 00c6 12       		.uleb128 0x12
- 880 00c7 06       		.uleb128 0x6
- 881 00c8 40       		.uleb128 0x40
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 18
+ 808 0050 0B       		.uleb128 0xb
+ 809 0051 3A       		.uleb128 0x3a
+ 810 0052 0B       		.uleb128 0xb
+ 811 0053 3B       		.uleb128 0x3b
+ 812 0054 0B       		.uleb128 0xb
+ 813 0055 01       		.uleb128 0x1
+ 814 0056 13       		.uleb128 0x13
+ 815 0057 00       		.byte	0
+ 816 0058 00       		.byte	0
+ 817 0059 08       		.uleb128 0x8
+ 818 005a 0D       		.uleb128 0xd
+ 819 005b 00       		.byte	0
+ 820 005c 03       		.uleb128 0x3
+ 821 005d 0E       		.uleb128 0xe
+ 822 005e 3A       		.uleb128 0x3a
+ 823 005f 0B       		.uleb128 0xb
+ 824 0060 3B       		.uleb128 0x3b
+ 825 0061 0B       		.uleb128 0xb
+ 826 0062 49       		.uleb128 0x49
+ 827 0063 13       		.uleb128 0x13
+ 828 0064 38       		.uleb128 0x38
+ 829 0065 0B       		.uleb128 0xb
+ 830 0066 00       		.byte	0
+ 831 0067 00       		.byte	0
+ 832 0068 09       		.uleb128 0x9
+ 833 0069 0F       		.uleb128 0xf
+ 834 006a 00       		.byte	0
+ 835 006b 0B       		.uleb128 0xb
+ 836 006c 0B       		.uleb128 0xb
+ 837 006d 49       		.uleb128 0x49
+ 838 006e 13       		.uleb128 0x13
+ 839 006f 00       		.byte	0
+ 840 0070 00       		.byte	0
+ 841 0071 0A       		.uleb128 0xa
+ 842 0072 13       		.uleb128 0x13
+ 843 0073 00       		.byte	0
+ 844 0074 03       		.uleb128 0x3
+ 845 0075 0E       		.uleb128 0xe
+ 846 0076 3C       		.uleb128 0x3c
+ 847 0077 19       		.uleb128 0x19
+ 848 0078 00       		.byte	0
+ 849 0079 00       		.byte	0
+ 850 007a 0B       		.uleb128 0xb
+ 851 007b 2E       		.uleb128 0x2e
+ 852 007c 00       		.byte	0
+ 853 007d 3F       		.uleb128 0x3f
+ 854 007e 19       		.uleb128 0x19
+ 855 007f 03       		.uleb128 0x3
+ 856 0080 0E       		.uleb128 0xe
+ 857 0081 3A       		.uleb128 0x3a
+ 858 0082 0B       		.uleb128 0xb
+ 859 0083 3B       		.uleb128 0x3b
+ 860 0084 0B       		.uleb128 0xb
+ 861 0085 11       		.uleb128 0x11
+ 862 0086 01       		.uleb128 0x1
+ 863 0087 12       		.uleb128 0x12
+ 864 0088 06       		.uleb128 0x6
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 18
 
 
- 882 00c9 18       		.uleb128 0x18
- 883 00ca 9642     		.uleb128 0x2116
- 884 00cc 19       		.uleb128 0x19
- 885 00cd 01       		.uleb128 0x1
- 886 00ce 13       		.uleb128 0x13
- 887 00cf 00       		.byte	0
- 888 00d0 00       		.byte	0
- 889 00d1 0F       		.uleb128 0xf
- 890 00d2 34       		.uleb128 0x34
- 891 00d3 00       		.byte	0
- 892 00d4 03       		.uleb128 0x3
- 893 00d5 0E       		.uleb128 0xe
- 894 00d6 3A       		.uleb128 0x3a
- 895 00d7 0B       		.uleb128 0xb
- 896 00d8 3B       		.uleb128 0x3b
- 897 00d9 0B       		.uleb128 0xb
- 898 00da 49       		.uleb128 0x49
- 899 00db 13       		.uleb128 0x13
- 900 00dc 02       		.uleb128 0x2
- 901 00dd 18       		.uleb128 0x18
- 902 00de 00       		.byte	0
- 903 00df 00       		.byte	0
- 904 00e0 10       		.uleb128 0x10
- 905 00e1 01       		.uleb128 0x1
- 906 00e2 01       		.byte	0x1
- 907 00e3 49       		.uleb128 0x49
- 908 00e4 13       		.uleb128 0x13
- 909 00e5 01       		.uleb128 0x1
- 910 00e6 13       		.uleb128 0x13
- 911 00e7 00       		.byte	0
- 912 00e8 00       		.byte	0
- 913 00e9 11       		.uleb128 0x11
- 914 00ea 21       		.uleb128 0x21
- 915 00eb 00       		.byte	0
- 916 00ec 49       		.uleb128 0x49
- 917 00ed 13       		.uleb128 0x13
- 918 00ee 2F       		.uleb128 0x2f
- 919 00ef 0B       		.uleb128 0xb
- 920 00f0 00       		.byte	0
- 921 00f1 00       		.byte	0
- 922 00f2 12       		.uleb128 0x12
- 923 00f3 34       		.uleb128 0x34
- 924 00f4 00       		.byte	0
- 925 00f5 03       		.uleb128 0x3
- 926 00f6 0E       		.uleb128 0xe
- 927 00f7 3A       		.uleb128 0x3a
- 928 00f8 0B       		.uleb128 0xb
- 929 00f9 3B       		.uleb128 0x3b
- 930 00fa 0B       		.uleb128 0xb
- 931 00fb 49       		.uleb128 0x49
- 932 00fc 13       		.uleb128 0x13
- 933 00fd 3F       		.uleb128 0x3f
- 934 00fe 19       		.uleb128 0x19
- 935 00ff 02       		.uleb128 0x2
- 936 0100 18       		.uleb128 0x18
- 937 0101 00       		.byte	0
- 938 0102 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 19
+ 865 0089 40       		.uleb128 0x40
+ 866 008a 18       		.uleb128 0x18
+ 867 008b 9642     		.uleb128 0x2116
+ 868 008d 19       		.uleb128 0x19
+ 869 008e 00       		.byte	0
+ 870 008f 00       		.byte	0
+ 871 0090 0C       		.uleb128 0xc
+ 872 0091 2E       		.uleb128 0x2e
+ 873 0092 01       		.byte	0x1
+ 874 0093 3F       		.uleb128 0x3f
+ 875 0094 19       		.uleb128 0x19
+ 876 0095 03       		.uleb128 0x3
+ 877 0096 0E       		.uleb128 0xe
+ 878 0097 3A       		.uleb128 0x3a
+ 879 0098 0B       		.uleb128 0xb
+ 880 0099 3B       		.uleb128 0x3b
+ 881 009a 0B       		.uleb128 0xb
+ 882 009b 27       		.uleb128 0x27
+ 883 009c 19       		.uleb128 0x19
+ 884 009d 11       		.uleb128 0x11
+ 885 009e 01       		.uleb128 0x1
+ 886 009f 12       		.uleb128 0x12
+ 887 00a0 06       		.uleb128 0x6
+ 888 00a1 40       		.uleb128 0x40
+ 889 00a2 18       		.uleb128 0x18
+ 890 00a3 9642     		.uleb128 0x2116
+ 891 00a5 19       		.uleb128 0x19
+ 892 00a6 01       		.uleb128 0x1
+ 893 00a7 13       		.uleb128 0x13
+ 894 00a8 00       		.byte	0
+ 895 00a9 00       		.byte	0
+ 896 00aa 0D       		.uleb128 0xd
+ 897 00ab 05       		.uleb128 0x5
+ 898 00ac 00       		.byte	0
+ 899 00ad 03       		.uleb128 0x3
+ 900 00ae 0E       		.uleb128 0xe
+ 901 00af 3A       		.uleb128 0x3a
+ 902 00b0 0B       		.uleb128 0xb
+ 903 00b1 3B       		.uleb128 0x3b
+ 904 00b2 0B       		.uleb128 0xb
+ 905 00b3 49       		.uleb128 0x49
+ 906 00b4 13       		.uleb128 0x13
+ 907 00b5 02       		.uleb128 0x2
+ 908 00b6 18       		.uleb128 0x18
+ 909 00b7 00       		.byte	0
+ 910 00b8 00       		.byte	0
+ 911 00b9 0E       		.uleb128 0xe
+ 912 00ba 2E       		.uleb128 0x2e
+ 913 00bb 01       		.byte	0x1
+ 914 00bc 3F       		.uleb128 0x3f
+ 915 00bd 19       		.uleb128 0x19
+ 916 00be 03       		.uleb128 0x3
+ 917 00bf 0E       		.uleb128 0xe
+ 918 00c0 3A       		.uleb128 0x3a
+ 919 00c1 0B       		.uleb128 0xb
+ 920 00c2 3B       		.uleb128 0x3b
+ 921 00c3 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 19
 
 
- 939 0103 13       		.uleb128 0x13
- 940 0104 34       		.uleb128 0x34
- 941 0105 00       		.byte	0
- 942 0106 03       		.uleb128 0x3
- 943 0107 0E       		.uleb128 0xe
- 944 0108 3A       		.uleb128 0x3a
- 945 0109 0B       		.uleb128 0xb
- 946 010a 3B       		.uleb128 0x3b
- 947 010b 05       		.uleb128 0x5
- 948 010c 49       		.uleb128 0x49
- 949 010d 13       		.uleb128 0x13
- 950 010e 3F       		.uleb128 0x3f
- 951 010f 19       		.uleb128 0x19
- 952 0110 3C       		.uleb128 0x3c
- 953 0111 19       		.uleb128 0x19
- 954 0112 00       		.byte	0
- 955 0113 00       		.byte	0
- 956 0114 00       		.byte	0
- 957              		.section	.debug_aranges,"",%progbits
- 958 0000 3C000000 		.4byte	0x3c
- 959 0004 0200     		.2byte	0x2
- 960 0006 00000000 		.4byte	.Ldebug_info0
- 961 000a 04       		.byte	0x4
- 962 000b 00       		.byte	0
- 963 000c 0000     		.2byte	0
- 964 000e 0000     		.2byte	0
- 965 0010 00000000 		.4byte	.LFB68
- 966 0014 64000000 		.4byte	.LFE68-.LFB68
- 967 0018 00000000 		.4byte	.LFB69
- 968 001c 1E000000 		.4byte	.LFE69-.LFB69
- 969 0020 00000000 		.4byte	.LFB70
- 970 0024 6C000000 		.4byte	.LFE70-.LFB70
- 971 0028 00000000 		.4byte	.LFB71
- 972 002c 2C000000 		.4byte	.LFE71-.LFB71
- 973 0030 00000000 		.4byte	.LFB72
- 974 0034 BC000000 		.4byte	.LFE72-.LFB72
- 975 0038 00000000 		.4byte	0
- 976 003c 00000000 		.4byte	0
- 977              		.section	.debug_ranges,"",%progbits
- 978              	.Ldebug_ranges0:
- 979 0000 00000000 		.4byte	.LFB68
- 980 0004 64000000 		.4byte	.LFE68
- 981 0008 00000000 		.4byte	.LFB69
- 982 000c 1E000000 		.4byte	.LFE69
- 983 0010 00000000 		.4byte	.LFB70
- 984 0014 6C000000 		.4byte	.LFE70
- 985 0018 00000000 		.4byte	.LFB71
- 986 001c 2C000000 		.4byte	.LFE71
- 987 0020 00000000 		.4byte	.LFB72
- 988 0024 BC000000 		.4byte	.LFE72
- 989 0028 00000000 		.4byte	0
- 990 002c 00000000 		.4byte	0
- 991              		.section	.debug_line,"",%progbits
- 992              	.Ldebug_line0:
- 993 0000 12020000 		.section	.debug_str,"MS",%progbits,1
- 993      0200A001 
- 993      00000201 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 20
+ 922 00c4 11       		.uleb128 0x11
+ 923 00c5 01       		.uleb128 0x1
+ 924 00c6 12       		.uleb128 0x12
+ 925 00c7 06       		.uleb128 0x6
+ 926 00c8 40       		.uleb128 0x40
+ 927 00c9 18       		.uleb128 0x18
+ 928 00ca 9642     		.uleb128 0x2116
+ 929 00cc 19       		.uleb128 0x19
+ 930 00cd 01       		.uleb128 0x1
+ 931 00ce 13       		.uleb128 0x13
+ 932 00cf 00       		.byte	0
+ 933 00d0 00       		.byte	0
+ 934 00d1 0F       		.uleb128 0xf
+ 935 00d2 34       		.uleb128 0x34
+ 936 00d3 00       		.byte	0
+ 937 00d4 03       		.uleb128 0x3
+ 938 00d5 0E       		.uleb128 0xe
+ 939 00d6 3A       		.uleb128 0x3a
+ 940 00d7 0B       		.uleb128 0xb
+ 941 00d8 3B       		.uleb128 0x3b
+ 942 00d9 0B       		.uleb128 0xb
+ 943 00da 49       		.uleb128 0x49
+ 944 00db 13       		.uleb128 0x13
+ 945 00dc 02       		.uleb128 0x2
+ 946 00dd 18       		.uleb128 0x18
+ 947 00de 00       		.byte	0
+ 948 00df 00       		.byte	0
+ 949 00e0 10       		.uleb128 0x10
+ 950 00e1 0B       		.uleb128 0xb
+ 951 00e2 01       		.byte	0x1
+ 952 00e3 11       		.uleb128 0x11
+ 953 00e4 01       		.uleb128 0x1
+ 954 00e5 12       		.uleb128 0x12
+ 955 00e6 06       		.uleb128 0x6
+ 956 00e7 00       		.byte	0
+ 957 00e8 00       		.byte	0
+ 958 00e9 11       		.uleb128 0x11
+ 959 00ea 26       		.uleb128 0x26
+ 960 00eb 00       		.byte	0
+ 961 00ec 49       		.uleb128 0x49
+ 962 00ed 13       		.uleb128 0x13
+ 963 00ee 00       		.byte	0
+ 964 00ef 00       		.byte	0
+ 965 00f0 12       		.uleb128 0x12
+ 966 00f1 01       		.uleb128 0x1
+ 967 00f2 01       		.byte	0x1
+ 968 00f3 49       		.uleb128 0x49
+ 969 00f4 13       		.uleb128 0x13
+ 970 00f5 01       		.uleb128 0x1
+ 971 00f6 13       		.uleb128 0x13
+ 972 00f7 00       		.byte	0
+ 973 00f8 00       		.byte	0
+ 974 00f9 13       		.uleb128 0x13
+ 975 00fa 21       		.uleb128 0x21
+ 976 00fb 00       		.byte	0
+ 977 00fc 49       		.uleb128 0x49
+ 978 00fd 13       		.uleb128 0x13
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 20
 
 
- 993      FB0E0D00 
- 993      01010101 
- 994              	.LASF35:
- 995 0000 53434433 		.ascii	"SCD30Results\000"
- 995      30526573 
- 995      756C7473 
- 995      00
- 996              	.LASF6:
- 997 000d 5F5F7569 		.ascii	"__uint8_t\000"
- 997      6E74385F 
- 997      7400
- 998              	.LASF25:
- 999 0017 70726573 		.ascii	"present\000"
- 999      656E7400 
- 1000              	.LASF37:
- 1001 001f 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1001      43313120 
- 1001      352E342E 
- 1001      31203230 
- 1001      31363036 
- 1002 0052 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1002      20726576 
- 1002      6973696F 
- 1002      6E203233 
- 1002      37373135 
- 1003 0085 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
- 1003      66756E63 
- 1003      74696F6E 
- 1003      2D736563 
- 1003      74696F6E 
- 1004              	.LASF27:
- 1005 00ad 5469636B 		.ascii	"TickType_t\000"
- 1005      54797065 
- 1005      5F7400
- 1006              	.LASF24:
- 1007 00b8 54656D70 		.ascii	"Temperature\000"
- 1007      65726174 
- 1007      75726500 
- 1008              	.LASF9:
- 1009 00c4 5F5F696E 		.ascii	"__int32_t\000"
- 1009      7433325F 
- 1009      7400
- 1010              	.LASF10:
- 1011 00ce 6C6F6E67 		.ascii	"long int\000"
- 1011      20696E74 
- 1011      00
- 1012              	.LASF28:
- 1013 00d7 51756575 		.ascii	"QueueHandle_t\000"
- 1013      6548616E 
- 1013      646C655F 
- 1013      7400
- 1014              	.LASF18:
- 1015 00e5 75696E74 		.ascii	"uint8\000"
- 1015      3800
- 1016              	.LASF31:
- 1017 00eb 76416972 		.ascii	"vAirTestTaskInit\000"
- 1017      54657374 
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 21
+ 979 00fe 2F       		.uleb128 0x2f
+ 980 00ff 0B       		.uleb128 0xb
+ 981 0100 00       		.byte	0
+ 982 0101 00       		.byte	0
+ 983 0102 14       		.uleb128 0x14
+ 984 0103 34       		.uleb128 0x34
+ 985 0104 00       		.byte	0
+ 986 0105 03       		.uleb128 0x3
+ 987 0106 0E       		.uleb128 0xe
+ 988 0107 3A       		.uleb128 0x3a
+ 989 0108 0B       		.uleb128 0xb
+ 990 0109 3B       		.uleb128 0x3b
+ 991 010a 0B       		.uleb128 0xb
+ 992 010b 49       		.uleb128 0x49
+ 993 010c 13       		.uleb128 0x13
+ 994 010d 3F       		.uleb128 0x3f
+ 995 010e 19       		.uleb128 0x19
+ 996 010f 02       		.uleb128 0x2
+ 997 0110 18       		.uleb128 0x18
+ 998 0111 00       		.byte	0
+ 999 0112 00       		.byte	0
+ 1000 0113 15       		.uleb128 0x15
+ 1001 0114 34       		.uleb128 0x34
+ 1002 0115 00       		.byte	0
+ 1003 0116 03       		.uleb128 0x3
+ 1004 0117 0E       		.uleb128 0xe
+ 1005 0118 3A       		.uleb128 0x3a
+ 1006 0119 0B       		.uleb128 0xb
+ 1007 011a 3B       		.uleb128 0x3b
+ 1008 011b 05       		.uleb128 0x5
+ 1009 011c 49       		.uleb128 0x49
+ 1010 011d 13       		.uleb128 0x13
+ 1011 011e 3F       		.uleb128 0x3f
+ 1012 011f 19       		.uleb128 0x19
+ 1013 0120 3C       		.uleb128 0x3c
+ 1014 0121 19       		.uleb128 0x19
+ 1015 0122 00       		.byte	0
+ 1016 0123 00       		.byte	0
+ 1017 0124 00       		.byte	0
+ 1018              		.section	.debug_aranges,"",%progbits
+ 1019 0000 44000000 		.4byte	0x44
+ 1020 0004 0200     		.2byte	0x2
+ 1021 0006 00000000 		.4byte	.Ldebug_info0
+ 1022 000a 04       		.byte	0x4
+ 1023 000b 00       		.byte	0
+ 1024 000c 0000     		.2byte	0
+ 1025 000e 0000     		.2byte	0
+ 1026 0010 00000000 		.4byte	.LFB68
+ 1027 0014 28000000 		.4byte	.LFE68-.LFB68
+ 1028 0018 00000000 		.4byte	.LFB69
+ 1029 001c 1E000000 		.4byte	.LFE69-.LFB69
+ 1030 0020 00000000 		.4byte	.LFB70
+ 1031 0024 34000000 		.4byte	.LFE70-.LFB70
+ 1032 0028 00000000 		.4byte	.LFB71
+ 1033 002c 58000000 		.4byte	.LFE71-.LFB71
+ 1034 0030 00000000 		.4byte	.LFB72
+ 1035 0034 2C000000 		.4byte	.LFE72-.LFB72
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 21
 
 
- 1017      5461736B 
- 1017      496E6974 
- 1017      00
- 1018              	.LASF40:
- 1019 00fc 44533138 		.ascii	"DS18x8_TSensor\000"
- 1019      78385F54 
- 1019      53656E73 
- 1019      6F7200
- 1020              	.LASF16:
- 1021 010b 696E7433 		.ascii	"int32_t\000"
- 1021      325F7400 
- 1022              	.LASF30:
- 1023 0113 76546173 		.ascii	"vTaskGetMeasSCD30\000"
- 1023      6B476574 
- 1023      4D656173 
- 1023      53434433 
- 1023      3000
- 1024              	.LASF20:
- 1025 0125 666C6F61 		.ascii	"float\000"
- 1025      7400
- 1026              	.LASF13:
- 1027 012b 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1027      206C6F6E 
- 1027      6720756E 
- 1027      7369676E 
- 1027      65642069 
- 1028              	.LASF4:
- 1029 0142 756E7369 		.ascii	"unsigned char\000"
- 1029      676E6564 
- 1029      20636861 
- 1029      7200
- 1030              	.LASF12:
- 1031 0150 6C6F6E67 		.ascii	"long unsigned int\000"
- 1031      20756E73 
- 1031      69676E65 
- 1031      6420696E 
- 1031      7400
- 1032              	.LASF8:
- 1033 0162 73686F72 		.ascii	"short unsigned int\000"
- 1033      7420756E 
- 1033      7369676E 
- 1033      65642069 
- 1033      6E7400
- 1034              	.LASF34:
- 1035 0175 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1035      52784275 
- 1035      66666572 
- 1035      00
- 1036              	.LASF7:
- 1037 0182 5F5F7569 		.ascii	"__uint16_t\000"
- 1037      6E743136 
- 1037      5F7400
- 1038              	.LASF21:
- 1039 018d 646F7562 		.ascii	"double\000"
- 1039      6C6500
- 1040              	.LASF44:
- 1041 0194 76546173 		.ascii	"vTaskTestSCD30\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 22
+ 1036 0038 00000000 		.4byte	.LFB73
+ 1037 003c BC000000 		.4byte	.LFE73-.LFB73
+ 1038 0040 00000000 		.4byte	0
+ 1039 0044 00000000 		.4byte	0
+ 1040              		.section	.debug_ranges,"",%progbits
+ 1041              	.Ldebug_ranges0:
+ 1042 0000 00000000 		.4byte	.LFB68
+ 1043 0004 28000000 		.4byte	.LFE68
+ 1044 0008 00000000 		.4byte	.LFB69
+ 1045 000c 1E000000 		.4byte	.LFE69
+ 1046 0010 00000000 		.4byte	.LFB70
+ 1047 0014 34000000 		.4byte	.LFE70
+ 1048 0018 00000000 		.4byte	.LFB71
+ 1049 001c 58000000 		.4byte	.LFE71
+ 1050 0020 00000000 		.4byte	.LFB72
+ 1051 0024 2C000000 		.4byte	.LFE72
+ 1052 0028 00000000 		.4byte	.LFB73
+ 1053 002c BC000000 		.4byte	.LFE73
+ 1054 0030 00000000 		.4byte	0
+ 1055 0034 00000000 		.4byte	0
+ 1056              		.section	.debug_line,"",%progbits
+ 1057              	.Ldebug_line0:
+ 1058 0000 2D020000 		.section	.debug_str,"MS",%progbits,1
+ 1058      0200A001 
+ 1058      00000201 
+ 1058      FB0E0D00 
+ 1058      01010101 
+ 1059              	.LASF38:
+ 1060 0000 53434433 		.ascii	"SCD30Results\000"
+ 1060      30526573 
+ 1060      756C7473 
+ 1060      00
+ 1061              	.LASF23:
+ 1062 000d 70726573 		.ascii	"present\000"
+ 1062      656E7400 
+ 1063              	.LASF40:
+ 1064 0015 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1064      43313120 
+ 1064      352E342E 
+ 1064      31203230 
+ 1064      31363036 
+ 1065 0048 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1065      20726576 
+ 1065      6973696F 
+ 1065      6E203233 
+ 1065      37373135 
+ 1066 007b 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1066      66756E63 
+ 1066      74696F6E 
+ 1066      2D736563 
+ 1066      74696F6E 
+ 1067              	.LASF25:
+ 1068 00a3 5469636B 		.ascii	"TickType_t\000"
+ 1068      54797065 
+ 1068      5F7400
+ 1069              	.LASF22:
+ 1070 00ae 54656D70 		.ascii	"Temperature\000"
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 22
 
 
- 1041      6B546573 
- 1041      74534344 
- 1041      333000
- 1042              	.LASF11:
- 1043 01a3 5F5F7569 		.ascii	"__uint32_t\000"
- 1043      6E743332 
- 1043      5F7400
- 1044              	.LASF19:
- 1045 01ae 75696E74 		.ascii	"uint16\000"
- 1045      313600
- 1046              	.LASF41:
- 1047 01b5 51756575 		.ascii	"QueueDefinition\000"
- 1047      65446566 
- 1047      696E6974 
- 1047      696F6E00 
- 1048              	.LASF39:
- 1049 01c5 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
- 1049      73657273 
- 1049      5C6D6167 
- 1049      39345C44 
- 1049      65736B74 
- 1050 01f2 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
- 1050      72746963 
- 1050      616C5F66 
- 1050      61726D5C 
- 1050      52544F53 
- 1051 0223 63796473 		.ascii	"cydsn\000"
- 1051      6E00
- 1052              	.LASF0:
- 1053 0229 756E7369 		.ascii	"unsigned int\000"
- 1053      676E6564 
- 1053      20696E74 
- 1053      00
- 1054              	.LASF38:
- 1055 0236 4169722E 		.ascii	"Air.c\000"
- 1055      6300
- 1056              	.LASF14:
- 1057 023c 75696E74 		.ascii	"uint8_t\000"
- 1057      385F7400 
- 1058              	.LASF2:
- 1059 0244 6C6F6E67 		.ascii	"long double\000"
- 1059      20646F75 
- 1059      626C6500 
- 1060              	.LASF23:
- 1061 0250 73697A65 		.ascii	"sizetype\000"
- 1061      74797065 
- 1061      00
- 1062              	.LASF1:
- 1063 0259 6C6F6E67 		.ascii	"long long int\000"
- 1063      206C6F6E 
- 1063      6720696E 
- 1063      7400
- 1064              	.LASF32:
- 1065 0267 44533138 		.ascii	"DS18x8_Sensor\000"
- 1065      78385F53 
- 1065      656E736F 
- 1065      7200
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccXC7403.s 			page 23
+ 1070      65726174 
+ 1070      75726500 
+ 1071              	.LASF8:
+ 1072 00ba 5F5F696E 		.ascii	"__int32_t\000"
+ 1072      7433325F 
+ 1072      7400
+ 1073              	.LASF9:
+ 1074 00c4 6C6F6E67 		.ascii	"long int\000"
+ 1074      20696E74 
+ 1074      00
+ 1075              	.LASF26:
+ 1076 00cd 51756575 		.ascii	"QueueHandle_t\000"
+ 1076      6548616E 
+ 1076      646C655F 
+ 1076      7400
+ 1077              	.LASF16:
+ 1078 00db 75696E74 		.ascii	"uint8\000"
+ 1078      3800
+ 1079              	.LASF31:
+ 1080 00e1 76416972 		.ascii	"vAirTestTaskInit\000"
+ 1080      54657374 
+ 1080      5461736B 
+ 1080      496E6974 
+ 1080      00
+ 1081              	.LASF43:
+ 1082 00f2 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1082      78385F54 
+ 1082      53656E73 
+ 1082      6F7200
+ 1083              	.LASF14:
+ 1084 0101 696E7433 		.ascii	"int32_t\000"
+ 1084      325F7400 
+ 1085              	.LASF30:
+ 1086 0109 76546173 		.ascii	"vTaskGetMeasSCD30\000"
+ 1086      6B476574 
+ 1086      4D656173 
+ 1086      53434433 
+ 1086      3000
+ 1087              	.LASF18:
+ 1088 011b 666C6F61 		.ascii	"float\000"
+ 1088      7400
+ 1089              	.LASF12:
+ 1090 0121 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1090      206C6F6E 
+ 1090      6720756E 
+ 1090      7369676E 
+ 1090      65642069 
+ 1091              	.LASF42:
+ 1092 0138 433A5C43 		.ascii	"C:\\Code\\P4\\P4_Vertical_farm\\RTOS_TEMPLATE-maste"
+ 1092      6F64655C 
+ 1092      50345C50 
+ 1092      345F5665 
+ 1092      72746963 
+ 1093 0167 725C506C 		.ascii	"r\\PlanteModul.cydsn\000"
+ 1093      616E7465 
+ 1093      4D6F6475 
+ 1093      6C2E6379 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 23
 
 
- 1066              	.LASF45:
- 1067 0275 74657374 		.ascii	"testResults\000"
- 1067      52657375 
- 1067      6C747300 
- 1068              	.LASF15:
- 1069 0281 75696E74 		.ascii	"uint16_t\000"
- 1069      31365F74 
- 1069      00
- 1070              	.LASF5:
- 1071 028a 73686F72 		.ascii	"short int\000"
- 1071      7420696E 
- 1071      7400
- 1072              	.LASF33:
- 1073 0294 44533138 		.ascii	"DS18x8_DataReady\000"
- 1073      78385F44 
- 1073      61746152 
- 1073      65616479 
- 1073      00
- 1074              	.LASF43:
- 1075 02a5 696E7465 		.ascii	"interval\000"
- 1075      7276616C 
- 1075      00
- 1076              	.LASF42:
- 1077 02ae 76496E69 		.ascii	"vInitSCD30\000"
- 1077      74534344 
- 1077      333000
- 1078              	.LASF17:
- 1079 02b9 75696E74 		.ascii	"uint32_t\000"
- 1079      33325F74 
- 1079      00
- 1080              	.LASF36:
- 1081 02c2 78517565 		.ascii	"xQueueSCD30\000"
- 1081      75655343 
- 1081      44333000 
- 1082              	.LASF22:
- 1083 02ce 63686172 		.ascii	"char\000"
- 1083      00
- 1084              	.LASF29:
- 1085 02d3 76416972 		.ascii	"vAirInit\000"
- 1085      496E6974 
- 1085      00
- 1086              	.LASF3:
- 1087 02dc 7369676E 		.ascii	"signed char\000"
- 1087      65642063 
- 1087      68617200 
- 1088              	.LASF26:
- 1089 02e8 42617365 		.ascii	"BaseType_t\000"
- 1089      54797065 
- 1089      5F7400
- 1090              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 1093      64736E00 
+ 1094              	.LASF4:
+ 1095 017b 756E7369 		.ascii	"unsigned char\000"
+ 1095      676E6564 
+ 1095      20636861 
+ 1095      7200
+ 1096              	.LASF28:
+ 1097 0189 75634D65 		.ascii	"ucMessage\000"
+ 1097      73736167 
+ 1097      6500
+ 1098              	.LASF11:
+ 1099 0193 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1099      20756E73 
+ 1099      69676E65 
+ 1099      6420696E 
+ 1099      7400
+ 1100              	.LASF6:
+ 1101 01a5 73686F72 		.ascii	"short unsigned int\000"
+ 1101      7420756E 
+ 1101      7369676E 
+ 1101      65642069 
+ 1101      6E7400
+ 1102              	.LASF37:
+ 1103 01b8 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1103      52784275 
+ 1103      66666572 
+ 1103      00
+ 1104              	.LASF7:
+ 1105 01c5 5F5F7569 		.ascii	"__uint16_t\000"
+ 1105      6E743136 
+ 1105      5F7400
+ 1106              	.LASF19:
+ 1107 01d0 646F7562 		.ascii	"double\000"
+ 1107      6C6500
+ 1108              	.LASF33:
+ 1109 01d7 76546173 		.ascii	"vTaskTestSCD30\000"
+ 1109      6B546573 
+ 1109      74534344 
+ 1109      333000
+ 1110              	.LASF10:
+ 1111 01e6 5F5F7569 		.ascii	"__uint32_t\000"
+ 1111      6E743332 
+ 1111      5F7400
+ 1112              	.LASF27:
+ 1113 01f1 7844656C 		.ascii	"xDelaymsBeforeRead\000"
+ 1113      61796D73 
+ 1113      4265666F 
+ 1113      72655265 
+ 1113      616400
+ 1114              	.LASF17:
+ 1115 0204 75696E74 		.ascii	"uint16\000"
+ 1115      313600
+ 1116              	.LASF44:
+ 1117 020b 51756575 		.ascii	"QueueDefinition\000"
+ 1117      65446566 
+ 1117      696E6974 
+ 1117      696F6E00 
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 24
+
+
+ 1118              	.LASF0:
+ 1119 021b 756E7369 		.ascii	"unsigned int\000"
+ 1119      676E6564 
+ 1119      20696E74 
+ 1119      00
+ 1120              	.LASF41:
+ 1121 0228 4169722E 		.ascii	"Air.c\000"
+ 1121      6300
+ 1122              	.LASF32:
+ 1123 022e 76546173 		.ascii	"vTaskTestI2C\000"
+ 1123      6B546573 
+ 1123      74493243 
+ 1123      00
+ 1124              	.LASF2:
+ 1125 023b 6C6F6E67 		.ascii	"long double\000"
+ 1125      20646F75 
+ 1125      626C6500 
+ 1126              	.LASF21:
+ 1127 0247 73697A65 		.ascii	"sizetype\000"
+ 1127      74797065 
+ 1127      00
+ 1128              	.LASF1:
+ 1129 0250 6C6F6E67 		.ascii	"long long int\000"
+ 1129      206C6F6E 
+ 1129      6720696E 
+ 1129      7400
+ 1130              	.LASF35:
+ 1131 025e 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1131      78385F53 
+ 1131      656E736F 
+ 1131      7200
+ 1132              	.LASF34:
+ 1133 026c 74657374 		.ascii	"testResults\000"
+ 1133      52657375 
+ 1133      6C747300 
+ 1134              	.LASF13:
+ 1135 0278 75696E74 		.ascii	"uint16_t\000"
+ 1135      31365F74 
+ 1135      00
+ 1136              	.LASF5:
+ 1137 0281 73686F72 		.ascii	"short int\000"
+ 1137      7420696E 
+ 1137      7400
+ 1138              	.LASF36:
+ 1139 028b 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1139      78385F44 
+ 1139      61746152 
+ 1139      65616479 
+ 1139      00
+ 1140              	.LASF46:
+ 1141 029c 696E7465 		.ascii	"interval\000"
+ 1141      7276616C 
+ 1141      00
+ 1142              	.LASF45:
+ 1143 02a5 76496E69 		.ascii	"vInitSCD30\000"
+ 1143      74534344 
+ 1143      333000
+ARM GAS  C:\Users\mikke\AppData\Local\Temp\ccOlADsh.s 			page 25
+
+
+ 1144              	.LASF15:
+ 1145 02b0 75696E74 		.ascii	"uint32_t\000"
+ 1145      33325F74 
+ 1145      00
+ 1146              	.LASF39:
+ 1147 02b9 78517565 		.ascii	"xQueueSCD30\000"
+ 1147      75655343 
+ 1147      44333000 
+ 1148              	.LASF20:
+ 1149 02c5 63686172 		.ascii	"char\000"
+ 1149      00
+ 1150              	.LASF29:
+ 1151 02ca 76416972 		.ascii	"vAirInit\000"
+ 1151      496E6974 
+ 1151      00
+ 1152              	.LASF3:
+ 1153 02d3 7369676E 		.ascii	"signed char\000"
+ 1153      65642063 
+ 1153      68617200 
+ 1154              	.LASF24:
+ 1155 02df 42617365 		.ascii	"BaseType_t\000"
+ 1155      54797065 
+ 1155      5F7400
+ 1156              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

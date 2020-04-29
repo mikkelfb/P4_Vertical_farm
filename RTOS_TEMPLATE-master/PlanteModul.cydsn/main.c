@@ -60,7 +60,7 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
-    vNutrientsInit(); //initialize Nutrients control task and parameteres
+    //vNutrientsInit(); //initialize Nutrients control task and parameteres
     
     vAirInit();
      
@@ -100,9 +100,9 @@ extern cyisraddress CyRamVectors[];
 	CyRamVectors[ 15 ] = ( cyisraddress ) xPortSysTickHandler;
     
     
-    /* Startup One_Wire and I2C. */
+    /* Startup One_Wire and I2C_1. */
     SW_UART_TEST_USB_Start();
-    I2C_Start();
+    I2C_1_Start();
 
     
 	/* Start-up the peripherals. */
@@ -111,7 +111,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
     DS18x8_Start(); // Starting DS18x8 module
-    vInitSCD30(2); // Starting SCD30 sensor and setting meas interval to every 2nd sec
+    //vInitSCD30(2); // Starting SCD30 sensor and setting meas interval to every 2nd sec
     
     
     

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: SDA.h  
+* File Name: SCL_1.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_SDA_ALIASES_H) /* Pins SDA_ALIASES_H */
-#define CY_PINS_SDA_ALIASES_H
+#if !defined(CY_PINS_SCL_1_ALIASES_H) /* Pins SCL_1_ALIASES_H */
+#define CY_PINS_SCL_1_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define SDA_0			(SDA__0__PC)
-#define SDA_0_INTR	((uint16)((uint16)0x0001u << SDA__0__SHIFT))
+#define SCL_1_0			(SCL_1__0__PC)
+#define SCL_1_0_INTR	((uint16)((uint16)0x0001u << SCL_1__0__SHIFT))
 
-#define SDA_INTR_ALL	 ((uint16)(SDA_0_INTR))
+#define SCL_1_INTR_ALL	 ((uint16)(SCL_1_0_INTR))
 
-#endif /* End Pins SDA_ALIASES_H */
+#endif /* End Pins SCL_1_ALIASES_H */
 
 
 /* [] END OF FILE */

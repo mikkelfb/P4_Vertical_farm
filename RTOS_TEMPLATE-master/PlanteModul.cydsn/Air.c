@@ -23,22 +23,40 @@ QueueHandle_t xQueueSCD30[3];
 
 
 void vAirInit(){
-    xTaskCreate(vTaskGetMeasSCD30, "SCD30", 1000 , NULL , 10 , NULL);
+    xTaskCreate(vTaskTestI2C , "test" , 100 , NULL , 3 , NULL);
+    //xTaskCreate(vTaskGetMeasSCD30, "SCD30", 1000 , NULL , 10 , NULL);
     
-    
+    /*
     xQueueSCD30[0] = xQueueCreate(1, sizeof(float));
     xQueueSCD30[1] = xQueueCreate(1, sizeof(float));
     xQueueSCD30[2] = xQueueCreate(1, sizeof(float));
     
     #if AIRTEST == 1
         vAirTestTaskInit();
-    #endif
+    #endif*/
 }
 
 
 void vInitSCD30(uint16_t interval){
     SCD30_setMeasurementInterval(interval); // takes the input and calibrates the sensor with the req. time interval
     SCD30_startPeriodicMeasurment(); // read it and weep
+}
+
+void vTaskTestI2C(){
+    
+    const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 );
+    for(;;){
+        unsigned char  ucMessage[]= "R";
+     
+        /* Initialize buffer with packet  , slave address is 9*/
+        (void) I2C_1_MasterWriteBuf(0x61 , ucMessage, 1 , I2C_1_MODE_COMPLETE_XFER);
+
+        //Waits until master completes write transfer 
+        while (0u == (I2C_1_MasterStatus() & I2C_1_MSTAT_WR_CMPLT))
+        {
+        } 
+        vTaskDelay(xDelaymsBeforeRead);
+    }
 }
 
 void vTaskGetMeasSCD30(){

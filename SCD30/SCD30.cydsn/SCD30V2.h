@@ -9,12 +9,12 @@
  *
  * ========================================
 */
-#ifndef __SENSIRION_SCD30_H__
-#define __SENSIRION_SCD30_H__
+#ifndef __SENSIRION_SCD30_H_V2__
+#define __SENSIRION_SCD30_H_V2__
 
 #include "project.h"
 
-#define SCD30_I2C_ADDRESS                       0x61u
+#define SCD30_I2C_1_ADDRESS                       0x61u
 
 #define SCD30_READ_HEADER                       0xC3u
 #define SCD30_WRITE_HEADER                      0xC2u

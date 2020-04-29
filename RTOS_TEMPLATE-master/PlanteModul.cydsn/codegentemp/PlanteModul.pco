@@ -1,5 +1,5 @@
 # PlanteModul
-# 2020-04-24 11:46:32Z
+# 2020-04-27 11:43:33Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -14,13 +14,13 @@ set_io "Pin_PERIPUMP_OUT_3(0)" iocell 0 4
 set_io "Pin_pH_in(0)" iocell 0 3
 set_io "\SW_UART_TEST_USB:tx(0)\" iocell 12 7
 set_io "Pin_00(0)" iocell 0 0
-set_io "SDA(0)" iocell 12 1
-set_io "SCL(0)" iocell 12 0
+set_io "SDA_1(0)" iocell 1 7
+set_io "SCL_1(0)" iocell 1 6
 set_location "\PWM_PERISTALTISK_1:PWMUDB:status_2\" 2 5 0 2
 set_location "\PWM_PERISTALTISK_2:PWMUDB:status_2\" 3 3 0 2
 set_location "\DS18x8:TimerDelay:TimerUDB:status_tc\" 2 4 1 1
 set_location "\DS18x8:TimerDelay:TimerUDB:trig_reg\" 2 4 0 0
-set_location "__ONE__" 3 4 0 1
+set_location "__ONE__" 0 4 0 1
 set_location "\PWM_PERISTALTISK_1:PWMUDB:genblk1:ctrlreg\" 2 5 6
 set_location "\PWM_PERISTALTISK_1:PWMUDB:genblk8:stsreg\" 2 5 4
 set_location "\PWM_PERISTALTISK_1:PWMUDB:sP8:pwmdp:u0\" 2 5 2
@@ -30,7 +30,7 @@ set_location "\PWM_PERISTALTISK_2:PWMUDB:sP8:pwmdp:u0\" 3 3 2
 set_location "\ADC_PH:IRQ\" interrupt -1 -1 0
 set_location "\ADC_PH:ADC_SAR\" sarcell -1 -1 0
 set_location "\DS18x8:ControlReg_DRV:Sync:ctrl_reg\" 3 5 6
-set_location "\DS18x8:StatusReg_BUS:sts:sts_reg\" 3 4 3
+set_location "\DS18x8:StatusReg_BUS:sts:sts_reg\" 2 3 3
 set_location "\DS18x8:TimerDelay:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" 2 4 6
 set_location "\DS18x8:TimerDelay:TimerUDB:rstSts:stsreg\" 2 4 4
 set_location "\DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u0\" 3 4 2
@@ -38,15 +38,15 @@ set_location "\DS18x8:TimerDelay:TimerUDB:sT16:timerdp:u1\" 2 4 2
 set_location "\DS18x8:ControlReg_SEL:Sync:ctrl_reg\" 3 4 6
 set_location "\DS18x8:Trigger:Sync:ctrl_reg\" 2 3 6
 set_location "\DS18x8:isr_DataReady\" interrupt -1 -1 1
-set_location "\I2C:I2C_IRQ\" interrupt -1 -1 15
-set_location "\I2C:I2C_FF\" i2ccell -1 -1 0
+set_location "\I2C_1:I2C_IRQ\" interrupt -1 -1 15
+set_location "\I2C_1:I2C_FF\" i2ccell -1 -1 0
 set_location "\PWM_PERISTALTISK_1:PWMUDB:runmode_enable\" 2 5 0 1
-set_location "\PWM_PERISTALTISK_1:PWMUDB:prevCompare1\" 2 5 1 0
-set_location "\PWM_PERISTALTISK_1:PWMUDB:prevCompare2\" 2 5 1 2
-set_location "\PWM_PERISTALTISK_1:PWMUDB:status_0\" 2 5 1 1
-set_location "\PWM_PERISTALTISK_1:PWMUDB:status_1\" 2 5 1 3
-set_location "Net_51" 2 5 0 0
-set_location "Net_66" 2 5 0 3
+set_location "\PWM_PERISTALTISK_1:PWMUDB:prevCompare1\" 2 5 1 2
+set_location "\PWM_PERISTALTISK_1:PWMUDB:prevCompare2\" 2 5 1 0
+set_location "\PWM_PERISTALTISK_1:PWMUDB:status_0\" 2 5 1 3
+set_location "\PWM_PERISTALTISK_1:PWMUDB:status_1\" 2 5 1 1
+set_location "Net_51" 2 5 0 3
+set_location "Net_66" 2 5 0 0
 set_location "\PWM_PERISTALTISK_2:PWMUDB:runmode_enable\" 3 3 0 1
 set_location "\PWM_PERISTALTISK_2:PWMUDB:prevCompare1\" 3 3 0 3
 set_location "\PWM_PERISTALTISK_2:PWMUDB:status_0\" 3 3 1 0
@@ -55,6 +55,6 @@ set_location "\DS18x8:TimerDelay:TimerUDB:run_mode\" 2 4 1 2
 set_location "Net_231" 2 4 1 0
 set_location "\DS18x8:TimerDelay:TimerUDB:timer_enable\" 2 4 0 1
 set_location "\DS18x8:TimerDelay:TimerUDB:trig_disable\" 2 4 0 3
-set_location "\DS18x8:TimerDelay:TimerUDB:trig_last\" 3 4 0 0
+set_location "\DS18x8:TimerDelay:TimerUDB:trig_last\" 2 3 0 0
 set_location "\DS18x8:TimerDelay:TimerUDB:trig_rise_detected\" 2 4 0 2
 set_location "\DS18x8:TimerDelay:TimerUDB:trig_fall_detected\" 2 4 1 3
