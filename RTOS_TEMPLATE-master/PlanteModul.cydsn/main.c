@@ -110,6 +110,7 @@ extern cyisraddress CyRamVectors[];
     DS18x8_Start(); // Starting DS18x8 module
    
     
+    I2C_Start();
     SW_UART_TEST_USB_Start();
     
     I2C_Start();

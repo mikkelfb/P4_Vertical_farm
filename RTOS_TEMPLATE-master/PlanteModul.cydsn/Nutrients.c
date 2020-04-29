@@ -16,6 +16,8 @@
 #include "Nutrients.h"
 #include "task.h"
 #include "queue.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
@@ -35,6 +37,7 @@ const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
 QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
 QueueHandle_t xQueueWaterTemp;
+QueueHandle_t xQueueECValue;        //Create a queue for sending EC values to the test task.
 
 
 const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
@@ -51,6 +54,8 @@ void vNutrientsInit() {
     
     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
     xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
+    xQueueECValue = xQueueCreate(1, sizeof(uint16));
+    
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
@@ -61,6 +66,9 @@ void vNutrientsInit() {
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
     xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 4 , NULL);
+    
+    xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
+    
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
@@ -68,8 +76,6 @@ void vNutrientsInit() {
     
     
 }
-
-
 
 
 void vTaskNutrientPump( void *pvParameters ) {
@@ -146,6 +152,7 @@ void vTaskMeasurePH(){
             }
             bState = 0;
           //  xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
+            //xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             vTaskDelay(xDelayms);
         }
     }
@@ -180,12 +187,68 @@ void vTaskWaterTemp(){
         }    
     }   
 }
+/*This function writes 'R' to the EC sensor, then delays(300) before requesting data transfer from the EC sensor. 
+This is in accordance with instructions given on the EC sensor datasheet. */
+void vTaskMeasureEC()
+{
+    float fmicroECValue;
+    //float fnanoECValue;
+    uint16 imicroECValue;
+    const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
+    const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.    
+    for (;;){
+
+        /* Defines the message to be sent, as an array of characters */
+        unsigned char  ucMessage[]= "R";
+     
+        /* Initialize buffer with packet  , slave address is 9*/
+        (void) I2C_MasterWriteBuf(0x009 , ucMessage, 1 , I2C_MODE_COMPLETE_XFER);
+
+        //Waits until master completes write transfer 
+        while (0u == (I2C_MasterStatus() & I2C_MSTAT_WR_CMPLT))
+        {
+        } 
+
+        
+        vTaskDelay(xDelaymsBeforeRead);
+        int iResponselen = 10;
+        char cResponse[iResponselen];
+        (void) I2C_MasterReadBuf(0x009, (uint8 *) cResponse, iResponselen, I2C_MODE_COMPLETE_XFER);
+        
+        //Waits until master completes write transfer     
+        while (0u == (I2C_MasterStatus() & I2C_MSTAT_RD_CMPLT))
+        {
+        }
+            
+        if (cResponse[0] == '1'){
+            
+            cResponse[0] = 0;                   //removes the initial '1' from the string, before converting to float.
+            for(int i=0; i<iResponselen; i++){
+                cResponse[i]=cResponse[i+1];
+            }
+            
+            fmicroECValue = strtof(cResponse, NULL); //converts to float.
+                                                     //fnanoECValue = fmicroECValue * 1000; // Convert to ns/cm (nano siemen per centimeter) value. This makes sure that we can see float values. 
+            imicroECValue = (uint16) fmicroECValue; // Convert to a sendable message for UART (from float to int).
+            currentNutrients[iECIndex].iECvalue = imicroECValue; // Save in the currentNutrients array on the respective index.
+            iECIndex++;
+            if(iECIndex == iSizeOfNutrients) {
+                iECIndex = 0;
+            }        
+        }
+
+
+        xQueueSendToBack(xQueueECValue, &imicroECValue, portMAX_DELAY);
+        vTaskDelay(xDelaymsTimerEvent);
+    }
+}
+
 /* --- TEST TASK --- */
 
 /*
     Task for testing existing implementations.
 
-    DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+    DO NOT delete this functions/tasks, but comment them out if they aren't nesessary 
     for your current implementation/testing
     
     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
@@ -207,6 +270,7 @@ void vTestTaskInit(){
     xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
    // xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
     xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
+    xTaskCreate(vTestTaskMeasureEC, "Test EC print", 100, NULL, 2, NULL); 
 }
 
 
@@ -242,5 +306,15 @@ void vTestTaskNutrientPump() {
         xQueueSendToBack(xQueueNutrientPump[1], &bTestState2, portMAX_DELAY);
         xQueueSendToBack(xQueueNutrientPump[2], &bTestState1, portMAX_DELAY);
         vTaskDelay(xDelayms);
+    }
+}
+
+void vTestTaskMeasureEC (){
+    uint16 testValueEC;
+    for(;;){
+        xQueueReceive(xQueueECValue, &testValueEC, portMAX_DELAY);
+        SW_UART_TEST_USB_PutString("ECValue");
+        SW_UART_TEST_USB_PutHexInt(testValueEC);
+        SW_UART_TEST_USB_PutString("\n ");
     }
 }

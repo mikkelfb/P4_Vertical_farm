@@ -57,6 +57,13 @@
     */
     void vTaskWaterTemp();
     
+    This task sends 'R' to the EC sensor, in order to make the sensor take a reading. 
+    Then it delays 300, to let the EC sensor prepare the reading.
+    Then it requests data from the EC sensor.
+    @Param[out]: Need to define the reading as an output from the task (iECValue ??)
+    @Param[in]: 
+    */
+    void vTaskMeasureEC();
     
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
@@ -97,5 +104,13 @@
         This function sends the water temperature data from the queue through UART. 
         */
         void vTestTaskWaterTemp();
+        
+        /* 
+        This function prints the EC value
+        @Param[out]:
+        @Param[in]:
+        */
+        void vTestTaskMeasureEC();
+        
     #endif
 #endif
