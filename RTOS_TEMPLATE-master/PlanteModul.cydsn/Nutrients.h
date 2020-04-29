@@ -56,7 +56,7 @@
     result to waterTemp as a int16, result being the temperature * 100
     */
     void vTaskWaterTemp();
-    
+    /*
     This task sends 'R' to the EC sensor, in order to make the sensor take a reading. 
     Then it delays 300, to let the EC sensor prepare the reading.
     Then it requests data from the EC sensor.
