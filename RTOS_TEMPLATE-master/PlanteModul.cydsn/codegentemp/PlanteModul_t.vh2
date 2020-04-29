@@ -1,5 +1,5 @@
--- Project:   C:\Users\Emil\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cyprj
--- Generated: 04/28/2020 10:42:52
+-- Project:   C:\Users\krist\Documents\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cyprj
+-- Generated: 04/28/2020 12:57:32
 -- PSoC Creator  4.3
 
 ENTITY PlanteModul IS
@@ -238,7 +238,7 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE lib_model OF Pin_5V_out(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF Pin_5V_out(0) : LABEL IS "P0[2]";
     ATTRIBUTE lib_model OF Pin_LightTestLED(0) : LABEL IS "iocell9";
-    ATTRIBUTE Location OF Pin_LightTestLED(0) : LABEL IS "P2[1]";
+    ATTRIBUTE Location OF Pin_LightTestLED(0) : LABEL IS "P3[7]";
     ATTRIBUTE lib_model OF SDA_1(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF SDA_1(0) : LABEL IS "P12[1]";
     ATTRIBUTE lib_model OF SCL_1(0) : LABEL IS "iocell11";

@@ -11836,38 +11836,38 @@ ARM GAS  Generated_Source\PSoC5\CyBootAsmGnu.s 			page 1
  512              	.set Pin_LIGHT_in__SLW, CYREG_PRT0_SLW
  513              	
  514              	/* Pin_LightTestLED */
- 515              	.set Pin_LightTestLED__0__INTTYPE, CYREG_PICU2_INTTYPE1
- 516              	.set Pin_LightTestLED__0__MASK, 0x02
- 517              	.set Pin_LightTestLED__0__PC, CYREG_PRT2_PC1
- 518              	.set Pin_LightTestLED__0__PORT, 2
- 519              	.set Pin_LightTestLED__0__SHIFT, 1
- 520              	.set Pin_LightTestLED__AG, CYREG_PRT2_AG
- 521              	.set Pin_LightTestLED__AMUX, CYREG_PRT2_AMUX
- 522              	.set Pin_LightTestLED__BIE, CYREG_PRT2_BIE
- 523              	.set Pin_LightTestLED__BIT_MASK, CYREG_PRT2_BIT_MASK
- 524              	.set Pin_LightTestLED__BYP, CYREG_PRT2_BYP
- 525              	.set Pin_LightTestLED__CTL, CYREG_PRT2_CTL
- 526              	.set Pin_LightTestLED__DM0, CYREG_PRT2_DM0
- 527              	.set Pin_LightTestLED__DM1, CYREG_PRT2_DM1
- 528              	.set Pin_LightTestLED__DM2, CYREG_PRT2_DM2
- 529              	.set Pin_LightTestLED__DR, CYREG_PRT2_DR
- 530              	.set Pin_LightTestLED__INP_DIS, CYREG_PRT2_INP_DIS
- 531              	.set Pin_LightTestLED__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU2_BASE
- 532              	.set Pin_LightTestLED__LCD_COM_SEG, CYREG_PRT2_LCD_COM_SEG
- 533              	.set Pin_LightTestLED__LCD_EN, CYREG_PRT2_LCD_EN
- 534              	.set Pin_LightTestLED__MASK, 0x02
- 535              	.set Pin_LightTestLED__PORT, 2
- 536              	.set Pin_LightTestLED__PRT, CYREG_PRT2_PRT
- 537              	.set Pin_LightTestLED__PRTDSI__CAPS_SEL, CYREG_PRT2_CAPS_SEL
- 538              	.set Pin_LightTestLED__PRTDSI__DBL_SYNC_IN, CYREG_PRT2_DBL_SYNC_IN
- 539              	.set Pin_LightTestLED__PRTDSI__OE_SEL0, CYREG_PRT2_OE_SEL0
- 540              	.set Pin_LightTestLED__PRTDSI__OE_SEL1, CYREG_PRT2_OE_SEL1
- 541              	.set Pin_LightTestLED__PRTDSI__OUT_SEL0, CYREG_PRT2_OUT_SEL0
- 542              	.set Pin_LightTestLED__PRTDSI__OUT_SEL1, CYREG_PRT2_OUT_SEL1
- 543              	.set Pin_LightTestLED__PRTDSI__SYNC_OUT, CYREG_PRT2_SYNC_OUT
- 544              	.set Pin_LightTestLED__PS, CYREG_PRT2_PS
- 545              	.set Pin_LightTestLED__SHIFT, 1
- 546              	.set Pin_LightTestLED__SLW, CYREG_PRT2_SLW
+ 515              	.set Pin_LightTestLED__0__INTTYPE, CYREG_PICU3_INTTYPE7
+ 516              	.set Pin_LightTestLED__0__MASK, 0x80
+ 517              	.set Pin_LightTestLED__0__PC, CYREG_PRT3_PC7
+ 518              	.set Pin_LightTestLED__0__PORT, 3
+ 519              	.set Pin_LightTestLED__0__SHIFT, 7
+ 520              	.set Pin_LightTestLED__AG, CYREG_PRT3_AG
+ 521              	.set Pin_LightTestLED__AMUX, CYREG_PRT3_AMUX
+ 522              	.set Pin_LightTestLED__BIE, CYREG_PRT3_BIE
+ 523              	.set Pin_LightTestLED__BIT_MASK, CYREG_PRT3_BIT_MASK
+ 524              	.set Pin_LightTestLED__BYP, CYREG_PRT3_BYP
+ 525              	.set Pin_LightTestLED__CTL, CYREG_PRT3_CTL
+ 526              	.set Pin_LightTestLED__DM0, CYREG_PRT3_DM0
+ 527              	.set Pin_LightTestLED__DM1, CYREG_PRT3_DM1
+ 528              	.set Pin_LightTestLED__DM2, CYREG_PRT3_DM2
+ 529              	.set Pin_LightTestLED__DR, CYREG_PRT3_DR
+ 530              	.set Pin_LightTestLED__INP_DIS, CYREG_PRT3_INP_DIS
+ 531              	.set Pin_LightTestLED__INTTYPE_BASE, CYDEV_PICU_INTTYPE_PICU3_BASE
+ 532              	.set Pin_LightTestLED__LCD_COM_SEG, CYREG_PRT3_LCD_COM_SEG
+ 533              	.set Pin_LightTestLED__LCD_EN, CYREG_PRT3_LCD_EN
+ 534              	.set Pin_LightTestLED__MASK, 0x80
+ 535              	.set Pin_LightTestLED__PORT, 3
+ 536              	.set Pin_LightTestLED__PRT, CYREG_PRT3_PRT
+ 537              	.set Pin_LightTestLED__PRTDSI__CAPS_SEL, CYREG_PRT3_CAPS_SEL
+ 538              	.set Pin_LightTestLED__PRTDSI__DBL_SYNC_IN, CYREG_PRT3_DBL_SYNC_IN
+ 539              	.set Pin_LightTestLED__PRTDSI__OE_SEL0, CYREG_PRT3_OE_SEL0
+ 540              	.set Pin_LightTestLED__PRTDSI__OE_SEL1, CYREG_PRT3_OE_SEL1
+ 541              	.set Pin_LightTestLED__PRTDSI__OUT_SEL0, CYREG_PRT3_OUT_SEL0
+ 542              	.set Pin_LightTestLED__PRTDSI__OUT_SEL1, CYREG_PRT3_OUT_SEL1
+ 543              	.set Pin_LightTestLED__PRTDSI__SYNC_OUT, CYREG_PRT3_SYNC_OUT
+ 544              	.set Pin_LightTestLED__PS, CYREG_PRT3_PS
+ 545              	.set Pin_LightTestLED__SHIFT, 7
+ 546              	.set Pin_LightTestLED__SLW, CYREG_PRT3_SLW
  547              	
  548              	/* SW_UART_TEST_USB */
  549              	.set SW_UART_TEST_USB_tx__0__INTTYPE, CYREG_PICU12_INTTYPE7

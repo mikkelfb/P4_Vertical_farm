@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
   26:main.c        ****  */
   27:main.c        **** 
   28:main.c        **** 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 2
 
 
   29:main.c        **** 
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
   69:main.c        **** 	vTaskStartScheduler();
   44              		.loc 1 69 0
   45 000c FFF7FEFF 		bl	vTaskStartScheduler
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 3
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 3
 
 
   46              	.L2:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
   97:main.c        **** 	CyRamVectors[ 14 ] = ( cyisraddress ) xPortPendSVHandler;
   73              		.loc 1 97 0
   74 000a 0B4B     		ldr	r3, .L4
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 4
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 4
 
 
   75 000c 0C4A     		ldr	r2, .L4+8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  107              		.size	prvHardwareSetup, .-prvHardwareSetup
  108              		.section	.text.vApplicationStackOverflowHook,"ax",%progbits
  109              		.align	2
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 5
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 5
 
 
  110              		.global	vApplicationStackOverflowHook
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
   25:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  * 1 tab == 4 spaces!
   26:.\Source\portable\GCC\ARM_CM3/portmacro.h ****  */
   27:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 6
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 6
 
 
   28:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
   82:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;								\
   83:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 																				\
   84:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	/* Barriers are normally not required but do ensure the code is completely	\
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 7
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 7
 
 
   85:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	within the specified behaviour for the architecture. */						\
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  139:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#if( configMAX_PRIORITIES > 32 )
  140:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 		#error configUSE_PORT_OPTIMISED_TASK_SELECTION can only be set to 1 when configMAX_PRIORITIES is 
  141:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	#endif
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 8
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 8
 
 
  142:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  196:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 
  197:.\Source\portable\GCC\ARM_CM3/portmacro.h **** 	__asm volatile
  133              		.loc 2 197 0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 9
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 9
 
 
  134              		.syntax unified
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  180 000e BFF36F8F 		isb														
  181 0012 BFF34F8F 		dsb														
  182              	
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 10
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 10
 
 
  183              	@ 0 "" 2
@@ -573,56 +573,56 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  209 000b 01       		.uleb128 0x1
  210 000c 08000000 		.4byte	.LASF35
  211 0010 0C       		.byte	0xc
- 212 0011 69020000 		.4byte	.LASF36
- 213 0015 FE000000 		.4byte	.LASF37
+ 212 0011 6A020000 		.4byte	.LASF36
+ 213 0015 D6010000 		.4byte	.LASF37
  214 0019 00000000 		.4byte	.Ldebug_ranges0+0
  215 001d 00000000 		.4byte	0
  216 0021 00000000 		.4byte	.Ldebug_line0
  217 0025 02       		.uleb128 0x2
  218 0026 01       		.byte	0x1
  219 0027 06       		.byte	0x6
- 220 0028 D2020000 		.4byte	.LASF0
+ 220 0028 D3020000 		.4byte	.LASF0
  221 002c 02       		.uleb128 0x2
  222 002d 01       		.byte	0x1
  223 002e 08       		.byte	0x8
- 224 002f 69010000 		.4byte	.LASF1
+ 224 002f 12010000 		.4byte	.LASF1
  225 0033 02       		.uleb128 0x2
  226 0034 02       		.byte	0x2
  227 0035 05       		.byte	0x5
- 228 0036 8C020000 		.4byte	.LASF2
+ 228 0036 8D020000 		.4byte	.LASF2
  229 003a 02       		.uleb128 0x2
  230 003b 02       		.byte	0x2
  231 003c 07       		.byte	0x7
- 232 003d 94010000 		.4byte	.LASF3
+ 232 003d 3D010000 		.4byte	.LASF3
  233 0041 03       		.uleb128 0x3
  234 0042 C0000000 		.4byte	.LASF5
  235 0046 03       		.byte	0x3
  236 0047 3F       		.byte	0x3f
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 11
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 11
 
 
  237 0048 4C000000 		.4byte	0x4c
  238 004c 02       		.uleb128 0x2
  239 004d 04       		.byte	0x4
  240 004e 05       		.byte	0x5
- 241 004f BD020000 		.4byte	.LASF4
+ 241 004f BE020000 		.4byte	.LASF4
  242 0053 03       		.uleb128 0x3
- 243 0054 77010000 		.4byte	.LASF6
+ 243 0054 20010000 		.4byte	.LASF6
  244 0058 03       		.byte	0x3
  245 0059 41       		.byte	0x41
  246 005a 5E000000 		.4byte	0x5e
  247 005e 02       		.uleb128 0x2
  248 005f 04       		.byte	0x4
  249 0060 07       		.byte	0x7
- 250 0061 82010000 		.4byte	.LASF7
+ 250 0061 2B010000 		.4byte	.LASF7
  251 0065 02       		.uleb128 0x2
  252 0066 08       		.byte	0x8
  253 0067 05       		.byte	0x5
- 254 0068 5B020000 		.4byte	.LASF8
+ 254 0068 5C020000 		.4byte	.LASF8
  255 006c 02       		.uleb128 0x2
  256 006d 08       		.byte	0x8
  257 006e 07       		.byte	0x7
- 258 006f 09020000 		.4byte	.LASF9
+ 258 006f B2010000 		.4byte	.LASF9
  259 0073 04       		.uleb128 0x4
  260 0074 04       		.byte	0x4
  261 0075 05       		.byte	0x5
@@ -630,46 +630,46 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  263 007a 02       		.uleb128 0x2
  264 007b 04       		.byte	0x4
  265 007c 07       		.byte	0x7
- 266 007d FC010000 		.4byte	.LASF10
+ 266 007d A5010000 		.4byte	.LASF10
  267 0081 03       		.uleb128 0x3
- 268 0082 4A020000 		.4byte	.LASF11
+ 268 0082 4B020000 		.4byte	.LASF11
  269 0086 04       		.byte	0x4
  270 0087 2C       		.byte	0x2c
  271 0088 41000000 		.4byte	0x41
  272 008c 03       		.uleb128 0x3
- 273 008d B4020000 		.4byte	.LASF12
+ 273 008d B5020000 		.4byte	.LASF12
  274 0091 04       		.byte	0x4
  275 0092 30       		.byte	0x30
  276 0093 53000000 		.4byte	0x53
  277 0097 05       		.uleb128 0x5
- 278 0098 A1020000 		.4byte	.LASF13
+ 278 0098 A2020000 		.4byte	.LASF13
  279 009c 05       		.byte	0x5
  280 009d E401     		.2byte	0x1e4
  281 009f 2C000000 		.4byte	0x2c
  282 00a3 05       		.uleb128 0x5
- 283 00a4 C8010000 		.4byte	.LASF14
+ 283 00a4 71010000 		.4byte	.LASF14
  284 00a8 05       		.byte	0x5
  285 00a9 E501     		.2byte	0x1e5
  286 00ab 3A000000 		.4byte	0x3a
  287 00af 02       		.uleb128 0x2
  288 00b0 04       		.byte	0x4
  289 00b1 04       		.byte	0x4
- 290 00b2 55010000 		.4byte	.LASF15
+ 290 00b2 FE000000 		.4byte	.LASF15
  291 00b6 02       		.uleb128 0x2
  292 00b7 08       		.byte	0x8
  293 00b8 04       		.byte	0x4
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 12
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 12
 
 
- 294 00b9 B4010000 		.4byte	.LASF16
+ 294 00b9 5D010000 		.4byte	.LASF16
  295 00bd 02       		.uleb128 0x2
  296 00be 01       		.byte	0x1
  297 00bf 08       		.byte	0x8
- 298 00c0 70020000 		.4byte	.LASF17
+ 298 00c0 71020000 		.4byte	.LASF17
  299 00c4 06       		.uleb128 0x6
  300 00c5 97000000 		.4byte	0x97
  301 00c9 05       		.uleb128 0x5
- 302 00ca 20020000 		.4byte	.LASF18
+ 302 00ca C9010000 		.4byte	.LASF18
  303 00ce 05       		.byte	0x5
  304 00cf A002     		.2byte	0x2a0
  305 00d1 D5000000 		.4byte	0xd5
@@ -680,11 +680,11 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  310 00dc 02       		.uleb128 0x2
  311 00dd 08       		.byte	0x8
  312 00de 04       		.byte	0x4
- 313 00df C6020000 		.4byte	.LASF19
+ 313 00df C7020000 		.4byte	.LASF19
  314 00e3 02       		.uleb128 0x2
  315 00e4 04       		.byte	0x4
  316 00e5 07       		.byte	0x7
- 317 00e6 52020000 		.4byte	.LASF20
+ 317 00e6 53020000 		.4byte	.LASF20
  318 00ea 07       		.uleb128 0x7
  319 00eb 04       		.byte	0x4
  320 00ec BD000000 		.4byte	0xbd
@@ -708,7 +708,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  338 0113 02       		.byte	0x2
  339 0114 00       		.byte	0
  340 0115 03       		.uleb128 0x3
- 341 0116 A7020000 		.4byte	.LASF23
+ 341 0116 A8020000 		.4byte	.LASF23
  342 011a 07       		.byte	0x7
  343 011b 46       		.byte	0x46
  344 011c 20010000 		.4byte	0x120
@@ -716,9 +716,9 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  346 0121 04       		.byte	0x4
  347 0122 26010000 		.4byte	0x126
  348 0126 0B       		.uleb128 0xb
- 349 0127 CF010000 		.4byte	.LASF39
+ 349 0127 78010000 		.4byte	.LASF39
  350 012b 0C       		.uleb128 0xc
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 13
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 13
 
 
  351 012c CA000000 		.4byte	.LASF40
@@ -727,13 +727,13 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  354 0132 03       		.byte	0x3
  355 0133 43010000 		.4byte	0x143
  356 0137 0D       		.uleb128 0xd
- 357 0138 BB010000 		.4byte	.LASF41
+ 357 0138 64010000 		.4byte	.LASF41
  358 013c 02       		.byte	0x2
  359 013d C3       		.byte	0xc3
  360 013e 8C000000 		.4byte	0x8c
  361 0142 00       		.byte	0
  362 0143 0E       		.uleb128 0xe
- 363 0144 E3010000 		.4byte	.LASF42
+ 363 0144 8C010000 		.4byte	.LASF42
  364 0148 01       		.byte	0x1
  365 0149 3A       		.byte	0x3a
  366 014a 73000000 		.4byte	0x73
@@ -742,7 +742,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  369 0156 01       		.uleb128 0x1
  370 0157 9C       		.byte	0x9c
  371 0158 0F       		.uleb128 0xf
- 372 0159 FC020000 		.4byte	.LASF43
+ 372 0159 FD020000 		.4byte	.LASF43
  373 015d 01       		.byte	0x1
  374 015e 55       		.byte	0x55
  375 015f 00000000 		.4byte	.LFB69
@@ -755,11 +755,11 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  382 0172 01       		.byte	0x1
  383 0173 58       		.byte	0x58
  384 0174 10       		.uleb128 0x10
- 385 0175 E8010000 		.4byte	.LASF25
+ 385 0175 91010000 		.4byte	.LASF25
  386 0179 01       		.byte	0x1
  387 017a 59       		.byte	0x59
  388 017b 10       		.uleb128 0x10
- 389 017c 75020000 		.4byte	.LASF26
+ 389 017c 76020000 		.4byte	.LASF26
  390 0180 01       		.byte	0x1
  391 0181 5A       		.byte	0x5a
  392 0182 11       		.uleb128 0x11
@@ -774,11 +774,11 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  401 0197 13       		.uleb128 0x13
  402 0198 00       		.byte	0
  403 0199 14       		.uleb128 0x14
- 404 019a DE020000 		.4byte	.LASF29
+ 404 019a DF020000 		.4byte	.LASF29
  405 019e 01       		.byte	0x1
  406 019f 7D       		.byte	0x7d
  407 01a0 00000000 		.4byte	.LFB70
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 14
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 14
 
 
  408 01a4 1E000000 		.4byte	.LFE70-.LFB70
@@ -786,7 +786,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  410 01a9 9C       		.byte	0x9c
  411 01aa ED010000 		.4byte	0x1ed
  412 01ae 15       		.uleb128 0x15
- 413 01af 85020000 		.4byte	.LASF27
+ 413 01af 86020000 		.4byte	.LASF27
  414 01b3 01       		.byte	0x1
  415 01b4 7D       		.byte	0x7d
  416 01b5 15010000 		.4byte	0x115
@@ -794,7 +794,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  418 01ba 91       		.byte	0x91
  419 01bb 6C       		.sleb128 -20
  420 01bc 15       		.uleb128 0x15
- 421 01bd 96020000 		.4byte	.LASF28
+ 421 01bd 97020000 		.4byte	.LASF28
  422 01c1 01       		.byte	0x1
  423 01c2 7D       		.byte	0x7d
  424 01c3 EA000000 		.4byte	0xea
@@ -819,7 +819,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  443 01eb 00       		.byte	0
  444 01ec 00       		.byte	0
  445 01ed 14       		.uleb128 0x14
- 446 01ee 2D020000 		.4byte	.LASF30
+ 446 01ee 2E020000 		.4byte	.LASF30
  447 01f2 01       		.byte	0x1
  448 01f3 85       		.byte	0x85
  449 01f4 00000000 		.4byte	.LFB71
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  462 0216 12000000 		.4byte	.LBE9-.LBB9
  463 021a 18       		.uleb128 0x18
  464 021b 37010000 		.4byte	0x137
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 15
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 15
 
 
  465 021f 02       		.uleb128 0x2
@@ -855,7 +855,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  476 0233 07       		.byte	0x7
  477 0234 00       		.byte	0
  478 0235 1A       		.uleb128 0x1a
- 479 0236 5B010000 		.4byte	.LASF32
+ 479 0236 04010000 		.4byte	.LASF32
  480 023a 06       		.byte	0x6
  481 023b 34       		.byte	0x34
  482 023c 25020000 		.4byte	0x225
@@ -871,7 +871,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  492 0252 03       		.byte	0x3
  493 0253 00000000 		.4byte	DS18x8_DataReady
  494 0257 1B       		.uleb128 0x1b
- 495 0258 A7010000 		.4byte	.LASF34
+ 495 0258 50010000 		.4byte	.LASF34
  496 025c 08       		.byte	0x8
  497 025d 1207     		.2byte	0x712
  498 025f 63020000 		.4byte	0x263
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  519 000a 0E       		.uleb128 0xe
  520 000b 55       		.uleb128 0x55
  521 000c 17       		.uleb128 0x17
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 16
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 16
 
 
  522 000d 11       		.uleb128 0x11
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  576 0043 06       		.uleb128 0x6
  577 0044 35       		.uleb128 0x35
  578 0045 00       		.byte	0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 17
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 17
 
 
  579 0046 49       		.uleb128 0x49
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  633 007c 0E       		.uleb128 0xe
  634 007d 3C       		.uleb128 0x3c
  635 007e 19       		.uleb128 0x19
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 18
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 18
 
 
  636 007f 00       		.byte	0
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  690 00b6 19       		.uleb128 0x19
  691 00b7 00       		.byte	0
  692 00b8 00       		.byte	0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 19
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 19
 
 
  693 00b9 0F       		.uleb128 0xf
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  747 00f0 19       		.uleb128 0x19
  748 00f1 00       		.byte	0
  749 00f2 00       		.byte	0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 20
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 20
 
 
  750 00f3 12       		.uleb128 0x12
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  804 012a 16       		.uleb128 0x16
  805 012b 1D       		.uleb128 0x1d
  806 012c 01       		.byte	0x1
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 21
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 21
 
 
  807 012d 31       		.uleb128 0x31
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  861 0163 00       		.byte	0
  862 0164 00       		.byte	0
  863 0165 1B       		.uleb128 0x1b
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 22
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 22
 
 
  864 0166 34       		.uleb128 0x34
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  914              	.LASF22:
  915 0000 70726573 		.ascii	"present\000"
  915      656E7400 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 23
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 23
 
 
  916              	.LASF35:
@@ -1373,174 +1373,174 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 1
  933      78385F54 
  933      53656E73 
  933      6F7200
- 934              	.LASF37:
- 935 00fe 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
- 935      73657273 
- 935      5C456D69 
- 935      6C5C446F 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 24
+ 934              	.LASF15:
+ 935 00fe 666C6F61 		.ascii	"float\000"
+ 935      7400
+ 936              	.LASF32:
+ 937 0104 44533138 		.ascii	"DS18x8_Sensor\000"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 24
 
 
- 935      63756D65 
- 936 012c 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 936      4F535F54 
- 936      454D504C 
- 936      4154452D 
- 936      6D617374 
- 937              	.LASF15:
- 938 0155 666C6F61 		.ascii	"float\000"
- 938      7400
- 939              	.LASF32:
- 940 015b 44533138 		.ascii	"DS18x8_Sensor\000"
- 940      78385F53 
- 940      656E736F 
- 940      7200
- 941              	.LASF1:
- 942 0169 756E7369 		.ascii	"unsigned char\000"
- 942      676E6564 
- 942      20636861 
- 942      7200
- 943              	.LASF6:
- 944 0177 5F5F7569 		.ascii	"__uint32_t\000"
- 944      6E743332 
- 944      5F7400
- 945              	.LASF7:
- 946 0182 6C6F6E67 		.ascii	"long unsigned int\000"
- 946      20756E73 
- 946      69676E65 
- 946      6420696E 
- 946      7400
- 947              	.LASF3:
- 948 0194 73686F72 		.ascii	"short unsigned int\000"
- 948      7420756E 
- 948      7369676E 
- 948      65642069 
- 948      6E7400
- 949              	.LASF34:
- 950 01a7 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 950      52784275 
- 950      66666572 
- 950      00
- 951              	.LASF16:
- 952 01b4 646F7562 		.ascii	"double\000"
- 952      6C6500
- 953              	.LASF41:
- 954 01bb 756C4E65 		.ascii	"ulNewBASEPRI\000"
- 954      77424153 
- 954      45505249 
- 954      00
- 955              	.LASF14:
- 956 01c8 75696E74 		.ascii	"uint16\000"
- 956      313600
- 957              	.LASF39:
- 958 01cf 74736B54 		.ascii	"tskTaskControlBlock\000"
- 958      61736B43 
- 958      6F6E7472 
- 958      6F6C426C 
- 958      6F636B00 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 25
+ 937      78385F53 
+ 937      656E736F 
+ 937      7200
+ 938              	.LASF1:
+ 939 0112 756E7369 		.ascii	"unsigned char\000"
+ 939      676E6564 
+ 939      20636861 
+ 939      7200
+ 940              	.LASF6:
+ 941 0120 5F5F7569 		.ascii	"__uint32_t\000"
+ 941      6E743332 
+ 941      5F7400
+ 942              	.LASF7:
+ 943 012b 6C6F6E67 		.ascii	"long unsigned int\000"
+ 943      20756E73 
+ 943      69676E65 
+ 943      6420696E 
+ 943      7400
+ 944              	.LASF3:
+ 945 013d 73686F72 		.ascii	"short unsigned int\000"
+ 945      7420756E 
+ 945      7369676E 
+ 945      65642069 
+ 945      6E7400
+ 946              	.LASF34:
+ 947 0150 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 947      52784275 
+ 947      66666572 
+ 947      00
+ 948              	.LASF16:
+ 949 015d 646F7562 		.ascii	"double\000"
+ 949      6C6500
+ 950              	.LASF41:
+ 951 0164 756C4E65 		.ascii	"ulNewBASEPRI\000"
+ 951      77424153 
+ 951      45505249 
+ 951      00
+ 952              	.LASF14:
+ 953 0171 75696E74 		.ascii	"uint16\000"
+ 953      313600
+ 954              	.LASF39:
+ 955 0178 74736B54 		.ascii	"tskTaskControlBlock\000"
+ 955      61736B43 
+ 955      6F6E7472 
+ 955      6F6C426C 
+ 955      6F636B00 
+ 956              	.LASF42:
+ 957 018c 6D61696E 		.ascii	"main\000"
+ 957      00
+ 958              	.LASF25:
+ 959 0191 78506F72 		.ascii	"xPortSysTickHandler\000"
+ 959      74537973 
+ 959      5469636B 
+ 959      48616E64 
+ 959      6C657200 
+ 960              	.LASF10:
+ 961 01a5 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 25
 
 
- 959              	.LASF42:
- 960 01e3 6D61696E 		.ascii	"main\000"
- 960      00
- 961              	.LASF25:
- 962 01e8 78506F72 		.ascii	"xPortSysTickHandler\000"
- 962      74537973 
- 962      5469636B 
- 962      48616E64 
- 962      6C657200 
- 963              	.LASF10:
- 964 01fc 756E7369 		.ascii	"unsigned int\000"
- 964      676E6564 
- 964      20696E74 
- 964      00
- 965              	.LASF9:
- 966 0209 6C6F6E67 		.ascii	"long long unsigned int\000"
- 966      206C6F6E 
- 966      6720756E 
- 966      7369676E 
- 966      65642069 
- 967              	.LASF18:
- 968 0220 63796973 		.ascii	"cyisraddress\000"
- 968      72616464 
- 968      72657373 
- 968      00
+ 961      676E6564 
+ 961      20696E74 
+ 961      00
+ 962              	.LASF9:
+ 963 01b2 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 963      206C6F6E 
+ 963      6720756E 
+ 963      7369676E 
+ 963      65642069 
+ 964              	.LASF18:
+ 965 01c9 63796973 		.ascii	"cyisraddress\000"
+ 965      72616464 
+ 965      72657373 
+ 965      00
+ 966              	.LASF37:
+ 967 01d6 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
+ 967      73657273 
+ 967      5C6B7269 
+ 967      73745C44 
+ 967      6F63756D 
+ 968 0204 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 968      544F535F 
+ 968      54454D50 
+ 968      4C415445 
+ 968      2D6D6173 
  969              	.LASF30:
- 970 022d 76417070 		.ascii	"vApplicationMallocFailedHook\000"
+ 970 022e 76417070 		.ascii	"vApplicationMallocFailedHook\000"
  970      6C696361 
  970      74696F6E 
  970      4D616C6C 
  970      6F634661 
  971              	.LASF11:
- 972 024a 696E7433 		.ascii	"int32_t\000"
+ 972 024b 696E7433 		.ascii	"int32_t\000"
  972      325F7400 
  973              	.LASF20:
- 974 0252 73697A65 		.ascii	"sizetype\000"
+ 974 0253 73697A65 		.ascii	"sizetype\000"
  974      74797065 
  974      00
  975              	.LASF8:
- 976 025b 6C6F6E67 		.ascii	"long long int\000"
+ 976 025c 6C6F6E67 		.ascii	"long long int\000"
  976      206C6F6E 
  976      6720696E 
  976      7400
  977              	.LASF36:
- 978 0269 6D61696E 		.ascii	"main.c\000"
+ 978 026a 6D61696E 		.ascii	"main.c\000"
  978      2E6300
  979              	.LASF17:
- 980 0270 63686172 		.ascii	"char\000"
+ 980 0271 63686172 		.ascii	"char\000"
  980      00
  981              	.LASF26:
- 982 0275 76506F72 		.ascii	"vPortSVCHandler\000"
+ 982 0276 76506F72 		.ascii	"vPortSVCHandler\000"
  982      74535643 
  982      48616E64 
  982      6C657200 
  983              	.LASF27:
- 984 0285 70785461 		.ascii	"pxTask\000"
+ 984 0286 70785461 		.ascii	"pxTask\000"
  984      736B00
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\ccMSILMd.s 			page 26
+ARM GAS  C:\Users\krist\AppData\Local\Temp\ccCV04kW.s 			page 26
 
 
  985              	.LASF2:
- 986 028c 73686F72 		.ascii	"short int\000"
+ 986 028d 73686F72 		.ascii	"short int\000"
  986      7420696E 
  986      7400
  987              	.LASF28:
- 988 0296 70635461 		.ascii	"pcTaskName\000"
+ 988 0297 70635461 		.ascii	"pcTaskName\000"
  988      736B4E61 
  988      6D6500
  989              	.LASF13:
- 990 02a1 75696E74 		.ascii	"uint8\000"
+ 990 02a2 75696E74 		.ascii	"uint8\000"
  990      3800
  991              	.LASF23:
- 992 02a7 5461736B 		.ascii	"TaskHandle_t\000"
+ 992 02a8 5461736B 		.ascii	"TaskHandle_t\000"
  992      48616E64 
  992      6C655F74 
  992      00
  993              	.LASF12:
- 994 02b4 75696E74 		.ascii	"uint32_t\000"
+ 994 02b5 75696E74 		.ascii	"uint32_t\000"
  994      33325F74 
  994      00
  995              	.LASF4:
- 996 02bd 6C6F6E67 		.ascii	"long int\000"
+ 996 02be 6C6F6E67 		.ascii	"long int\000"
  996      20696E74 
  996      00
  997              	.LASF19:
- 998 02c6 6C6F6E67 		.ascii	"long double\000"
+ 998 02c7 6C6F6E67 		.ascii	"long double\000"
  998      20646F75 
  998      626C6500 
  999              	.LASF0:
- 1000 02d2 7369676E 		.ascii	"signed char\000"
+ 1000 02d3 7369676E 		.ascii	"signed char\000"
  1000      65642063 
  1000      68617200 
  1001              	.LASF29:
- 1002 02de 76417070 		.ascii	"vApplicationStackOverflowHook\000"
+ 1002 02df 76417070 		.ascii	"vApplicationStackOverflowHook\000"
  1002      6C696361 
  1002      74696F6E 
  1002      53746163 
  1002      6B4F7665 
  1003              	.LASF43:
- 1004 02fc 70727648 		.ascii	"prvHardwareSetup\000"
+ 1004 02fd 70727648 		.ascii	"prvHardwareSetup\000"
  1004      61726477 
  1004      61726553 
  1004      65747570 

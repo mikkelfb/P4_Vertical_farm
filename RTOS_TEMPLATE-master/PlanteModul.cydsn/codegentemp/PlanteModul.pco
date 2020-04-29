@@ -1,5 +1,5 @@
 # PlanteModul
-# 2020-04-28 08:42:50Z
+# 2020-04-28 10:57:29Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -20,7 +20,7 @@ set_io "\SW_UART_TEST_USB:tx(0)\" iocell 12 7
 set_io "Pin_00(0)" iocell 0 0
 set_io "Pin_LIGHT_in(0)" iocell 0 1
 set_io "Pin_5V_out(0)" iocell 0 2
-set_io "Pin_LightTestLED(0)" iocell 2 1
+set_io "Pin_LightTestLED(0)" iocell 3 7
 set_io "SDA_1(0)" iocell 12 1
 set_io "SCL_1(0)" iocell 12 0
 set_location "\PWM_PERISTALTISK_1:PWMUDB:status_2\" 2 5 1 3

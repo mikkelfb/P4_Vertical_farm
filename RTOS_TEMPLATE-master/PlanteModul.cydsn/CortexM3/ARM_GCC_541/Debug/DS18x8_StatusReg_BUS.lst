@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
   28:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** *  Reads the current value assigned to the Status Register.
   29:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** *
   30:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** * Parameters:
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 2
 
 
   31:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** *  None.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
   47:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** * Summary:
   48:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** *  Enables the Status Register interrupt.
   49:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** *
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 3
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 3
 
 
   50:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c **** * Parameters:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  106              		.cfi_endproc
  107              	.LFE1:
  108              		.size	DS18x8_StatusReg_BUS_InterruptEnable, .-DS18x8_StatusReg_BUS_InterruptEnable
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 4
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 4
 
 
  109              		.section	.text.DS18x8_StatusReg_BUS_InterruptDisable,"ax",%progbits
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  141              		.loc 1 85 0
  142 001e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
  143 0020 1846     		mov	r0, r3
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 5
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 5
 
 
  144 0022 FFF7FEFF 		bl	CyExitCriticalSection
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  179              		.cfi_def_cfa_register 7
  180 0006 0346     		mov	r3, r0
  181 0008 FB71     		strb	r3, [r7, #7]
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 6
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 6
 
 
  105:Generated_Source\PSoC5/DS18x8_StatusReg_BUS.c ****     #if(DS18x8_StatusReg_BUS_INPUTS < 8u)
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  213              		.cfi_startproc
  214              		@ args = 0, pretend = 0, frame = 0
  215              		@ frame_needed = 1, uses_anonymous_args = 0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 7
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 7
 
 
  216              		@ link register save eliminated.
@@ -402,14 +402,14 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  252 000c A1000000 		.4byte	.LASF22
  253 0010 0C       		.byte	0xc
  254 0011 51000000 		.4byte	.LASF23
- 255 0015 96010000 		.4byte	.LASF24
+ 255 0015 9D010000 		.4byte	.LASF24
  256 0019 00000000 		.4byte	.Ldebug_ranges0+0
  257 001d 00000000 		.4byte	0
  258 0021 00000000 		.4byte	.Ldebug_line0
  259 0025 02       		.uleb128 0x2
  260 0026 01       		.byte	0x1
  261 0027 06       		.byte	0x6
- 262 0028 07020000 		.4byte	.LASF0
+ 262 0028 08020000 		.4byte	.LASF0
  263 002c 02       		.uleb128 0x2
  264 002d 01       		.byte	0x1
  265 002e 08       		.byte	0x8
@@ -417,14 +417,14 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  267 0033 02       		.uleb128 0x2
  268 0034 02       		.byte	0x2
  269 0035 05       		.byte	0x5
- 270 0036 3E020000 		.4byte	.LASF2
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 8
+ 270 0036 3F020000 		.4byte	.LASF2
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 8
 
 
  271 003a 02       		.uleb128 0x2
  272 003b 02       		.byte	0x2
  273 003c 07       		.byte	0x7
- 274 003d F4010000 		.4byte	.LASF3
+ 274 003d F5010000 		.4byte	.LASF3
  275 0041 02       		.uleb128 0x2
  276 0042 04       		.byte	0x4
  277 0043 05       		.byte	0x5
@@ -461,13 +461,13 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  308 007e 02       		.uleb128 0x2
  309 007f 08       		.byte	0x8
  310 0080 04       		.byte	0x4
- 311 0081 ED010000 		.4byte	.LASF10
+ 311 0081 96010000 		.4byte	.LASF10
  312 0085 02       		.uleb128 0x2
  313 0086 01       		.byte	0x1
  314 0087 08       		.byte	0x8
  315 0088 63010000 		.4byte	.LASF11
  316 008c 04       		.uleb128 0x4
- 317 008d 48020000 		.4byte	.LASF13
+ 317 008d 49020000 		.4byte	.LASF13
  318 0091 02       		.byte	0x2
  319 0092 8E02     		.2byte	0x28e
  320 0094 98000000 		.4byte	0x98
@@ -476,16 +476,16 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  323 009d 02       		.uleb128 0x2
  324 009e 08       		.byte	0x8
  325 009f 04       		.byte	0x4
- 326 00a0 32020000 		.4byte	.LASF14
+ 326 00a0 33020000 		.4byte	.LASF14
  327 00a4 02       		.uleb128 0x2
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 9
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 9
 
 
  328 00a5 04       		.byte	0x4
  329 00a6 07       		.byte	0x7
- 330 00a7 67020000 		.4byte	.LASF15
+ 330 00a7 68020000 		.4byte	.LASF15
  331 00ab 06       		.uleb128 0x6
- 332 00ac 4D020000 		.4byte	.LASF20
+ 332 00ac 4E020000 		.4byte	.LASF20
  333 00b0 01       		.byte	0x1
  334 00b1 25       		.byte	0x25
  335 00b2 6B000000 		.4byte	0x6b
@@ -503,7 +503,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  347 00d0 9C       		.byte	0x9c
  348 00d1 E4000000 		.4byte	0xe4
  349 00d5 08       		.uleb128 0x8
- 350 00d6 70020000 		.4byte	.LASF18
+ 350 00d6 71020000 		.4byte	.LASF18
  351 00da 01       		.byte	0x1
  352 00db 3B       		.byte	0x3b
  353 00dc 6B000000 		.4byte	0x6b
@@ -521,7 +521,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  365 00f4 9C       		.byte	0x9c
  366 00f5 08010000 		.4byte	0x108
  367 00f9 08       		.uleb128 0x8
- 368 00fa 70020000 		.4byte	.LASF18
+ 368 00fa 71020000 		.4byte	.LASF18
  369 00fe 01       		.byte	0x1
  370 00ff 52       		.byte	0x52
  371 0100 6B000000 		.4byte	0x6b
@@ -530,7 +530,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  374 0106 77       		.sleb128 -9
  375 0107 00       		.byte	0
  376 0108 09       		.uleb128 0x9
- 377 0109 13020000 		.4byte	.LASF19
+ 377 0109 14020000 		.4byte	.LASF19
  378 010d 01       		.byte	0x1
  379 010e 67       		.byte	0x67
  380 010f 00000000 		.4byte	.LFB3
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  382 0117 01       		.uleb128 0x1
  383 0118 9C       		.byte	0x9c
  384 0119 2C010000 		.4byte	0x12c
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 10
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 10
 
 
  385 011d 0A       		.uleb128 0xa
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  439 0021 0B       		.uleb128 0xb
  440 0022 0B       		.uleb128 0xb
  441 0023 3E       		.uleb128 0x3e
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 11
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 11
 
 
  442 0024 0B       		.uleb128 0xb
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  496 005b 19       		.uleb128 0x19
  497 005c 03       		.uleb128 0x3
  498 005d 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 12
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 12
 
 
  499 005e 3A       		.uleb128 0x3a
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  553 0096 01       		.uleb128 0x1
  554 0097 13       		.uleb128 0x13
  555 0098 00       		.byte	0
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 13
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 13
 
 
  556 0099 00       		.byte	0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  609      02005100 
  609      00000201 
  609      FB0E0D00 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 14
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 14
 
 
  609      01010101 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  630      37373135 
  631 0107 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
  631      66756E63 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 15
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 15
 
 
  631      74696F6E 
@@ -868,62 +868,62 @@ ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 1
  641      74617475 
  641      73526567 
  641      5F425553 
- 642              	.LASF24:
- 643 0196 433A5C55 		.ascii	"C:\\Users\\Emil\\Documents\\GitHub\\P4_Vertical_far"
- 643      73657273 
- 643      5C456D69 
- 643      6C5C446F 
- 643      63756D65 
- 644 01c4 6D5C5254 		.ascii	"m\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
- 644      4F535F54 
- 644      454D504C 
- 644      4154452D 
- 644      6D617374 
- 645              	.LASF10:
- 646 01ed 646F7562 		.ascii	"double\000"
- 646      6C6500
+ 642              	.LASF10:
+ 643 0196 646F7562 		.ascii	"double\000"
+ 643      6C6500
+ 644              	.LASF24:
+ 645 019d 433A5C55 		.ascii	"C:\\Users\\krist\\Documents\\GitHub\\P4_Vertical_fa"
+ 645      73657273 
+ 645      5C6B7269 
+ 645      73745C44 
+ 645      6F63756D 
+ 646 01cb 726D5C52 		.ascii	"rm\\RTOS_TEMPLATE-master\\PlanteModul.cydsn\000"
+ 646      544F535F 
+ 646      54454D50 
+ 646      4C415445 
+ 646      2D6D6173 
  647              	.LASF3:
- 648 01f4 73686F72 		.ascii	"short unsigned int\000"
+ 648 01f5 73686F72 		.ascii	"short unsigned int\000"
  648      7420756E 
  648      7369676E 
  648      65642069 
  648      6E7400
  649              	.LASF0:
- 650 0207 7369676E 		.ascii	"signed char\000"
+ 650 0208 7369676E 		.ascii	"signed char\000"
  650      65642063 
  650      68617200 
  651              	.LASF19:
- 652 0213 44533138 		.ascii	"DS18x8_StatusReg_BUS_WriteMask\000"
+ 652 0214 44533138 		.ascii	"DS18x8_StatusReg_BUS_WriteMask\000"
  652      78385F53 
  652      74617475 
  652      73526567 
  652      5F425553 
-ARM GAS  C:\Users\Emil\AppData\Local\Temp\cc4ffksa.s 			page 16
+ARM GAS  C:\Users\krist\AppData\Local\Temp\cc2WdzqT.s 			page 16
 
 
  653              	.LASF14:
- 654 0232 6C6F6E67 		.ascii	"long double\000"
+ 654 0233 6C6F6E67 		.ascii	"long double\000"
  654      20646F75 
  654      626C6500 
  655              	.LASF2:
- 656 023e 73686F72 		.ascii	"short int\000"
+ 656 023f 73686F72 		.ascii	"short int\000"
  656      7420696E 
  656      7400
  657              	.LASF13:
- 658 0248 72656738 		.ascii	"reg8\000"
+ 658 0249 72656738 		.ascii	"reg8\000"
  658      00
  659              	.LASF20:
- 660 024d 44533138 		.ascii	"DS18x8_StatusReg_BUS_Read\000"
+ 660 024e 44533138 		.ascii	"DS18x8_StatusReg_BUS_Read\000"
  660      78385F53 
  660      74617475 
  660      73526567 
  660      5F425553 
  661              	.LASF15:
- 662 0267 73697A65 		.ascii	"sizetype\000"
+ 662 0268 73697A65 		.ascii	"sizetype\000"
  662      74797065 
  662      00
  663              	.LASF18:
- 664 0270 696E7465 		.ascii	"interruptState\000"
+ 664 0271 696E7465 		.ascii	"interruptState\000"
  664      72727570 
  664      74537461 
  664      746500
