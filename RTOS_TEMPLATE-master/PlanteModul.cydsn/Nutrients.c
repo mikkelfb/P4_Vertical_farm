@@ -255,7 +255,8 @@ void vTaskMeasureEC()
 
     
 */
-void vTestTaskWaterTemp(){
+
+/*void vTestTaskWaterTemp(){
     uint16 WaterTempTest;
     for(;;){
         xQueueReceive( xQueueWaterTemp, &WaterTempTest, portMAX_DELAY);
@@ -318,3 +319,4 @@ void vTestTaskMeasureEC (){
         SW_UART_TEST_USB_PutString("\n ");
     }
 }
+*/

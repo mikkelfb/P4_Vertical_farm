@@ -38,6 +38,7 @@
 /* Plantemodul includes */
 #include "Nutrients.h"
 #include "light.h"
+#include "newparam.h"
 
 
 /* The time between cycles of the 'check' functionality (defined within the
@@ -60,9 +61,9 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
-    //vNutrientsInit(); //initialize Nutrients control task and parameteres
-     
+    vNutrientsInit(); //initialize Nutrients control task and parameteres
     vLightInit(); //initialize Light control task and parameters
+    vNewparamInit();
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */

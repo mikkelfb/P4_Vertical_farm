@@ -14,7 +14,7 @@
 
 #ifndef NUTRIENTS_H 
     #define NUTRIENTS_H 
-    #define NUTRIENTSTEST 1 //set this to 0 to disable Debug/test
+    #define NUTRIENTSTEST 0 //set this to 0 to disable Debug/test
     
     
 
