@@ -104,7 +104,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_1_Start(); //start PWM module 1
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
-    
+    ADC_Flow_Start();
     /* Startup One_Wire. */
 
     DS18x8_Start(); // Starting DS18x8 module
@@ -114,7 +114,7 @@ extern cyisraddress CyRamVectors[];
     SW_UART_TEST_USB_Start();
     
     I2C_Start();
-    
+   
        
     RTC_Start();
 }
