@@ -23,6 +23,7 @@ struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
     uint16  iECvalue;
     uint16  iWaterTemp;
+    uint16  iWaterFlow;
 };
 
 const int iSizeOfNutrients = 40; // Should be the same as the value of the array below
@@ -73,7 +74,6 @@ void vNutrientsInit() {
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
     #endif
-    
     
 }
 
