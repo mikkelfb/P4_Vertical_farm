@@ -44,7 +44,6 @@
 #include "Pin_5V_out.h"
 #include "Pin_LightTestLED_aliases.h"
 #include "Pin_LightTestLED.h"
-#include "RTC.h"
 #include "SDA_1_aliases.h"
 #include "SDA_1.h"
 #include "SCL_1_aliases.h"

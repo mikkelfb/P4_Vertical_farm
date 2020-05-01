@@ -417,137 +417,6 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>RTC</name>
-      <description>RTC</description>
-      <baseAddress>0x0</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>PM_TW_CFG2</name>
-          <description>Power timers enable and interrupt enable configuration register</description>
-          <addressOffset>0x40004382</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>ONEPPC_interrupt_enable</name>
-              <description>When set and one pulse-per-second is enabled, an interrupt is issued when the pulse occurs</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The ONEPPC interrupt is issued. Only if ONEPPC is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>No ONEPPC interrupt is issued.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>ONEPPC_enable</name>
-              <description>ONEPPC enable</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The ONEPPC is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>The ONEPPC is disabled.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CTW_interrupt_enable</name>
-              <description>An interrupt issue when the CTW reaches the selected interval</description>
-              <lsb>3</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The CTW interrupt is issued. Only if CTW is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>No CTW interrupt is issued.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-            <field>
-              <name>CTW_enable</name>
-              <description>CTW enable</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-              <enumeratedValues>
-                <enumeratedValue>
-                  <name>Enabled</name>
-                  <description>The CTW is enabled.</description>
-                  <value>1</value>
-                </enumeratedValue>
-                <enumeratedValue>
-                  <name>Disabled</name>
-                  <description>The CTW is disabled.</description>
-                  <value>0</value>
-                </enumeratedValue>
-              </enumeratedValues>
-            </field>
-          </fields>
-        </register>
-        <register>
-          <name>PM_INT_SR</name>
-          <description>Power Manager Interrupt Status Register</description>
-          <addressOffset>0x40004390</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>onepps_int</name>
-              <description>When set, a onepps event has occured.</description>
-              <lsb>2</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>ctw_int</name>
-              <description>When set, a limited active ready event has occured</description>
-              <lsb>1</lsb>
-              <msb>1</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>ftw_int</name>
-              <description>When set, a fast timewheel event has occured</description>
-              <lsb>0</lsb>
-              <msb>0</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>PWM_PERISTALTISK_1</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
@@ -578,7 +447,7 @@
         <register>
           <name>PWM_PERISTALTISK_1_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006470</addressOffset>
+          <addressOffset>0x40006471</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -793,7 +662,7 @@
         <register>
           <name>PWM_PERISTALTISK_2_COMPARE_Reg_</name>
           <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x40006422</addressOffset>
+          <addressOffset>0x40006421</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -802,7 +671,7 @@
         <register>
           <name>PWM_PERISTALTISK_2_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006472</addressOffset>
+          <addressOffset>0x40006470</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -834,7 +703,7 @@
         <register>
           <name>PWM_PERISTALTISK_2_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006482</addressOffset>
+          <addressOffset>0x40006481</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -880,7 +749,7 @@
         <register>
           <name>PWM_PERISTALTISK_2_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006492</addressOffset>
+          <addressOffset>0x40006491</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1017,7 +886,7 @@
         <register>
           <name>DS18x8_TimerDelay_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x40006404</addressOffset>
+          <addressOffset>0x40006402</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1026,7 +895,7 @@
         <register>
           <name>DS18x8_TimerDelay_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006424</addressOffset>
+          <addressOffset>0x40006422</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1081,7 +950,7 @@
         <register>
           <name>DS18x8_TimerDelay_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006485</addressOffset>
+          <addressOffset>0x40006483</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1120,7 +989,7 @@
         <register>
           <name>DS18x8_TimerDelay_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006495</addressOffset>
+          <addressOffset>0x40006493</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1257,7 +1126,7 @@
         <register>
           <name>DS18x8_ControlReg_SEL_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006475</addressOffset>
+          <addressOffset>0x40006472</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1278,7 +1147,7 @@
         <register>
           <name>DS18x8_ControlReg_DRV_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006471</addressOffset>
+          <addressOffset>0x40006475</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1299,7 +1168,7 @@
         <register>
           <name>DS18x8_StatusReg_BUS_STATUS_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006463</addressOffset>
+          <addressOffset>0x40006465</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1308,7 +1177,7 @@
         <register>
           <name>DS18x8_StatusReg_BUS_MASK_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006483</addressOffset>
+          <addressOffset>0x40006485</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1317,7 +1186,7 @@
         <register>
           <name>DS18x8_StatusReg_BUS_STATUS_AUX_CTL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006493</addressOffset>
+          <addressOffset>0x40006495</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

@@ -1,5 +1,5 @@
 -- Project:   PlanteModul
--- Generated: 04/28/2020 12:57:26
+-- Generated: 05/01/2020 10:37:52
 -- PSoC Creator  4.3
 
 ENTITY PlanteModul IS
@@ -51,7 +51,6 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     SIGNAL Net_228_local : bit;
     SIGNAL Net_51 : bit;
     SIGNAL Net_66 : bit;
-    SIGNAL OPPS_OUT : bit;
     SIGNAL Pin_00(0)__PA : bit;
     SIGNAL Pin_5V_out(0)__PA : bit;
     SIGNAL Pin_LIGHT_in(0)__PA : bit;
@@ -549,14 +548,6 @@ ARCHITECTURE __DEFAULT__ OF PlanteModul IS
     ATTRIBUTE udb_chain OF macrocell : COMPONENT IS "cin,cout";
     ATTRIBUTE chain_lsb OF macrocell : COMPONENT IS "cin";
     ATTRIBUTE chain_msb OF macrocell : COMPONENT IS "cout";
-    COMPONENT pmcell
-        PORT (
-            ctw_int : OUT std_ulogic;
-            ftw_int : OUT std_ulogic;
-            limact_int : OUT std_ulogic;
-            onepps_int : OUT std_ulogic;
-            pm_int : OUT std_ulogic);
-    END COMPONENT;
     COMPONENT sarcell
         PORT (
             clock : IN std_ulogic;
@@ -2124,14 +2115,6 @@ BEGIN
             interrupt => Net_226,
             clock => ClockBlock_BUS_CLK);
 
-    \RTC:isr\:interrupt
-        GENERIC MAP(
-            int_type => "10",
-            is_nmi => 0)
-        PORT MAP(
-            interrupt => OPPS_OUT,
-            clock => ClockBlock_BUS_CLK);
-
     \I2C:I2C_IRQ\:interrupt
         GENERIC MAP(
             int_type => "00",
@@ -2428,9 +2411,5 @@ BEGIN
             q => \FreqDiv_DS18:count_0\,
             clock_0 => Net_228,
             main_0 => \FreqDiv_DS18:not_last_reset\);
-
-    PM:pmcell
-        PORT MAP(
-            onepps_int => OPPS_OUT);
 
 END __DEFAULT__;
