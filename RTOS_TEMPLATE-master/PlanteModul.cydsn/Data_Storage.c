@@ -33,6 +33,28 @@ struct dataMessage{
     char identifier;
     uint16 message;
 };
+
+
+
+int testing = 1;
+QueueHandle_t xQueueControllerData;
+QueueHandle_t xQueueCentralrequest;
+QueueHandle_t xQueueCentralData;
+QueueHandle_t xQueueStorageReady;
+
+
+void vInitDataStorage()
+{
+    xQueueControllerData = xQueueCreate(10, sizeof(struct dataMessage));
+    xQueueCentralData = xQueueCreate(10, sizeof(struct allData));
+    xQueueCentralrequest = xQueueCreate(1 , sizeof(uint16));
+    xQueueStorageReady = xQueueCreate(1 , sizeof(struct allData));
+    
+    xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 2 , NULL);
+}
+
+
+/*
 dataMessage recivedmes
 xQueueRecive(controllerdata, &recivedmes, portMAX_DELAY)
 switch recivedmes.identifier
@@ -44,49 +66,51 @@ datamessage sendmessage
 sendmessage.message = phvalue 
 sendmessage.identifier = 'p'
 xQueueSendToBack(sendmessage, &controllerdata, portMAX_DELAY)
-
-
-
-int testing = 1;
-QueueHandle_t xQueueControllerData;
-QueueHandle_t xQueueCentralrequest;
-QueueHandle_t xQueueCentralData;
-
-
-void vInitDataStorage()
-{
-    xQueueControllerData = xQueueCreate(10, sizeof(struct allData));
-    xQueueCentralData = xQueueCreate(10, sizeof(struct allData));
-    xQueueCentralrequest = xQueueCreate(1 , sizeof(uint16));
-    
-    xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 2 , NULL);
-}
-
+*/
 
 _Bool vDataQueueing()
 {
-    
     struct allData dataForQueue;
-    if(testing == 0)
+    struct dataMessage recievedMessage;
+    _Bool pReady = 0, eReady = 0, wReady = 0, fReady = 0, cReady = 0, tReady = 0, rReady = 0, lReady = 0;
+    
+    
+    BaseType_t  xStatus = xQueueReceive(xQueueControllerData, &recievedMessage, portMAX_DELAY);
+    if (xStatus == pdPASS)
     {
-        dataForQueue.iWaterTemp = currentNutrients[0].iWaterTemp;
-        dataForQueue.iPHvalue   = currentNutrients[0].iPHvalue;
-        dataForQueue.iECvalue   = currentNutrients[0].iECvalue; 
-        xQueueSendToBack(xQueueControllerData, &dataForQueue, portMAX_DELAY);
-        return 1;
+        switch (recievedMessage.identifier)
+        {
+            case 'p':   //PHvalue
+            dataForQueue.iPHvalue   = recievedMessage.message;
+            pReady = 1;
+            case 'e':   //ECvalue
+            dataForQueue.iECvalue   = recievedMessage.message;
+            eReady = 1;
+            case 'w':   //WaterTemp
+            dataForQueue.iWaterTemp = recievedMessage.message;
+            wReady = 1;
+            case 'f':   //WaterFlow
+            dataForQueue.iWaterFlow = recievedMessage.message;
+            fReady = 1;
+            case 'c':   //Co2value
+            dataForQueue.iC02       = recievedMessage.message;
+            cReady = 1;
+            case 't':   //AirTemp
+            dataForQueue.iTempAir   = recievedMessage.message;
+            tReady = 1;
+            case 'r':   //RelativHum
+            dataForQueue.iRH        = recievedMessage.message;
+            rReady = 1;
+            case 'l':   //lightVal
+            dataForQueue.iLightVal  = recievedMessage.message;
+            lReady = 1;
+        }
     }
-    else if (Data_Storage_Test == 1)
+    if (pReady & eReady & wReady & fReady & cReady & tReady & rReady & lReady)
     {
-        dataForQueue.iPHvalue   = 1;
-        dataForQueue.iECvalue   = 2;
-        dataForQueue.iWaterTemp = 3;
-        dataForQueue.iWaterFlow = 4;
-        dataForQueue.iC02       = 5;
-        dataForQueue.iTempAir   = 6;
-        dataForQueue.iRH        = 7;
-        dataForQueue.iLightVal  = 8;
-        xQueueSendToBack(xQueueControllerData, &dataForQueue, portMAX_DELAY);
+        xQueueSendToBack(xQueueStorageReady, &dataForQueue, portMAX_DELAY);
         return 1;
+        pReady = 0, eReady = 0, wReady = 0, fReady = 0, cReady = 0, tReady = 0, rReady = 0, lReady = 0;
     }
     
     else
@@ -105,14 +129,15 @@ void vTaskDataStorage()
     BaseType_t centralRequest;
     const int storageSizes = 20;
     struct allData allDataArray[storageSizes];
+    _Bool queueStatus;
     _Bool queueStatusCentral;
     
     for(;;)
     {
-        vDataQueueing();
-        if(vDataQueueing() && (bufferFull == 0))
+        queueStatus = vDataQueueing();
+        if((queueStatus == 1) && (bufferFull == 0))
         {
-            xQueueReceive(xQueueControllerData, &allDataArray[writePtr], portMAX_DELAY);  
+            xQueueReceive(xQueueStorageReady, &allDataArray[writePtr], portMAX_DELAY);
             writePtr ++;
             bufferEmpty = 0;
             if(writePtr >= storageSizes)
@@ -151,13 +176,5 @@ void vTaskTestData()
 {
 
 }
-
-
-
-
-
-
-
-
 
 /* [] END OF FILE */
