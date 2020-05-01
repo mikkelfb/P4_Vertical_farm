@@ -54,6 +54,8 @@
 #include "ADC_Flow.h"
 #include "Pin_WaterPump_aliases.h"
 #include "Pin_WaterPump.h"
+#include "Pin_WaterFlow_aliases.h"
+#include "Pin_WaterFlow.h"
 #include "ADC_PH_IRQ.h"
 #include "ADC_PH_theACLK.h"
 #include "DS18x8_ControlReg_DRV.h"

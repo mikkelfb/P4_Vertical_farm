@@ -38,7 +38,7 @@
 /* Plantemodul includes */
 #include "Nutrients.h"
 #include "light.h"
-
+#include "WaterCondition.h"
 
 /* The time between cycles of the 'check' functionality (defined within the
 tick hook. */
@@ -62,7 +62,9 @@ int main( void )
     
     //vNutrientsInit(); //initialize Nutrients control task and parameteres
      
-    vLightInit(); //initialize Light control task and parameters
+    //vLightInit(); //initialize Light control task and parameters
+    
+    vInitWaterCondition();
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */

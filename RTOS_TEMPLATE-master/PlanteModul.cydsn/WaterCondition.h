@@ -19,7 +19,7 @@
     @Param[out]:
 	@Param[in]
     */
-    void initWaterCondition();
+    void vInitWaterCondition();
     
     /*
     This task is for reading waterflow sensor, test if there is water in the pipes

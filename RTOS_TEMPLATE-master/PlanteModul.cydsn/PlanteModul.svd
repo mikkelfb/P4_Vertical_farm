@@ -1329,7 +1329,7 @@
         <register>
           <name>DS18x8_TimerDelay_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006473</addressOffset>
+          <addressOffset>0x40006470</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1748,7 +1748,7 @@
         <register>
           <name>DS18x8_Trigger_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x40006470</addressOffset>
+          <addressOffset>0x40006473</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
