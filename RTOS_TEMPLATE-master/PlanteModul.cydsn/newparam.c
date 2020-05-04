@@ -20,11 +20,13 @@
 #include <stdlib.h>
 
 //Declare handlers here:
+QueueHandle_t xQueuetesthandler;
 
-//
+
+/*--------------------------*/
 
 void vNewparamInit(){
-    
+    xQueuetesthandler = xQueueCreate( 1, sizeof( int ) );
     
     
     
@@ -35,6 +37,12 @@ void vNewparamInit(){
 
 
 
-void vTestHandlers(){
-    
+
+void vTaskTestHandlers(){
+    int x = 7;
+    const TickType_t xDelayms = pdMS_TO_TICKS( 7000 );
+    for(;;){
+        xQueueSend ( xQueuetesthandler, &x, portMAX_DELAY ); 
+        vTaskDelay(xDelayms);
+    }
 }
