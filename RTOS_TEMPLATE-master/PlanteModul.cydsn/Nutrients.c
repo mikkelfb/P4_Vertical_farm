@@ -267,10 +267,10 @@ void vTestTaskWaterTemp(){
 
 
 void vTestTaskInit(){
-    xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
+   // xTaskCreate(vTestTaskNutrientPump, "Test Pump 1", 100, NULL, 1, NULL); 
    // xTaskCreate(vTestTaskUARTDataTransmit, "Test PH print", 100, NULL, 2, NULL); 
-    xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
-    xTaskCreate(vTestTaskMeasureEC, "Test EC print", 100, NULL, 2, NULL); 
+   // xTaskCreate(vTestTaskWaterTemp, "Test Water Temp", 100, NULL, 3, NULL);
+   // xTaskCreate(vTestTaskMeasureEC, "Test EC print", 100, NULL, 2, NULL); 
 }
 
 

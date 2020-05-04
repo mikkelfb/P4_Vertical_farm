@@ -17,12 +17,12 @@
     
     
     // This function initializes all of the data storage tasks.
-    void vInintDataStorage(); 
+    void vInitDataStorage(); 
     
     
     
     // collects data from different controller tasks and put them in a new struct.
-    _Bool vDataQueueing();
+    void vTaskDataQueueing();
     
       
     /*
@@ -36,9 +36,11 @@
 
 
     
-    
-    #if Data_Storage_Test == 0
+    // "vtaskTestData" i outcommented inside the vteststorageinit funtion in the cfile
+    #if Data_Storage_Test == 1
        /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
+        
+    void vTestStorageInit();
 
     // Test task for data storage    
     void vTaskTestData();

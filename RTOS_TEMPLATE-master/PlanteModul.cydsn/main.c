@@ -38,6 +38,7 @@
 /* Plantemodul includes */
 #include "Nutrients.h"
 #include "light.h"
+#include "Data_Storage.h"
 
 
 /* The time between cycles of the 'check' functionality (defined within the
@@ -62,7 +63,9 @@ int main( void )
     
     //vNutrientsInit(); //initialize Nutrients control task and parameteres
      
-    vLightInit(); //initialize Light control task and parameters
+    //vLightInit(); //initialize Light control task and parameters
+    
+    vInitDataStorage();  //initialize data storage task
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */
