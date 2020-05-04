@@ -168,7 +168,7 @@ float fCalculatePHValue(float fPHVoltage){
 
 
 void vTaskWaterTemp(){
-       const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
     int16 waterTemp; 
     _Bool flagTimer = 1;
     for(;;) 
