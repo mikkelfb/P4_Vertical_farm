@@ -65,6 +65,12 @@
     */
     void vTaskMeasureEC();
     
+    
+    /*
+    Controlunit for nutrinets responsible for calculating mean values, sending data, receiving new parameters.
+    */
+    void vTaskNutrientController();
+    
     #if NUTRIENTSTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         
@@ -111,6 +117,10 @@
         @Param[in]:
         */
         void vTestTaskMeasureEC();
+        
+        
+        // test task for the nutrient controller 
+        void vTestTaskNutController();
         
     #endif
 #endif
