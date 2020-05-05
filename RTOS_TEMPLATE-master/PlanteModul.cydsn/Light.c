@@ -40,7 +40,7 @@
 #include "task.h"
 #include "queue.h"
 
-uint8 Light;                       // Variable contains measured light value
+uint8 Light;                       // Variable contains measured light value //*** Se overvejelser med hensyn til denne variabel
 _Bool bLEDcmd;                     // Variable describing if the LED should be on/off
 _Bool bAlarmState = 0;             // Temporary values until Alarm task is set up
 _Bool bAlarmACK = 0;               // Temporary values until Alarm task is set up
@@ -48,24 +48,21 @@ uint8 ClockAddr = 9;               // Address for Arduino clock
 
 
 /* Create a struct for storing the light cycle */
-struct TimeInterval
-    {
-        uint8 Start;
-        uint8 Stop;
-    };
+struct TimeInterval{
+    uint8 Start;
+    uint8 Stop;
+};
 struct TimeInterval LightCycle;
     
 /* Create a struct for storing the current time */
-struct Clock
-    {
-        uint8 Sec;
-        uint8 Min;
-        uint8 Hour;
-        uint8 DayOfMonth;
-        uint8 Month;
-        uint16 Year;
-        
-    };
+struct Clock{
+    uint8 Sec;
+    uint8 Min;
+    uint8 Hour;
+    uint8 DayOfMonth;
+    uint8 Month;
+    uint16 Year;
+};
 
 struct Clock CurrentTime;
 
@@ -113,14 +110,10 @@ void vLightInit(){
 /*  This function turns on the light sensor, periodically reads the sensor 
     and sends the measured value to the created queue for UART */
 void vTaskLightMeasure(){
-    Pin_5V_out_Write(1u);
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
-    
+    //*** uint8 LightRead;
     for(;;){
-       
-        uint8 LightRead = Pin_LIGHT_in_Read();
-        Light = LightRead;
-        xQueueSendToBack(xQueueLightValue, &Light, portMAX_DELAY);
+        Light = Pin_LIGHT_in_Read();
         vTaskDelay(xDelayms); 
     }
 }
@@ -190,24 +183,21 @@ void vTaskLEDcontrol(){
     
     for(;;){
         /* Recieve on/off command and measured value */
+        //*** vi skal lige snakke om hvad der foregår her
         xQueueReceive(xQueueLEDCmd, &bLEDcontrolcmd, portMAX_DELAY);
-        xQueueReceive(xQueueLightValue, &bLEDcontrolstate, portMAX_DELAY);
-        
         /* USED FOR TEST
         SW_UART_TEST_USB_PutString("LED CMD: ");
         SW_UART_TEST_USB_PutHexInt(bLEDcontrolcmd);
         SW_UART_TEST_USB_PutString("\n");*/
         
         /* If the LED should be on and aren't on, turn them on. */
-        if ( bLEDcontrolcmd == 1 && bLEDcontrolstate == 1){
+        if ( bLEDcontrolcmd == 1 && (Pin_LightTestLED_Read() == 0)){
             Pin_LightTestLED_Write( 1u ); // Turns on LED
         }
-        
         /* If the LED shouldn't be on, turn them off. */
-        else if (bLEDcontrolcmd == 0){
+        else if (bLEDcontrolcmd == 0 && (Pin_LightTestLED_Read() == 1)){
             Pin_LightTestLED_Write( 0u ); // Turns off LED
-        }
-        
+        } 
     }   
 }
 
