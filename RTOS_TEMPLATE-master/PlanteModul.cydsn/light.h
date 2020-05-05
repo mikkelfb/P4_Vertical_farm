@@ -42,8 +42,7 @@
     /* this task turns LED on and off as needed */
     void vTaskLEDcontrol();
     
-    void RTCSetup();
-    
+     
     
     #if LIGHTTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
