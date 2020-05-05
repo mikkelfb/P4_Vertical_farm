@@ -18,7 +18,8 @@
  
     void vNewparamInit();
     
-
+    void vComsFromOtherTask();
+    void vTaskNewParam();
     
     
     #if NEWPARAMTEST == 1
