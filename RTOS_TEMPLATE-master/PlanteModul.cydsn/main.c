@@ -40,6 +40,7 @@
 #include "light.h"
 #include "newparam.h"
 
+#include "WaterCondition.h"
 
 /* The time between cycles of the 'check' functionality (defined within the
 tick hook. */
@@ -64,6 +65,11 @@ int main( void )
     vNutrientsInit(); //initialize Nutrients control task and parameteres
     vLightInit(); //initialize Light control task and parameters
     vNewparamInit();
+    //vNutrientsInit(); //initialize Nutrients control task and parameteres
+     
+    //vLightInit(); //initialize Light control task and parameters
+    
+    vInitWaterCondition();
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */
@@ -105,7 +111,7 @@ extern cyisraddress CyRamVectors[];
     PWM_PERISTALTISK_1_Start(); //start PWM module 1
     PWM_PERISTALTISK_2_Start(); //start PWM module 2
     ADC_PH_Start(); //start ADC_PH module
-    
+    ADC_Flow_Start();
     /* Startup One_Wire. */
 
     DS18x8_Start(); // Starting DS18x8 module
@@ -115,7 +121,7 @@ extern cyisraddress CyRamVectors[];
     SW_UART_TEST_USB_Start();
     
     I2C_Start();
-    
+   
        
     RTC_Start();
 }
