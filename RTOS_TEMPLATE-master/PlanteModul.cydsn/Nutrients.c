@@ -332,7 +332,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY);
         if(xStatus == pdPASS)
         {                                               // Setting new params for PH or EC
-            switch(TestingParam.message)
+            switch(TestingParam.identifier)
             {
                 case 'p':
                     fPHParameter = TestingParam.message;
