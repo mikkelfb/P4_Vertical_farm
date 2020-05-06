@@ -49,7 +49,7 @@ QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values thro
 QueueHandle_t xQueueWaterTemp;
 QueueHandle_t xQueueECValue;        //Create a queue for sending EC values to the test task.
 QueueHandle_t xQueueControllerTest; //Create a queue for sending EC values to the test task.
-QueueHandle_t xQueueControllerTest2; 
+QueueHandle_t xQueueControllerTesttwo; 
 
 
 const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
@@ -68,7 +68,7 @@ void vNutrientsInit() {
     xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
     xQueueECValue = xQueueCreate(1, sizeof(uint16));
     xQueueControllerTest = xQueueCreate(1, sizeof(struct messageForData));
-    xQueueControllerTest2 = xQueueCreate(5, sizeof(struct messageForData));
+    xQueueControllerTesttwo = xQueueCreate(5, sizeof(struct messageForData));
     
     
     /*  Create the task that will control one nutrient pump. The task is created with
@@ -80,7 +80,7 @@ void vNutrientsInit() {
     
     xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 2 , NULL);
     xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 4 , NULL);
-    xTaskCreate(vTaskNutrientController, "NutrientController", 1000, NULL, 4, NULL);
+    xTaskCreate(vTaskNutrientController, "NutrientController", 1000, NULL, 3, NULL);
     xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 2, NULL);
     
     /*Initialize test tasks*/
@@ -266,9 +266,13 @@ void vTaskNutrientController()
 {
     const TickType_t xDelayms = pdMS_TO_TICKS(3000); // Sets the measurement resolution.
     struct messageForData PHMessage;
+    PHMessage.message =0;
     struct messageForData ECMessage;
+    ECMessage.message =0;
     struct messageForData WTempMessage;
-    struct paramstruct ReceivedTest;
+    WTempMessage.message =0;
+    struct paramstruct TestingParam;
+    TestingParam.paramValue =0;
     PHMessage.identifier    = 'p';
     ECMessage.identifier    = 'e';
     WTempMessage.identifier = 'w';
@@ -287,11 +291,11 @@ void vTaskNutrientController()
         }
         PHMessage.message = PHMessage.message/iSizeOfNutrients;
         ECMessage.message = ECMessage.message/iSizeOfNutrients;
-        WTempMessage.message = WTempMessage.message/iSizeOfNutrients;
+        WTempMessage.message = WTempMessage.message/iSizeOfNutrients; 
         
-        xQueueSendToBack(xQueueControllerTest2, &PHMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueControllerTest2, &ECMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueControllerTest2, &WTempMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerTesttwo, &PHMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerTesttwo, &ECMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerTesttwo, &WTempMessage, portMAX_DELAY);
 
         if(PHMessage.message < (fPHParameter*0.9))
         {
@@ -330,20 +334,19 @@ void vTaskNutrientController()
             SW_UART_TEST_USB_PutString("ALARM WTemp");
             SW_UART_TEST_USB_PutString("\n");
         }
-        BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &ReceivedTest, portMAX_DELAY);
+        BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY);
         if(xStatus == pdPASS)
         {
-            switch(ReceivedTest.param)
+            switch(TestingParam.param)
             {
                 case 'p':
-                    fPHParameter = ReceivedTest.paramValue;
+                    fPHParameter = TestingParam.paramValue;
                 SW_UART_TEST_USB_PutString("new PH value: ");
-                SW_UART_TEST_USB_PutHexInt(ReceivedTest.paramValue);
+                SW_UART_TEST_USB_PutHexInt(TestingParam.paramValue);
                 SW_UART_TEST_USB_PutString("\n");
-                
                     break;
                 case 'e':
-                    fECParameter = ReceivedTest.paramValue;
+                    fECParameter = TestingParam.paramValue;
                     break;
             }
         }
@@ -436,6 +439,13 @@ void vTestTaskMeasureEC (){
 
 void vTestTaskNutController()
 {
+  
+    for(int i = 0; i<= iSizeOfNutrients; i++)
+        {
+            currentNutrients[i].iECvalue = 0;
+            currentNutrients[i].iPHvalue = 0;
+            currentNutrients[i].iWaterTemp = 0;  
+        }
     const TickType_t xDelayms = pdMS_TO_TICKS(3000);
     struct messageForData Receivedtest;
     struct paramstruct newParam;
@@ -451,7 +461,23 @@ void vTestTaskNutController()
             currentNutrients[i].iWaterTemp = i;  
         }
         vTaskDelay(xDelayms);
-        xQueueReceive(xQueueControllerTest2, &Receivedtest, portMAX_DELAY);
+        xQueueReceive(xQueueControllerTesttwo, &Receivedtest, portMAX_DELAY);
+        SW_UART_TEST_USB_PutString("identifier: ");
+        SW_UART_TEST_USB_PutChar(Receivedtest.identifier);
+        SW_UART_TEST_USB_PutString("\n");
+        SW_UART_TEST_USB_PutString("value: ");
+        SW_UART_TEST_USB_PutHexInt(Receivedtest.message);
+        SW_UART_TEST_USB_PutString("\n");
+        
+        xQueueReceive(xQueueControllerTesttwo, &Receivedtest, portMAX_DELAY);
+        SW_UART_TEST_USB_PutString("identifier: ");
+        SW_UART_TEST_USB_PutChar(Receivedtest.identifier);
+        SW_UART_TEST_USB_PutString("\n");
+        SW_UART_TEST_USB_PutString("value: ");
+        SW_UART_TEST_USB_PutHexInt(Receivedtest.message);
+        SW_UART_TEST_USB_PutString("\n");
+        
+         xQueueReceive(xQueueControllerTesttwo, &Receivedtest, portMAX_DELAY);
         SW_UART_TEST_USB_PutString("identifier: ");
         SW_UART_TEST_USB_PutChar(Receivedtest.identifier);
         SW_UART_TEST_USB_PutString("\n");
