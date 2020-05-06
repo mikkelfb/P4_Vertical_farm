@@ -30,11 +30,6 @@ struct messageForData{
     uint16 message;
 };
 
-struct paramstruct{
-    char param;
-    float paramValue;
-};
-
 const int iSizeOfNutrients = 40; // Should be the same as the value of the array below
 struct Nutrients currentNutrients[40]; // Create struct array with space for 40 measurements
 int iPHIndex = 0; // Use this index to save pH measurements into the struct array
@@ -271,8 +266,8 @@ void vTaskNutrientController()
     ECMessage.message =0;
     struct messageForData WTempMessage;
     WTempMessage.message =0;
-    struct paramstruct TestingParam;
-    TestingParam.paramValue =0;
+    struct messageForData TestingParam;
+    TestingParam.message =0;
     PHMessage.identifier    = 'p';
     ECMessage.identifier    = 'e';
     WTempMessage.identifier = 'w';
@@ -337,27 +332,22 @@ void vTaskNutrientController()
         BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY);
         if(xStatus == pdPASS)
         {
-            switch(TestingParam.param)
+            switch(TestingParam.message)
             {
                 case 'p':
-                    fPHParameter = TestingParam.paramValue;
+                    fPHParameter = TestingParam.message;
                 SW_UART_TEST_USB_PutString("new PH value: ");
-                SW_UART_TEST_USB_PutHexInt(TestingParam.paramValue);
+                SW_UART_TEST_USB_PutHexInt(TestingParam.message);
                 SW_UART_TEST_USB_PutString("\n");
                     break;
                 case 'e':
-                    fECParameter = TestingParam.paramValue;
+                    fECParameter = TestingParam.message;
                     break;
             }
         }
     }
 }
     
-
-
-
-
-
 
 /* --- TEST TASK --- */
 
@@ -439,18 +429,11 @@ void vTestTaskMeasureEC (){
 
 void vTestTaskNutController()
 {
-  
-    for(int i = 0; i<= iSizeOfNutrients; i++)
-        {
-            currentNutrients[i].iECvalue = 0;
-            currentNutrients[i].iPHvalue = 0;
-            currentNutrients[i].iWaterTemp = 0;  
-        }
     const TickType_t xDelayms = pdMS_TO_TICKS(3000);
     struct messageForData Receivedtest;
-    struct paramstruct newParam;
-    newParam.param         = 'p';
-    newParam.paramValue    = 20.00;
+    struct messageForData newParam;
+    newParam.identifier = 'p';
+    newParam.message    = 20;
     for(;;)
     {
 
