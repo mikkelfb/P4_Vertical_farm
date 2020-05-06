@@ -45,7 +45,6 @@ _Bool bLEDcmd;                     // Variable describing if the LED should be o
 _Bool bAlarmState = 0;             // Temporary values until Alarm task is set up
 _Bool bAlarmACK = 0;               // Temporary values until Alarm task is set up
 uint8 ClockAddr = 9;               // Address for Arduino clock
-uint8 uNewParams[2] = {0, 0};               // Array to store the new params
 
 /* Create a struct for storing the light cycle */
 struct TimeInterval{
@@ -121,33 +120,29 @@ void vTaskLightMeasure(){
 
 /*  This function recieves info about which time interval there should be light, 
     turns on/off LED lights and periodically checks if the lights are on */
-void vTaskLightController(){
+void vTaskLightController( void *pvParameters ){
+    extern QueueHandle_t xQueueLightHandler;
+    
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
     
-    /*SW_UART_TEST_USB_PutString("\n ");
+    /*
+    SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutString("Current light cycle values: ");
-    SW_UART_TEST_USB_PutHexByte(uNewParams[0]);
+    SW_UART_TEST_USB_PutHexByte(LightCycle.Start);
     SW_UART_TEST_USB_PutString(" ");
-    SW_UART_TEST_USB_PutHexByte(uNewParams[1]);
-    SW_UART_TEST_USB_PutString("\n ");*/
-    
-    
-    extern QueueHandle_t xQueueLightHandler;
-    
-    xQueueReceive(xQueueLightHandler, &uNewParams[0], xShortDelayms); // If queue is empty, return immediately
-    xQueueReceive(xQueueLightHandler, &uNewParams[1], xShortDelayms);
-    
-    /*SW_UART_TEST_USB_PutString("\n ");
+    SW_UART_TEST_USB_PutHexByte(LightCycle.Stop);
+    SW_UART_TEST_USB_PutString("\n ");
+    */
+    xQueueReceive(xQueueLightHandler, &(LightCycle), 0); // If queue is empty, return immediately
+    /*
+    SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutString("Updated light cycle values: ");
-    SW_UART_TEST_USB_PutHexByte(uNewParams[0]);
+    SW_UART_TEST_USB_PutHexByte(LightCycle.Start);
     SW_UART_TEST_USB_PutString(" ");
-    SW_UART_TEST_USB_PutHexByte(uNewParams[1]);
-    SW_UART_TEST_USB_PutString("\n ");*/
-    
-    LightCycle.Start = uNewParams[0];           
-    LightCycle.Stop = uNewParams[1];
-        
+    SW_UART_TEST_USB_PutHexByte(LightCycle.Stop);
+    SW_UART_TEST_USB_PutString("\n ");
+    */    
     char ArduinoClock[3]; // Array to store clock value from Arduino
     
     for(;;){

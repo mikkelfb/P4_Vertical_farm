@@ -41,18 +41,30 @@
 QueueHandle_t xQueueLightHandler;
 QueueHandle_t xQueueNutrientsHandler;
 
+/*
 uint16 uRecievedNewParams[3] = {0, 0, 0};               
 uint8 uNewLightParams[2] = {1, 1};           // uNewLightParams[0] = start time, uNewLightParams[1] = stop time 
 uint16 uNewNutrientParams[2] = {0, 0};
+*/
 
+// 'e' = EC, 'p' = pH, 't' = time
 struct NewParameters{
-    char cID;                   // 'e' = EC, 'p' = pH, 't' = time
+    char cID;                   
     float fpHValue;
     float fECValue;
     uint8 uStartTime;
     uint8 uStopTime;
 };
-struct NewParameters TestFromCom;
+
+struct LightPackage{
+    uint8 uStartTime;
+    uint8 uStopTime;
+};    
+
+struct NutrientsPackage{
+    char cID;
+    float fNewValue;
+};    
 
 /*--------------------------*/
 
@@ -63,16 +75,12 @@ void vNewparamInit(){
     //SW_UART_TEST_USB_PutString("NewParamInit \n");
     //Declare Queues here here:
 
-    xQueueLightHandler = xQueueCreate( 1, sizeof( uint8 ) );
-    //xQueueLightHandler[1] = xQueueCreate( 1, sizeof( uint8 ) );
-    xQueueNutrientsHandler = xQueueCreate(1, sizeof ( float ) );
+    xQueueLightHandler = xQueueCreate( 2, sizeof( struct LightPackage ) );
+    xQueueNutrientsHandler = xQueueCreate(2, sizeof ( struct NutrientsPackage ) );
     /*--------------------------*/
     
     /*This queue is entirely for testing purposes*/
-    xQueueTestNewParam = xQueueCreate(3, sizeof (struct TestFromCom *) );
-    //xQueueTestNewParam[1] = xQueueCreate(3, sizeof (uint16) );
-    //xQueueTestNewParam[2] = xQueueCreate(3, sizeof (uint16) );
-    
+    xQueueTestNewParam = xQueueCreate(5, sizeof (struct NewParameters) );
     
     xTaskCreate(vComsFromOtherTask, "coms from other task", 100, NULL, 2, NULL);
     xTaskCreate(vTaskNewParam, "new param task", 100, NULL, 2, NULL);
@@ -86,18 +94,17 @@ void vNewparamInit(){
 /*This task is entirely for testing purposes. It just sends new parameters, in much the same way that the 
 communication task eventually will: As an array, where the index0 is an identifyer
 In this task it will be assumed that the identifyer makes 1 = pH/EC, 2 = light*/
-void vComsFromOtherTask(){
+void vComsFromOtherTask( void *pvParameters){
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
+    struct NewParameters TestFromCom;
     
-    //struct NewParameters TestFromCom;
-    
-    TestFromCom.cID = 't';
+    TestFromCom.cID = 'p';
     TestFromCom.fECValue = 50;
     TestFromCom.fpHValue = 7;
     TestFromCom.uStartTime = 8;
     TestFromCom.uStopTime = 16;
     
-    SW_UART_TEST_USB_PutChar(TestFromCom.cID);
+    /*SW_UART_TEST_USB_PutChar(TestFromCom.cID);
     SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutHexByte(TestFromCom.fECValue);
     SW_UART_TEST_USB_PutString("\n ");
@@ -106,35 +113,33 @@ void vComsFromOtherTask(){
     SW_UART_TEST_USB_PutHexByte(TestFromCom.uStartTime);
     SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutHexByte(TestFromCom.uStopTime);
-    SW_UART_TEST_USB_PutString("\n ");
+    SW_UART_TEST_USB_PutString("\n ");*/
         
     
-    xQueueSendToBack(xQueueTestNewParam, &TestFromCom, portMAX_DELAY);
+    xQueueSendToBack(xQueueTestNewParam, (void *) &TestFromCom, portMAX_DELAY);
     
     /*uint16 uTestParams[3] = {2, 8, 16};
     xQueueSendToBack(xQueueTestNewParam[0], &uTestParams[0], portMAX_DELAY);
     xQueueSendToBack(xQueueTestNewParam[1], &uTestParams[1], portMAX_DELAY);
     xQueueSendToBack(xQueueTestNewParam[2], &uTestParams[2], portMAX_DELAY);*/
-    vTaskDelay(xShortDelayms);
+    //vTaskDelay(xShortDelayms);
     //SW_UART_TEST_USB_PutString("test of task \n");
     vTaskDelay(xShortDelayms);
 
 }
 /* This task reads the incoming new params and determines which control task the new params should be sent to */
-void vTaskNewParam(){
-    //const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
-    //SW_UART_TEST_USB_PutString("test of TaskNewParam \n");
-    //vTaskDelay(xShortDelayms);
+void vTaskNewParam( void *pvParameters ){
+    struct NewParameters Temp;
+    struct LightPackage Light;
+    struct NutrientsPackage Nutrients;
     
     for(;;)
     {
-        struct NewParameters Temp;
-        xQueueReceive(xQueueTestNewParam, &Temp, portMAX_DELAY);
-        //xQueueReceive(xQueueTestNewParam[1], &uRecievedNewParams[1], portMAX_DELAY);
-        //xQueueReceive(xQueueTestNewParam[2], &uRecievedNewParams[2], portMAX_DELAY);
+        xQueueReceive(xQueueTestNewParam, &(Temp), portMAX_DELAY);
         //SW_UART_TEST_USB_PutString("new params recieved \n");
-        
-        /*SW_UART_TEST_USB_PutChar(Temp.cID);
+         
+        /*
+        SW_UART_TEST_USB_PutChar(Temp.cID);
         SW_UART_TEST_USB_PutString("\n ");
         SW_UART_TEST_USB_PutHexByte(Temp.fECValue);
         SW_UART_TEST_USB_PutString("\n ");
@@ -147,24 +152,62 @@ void vTaskNewParam(){
         
         switch(Temp.cID)
         {
-            case 1:
-                uNewNutrientParams[0] = uRecievedNewParams[1];
-                uNewNutrientParams[1] = uRecievedNewParams[2];
-                xQueueSendToBack(xQueueNutrientsHandler, uNewNutrientParams, portMAX_DELAY);
-            
+            // If EC value
+            case 'e':
+                
+                Nutrients.cID = Temp.cID;
+                Nutrients.fNewValue = Temp.fECValue;
+                
+                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutChar(Nutrients.cID);
+                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
+                SW_UART_TEST_USB_PutString("\n ");
+                    
+                xQueueSendToBack(xQueueNutrientsHandler, (void *) &Nutrients, portMAX_DELAY);
+           
                 break;
         
-            case 2:
-                uNewLightParams[0] = uRecievedNewParams[1];
-                uNewLightParams[1] = uRecievedNewParams[2];
-                xQueueSendToBack(xQueueLightHandler, &uNewLightParams[0], portMAX_DELAY);
-                xQueueSendToBack(xQueueLightHandler, &uNewLightParams[1], portMAX_DELAY);
+            // If light cycle value
+            case 't':
+                
+                Light.uStartTime = Temp.uStartTime;
+                Light.uStopTime = Temp.uStopTime;
+                
+                xQueueSendToBack(xQueueLightHandler, (void *) &Light, portMAX_DELAY);
+                
+                /*SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
+                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
+                SW_UART_TEST_USB_PutString("\n ");*/
+                
+                //xQueueSendToBack(xQueueLightHandler, &uNewLightParams[0], portMAX_DELAY);
+                //xQueueSendToBack(xQueueLightHandler, &uNewLightParams[1], portMAX_DELAY);
                 //SW_UART_TEST_USB_PutString("new params sent \n");
                 /*SW_UART_TEST_USB_PutHexByte(uNewLightParams[0]);
                 SW_UART_TEST_USB_PutString(" ");
                 SW_UART_TEST_USB_PutHexByte(uNewLightParams[1]);
                 SW_UART_TEST_USB_PutString("\n ");*/
                 break;
+                
+            // If pH value
+            case 'p':
+                
+                Nutrients.cID = Temp.cID;
+                Nutrients.fNewValue = Temp.fpHValue;
+                
+                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutChar(Nutrients.cID);
+                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
+                SW_UART_TEST_USB_PutString("\n ");
+                
+                
+                xQueueSendToBack(xQueueNutrientsHandler, (void *) &Nutrients, portMAX_DELAY);
+           
+                break;
+        
         }
         
     }
