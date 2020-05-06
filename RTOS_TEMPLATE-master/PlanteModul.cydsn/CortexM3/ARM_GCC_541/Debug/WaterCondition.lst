@@ -1,0 +1,1394 @@
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"WaterCondition.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.comm	waterSemph,4,4
+  22              		.comm	WaterPumpQueue,4,4
+  23              		.comm	WaterState,1,1
+  24              		.section	.rodata
+  25              		.align	2
+  26              	.LC0:
+  27 0000 466C6F77 		.ascii	"Flow water\000"
+  27      20776174 
+  27      657200
+  28 000b 00       		.align	2
+  29              	.LC1:
+  30 000c 57617465 		.ascii	"Water pump\000"
+  30      72207075 
+  30      6D7000
+  31 0017 00       		.align	2
+  32              	.LC2:
+  33 0018 57617465 		.ascii	"Water Condition controller\000"
+  33      7220436F 
+  33      6E646974 
+  33      696F6E20 
+  33      636F6E74 
+  34              		.section	.text.vInitWaterCondition,"ax",%progbits
+  35              		.align	2
+  36              		.global	vInitWaterCondition
+  37              		.thumb
+  38              		.thumb_func
+  39              		.type	vInitWaterCondition, %function
+  40              	vInitWaterCondition:
+  41              	.LFB68:
+  42              		.file 1 "WaterCondition.c"
+   1:WaterCondition.c **** /* ========================================
+   2:WaterCondition.c ****  *
+   3:WaterCondition.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:WaterCondition.c ****  * All Rights Reserved
+   5:WaterCondition.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:WaterCondition.c ****  *
+   7:WaterCondition.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 2
+
+
+   8:WaterCondition.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:WaterCondition.c ****  *
+  10:WaterCondition.c ****  * ========================================
+  11:WaterCondition.c **** */
+  12:WaterCondition.c **** #include "FreeRTOS.h"
+  13:WaterCondition.c **** #include "WaterCondition.h"
+  14:WaterCondition.c **** #include "task.h"
+  15:WaterCondition.c **** #include "queue.h"
+  16:WaterCondition.c **** #include "semphr.h"
+  17:WaterCondition.c **** 
+  18:WaterCondition.c **** SemaphoreHandle_t waterSemph;
+  19:WaterCondition.c **** 
+  20:WaterCondition.c **** QueueHandle_t WaterPumpQueue;
+  21:WaterCondition.c **** 
+  22:WaterCondition.c **** _Bool WaterState; //Variable to determine wheter or not there is water in the pibes. Is the value w
+  23:WaterCondition.c **** 
+  24:WaterCondition.c **** void vInitWaterCondition(){    
+  43              		.loc 1 24 0
+  44              		.cfi_startproc
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 1, uses_anonymous_args = 0
+  47 0000 80B5     		push	{r7, lr}
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 7, -8
+  50              		.cfi_offset 14, -4
+  51 0002 82B0     		sub	sp, sp, #8
+  52              		.cfi_def_cfa_offset 16
+  53 0004 02AF     		add	r7, sp, #8
+  54              		.cfi_def_cfa 7, 8
+  25:WaterCondition.c ****     //Craete the 3 tasks
+  26:WaterCondition.c ****     xTaskCreate(vTaskFlowWater , "Flow water", 50 , NULL , 2 , NULL);
+  55              		.loc 1 26 0
+  56 0006 0023     		movs	r3, #0
+  57 0008 0193     		str	r3, [sp, #4]
+  58 000a 0223     		movs	r3, #2
+  59 000c 0093     		str	r3, [sp]
+  60 000e 0023     		movs	r3, #0
+  61 0010 3222     		movs	r2, #50
+  62 0012 1549     		ldr	r1, .L2
+  63 0014 1548     		ldr	r0, .L2+4
+  64 0016 FFF7FEFF 		bl	xTaskCreate
+  27:WaterCondition.c ****     xTaskCreate(vTaskWaterPump , "Water pump", 50 , NULL , 2 , NULL);
+  65              		.loc 1 27 0
+  66 001a 0023     		movs	r3, #0
+  67 001c 0193     		str	r3, [sp, #4]
+  68 001e 0223     		movs	r3, #2
+  69 0020 0093     		str	r3, [sp]
+  70 0022 0023     		movs	r3, #0
+  71 0024 3222     		movs	r2, #50
+  72 0026 1249     		ldr	r1, .L2+8
+  73 0028 1248     		ldr	r0, .L2+12
+  74 002a FFF7FEFF 		bl	xTaskCreate
+  28:WaterCondition.c ****     xTaskCreate(vTaskWaterConditionController , "Water Condition controller", 50 , NULL , 2 , NULL)
+  75              		.loc 1 28 0
+  76 002e 0023     		movs	r3, #0
+  77 0030 0193     		str	r3, [sp, #4]
+  78 0032 0223     		movs	r3, #2
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 3
+
+
+  79 0034 0093     		str	r3, [sp]
+  80 0036 0023     		movs	r3, #0
+  81 0038 3222     		movs	r2, #50
+  82 003a 0F49     		ldr	r1, .L2+16
+  83 003c 0F48     		ldr	r0, .L2+20
+  84 003e FFF7FEFF 		bl	xTaskCreate
+  29:WaterCondition.c ****     
+  30:WaterCondition.c ****     //Create queue for controller task to send Waterpump task a message wether it should run or not
+  31:WaterCondition.c ****     WaterPumpQueue = xQueueCreate(1 , sizeof(_Bool));
+  85              		.loc 1 31 0
+  86 0042 0022     		movs	r2, #0
+  87 0044 0121     		movs	r1, #1
+  88 0046 0120     		movs	r0, #1
+  89 0048 FFF7FEFF 		bl	xQueueGenericCreate
+  90 004c 0246     		mov	r2, r0
+  91 004e 0C4B     		ldr	r3, .L2+24
+  92 0050 1A60     		str	r2, [r3]
+  32:WaterCondition.c ****     
+  33:WaterCondition.c ****     //Create semphore to lock controller task until FlowWater have made a measurement
+  34:WaterCondition.c ****     waterSemph = xSemaphoreCreateBinary();
+  93              		.loc 1 34 0
+  94 0052 0322     		movs	r2, #3
+  95 0054 0021     		movs	r1, #0
+  96 0056 0120     		movs	r0, #1
+  97 0058 FFF7FEFF 		bl	xQueueGenericCreate
+  98 005c 0246     		mov	r2, r0
+  99 005e 094B     		ldr	r3, .L2+28
+ 100 0060 1A60     		str	r2, [r3]
+  35:WaterCondition.c **** }
+ 101              		.loc 1 35 0
+ 102 0062 00BF     		nop
+ 103 0064 BD46     		mov	sp, r7
+ 104              		.cfi_def_cfa_register 13
+ 105              		@ sp needed
+ 106 0066 80BD     		pop	{r7, pc}
+ 107              	.L3:
+ 108              		.align	2
+ 109              	.L2:
+ 110 0068 00000000 		.word	.LC0
+ 111 006c 00000000 		.word	vTaskFlowWater
+ 112 0070 0C000000 		.word	.LC1
+ 113 0074 00000000 		.word	vTaskWaterPump
+ 114 0078 18000000 		.word	.LC2
+ 115 007c 00000000 		.word	vTaskWaterConditionController
+ 116 0080 00000000 		.word	WaterPumpQueue
+ 117 0084 00000000 		.word	waterSemph
+ 118              		.cfi_endproc
+ 119              	.LFE68:
+ 120              		.size	vInitWaterCondition, .-vInitWaterCondition
+ 121              		.section	.text.vTaskFlowWater,"ax",%progbits
+ 122              		.align	2
+ 123              		.global	vTaskFlowWater
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.type	vTaskFlowWater, %function
+ 127              	vTaskFlowWater:
+ 128              	.LFB69:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 4
+
+
+  36:WaterCondition.c **** 
+  37:WaterCondition.c **** 
+  38:WaterCondition.c **** void vTaskFlowWater(){
+ 129              		.loc 1 38 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 16
+ 132              		@ frame_needed = 1, uses_anonymous_args = 0
+ 133 0000 80B5     		push	{r7, lr}
+ 134              		.cfi_def_cfa_offset 8
+ 135              		.cfi_offset 7, -8
+ 136              		.cfi_offset 14, -4
+ 137 0002 84B0     		sub	sp, sp, #16
+ 138              		.cfi_def_cfa_offset 24
+ 139 0004 00AF     		add	r7, sp, #0
+ 140              		.cfi_def_cfa_register 7
+  39:WaterCondition.c ****     const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the amount of measure ments per seco
+ 141              		.loc 1 39 0
+ 142 0006 4FF4FA63 		mov	r3, #2000
+ 143 000a BB60     		str	r3, [r7, #8]
+  40:WaterCondition.c ****     uint8 flowWaterResult;
+  41:WaterCondition.c ****     _Bool state = 0; //state for detecting 
+ 144              		.loc 1 41 0
+ 145 000c 0023     		movs	r3, #0
+ 146 000e FB73     		strb	r3, [r7, #15]
+ 147              	.L9:
+  42:WaterCondition.c ****     for(;;){
+  43:WaterCondition.c ****         if(state == 0 ){
+ 148              		.loc 1 43 0
+ 149 0010 FB7B     		ldrb	r3, [r7, #15]
+ 150 0012 83F00103 		eor	r3, r3, #1
+ 151 0016 DBB2     		uxtb	r3, r3
+ 152 0018 002B     		cmp	r3, #0
+ 153 001a 04D0     		beq	.L5
+  44:WaterCondition.c ****             ADC_Flow_StartConvert(); //Start ACD convertion
+ 154              		.loc 1 44 0
+ 155 001c FFF7FEFF 		bl	ADC_Flow_StartConvert
+  45:WaterCondition.c ****             state = 1;
+ 156              		.loc 1 45 0
+ 157 0020 0123     		movs	r3, #1
+ 158 0022 FB73     		strb	r3, [r7, #15]
+ 159 0024 F4E7     		b	.L9
+ 160              	.L5:
+  46:WaterCondition.c ****         }
+  47:WaterCondition.c ****         else if(ADC_Flow_IsEndConversion(ADC_Flow_RETURN_STATUS) && state == 1){ //Test if ADC conv
+ 161              		.loc 1 47 0
+ 162 0026 0120     		movs	r0, #1
+ 163 0028 FFF7FEFF 		bl	ADC_Flow_IsEndConversion
+ 164 002c 0346     		mov	r3, r0
+ 165 002e 002B     		cmp	r3, #0
+ 166 0030 EED0     		beq	.L9
+ 167              		.loc 1 47 0 is_stmt 0 discriminator 1
+ 168 0032 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 169 0034 002B     		cmp	r3, #0
+ 170 0036 EBD0     		beq	.L9
+  48:WaterCondition.c ****             flowWaterResult = ADC_Flow_GetResult8(); //Get ADC result
+ 171              		.loc 1 48 0 is_stmt 1
+ 172 0038 FFF7FEFF 		bl	ADC_Flow_GetResult8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 5
+
+
+ 173 003c 0346     		mov	r3, r0
+ 174 003e FB71     		strb	r3, [r7, #7]
+  49:WaterCondition.c ****             //SW_UART_TEST_USB_PutHexByte(flowWaterResult); //test to see what sensor show should b
+  50:WaterCondition.c ****             if(flowWaterResult < 50){ //If sensor gives a value under 50 = no water in pipes
+ 175              		.loc 1 50 0
+ 176 0040 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 177 0042 312B     		cmp	r3, #49
+ 178 0044 03D8     		bhi	.L7
+  51:WaterCondition.c ****                 WaterState = 0; //Set state 0 as th ere is no water in pipes
+ 179              		.loc 1 51 0
+ 180 0046 0A4B     		ldr	r3, .L10
+ 181 0048 0022     		movs	r2, #0
+ 182 004a 1A70     		strb	r2, [r3]
+ 183 004c 02E0     		b	.L8
+ 184              	.L7:
+  52:WaterCondition.c ****             }
+  53:WaterCondition.c ****             else{
+  54:WaterCondition.c ****                 WaterState = 1; //set state 1 as there is water in pipes
+ 185              		.loc 1 54 0
+ 186 004e 084B     		ldr	r3, .L10
+ 187 0050 0122     		movs	r2, #1
+ 188 0052 1A70     		strb	r2, [r3]
+ 189              	.L8:
+  55:WaterCondition.c ****             }
+  56:WaterCondition.c ****             state = 0; //reset intern state so task is ready to make new measurement
+ 190              		.loc 1 56 0
+ 191 0054 0023     		movs	r3, #0
+ 192 0056 FB73     		strb	r3, [r7, #15]
+  57:WaterCondition.c ****             xSemaphoreGive(waterSemph); //gives semaphore as WaterState has updated and controll ta
+ 193              		.loc 1 57 0
+ 194 0058 064B     		ldr	r3, .L10+4
+ 195 005a 1868     		ldr	r0, [r3]
+ 196 005c 0023     		movs	r3, #0
+ 197 005e 0022     		movs	r2, #0
+ 198 0060 0021     		movs	r1, #0
+ 199 0062 FFF7FEFF 		bl	xQueueGenericSend
+  58:WaterCondition.c ****             vTaskDelay(xDelayms);
+ 200              		.loc 1 58 0
+ 201 0066 B868     		ldr	r0, [r7, #8]
+ 202 0068 FFF7FEFF 		bl	vTaskDelay
+  59:WaterCondition.c ****         }
+  60:WaterCondition.c ****     }
+ 203              		.loc 1 60 0
+ 204 006c D0E7     		b	.L9
+ 205              	.L11:
+ 206 006e 00BF     		.align	2
+ 207              	.L10:
+ 208 0070 00000000 		.word	WaterState
+ 209 0074 00000000 		.word	waterSemph
+ 210              		.cfi_endproc
+ 211              	.LFE69:
+ 212              		.size	vTaskFlowWater, .-vTaskFlowWater
+ 213              		.section	.text.vTaskWaterPump,"ax",%progbits
+ 214              		.align	2
+ 215              		.global	vTaskWaterPump
+ 216              		.thumb
+ 217              		.thumb_func
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 6
+
+
+ 218              		.type	vTaskWaterPump, %function
+ 219              	vTaskWaterPump:
+ 220              	.LFB70:
+  61:WaterCondition.c **** }
+  62:WaterCondition.c **** 
+  63:WaterCondition.c **** void vTaskWaterPump(){
+ 221              		.loc 1 63 0
+ 222              		.cfi_startproc
+ 223              		@ args = 0, pretend = 0, frame = 8
+ 224              		@ frame_needed = 1, uses_anonymous_args = 0
+ 225 0000 80B5     		push	{r7, lr}
+ 226              		.cfi_def_cfa_offset 8
+ 227              		.cfi_offset 7, -8
+ 228              		.cfi_offset 14, -4
+ 229 0002 82B0     		sub	sp, sp, #8
+ 230              		.cfi_def_cfa_offset 16
+ 231 0004 00AF     		add	r7, sp, #0
+ 232              		.cfi_def_cfa_register 7
+  64:WaterCondition.c ****     _Bool bPumpState = 1;
+ 233              		.loc 1 64 0
+ 234 0006 0123     		movs	r3, #1
+ 235 0008 FB71     		strb	r3, [r7, #7]
+ 236              	.L15:
+  65:WaterCondition.c ****     for(;;){
+  66:WaterCondition.c ****         xQueueReceive( WaterPumpQueue , &bPumpState , portMAX_DELAY); //sends task to blocked state
+ 237              		.loc 1 66 0
+ 238 000a 0C4B     		ldr	r3, .L16
+ 239 000c 1B68     		ldr	r3, [r3]
+ 240 000e F91D     		adds	r1, r7, #7
+ 241 0010 4FF0FF32 		mov	r2, #-1
+ 242 0014 1846     		mov	r0, r3
+ 243 0016 FFF7FEFF 		bl	xQueueReceive
+  67:WaterCondition.c ****         if(bPumpState == 1){
+ 244              		.loc 1 67 0
+ 245 001a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 246 001c 002B     		cmp	r3, #0
+ 247 001e 03D0     		beq	.L13
+  68:WaterCondition.c ****             Pin_WaterPump_Write(1); //sets output pin for waterpump to high
+ 248              		.loc 1 68 0
+ 249 0020 0120     		movs	r0, #1
+ 250 0022 FFF7FEFF 		bl	Pin_WaterPump_Write
+ 251 0026 F0E7     		b	.L15
+ 252              	.L13:
+  69:WaterCondition.c ****         }
+  70:WaterCondition.c ****         else if(bPumpState == 0){
+ 253              		.loc 1 70 0
+ 254 0028 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 255 002a 83F00103 		eor	r3, r3, #1
+ 256 002e DBB2     		uxtb	r3, r3
+ 257 0030 002B     		cmp	r3, #0
+ 258 0032 EAD0     		beq	.L15
+  71:WaterCondition.c ****             Pin_WaterPump_Write(0); //sets output pin for waterpump to low
+ 259              		.loc 1 71 0
+ 260 0034 0020     		movs	r0, #0
+ 261 0036 FFF7FEFF 		bl	Pin_WaterPump_Write
+  72:WaterCondition.c ****         }
+  73:WaterCondition.c ****     }
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 7
+
+
+ 262              		.loc 1 73 0
+ 263 003a E6E7     		b	.L15
+ 264              	.L17:
+ 265              		.align	2
+ 266              	.L16:
+ 267 003c 00000000 		.word	WaterPumpQueue
+ 268              		.cfi_endproc
+ 269              	.LFE70:
+ 270              		.size	vTaskWaterPump, .-vTaskWaterPump
+ 271              		.section	.rodata
+ 272 0033 00       		.align	2
+ 273              	.LC3:
+ 274 0034 43207461 		.ascii	"C task\000"
+ 274      736B00
+ 275              		.section	.text.vTaskWaterConditionController,"ax",%progbits
+ 276              		.align	2
+ 277              		.global	vTaskWaterConditionController
+ 278              		.thumb
+ 279              		.thumb_func
+ 280              		.type	vTaskWaterConditionController, %function
+ 281              	vTaskWaterConditionController:
+ 282              	.LFB71:
+  74:WaterCondition.c **** }
+  75:WaterCondition.c **** 
+  76:WaterCondition.c **** void vTaskWaterConditionController(){
+ 283              		.loc 1 76 0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 8
+ 286              		@ frame_needed = 1, uses_anonymous_args = 0
+ 287 0000 80B5     		push	{r7, lr}
+ 288              		.cfi_def_cfa_offset 8
+ 289              		.cfi_offset 7, -8
+ 290              		.cfi_offset 14, -4
+ 291 0002 82B0     		sub	sp, sp, #8
+ 292              		.cfi_def_cfa_offset 16
+ 293 0004 00AF     		add	r7, sp, #0
+ 294              		.cfi_def_cfa_register 7
+ 295              	.L21:
+  77:WaterCondition.c ****     for(;;){
+  78:WaterCondition.c ****         
+  79:WaterCondition.c ****         xSemaphoreTake(waterSemph , portMAX_DELAY);
+ 296              		.loc 1 79 0
+ 297 0006 124B     		ldr	r3, .L22
+ 298 0008 1B68     		ldr	r3, [r3]
+ 299 000a 4FF0FF31 		mov	r1, #-1
+ 300 000e 1846     		mov	r0, r3
+ 301 0010 FFF7FEFF 		bl	xQueueSemaphoreTake
+  80:WaterCondition.c ****         SW_UART_TEST_USB_PutString("C task");
+ 302              		.loc 1 80 0
+ 303 0014 0F48     		ldr	r0, .L22+4
+ 304 0016 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+  81:WaterCondition.c ****         
+  82:WaterCondition.c ****         if(WaterState == 1){
+ 305              		.loc 1 82 0
+ 306 001a 0F4B     		ldr	r3, .L22+8
+ 307 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 308 001e 002B     		cmp	r3, #0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 8
+
+
+ 309 0020 0AD0     		beq	.L19
+ 310              	.LBB2:
+  83:WaterCondition.c ****             //generate package to datalager
+  84:WaterCondition.c ****             //do nothing everything is fine
+  85:WaterCondition.c ****             _Bool bNewPumpState = 1;
+ 311              		.loc 1 85 0
+ 312 0022 0123     		movs	r3, #1
+ 313 0024 FB71     		strb	r3, [r7, #7]
+  86:WaterCondition.c ****             xQueueSend(WaterPumpQueue, &bNewPumpState , portMAX_DELAY);
+ 314              		.loc 1 86 0
+ 315 0026 0D4B     		ldr	r3, .L22+12
+ 316 0028 1868     		ldr	r0, [r3]
+ 317 002a F91D     		adds	r1, r7, #7
+ 318 002c 0023     		movs	r3, #0
+ 319 002e 4FF0FF32 		mov	r2, #-1
+ 320 0032 FFF7FEFF 		bl	xQueueGenericSend
+ 321              	.LBE2:
+ 322 0036 E6E7     		b	.L21
+ 323              	.L19:
+ 324              	.LBB3:
+  87:WaterCondition.c ****         }
+  88:WaterCondition.c ****         else{
+  89:WaterCondition.c ****             //Something wrong no water in pipes
+  90:WaterCondition.c ****             _Bool bNewPumpState = 0;
+ 325              		.loc 1 90 0 discriminator 2
+ 326 0038 0023     		movs	r3, #0
+ 327 003a BB71     		strb	r3, [r7, #6]
+  91:WaterCondition.c ****             xQueueSend(WaterPumpQueue, &bNewPumpState , portMAX_DELAY);
+ 328              		.loc 1 91 0 discriminator 2
+ 329 003c 074B     		ldr	r3, .L22+12
+ 330 003e 1868     		ldr	r0, [r3]
+ 331 0040 B91D     		adds	r1, r7, #6
+ 332 0042 0023     		movs	r3, #0
+ 333 0044 4FF0FF32 		mov	r2, #-1
+ 334 0048 FFF7FEFF 		bl	xQueueGenericSend
+ 335              	.LBE3:
+  92:WaterCondition.c ****             //make alarm to alarm handler task
+  93:WaterCondition.c ****         }
+  94:WaterCondition.c ****     }
+ 336              		.loc 1 94 0 discriminator 2
+ 337 004c DBE7     		b	.L21
+ 338              	.L23:
+ 339 004e 00BF     		.align	2
+ 340              	.L22:
+ 341 0050 00000000 		.word	waterSemph
+ 342 0054 34000000 		.word	.LC3
+ 343 0058 00000000 		.word	WaterState
+ 344 005c 00000000 		.word	WaterPumpQueue
+ 345              		.cfi_endproc
+ 346              	.LFE71:
+ 347              		.size	vTaskWaterConditionController, .-vTaskWaterConditionController
+ 348              		.text
+ 349              	.Letext0:
+ 350              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 351              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 352              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 353              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 9
+
+
+ 354              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 355              		.file 7 ".\\Source\\include/queue.h"
+ 356              		.file 8 ".\\Source\\include/semphr.h"
+ 357              		.file 9 "Generated_Source\\PSoC5/core_cm3.h"
+ 358              		.section	.debug_info,"",%progbits
+ 359              	.Ldebug_info0:
+ 360 0000 92020000 		.4byte	0x292
+ 361 0004 0400     		.2byte	0x4
+ 362 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 363 000a 04       		.byte	0x4
+ 364 000b 01       		.uleb128 0x1
+ 365 000c 12000000 		.4byte	.LASF44
+ 366 0010 0C       		.byte	0xc
+ 367 0011 DF020000 		.4byte	.LASF45
+ 368 0015 FE010000 		.4byte	.LASF46
+ 369 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 370 001d 00000000 		.4byte	0
+ 371 0021 00000000 		.4byte	.Ldebug_line0
+ 372 0025 02       		.uleb128 0x2
+ 373 0026 04       		.byte	0x4
+ 374 0027 05       		.byte	0x5
+ 375 0028 696E7400 		.ascii	"int\000"
+ 376 002c 03       		.uleb128 0x3
+ 377 002d 04       		.byte	0x4
+ 378 002e 07       		.byte	0x7
+ 379 002f 62020000 		.4byte	.LASF0
+ 380 0033 03       		.uleb128 0x3
+ 381 0034 08       		.byte	0x8
+ 382 0035 05       		.byte	0x5
+ 383 0036 AB020000 		.4byte	.LASF1
+ 384 003a 03       		.uleb128 0x3
+ 385 003b 08       		.byte	0x8
+ 386 003c 04       		.byte	0x4
+ 387 003d 12030000 		.4byte	.LASF2
+ 388 0041 03       		.uleb128 0x3
+ 389 0042 01       		.byte	0x1
+ 390 0043 06       		.byte	0x6
+ 391 0044 8E020000 		.4byte	.LASF3
+ 392 0048 04       		.uleb128 0x4
+ 393 0049 00000000 		.4byte	.LASF7
+ 394 004d 02       		.byte	0x2
+ 395 004e 1D       		.byte	0x1d
+ 396 004f 53000000 		.4byte	0x53
+ 397 0053 03       		.uleb128 0x3
+ 398 0054 01       		.byte	0x1
+ 399 0055 08       		.byte	0x8
+ 400 0056 B1010000 		.4byte	.LASF4
+ 401 005a 03       		.uleb128 0x3
+ 402 005b 02       		.byte	0x2
+ 403 005c 05       		.byte	0x5
+ 404 005d BE020000 		.4byte	.LASF5
+ 405 0061 03       		.uleb128 0x3
+ 406 0062 02       		.byte	0x2
+ 407 0063 07       		.byte	0x7
+ 408 0064 86010000 		.4byte	.LASF6
+ 409 0068 04       		.uleb128 0x4
+ 410 0069 CC000000 		.4byte	.LASF8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 10
+
+
+ 411 006d 02       		.byte	0x2
+ 412 006e 3F       		.byte	0x3f
+ 413 006f 73000000 		.4byte	0x73
+ 414 0073 03       		.uleb128 0x3
+ 415 0074 04       		.byte	0x4
+ 416 0075 05       		.byte	0x5
+ 417 0076 F9020000 		.4byte	.LASF9
+ 418 007a 04       		.uleb128 0x4
+ 419 007b DC010000 		.4byte	.LASF10
+ 420 007f 02       		.byte	0x2
+ 421 0080 41       		.byte	0x41
+ 422 0081 85000000 		.4byte	0x85
+ 423 0085 03       		.uleb128 0x3
+ 424 0086 04       		.byte	0x4
+ 425 0087 07       		.byte	0x7
+ 426 0088 60010000 		.4byte	.LASF11
+ 427 008c 03       		.uleb128 0x3
+ 428 008d 08       		.byte	0x8
+ 429 008e 07       		.byte	0x7
+ 430 008f 6F020000 		.4byte	.LASF12
+ 431 0093 04       		.uleb128 0x4
+ 432 0094 86020000 		.4byte	.LASF13
+ 433 0098 03       		.byte	0x3
+ 434 0099 18       		.byte	0x18
+ 435 009a 48000000 		.4byte	0x48
+ 436 009e 04       		.uleb128 0x4
+ 437 009f 9A020000 		.4byte	.LASF14
+ 438 00a3 03       		.byte	0x3
+ 439 00a4 2C       		.byte	0x2c
+ 440 00a5 68000000 		.4byte	0x68
+ 441 00a9 04       		.uleb128 0x4
+ 442 00aa F0020000 		.4byte	.LASF15
+ 443 00ae 03       		.byte	0x3
+ 444 00af 30       		.byte	0x30
+ 445 00b0 7A000000 		.4byte	0x7a
+ 446 00b4 05       		.uleb128 0x5
+ 447 00b5 D9020000 		.4byte	.LASF16
+ 448 00b9 04       		.byte	0x4
+ 449 00ba E401     		.2byte	0x1e4
+ 450 00bc 53000000 		.4byte	0x53
+ 451 00c0 05       		.uleb128 0x5
+ 452 00c1 E7010000 		.4byte	.LASF17
+ 453 00c5 04       		.byte	0x4
+ 454 00c6 E501     		.2byte	0x1e5
+ 455 00c8 61000000 		.4byte	0x61
+ 456 00cc 03       		.uleb128 0x3
+ 457 00cd 04       		.byte	0x4
+ 458 00ce 04       		.byte	0x4
+ 459 00cf 27010000 		.4byte	.LASF18
+ 460 00d3 03       		.uleb128 0x3
+ 461 00d4 08       		.byte	0x8
+ 462 00d5 04       		.byte	0x4
+ 463 00d6 11010000 		.4byte	.LASF19
+ 464 00da 03       		.uleb128 0x3
+ 465 00db 01       		.byte	0x1
+ 466 00dc 08       		.byte	0x8
+ 467 00dd B9020000 		.4byte	.LASF20
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 11
+
+
+ 468 00e1 06       		.uleb128 0x6
+ 469 00e2 B4000000 		.4byte	0xb4
+ 470 00e6 03       		.uleb128 0x3
+ 471 00e7 04       		.byte	0x4
+ 472 00e8 07       		.byte	0x7
+ 473 00e9 A2020000 		.4byte	.LASF21
+ 474 00ed 07       		.uleb128 0x7
+ 475 00ee 18010000 		.4byte	.LASF47
+ 476 00f2 04       		.byte	0x4
+ 477 00f3 05       		.byte	0x5
+ 478 00f4 30       		.byte	0x30
+ 479 00f5 12010000 		.4byte	0x112
+ 480 00f9 08       		.uleb128 0x8
+ 481 00fa C0000000 		.4byte	.LASF22
+ 482 00fe 05       		.byte	0x5
+ 483 00ff 31       		.byte	0x31
+ 484 0100 C0000000 		.4byte	0xc0
+ 485 0104 00       		.byte	0
+ 486 0105 08       		.uleb128 0x8
+ 487 0106 0A000000 		.4byte	.LASF23
+ 488 010a 05       		.byte	0x5
+ 489 010b 32       		.byte	0x32
+ 490 010c B4000000 		.4byte	0xb4
+ 491 0110 02       		.byte	0x2
+ 492 0111 00       		.byte	0
+ 493 0112 04       		.uleb128 0x4
+ 494 0113 3C030000 		.4byte	.LASF24
+ 495 0117 06       		.byte	0x6
+ 496 0118 38       		.byte	0x38
+ 497 0119 73000000 		.4byte	0x73
+ 498 011d 04       		.uleb128 0x4
+ 499 011e 3B010000 		.4byte	.LASF25
+ 500 0122 06       		.byte	0x6
+ 501 0123 39       		.byte	0x39
+ 502 0124 85000000 		.4byte	0x85
+ 503 0128 04       		.uleb128 0x4
+ 504 0129 B5000000 		.4byte	.LASF26
+ 505 012d 06       		.byte	0x6
+ 506 012e 3F       		.byte	0x3f
+ 507 012f A9000000 		.4byte	0xa9
+ 508 0133 04       		.uleb128 0x4
+ 509 0134 F4000000 		.4byte	.LASF27
+ 510 0138 07       		.byte	0x7
+ 511 0139 30       		.byte	0x30
+ 512 013a 3E010000 		.4byte	0x13e
+ 513 013e 09       		.uleb128 0x9
+ 514 013f 04       		.byte	0x4
+ 515 0140 44010000 		.4byte	0x144
+ 516 0144 0A       		.uleb128 0xa
+ 517 0145 EE010000 		.4byte	.LASF48
+ 518 0149 04       		.uleb128 0x4
+ 519 014a CA010000 		.4byte	.LASF28
+ 520 014e 08       		.byte	0x8
+ 521 014f 25       		.byte	0x25
+ 522 0150 33010000 		.4byte	0x133
+ 523 0154 0B       		.uleb128 0xb
+ 524 0155 72010000 		.4byte	.LASF49
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 12
+
+
+ 525 0159 01       		.byte	0x1
+ 526 015a 18       		.byte	0x18
+ 527 015b 00000000 		.4byte	.LFB68
+ 528 015f 88000000 		.4byte	.LFE68-.LFB68
+ 529 0163 01       		.uleb128 0x1
+ 530 0164 9C       		.byte	0x9c
+ 531 0165 0C       		.uleb128 0xc
+ 532 0166 02010000 		.4byte	.LASF33
+ 533 016a 01       		.byte	0x1
+ 534 016b 26       		.byte	0x26
+ 535 016c 00000000 		.4byte	.LFB69
+ 536 0170 78000000 		.4byte	.LFE69-.LFB69
+ 537 0174 01       		.uleb128 0x1
+ 538 0175 9C       		.byte	0x9c
+ 539 0176 A5010000 		.4byte	0x1a5
+ 540 017a 0D       		.uleb128 0xd
+ 541 017b 33030000 		.4byte	.LASF29
+ 542 017f 01       		.byte	0x1
+ 543 0180 27       		.byte	0x27
+ 544 0181 A5010000 		.4byte	0x1a5
+ 545 0185 02       		.uleb128 0x2
+ 546 0186 91       		.byte	0x91
+ 547 0187 70       		.sleb128 -16
+ 548 0188 0D       		.uleb128 0xd
+ 549 0189 02030000 		.4byte	.LASF30
+ 550 018d 01       		.byte	0x1
+ 551 018e 28       		.byte	0x28
+ 552 018f B4000000 		.4byte	0xb4
+ 553 0193 02       		.uleb128 0x2
+ 554 0194 91       		.byte	0x91
+ 555 0195 6F       		.sleb128 -17
+ 556 0196 0D       		.uleb128 0xd
+ 557 0197 AF000000 		.4byte	.LASF31
+ 558 019b 01       		.byte	0x1
+ 559 019c 29       		.byte	0x29
+ 560 019d AA010000 		.4byte	0x1aa
+ 561 01a1 02       		.uleb128 0x2
+ 562 01a2 91       		.byte	0x91
+ 563 01a3 77       		.sleb128 -9
+ 564 01a4 00       		.byte	0
+ 565 01a5 0E       		.uleb128 0xe
+ 566 01a6 28010000 		.4byte	0x128
+ 567 01aa 03       		.uleb128 0x3
+ 568 01ab 01       		.byte	0x1
+ 569 01ac 02       		.byte	0x2
+ 570 01ad 2D030000 		.4byte	.LASF32
+ 571 01b1 0C       		.uleb128 0xc
+ 572 01b2 A0000000 		.4byte	.LASF34
+ 573 01b6 01       		.byte	0x1
+ 574 01b7 3F       		.byte	0x3f
+ 575 01b8 00000000 		.4byte	.LFB70
+ 576 01bc 40000000 		.4byte	.LFE70-.LFB70
+ 577 01c0 01       		.uleb128 0x1
+ 578 01c1 9C       		.byte	0x9c
+ 579 01c2 D5010000 		.4byte	0x1d5
+ 580 01c6 0D       		.uleb128 0xd
+ 581 01c7 BF010000 		.4byte	.LASF35
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 13
+
+
+ 582 01cb 01       		.byte	0x1
+ 583 01cc 40       		.byte	0x40
+ 584 01cd AA010000 		.4byte	0x1aa
+ 585 01d1 02       		.uleb128 0x2
+ 586 01d2 91       		.byte	0x91
+ 587 01d3 77       		.sleb128 -9
+ 588 01d4 00       		.byte	0
+ 589 01d5 0C       		.uleb128 0xc
+ 590 01d6 D6000000 		.4byte	.LASF36
+ 591 01da 01       		.byte	0x1
+ 592 01db 4C       		.byte	0x4c
+ 593 01dc 00000000 		.4byte	.LFB71
+ 594 01e0 60000000 		.4byte	.LFE71-.LFB71
+ 595 01e4 01       		.uleb128 0x1
+ 596 01e5 9C       		.byte	0x9c
+ 597 01e6 1F020000 		.4byte	0x21f
+ 598 01ea 0F       		.uleb128 0xf
+ 599 01eb 22000000 		.4byte	.LBB2
+ 600 01ef 14000000 		.4byte	.LBE2-.LBB2
+ 601 01f3 06020000 		.4byte	0x206
+ 602 01f7 0D       		.uleb128 0xd
+ 603 01f8 47010000 		.4byte	.LASF37
+ 604 01fc 01       		.byte	0x1
+ 605 01fd 55       		.byte	0x55
+ 606 01fe AA010000 		.4byte	0x1aa
+ 607 0202 02       		.uleb128 0x2
+ 608 0203 91       		.byte	0x91
+ 609 0204 77       		.sleb128 -9
+ 610 0205 00       		.byte	0
+ 611 0206 10       		.uleb128 0x10
+ 612 0207 38000000 		.4byte	.LBB3
+ 613 020b 14000000 		.4byte	.LBE3-.LBB3
+ 614 020f 0D       		.uleb128 0xd
+ 615 0210 47010000 		.4byte	.LASF37
+ 616 0214 01       		.byte	0x1
+ 617 0215 5A       		.byte	0x5a
+ 618 0216 AA010000 		.4byte	0x1aa
+ 619 021a 02       		.uleb128 0x2
+ 620 021b 91       		.byte	0x91
+ 621 021c 76       		.sleb128 -10
+ 622 021d 00       		.byte	0
+ 623 021e 00       		.byte	0
+ 624 021f 11       		.uleb128 0x11
+ 625 0220 ED000000 		.4byte	0xed
+ 626 0224 2F020000 		.4byte	0x22f
+ 627 0228 12       		.uleb128 0x12
+ 628 0229 E6000000 		.4byte	0xe6
+ 629 022d 07       		.byte	0x7
+ 630 022e 00       		.byte	0
+ 631 022f 13       		.uleb128 0x13
+ 632 0230 2D010000 		.4byte	.LASF38
+ 633 0234 05       		.byte	0x5
+ 634 0235 34       		.byte	0x34
+ 635 0236 1F020000 		.4byte	0x21f
+ 636 023a 05       		.uleb128 0x5
+ 637 023b 03       		.byte	0x3
+ 638 023c 00000000 		.4byte	DS18x8_Sensor
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 14
+
+
+ 639 0240 13       		.uleb128 0x13
+ 640 0241 C8020000 		.4byte	.LASF39
+ 641 0245 05       		.byte	0x5
+ 642 0246 39       		.byte	0x39
+ 643 0247 E1000000 		.4byte	0xe1
+ 644 024b 05       		.uleb128 0x5
+ 645 024c 03       		.byte	0x3
+ 646 024d 00000000 		.4byte	DS18x8_DataReady
+ 647 0251 14       		.uleb128 0x14
+ 648 0252 99010000 		.4byte	.LASF40
+ 649 0256 09       		.byte	0x9
+ 650 0257 1207     		.2byte	0x712
+ 651 0259 5D020000 		.4byte	0x25d
+ 652 025d 06       		.uleb128 0x6
+ 653 025e 9E000000 		.4byte	0x9e
+ 654 0262 13       		.uleb128 0x13
+ 655 0263 55010000 		.4byte	.LASF41
+ 656 0267 01       		.byte	0x1
+ 657 0268 12       		.byte	0x12
+ 658 0269 49010000 		.4byte	0x149
+ 659 026d 05       		.uleb128 0x5
+ 660 026e 03       		.byte	0x3
+ 661 026f 00000000 		.4byte	waterSemph
+ 662 0273 13       		.uleb128 0x13
+ 663 0274 1E030000 		.4byte	.LASF42
+ 664 0278 01       		.byte	0x1
+ 665 0279 14       		.byte	0x14
+ 666 027a 33010000 		.4byte	0x133
+ 667 027e 05       		.uleb128 0x5
+ 668 027f 03       		.byte	0x3
+ 669 0280 00000000 		.4byte	WaterPumpQueue
+ 670 0284 13       		.uleb128 0x13
+ 671 0285 A6010000 		.4byte	.LASF43
+ 672 0289 01       		.byte	0x1
+ 673 028a 16       		.byte	0x16
+ 674 028b AA010000 		.4byte	0x1aa
+ 675 028f 05       		.uleb128 0x5
+ 676 0290 03       		.byte	0x3
+ 677 0291 00000000 		.4byte	WaterState
+ 678 0295 00       		.byte	0
+ 679              		.section	.debug_abbrev,"",%progbits
+ 680              	.Ldebug_abbrev0:
+ 681 0000 01       		.uleb128 0x1
+ 682 0001 11       		.uleb128 0x11
+ 683 0002 01       		.byte	0x1
+ 684 0003 25       		.uleb128 0x25
+ 685 0004 0E       		.uleb128 0xe
+ 686 0005 13       		.uleb128 0x13
+ 687 0006 0B       		.uleb128 0xb
+ 688 0007 03       		.uleb128 0x3
+ 689 0008 0E       		.uleb128 0xe
+ 690 0009 1B       		.uleb128 0x1b
+ 691 000a 0E       		.uleb128 0xe
+ 692 000b 55       		.uleb128 0x55
+ 693 000c 17       		.uleb128 0x17
+ 694 000d 11       		.uleb128 0x11
+ 695 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 15
+
+
+ 696 000f 10       		.uleb128 0x10
+ 697 0010 17       		.uleb128 0x17
+ 698 0011 00       		.byte	0
+ 699 0012 00       		.byte	0
+ 700 0013 02       		.uleb128 0x2
+ 701 0014 24       		.uleb128 0x24
+ 702 0015 00       		.byte	0
+ 703 0016 0B       		.uleb128 0xb
+ 704 0017 0B       		.uleb128 0xb
+ 705 0018 3E       		.uleb128 0x3e
+ 706 0019 0B       		.uleb128 0xb
+ 707 001a 03       		.uleb128 0x3
+ 708 001b 08       		.uleb128 0x8
+ 709 001c 00       		.byte	0
+ 710 001d 00       		.byte	0
+ 711 001e 03       		.uleb128 0x3
+ 712 001f 24       		.uleb128 0x24
+ 713 0020 00       		.byte	0
+ 714 0021 0B       		.uleb128 0xb
+ 715 0022 0B       		.uleb128 0xb
+ 716 0023 3E       		.uleb128 0x3e
+ 717 0024 0B       		.uleb128 0xb
+ 718 0025 03       		.uleb128 0x3
+ 719 0026 0E       		.uleb128 0xe
+ 720 0027 00       		.byte	0
+ 721 0028 00       		.byte	0
+ 722 0029 04       		.uleb128 0x4
+ 723 002a 16       		.uleb128 0x16
+ 724 002b 00       		.byte	0
+ 725 002c 03       		.uleb128 0x3
+ 726 002d 0E       		.uleb128 0xe
+ 727 002e 3A       		.uleb128 0x3a
+ 728 002f 0B       		.uleb128 0xb
+ 729 0030 3B       		.uleb128 0x3b
+ 730 0031 0B       		.uleb128 0xb
+ 731 0032 49       		.uleb128 0x49
+ 732 0033 13       		.uleb128 0x13
+ 733 0034 00       		.byte	0
+ 734 0035 00       		.byte	0
+ 735 0036 05       		.uleb128 0x5
+ 736 0037 16       		.uleb128 0x16
+ 737 0038 00       		.byte	0
+ 738 0039 03       		.uleb128 0x3
+ 739 003a 0E       		.uleb128 0xe
+ 740 003b 3A       		.uleb128 0x3a
+ 741 003c 0B       		.uleb128 0xb
+ 742 003d 3B       		.uleb128 0x3b
+ 743 003e 05       		.uleb128 0x5
+ 744 003f 49       		.uleb128 0x49
+ 745 0040 13       		.uleb128 0x13
+ 746 0041 00       		.byte	0
+ 747 0042 00       		.byte	0
+ 748 0043 06       		.uleb128 0x6
+ 749 0044 35       		.uleb128 0x35
+ 750 0045 00       		.byte	0
+ 751 0046 49       		.uleb128 0x49
+ 752 0047 13       		.uleb128 0x13
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 16
+
+
+ 753 0048 00       		.byte	0
+ 754 0049 00       		.byte	0
+ 755 004a 07       		.uleb128 0x7
+ 756 004b 13       		.uleb128 0x13
+ 757 004c 01       		.byte	0x1
+ 758 004d 03       		.uleb128 0x3
+ 759 004e 0E       		.uleb128 0xe
+ 760 004f 0B       		.uleb128 0xb
+ 761 0050 0B       		.uleb128 0xb
+ 762 0051 3A       		.uleb128 0x3a
+ 763 0052 0B       		.uleb128 0xb
+ 764 0053 3B       		.uleb128 0x3b
+ 765 0054 0B       		.uleb128 0xb
+ 766 0055 01       		.uleb128 0x1
+ 767 0056 13       		.uleb128 0x13
+ 768 0057 00       		.byte	0
+ 769 0058 00       		.byte	0
+ 770 0059 08       		.uleb128 0x8
+ 771 005a 0D       		.uleb128 0xd
+ 772 005b 00       		.byte	0
+ 773 005c 03       		.uleb128 0x3
+ 774 005d 0E       		.uleb128 0xe
+ 775 005e 3A       		.uleb128 0x3a
+ 776 005f 0B       		.uleb128 0xb
+ 777 0060 3B       		.uleb128 0x3b
+ 778 0061 0B       		.uleb128 0xb
+ 779 0062 49       		.uleb128 0x49
+ 780 0063 13       		.uleb128 0x13
+ 781 0064 38       		.uleb128 0x38
+ 782 0065 0B       		.uleb128 0xb
+ 783 0066 00       		.byte	0
+ 784 0067 00       		.byte	0
+ 785 0068 09       		.uleb128 0x9
+ 786 0069 0F       		.uleb128 0xf
+ 787 006a 00       		.byte	0
+ 788 006b 0B       		.uleb128 0xb
+ 789 006c 0B       		.uleb128 0xb
+ 790 006d 49       		.uleb128 0x49
+ 791 006e 13       		.uleb128 0x13
+ 792 006f 00       		.byte	0
+ 793 0070 00       		.byte	0
+ 794 0071 0A       		.uleb128 0xa
+ 795 0072 13       		.uleb128 0x13
+ 796 0073 00       		.byte	0
+ 797 0074 03       		.uleb128 0x3
+ 798 0075 0E       		.uleb128 0xe
+ 799 0076 3C       		.uleb128 0x3c
+ 800 0077 19       		.uleb128 0x19
+ 801 0078 00       		.byte	0
+ 802 0079 00       		.byte	0
+ 803 007a 0B       		.uleb128 0xb
+ 804 007b 2E       		.uleb128 0x2e
+ 805 007c 00       		.byte	0
+ 806 007d 3F       		.uleb128 0x3f
+ 807 007e 19       		.uleb128 0x19
+ 808 007f 03       		.uleb128 0x3
+ 809 0080 0E       		.uleb128 0xe
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 17
+
+
+ 810 0081 3A       		.uleb128 0x3a
+ 811 0082 0B       		.uleb128 0xb
+ 812 0083 3B       		.uleb128 0x3b
+ 813 0084 0B       		.uleb128 0xb
+ 814 0085 11       		.uleb128 0x11
+ 815 0086 01       		.uleb128 0x1
+ 816 0087 12       		.uleb128 0x12
+ 817 0088 06       		.uleb128 0x6
+ 818 0089 40       		.uleb128 0x40
+ 819 008a 18       		.uleb128 0x18
+ 820 008b 9642     		.uleb128 0x2116
+ 821 008d 19       		.uleb128 0x19
+ 822 008e 00       		.byte	0
+ 823 008f 00       		.byte	0
+ 824 0090 0C       		.uleb128 0xc
+ 825 0091 2E       		.uleb128 0x2e
+ 826 0092 01       		.byte	0x1
+ 827 0093 3F       		.uleb128 0x3f
+ 828 0094 19       		.uleb128 0x19
+ 829 0095 03       		.uleb128 0x3
+ 830 0096 0E       		.uleb128 0xe
+ 831 0097 3A       		.uleb128 0x3a
+ 832 0098 0B       		.uleb128 0xb
+ 833 0099 3B       		.uleb128 0x3b
+ 834 009a 0B       		.uleb128 0xb
+ 835 009b 11       		.uleb128 0x11
+ 836 009c 01       		.uleb128 0x1
+ 837 009d 12       		.uleb128 0x12
+ 838 009e 06       		.uleb128 0x6
+ 839 009f 40       		.uleb128 0x40
+ 840 00a0 18       		.uleb128 0x18
+ 841 00a1 9642     		.uleb128 0x2116
+ 842 00a3 19       		.uleb128 0x19
+ 843 00a4 01       		.uleb128 0x1
+ 844 00a5 13       		.uleb128 0x13
+ 845 00a6 00       		.byte	0
+ 846 00a7 00       		.byte	0
+ 847 00a8 0D       		.uleb128 0xd
+ 848 00a9 34       		.uleb128 0x34
+ 849 00aa 00       		.byte	0
+ 850 00ab 03       		.uleb128 0x3
+ 851 00ac 0E       		.uleb128 0xe
+ 852 00ad 3A       		.uleb128 0x3a
+ 853 00ae 0B       		.uleb128 0xb
+ 854 00af 3B       		.uleb128 0x3b
+ 855 00b0 0B       		.uleb128 0xb
+ 856 00b1 49       		.uleb128 0x49
+ 857 00b2 13       		.uleb128 0x13
+ 858 00b3 02       		.uleb128 0x2
+ 859 00b4 18       		.uleb128 0x18
+ 860 00b5 00       		.byte	0
+ 861 00b6 00       		.byte	0
+ 862 00b7 0E       		.uleb128 0xe
+ 863 00b8 26       		.uleb128 0x26
+ 864 00b9 00       		.byte	0
+ 865 00ba 49       		.uleb128 0x49
+ 866 00bb 13       		.uleb128 0x13
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 18
+
+
+ 867 00bc 00       		.byte	0
+ 868 00bd 00       		.byte	0
+ 869 00be 0F       		.uleb128 0xf
+ 870 00bf 0B       		.uleb128 0xb
+ 871 00c0 01       		.byte	0x1
+ 872 00c1 11       		.uleb128 0x11
+ 873 00c2 01       		.uleb128 0x1
+ 874 00c3 12       		.uleb128 0x12
+ 875 00c4 06       		.uleb128 0x6
+ 876 00c5 01       		.uleb128 0x1
+ 877 00c6 13       		.uleb128 0x13
+ 878 00c7 00       		.byte	0
+ 879 00c8 00       		.byte	0
+ 880 00c9 10       		.uleb128 0x10
+ 881 00ca 0B       		.uleb128 0xb
+ 882 00cb 01       		.byte	0x1
+ 883 00cc 11       		.uleb128 0x11
+ 884 00cd 01       		.uleb128 0x1
+ 885 00ce 12       		.uleb128 0x12
+ 886 00cf 06       		.uleb128 0x6
+ 887 00d0 00       		.byte	0
+ 888 00d1 00       		.byte	0
+ 889 00d2 11       		.uleb128 0x11
+ 890 00d3 01       		.uleb128 0x1
+ 891 00d4 01       		.byte	0x1
+ 892 00d5 49       		.uleb128 0x49
+ 893 00d6 13       		.uleb128 0x13
+ 894 00d7 01       		.uleb128 0x1
+ 895 00d8 13       		.uleb128 0x13
+ 896 00d9 00       		.byte	0
+ 897 00da 00       		.byte	0
+ 898 00db 12       		.uleb128 0x12
+ 899 00dc 21       		.uleb128 0x21
+ 900 00dd 00       		.byte	0
+ 901 00de 49       		.uleb128 0x49
+ 902 00df 13       		.uleb128 0x13
+ 903 00e0 2F       		.uleb128 0x2f
+ 904 00e1 0B       		.uleb128 0xb
+ 905 00e2 00       		.byte	0
+ 906 00e3 00       		.byte	0
+ 907 00e4 13       		.uleb128 0x13
+ 908 00e5 34       		.uleb128 0x34
+ 909 00e6 00       		.byte	0
+ 910 00e7 03       		.uleb128 0x3
+ 911 00e8 0E       		.uleb128 0xe
+ 912 00e9 3A       		.uleb128 0x3a
+ 913 00ea 0B       		.uleb128 0xb
+ 914 00eb 3B       		.uleb128 0x3b
+ 915 00ec 0B       		.uleb128 0xb
+ 916 00ed 49       		.uleb128 0x49
+ 917 00ee 13       		.uleb128 0x13
+ 918 00ef 3F       		.uleb128 0x3f
+ 919 00f0 19       		.uleb128 0x19
+ 920 00f1 02       		.uleb128 0x2
+ 921 00f2 18       		.uleb128 0x18
+ 922 00f3 00       		.byte	0
+ 923 00f4 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 19
+
+
+ 924 00f5 14       		.uleb128 0x14
+ 925 00f6 34       		.uleb128 0x34
+ 926 00f7 00       		.byte	0
+ 927 00f8 03       		.uleb128 0x3
+ 928 00f9 0E       		.uleb128 0xe
+ 929 00fa 3A       		.uleb128 0x3a
+ 930 00fb 0B       		.uleb128 0xb
+ 931 00fc 3B       		.uleb128 0x3b
+ 932 00fd 05       		.uleb128 0x5
+ 933 00fe 49       		.uleb128 0x49
+ 934 00ff 13       		.uleb128 0x13
+ 935 0100 3F       		.uleb128 0x3f
+ 936 0101 19       		.uleb128 0x19
+ 937 0102 3C       		.uleb128 0x3c
+ 938 0103 19       		.uleb128 0x19
+ 939 0104 00       		.byte	0
+ 940 0105 00       		.byte	0
+ 941 0106 00       		.byte	0
+ 942              		.section	.debug_aranges,"",%progbits
+ 943 0000 34000000 		.4byte	0x34
+ 944 0004 0200     		.2byte	0x2
+ 945 0006 00000000 		.4byte	.Ldebug_info0
+ 946 000a 04       		.byte	0x4
+ 947 000b 00       		.byte	0
+ 948 000c 0000     		.2byte	0
+ 949 000e 0000     		.2byte	0
+ 950 0010 00000000 		.4byte	.LFB68
+ 951 0014 88000000 		.4byte	.LFE68-.LFB68
+ 952 0018 00000000 		.4byte	.LFB69
+ 953 001c 78000000 		.4byte	.LFE69-.LFB69
+ 954 0020 00000000 		.4byte	.LFB70
+ 955 0024 40000000 		.4byte	.LFE70-.LFB70
+ 956 0028 00000000 		.4byte	.LFB71
+ 957 002c 60000000 		.4byte	.LFE71-.LFB71
+ 958 0030 00000000 		.4byte	0
+ 959 0034 00000000 		.4byte	0
+ 960              		.section	.debug_ranges,"",%progbits
+ 961              	.Ldebug_ranges0:
+ 962 0000 00000000 		.4byte	.LFB68
+ 963 0004 88000000 		.4byte	.LFE68
+ 964 0008 00000000 		.4byte	.LFB69
+ 965 000c 78000000 		.4byte	.LFE69
+ 966 0010 00000000 		.4byte	.LFB70
+ 967 0014 40000000 		.4byte	.LFE70
+ 968 0018 00000000 		.4byte	.LFB71
+ 969 001c 60000000 		.4byte	.LFE71
+ 970 0020 00000000 		.4byte	0
+ 971 0024 00000000 		.4byte	0
+ 972              		.section	.debug_line,"",%progbits
+ 973              	.Ldebug_line0:
+ 974 0000 30020000 		.section	.debug_str,"MS",%progbits,1
+ 974      0200B701 
+ 974      00000201 
+ 974      FB0E0D00 
+ 974      01010101 
+ 975              	.LASF7:
+ 976 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 20
+
+
+ 976      6E74385F 
+ 976      7400
+ 977              	.LASF23:
+ 978 000a 70726573 		.ascii	"present\000"
+ 978      656E7400 
+ 979              	.LASF44:
+ 980 0012 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 980      43313120 
+ 980      352E342E 
+ 980      31203230 
+ 980      31363036 
+ 981 0045 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 981      20726576 
+ 981      6973696F 
+ 981      6E203233 
+ 981      37373135 
+ 982 0078 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 982      66756E63 
+ 982      74696F6E 
+ 982      2D736563 
+ 982      74696F6E 
+ 983              	.LASF34:
+ 984 00a0 76546173 		.ascii	"vTaskWaterPump\000"
+ 984      6B576174 
+ 984      65725075 
+ 984      6D7000
+ 985              	.LASF31:
+ 986 00af 73746174 		.ascii	"state\000"
+ 986      6500
+ 987              	.LASF26:
+ 988 00b5 5469636B 		.ascii	"TickType_t\000"
+ 988      54797065 
+ 988      5F7400
+ 989              	.LASF22:
+ 990 00c0 54656D70 		.ascii	"Temperature\000"
+ 990      65726174 
+ 990      75726500 
+ 991              	.LASF8:
+ 992 00cc 5F5F696E 		.ascii	"__int32_t\000"
+ 992      7433325F 
+ 992      7400
+ 993              	.LASF36:
+ 994 00d6 76546173 		.ascii	"vTaskWaterConditionController\000"
+ 994      6B576174 
+ 994      6572436F 
+ 994      6E646974 
+ 994      696F6E43 
+ 995              	.LASF27:
+ 996 00f4 51756575 		.ascii	"QueueHandle_t\000"
+ 996      6548616E 
+ 996      646C655F 
+ 996      7400
+ 997              	.LASF33:
+ 998 0102 76546173 		.ascii	"vTaskFlowWater\000"
+ 998      6B466C6F 
+ 998      77576174 
+ 998      657200
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 21
+
+
+ 999              	.LASF19:
+ 1000 0111 646F7562 		.ascii	"double\000"
+ 1000      6C6500
+ 1001              	.LASF47:
+ 1002 0118 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1002      78385F54 
+ 1002      53656E73 
+ 1002      6F7200
+ 1003              	.LASF18:
+ 1004 0127 666C6F61 		.ascii	"float\000"
+ 1004      7400
+ 1005              	.LASF38:
+ 1006 012d 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1006      78385F53 
+ 1006      656E736F 
+ 1006      7200
+ 1007              	.LASF25:
+ 1008 013b 55426173 		.ascii	"UBaseType_t\000"
+ 1008      65547970 
+ 1008      655F7400 
+ 1009              	.LASF37:
+ 1010 0147 624E6577 		.ascii	"bNewPumpState\000"
+ 1010      50756D70 
+ 1010      53746174 
+ 1010      6500
+ 1011              	.LASF41:
+ 1012 0155 77617465 		.ascii	"waterSemph\000"
+ 1012      7253656D 
+ 1012      706800
+ 1013              	.LASF11:
+ 1014 0160 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1014      20756E73 
+ 1014      69676E65 
+ 1014      6420696E 
+ 1014      7400
+ 1015              	.LASF49:
+ 1016 0172 76496E69 		.ascii	"vInitWaterCondition\000"
+ 1016      74576174 
+ 1016      6572436F 
+ 1016      6E646974 
+ 1016      696F6E00 
+ 1017              	.LASF6:
+ 1018 0186 73686F72 		.ascii	"short unsigned int\000"
+ 1018      7420756E 
+ 1018      7369676E 
+ 1018      65642069 
+ 1018      6E7400
+ 1019              	.LASF40:
+ 1020 0199 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1020      52784275 
+ 1020      66666572 
+ 1020      00
+ 1021              	.LASF43:
+ 1022 01a6 57617465 		.ascii	"WaterState\000"
+ 1022      72537461 
+ 1022      746500
+ 1023              	.LASF4:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 22
+
+
+ 1024 01b1 756E7369 		.ascii	"unsigned char\000"
+ 1024      676E6564 
+ 1024      20636861 
+ 1024      7200
+ 1025              	.LASF35:
+ 1026 01bf 6250756D 		.ascii	"bPumpState\000"
+ 1026      70537461 
+ 1026      746500
+ 1027              	.LASF28:
+ 1028 01ca 53656D61 		.ascii	"SemaphoreHandle_t\000"
+ 1028      70686F72 
+ 1028      6548616E 
+ 1028      646C655F 
+ 1028      7400
+ 1029              	.LASF10:
+ 1030 01dc 5F5F7569 		.ascii	"__uint32_t\000"
+ 1030      6E743332 
+ 1030      5F7400
+ 1031              	.LASF17:
+ 1032 01e7 75696E74 		.ascii	"uint16\000"
+ 1032      313600
+ 1033              	.LASF48:
+ 1034 01ee 51756575 		.ascii	"QueueDefinition\000"
+ 1034      65446566 
+ 1034      696E6974 
+ 1034      696F6E00 
+ 1035              	.LASF46:
+ 1036 01fe 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 1036      73657273 
+ 1036      5C6D6167 
+ 1036      39345C44 
+ 1036      65736B74 
+ 1037 022b 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 1037      72746963 
+ 1037      616C5F66 
+ 1037      61726D5C 
+ 1037      52544F53 
+ 1038 025c 63796473 		.ascii	"cydsn\000"
+ 1038      6E00
+ 1039              	.LASF0:
+ 1040 0262 756E7369 		.ascii	"unsigned int\000"
+ 1040      676E6564 
+ 1040      20696E74 
+ 1040      00
+ 1041              	.LASF12:
+ 1042 026f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1042      206C6F6E 
+ 1042      6720756E 
+ 1042      7369676E 
+ 1042      65642069 
+ 1043              	.LASF13:
+ 1044 0286 75696E74 		.ascii	"uint8_t\000"
+ 1044      385F7400 
+ 1045              	.LASF3:
+ 1046 028e 7369676E 		.ascii	"signed char\000"
+ 1046      65642063 
+ 1046      68617200 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 23
+
+
+ 1047              	.LASF14:
+ 1048 029a 696E7433 		.ascii	"int32_t\000"
+ 1048      325F7400 
+ 1049              	.LASF21:
+ 1050 02a2 73697A65 		.ascii	"sizetype\000"
+ 1050      74797065 
+ 1050      00
+ 1051              	.LASF1:
+ 1052 02ab 6C6F6E67 		.ascii	"long long int\000"
+ 1052      206C6F6E 
+ 1052      6720696E 
+ 1052      7400
+ 1053              	.LASF20:
+ 1054 02b9 63686172 		.ascii	"char\000"
+ 1054      00
+ 1055              	.LASF5:
+ 1056 02be 73686F72 		.ascii	"short int\000"
+ 1056      7420696E 
+ 1056      7400
+ 1057              	.LASF39:
+ 1058 02c8 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1058      78385F44 
+ 1058      61746152 
+ 1058      65616479 
+ 1058      00
+ 1059              	.LASF16:
+ 1060 02d9 75696E74 		.ascii	"uint8\000"
+ 1060      3800
+ 1061              	.LASF45:
+ 1062 02df 57617465 		.ascii	"WaterCondition.c\000"
+ 1062      72436F6E 
+ 1062      64697469 
+ 1062      6F6E2E63 
+ 1062      00
+ 1063              	.LASF15:
+ 1064 02f0 75696E74 		.ascii	"uint32_t\000"
+ 1064      33325F74 
+ 1064      00
+ 1065              	.LASF9:
+ 1066 02f9 6C6F6E67 		.ascii	"long int\000"
+ 1066      20696E74 
+ 1066      00
+ 1067              	.LASF30:
+ 1068 0302 666C6F77 		.ascii	"flowWaterResult\000"
+ 1068      57617465 
+ 1068      72526573 
+ 1068      756C7400 
+ 1069              	.LASF2:
+ 1070 0312 6C6F6E67 		.ascii	"long double\000"
+ 1070      20646F75 
+ 1070      626C6500 
+ 1071              	.LASF42:
+ 1072 031e 57617465 		.ascii	"WaterPumpQueue\000"
+ 1072      7250756D 
+ 1072      70517565 
+ 1072      756500
+ 1073              	.LASF32:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cc1OfEWz.s 			page 24
+
+
+ 1074 032d 5F426F6F 		.ascii	"_Bool\000"
+ 1074      6C00
+ 1075              	.LASF29:
+ 1076 0333 7844656C 		.ascii	"xDelayms\000"
+ 1076      61796D73 
+ 1076      00
+ 1077              	.LASF24:
+ 1078 033c 42617365 		.ascii	"BaseType_t\000"
+ 1078      54797065 
+ 1078      5F7400
+ 1079              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

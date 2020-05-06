@@ -1,0 +1,2617 @@
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Data_Storage.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.comm	xQueueControllerData,4,4
+  22              		.comm	xQueueCentralrequest,4,4
+  23              		.comm	xQueueCentralData,4,4
+  24              		.comm	xQueueStorageReady,4,4
+  25              		.section	.rodata
+  26              		.align	2
+  27              	.LC0:
+  28 0000 44617461 		.ascii	"Data Storage\000"
+  28      2053746F 
+  28      72616765 
+  28      00
+  29 000d 000000   		.align	2
+  30              	.LC1:
+  31 0010 44617461 		.ascii	"Data Queueing\000"
+  31      20517565 
+  31      7565696E 
+  31      6700
+  32              		.section	.text.vInitDataStorage,"ax",%progbits
+  33              		.align	2
+  34              		.global	vInitDataStorage
+  35              		.thumb
+  36              		.thumb_func
+  37              		.type	vInitDataStorage, %function
+  38              	vInitDataStorage:
+  39              	.LFB69:
+  40              		.file 1 "Data_Storage.c"
+   1:Data_Storage.c **** /* ========================================
+   2:Data_Storage.c ****  *
+   3:Data_Storage.c ****  * Copyright YOUR COMPANY, THE YEAR
+   4:Data_Storage.c ****  * All Rights Reserved
+   5:Data_Storage.c ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Data_Storage.c ****  *
+   7:Data_Storage.c ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Data_Storage.c ****  * WHICH IS THE PROPERTY OF your company.
+   9:Data_Storage.c ****  *
+  10:Data_Storage.c ****  * ========================================
+  11:Data_Storage.c **** */
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 2
+
+
+  12:Data_Storage.c **** 
+  13:Data_Storage.c **** #include "FreeRTOS.h"
+  14:Data_Storage.c **** #include "Data_Storage.h"
+  15:Data_Storage.c **** #include "task.h"
+  16:Data_Storage.c **** #include "queue.h"
+  17:Data_Storage.c **** #include <stdio.h>
+  18:Data_Storage.c **** #include <stdlib.h>
+  19:Data_Storage.c **** 
+  20:Data_Storage.c **** struct allData{ // Struct contains all nutrients values measured, 
+  21:Data_Storage.c ****     uint16  iPHval;
+  22:Data_Storage.c ****     uint16  iECval;
+  23:Data_Storage.c ****     uint16  iWaterT;
+  24:Data_Storage.c ****     uint16  iWaterF;
+  25:Data_Storage.c ****     uint16  iC02val;
+  26:Data_Storage.c ****     uint16  iTempA;
+  27:Data_Storage.c ****     uint16  iRHval;
+  28:Data_Storage.c ****     uint16  iLightValue;
+  29:Data_Storage.c **** };
+  30:Data_Storage.c **** struct dataMessage{ // struct type for messages sent by the controller tasks
+  31:Data_Storage.c ****     char identifier;
+  32:Data_Storage.c ****     uint16 message;
+  33:Data_Storage.c **** };
+  34:Data_Storage.c **** 
+  35:Data_Storage.c **** QueueHandle_t xQueueControllerData;     // Incoming data from controller tasks
+  36:Data_Storage.c **** QueueHandle_t xQueueCentralrequest;     // Requests from central task
+  37:Data_Storage.c **** QueueHandle_t xQueueCentralData;        // Data sent to central
+  38:Data_Storage.c **** QueueHandle_t xQueueStorageReady;       // Struct containing new data from all sensors sent to Data
+  39:Data_Storage.c **** 
+  40:Data_Storage.c **** 
+  41:Data_Storage.c **** void vInitDataStorage()                 // Initializing and creating tasks for the DataStorage modu
+  42:Data_Storage.c **** {
+  41              		.loc 1 42 0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45 0000 80B5     		push	{r7, lr}
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 82B0     		sub	sp, sp, #8
+  50              		.cfi_def_cfa_offset 16
+  51 0004 02AF     		add	r7, sp, #8
+  52              		.cfi_def_cfa 7, 8
+  43:Data_Storage.c ****     xQueueControllerData = xQueueCreate(10, sizeof(struct dataMessage));
+  53              		.loc 1 43 0
+  54 0006 0022     		movs	r2, #0
+  55 0008 0421     		movs	r1, #4
+  56 000a 0A20     		movs	r0, #10
+  57 000c FFF7FEFF 		bl	xQueueGenericCreate
+  58 0010 0246     		mov	r2, r0
+  59 0012 1A4B     		ldr	r3, .L2
+  60 0014 1A60     		str	r2, [r3]
+  44:Data_Storage.c ****     xQueueCentralData = xQueueCreate(10, sizeof(struct allData));
+  61              		.loc 1 44 0
+  62 0016 0022     		movs	r2, #0
+  63 0018 1021     		movs	r1, #16
+  64 001a 0A20     		movs	r0, #10
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 3
+
+
+  65 001c FFF7FEFF 		bl	xQueueGenericCreate
+  66 0020 0246     		mov	r2, r0
+  67 0022 174B     		ldr	r3, .L2+4
+  68 0024 1A60     		str	r2, [r3]
+  45:Data_Storage.c ****     xQueueCentralrequest = xQueueCreate(1 , sizeof(uint16));
+  69              		.loc 1 45 0
+  70 0026 0022     		movs	r2, #0
+  71 0028 0221     		movs	r1, #2
+  72 002a 0120     		movs	r0, #1
+  73 002c FFF7FEFF 		bl	xQueueGenericCreate
+  74 0030 0246     		mov	r2, r0
+  75 0032 144B     		ldr	r3, .L2+8
+  76 0034 1A60     		str	r2, [r3]
+  46:Data_Storage.c ****     xQueueStorageReady = xQueueCreate(1 , sizeof(struct allData));
+  77              		.loc 1 46 0
+  78 0036 0022     		movs	r2, #0
+  79 0038 1021     		movs	r1, #16
+  80 003a 0120     		movs	r0, #1
+  81 003c FFF7FEFF 		bl	xQueueGenericCreate
+  82 0040 0246     		mov	r2, r0
+  83 0042 114B     		ldr	r3, .L2+12
+  84 0044 1A60     		str	r2, [r3]
+  47:Data_Storage.c ****     
+  48:Data_Storage.c ****     xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 3 , NULL);
+  85              		.loc 1 48 0
+  86 0046 0023     		movs	r3, #0
+  87 0048 0193     		str	r3, [sp, #4]
+  88 004a 0323     		movs	r3, #3
+  89 004c 0093     		str	r3, [sp]
+  90 004e 0023     		movs	r3, #0
+  91 0050 4FF47A72 		mov	r2, #1000
+  92 0054 0D49     		ldr	r1, .L2+16
+  93 0056 0E48     		ldr	r0, .L2+20
+  94 0058 FFF7FEFF 		bl	xTaskCreate
+  49:Data_Storage.c ****     xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 4, NULL);
+  95              		.loc 1 49 0
+  96 005c 0023     		movs	r3, #0
+  97 005e 0193     		str	r3, [sp, #4]
+  98 0060 0423     		movs	r3, #4
+  99 0062 0093     		str	r3, [sp]
+ 100 0064 0023     		movs	r3, #0
+ 101 0066 4FF47A72 		mov	r2, #1000
+ 102 006a 0A49     		ldr	r1, .L2+24
+ 103 006c 0A48     		ldr	r0, .L2+28
+ 104 006e FFF7FEFF 		bl	xTaskCreate
+  50:Data_Storage.c ****     
+  51:Data_Storage.c ****     #if Data_Storage_Test == 1
+  52:Data_Storage.c ****         vTestStorageInit();
+ 105              		.loc 1 52 0
+ 106 0072 FFF7FEFF 		bl	vTestStorageInit
+  53:Data_Storage.c ****     #endif
+  54:Data_Storage.c **** }
+ 107              		.loc 1 54 0
+ 108 0076 00BF     		nop
+ 109 0078 BD46     		mov	sp, r7
+ 110              		.cfi_def_cfa_register 13
+ 111              		@ sp needed
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 4
+
+
+ 112 007a 80BD     		pop	{r7, pc}
+ 113              	.L3:
+ 114              		.align	2
+ 115              	.L2:
+ 116 007c 00000000 		.word	xQueueControllerData
+ 117 0080 00000000 		.word	xQueueCentralData
+ 118 0084 00000000 		.word	xQueueCentralrequest
+ 119 0088 00000000 		.word	xQueueStorageReady
+ 120 008c 00000000 		.word	.LC0
+ 121 0090 00000000 		.word	vTaskDataStorage
+ 122 0094 10000000 		.word	.LC1
+ 123 0098 00000000 		.word	vTaskDataQueueing
+ 124              		.cfi_endproc
+ 125              	.LFE69:
+ 126              		.size	vInitDataStorage, .-vInitDataStorage
+ 127              		.section	.text.vTaskDataQueueing,"ax",%progbits
+ 128              		.align	2
+ 129              		.global	vTaskDataQueueing
+ 130              		.thumb
+ 131              		.thumb_func
+ 132              		.type	vTaskDataQueueing, %function
+ 133              	vTaskDataQueueing:
+ 134              	.LFB70:
+  55:Data_Storage.c **** 
+  56:Data_Storage.c **** void vTaskDataQueueing()                // This task gathers datavalues from controllertasks and qu
+  57:Data_Storage.c **** {                                       // alldata struct for DataStorage task
+ 135              		.loc 1 57 0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 40
+ 138              		@ frame_needed = 1, uses_anonymous_args = 0
+ 139 0000 80B5     		push	{r7, lr}
+ 140              		.cfi_def_cfa_offset 8
+ 141              		.cfi_offset 7, -8
+ 142              		.cfi_offset 14, -4
+ 143 0002 8AB0     		sub	sp, sp, #40
+ 144              		.cfi_def_cfa_offset 48
+ 145 0004 00AF     		add	r7, sp, #0
+ 146              		.cfi_def_cfa_register 7
+  58:Data_Storage.c ****     const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
+ 147              		.loc 1 58 0
+ 148 0006 6423     		movs	r3, #100
+ 149 0008 FB61     		str	r3, [r7, #28]
+  59:Data_Storage.c ****     struct allData dataForQueue;
+  60:Data_Storage.c ****     struct dataMessage recievedMessage;
+  61:Data_Storage.c ****     _Bool pReady = 0, eReady = 0, wReady = 0, fReady = 0, cReady = 0, tReady = 0, rReady = 0, lRead
+ 150              		.loc 1 61 0
+ 151 000a 0023     		movs	r3, #0
+ 152 000c 87F82730 		strb	r3, [r7, #39]
+ 153 0010 0023     		movs	r3, #0
+ 154 0012 87F82630 		strb	r3, [r7, #38]
+ 155 0016 0023     		movs	r3, #0
+ 156 0018 87F82530 		strb	r3, [r7, #37]
+ 157 001c 0023     		movs	r3, #0
+ 158 001e 87F82430 		strb	r3, [r7, #36]
+ 159 0022 0023     		movs	r3, #0
+ 160 0024 87F82330 		strb	r3, [r7, #35]
+ 161 0028 0023     		movs	r3, #0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 5
+
+
+ 162 002a 87F82230 		strb	r3, [r7, #34]
+ 163 002e 0023     		movs	r3, #0
+ 164 0030 87F82130 		strb	r3, [r7, #33]
+ 165 0034 0023     		movs	r3, #0
+ 166 0036 87F82030 		strb	r3, [r7, #32]
+ 167              	.L16:
+ 168              	.LBB2:
+  62:Data_Storage.c ****     
+  63:Data_Storage.c ****     for(;;)
+  64:Data_Storage.c ****     {
+  65:Data_Storage.c ****         BaseType_t  xStatus = xQueueReceive(xQueueControllerData, &recievedMessage, portMAX_DELAY);
+ 169              		.loc 1 65 0
+ 170 003a 564B     		ldr	r3, .L17
+ 171 003c 1B68     		ldr	r3, [r3]
+ 172 003e 391D     		adds	r1, r7, #4
+ 173 0040 4FF0FF32 		mov	r2, #-1
+ 174 0044 1846     		mov	r0, r3
+ 175 0046 FFF7FEFF 		bl	xQueueReceive
+ 176 004a B861     		str	r0, [r7, #24]
+  66:Data_Storage.c ****         if (xStatus == pdPASS)
+ 177              		.loc 1 66 0
+ 178 004c BB69     		ldr	r3, [r7, #24]
+ 179 004e 012B     		cmp	r3, #1
+ 180 0050 64D1     		bne	.L5
+  67:Data_Storage.c ****         {
+  68:Data_Storage.c ****             vTaskDelay(xDelayms);
+ 181              		.loc 1 68 0
+ 182 0052 F869     		ldr	r0, [r7, #28]
+ 183 0054 FFF7FEFF 		bl	vTaskDelay
+  69:Data_Storage.c ****             switch (recievedMessage.identifier)
+ 184              		.loc 1 69 0
+ 185 0058 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 186 005a 633B     		subs	r3, r3, #99
+ 187 005c 142B     		cmp	r3, #20
+ 188 005e 5DD8     		bhi	.L5
+ 189 0060 01A2     		adr	r2, .L7
+ 190 0062 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 191 0066 00BF     		.p2align 2
+ 192              	.L7:
+ 193 0068 ED000000 		.word	.L6+1
+ 194 006c 1D010000 		.word	.L5+1
+ 195 0070 C9000000 		.word	.L8+1
+ 196 0074 E1000000 		.word	.L9+1
+ 197 0078 1D010000 		.word	.L5+1
+ 198 007c 1D010000 		.word	.L5+1
+ 199 0080 1D010000 		.word	.L5+1
+ 200 0084 1D010000 		.word	.L5+1
+ 201 0088 1D010000 		.word	.L5+1
+ 202 008c 11010000 		.word	.L10+1
+ 203 0090 1D010000 		.word	.L5+1
+ 204 0094 1D010000 		.word	.L5+1
+ 205 0098 1D010000 		.word	.L5+1
+ 206 009c BD000000 		.word	.L11+1
+ 207 00a0 1D010000 		.word	.L5+1
+ 208 00a4 05010000 		.word	.L12+1
+ 209 00a8 1D010000 		.word	.L5+1
+ 210 00ac F9000000 		.word	.L13+1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 6
+
+
+ 211 00b0 1D010000 		.word	.L5+1
+ 212 00b4 1D010000 		.word	.L5+1
+ 213 00b8 D5000000 		.word	.L14+1
+ 214              		.p2align 1
+ 215              	.L11:
+  70:Data_Storage.c ****             {
+  71:Data_Storage.c ****                 case 'p':   //PHvalue
+  72:Data_Storage.c ****                     dataForQueue.iPHval     = recievedMessage.message;
+ 216              		.loc 1 72 0
+ 217 00bc FB88     		ldrh	r3, [r7, #6]
+ 218 00be 3B81     		strh	r3, [r7, #8]	@ movhi
+  73:Data_Storage.c ****                     pReady = 1;
+ 219              		.loc 1 73 0
+ 220 00c0 0123     		movs	r3, #1
+ 221 00c2 87F82730 		strb	r3, [r7, #39]
+  74:Data_Storage.c ****                     break;
+ 222              		.loc 1 74 0
+ 223 00c6 29E0     		b	.L5
+ 224              	.L8:
+  75:Data_Storage.c ****                 case 'e':   //ECvalue
+  76:Data_Storage.c ****                     dataForQueue.iECval     = recievedMessage.message;
+ 225              		.loc 1 76 0
+ 226 00c8 FB88     		ldrh	r3, [r7, #6]
+ 227 00ca 7B81     		strh	r3, [r7, #10]	@ movhi
+  77:Data_Storage.c ****                     eReady = 1;
+ 228              		.loc 1 77 0
+ 229 00cc 0123     		movs	r3, #1
+ 230 00ce 87F82630 		strb	r3, [r7, #38]
+  78:Data_Storage.c ****                     break;
+ 231              		.loc 1 78 0
+ 232 00d2 23E0     		b	.L5
+ 233              	.L14:
+  79:Data_Storage.c ****                 case 'w':   //WaterTemp
+  80:Data_Storage.c ****                     dataForQueue.iWaterT    = recievedMessage.message;
+ 234              		.loc 1 80 0
+ 235 00d4 FB88     		ldrh	r3, [r7, #6]
+ 236 00d6 BB81     		strh	r3, [r7, #12]	@ movhi
+  81:Data_Storage.c ****                     wReady = 1;
+ 237              		.loc 1 81 0
+ 238 00d8 0123     		movs	r3, #1
+ 239 00da 87F82530 		strb	r3, [r7, #37]
+  82:Data_Storage.c ****                     break;
+ 240              		.loc 1 82 0
+ 241 00de 1DE0     		b	.L5
+ 242              	.L9:
+  83:Data_Storage.c ****                 case 'f':   //WaterFlow
+  84:Data_Storage.c ****                     dataForQueue.iWaterF    = recievedMessage.message;
+ 243              		.loc 1 84 0
+ 244 00e0 FB88     		ldrh	r3, [r7, #6]
+ 245 00e2 FB81     		strh	r3, [r7, #14]	@ movhi
+  85:Data_Storage.c ****                     fReady = 1;
+ 246              		.loc 1 85 0
+ 247 00e4 0123     		movs	r3, #1
+ 248 00e6 87F82430 		strb	r3, [r7, #36]
+  86:Data_Storage.c ****                     break;
+ 249              		.loc 1 86 0
+ 250 00ea 17E0     		b	.L5
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 7
+
+
+ 251              	.L6:
+  87:Data_Storage.c ****                 case 'c':   //Co2value
+  88:Data_Storage.c ****                     dataForQueue.iC02val    = recievedMessage.message;
+ 252              		.loc 1 88 0
+ 253 00ec FB88     		ldrh	r3, [r7, #6]
+ 254 00ee 3B82     		strh	r3, [r7, #16]	@ movhi
+  89:Data_Storage.c ****                     cReady = 1;
+ 255              		.loc 1 89 0
+ 256 00f0 0123     		movs	r3, #1
+ 257 00f2 87F82330 		strb	r3, [r7, #35]
+  90:Data_Storage.c ****                     break;
+ 258              		.loc 1 90 0
+ 259 00f6 11E0     		b	.L5
+ 260              	.L13:
+  91:Data_Storage.c ****                 case 't':   //AirTemp
+  92:Data_Storage.c ****                     dataForQueue.iTempA     = recievedMessage.message;
+ 261              		.loc 1 92 0
+ 262 00f8 FB88     		ldrh	r3, [r7, #6]
+ 263 00fa 7B82     		strh	r3, [r7, #18]	@ movhi
+  93:Data_Storage.c ****                     tReady = 1;
+ 264              		.loc 1 93 0
+ 265 00fc 0123     		movs	r3, #1
+ 266 00fe 87F82230 		strb	r3, [r7, #34]
+  94:Data_Storage.c ****                     break;
+ 267              		.loc 1 94 0
+ 268 0102 0BE0     		b	.L5
+ 269              	.L12:
+  95:Data_Storage.c ****                 case 'r':   //RelativHum
+  96:Data_Storage.c ****                     dataForQueue.iRHval     = recievedMessage.message;
+ 270              		.loc 1 96 0
+ 271 0104 FB88     		ldrh	r3, [r7, #6]
+ 272 0106 BB82     		strh	r3, [r7, #20]	@ movhi
+  97:Data_Storage.c ****                     rReady = 1;
+ 273              		.loc 1 97 0
+ 274 0108 0123     		movs	r3, #1
+ 275 010a 87F82130 		strb	r3, [r7, #33]
+  98:Data_Storage.c ****                     break;
+ 276              		.loc 1 98 0
+ 277 010e 05E0     		b	.L5
+ 278              	.L10:
+  99:Data_Storage.c ****                 case 'l':   //lightVal
+ 100:Data_Storage.c ****                     dataForQueue.iLightValue= recievedMessage.message;
+ 279              		.loc 1 100 0
+ 280 0110 FB88     		ldrh	r3, [r7, #6]
+ 281 0112 FB82     		strh	r3, [r7, #22]	@ movhi
+ 101:Data_Storage.c ****                     lReady = 1;
+ 282              		.loc 1 101 0
+ 283 0114 0123     		movs	r3, #1
+ 284 0116 87F82030 		strb	r3, [r7, #32]
+ 102:Data_Storage.c ****                     break;
+ 285              		.loc 1 102 0
+ 286 011a 00BF     		nop
+ 287              	.L5:
+ 103:Data_Storage.c ****             }
+ 104:Data_Storage.c ****         }
+ 105:Data_Storage.c ****         if (pReady & eReady & wReady & fReady & cReady & tReady & rReady & lReady)
+ 288              		.loc 1 105 0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 8
+
+
+ 289 011c 97F82720 		ldrb	r2, [r7, #39]	@ zero_extendqisi2
+ 290 0120 97F82630 		ldrb	r3, [r7, #38]	@ zero_extendqisi2
+ 291 0124 1A40     		ands	r2, r2, r3
+ 292 0126 97F82530 		ldrb	r3, [r7, #37]	@ zero_extendqisi2
+ 293 012a 1A40     		ands	r2, r2, r3
+ 294 012c 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 295 0130 1A40     		ands	r2, r2, r3
+ 296 0132 97F82330 		ldrb	r3, [r7, #35]	@ zero_extendqisi2
+ 297 0136 1A40     		ands	r2, r2, r3
+ 298 0138 97F82230 		ldrb	r3, [r7, #34]	@ zero_extendqisi2
+ 299 013c 1A40     		ands	r2, r2, r3
+ 300 013e 97F82130 		ldrb	r3, [r7, #33]	@ zero_extendqisi2
+ 301 0142 1A40     		ands	r2, r2, r3
+ 302 0144 97F82030 		ldrb	r3, [r7, #32]	@ zero_extendqisi2
+ 303 0148 1340     		ands	r3, r3, r2
+ 304 014a 002B     		cmp	r3, #0
+ 305 014c 3FF475AF 		beq	.L16
+ 106:Data_Storage.c ****         {
+ 107:Data_Storage.c ****             xQueueSendToBack(xQueueStorageReady, &dataForQueue, portMAX_DELAY);
+ 306              		.loc 1 107 0
+ 307 0150 114B     		ldr	r3, .L17+4
+ 308 0152 1868     		ldr	r0, [r3]
+ 309 0154 07F10801 		add	r1, r7, #8
+ 310 0158 0023     		movs	r3, #0
+ 311 015a 4FF0FF32 		mov	r2, #-1
+ 312 015e FFF7FEFF 		bl	xQueueGenericSend
+ 108:Data_Storage.c ****             pReady = 0, eReady = 0, wReady = 0, fReady = 0, cReady = 0, tReady = 0, rReady = 0, lRe
+ 313              		.loc 1 108 0
+ 314 0162 0023     		movs	r3, #0
+ 315 0164 87F82730 		strb	r3, [r7, #39]
+ 316 0168 0023     		movs	r3, #0
+ 317 016a 87F82630 		strb	r3, [r7, #38]
+ 318 016e 0023     		movs	r3, #0
+ 319 0170 87F82530 		strb	r3, [r7, #37]
+ 320 0174 0023     		movs	r3, #0
+ 321 0176 87F82430 		strb	r3, [r7, #36]
+ 322 017a 0023     		movs	r3, #0
+ 323 017c 87F82330 		strb	r3, [r7, #35]
+ 324 0180 0023     		movs	r3, #0
+ 325 0182 87F82230 		strb	r3, [r7, #34]
+ 326 0186 0023     		movs	r3, #0
+ 327 0188 87F82130 		strb	r3, [r7, #33]
+ 328 018c 0023     		movs	r3, #0
+ 329 018e 87F82030 		strb	r3, [r7, #32]
+ 330              	.LBE2:
+ 109:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("AllData Queued");
+ 110:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("\n");
+ 111:Data_Storage.c ****         }
+ 112:Data_Storage.c ****     }
+ 331              		.loc 1 112 0
+ 332 0192 52E7     		b	.L16
+ 333              	.L18:
+ 334              		.align	2
+ 335              	.L17:
+ 336 0194 00000000 		.word	xQueueControllerData
+ 337 0198 00000000 		.word	xQueueStorageReady
+ 338              		.cfi_endproc
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 9
+
+
+ 339              	.LFE70:
+ 340              		.size	vTaskDataQueueing, .-vTaskDataQueueing
+ 341              		.section	.text.vTaskDataStorage,"ax",%progbits
+ 342              		.align	2
+ 343              		.global	vTaskDataStorage
+ 344              		.thumb
+ 345              		.thumb_func
+ 346              		.type	vTaskDataStorage, %function
+ 347              	vTaskDataStorage:
+ 348              	.LFB71:
+ 113:Data_Storage.c ****     
+ 114:Data_Storage.c **** }
+ 115:Data_Storage.c **** 
+ 116:Data_Storage.c **** 
+ 117:Data_Storage.c **** 
+ 118:Data_Storage.c **** void vTaskDataStorage()                         // This task works as a FIFO buffer for the 
+ 119:Data_Storage.c **** {                                               // central task to request data from
+ 349              		.loc 1 119 0
+ 350              		.cfi_startproc
+ 351              		@ args = 0, pretend = 0, frame = 40
+ 352              		@ frame_needed = 1, uses_anonymous_args = 0
+ 353 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 354              		.cfi_def_cfa_offset 20
+ 355              		.cfi_offset 4, -20
+ 356              		.cfi_offset 5, -16
+ 357              		.cfi_offset 6, -12
+ 358              		.cfi_offset 7, -8
+ 359              		.cfi_offset 14, -4
+ 360 0002 8BB0     		sub	sp, sp, #44
+ 361              		.cfi_def_cfa_offset 64
+ 362 0004 00AF     		add	r7, sp, #0
+ 363              		.cfi_def_cfa_register 7
+ 120:Data_Storage.c ****     const TickType_t xDelayms = pdMS_TO_TICKS( 1000 ); 
+ 364              		.loc 1 120 0
+ 365 0006 4FF47A70 		mov	r0, #1000
+ 366 000a B861     		str	r0, [r7, #24]
+ 121:Data_Storage.c ****     int readPtr = 0;
+ 367              		.loc 1 121 0
+ 368 000c 0020     		movs	r0, #0
+ 369 000e 7862     		str	r0, [r7, #36]
+ 122:Data_Storage.c ****     int writePtr = 0;
+ 370              		.loc 1 122 0
+ 371 0010 0020     		movs	r0, #0
+ 372 0012 3862     		str	r0, [r7, #32]
+ 123:Data_Storage.c ****     _Bool bufferFull = 0;
+ 373              		.loc 1 123 0
+ 374 0014 0020     		movs	r0, #0
+ 375 0016 F877     		strb	r0, [r7, #31]
+ 124:Data_Storage.c ****     _Bool bufferEmpty = 1;
+ 376              		.loc 1 124 0
+ 377 0018 0120     		movs	r0, #1
+ 378 001a B877     		strb	r0, [r7, #30]
+ 125:Data_Storage.c ****     BaseType_t centralRequest;
+ 126:Data_Storage.c ****     const int storageSizes = 20;
+ 379              		.loc 1 126 0
+ 380 001c 1420     		movs	r0, #20
+ 381 001e 7861     		str	r0, [r7, #20]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 10
+
+
+ 127:Data_Storage.c ****     struct allData allDataArray[storageSizes];
+ 382              		.loc 1 127 0
+ 383 0020 7869     		ldr	r0, [r7, #20]
+ 384 0022 0138     		subs	r0, r0, #1
+ 385 0024 3861     		str	r0, [r7, #16]
+ 386 0026 7869     		ldr	r0, [r7, #20]
+ 387 0028 0546     		mov	r5, r0
+ 388 002a 4FF00006 		mov	r6, #0
+ 389 002e F201     		lsls	r2, r6, #7
+ 390 0030 42EA5562 		orr	r2, r2, r5, lsr #25
+ 391 0034 E901     		lsls	r1, r5, #7
+ 392 0036 7A69     		ldr	r2, [r7, #20]
+ 393 0038 1146     		mov	r1, r2
+ 394 003a 4FF00002 		mov	r2, #0
+ 395 003e D401     		lsls	r4, r2, #7
+ 396 0040 44EA5164 		orr	r4, r4, r1, lsr #25
+ 397 0044 CB01     		lsls	r3, r1, #7
+ 398 0046 7B69     		ldr	r3, [r7, #20]
+ 399 0048 1B01     		lsls	r3, r3, #4
+ 400 004a 0133     		adds	r3, r3, #1
+ 401 004c 0733     		adds	r3, r3, #7
+ 402 004e DB08     		lsrs	r3, r3, #3
+ 403 0050 DB00     		lsls	r3, r3, #3
+ 404 0052 ADEB030D 		sub	sp, sp, r3
+ 405 0056 6B46     		mov	r3, sp
+ 406 0058 0133     		adds	r3, r3, #1
+ 407 005a 5B08     		lsrs	r3, r3, #1
+ 408 005c 5B00     		lsls	r3, r3, #1
+ 409 005e FB60     		str	r3, [r7, #12]
+ 410              	.L24:
+ 128:Data_Storage.c ****     _Bool queueStatus;
+ 129:Data_Storage.c ****     _Bool queueStatusCentral;
+ 130:Data_Storage.c ****     
+ 131:Data_Storage.c ****     for(;;)
+ 132:Data_Storage.c ****     {                               // task takes allData struct from dataQueueing task
+ 133:Data_Storage.c ****         if(bufferFull == 0)
+ 411              		.loc 1 133 0
+ 412 0060 FB7F     		ldrb	r3, [r7, #31]
+ 413 0062 83F00103 		eor	r3, r3, #1
+ 414 0066 DBB2     		uxtb	r3, r3
+ 415 0068 002B     		cmp	r3, #0
+ 416 006a 1BD0     		beq	.L20
+ 134:Data_Storage.c ****         {
+ 135:Data_Storage.c ****             xQueueReceive(xQueueStorageReady, &allDataArray[writePtr], portMAX_DELAY);
+ 417              		.loc 1 135 0
+ 418 006c 254B     		ldr	r3, .L25
+ 419 006e 1868     		ldr	r0, [r3]
+ 420 0070 3B6A     		ldr	r3, [r7, #32]
+ 421 0072 1B01     		lsls	r3, r3, #4
+ 422 0074 FA68     		ldr	r2, [r7, #12]
+ 423 0076 1344     		add	r3, r3, r2
+ 424 0078 4FF0FF32 		mov	r2, #-1
+ 425 007c 1946     		mov	r1, r3
+ 426 007e FFF7FEFF 		bl	xQueueReceive
+ 136:Data_Storage.c ****             writePtr ++;
+ 427              		.loc 1 136 0
+ 428 0082 3B6A     		ldr	r3, [r7, #32]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 11
+
+
+ 429 0084 0133     		adds	r3, r3, #1
+ 430 0086 3B62     		str	r3, [r7, #32]
+ 137:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("Data in array");
+ 138:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("\n");
+ 139:Data_Storage.c ****             bufferEmpty = 0;
+ 431              		.loc 1 139 0
+ 432 0088 0023     		movs	r3, #0
+ 433 008a BB77     		strb	r3, [r7, #30]
+ 140:Data_Storage.c ****             if(writePtr >= storageSizes)
+ 434              		.loc 1 140 0
+ 435 008c 3A6A     		ldr	r2, [r7, #32]
+ 436 008e 7B69     		ldr	r3, [r7, #20]
+ 437 0090 9A42     		cmp	r2, r3
+ 438 0092 01DB     		blt	.L21
+ 141:Data_Storage.c ****             {
+ 142:Data_Storage.c ****                 writePtr = 0;
+ 439              		.loc 1 142 0
+ 440 0094 0023     		movs	r3, #0
+ 441 0096 3B62     		str	r3, [r7, #32]
+ 442              	.L21:
+ 143:Data_Storage.c ****             }
+ 144:Data_Storage.c ****             if(readPtr == writePtr)
+ 443              		.loc 1 144 0
+ 444 0098 7A6A     		ldr	r2, [r7, #36]
+ 445 009a 3B6A     		ldr	r3, [r7, #32]
+ 446 009c 9A42     		cmp	r2, r3
+ 447 009e 01D1     		bne	.L20
+ 145:Data_Storage.c ****             {
+ 146:Data_Storage.c ****                 bufferFull = 1;
+ 448              		.loc 1 146 0
+ 449 00a0 0123     		movs	r3, #1
+ 450 00a2 FB77     		strb	r3, [r7, #31]
+ 451              	.L20:
+ 147:Data_Storage.c ****             }
+ 148:Data_Storage.c ****         }
+ 149:Data_Storage.c ****                                         // task checks for request from central and sends allData s
+ 150:Data_Storage.c ****         centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, portMAX_DELAY);  
+ 452              		.loc 1 150 0
+ 453 00a4 184B     		ldr	r3, .L25+4
+ 454 00a6 1B68     		ldr	r3, [r3]
+ 455 00a8 F91D     		adds	r1, r7, #7
+ 456 00aa 4FF0FF32 		mov	r2, #-1
+ 457 00ae 1846     		mov	r0, r3
+ 458 00b0 FFF7FEFF 		bl	xQueueReceive
+ 459 00b4 B860     		str	r0, [r7, #8]
+ 151:Data_Storage.c ****         if(centralRequest == pdTRUE && (bufferEmpty == 0))
+ 460              		.loc 1 151 0
+ 461 00b6 BB68     		ldr	r3, [r7, #8]
+ 462 00b8 012B     		cmp	r3, #1
+ 463 00ba 1FD1     		bne	.L22
+ 464              		.loc 1 151 0 is_stmt 0 discriminator 1
+ 465 00bc BB7F     		ldrb	r3, [r7, #30]
+ 466 00be 83F00103 		eor	r3, r3, #1
+ 467 00c2 DBB2     		uxtb	r3, r3
+ 468 00c4 002B     		cmp	r3, #0
+ 469 00c6 19D0     		beq	.L22
+ 152:Data_Storage.c ****         {
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 12
+
+
+ 153:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("Sending data to central");
+ 154:Data_Storage.c ****         //    SW_UART_TEST_USB_PutString("\n");
+ 155:Data_Storage.c ****             xQueueSendToBack(xQueueCentralData, &allDataArray[readPtr], portMAX_DELAY);
+ 470              		.loc 1 155 0 is_stmt 1
+ 471 00c8 104B     		ldr	r3, .L25+8
+ 472 00ca 1868     		ldr	r0, [r3]
+ 473 00cc 7B6A     		ldr	r3, [r7, #36]
+ 474 00ce 1B01     		lsls	r3, r3, #4
+ 475 00d0 FA68     		ldr	r2, [r7, #12]
+ 476 00d2 D118     		adds	r1, r2, r3
+ 477 00d4 0023     		movs	r3, #0
+ 478 00d6 4FF0FF32 		mov	r2, #-1
+ 479 00da FFF7FEFF 		bl	xQueueGenericSend
+ 156:Data_Storage.c ****             readPtr ++;
+ 480              		.loc 1 156 0
+ 481 00de 7B6A     		ldr	r3, [r7, #36]
+ 482 00e0 0133     		adds	r3, r3, #1
+ 483 00e2 7B62     		str	r3, [r7, #36]
+ 157:Data_Storage.c ****             if(readPtr >= storageSizes)
+ 484              		.loc 1 157 0
+ 485 00e4 7A6A     		ldr	r2, [r7, #36]
+ 486 00e6 7B69     		ldr	r3, [r7, #20]
+ 487 00e8 9A42     		cmp	r2, r3
+ 488 00ea 01DB     		blt	.L23
+ 158:Data_Storage.c ****             {
+ 159:Data_Storage.c ****                 readPtr = 0;
+ 489              		.loc 1 159 0
+ 490 00ec 0023     		movs	r3, #0
+ 491 00ee 7B62     		str	r3, [r7, #36]
+ 492              	.L23:
+ 160:Data_Storage.c ****             }
+ 161:Data_Storage.c ****             if(readPtr == writePtr)
+ 493              		.loc 1 161 0
+ 494 00f0 7A6A     		ldr	r2, [r7, #36]
+ 495 00f2 3B6A     		ldr	r3, [r7, #32]
+ 496 00f4 9A42     		cmp	r2, r3
+ 497 00f6 01D1     		bne	.L22
+ 162:Data_Storage.c ****             {
+ 163:Data_Storage.c ****                 bufferEmpty = 1;
+ 498              		.loc 1 163 0
+ 499 00f8 0123     		movs	r3, #1
+ 500 00fa BB77     		strb	r3, [r7, #30]
+ 501              	.L22:
+ 164:Data_Storage.c ****             }    
+ 165:Data_Storage.c ****         } 
+ 166:Data_Storage.c ****         vTaskDelay(xDelayms);
+ 502              		.loc 1 166 0
+ 503 00fc B869     		ldr	r0, [r7, #24]
+ 504 00fe FFF7FEFF 		bl	vTaskDelay
+ 167:Data_Storage.c ****     }
+ 505              		.loc 1 167 0
+ 506 0102 ADE7     		b	.L24
+ 507              	.L26:
+ 508              		.align	2
+ 509              	.L25:
+ 510 0104 00000000 		.word	xQueueStorageReady
+ 511 0108 00000000 		.word	xQueueCentralrequest
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 13
+
+
+ 512 010c 00000000 		.word	xQueueCentralData
+ 513              		.cfi_endproc
+ 514              	.LFE71:
+ 515              		.size	vTaskDataStorage, .-vTaskDataStorage
+ 516              		.section	.rodata
+ 517 001e 0000     		.align	2
+ 518              	.LC2:
+ 519 0020 53746F72 		.ascii	"StorageTest\000"
+ 519      61676554 
+ 519      65737400 
+ 520              		.section	.text.vTestStorageInit,"ax",%progbits
+ 521              		.align	2
+ 522              		.global	vTestStorageInit
+ 523              		.thumb
+ 524              		.thumb_func
+ 525              		.type	vTestStorageInit, %function
+ 526              	vTestStorageInit:
+ 527              	.LFB72:
+ 168:Data_Storage.c **** }
+ 169:Data_Storage.c **** 
+ 170:Data_Storage.c **** 
+ 171:Data_Storage.c **** 
+ 172:Data_Storage.c **** 
+ 173:Data_Storage.c ****         // Test tasks here // 
+ 174:Data_Storage.c **** 
+ 175:Data_Storage.c **** void vTestStorageInit()
+ 176:Data_Storage.c **** {
+ 528              		.loc 1 176 0
+ 529              		.cfi_startproc
+ 530              		@ args = 0, pretend = 0, frame = 0
+ 531              		@ frame_needed = 1, uses_anonymous_args = 0
+ 532 0000 80B5     		push	{r7, lr}
+ 533              		.cfi_def_cfa_offset 8
+ 534              		.cfi_offset 7, -8
+ 535              		.cfi_offset 14, -4
+ 536 0002 82B0     		sub	sp, sp, #8
+ 537              		.cfi_def_cfa_offset 16
+ 538 0004 02AF     		add	r7, sp, #8
+ 539              		.cfi_def_cfa 7, 8
+ 177:Data_Storage.c ****     xTaskCreate(vTaskTestData, "StorageTest", 1000, NULL, 4, NULL);
+ 540              		.loc 1 177 0
+ 541 0006 0023     		movs	r3, #0
+ 542 0008 0193     		str	r3, [sp, #4]
+ 543 000a 0423     		movs	r3, #4
+ 544 000c 0093     		str	r3, [sp]
+ 545 000e 0023     		movs	r3, #0
+ 546 0010 4FF47A72 		mov	r2, #1000
+ 547 0014 0349     		ldr	r1, .L28
+ 548 0016 0448     		ldr	r0, .L28+4
+ 549 0018 FFF7FEFF 		bl	xTaskCreate
+ 178:Data_Storage.c **** }
+ 550              		.loc 1 178 0
+ 551 001c 00BF     		nop
+ 552 001e BD46     		mov	sp, r7
+ 553              		.cfi_def_cfa_register 13
+ 554              		@ sp needed
+ 555 0020 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 14
+
+
+ 556              	.L29:
+ 557 0022 00BF     		.align	2
+ 558              	.L28:
+ 559 0024 20000000 		.word	.LC2
+ 560 0028 00000000 		.word	vTaskTestData
+ 561              		.cfi_endproc
+ 562              	.LFE72:
+ 563              		.size	vTestStorageInit, .-vTestStorageInit
+ 564              		.section	.rodata
+ 565              		.align	2
+ 566              	.LC3:
+ 567 002c 74657374 		.ascii	"testdata:\000"
+ 567      64617461 
+ 567      3A00
+ 568 0036 0000     		.align	2
+ 569              	.LC4:
+ 570 0038 0A00     		.ascii	"\012\000"
+ 571              		.section	.text.vTaskTestData,"ax",%progbits
+ 572              		.align	2
+ 573              		.global	vTaskTestData
+ 574              		.thumb
+ 575              		.thumb_func
+ 576              		.type	vTaskTestData, %function
+ 577              	vTaskTestData:
+ 578              	.LFB73:
+ 179:Data_Storage.c **** 
+ 180:Data_Storage.c **** void vTaskTestData()
+ 181:Data_Storage.c **** {
+ 579              		.loc 1 181 0
+ 580              		.cfi_startproc
+ 581              		@ args = 0, pretend = 0, frame = 64
+ 582              		@ frame_needed = 1, uses_anonymous_args = 0
+ 583 0000 80B5     		push	{r7, lr}
+ 584              		.cfi_def_cfa_offset 8
+ 585              		.cfi_offset 7, -8
+ 586              		.cfi_offset 14, -4
+ 587 0002 90B0     		sub	sp, sp, #64
+ 588              		.cfi_def_cfa_offset 72
+ 589 0004 00AF     		add	r7, sp, #0
+ 590              		.cfi_def_cfa_register 7
+ 182:Data_Storage.c ****     int centralRequest = 1;
+ 591              		.loc 1 182 0
+ 592 0006 0123     		movs	r3, #1
+ 593 0008 BB63     		str	r3, [r7, #56]
+ 183:Data_Storage.c ****     struct allData testData;
+ 184:Data_Storage.c ****     const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
+ 594              		.loc 1 184 0
+ 595 000a 4FF47A73 		mov	r3, #1000
+ 596 000e FB63     		str	r3, [r7, #60]
+ 185:Data_Storage.c ****     
+ 186:Data_Storage.c ****     struct dataMessage testMessage1;
+ 187:Data_Storage.c ****     testMessage1.identifier = 'p';
+ 597              		.loc 1 187 0
+ 598 0010 7023     		movs	r3, #112
+ 599 0012 87F82430 		strb	r3, [r7, #36]
+ 188:Data_Storage.c ****     testMessage1.message = 1;
+ 600              		.loc 1 188 0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 15
+
+
+ 601 0016 0123     		movs	r3, #1
+ 602 0018 FB84     		strh	r3, [r7, #38]	@ movhi
+ 189:Data_Storage.c ****     
+ 190:Data_Storage.c ****     struct dataMessage testMessage2;
+ 191:Data_Storage.c ****     testMessage2.identifier = 'e';
+ 603              		.loc 1 191 0
+ 604 001a 6523     		movs	r3, #101
+ 605 001c 87F82030 		strb	r3, [r7, #32]
+ 192:Data_Storage.c ****     testMessage2.message = 2;
+ 606              		.loc 1 192 0
+ 607 0020 0223     		movs	r3, #2
+ 608 0022 7B84     		strh	r3, [r7, #34]	@ movhi
+ 193:Data_Storage.c ****     
+ 194:Data_Storage.c ****     struct dataMessage testMessage3;
+ 195:Data_Storage.c ****     testMessage3.identifier = 'w';
+ 609              		.loc 1 195 0
+ 610 0024 7723     		movs	r3, #119
+ 611 0026 3B77     		strb	r3, [r7, #28]
+ 196:Data_Storage.c ****     testMessage3.message = 3;
+ 612              		.loc 1 196 0
+ 613 0028 0323     		movs	r3, #3
+ 614 002a FB83     		strh	r3, [r7, #30]	@ movhi
+ 197:Data_Storage.c ****     
+ 198:Data_Storage.c ****     struct dataMessage testMessage4;
+ 199:Data_Storage.c ****     testMessage4.identifier = 'f';
+ 615              		.loc 1 199 0
+ 616 002c 6623     		movs	r3, #102
+ 617 002e 3B76     		strb	r3, [r7, #24]
+ 200:Data_Storage.c ****     testMessage4.message = 4;
+ 618              		.loc 1 200 0
+ 619 0030 0423     		movs	r3, #4
+ 620 0032 7B83     		strh	r3, [r7, #26]	@ movhi
+ 201:Data_Storage.c ****     
+ 202:Data_Storage.c ****     struct dataMessage testMessage5;
+ 203:Data_Storage.c ****     testMessage5.identifier = 'c';
+ 621              		.loc 1 203 0
+ 622 0034 6323     		movs	r3, #99
+ 623 0036 3B75     		strb	r3, [r7, #20]
+ 204:Data_Storage.c ****     testMessage5.message = 5;
+ 624              		.loc 1 204 0
+ 625 0038 0523     		movs	r3, #5
+ 626 003a FB82     		strh	r3, [r7, #22]	@ movhi
+ 205:Data_Storage.c ****     
+ 206:Data_Storage.c ****     struct dataMessage testMessage6;
+ 207:Data_Storage.c ****     testMessage6.identifier = 't';
+ 627              		.loc 1 207 0
+ 628 003c 7423     		movs	r3, #116
+ 629 003e 3B74     		strb	r3, [r7, #16]
+ 208:Data_Storage.c ****     testMessage6.message = 6;
+ 630              		.loc 1 208 0
+ 631 0040 0623     		movs	r3, #6
+ 632 0042 7B82     		strh	r3, [r7, #18]	@ movhi
+ 209:Data_Storage.c ****     
+ 210:Data_Storage.c ****     struct dataMessage testMessage7;
+ 211:Data_Storage.c ****     testMessage7.identifier = 'r';
+ 633              		.loc 1 211 0
+ 634 0044 7223     		movs	r3, #114
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 16
+
+
+ 635 0046 3B73     		strb	r3, [r7, #12]
+ 212:Data_Storage.c ****     testMessage7.message = 7;
+ 636              		.loc 1 212 0
+ 637 0048 0723     		movs	r3, #7
+ 638 004a FB81     		strh	r3, [r7, #14]	@ movhi
+ 213:Data_Storage.c ****     
+ 214:Data_Storage.c ****     struct dataMessage testMessage8;
+ 215:Data_Storage.c ****     testMessage1.identifier = 'p';
+ 639              		.loc 1 215 0
+ 640 004c 7023     		movs	r3, #112
+ 641 004e 87F82430 		strb	r3, [r7, #36]
+ 216:Data_Storage.c ****     testMessage1.message = 8;
+ 642              		.loc 1 216 0
+ 643 0052 0823     		movs	r3, #8
+ 644 0054 FB84     		strh	r3, [r7, #38]	@ movhi
+ 217:Data_Storage.c ****     
+ 218:Data_Storage.c ****     struct dataMessage testMessage9;
+ 219:Data_Storage.c ****     testMessage8.identifier = 'l';
+ 645              		.loc 1 219 0
+ 646 0056 6C23     		movs	r3, #108
+ 647 0058 3B72     		strb	r3, [r7, #8]
+ 220:Data_Storage.c ****     testMessage8.message = 9;
+ 648              		.loc 1 220 0
+ 649 005a 0923     		movs	r3, #9
+ 650 005c 7B81     		strh	r3, [r7, #10]	@ movhi
+ 651              	.L31:
+ 221:Data_Storage.c ****     for(;;)
+ 222:Data_Storage.c ****     {
+ 223:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage1, portMAX_DELAY);
+ 652              		.loc 1 223 0 discriminator 1
+ 653 005e 684B     		ldr	r3, .L32
+ 654 0060 1868     		ldr	r0, [r3]
+ 655 0062 07F12401 		add	r1, r7, #36
+ 656 0066 0023     		movs	r3, #0
+ 657 0068 4FF0FF32 		mov	r2, #-1
+ 658 006c FFF7FEFF 		bl	xQueueGenericSend
+ 224:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage2, portMAX_DELAY);
+ 659              		.loc 1 224 0 discriminator 1
+ 660 0070 634B     		ldr	r3, .L32
+ 661 0072 1868     		ldr	r0, [r3]
+ 662 0074 07F12001 		add	r1, r7, #32
+ 663 0078 0023     		movs	r3, #0
+ 664 007a 4FF0FF32 		mov	r2, #-1
+ 665 007e FFF7FEFF 		bl	xQueueGenericSend
+ 225:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage3, portMAX_DELAY);
+ 666              		.loc 1 225 0 discriminator 1
+ 667 0082 5F4B     		ldr	r3, .L32
+ 668 0084 1868     		ldr	r0, [r3]
+ 669 0086 07F11C01 		add	r1, r7, #28
+ 670 008a 0023     		movs	r3, #0
+ 671 008c 4FF0FF32 		mov	r2, #-1
+ 672 0090 FFF7FEFF 		bl	xQueueGenericSend
+ 226:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage4, portMAX_DELAY);
+ 673              		.loc 1 226 0 discriminator 1
+ 674 0094 5A4B     		ldr	r3, .L32
+ 675 0096 1868     		ldr	r0, [r3]
+ 676 0098 07F11801 		add	r1, r7, #24
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 17
+
+
+ 677 009c 0023     		movs	r3, #0
+ 678 009e 4FF0FF32 		mov	r2, #-1
+ 679 00a2 FFF7FEFF 		bl	xQueueGenericSend
+ 227:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage5, portMAX_DELAY);
+ 680              		.loc 1 227 0 discriminator 1
+ 681 00a6 564B     		ldr	r3, .L32
+ 682 00a8 1868     		ldr	r0, [r3]
+ 683 00aa 07F11401 		add	r1, r7, #20
+ 684 00ae 0023     		movs	r3, #0
+ 685 00b0 4FF0FF32 		mov	r2, #-1
+ 686 00b4 FFF7FEFF 		bl	xQueueGenericSend
+ 228:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage6, portMAX_DELAY);
+ 687              		.loc 1 228 0 discriminator 1
+ 688 00b8 514B     		ldr	r3, .L32
+ 689 00ba 1868     		ldr	r0, [r3]
+ 690 00bc 07F11001 		add	r1, r7, #16
+ 691 00c0 0023     		movs	r3, #0
+ 692 00c2 4FF0FF32 		mov	r2, #-1
+ 693 00c6 FFF7FEFF 		bl	xQueueGenericSend
+ 229:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage7, portMAX_DELAY);
+ 694              		.loc 1 229 0 discriminator 1
+ 695 00ca 4D4B     		ldr	r3, .L32
+ 696 00cc 1868     		ldr	r0, [r3]
+ 697 00ce 07F10C01 		add	r1, r7, #12
+ 698 00d2 0023     		movs	r3, #0
+ 699 00d4 4FF0FF32 		mov	r2, #-1
+ 700 00d8 FFF7FEFF 		bl	xQueueGenericSend
+ 230:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage8, portMAX_DELAY);
+ 701              		.loc 1 230 0 discriminator 1
+ 702 00dc 484B     		ldr	r3, .L32
+ 703 00de 1868     		ldr	r0, [r3]
+ 704 00e0 07F10801 		add	r1, r7, #8
+ 705 00e4 0023     		movs	r3, #0
+ 706 00e6 4FF0FF32 		mov	r2, #-1
+ 707 00ea FFF7FEFF 		bl	xQueueGenericSend
+ 231:Data_Storage.c ****         xQueueSendToBack(xQueueControllerData, &testMessage9, portMAX_DELAY);
+ 708              		.loc 1 231 0 discriminator 1
+ 709 00ee 444B     		ldr	r3, .L32
+ 710 00f0 1868     		ldr	r0, [r3]
+ 711 00f2 391D     		adds	r1, r7, #4
+ 712 00f4 0023     		movs	r3, #0
+ 713 00f6 4FF0FF32 		mov	r2, #-1
+ 714 00fa FFF7FEFF 		bl	xQueueGenericSend
+ 232:Data_Storage.c ****         
+ 233:Data_Storage.c ****         xQueueSendToBack(xQueueCentralrequest, &centralRequest, portMAX_DELAY);
+ 715              		.loc 1 233 0 discriminator 1
+ 716 00fe 414B     		ldr	r3, .L32+4
+ 717 0100 1868     		ldr	r0, [r3]
+ 718 0102 07F13801 		add	r1, r7, #56
+ 719 0106 0023     		movs	r3, #0
+ 720 0108 4FF0FF32 		mov	r2, #-1
+ 721 010c FFF7FEFF 		bl	xQueueGenericSend
+ 234:Data_Storage.c ****         
+ 235:Data_Storage.c ****         xQueueReceive(xQueueCentralData, &testData, portMAX_DELAY);
+ 722              		.loc 1 235 0 discriminator 1
+ 723 0110 3D4B     		ldr	r3, .L32+8
+ 724 0112 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 18
+
+
+ 725 0114 07F12801 		add	r1, r7, #40
+ 726 0118 4FF0FF32 		mov	r2, #-1
+ 727 011c 1846     		mov	r0, r3
+ 728 011e FFF7FEFF 		bl	xQueueReceive
+ 236:Data_Storage.c ****         
+ 237:Data_Storage.c ****         SW_UART_TEST_USB_PutString("testdata:");
+ 729              		.loc 1 237 0 discriminator 1
+ 730 0122 3A48     		ldr	r0, .L32+12
+ 731 0124 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 238:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 732              		.loc 1 238 0 discriminator 1
+ 733 0128 3948     		ldr	r0, .L32+16
+ 734 012a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 239:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iPHval);
+ 735              		.loc 1 239 0 discriminator 1
+ 736 012e 3B8D     		ldrh	r3, [r7, #40]
+ 737 0130 DBB2     		uxtb	r3, r3
+ 738 0132 1846     		mov	r0, r3
+ 739 0134 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 240:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 740              		.loc 1 240 0 discriminator 1
+ 741 0138 3548     		ldr	r0, .L32+16
+ 742 013a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 241:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iECval);
+ 743              		.loc 1 241 0 discriminator 1
+ 744 013e 7B8D     		ldrh	r3, [r7, #42]
+ 745 0140 DBB2     		uxtb	r3, r3
+ 746 0142 1846     		mov	r0, r3
+ 747 0144 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 242:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 748              		.loc 1 242 0 discriminator 1
+ 749 0148 3148     		ldr	r0, .L32+16
+ 750 014a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 243:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iWaterT);
+ 751              		.loc 1 243 0 discriminator 1
+ 752 014e BB8D     		ldrh	r3, [r7, #44]
+ 753 0150 DBB2     		uxtb	r3, r3
+ 754 0152 1846     		mov	r0, r3
+ 755 0154 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 244:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 756              		.loc 1 244 0 discriminator 1
+ 757 0158 2D48     		ldr	r0, .L32+16
+ 758 015a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 245:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iWaterF);
+ 759              		.loc 1 245 0 discriminator 1
+ 760 015e FB8D     		ldrh	r3, [r7, #46]
+ 761 0160 DBB2     		uxtb	r3, r3
+ 762 0162 1846     		mov	r0, r3
+ 763 0164 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 246:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 764              		.loc 1 246 0 discriminator 1
+ 765 0168 2948     		ldr	r0, .L32+16
+ 766 016a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 247:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iC02val);
+ 767              		.loc 1 247 0 discriminator 1
+ 768 016e 3B8E     		ldrh	r3, [r7, #48]
+ 769 0170 DBB2     		uxtb	r3, r3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 19
+
+
+ 770 0172 1846     		mov	r0, r3
+ 771 0174 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 248:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 772              		.loc 1 248 0 discriminator 1
+ 773 0178 2548     		ldr	r0, .L32+16
+ 774 017a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 249:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iTempA);
+ 775              		.loc 1 249 0 discriminator 1
+ 776 017e 7B8E     		ldrh	r3, [r7, #50]
+ 777 0180 DBB2     		uxtb	r3, r3
+ 778 0182 1846     		mov	r0, r3
+ 779 0184 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 250:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 780              		.loc 1 250 0 discriminator 1
+ 781 0188 2148     		ldr	r0, .L32+16
+ 782 018a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 251:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iRHval);
+ 783              		.loc 1 251 0 discriminator 1
+ 784 018e BB8E     		ldrh	r3, [r7, #52]
+ 785 0190 DBB2     		uxtb	r3, r3
+ 786 0192 1846     		mov	r0, r3
+ 787 0194 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 252:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 788              		.loc 1 252 0 discriminator 1
+ 789 0198 1D48     		ldr	r0, .L32+16
+ 790 019a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 253:Data_Storage.c ****         SW_UART_TEST_USB_PutHexByte(testData.iLightValue);
+ 791              		.loc 1 253 0 discriminator 1
+ 792 019e FB8E     		ldrh	r3, [r7, #54]
+ 793 01a0 DBB2     		uxtb	r3, r3
+ 794 01a2 1846     		mov	r0, r3
+ 795 01a4 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 254:Data_Storage.c ****         SW_UART_TEST_USB_PutString("\n");
+ 796              		.loc 1 254 0 discriminator 1
+ 797 01a8 1948     		ldr	r0, .L32+16
+ 798 01aa FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 255:Data_Storage.c ****         vTaskDelay(xDelayms);
+ 799              		.loc 1 255 0 discriminator 1
+ 800 01ae F86B     		ldr	r0, [r7, #60]
+ 801 01b0 FFF7FEFF 		bl	vTaskDelay
+ 256:Data_Storage.c ****         
+ 257:Data_Storage.c ****         testMessage1.message ++;
+ 802              		.loc 1 257 0 discriminator 1
+ 803 01b4 FB8C     		ldrh	r3, [r7, #38]
+ 804 01b6 0133     		adds	r3, r3, #1
+ 805 01b8 9BB2     		uxth	r3, r3
+ 806 01ba FB84     		strh	r3, [r7, #38]	@ movhi
+ 258:Data_Storage.c ****         testMessage2.message ++;
+ 807              		.loc 1 258 0 discriminator 1
+ 808 01bc 7B8C     		ldrh	r3, [r7, #34]
+ 809 01be 0133     		adds	r3, r3, #1
+ 810 01c0 9BB2     		uxth	r3, r3
+ 811 01c2 7B84     		strh	r3, [r7, #34]	@ movhi
+ 259:Data_Storage.c ****         testMessage3.message ++;
+ 812              		.loc 1 259 0 discriminator 1
+ 813 01c4 FB8B     		ldrh	r3, [r7, #30]
+ 814 01c6 0133     		adds	r3, r3, #1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 20
+
+
+ 815 01c8 9BB2     		uxth	r3, r3
+ 816 01ca FB83     		strh	r3, [r7, #30]	@ movhi
+ 260:Data_Storage.c ****         testMessage4.message ++;
+ 817              		.loc 1 260 0 discriminator 1
+ 818 01cc 7B8B     		ldrh	r3, [r7, #26]
+ 819 01ce 0133     		adds	r3, r3, #1
+ 820 01d0 9BB2     		uxth	r3, r3
+ 821 01d2 7B83     		strh	r3, [r7, #26]	@ movhi
+ 261:Data_Storage.c ****         testMessage5.message ++;
+ 822              		.loc 1 261 0 discriminator 1
+ 823 01d4 FB8A     		ldrh	r3, [r7, #22]
+ 824 01d6 0133     		adds	r3, r3, #1
+ 825 01d8 9BB2     		uxth	r3, r3
+ 826 01da FB82     		strh	r3, [r7, #22]	@ movhi
+ 262:Data_Storage.c ****         testMessage6.message ++;
+ 827              		.loc 1 262 0 discriminator 1
+ 828 01dc 7B8A     		ldrh	r3, [r7, #18]
+ 829 01de 0133     		adds	r3, r3, #1
+ 830 01e0 9BB2     		uxth	r3, r3
+ 831 01e2 7B82     		strh	r3, [r7, #18]	@ movhi
+ 263:Data_Storage.c ****         testMessage7.message ++;
+ 832              		.loc 1 263 0 discriminator 1
+ 833 01e4 FB89     		ldrh	r3, [r7, #14]
+ 834 01e6 0133     		adds	r3, r3, #1
+ 835 01e8 9BB2     		uxth	r3, r3
+ 836 01ea FB81     		strh	r3, [r7, #14]	@ movhi
+ 264:Data_Storage.c ****         testMessage8.message ++;
+ 837              		.loc 1 264 0 discriminator 1
+ 838 01ec 7B89     		ldrh	r3, [r7, #10]
+ 839 01ee 0133     		adds	r3, r3, #1
+ 840 01f0 9BB2     		uxth	r3, r3
+ 841 01f2 7B81     		strh	r3, [r7, #10]	@ movhi
+ 265:Data_Storage.c ****         testMessage9.message ++;
+ 842              		.loc 1 265 0 discriminator 1
+ 843 01f4 FB88     		ldrh	r3, [r7, #6]
+ 844 01f6 0133     		adds	r3, r3, #1
+ 845 01f8 9BB2     		uxth	r3, r3
+ 846 01fa FB80     		strh	r3, [r7, #6]	@ movhi
+ 266:Data_Storage.c ****     }    
+ 847              		.loc 1 266 0 discriminator 1
+ 848 01fc 2FE7     		b	.L31
+ 849              	.L33:
+ 850 01fe 00BF     		.align	2
+ 851              	.L32:
+ 852 0200 00000000 		.word	xQueueControllerData
+ 853 0204 00000000 		.word	xQueueCentralrequest
+ 854 0208 00000000 		.word	xQueueCentralData
+ 855 020c 2C000000 		.word	.LC3
+ 856 0210 38000000 		.word	.LC4
+ 857              		.cfi_endproc
+ 858              	.LFE73:
+ 859              		.size	vTaskTestData, .-vTaskTestData
+ 860              		.text
+ 861              	.Letext0:
+ 862              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 863              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 864              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 21
+
+
+ 865              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ 866              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 867              		.file 7 ".\\Source\\include/queue.h"
+ 868              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 869              		.section	.debug_info,"",%progbits
+ 870              	.Ldebug_info0:
+ 871 0000 C1040000 		.4byte	0x4c1
+ 872 0004 0400     		.2byte	0x4
+ 873 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 874 000a 04       		.byte	0x4
+ 875 000b 01       		.uleb128 0x1
+ 876 000c DF000000 		.4byte	.LASF83
+ 877 0010 0C       		.byte	0xc
+ 878 0011 2F040000 		.4byte	.LASF84
+ 879 0015 AD030000 		.4byte	.LASF85
+ 880 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 881 001d 00000000 		.4byte	0
+ 882 0021 00000000 		.4byte	.Ldebug_line0
+ 883 0025 02       		.uleb128 0x2
+ 884 0026 04       		.byte	0x4
+ 885 0027 05       		.byte	0x5
+ 886 0028 696E7400 		.ascii	"int\000"
+ 887 002c 03       		.uleb128 0x3
+ 888 002d 04       		.byte	0x4
+ 889 002e 07       		.byte	0x7
+ 890 002f 14030000 		.4byte	.LASF0
+ 891 0033 03       		.uleb128 0x3
+ 892 0034 08       		.byte	0x8
+ 893 0035 05       		.byte	0x5
+ 894 0036 0F020000 		.4byte	.LASF1
+ 895 003a 03       		.uleb128 0x3
+ 896 003b 08       		.byte	0x8
+ 897 003c 04       		.byte	0x4
+ 898 003d A0020000 		.4byte	.LASF2
+ 899 0041 03       		.uleb128 0x3
+ 900 0042 01       		.byte	0x1
+ 901 0043 06       		.byte	0x6
+ 902 0044 E8020000 		.4byte	.LASF3
+ 903 0048 04       		.uleb128 0x4
+ 904 0049 6F020000 		.4byte	.LASF7
+ 905 004d 02       		.byte	0x2
+ 906 004e 1D       		.byte	0x1d
+ 907 004f 53000000 		.4byte	0x53
+ 908 0053 03       		.uleb128 0x3
+ 909 0054 01       		.byte	0x1
+ 910 0055 08       		.byte	0x8
+ 911 0056 AC020000 		.4byte	.LASF4
+ 912 005a 03       		.uleb128 0x3
+ 913 005b 02       		.byte	0x2
+ 914 005c 05       		.byte	0x5
+ 915 005d A9000000 		.4byte	.LASF5
+ 916 0061 03       		.uleb128 0x3
+ 917 0062 02       		.byte	0x2
+ 918 0063 07       		.byte	0x7
+ 919 0064 9A030000 		.4byte	.LASF6
+ 920 0068 04       		.uleb128 0x4
+ 921 0069 3E040000 		.4byte	.LASF8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 22
+
+
+ 922 006d 02       		.byte	0x2
+ 923 006e 3F       		.byte	0x3f
+ 924 006f 73000000 		.4byte	0x73
+ 925 0073 03       		.uleb128 0x3
+ 926 0074 04       		.byte	0x4
+ 927 0075 05       		.byte	0x5
+ 928 0076 5A020000 		.4byte	.LASF9
+ 929 007a 04       		.uleb128 0x4
+ 930 007b 6D010000 		.4byte	.LASF10
+ 931 007f 02       		.byte	0x2
+ 932 0080 41       		.byte	0x41
+ 933 0081 85000000 		.4byte	0x85
+ 934 0085 03       		.uleb128 0x3
+ 935 0086 04       		.byte	0x4
+ 936 0087 07       		.byte	0x7
+ 937 0088 2C030000 		.4byte	.LASF11
+ 938 008c 03       		.uleb128 0x3
+ 939 008d 08       		.byte	0x8
+ 940 008e 07       		.byte	0x7
+ 941 008f F4020000 		.4byte	.LASF12
+ 942 0093 04       		.uleb128 0x4
+ 943 0094 B4010000 		.4byte	.LASF13
+ 944 0098 03       		.byte	0x3
+ 945 0099 18       		.byte	0x18
+ 946 009a 48000000 		.4byte	0x48
+ 947 009e 04       		.uleb128 0x4
+ 948 009f 82030000 		.4byte	.LASF14
+ 949 00a3 03       		.byte	0x3
+ 950 00a4 2C       		.byte	0x2c
+ 951 00a5 68000000 		.4byte	0x68
+ 952 00a9 04       		.uleb128 0x4
+ 953 00aa 0B030000 		.4byte	.LASF15
+ 954 00ae 03       		.byte	0x3
+ 955 00af 30       		.byte	0x30
+ 956 00b0 7A000000 		.4byte	0x7a
+ 957 00b4 05       		.uleb128 0x5
+ 958 00b5 BC010000 		.4byte	.LASF16
+ 959 00b9 04       		.byte	0x4
+ 960 00ba E401     		.2byte	0x1e4
+ 961 00bc 53000000 		.4byte	0x53
+ 962 00c0 05       		.uleb128 0x5
+ 963 00c1 AD010000 		.4byte	.LASF17
+ 964 00c5 04       		.byte	0x4
+ 965 00c6 E501     		.2byte	0x1e5
+ 966 00c8 61000000 		.4byte	0x61
+ 967 00cc 03       		.uleb128 0x3
+ 968 00cd 04       		.byte	0x4
+ 969 00ce 04       		.byte	0x4
+ 970 00cf 09020000 		.4byte	.LASF18
+ 971 00d3 03       		.uleb128 0x3
+ 972 00d4 08       		.byte	0x8
+ 973 00d5 04       		.byte	0x4
+ 974 00d6 28040000 		.4byte	.LASF19
+ 975 00da 03       		.uleb128 0x3
+ 976 00db 01       		.byte	0x1
+ 977 00dc 08       		.byte	0x8
+ 978 00dd 77030000 		.4byte	.LASF20
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 23
+
+
+ 979 00e1 06       		.uleb128 0x6
+ 980 00e2 B4000000 		.4byte	0xb4
+ 981 00e6 03       		.uleb128 0x3
+ 982 00e7 04       		.byte	0x4
+ 983 00e8 07       		.byte	0x7
+ 984 00e9 B3000000 		.4byte	.LASF21
+ 985 00ed 07       		.uleb128 0x7
+ 986 00ee 11040000 		.4byte	.LASF27
+ 987 00f2 04       		.byte	0x4
+ 988 00f3 05       		.byte	0x5
+ 989 00f4 30       		.byte	0x30
+ 990 00f5 12010000 		.4byte	0x112
+ 991 00f9 08       		.uleb128 0x8
+ 992 00fa 80040000 		.4byte	.LASF22
+ 993 00fe 05       		.byte	0x5
+ 994 00ff 31       		.byte	0x31
+ 995 0100 C0000000 		.4byte	0xc0
+ 996 0104 00       		.byte	0
+ 997 0105 08       		.uleb128 0x8
+ 998 0106 71040000 		.4byte	.LASF23
+ 999 010a 05       		.byte	0x5
+ 1000 010b 32       		.byte	0x32
+ 1001 010c B4000000 		.4byte	0xb4
+ 1002 0110 02       		.byte	0x2
+ 1003 0111 00       		.byte	0
+ 1004 0112 04       		.uleb128 0x4
+ 1005 0113 21030000 		.4byte	.LASF24
+ 1006 0117 06       		.byte	0x6
+ 1007 0118 38       		.byte	0x38
+ 1008 0119 73000000 		.4byte	0x73
+ 1009 011d 04       		.uleb128 0x4
+ 1010 011e 1D020000 		.4byte	.LASF25
+ 1011 0122 06       		.byte	0x6
+ 1012 0123 3F       		.byte	0x3f
+ 1013 0124 A9000000 		.4byte	0xa9
+ 1014 0128 04       		.uleb128 0x4
+ 1015 0129 8B020000 		.4byte	.LASF26
+ 1016 012d 07       		.byte	0x7
+ 1017 012e 30       		.byte	0x30
+ 1018 012f 33010000 		.4byte	0x133
+ 1019 0133 09       		.uleb128 0x9
+ 1020 0134 04       		.byte	0x4
+ 1021 0135 39010000 		.4byte	0x139
+ 1022 0139 0A       		.uleb128 0xa
+ 1023 013a 4B030000 		.4byte	.LASF86
+ 1024 013e 07       		.uleb128 0x7
+ 1025 013f A7040000 		.4byte	.LASF28
+ 1026 0143 10       		.byte	0x10
+ 1027 0144 01       		.byte	0x1
+ 1028 0145 14       		.byte	0x14
+ 1029 0146 AB010000 		.4byte	0x1ab
+ 1030 014a 08       		.uleb128 0x8
+ 1031 014b C3020000 		.4byte	.LASF29
+ 1032 014f 01       		.byte	0x1
+ 1033 0150 15       		.byte	0x15
+ 1034 0151 C0000000 		.4byte	0xc0
+ 1035 0155 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 24
+
+
+ 1036 0156 08       		.uleb128 0x8
+ 1037 0157 35020000 		.4byte	.LASF30
+ 1038 015b 01       		.byte	0x1
+ 1039 015c 16       		.byte	0x16
+ 1040 015d C0000000 		.4byte	0xc0
+ 1041 0161 02       		.byte	0x2
+ 1042 0162 08       		.uleb128 0x8
+ 1043 0163 D6010000 		.4byte	.LASF31
+ 1044 0167 01       		.byte	0x1
+ 1045 0168 17       		.byte	0x17
+ 1046 0169 C0000000 		.4byte	0xc0
+ 1047 016d 04       		.byte	0x4
+ 1048 016e 08       		.uleb128 0x8
+ 1049 016f C7040000 		.4byte	.LASF32
+ 1050 0173 01       		.byte	0x1
+ 1051 0174 18       		.byte	0x18
+ 1052 0175 C0000000 		.4byte	0xc0
+ 1053 0179 06       		.byte	0x6
+ 1054 017a 08       		.uleb128 0x8
+ 1055 017b CF040000 		.4byte	.LASF33
+ 1056 017f 01       		.byte	0x1
+ 1057 0180 19       		.byte	0x19
+ 1058 0181 C0000000 		.4byte	0xc0
+ 1059 0185 08       		.byte	0x8
+ 1060 0186 08       		.uleb128 0x8
+ 1061 0187 DE010000 		.4byte	.LASF34
+ 1062 018b 01       		.byte	0x1
+ 1063 018c 1A       		.byte	0x1a
+ 1064 018d C0000000 		.4byte	0xc0
+ 1065 0191 0A       		.byte	0xa
+ 1066 0192 08       		.uleb128 0x8
+ 1067 0193 8B010000 		.4byte	.LASF35
+ 1068 0197 01       		.byte	0x1
+ 1069 0198 1B       		.byte	0x1b
+ 1070 0199 C0000000 		.4byte	0xc0
+ 1071 019d 0C       		.byte	0xc
+ 1072 019e 08       		.uleb128 0x8
+ 1073 019f CA010000 		.4byte	.LASF36
+ 1074 01a3 01       		.byte	0x1
+ 1075 01a4 1C       		.byte	0x1c
+ 1076 01a5 C0000000 		.4byte	0xc0
+ 1077 01a9 0E       		.byte	0xe
+ 1078 01aa 00       		.byte	0
+ 1079 01ab 07       		.uleb128 0x7
+ 1080 01ac 48040000 		.4byte	.LASF37
+ 1081 01b0 04       		.byte	0x4
+ 1082 01b1 01       		.byte	0x1
+ 1083 01b2 1E       		.byte	0x1e
+ 1084 01b3 D0010000 		.4byte	0x1d0
+ 1085 01b7 08       		.uleb128 0x8
+ 1086 01b8 5B030000 		.4byte	.LASF38
+ 1087 01bc 01       		.byte	0x1
+ 1088 01bd 1F       		.byte	0x1f
+ 1089 01be DA000000 		.4byte	0xda
+ 1090 01c2 00       		.byte	0
+ 1091 01c3 08       		.uleb128 0x8
+ 1092 01c4 20040000 		.4byte	.LASF39
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 25
+
+
+ 1093 01c8 01       		.byte	0x1
+ 1094 01c9 20       		.byte	0x20
+ 1095 01ca C0000000 		.4byte	0xc0
+ 1096 01ce 02       		.byte	0x2
+ 1097 01cf 00       		.byte	0
+ 1098 01d0 0B       		.uleb128 0xb
+ 1099 01d1 98000000 		.4byte	.LASF63
+ 1100 01d5 01       		.byte	0x1
+ 1101 01d6 29       		.byte	0x29
+ 1102 01d7 00000000 		.4byte	.LFB69
+ 1103 01db 9C000000 		.4byte	.LFE69-.LFB69
+ 1104 01df 01       		.uleb128 0x1
+ 1105 01e0 9C       		.byte	0x9c
+ 1106 01e1 0C       		.uleb128 0xc
+ 1107 01e2 79020000 		.4byte	.LASF53
+ 1108 01e6 01       		.byte	0x1
+ 1109 01e7 38       		.byte	0x38
+ 1110 01e8 00000000 		.4byte	.LFB70
+ 1111 01ec 9C010000 		.4byte	.LFE70-.LFB70
+ 1112 01f0 01       		.uleb128 0x1
+ 1113 01f1 9C       		.byte	0x9c
+ 1114 01f2 A9020000 		.4byte	0x2a9
+ 1115 01f6 0D       		.uleb128 0xd
+ 1116 01f7 CA020000 		.4byte	.LASF40
+ 1117 01fb 01       		.byte	0x1
+ 1118 01fc 3A       		.byte	0x3a
+ 1119 01fd A9020000 		.4byte	0x2a9
+ 1120 0201 02       		.uleb128 0x2
+ 1121 0202 91       		.byte	0x91
+ 1122 0203 6C       		.sleb128 -20
+ 1123 0204 0D       		.uleb128 0xd
+ 1124 0205 3E030000 		.4byte	.LASF41
+ 1125 0209 01       		.byte	0x1
+ 1126 020a 3B       		.byte	0x3b
+ 1127 020b 3E010000 		.4byte	0x13e
+ 1128 020f 02       		.uleb128 0x2
+ 1129 0210 91       		.byte	0x91
+ 1130 0211 58       		.sleb128 -40
+ 1131 0212 0D       		.uleb128 0xd
+ 1132 0213 8A030000 		.4byte	.LASF42
+ 1133 0217 01       		.byte	0x1
+ 1134 0218 3C       		.byte	0x3c
+ 1135 0219 AB010000 		.4byte	0x1ab
+ 1136 021d 02       		.uleb128 0x2
+ 1137 021e 91       		.byte	0x91
+ 1138 021f 54       		.sleb128 -44
+ 1139 0220 0D       		.uleb128 0xd
+ 1140 0221 99020000 		.4byte	.LASF43
+ 1141 0225 01       		.byte	0x1
+ 1142 0226 3D       		.byte	0x3d
+ 1143 0227 AE020000 		.4byte	0x2ae
+ 1144 022b 02       		.uleb128 0x2
+ 1145 022c 91       		.byte	0x91
+ 1146 022d 77       		.sleb128 -9
+ 1147 022e 0D       		.uleb128 0xd
+ 1148 022f E1020000 		.4byte	.LASF44
+ 1149 0233 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 26
+
+
+ 1150 0234 3D       		.byte	0x3d
+ 1151 0235 AE020000 		.4byte	0x2ae
+ 1152 0239 02       		.uleb128 0x2
+ 1153 023a 91       		.byte	0x91
+ 1154 023b 76       		.sleb128 -10
+ 1155 023c 0D       		.uleb128 0xd
+ 1156 023d 79040000 		.4byte	.LASF45
+ 1157 0241 01       		.byte	0x1
+ 1158 0242 3D       		.byte	0x3d
+ 1159 0243 AE020000 		.4byte	0x2ae
+ 1160 0247 02       		.uleb128 0x2
+ 1161 0248 91       		.byte	0x91
+ 1162 0249 75       		.sleb128 -11
+ 1163 024a 0D       		.uleb128 0xd
+ 1164 024b 00000000 		.4byte	.LASF46
+ 1165 024f 01       		.byte	0x1
+ 1166 0250 3D       		.byte	0x3d
+ 1167 0251 AE020000 		.4byte	0x2ae
+ 1168 0255 02       		.uleb128 0x2
+ 1169 0256 91       		.byte	0x91
+ 1170 0257 74       		.sleb128 -12
+ 1171 0258 0D       		.uleb128 0xd
+ 1172 0259 91000000 		.4byte	.LASF47
+ 1173 025d 01       		.byte	0x1
+ 1174 025e 3D       		.byte	0x3d
+ 1175 025f AE020000 		.4byte	0x2ae
+ 1176 0263 02       		.uleb128 0x2
+ 1177 0264 91       		.byte	0x91
+ 1178 0265 73       		.sleb128 -13
+ 1179 0266 0D       		.uleb128 0xd
+ 1180 0267 8C040000 		.4byte	.LASF48
+ 1181 026b 01       		.byte	0x1
+ 1182 026c 3D       		.byte	0x3d
+ 1183 026d AE020000 		.4byte	0x2ae
+ 1184 0271 02       		.uleb128 0x2
+ 1185 0272 91       		.byte	0x91
+ 1186 0273 72       		.sleb128 -14
+ 1187 0274 0D       		.uleb128 0xd
+ 1188 0275 93040000 		.4byte	.LASF49
+ 1189 0279 01       		.byte	0x1
+ 1190 027a 3D       		.byte	0x3d
+ 1191 027b AE020000 		.4byte	0x2ae
+ 1192 027f 02       		.uleb128 0x2
+ 1193 0280 91       		.byte	0x91
+ 1194 0281 71       		.sleb128 -15
+ 1195 0282 0D       		.uleb128 0xd
+ 1196 0283 AF040000 		.4byte	.LASF50
+ 1197 0287 01       		.byte	0x1
+ 1198 0288 3D       		.byte	0x3d
+ 1199 0289 AE020000 		.4byte	0x2ae
+ 1200 028d 02       		.uleb128 0x2
+ 1201 028e 91       		.byte	0x91
+ 1202 028f 70       		.sleb128 -16
+ 1203 0290 0E       		.uleb128 0xe
+ 1204 0291 3A000000 		.4byte	.LBB2
+ 1205 0295 58010000 		.4byte	.LBE2-.LBB2
+ 1206 0299 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 27
+
+
+ 1207 029a D7000000 		.4byte	.LASF51
+ 1208 029e 01       		.byte	0x1
+ 1209 029f 41       		.byte	0x41
+ 1210 02a0 12010000 		.4byte	0x112
+ 1211 02a4 02       		.uleb128 0x2
+ 1212 02a5 91       		.byte	0x91
+ 1213 02a6 68       		.sleb128 -24
+ 1214 02a7 00       		.byte	0
+ 1215 02a8 00       		.byte	0
+ 1216 02a9 0F       		.uleb128 0xf
+ 1217 02aa 1D010000 		.4byte	0x11d
+ 1218 02ae 03       		.uleb128 0x3
+ 1219 02af 01       		.byte	0x1
+ 1220 02b0 02       		.byte	0x2
+ 1221 02b1 7C030000 		.4byte	.LASF52
+ 1222 02b5 0C       		.uleb128 0xc
+ 1223 02b6 66030000 		.4byte	.LASF54
+ 1224 02ba 01       		.byte	0x1
+ 1225 02bb 76       		.byte	0x76
+ 1226 02bc 00000000 		.4byte	.LFB71
+ 1227 02c0 10010000 		.4byte	.LFE71-.LFB71
+ 1228 02c4 01       		.uleb128 0x1
+ 1229 02c5 9C       		.byte	0x9c
+ 1230 02c6 55030000 		.4byte	0x355
+ 1231 02ca 0D       		.uleb128 0xd
+ 1232 02cb CA020000 		.4byte	.LASF40
+ 1233 02cf 01       		.byte	0x1
+ 1234 02d0 78       		.byte	0x78
+ 1235 02d1 A9020000 		.4byte	0x2a9
+ 1236 02d5 02       		.uleb128 0x2
+ 1237 02d6 91       		.byte	0x91
+ 1238 02d7 58       		.sleb128 -40
+ 1239 02d8 0D       		.uleb128 0xd
+ 1240 02d9 C2010000 		.4byte	.LASF55
+ 1241 02dd 01       		.byte	0x1
+ 1242 02de 79       		.byte	0x79
+ 1243 02df 25000000 		.4byte	0x25
+ 1244 02e3 02       		.uleb128 0x2
+ 1245 02e4 91       		.byte	0x91
+ 1246 02e5 64       		.sleb128 -28
+ 1247 02e6 0D       		.uleb128 0xd
+ 1248 02e7 A4010000 		.4byte	.LASF56
+ 1249 02eb 01       		.byte	0x1
+ 1250 02ec 7A       		.byte	0x7a
+ 1251 02ed 25000000 		.4byte	0x25
+ 1252 02f1 02       		.uleb128 0x2
+ 1253 02f2 91       		.byte	0x91
+ 1254 02f3 60       		.sleb128 -32
+ 1255 02f4 0D       		.uleb128 0xd
+ 1256 02f5 3C020000 		.4byte	.LASF57
+ 1257 02f9 01       		.byte	0x1
+ 1258 02fa 7B       		.byte	0x7b
+ 1259 02fb AE020000 		.4byte	0x2ae
+ 1260 02ff 02       		.uleb128 0x2
+ 1261 0300 91       		.byte	0x91
+ 1262 0301 5F       		.sleb128 -33
+ 1263 0302 0D       		.uleb128 0xd
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 28
+
+
+ 1264 0303 54040000 		.4byte	.LASF58
+ 1265 0307 01       		.byte	0x1
+ 1266 0308 7C       		.byte	0x7c
+ 1267 0309 AE020000 		.4byte	0x2ae
+ 1268 030d 02       		.uleb128 0x2
+ 1269 030e 91       		.byte	0x91
+ 1270 030f 5E       		.sleb128 -34
+ 1271 0310 0D       		.uleb128 0xd
+ 1272 0311 E5010000 		.4byte	.LASF59
+ 1273 0315 01       		.byte	0x1
+ 1274 0316 7D       		.byte	0x7d
+ 1275 0317 12010000 		.4byte	0x112
+ 1276 031b 02       		.uleb128 0x2
+ 1277 031c 91       		.byte	0x91
+ 1278 031d 48       		.sleb128 -56
+ 1279 031e 0D       		.uleb128 0xd
+ 1280 031f 28020000 		.4byte	.LASF60
+ 1281 0323 01       		.byte	0x1
+ 1282 0324 7E       		.byte	0x7e
+ 1283 0325 55030000 		.4byte	0x355
+ 1284 0329 02       		.uleb128 0x2
+ 1285 032a 91       		.byte	0x91
+ 1286 032b 54       		.sleb128 -44
+ 1287 032c 0D       		.uleb128 0xd
+ 1288 032d CA000000 		.4byte	.LASF61
+ 1289 0331 01       		.byte	0x1
+ 1290 0332 7F       		.byte	0x7f
+ 1291 0333 5A030000 		.4byte	0x35a
+ 1292 0337 03       		.uleb128 0x3
+ 1293 0338 91       		.byte	0x91
+ 1294 0339 4C       		.sleb128 -52
+ 1295 033a 06       		.byte	0x6
+ 1296 033b 10       		.uleb128 0x10
+ 1297 033c 63020000 		.4byte	.LASF87
+ 1298 0340 01       		.byte	0x1
+ 1299 0341 80       		.byte	0x80
+ 1300 0342 AE020000 		.4byte	0x2ae
+ 1301 0346 0D       		.uleb128 0xd
+ 1302 0347 47020000 		.4byte	.LASF62
+ 1303 034b 01       		.byte	0x1
+ 1304 034c 81       		.byte	0x81
+ 1305 034d AE020000 		.4byte	0x2ae
+ 1306 0351 02       		.uleb128 0x2
+ 1307 0352 91       		.byte	0x91
+ 1308 0353 47       		.sleb128 -57
+ 1309 0354 00       		.byte	0
+ 1310 0355 0F       		.uleb128 0xf
+ 1311 0356 25000000 		.4byte	0x25
+ 1312 035a 11       		.uleb128 0x11
+ 1313 035b 3E010000 		.4byte	0x13e
+ 1314 035f 6D030000 		.4byte	0x36d
+ 1315 0363 12       		.uleb128 0x12
+ 1316 0364 E6000000 		.4byte	0xe6
+ 1317 0368 03       		.uleb128 0x3
+ 1318 0369 91       		.byte	0x91
+ 1319 036a 50       		.sleb128 -48
+ 1320 036b 06       		.byte	0x6
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 29
+
+
+ 1321 036c 00       		.byte	0
+ 1322 036d 0B       		.uleb128 0xb
+ 1323 036e 60040000 		.4byte	.LASF64
+ 1324 0372 01       		.byte	0x1
+ 1325 0373 AF       		.byte	0xaf
+ 1326 0374 00000000 		.4byte	.LFB72
+ 1327 0378 2C000000 		.4byte	.LFE72-.LFB72
+ 1328 037c 01       		.uleb128 0x1
+ 1329 037d 9C       		.byte	0x9c
+ 1330 037e 0C       		.uleb128 0xc
+ 1331 037f D3020000 		.4byte	.LASF65
+ 1332 0383 01       		.byte	0x1
+ 1333 0384 B4       		.byte	0xb4
+ 1334 0385 00000000 		.4byte	.LFB73
+ 1335 0389 14020000 		.4byte	.LFE73-.LFB73
+ 1336 038d 01       		.uleb128 0x1
+ 1337 038e 9C       		.byte	0x9c
+ 1338 038f 3D040000 		.4byte	0x43d
+ 1339 0393 0D       		.uleb128 0xd
+ 1340 0394 E5010000 		.4byte	.LASF59
+ 1341 0398 01       		.byte	0x1
+ 1342 0399 B6       		.byte	0xb6
+ 1343 039a 25000000 		.4byte	0x25
+ 1344 039e 02       		.uleb128 0x2
+ 1345 039f 91       		.byte	0x91
+ 1346 03a0 70       		.sleb128 -16
+ 1347 03a1 0D       		.uleb128 0xd
+ 1348 03a2 BA020000 		.4byte	.LASF66
+ 1349 03a6 01       		.byte	0x1
+ 1350 03a7 B7       		.byte	0xb7
+ 1351 03a8 3E010000 		.4byte	0x13e
+ 1352 03ac 02       		.uleb128 0x2
+ 1353 03ad 91       		.byte	0x91
+ 1354 03ae 60       		.sleb128 -32
+ 1355 03af 0D       		.uleb128 0xd
+ 1356 03b0 CA020000 		.4byte	.LASF40
+ 1357 03b4 01       		.byte	0x1
+ 1358 03b5 B8       		.byte	0xb8
+ 1359 03b6 A9020000 		.4byte	0x2a9
+ 1360 03ba 02       		.uleb128 0x2
+ 1361 03bb 91       		.byte	0x91
+ 1362 03bc 74       		.sleb128 -12
+ 1363 03bd 0D       		.uleb128 0xd
+ 1364 03be 1C000000 		.4byte	.LASF67
+ 1365 03c2 01       		.byte	0x1
+ 1366 03c3 BA       		.byte	0xba
+ 1367 03c4 AB010000 		.4byte	0x1ab
+ 1368 03c8 02       		.uleb128 0x2
+ 1369 03c9 91       		.byte	0x91
+ 1370 03ca 5C       		.sleb128 -36
+ 1371 03cb 0D       		.uleb128 0xd
+ 1372 03cc 29000000 		.4byte	.LASF68
+ 1373 03d0 01       		.byte	0x1
+ 1374 03d1 BE       		.byte	0xbe
+ 1375 03d2 AB010000 		.4byte	0x1ab
+ 1376 03d6 02       		.uleb128 0x2
+ 1377 03d7 91       		.byte	0x91
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 30
+
+
+ 1378 03d8 58       		.sleb128 -40
+ 1379 03d9 0D       		.uleb128 0xd
+ 1380 03da 36000000 		.4byte	.LASF69
+ 1381 03de 01       		.byte	0x1
+ 1382 03df C2       		.byte	0xc2
+ 1383 03e0 AB010000 		.4byte	0x1ab
+ 1384 03e4 02       		.uleb128 0x2
+ 1385 03e5 91       		.byte	0x91
+ 1386 03e6 54       		.sleb128 -44
+ 1387 03e7 0D       		.uleb128 0xd
+ 1388 03e8 43000000 		.4byte	.LASF70
+ 1389 03ec 01       		.byte	0x1
+ 1390 03ed C6       		.byte	0xc6
+ 1391 03ee AB010000 		.4byte	0x1ab
+ 1392 03f2 02       		.uleb128 0x2
+ 1393 03f3 91       		.byte	0x91
+ 1394 03f4 50       		.sleb128 -48
+ 1395 03f5 0D       		.uleb128 0xd
+ 1396 03f6 50000000 		.4byte	.LASF71
+ 1397 03fa 01       		.byte	0x1
+ 1398 03fb CA       		.byte	0xca
+ 1399 03fc AB010000 		.4byte	0x1ab
+ 1400 0400 02       		.uleb128 0x2
+ 1401 0401 91       		.byte	0x91
+ 1402 0402 4C       		.sleb128 -52
+ 1403 0403 0D       		.uleb128 0xd
+ 1404 0404 5D000000 		.4byte	.LASF72
+ 1405 0408 01       		.byte	0x1
+ 1406 0409 CE       		.byte	0xce
+ 1407 040a AB010000 		.4byte	0x1ab
+ 1408 040e 02       		.uleb128 0x2
+ 1409 040f 91       		.byte	0x91
+ 1410 0410 48       		.sleb128 -56
+ 1411 0411 0D       		.uleb128 0xd
+ 1412 0412 6A000000 		.4byte	.LASF73
+ 1413 0416 01       		.byte	0x1
+ 1414 0417 D2       		.byte	0xd2
+ 1415 0418 AB010000 		.4byte	0x1ab
+ 1416 041c 02       		.uleb128 0x2
+ 1417 041d 91       		.byte	0x91
+ 1418 041e 44       		.sleb128 -60
+ 1419 041f 0D       		.uleb128 0xd
+ 1420 0420 77000000 		.4byte	.LASF74
+ 1421 0424 01       		.byte	0x1
+ 1422 0425 D6       		.byte	0xd6
+ 1423 0426 AB010000 		.4byte	0x1ab
+ 1424 042a 02       		.uleb128 0x2
+ 1425 042b 91       		.byte	0x91
+ 1426 042c 40       		.sleb128 -64
+ 1427 042d 0D       		.uleb128 0xd
+ 1428 042e 84000000 		.4byte	.LASF75
+ 1429 0432 01       		.byte	0x1
+ 1430 0433 DA       		.byte	0xda
+ 1431 0434 AB010000 		.4byte	0x1ab
+ 1432 0438 03       		.uleb128 0x3
+ 1433 0439 91       		.byte	0x91
+ 1434 043a BC7F     		.sleb128 -68
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 31
+
+
+ 1435 043c 00       		.byte	0
+ 1436 043d 11       		.uleb128 0x11
+ 1437 043e ED000000 		.4byte	0xed
+ 1438 0442 4D040000 		.4byte	0x44d
+ 1439 0446 13       		.uleb128 0x13
+ 1440 0447 E6000000 		.4byte	0xe6
+ 1441 044b 07       		.byte	0x7
+ 1442 044c 00       		.byte	0
+ 1443 044d 14       		.uleb128 0x14
+ 1444 044e BC000000 		.4byte	.LASF76
+ 1445 0452 05       		.byte	0x5
+ 1446 0453 34       		.byte	0x34
+ 1447 0454 3D040000 		.4byte	0x43d
+ 1448 0458 05       		.uleb128 0x5
+ 1449 0459 03       		.byte	0x3
+ 1450 045a 00000000 		.4byte	DS18x8_Sensor
+ 1451 045e 14       		.uleb128 0x14
+ 1452 045f B6040000 		.4byte	.LASF77
+ 1453 0463 05       		.byte	0x5
+ 1454 0464 39       		.byte	0x39
+ 1455 0465 E1000000 		.4byte	0xe1
+ 1456 0469 05       		.uleb128 0x5
+ 1457 046a 03       		.byte	0x3
+ 1458 046b 00000000 		.4byte	DS18x8_DataReady
+ 1459 046f 15       		.uleb128 0x15
+ 1460 0470 9A040000 		.4byte	.LASF78
+ 1461 0474 08       		.byte	0x8
+ 1462 0475 1207     		.2byte	0x712
+ 1463 0477 7B040000 		.4byte	0x47b
+ 1464 047b 06       		.uleb128 0x6
+ 1465 047c 9E000000 		.4byte	0x9e
+ 1466 0480 14       		.uleb128 0x14
+ 1467 0481 07000000 		.4byte	.LASF79
+ 1468 0485 01       		.byte	0x1
+ 1469 0486 23       		.byte	0x23
+ 1470 0487 28010000 		.4byte	0x128
+ 1471 048b 05       		.uleb128 0x5
+ 1472 048c 03       		.byte	0x3
+ 1473 048d 00000000 		.4byte	xQueueControllerData
+ 1474 0491 14       		.uleb128 0x14
+ 1475 0492 F4010000 		.4byte	.LASF80
+ 1476 0496 01       		.byte	0x1
+ 1477 0497 24       		.byte	0x24
+ 1478 0498 28010000 		.4byte	0x128
+ 1479 049c 05       		.uleb128 0x5
+ 1480 049d 03       		.byte	0x3
+ 1481 049e 00000000 		.4byte	xQueueCentralrequest
+ 1482 04a2 14       		.uleb128 0x14
+ 1483 04a3 92010000 		.4byte	.LASF81
+ 1484 04a7 01       		.byte	0x1
+ 1485 04a8 25       		.byte	0x25
+ 1486 04a9 28010000 		.4byte	0x128
+ 1487 04ad 05       		.uleb128 0x5
+ 1488 04ae 03       		.byte	0x3
+ 1489 04af 00000000 		.4byte	xQueueCentralData
+ 1490 04b3 14       		.uleb128 0x14
+ 1491 04b4 78010000 		.4byte	.LASF82
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 32
+
+
+ 1492 04b8 01       		.byte	0x1
+ 1493 04b9 26       		.byte	0x26
+ 1494 04ba 28010000 		.4byte	0x128
+ 1495 04be 05       		.uleb128 0x5
+ 1496 04bf 03       		.byte	0x3
+ 1497 04c0 00000000 		.4byte	xQueueStorageReady
+ 1498 04c4 00       		.byte	0
+ 1499              		.section	.debug_abbrev,"",%progbits
+ 1500              	.Ldebug_abbrev0:
+ 1501 0000 01       		.uleb128 0x1
+ 1502 0001 11       		.uleb128 0x11
+ 1503 0002 01       		.byte	0x1
+ 1504 0003 25       		.uleb128 0x25
+ 1505 0004 0E       		.uleb128 0xe
+ 1506 0005 13       		.uleb128 0x13
+ 1507 0006 0B       		.uleb128 0xb
+ 1508 0007 03       		.uleb128 0x3
+ 1509 0008 0E       		.uleb128 0xe
+ 1510 0009 1B       		.uleb128 0x1b
+ 1511 000a 0E       		.uleb128 0xe
+ 1512 000b 55       		.uleb128 0x55
+ 1513 000c 17       		.uleb128 0x17
+ 1514 000d 11       		.uleb128 0x11
+ 1515 000e 01       		.uleb128 0x1
+ 1516 000f 10       		.uleb128 0x10
+ 1517 0010 17       		.uleb128 0x17
+ 1518 0011 00       		.byte	0
+ 1519 0012 00       		.byte	0
+ 1520 0013 02       		.uleb128 0x2
+ 1521 0014 24       		.uleb128 0x24
+ 1522 0015 00       		.byte	0
+ 1523 0016 0B       		.uleb128 0xb
+ 1524 0017 0B       		.uleb128 0xb
+ 1525 0018 3E       		.uleb128 0x3e
+ 1526 0019 0B       		.uleb128 0xb
+ 1527 001a 03       		.uleb128 0x3
+ 1528 001b 08       		.uleb128 0x8
+ 1529 001c 00       		.byte	0
+ 1530 001d 00       		.byte	0
+ 1531 001e 03       		.uleb128 0x3
+ 1532 001f 24       		.uleb128 0x24
+ 1533 0020 00       		.byte	0
+ 1534 0021 0B       		.uleb128 0xb
+ 1535 0022 0B       		.uleb128 0xb
+ 1536 0023 3E       		.uleb128 0x3e
+ 1537 0024 0B       		.uleb128 0xb
+ 1538 0025 03       		.uleb128 0x3
+ 1539 0026 0E       		.uleb128 0xe
+ 1540 0027 00       		.byte	0
+ 1541 0028 00       		.byte	0
+ 1542 0029 04       		.uleb128 0x4
+ 1543 002a 16       		.uleb128 0x16
+ 1544 002b 00       		.byte	0
+ 1545 002c 03       		.uleb128 0x3
+ 1546 002d 0E       		.uleb128 0xe
+ 1547 002e 3A       		.uleb128 0x3a
+ 1548 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 33
+
+
+ 1549 0030 3B       		.uleb128 0x3b
+ 1550 0031 0B       		.uleb128 0xb
+ 1551 0032 49       		.uleb128 0x49
+ 1552 0033 13       		.uleb128 0x13
+ 1553 0034 00       		.byte	0
+ 1554 0035 00       		.byte	0
+ 1555 0036 05       		.uleb128 0x5
+ 1556 0037 16       		.uleb128 0x16
+ 1557 0038 00       		.byte	0
+ 1558 0039 03       		.uleb128 0x3
+ 1559 003a 0E       		.uleb128 0xe
+ 1560 003b 3A       		.uleb128 0x3a
+ 1561 003c 0B       		.uleb128 0xb
+ 1562 003d 3B       		.uleb128 0x3b
+ 1563 003e 05       		.uleb128 0x5
+ 1564 003f 49       		.uleb128 0x49
+ 1565 0040 13       		.uleb128 0x13
+ 1566 0041 00       		.byte	0
+ 1567 0042 00       		.byte	0
+ 1568 0043 06       		.uleb128 0x6
+ 1569 0044 35       		.uleb128 0x35
+ 1570 0045 00       		.byte	0
+ 1571 0046 49       		.uleb128 0x49
+ 1572 0047 13       		.uleb128 0x13
+ 1573 0048 00       		.byte	0
+ 1574 0049 00       		.byte	0
+ 1575 004a 07       		.uleb128 0x7
+ 1576 004b 13       		.uleb128 0x13
+ 1577 004c 01       		.byte	0x1
+ 1578 004d 03       		.uleb128 0x3
+ 1579 004e 0E       		.uleb128 0xe
+ 1580 004f 0B       		.uleb128 0xb
+ 1581 0050 0B       		.uleb128 0xb
+ 1582 0051 3A       		.uleb128 0x3a
+ 1583 0052 0B       		.uleb128 0xb
+ 1584 0053 3B       		.uleb128 0x3b
+ 1585 0054 0B       		.uleb128 0xb
+ 1586 0055 01       		.uleb128 0x1
+ 1587 0056 13       		.uleb128 0x13
+ 1588 0057 00       		.byte	0
+ 1589 0058 00       		.byte	0
+ 1590 0059 08       		.uleb128 0x8
+ 1591 005a 0D       		.uleb128 0xd
+ 1592 005b 00       		.byte	0
+ 1593 005c 03       		.uleb128 0x3
+ 1594 005d 0E       		.uleb128 0xe
+ 1595 005e 3A       		.uleb128 0x3a
+ 1596 005f 0B       		.uleb128 0xb
+ 1597 0060 3B       		.uleb128 0x3b
+ 1598 0061 0B       		.uleb128 0xb
+ 1599 0062 49       		.uleb128 0x49
+ 1600 0063 13       		.uleb128 0x13
+ 1601 0064 38       		.uleb128 0x38
+ 1602 0065 0B       		.uleb128 0xb
+ 1603 0066 00       		.byte	0
+ 1604 0067 00       		.byte	0
+ 1605 0068 09       		.uleb128 0x9
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 34
+
+
+ 1606 0069 0F       		.uleb128 0xf
+ 1607 006a 00       		.byte	0
+ 1608 006b 0B       		.uleb128 0xb
+ 1609 006c 0B       		.uleb128 0xb
+ 1610 006d 49       		.uleb128 0x49
+ 1611 006e 13       		.uleb128 0x13
+ 1612 006f 00       		.byte	0
+ 1613 0070 00       		.byte	0
+ 1614 0071 0A       		.uleb128 0xa
+ 1615 0072 13       		.uleb128 0x13
+ 1616 0073 00       		.byte	0
+ 1617 0074 03       		.uleb128 0x3
+ 1618 0075 0E       		.uleb128 0xe
+ 1619 0076 3C       		.uleb128 0x3c
+ 1620 0077 19       		.uleb128 0x19
+ 1621 0078 00       		.byte	0
+ 1622 0079 00       		.byte	0
+ 1623 007a 0B       		.uleb128 0xb
+ 1624 007b 2E       		.uleb128 0x2e
+ 1625 007c 00       		.byte	0
+ 1626 007d 3F       		.uleb128 0x3f
+ 1627 007e 19       		.uleb128 0x19
+ 1628 007f 03       		.uleb128 0x3
+ 1629 0080 0E       		.uleb128 0xe
+ 1630 0081 3A       		.uleb128 0x3a
+ 1631 0082 0B       		.uleb128 0xb
+ 1632 0083 3B       		.uleb128 0x3b
+ 1633 0084 0B       		.uleb128 0xb
+ 1634 0085 11       		.uleb128 0x11
+ 1635 0086 01       		.uleb128 0x1
+ 1636 0087 12       		.uleb128 0x12
+ 1637 0088 06       		.uleb128 0x6
+ 1638 0089 40       		.uleb128 0x40
+ 1639 008a 18       		.uleb128 0x18
+ 1640 008b 9642     		.uleb128 0x2116
+ 1641 008d 19       		.uleb128 0x19
+ 1642 008e 00       		.byte	0
+ 1643 008f 00       		.byte	0
+ 1644 0090 0C       		.uleb128 0xc
+ 1645 0091 2E       		.uleb128 0x2e
+ 1646 0092 01       		.byte	0x1
+ 1647 0093 3F       		.uleb128 0x3f
+ 1648 0094 19       		.uleb128 0x19
+ 1649 0095 03       		.uleb128 0x3
+ 1650 0096 0E       		.uleb128 0xe
+ 1651 0097 3A       		.uleb128 0x3a
+ 1652 0098 0B       		.uleb128 0xb
+ 1653 0099 3B       		.uleb128 0x3b
+ 1654 009a 0B       		.uleb128 0xb
+ 1655 009b 11       		.uleb128 0x11
+ 1656 009c 01       		.uleb128 0x1
+ 1657 009d 12       		.uleb128 0x12
+ 1658 009e 06       		.uleb128 0x6
+ 1659 009f 40       		.uleb128 0x40
+ 1660 00a0 18       		.uleb128 0x18
+ 1661 00a1 9642     		.uleb128 0x2116
+ 1662 00a3 19       		.uleb128 0x19
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 35
+
+
+ 1663 00a4 01       		.uleb128 0x1
+ 1664 00a5 13       		.uleb128 0x13
+ 1665 00a6 00       		.byte	0
+ 1666 00a7 00       		.byte	0
+ 1667 00a8 0D       		.uleb128 0xd
+ 1668 00a9 34       		.uleb128 0x34
+ 1669 00aa 00       		.byte	0
+ 1670 00ab 03       		.uleb128 0x3
+ 1671 00ac 0E       		.uleb128 0xe
+ 1672 00ad 3A       		.uleb128 0x3a
+ 1673 00ae 0B       		.uleb128 0xb
+ 1674 00af 3B       		.uleb128 0x3b
+ 1675 00b0 0B       		.uleb128 0xb
+ 1676 00b1 49       		.uleb128 0x49
+ 1677 00b2 13       		.uleb128 0x13
+ 1678 00b3 02       		.uleb128 0x2
+ 1679 00b4 18       		.uleb128 0x18
+ 1680 00b5 00       		.byte	0
+ 1681 00b6 00       		.byte	0
+ 1682 00b7 0E       		.uleb128 0xe
+ 1683 00b8 0B       		.uleb128 0xb
+ 1684 00b9 01       		.byte	0x1
+ 1685 00ba 11       		.uleb128 0x11
+ 1686 00bb 01       		.uleb128 0x1
+ 1687 00bc 12       		.uleb128 0x12
+ 1688 00bd 06       		.uleb128 0x6
+ 1689 00be 00       		.byte	0
+ 1690 00bf 00       		.byte	0
+ 1691 00c0 0F       		.uleb128 0xf
+ 1692 00c1 26       		.uleb128 0x26
+ 1693 00c2 00       		.byte	0
+ 1694 00c3 49       		.uleb128 0x49
+ 1695 00c4 13       		.uleb128 0x13
+ 1696 00c5 00       		.byte	0
+ 1697 00c6 00       		.byte	0
+ 1698 00c7 10       		.uleb128 0x10
+ 1699 00c8 34       		.uleb128 0x34
+ 1700 00c9 00       		.byte	0
+ 1701 00ca 03       		.uleb128 0x3
+ 1702 00cb 0E       		.uleb128 0xe
+ 1703 00cc 3A       		.uleb128 0x3a
+ 1704 00cd 0B       		.uleb128 0xb
+ 1705 00ce 3B       		.uleb128 0x3b
+ 1706 00cf 0B       		.uleb128 0xb
+ 1707 00d0 49       		.uleb128 0x49
+ 1708 00d1 13       		.uleb128 0x13
+ 1709 00d2 00       		.byte	0
+ 1710 00d3 00       		.byte	0
+ 1711 00d4 11       		.uleb128 0x11
+ 1712 00d5 01       		.uleb128 0x1
+ 1713 00d6 01       		.byte	0x1
+ 1714 00d7 49       		.uleb128 0x49
+ 1715 00d8 13       		.uleb128 0x13
+ 1716 00d9 01       		.uleb128 0x1
+ 1717 00da 13       		.uleb128 0x13
+ 1718 00db 00       		.byte	0
+ 1719 00dc 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 36
+
+
+ 1720 00dd 12       		.uleb128 0x12
+ 1721 00de 21       		.uleb128 0x21
+ 1722 00df 00       		.byte	0
+ 1723 00e0 49       		.uleb128 0x49
+ 1724 00e1 13       		.uleb128 0x13
+ 1725 00e2 2F       		.uleb128 0x2f
+ 1726 00e3 18       		.uleb128 0x18
+ 1727 00e4 00       		.byte	0
+ 1728 00e5 00       		.byte	0
+ 1729 00e6 13       		.uleb128 0x13
+ 1730 00e7 21       		.uleb128 0x21
+ 1731 00e8 00       		.byte	0
+ 1732 00e9 49       		.uleb128 0x49
+ 1733 00ea 13       		.uleb128 0x13
+ 1734 00eb 2F       		.uleb128 0x2f
+ 1735 00ec 0B       		.uleb128 0xb
+ 1736 00ed 00       		.byte	0
+ 1737 00ee 00       		.byte	0
+ 1738 00ef 14       		.uleb128 0x14
+ 1739 00f0 34       		.uleb128 0x34
+ 1740 00f1 00       		.byte	0
+ 1741 00f2 03       		.uleb128 0x3
+ 1742 00f3 0E       		.uleb128 0xe
+ 1743 00f4 3A       		.uleb128 0x3a
+ 1744 00f5 0B       		.uleb128 0xb
+ 1745 00f6 3B       		.uleb128 0x3b
+ 1746 00f7 0B       		.uleb128 0xb
+ 1747 00f8 49       		.uleb128 0x49
+ 1748 00f9 13       		.uleb128 0x13
+ 1749 00fa 3F       		.uleb128 0x3f
+ 1750 00fb 19       		.uleb128 0x19
+ 1751 00fc 02       		.uleb128 0x2
+ 1752 00fd 18       		.uleb128 0x18
+ 1753 00fe 00       		.byte	0
+ 1754 00ff 00       		.byte	0
+ 1755 0100 15       		.uleb128 0x15
+ 1756 0101 34       		.uleb128 0x34
+ 1757 0102 00       		.byte	0
+ 1758 0103 03       		.uleb128 0x3
+ 1759 0104 0E       		.uleb128 0xe
+ 1760 0105 3A       		.uleb128 0x3a
+ 1761 0106 0B       		.uleb128 0xb
+ 1762 0107 3B       		.uleb128 0x3b
+ 1763 0108 05       		.uleb128 0x5
+ 1764 0109 49       		.uleb128 0x49
+ 1765 010a 13       		.uleb128 0x13
+ 1766 010b 3F       		.uleb128 0x3f
+ 1767 010c 19       		.uleb128 0x19
+ 1768 010d 3C       		.uleb128 0x3c
+ 1769 010e 19       		.uleb128 0x19
+ 1770 010f 00       		.byte	0
+ 1771 0110 00       		.byte	0
+ 1772 0111 00       		.byte	0
+ 1773              		.section	.debug_aranges,"",%progbits
+ 1774 0000 3C000000 		.4byte	0x3c
+ 1775 0004 0200     		.2byte	0x2
+ 1776 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 37
+
+
+ 1777 000a 04       		.byte	0x4
+ 1778 000b 00       		.byte	0
+ 1779 000c 0000     		.2byte	0
+ 1780 000e 0000     		.2byte	0
+ 1781 0010 00000000 		.4byte	.LFB69
+ 1782 0014 9C000000 		.4byte	.LFE69-.LFB69
+ 1783 0018 00000000 		.4byte	.LFB70
+ 1784 001c 9C010000 		.4byte	.LFE70-.LFB70
+ 1785 0020 00000000 		.4byte	.LFB71
+ 1786 0024 10010000 		.4byte	.LFE71-.LFB71
+ 1787 0028 00000000 		.4byte	.LFB72
+ 1788 002c 2C000000 		.4byte	.LFE72-.LFB72
+ 1789 0030 00000000 		.4byte	.LFB73
+ 1790 0034 14020000 		.4byte	.LFE73-.LFB73
+ 1791 0038 00000000 		.4byte	0
+ 1792 003c 00000000 		.4byte	0
+ 1793              		.section	.debug_ranges,"",%progbits
+ 1794              	.Ldebug_ranges0:
+ 1795 0000 00000000 		.4byte	.LFB69
+ 1796 0004 9C000000 		.4byte	.LFE69
+ 1797 0008 00000000 		.4byte	.LFB70
+ 1798 000c 9C010000 		.4byte	.LFE70
+ 1799 0010 00000000 		.4byte	.LFB71
+ 1800 0014 10010000 		.4byte	.LFE71
+ 1801 0018 00000000 		.4byte	.LFB72
+ 1802 001c 2C000000 		.4byte	.LFE72
+ 1803 0020 00000000 		.4byte	.LFB73
+ 1804 0024 14020000 		.4byte	.LFE73
+ 1805 0028 00000000 		.4byte	0
+ 1806 002c 00000000 		.4byte	0
+ 1807              		.section	.debug_line,"",%progbits
+ 1808              	.Ldebug_line0:
+ 1809 0000 2B030000 		.section	.debug_str,"MS",%progbits,1
+ 1809      0200A901 
+ 1809      00000201 
+ 1809      FB0E0D00 
+ 1809      01010101 
+ 1810              	.LASF46:
+ 1811 0000 66526561 		.ascii	"fReady\000"
+ 1811      647900
+ 1812              	.LASF79:
+ 1813 0007 78517565 		.ascii	"xQueueControllerData\000"
+ 1813      7565436F 
+ 1813      6E74726F 
+ 1813      6C6C6572 
+ 1813      44617461 
+ 1814              	.LASF67:
+ 1815 001c 74657374 		.ascii	"testMessage1\000"
+ 1815      4D657373 
+ 1815      61676531 
+ 1815      00
+ 1816              	.LASF68:
+ 1817 0029 74657374 		.ascii	"testMessage2\000"
+ 1817      4D657373 
+ 1817      61676532 
+ 1817      00
+ 1818              	.LASF69:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 38
+
+
+ 1819 0036 74657374 		.ascii	"testMessage3\000"
+ 1819      4D657373 
+ 1819      61676533 
+ 1819      00
+ 1820              	.LASF70:
+ 1821 0043 74657374 		.ascii	"testMessage4\000"
+ 1821      4D657373 
+ 1821      61676534 
+ 1821      00
+ 1822              	.LASF71:
+ 1823 0050 74657374 		.ascii	"testMessage5\000"
+ 1823      4D657373 
+ 1823      61676535 
+ 1823      00
+ 1824              	.LASF72:
+ 1825 005d 74657374 		.ascii	"testMessage6\000"
+ 1825      4D657373 
+ 1825      61676536 
+ 1825      00
+ 1826              	.LASF73:
+ 1827 006a 74657374 		.ascii	"testMessage7\000"
+ 1827      4D657373 
+ 1827      61676537 
+ 1827      00
+ 1828              	.LASF74:
+ 1829 0077 74657374 		.ascii	"testMessage8\000"
+ 1829      4D657373 
+ 1829      61676538 
+ 1829      00
+ 1830              	.LASF75:
+ 1831 0084 74657374 		.ascii	"testMessage9\000"
+ 1831      4D657373 
+ 1831      61676539 
+ 1831      00
+ 1832              	.LASF47:
+ 1833 0091 63526561 		.ascii	"cReady\000"
+ 1833      647900
+ 1834              	.LASF63:
+ 1835 0098 76496E69 		.ascii	"vInitDataStorage\000"
+ 1835      74446174 
+ 1835      6153746F 
+ 1835      72616765 
+ 1835      00
+ 1836              	.LASF5:
+ 1837 00a9 73686F72 		.ascii	"short int\000"
+ 1837      7420696E 
+ 1837      7400
+ 1838              	.LASF21:
+ 1839 00b3 73697A65 		.ascii	"sizetype\000"
+ 1839      74797065 
+ 1839      00
+ 1840              	.LASF76:
+ 1841 00bc 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1841      78385F53 
+ 1841      656E736F 
+ 1841      7200
+ 1842              	.LASF61:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 39
+
+
+ 1843 00ca 616C6C44 		.ascii	"allDataArray\000"
+ 1843      61746141 
+ 1843      72726179 
+ 1843      00
+ 1844              	.LASF51:
+ 1845 00d7 78537461 		.ascii	"xStatus\000"
+ 1845      74757300 
+ 1846              	.LASF83:
+ 1847 00df 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1847      43313120 
+ 1847      352E342E 
+ 1847      31203230 
+ 1847      31363036 
+ 1848 0112 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1848      20726576 
+ 1848      6973696F 
+ 1848      6E203233 
+ 1848      37373135 
+ 1849 0145 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1849      66756E63 
+ 1849      74696F6E 
+ 1849      2D736563 
+ 1849      74696F6E 
+ 1850              	.LASF10:
+ 1851 016d 5F5F7569 		.ascii	"__uint32_t\000"
+ 1851      6E743332 
+ 1851      5F7400
+ 1852              	.LASF82:
+ 1853 0178 78517565 		.ascii	"xQueueStorageReady\000"
+ 1853      75655374 
+ 1853      6F726167 
+ 1853      65526561 
+ 1853      647900
+ 1854              	.LASF35:
+ 1855 018b 69524876 		.ascii	"iRHval\000"
+ 1855      616C00
+ 1856              	.LASF81:
+ 1857 0192 78517565 		.ascii	"xQueueCentralData\000"
+ 1857      75654365 
+ 1857      6E747261 
+ 1857      6C446174 
+ 1857      6100
+ 1858              	.LASF56:
+ 1859 01a4 77726974 		.ascii	"writePtr\000"
+ 1859      65507472 
+ 1859      00
+ 1860              	.LASF17:
+ 1861 01ad 75696E74 		.ascii	"uint16\000"
+ 1861      313600
+ 1862              	.LASF13:
+ 1863 01b4 75696E74 		.ascii	"uint8_t\000"
+ 1863      385F7400 
+ 1864              	.LASF16:
+ 1865 01bc 75696E74 		.ascii	"uint8\000"
+ 1865      3800
+ 1866              	.LASF55:
+ 1867 01c2 72656164 		.ascii	"readPtr\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 40
+
+
+ 1867      50747200 
+ 1868              	.LASF36:
+ 1869 01ca 694C6967 		.ascii	"iLightValue\000"
+ 1869      68745661 
+ 1869      6C756500 
+ 1870              	.LASF31:
+ 1871 01d6 69576174 		.ascii	"iWaterT\000"
+ 1871      65725400 
+ 1872              	.LASF34:
+ 1873 01de 6954656D 		.ascii	"iTempA\000"
+ 1873      704100
+ 1874              	.LASF59:
+ 1875 01e5 63656E74 		.ascii	"centralRequest\000"
+ 1875      72616C52 
+ 1875      65717565 
+ 1875      737400
+ 1876              	.LASF80:
+ 1877 01f4 78517565 		.ascii	"xQueueCentralrequest\000"
+ 1877      75654365 
+ 1877      6E747261 
+ 1877      6C726571 
+ 1877      75657374 
+ 1878              	.LASF18:
+ 1879 0209 666C6F61 		.ascii	"float\000"
+ 1879      7400
+ 1880              	.LASF1:
+ 1881 020f 6C6F6E67 		.ascii	"long long int\000"
+ 1881      206C6F6E 
+ 1881      6720696E 
+ 1881      7400
+ 1882              	.LASF25:
+ 1883 021d 5469636B 		.ascii	"TickType_t\000"
+ 1883      54797065 
+ 1883      5F7400
+ 1884              	.LASF60:
+ 1885 0228 73746F72 		.ascii	"storageSizes\000"
+ 1885      61676553 
+ 1885      697A6573 
+ 1885      00
+ 1886              	.LASF30:
+ 1887 0235 69454376 		.ascii	"iECval\000"
+ 1887      616C00
+ 1888              	.LASF57:
+ 1889 023c 62756666 		.ascii	"bufferFull\000"
+ 1889      65724675 
+ 1889      6C6C00
+ 1890              	.LASF62:
+ 1891 0247 71756575 		.ascii	"queueStatusCentral\000"
+ 1891      65537461 
+ 1891      74757343 
+ 1891      656E7472 
+ 1891      616C00
+ 1892              	.LASF9:
+ 1893 025a 6C6F6E67 		.ascii	"long int\000"
+ 1893      20696E74 
+ 1893      00
+ 1894              	.LASF87:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 41
+
+
+ 1895 0263 71756575 		.ascii	"queueStatus\000"
+ 1895      65537461 
+ 1895      74757300 
+ 1896              	.LASF7:
+ 1897 026f 5F5F7569 		.ascii	"__uint8_t\000"
+ 1897      6E74385F 
+ 1897      7400
+ 1898              	.LASF53:
+ 1899 0279 76546173 		.ascii	"vTaskDataQueueing\000"
+ 1899      6B446174 
+ 1899      61517565 
+ 1899      7565696E 
+ 1899      6700
+ 1900              	.LASF26:
+ 1901 028b 51756575 		.ascii	"QueueHandle_t\000"
+ 1901      6548616E 
+ 1901      646C655F 
+ 1901      7400
+ 1902              	.LASF43:
+ 1903 0299 70526561 		.ascii	"pReady\000"
+ 1903      647900
+ 1904              	.LASF2:
+ 1905 02a0 6C6F6E67 		.ascii	"long double\000"
+ 1905      20646F75 
+ 1905      626C6500 
+ 1906              	.LASF4:
+ 1907 02ac 756E7369 		.ascii	"unsigned char\000"
+ 1907      676E6564 
+ 1907      20636861 
+ 1907      7200
+ 1908              	.LASF66:
+ 1909 02ba 74657374 		.ascii	"testData\000"
+ 1909      44617461 
+ 1909      00
+ 1910              	.LASF29:
+ 1911 02c3 69504876 		.ascii	"iPHval\000"
+ 1911      616C00
+ 1912              	.LASF40:
+ 1913 02ca 7844656C 		.ascii	"xDelayms\000"
+ 1913      61796D73 
+ 1913      00
+ 1914              	.LASF65:
+ 1915 02d3 76546173 		.ascii	"vTaskTestData\000"
+ 1915      6B546573 
+ 1915      74446174 
+ 1915      6100
+ 1916              	.LASF44:
+ 1917 02e1 65526561 		.ascii	"eReady\000"
+ 1917      647900
+ 1918              	.LASF3:
+ 1919 02e8 7369676E 		.ascii	"signed char\000"
+ 1919      65642063 
+ 1919      68617200 
+ 1920              	.LASF12:
+ 1921 02f4 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1921      206C6F6E 
+ 1921      6720756E 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 42
+
+
+ 1921      7369676E 
+ 1921      65642069 
+ 1922              	.LASF15:
+ 1923 030b 75696E74 		.ascii	"uint32_t\000"
+ 1923      33325F74 
+ 1923      00
+ 1924              	.LASF0:
+ 1925 0314 756E7369 		.ascii	"unsigned int\000"
+ 1925      676E6564 
+ 1925      20696E74 
+ 1925      00
+ 1926              	.LASF24:
+ 1927 0321 42617365 		.ascii	"BaseType_t\000"
+ 1927      54797065 
+ 1927      5F7400
+ 1928              	.LASF11:
+ 1929 032c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1929      20756E73 
+ 1929      69676E65 
+ 1929      6420696E 
+ 1929      7400
+ 1930              	.LASF41:
+ 1931 033e 64617461 		.ascii	"dataForQueue\000"
+ 1931      466F7251 
+ 1931      75657565 
+ 1931      00
+ 1932              	.LASF86:
+ 1933 034b 51756575 		.ascii	"QueueDefinition\000"
+ 1933      65446566 
+ 1933      696E6974 
+ 1933      696F6E00 
+ 1934              	.LASF38:
+ 1935 035b 6964656E 		.ascii	"identifier\000"
+ 1935      74696669 
+ 1935      657200
+ 1936              	.LASF54:
+ 1937 0366 76546173 		.ascii	"vTaskDataStorage\000"
+ 1937      6B446174 
+ 1937      6153746F 
+ 1937      72616765 
+ 1937      00
+ 1938              	.LASF20:
+ 1939 0377 63686172 		.ascii	"char\000"
+ 1939      00
+ 1940              	.LASF52:
+ 1941 037c 5F426F6F 		.ascii	"_Bool\000"
+ 1941      6C00
+ 1942              	.LASF14:
+ 1943 0382 696E7433 		.ascii	"int32_t\000"
+ 1943      325F7400 
+ 1944              	.LASF42:
+ 1945 038a 72656369 		.ascii	"recievedMessage\000"
+ 1945      65766564 
+ 1945      4D657373 
+ 1945      61676500 
+ 1946              	.LASF6:
+ 1947 039a 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 43
+
+
+ 1947      7420756E 
+ 1947      7369676E 
+ 1947      65642069 
+ 1947      6E7400
+ 1948              	.LASF85:
+ 1949 03ad 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 1949      73657273 
+ 1949      5C6D6167 
+ 1949      39345C44 
+ 1949      65736B74 
+ 1950 03da 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 1950      72746963 
+ 1950      616C5F66 
+ 1950      61726D5C 
+ 1950      52544F53 
+ 1951 040b 63796473 		.ascii	"cydsn\000"
+ 1951      6E00
+ 1952              	.LASF27:
+ 1953 0411 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1953      78385F54 
+ 1953      53656E73 
+ 1953      6F7200
+ 1954              	.LASF39:
+ 1955 0420 6D657373 		.ascii	"message\000"
+ 1955      61676500 
+ 1956              	.LASF19:
+ 1957 0428 646F7562 		.ascii	"double\000"
+ 1957      6C6500
+ 1958              	.LASF84:
+ 1959 042f 44617461 		.ascii	"Data_Storage.c\000"
+ 1959      5F53746F 
+ 1959      72616765 
+ 1959      2E6300
+ 1960              	.LASF8:
+ 1961 043e 5F5F696E 		.ascii	"__int32_t\000"
+ 1961      7433325F 
+ 1961      7400
+ 1962              	.LASF37:
+ 1963 0448 64617461 		.ascii	"dataMessage\000"
+ 1963      4D657373 
+ 1963      61676500 
+ 1964              	.LASF58:
+ 1965 0454 62756666 		.ascii	"bufferEmpty\000"
+ 1965      6572456D 
+ 1965      70747900 
+ 1966              	.LASF64:
+ 1967 0460 76546573 		.ascii	"vTestStorageInit\000"
+ 1967      7453746F 
+ 1967      72616765 
+ 1967      496E6974 
+ 1967      00
+ 1968              	.LASF23:
+ 1969 0471 70726573 		.ascii	"present\000"
+ 1969      656E7400 
+ 1970              	.LASF45:
+ 1971 0479 77526561 		.ascii	"wReady\000"
+ 1971      647900
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccqW1BIW.s 			page 44
+
+
+ 1972              	.LASF22:
+ 1973 0480 54656D70 		.ascii	"Temperature\000"
+ 1973      65726174 
+ 1973      75726500 
+ 1974              	.LASF48:
+ 1975 048c 74526561 		.ascii	"tReady\000"
+ 1975      647900
+ 1976              	.LASF49:
+ 1977 0493 72526561 		.ascii	"rReady\000"
+ 1977      647900
+ 1978              	.LASF78:
+ 1979 049a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1979      52784275 
+ 1979      66666572 
+ 1979      00
+ 1980              	.LASF28:
+ 1981 04a7 616C6C44 		.ascii	"allData\000"
+ 1981      61746100 
+ 1982              	.LASF50:
+ 1983 04af 6C526561 		.ascii	"lReady\000"
+ 1983      647900
+ 1984              	.LASF77:
+ 1985 04b6 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1985      78385F44 
+ 1985      61746152 
+ 1985      65616479 
+ 1985      00
+ 1986              	.LASF32:
+ 1987 04c7 69576174 		.ascii	"iWaterF\000"
+ 1987      65724600 
+ 1988              	.LASF33:
+ 1989 04cf 69433032 		.ascii	"iC02val\000"
+ 1989      76616C00 
+ 1990              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

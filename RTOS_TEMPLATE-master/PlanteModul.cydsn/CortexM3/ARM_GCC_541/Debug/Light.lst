@@ -1,0 +1,2092 @@
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Light.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.comm	DS18x8_Sensor,32,4
+  20              		.comm	DS18x8_DataReady,1,1
+  21              		.comm	Light,1,1
+  22              		.comm	Time,1,1
+  23              		.comm	bLEDCMD,1,1
+  24              		.comm	bLEDstate,1,1
+  25              		.global	bAlarmState
+  26              		.bss
+  27              		.type	bAlarmState, %object
+  28              		.size	bAlarmState, 1
+  29              	bAlarmState:
+  30 0000 00       		.space	1
+  31              		.global	ClockAddr
+  32              		.data
+  33              		.type	ClockAddr, %object
+  34              		.size	ClockAddr, 1
+  35              	ClockAddr:
+  36 0000 09       		.byte	9
+  37              		.comm	CurrentTime,8,4
+  38              		.comm	xQueueLightValue,4,4
+  39              		.comm	xQueueCurrentTime,12,4
+  40              		.section	.rodata
+  41              		.align	2
+  42              	.LC1:
+  43 0000 4C696768 		.ascii	"Light\000"
+  43      7400
+  44 0006 0000     		.align	2
+  45              	.LC2:
+  46 0008 4C696768 		.ascii	"Light controller\000"
+  46      7420636F 
+  46      6E74726F 
+  46      6C6C6572 
+  46      00
+  47 0019 000000   		.align	2
+  48              	.LC3:
+  49 001c 4C454420 		.ascii	"LED controller\000"
+  49      636F6E74 
+  49      726F6C6C 
+  49      657200
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 2
+
+
+  50              		.section	.text.vLightInit,"ax",%progbits
+  51              		.align	2
+  52              		.global	vLightInit
+  53              		.thumb
+  54              		.thumb_func
+  55              		.type	vLightInit, %function
+  56              	vLightInit:
+  57              	.LFB68:
+  58              		.file 1 "Light.c"
+   1:Light.c       **** /* ========================================
+   2:Light.c       ****  *
+   3:Light.c       ****  * Copyright YOUR COMPANY, THE YEAR
+   4:Light.c       ****  * All Rights Reserved
+   5:Light.c       ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:Light.c       ****  *
+   7:Light.c       ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:Light.c       ****  * WHICH IS THE PROPERTY OF your company.
+   9:Light.c       ****  *
+  10:Light.c       ****  * ========================================
+  11:Light.c       **** */
+  12:Light.c       **** 
+  13:Light.c       **** /* [] END OF FILE */
+  14:Light.c       **** 
+  15:Light.c       **** #include "FreeRTOS.h"
+  16:Light.c       **** #include "light.h"
+  17:Light.c       **** #include "task.h"
+  18:Light.c       **** #include "queue.h"
+  19:Light.c       **** 
+  20:Light.c       **** uint8 Light; // Variable contains measured light value
+  21:Light.c       **** uint8 Time;
+  22:Light.c       **** _Bool bLEDCMD; // Variable describing if the LED should be on/off
+  23:Light.c       **** _Bool bLEDstate; // Variable describing if the LED is on/off
+  24:Light.c       **** _Bool bAlarmState = 0;
+  25:Light.c       **** uint8 ClockAddr = 9; // Address for Arduino clock
+  26:Light.c       **** 
+  27:Light.c       **** /* Create a struct for storing the current time */
+  28:Light.c       **** struct Clock
+  29:Light.c       ****     {
+  30:Light.c       ****         uint8 Sec;
+  31:Light.c       ****         uint8 Min;
+  32:Light.c       ****         uint8 Hour;
+  33:Light.c       ****         uint8 DayOfMonth;
+  34:Light.c       ****         uint8 Month;
+  35:Light.c       ****         uint16 Year;
+  36:Light.c       ****         
+  37:Light.c       ****     };
+  38:Light.c       **** 
+  39:Light.c       **** struct Clock CurrentTime;
+  40:Light.c       **** 
+  41:Light.c       **** /* Create a queue for sending the light value through UART */
+  42:Light.c       **** QueueHandle_t xQueueLightValue;
+  43:Light.c       **** 
+  44:Light.c       **** /* Create a queue for checking the light cycle */
+  45:Light.c       **** QueueHandle_t xQueueCurrentTime[3];
+  46:Light.c       **** 
+  47:Light.c       **** void vLightInit(){
+  59              		.loc 1 47 0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 3
+
+
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 1, uses_anonymous_args = 0
+  63 0000 80B5     		push	{r7, lr}
+  64              		.cfi_def_cfa_offset 8
+  65              		.cfi_offset 7, -8
+  66              		.cfi_offset 14, -4
+  67 0002 82B0     		sub	sp, sp, #8
+  68              		.cfi_def_cfa_offset 16
+  69 0004 02AF     		add	r7, sp, #8
+  70              		.cfi_def_cfa 7, 8
+  48:Light.c       ****        
+  49:Light.c       ****     
+  50:Light.c       ****     /*  The queue is created to hold a maximum of 1 value, each of which is
+  51:Light.c       ****         large enough to hold a variable at the size of uint8. */
+  52:Light.c       ****     xQueueLightValue = xQueueCreate(1, sizeof(uint8));
+  71              		.loc 1 52 0
+  72 0006 0022     		movs	r2, #0
+  73 0008 0121     		movs	r1, #1
+  74 000a 0120     		movs	r0, #1
+  75 000c FFF7FEFF 		bl	xQueueGenericCreate
+  76 0010 0246     		mov	r2, r0
+  77 0012 1F4B     		ldr	r3, .L2
+  78 0014 1A60     		str	r2, [r3]
+  53:Light.c       ****     
+  54:Light.c       ****     /*  Queue with current time: hour, min, sec */
+  55:Light.c       ****     xQueueCurrentTime[0] = xQueueCreate(1, sizeof(uint8));
+  79              		.loc 1 55 0
+  80 0016 0022     		movs	r2, #0
+  81 0018 0121     		movs	r1, #1
+  82 001a 0120     		movs	r0, #1
+  83 001c FFF7FEFF 		bl	xQueueGenericCreate
+  84 0020 0246     		mov	r2, r0
+  85 0022 1C4B     		ldr	r3, .L2+4
+  86 0024 1A60     		str	r2, [r3]
+  56:Light.c       ****     xQueueCurrentTime[1] = xQueueCreate(1, sizeof(uint8));
+  87              		.loc 1 56 0
+  88 0026 0022     		movs	r2, #0
+  89 0028 0121     		movs	r1, #1
+  90 002a 0120     		movs	r0, #1
+  91 002c FFF7FEFF 		bl	xQueueGenericCreate
+  92 0030 0246     		mov	r2, r0
+  93 0032 184B     		ldr	r3, .L2+4
+  94 0034 5A60     		str	r2, [r3, #4]
+  57:Light.c       ****     xQueueCurrentTime[2] = xQueueCreate(1, sizeof(uint8));
+  95              		.loc 1 57 0
+  96 0036 0022     		movs	r2, #0
+  97 0038 0121     		movs	r1, #1
+  98 003a 0120     		movs	r0, #1
+  99 003c FFF7FEFF 		bl	xQueueGenericCreate
+ 100 0040 0246     		mov	r2, r0
+ 101 0042 144B     		ldr	r3, .L2+4
+ 102 0044 9A60     		str	r2, [r3, #8]
+  58:Light.c       ****     
+  59:Light.c       ****     /*  Create the task that will control the light sensor. The task is created with
+  60:Light.c       ****         priority 2. */
+  61:Light.c       ****     xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 2 , NULL);
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 4
+
+
+ 103              		.loc 1 61 0
+ 104 0046 0023     		movs	r3, #0
+ 105 0048 0193     		str	r3, [sp, #4]
+ 106 004a 0223     		movs	r3, #2
+ 107 004c 0093     		str	r3, [sp]
+ 108 004e 0023     		movs	r3, #0
+ 109 0050 4FF47A72 		mov	r2, #1000
+ 110 0054 1049     		ldr	r1, .L2+8
+ 111 0056 1148     		ldr	r0, .L2+12
+ 112 0058 FFF7FEFF 		bl	xTaskCreate
+  62:Light.c       ****     
+  63:Light.c       ****     /*  Create the controller task that will recieve external commands 
+  64:Light.c       ****         and regulate the LED based on the sensor value. 
+  65:Light.c       ****         The task is created with priority 2. */
+  66:Light.c       ****     xTaskCreate(vTaskLightController, "Light controller", 100, NULL, 2, NULL);
+ 113              		.loc 1 66 0
+ 114 005c 0023     		movs	r3, #0
+ 115 005e 0193     		str	r3, [sp, #4]
+ 116 0060 0223     		movs	r3, #2
+ 117 0062 0093     		str	r3, [sp]
+ 118 0064 0023     		movs	r3, #0
+ 119 0066 6422     		movs	r2, #100
+ 120 0068 0D49     		ldr	r1, .L2+16
+ 121 006a 0E48     		ldr	r0, .L2+20
+ 122 006c FFF7FEFF 		bl	xTaskCreate
+  67:Light.c       ****     
+  68:Light.c       ****     /*  Create the LED task to turn on and off the LED */
+  69:Light.c       ****     xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 2, NULL);
+ 123              		.loc 1 69 0
+ 124 0070 0023     		movs	r3, #0
+ 125 0072 0193     		str	r3, [sp, #4]
+ 126 0074 0223     		movs	r3, #2
+ 127 0076 0093     		str	r3, [sp]
+ 128 0078 0023     		movs	r3, #0
+ 129 007a 6422     		movs	r2, #100
+ 130 007c 0A49     		ldr	r1, .L2+24
+ 131 007e 0B48     		ldr	r0, .L2+28
+ 132 0080 FFF7FEFF 		bl	xTaskCreate
+  70:Light.c       ****     
+  71:Light.c       ****     /*Initialize test tasks*/
+  72:Light.c       ****     #if LIGHTTEST == 1
+  73:Light.c       ****         vTestLightTaskInit();
+ 133              		.loc 1 73 0
+ 134 0084 FFF7FEFF 		bl	vTestLightTaskInit
+  74:Light.c       ****     #endif
+  75:Light.c       **** }
+ 135              		.loc 1 75 0
+ 136 0088 00BF     		nop
+ 137 008a BD46     		mov	sp, r7
+ 138              		.cfi_def_cfa_register 13
+ 139              		@ sp needed
+ 140 008c 80BD     		pop	{r7, pc}
+ 141              	.L3:
+ 142 008e 00BF     		.align	2
+ 143              	.L2:
+ 144 0090 00000000 		.word	xQueueLightValue
+ 145 0094 00000000 		.word	xQueueCurrentTime
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 5
+
+
+ 146 0098 00000000 		.word	.LC1
+ 147 009c 00000000 		.word	vTaskLightMeasure
+ 148 00a0 08000000 		.word	.LC2
+ 149 00a4 00000000 		.word	vTaskLightController
+ 150 00a8 1C000000 		.word	.LC3
+ 151 00ac 00000000 		.word	vTaskLEDcontrol
+ 152              		.cfi_endproc
+ 153              	.LFE68:
+ 154              		.size	vLightInit, .-vLightInit
+ 155              		.section	.text.vTaskLightMeasure,"ax",%progbits
+ 156              		.align	2
+ 157              		.global	vTaskLightMeasure
+ 158              		.thumb
+ 159              		.thumb_func
+ 160              		.type	vTaskLightMeasure, %function
+ 161              	vTaskLightMeasure:
+ 162              	.LFB69:
+  76:Light.c       **** 
+  77:Light.c       **** /*  This function turns on the light sensor, periodically reads the sensor 
+  78:Light.c       ****     and sends the measured value to the created queue for UART */
+  79:Light.c       **** void vTaskLightMeasure(){
+ 163              		.loc 1 79 0
+ 164              		.cfi_startproc
+ 165              		@ args = 0, pretend = 0, frame = 8
+ 166              		@ frame_needed = 1, uses_anonymous_args = 0
+ 167 0000 80B5     		push	{r7, lr}
+ 168              		.cfi_def_cfa_offset 8
+ 169              		.cfi_offset 7, -8
+ 170              		.cfi_offset 14, -4
+ 171 0002 82B0     		sub	sp, sp, #8
+ 172              		.cfi_def_cfa_offset 16
+ 173 0004 00AF     		add	r7, sp, #0
+ 174              		.cfi_def_cfa_register 7
+  80:Light.c       ****     Pin_5V_out_Write(1u);
+ 175              		.loc 1 80 0
+ 176 0006 0120     		movs	r0, #1
+ 177 0008 FFF7FEFF 		bl	Pin_5V_out_Write
+  81:Light.c       ****     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
+ 178              		.loc 1 81 0
+ 179 000c 42F21073 		movw	r3, #10000
+ 180 0010 7B60     		str	r3, [r7, #4]
+ 181              	.L5:
+ 182              	.LBB2:
+  82:Light.c       ****     
+  83:Light.c       ****     for(;;){
+  84:Light.c       ****        
+  85:Light.c       ****         uint8 LightRead = Pin_LIGHT_in_Read();
+ 183              		.loc 1 85 0 discriminator 1
+ 184 0012 FFF7FEFF 		bl	Pin_LIGHT_in_Read
+ 185 0016 0346     		mov	r3, r0
+ 186 0018 FB70     		strb	r3, [r7, #3]
+  86:Light.c       ****         Light = LightRead;
+ 187              		.loc 1 86 0 discriminator 1
+ 188 001a 074A     		ldr	r2, .L6
+ 189 001c FB78     		ldrb	r3, [r7, #3]
+ 190 001e 1370     		strb	r3, [r2]
+  87:Light.c       ****         xQueueSendToBack(xQueueLightValue, &Light, portMAX_DELAY);
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 6
+
+
+ 191              		.loc 1 87 0 discriminator 1
+ 192 0020 064B     		ldr	r3, .L6+4
+ 193 0022 1868     		ldr	r0, [r3]
+ 194 0024 0023     		movs	r3, #0
+ 195 0026 4FF0FF32 		mov	r2, #-1
+ 196 002a 0349     		ldr	r1, .L6
+ 197 002c FFF7FEFF 		bl	xQueueGenericSend
+  88:Light.c       ****         vTaskDelay(xDelayms); 
+ 198              		.loc 1 88 0 discriminator 1
+ 199 0030 7868     		ldr	r0, [r7, #4]
+ 200 0032 FFF7FEFF 		bl	vTaskDelay
+ 201              	.LBE2:
+  89:Light.c       ****     }
+ 202              		.loc 1 89 0 discriminator 1
+ 203 0036 ECE7     		b	.L5
+ 204              	.L7:
+ 205              		.align	2
+ 206              	.L6:
+ 207 0038 00000000 		.word	Light
+ 208 003c 00000000 		.word	xQueueLightValue
+ 209              		.cfi_endproc
+ 210              	.LFE69:
+ 211              		.size	vTaskLightMeasure, .-vTaskLightMeasure
+ 212              		.section	.rodata
+ 213 002b 00       		.align	2
+ 214              	.LC4:
+ 215 002c 57697468 		.ascii	"Within active hours of light cycle: TRUE \012\000"
+ 215      696E2061 
+ 215      63746976 
+ 215      6520686F 
+ 215      75727320 
+ 216 0057 00       		.align	2
+ 217              	.LC5:
+ 218 0058 456E6F75 		.ascii	"Enough light: TRUE \012 \012\000"
+ 218      6768206C 
+ 218      69676874 
+ 218      3A205452 
+ 218      5545200A 
+ 219 006f 00       		.align	2
+ 220              	.LC6:
+ 221 0070 456E6F75 		.ascii	"Enough light: FALSE \012 \012\000"
+ 221      6768206C 
+ 221      69676874 
+ 221      3A204641 
+ 221      4C534520 
+ 222              		.align	2
+ 223              	.LC7:
+ 224 0088 57697468 		.ascii	"Within active hours of light cycle: FALSE \012 \012"
+ 224      696E2061 
+ 224      63746976 
+ 224      6520686F 
+ 224      75727320 
+ 225 00b5 00       		.ascii	"\000"
+ 226 00b6 0000     		.align	2
+ 227              	.LC0:
+ 228 00b8 08       		.byte	8
+ 229 00b9 0E       		.byte	14
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 7
+
+
+ 230              		.section	.text.vTaskLightController,"ax",%progbits
+ 231              		.align	2
+ 232              		.global	vTaskLightController
+ 233              		.thumb
+ 234              		.thumb_func
+ 235              		.type	vTaskLightController, %function
+ 236              	vTaskLightController:
+ 237              	.LFB70:
+  90:Light.c       **** }
+  91:Light.c       **** 
+  92:Light.c       **** 
+  93:Light.c       **** /*  This function recieves info about which time interval there should be light, 
+  94:Light.c       ****     turns on/off LED lights and periodically checks if the lights are on */
+  95:Light.c       **** void vTaskLightController(){
+ 238              		.loc 1 95 0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 16
+ 241              		@ frame_needed = 1, uses_anonymous_args = 0
+ 242 0000 80B5     		push	{r7, lr}
+ 243              		.cfi_def_cfa_offset 8
+ 244              		.cfi_offset 7, -8
+ 245              		.cfi_offset 14, -4
+ 246 0002 84B0     		sub	sp, sp, #16
+ 247              		.cfi_def_cfa_offset 24
+ 248 0004 00AF     		add	r7, sp, #0
+ 249              		.cfi_def_cfa_register 7
+  96:Light.c       ****     uint8 LightCycle[] = {8, 14}; // Input parameters with start and stop time for the light cycle
+ 250              		.loc 1 96 0
+ 251 0006 314A     		ldr	r2, .L15
+ 252 0008 3B1D     		adds	r3, r7, #4
+ 253 000a 1288     		ldrh	r2, [r2]	@ unaligned
+ 254 000c 1A80     		strh	r2, [r3]	@ unaligned
+  97:Light.c       ****     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
+ 255              		.loc 1 97 0
+ 256 000e 42F21073 		movw	r3, #10000
+ 257 0012 FB60     		str	r3, [r7, #12]
+  98:Light.c       ****     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
+ 258              		.loc 1 98 0
+ 259 0014 6423     		movs	r3, #100
+ 260 0016 BB60     		str	r3, [r7, #8]
+ 261              	.L13:
+  99:Light.c       ****     char ArduinoClock[3]; // Array to store clock value from Arduino
+ 100:Light.c       ****     
+ 101:Light.c       ****     for(;;){
+ 102:Light.c       ****               
+ 103:Light.c       ****         /* Read current time from Arduino clock and store in array */
+ 104:Light.c       ****         I2C_MasterReadBuf( ClockAddr, (uint8*) ArduinoClock, 3, I2C_MODE_COMPLETE_XFER);
+ 262              		.loc 1 104 0
+ 263 0018 2D4B     		ldr	r3, .L15+4
+ 264 001a 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 265 001c 3946     		mov	r1, r7
+ 266 001e 0023     		movs	r3, #0
+ 267 0020 0322     		movs	r2, #3
+ 268 0022 FFF7FEFF 		bl	I2C_MasterReadBuf
+ 105:Light.c       ****         
+ 106:Light.c       ****         /* Save values from array in CurrentTime struct */
+ 107:Light.c       ****         CurrentTime.Hour = ArduinoClock[0];
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 8
+
+
+ 269              		.loc 1 107 0
+ 270 0026 3A78     		ldrb	r2, [r7]	@ zero_extendqisi2
+ 271 0028 2A4B     		ldr	r3, .L15+8
+ 272 002a 9A70     		strb	r2, [r3, #2]
+ 108:Light.c       ****         CurrentTime.Min = ArduinoClock[1];
+ 273              		.loc 1 108 0
+ 274 002c 7A78     		ldrb	r2, [r7, #1]	@ zero_extendqisi2
+ 275 002e 294B     		ldr	r3, .L15+8
+ 276 0030 5A70     		strb	r2, [r3, #1]
+ 109:Light.c       ****         CurrentTime.Sec = ArduinoClock[2];
+ 277              		.loc 1 109 0
+ 278 0032 BA78     		ldrb	r2, [r7, #2]	@ zero_extendqisi2
+ 279 0034 274B     		ldr	r3, .L15+8
+ 280 0036 1A70     		strb	r2, [r3]
+ 110:Light.c       ****         
+ 111:Light.c       ****         /* Sends CurrentTime values to serial via UART, used for test */
+ 112:Light.c       ****         xQueueSendToBack(xQueueCurrentTime[0], &CurrentTime.Hour, portMAX_DELAY);
+ 281              		.loc 1 112 0
+ 282 0038 274B     		ldr	r3, .L15+12
+ 283 003a 1868     		ldr	r0, [r3]
+ 284 003c 0023     		movs	r3, #0
+ 285 003e 4FF0FF32 		mov	r2, #-1
+ 286 0042 2649     		ldr	r1, .L15+16
+ 287 0044 FFF7FEFF 		bl	xQueueGenericSend
+ 113:Light.c       ****         xQueueSendToBack(xQueueCurrentTime[1], &CurrentTime.Min, portMAX_DELAY);
+ 288              		.loc 1 113 0
+ 289 0048 234B     		ldr	r3, .L15+12
+ 290 004a 5868     		ldr	r0, [r3, #4]
+ 291 004c 0023     		movs	r3, #0
+ 292 004e 4FF0FF32 		mov	r2, #-1
+ 293 0052 2349     		ldr	r1, .L15+20
+ 294 0054 FFF7FEFF 		bl	xQueueGenericSend
+ 114:Light.c       ****         xQueueSendToBack(xQueueCurrentTime[2], &CurrentTime.Sec, portMAX_DELAY);
+ 295              		.loc 1 114 0
+ 296 0058 1F4B     		ldr	r3, .L15+12
+ 297 005a 9868     		ldr	r0, [r3, #8]
+ 298 005c 0023     		movs	r3, #0
+ 299 005e 4FF0FF32 		mov	r2, #-1
+ 300 0062 1C49     		ldr	r1, .L15+8
+ 301 0064 FFF7FEFF 		bl	xQueueGenericSend
+ 115:Light.c       ****         vTaskDelay(xShortDelayms);
+ 302              		.loc 1 115 0
+ 303 0068 B868     		ldr	r0, [r7, #8]
+ 304 006a FFF7FEFF 		bl	vTaskDelay
+ 116:Light.c       ****                 
+ 117:Light.c       ****         /*  This if-statement checks if the current hour is within the on-interval of the light cyc
+ 118:Light.c       ****             If so, the LED is turned on. 
+ 119:Light.c       ****             After a short delay, the light sensor is read to make sure that the LED is on */
+ 120:Light.c       ****         if((CurrentTime.Hour >= LightCycle[0]) && (CurrentTime.Hour < LightCycle[1])){
+ 305              		.loc 1 120 0
+ 306 006e 194B     		ldr	r3, .L15+8
+ 307 0070 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 308 0072 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 309 0074 9A42     		cmp	r2, r3
+ 310 0076 1DD3     		bcc	.L9
+ 311              		.loc 1 120 0 is_stmt 0 discriminator 1
+ 312 0078 164B     		ldr	r3, .L15+8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 9
+
+
+ 313 007a 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 314 007c 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 315 007e 9A42     		cmp	r2, r3
+ 316 0080 18D2     		bcs	.L9
+ 121:Light.c       ****             
+ 122:Light.c       ****             // some code that turns on the LED
+ 123:Light.c       ****             bLEDCMD = 1;
+ 317              		.loc 1 123 0 is_stmt 1
+ 318 0082 184B     		ldr	r3, .L15+24
+ 319 0084 0122     		movs	r2, #1
+ 320 0086 1A70     		strb	r2, [r3]
+ 124:Light.c       ****             SW_UART_TEST_USB_PutString("Within active hours of light cycle: TRUE \n"); // Used for 
+ 321              		.loc 1 124 0
+ 322 0088 1748     		ldr	r0, .L15+28
+ 323 008a FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 125:Light.c       ****             vTaskDelay(xShortDelayms);
+ 324              		.loc 1 125 0
+ 325 008e B868     		ldr	r0, [r7, #8]
+ 326 0090 FFF7FEFF 		bl	vTaskDelay
+ 126:Light.c       ****             
+ 127:Light.c       ****             if(Light == 0){
+ 327              		.loc 1 127 0
+ 328 0094 154B     		ldr	r3, .L15+32
+ 329 0096 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 330 0098 002B     		cmp	r3, #0
+ 331 009a 03D1     		bne	.L10
+ 128:Light.c       ****                 // The LED are on, all is good
+ 129:Light.c       ****                 SW_UART_TEST_USB_PutString("Enough light: TRUE \n \n"); // Used for test
+ 332              		.loc 1 129 0
+ 333 009c 1448     		ldr	r0, .L15+36
+ 334 009e FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 127:Light.c       ****                 // The LED are on, all is good
+ 335              		.loc 1 127 0
+ 336 00a2 0EE0     		b	.L14
+ 337              	.L10:
+ 130:Light.c       ****             }
+ 131:Light.c       ****             else if(Light == 1){
+ 338              		.loc 1 131 0
+ 339 00a4 114B     		ldr	r3, .L15+32
+ 340 00a6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 341 00a8 012B     		cmp	r3, #1
+ 342 00aa 0AD1     		bne	.L14
+ 132:Light.c       ****                 // The LED are not on, all is not good
+ 133:Light.c       ****                 SW_UART_TEST_USB_PutString("Enough light: FALSE \n \n"); // Used for test
+ 343              		.loc 1 133 0
+ 344 00ac 1148     		ldr	r0, .L15+40
+ 345 00ae FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 127:Light.c       ****                 // The LED are on, all is good
+ 346              		.loc 1 127 0
+ 347 00b2 06E0     		b	.L14
+ 348              	.L9:
+ 134:Light.c       ****                 // some code to force turn on LED and send alarm
+ 135:Light.c       ****             }
+ 136:Light.c       ****             else{
+ 137:Light.c       ****                 //panic
+ 138:Light.c       ****             }    
+ 139:Light.c       ****         }
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 10
+
+
+ 140:Light.c       ****         else{
+ 141:Light.c       ****             // The LED should not be on
+ 142:Light.c       ****             bLEDCMD = 0;
+ 349              		.loc 1 142 0
+ 350 00b4 0B4B     		ldr	r3, .L15+24
+ 351 00b6 0022     		movs	r2, #0
+ 352 00b8 1A70     		strb	r2, [r3]
+ 143:Light.c       ****             // some code to turn off LED
+ 144:Light.c       ****             
+ 145:Light.c       ****             SW_UART_TEST_USB_PutString("Within active hours of light cycle: FALSE \n \n"); // Used 
+ 353              		.loc 1 145 0
+ 354 00ba 0F48     		ldr	r0, .L15+44
+ 355 00bc FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 356 00c0 00E0     		b	.L12
+ 357              	.L14:
+ 127:Light.c       ****                 // The LED are on, all is good
+ 358              		.loc 1 127 0
+ 359 00c2 00BF     		nop
+ 360              	.L12:
+ 146:Light.c       ****         }    
+ 147:Light.c       ****     vTaskDelay(xDelayms); 
+ 361              		.loc 1 147 0
+ 362 00c4 F868     		ldr	r0, [r7, #12]
+ 363 00c6 FFF7FEFF 		bl	vTaskDelay
+ 148:Light.c       ****     }
+ 364              		.loc 1 148 0
+ 365 00ca A5E7     		b	.L13
+ 366              	.L16:
+ 367              		.align	2
+ 368              	.L15:
+ 369 00cc B8000000 		.word	.LC0
+ 370 00d0 00000000 		.word	ClockAddr
+ 371 00d4 00000000 		.word	CurrentTime
+ 372 00d8 00000000 		.word	xQueueCurrentTime
+ 373 00dc 02000000 		.word	CurrentTime+2
+ 374 00e0 01000000 		.word	CurrentTime+1
+ 375 00e4 00000000 		.word	bLEDCMD
+ 376 00e8 2C000000 		.word	.LC4
+ 377 00ec 00000000 		.word	Light
+ 378 00f0 58000000 		.word	.LC5
+ 379 00f4 70000000 		.word	.LC6
+ 380 00f8 88000000 		.word	.LC7
+ 381              		.cfi_endproc
+ 382              	.LFE70:
+ 383              		.size	vTaskLightController, .-vTaskLightController
+ 384              		.section	.rodata
+ 385 00ba 0000     		.align	2
+ 386              	.LC8:
+ 387 00bc 624C4544 		.ascii	"bLEDstate: \000"
+ 387      73746174 
+ 387      653A2000 
+ 388              		.align	2
+ 389              	.LC9:
+ 390 00c8 200A00   		.ascii	" \012\000"
+ 391              		.section	.text.vTaskLEDcontrol,"ax",%progbits
+ 392              		.align	2
+ 393              		.global	vTaskLEDcontrol
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 11
+
+
+ 394              		.thumb
+ 395              		.thumb_func
+ 396              		.type	vTaskLEDcontrol, %function
+ 397              	vTaskLEDcontrol:
+ 398              	.LFB71:
+ 149:Light.c       **** }
+ 150:Light.c       **** 
+ 151:Light.c       **** 
+ 152:Light.c       **** void vTaskLEDcontrol(){
+ 399              		.loc 1 152 0
+ 400              		.cfi_startproc
+ 401              		@ args = 0, pretend = 0, frame = 0
+ 402              		@ frame_needed = 1, uses_anonymous_args = 0
+ 403 0000 80B5     		push	{r7, lr}
+ 404              		.cfi_def_cfa_offset 8
+ 405              		.cfi_offset 7, -8
+ 406              		.cfi_offset 14, -4
+ 407 0002 00AF     		add	r7, sp, #0
+ 408              		.cfi_def_cfa_register 7
+ 409              	.L20:
+ 153:Light.c       ****     
+ 154:Light.c       ****     for(;;){
+ 155:Light.c       ****         if ( bLEDCMD == 1 && bLEDstate == 0){
+ 410              		.loc 1 155 0
+ 411 0004 144B     		ldr	r3, .L21
+ 412 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 413 0008 002B     		cmp	r3, #0
+ 414 000a 0AD0     		beq	.L18
+ 415              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 416 000c 134B     		ldr	r3, .L21+4
+ 417 000e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 418 0010 83F00103 		eor	r3, r3, #1
+ 419 0014 DBB2     		uxtb	r3, r3
+ 420 0016 002B     		cmp	r3, #0
+ 421 0018 03D0     		beq	.L18
+ 156:Light.c       ****             //tænd
+ 157:Light.c       ****             bLEDstate = 1;
+ 422              		.loc 1 157 0 is_stmt 1
+ 423 001a 104B     		ldr	r3, .L21+4
+ 424 001c 0122     		movs	r2, #1
+ 425 001e 1A70     		strb	r2, [r3]
+ 426 0020 0DE0     		b	.L19
+ 427              	.L18:
+ 158:Light.c       ****         }
+ 159:Light.c       ****         
+ 160:Light.c       ****         else if (bLEDCMD == 0 && bLEDstate == 1){
+ 428              		.loc 1 160 0
+ 429 0022 0D4B     		ldr	r3, .L21
+ 430 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 431 0026 83F00103 		eor	r3, r3, #1
+ 432 002a DBB2     		uxtb	r3, r3
+ 433 002c 002B     		cmp	r3, #0
+ 434 002e 06D0     		beq	.L19
+ 435              		.loc 1 160 0 is_stmt 0 discriminator 1
+ 436 0030 0A4B     		ldr	r3, .L21+4
+ 437 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 438 0034 002B     		cmp	r3, #0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 12
+
+
+ 439 0036 02D0     		beq	.L19
+ 161:Light.c       ****             //sluk
+ 162:Light.c       ****             bLEDstate = 0;
+ 440              		.loc 1 162 0 is_stmt 1
+ 441 0038 084B     		ldr	r3, .L21+4
+ 442 003a 0022     		movs	r2, #0
+ 443 003c 1A70     		strb	r2, [r3]
+ 444              	.L19:
+ 163:Light.c       ****         }
+ 164:Light.c       ****         SW_UART_TEST_USB_PutString("bLEDstate: "); // Used for test
+ 445              		.loc 1 164 0
+ 446 003e 0848     		ldr	r0, .L21+8
+ 447 0040 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 165:Light.c       ****         SW_UART_TEST_USB_PutHexByte(bLEDstate); // Used for test
+ 448              		.loc 1 165 0
+ 449 0044 054B     		ldr	r3, .L21+4
+ 450 0046 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 451 0048 1846     		mov	r0, r3
+ 452 004a FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 166:Light.c       ****         SW_UART_TEST_USB_PutString(" \n"); // Used for test
+ 453              		.loc 1 166 0
+ 454 004e 0548     		ldr	r0, .L21+12
+ 455 0050 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 167:Light.c       ****         
+ 168:Light.c       ****         
+ 169:Light.c       ****     }   
+ 456              		.loc 1 169 0
+ 457 0054 D6E7     		b	.L20
+ 458              	.L22:
+ 459 0056 00BF     		.align	2
+ 460              	.L21:
+ 461 0058 00000000 		.word	bLEDCMD
+ 462 005c 00000000 		.word	bLEDstate
+ 463 0060 BC000000 		.word	.LC8
+ 464 0064 C8000000 		.word	.LC9
+ 465              		.cfi_endproc
+ 466              	.LFE71:
+ 467              		.size	vTaskLEDcontrol, .-vTaskLEDcontrol
+ 468              		.section	.rodata
+ 469 00cb 00       		.align	2
+ 470              	.LC10:
+ 471 00cc 54657374 		.ascii	"TestLight\000"
+ 471      4C696768 
+ 471      7400
+ 472              		.section	.text.vTestLightTaskInit,"ax",%progbits
+ 473              		.align	2
+ 474              		.global	vTestLightTaskInit
+ 475              		.thumb
+ 476              		.thumb_func
+ 477              		.type	vTestLightTaskInit, %function
+ 478              	vTestLightTaskInit:
+ 479              	.LFB72:
+ 170:Light.c       **** }
+ 171:Light.c       **** 
+ 172:Light.c       **** /* --- TEST TASK --- */
+ 173:Light.c       **** 
+ 174:Light.c       **** /*
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 13
+
+
+ 175:Light.c       ****     Task for testing existing implementations.
+ 176:Light.c       **** 
+ 177:Light.c       ****     DO NOT delete this functions/tasks, but comment them out if they arn't nexessary 
+ 178:Light.c       ****     for your current implementation/testing
+ 179:Light.c       ****     
+ 180:Light.c       ****     All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
+ 181:Light.c       **** 
+ 182:Light.c       ****     
+ 183:Light.c       **** */
+ 184:Light.c       **** 
+ 185:Light.c       **** /*  Initialize test tasks*/
+ 186:Light.c       **** void vTestLightTaskInit(){
+ 480              		.loc 1 186 0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 1, uses_anonymous_args = 0
+ 484 0000 80B5     		push	{r7, lr}
+ 485              		.cfi_def_cfa_offset 8
+ 486              		.cfi_offset 7, -8
+ 487              		.cfi_offset 14, -4
+ 488 0002 82B0     		sub	sp, sp, #8
+ 489              		.cfi_def_cfa_offset 16
+ 490 0004 02AF     		add	r7, sp, #8
+ 491              		.cfi_def_cfa 7, 8
+ 187:Light.c       ****     xTaskCreate(vTestLightTask, "TestLight", 1000, NULL, 2, NULL);
+ 492              		.loc 1 187 0
+ 493 0006 0023     		movs	r3, #0
+ 494 0008 0193     		str	r3, [sp, #4]
+ 495 000a 0223     		movs	r3, #2
+ 496 000c 0093     		str	r3, [sp]
+ 497 000e 0023     		movs	r3, #0
+ 498 0010 4FF47A72 		mov	r2, #1000
+ 499 0014 0349     		ldr	r1, .L24
+ 500 0016 0448     		ldr	r0, .L24+4
+ 501 0018 FFF7FEFF 		bl	xTaskCreate
+ 188:Light.c       **** }    
+ 502              		.loc 1 188 0
+ 503 001c 00BF     		nop
+ 504 001e BD46     		mov	sp, r7
+ 505              		.cfi_def_cfa_register 13
+ 506              		@ sp needed
+ 507 0020 80BD     		pop	{r7, pc}
+ 508              	.L25:
+ 509 0022 00BF     		.align	2
+ 510              	.L24:
+ 511 0024 CC000000 		.word	.LC10
+ 512 0028 00000000 		.word	vTestLightTask
+ 513              		.cfi_endproc
+ 514              	.LFE72:
+ 515              		.size	vTestLightTaskInit, .-vTestLightTaskInit
+ 516              		.section	.rodata
+ 517 00d6 0000     		.align	2
+ 518              	.LC11:
+ 519 00d8 43757272 		.ascii	"Current time: \000"
+ 519      656E7420 
+ 519      74696D65 
+ 519      3A2000
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 14
+
+
+ 520 00e7 00       		.align	2
+ 521              	.LC12:
+ 522 00e8 3A00     		.ascii	":\000"
+ 523 00ea 0000     		.align	2
+ 524              	.LC13:
+ 525 00ec 0A00     		.ascii	"\012\000"
+ 526 00ee 0000     		.align	2
+ 527              	.LC14:
+ 528 00f0 4C696768 		.ascii	"Light Value: \000"
+ 528      74205661 
+ 528      6C75653A 
+ 528      2000
+ 529              		.section	.text.vTestLightTask,"ax",%progbits
+ 530              		.align	2
+ 531              		.global	vTestLightTask
+ 532              		.thumb
+ 533              		.thumb_func
+ 534              		.type	vTestLightTask, %function
+ 535              	vTestLightTask:
+ 536              	.LFB73:
+ 189:Light.c       **** 
+ 190:Light.c       **** /*  Function tests vTaskLightMeasure() and vTaskLightController() 
+ 191:Light.c       ****     by reading from the queue and sending to serial monitor */
+ 192:Light.c       **** void vTestLightTask(){
+ 537              		.loc 1 192 0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 8
+ 540              		@ frame_needed = 1, uses_anonymous_args = 0
+ 541 0000 80B5     		push	{r7, lr}
+ 542              		.cfi_def_cfa_offset 8
+ 543              		.cfi_offset 7, -8
+ 544              		.cfi_offset 14, -4
+ 545 0002 82B0     		sub	sp, sp, #8
+ 546              		.cfi_def_cfa_offset 16
+ 547 0004 00AF     		add	r7, sp, #0
+ 548              		.cfi_def_cfa_register 7
+ 549              	.L27:
+ 193:Light.c       ****     uint8 TestLightValue;
+ 194:Light.c       ****     uint8 TestCurrentHour;
+ 195:Light.c       ****     uint8 TestCurrentMin;
+ 196:Light.c       ****     uint8 TestCurrentSec;
+ 197:Light.c       ****     for(;;){
+ 198:Light.c       ****         xQueueReceive(xQueueLightValue, &TestLightValue, portMAX_DELAY);
+ 550              		.loc 1 198 0 discriminator 1
+ 551 0006 224B     		ldr	r3, .L28
+ 552 0008 1B68     		ldr	r3, [r3]
+ 553 000a F91D     		adds	r1, r7, #7
+ 554 000c 4FF0FF32 		mov	r2, #-1
+ 555 0010 1846     		mov	r0, r3
+ 556 0012 FFF7FEFF 		bl	xQueueReceive
+ 199:Light.c       ****         xQueueReceive(xQueueCurrentTime[0], &TestCurrentHour, portMAX_DELAY);
+ 557              		.loc 1 199 0 discriminator 1
+ 558 0016 1F4B     		ldr	r3, .L28+4
+ 559 0018 1B68     		ldr	r3, [r3]
+ 560 001a B91D     		adds	r1, r7, #6
+ 561 001c 4FF0FF32 		mov	r2, #-1
+ 562 0020 1846     		mov	r0, r3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 15
+
+
+ 563 0022 FFF7FEFF 		bl	xQueueReceive
+ 200:Light.c       ****         xQueueReceive(xQueueCurrentTime[1], &TestCurrentMin, portMAX_DELAY);
+ 564              		.loc 1 200 0 discriminator 1
+ 565 0026 1B4B     		ldr	r3, .L28+4
+ 566 0028 5B68     		ldr	r3, [r3, #4]
+ 567 002a 791D     		adds	r1, r7, #5
+ 568 002c 4FF0FF32 		mov	r2, #-1
+ 569 0030 1846     		mov	r0, r3
+ 570 0032 FFF7FEFF 		bl	xQueueReceive
+ 201:Light.c       ****         xQueueReceive(xQueueCurrentTime[2], &TestCurrentSec, portMAX_DELAY);
+ 571              		.loc 1 201 0 discriminator 1
+ 572 0036 174B     		ldr	r3, .L28+4
+ 573 0038 9B68     		ldr	r3, [r3, #8]
+ 574 003a 391D     		adds	r1, r7, #4
+ 575 003c 4FF0FF32 		mov	r2, #-1
+ 576 0040 1846     		mov	r0, r3
+ 577 0042 FFF7FEFF 		bl	xQueueReceive
+ 202:Light.c       ****         
+ 203:Light.c       ****         /* Prints current time */
+ 204:Light.c       ****         SW_UART_TEST_USB_PutString("Current time: ");
+ 578              		.loc 1 204 0 discriminator 1
+ 579 0046 1448     		ldr	r0, .L28+8
+ 580 0048 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 205:Light.c       ****         SW_UART_TEST_USB_PutHexByte(TestCurrentHour);
+ 581              		.loc 1 205 0 discriminator 1
+ 582 004c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 583 004e 1846     		mov	r0, r3
+ 584 0050 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 206:Light.c       ****         SW_UART_TEST_USB_PutString(":");
+ 585              		.loc 1 206 0 discriminator 1
+ 586 0054 1148     		ldr	r0, .L28+12
+ 587 0056 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 207:Light.c       ****         SW_UART_TEST_USB_PutHexByte(TestCurrentMin);
+ 588              		.loc 1 207 0 discriminator 1
+ 589 005a 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 590 005c 1846     		mov	r0, r3
+ 591 005e FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 208:Light.c       ****         SW_UART_TEST_USB_PutString(":");
+ 592              		.loc 1 208 0 discriminator 1
+ 593 0062 0E48     		ldr	r0, .L28+12
+ 594 0064 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 209:Light.c       ****         SW_UART_TEST_USB_PutHexByte(TestCurrentSec);
+ 595              		.loc 1 209 0 discriminator 1
+ 596 0068 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 597 006a 1846     		mov	r0, r3
+ 598 006c FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexByte
+ 210:Light.c       ****         SW_UART_TEST_USB_PutString("\n");
+ 599              		.loc 1 210 0 discriminator 1
+ 600 0070 0B48     		ldr	r0, .L28+16
+ 601 0072 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 211:Light.c       ****         
+ 212:Light.c       ****         /* Prints light value */
+ 213:Light.c       ****         SW_UART_TEST_USB_PutString("Light Value: ");
+ 602              		.loc 1 213 0 discriminator 1
+ 603 0076 0B48     		ldr	r0, .L28+20
+ 604 0078 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 214:Light.c       ****         SW_UART_TEST_USB_PutHexInt(TestLightValue);
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 16
+
+
+ 605              		.loc 1 214 0 discriminator 1
+ 606 007c FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 607 007e 9BB2     		uxth	r3, r3
+ 608 0080 1846     		mov	r0, r3
+ 609 0082 FFF7FEFF 		bl	SW_UART_TEST_USB_PutHexInt
+ 215:Light.c       ****         SW_UART_TEST_USB_PutString("\n");
+ 610              		.loc 1 215 0 discriminator 1
+ 611 0086 0648     		ldr	r0, .L28+16
+ 612 0088 FFF7FEFF 		bl	SW_UART_TEST_USB_PutString
+ 216:Light.c       ****         
+ 217:Light.c       ****         /* The code below was moved to this test task to make the test easier 
+ 218:Light.c       ****            It should be commented out */
+ 219:Light.c       ****         
+ 220:Light.c       ****         /*
+ 221:Light.c       ****         if ( bLEDCMD == 1 && bLEDstate == 0){
+ 222:Light.c       ****             //tænd
+ 223:Light.c       ****             bLEDstate = 1;
+ 224:Light.c       ****             Pin_LightTestLED_Write( 1u ); // Turns on test LED
+ 225:Light.c       ****         }
+ 226:Light.c       ****         
+ 227:Light.c       ****         else if (bLEDCMD == 0 && bLEDstate == 1){
+ 228:Light.c       ****             //sluk
+ 229:Light.c       ****             bLEDstate = 0;
+ 230:Light.c       ****             Pin_LightTestLED_Write( 0u ); // Turns off test LED
+ 231:Light.c       ****         }
+ 232:Light.c       ****         
+ 233:Light.c       ****         
+ 234:Light.c       ****         SW_UART_TEST_USB_PutString("bLEDstate: ");
+ 235:Light.c       ****         SW_UART_TEST_USB_PutHexByte(bLEDstate);
+ 236:Light.c       ****         SW_UART_TEST_USB_PutString(" \n");
+ 237:Light.c       ****         */
+ 238:Light.c       ****     }    
+ 613              		.loc 1 238 0 discriminator 1
+ 614 008c BBE7     		b	.L27
+ 615              	.L29:
+ 616 008e 00BF     		.align	2
+ 617              	.L28:
+ 618 0090 00000000 		.word	xQueueLightValue
+ 619 0094 00000000 		.word	xQueueCurrentTime
+ 620 0098 D8000000 		.word	.LC11
+ 621 009c E8000000 		.word	.LC12
+ 622 00a0 EC000000 		.word	.LC13
+ 623 00a4 F0000000 		.word	.LC14
+ 624              		.cfi_endproc
+ 625              	.LFE73:
+ 626              		.size	vTestLightTask, .-vTestLightTask
+ 627              		.text
+ 628              	.Letext0:
+ 629              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 630              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 631              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 632              		.file 5 "Generated_Source\\PSoC5/DS18x8.h"
+ 633              		.file 6 ".\\Source\\portable\\GCC\\ARM_CM3/portmacro.h"
+ 634              		.file 7 ".\\Source\\include/queue.h"
+ 635              		.file 8 "Generated_Source\\PSoC5/core_cm3.h"
+ 636              		.section	.debug_info,"",%progbits
+ 637              	.Ldebug_info0:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 17
+
+
+ 638 0000 B3030000 		.4byte	0x3b3
+ 639 0004 0400     		.2byte	0x4
+ 640 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 641 000a 04       		.byte	0x4
+ 642 000b 01       		.uleb128 0x1
+ 643 000c 3D000000 		.4byte	.LASF61
+ 644 0010 0C       		.byte	0xc
+ 645 0011 6C010000 		.4byte	.LASF62
+ 646 0015 A8020000 		.4byte	.LASF63
+ 647 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 648 001d 00000000 		.4byte	0
+ 649 0021 00000000 		.4byte	.Ldebug_line0
+ 650 0025 02       		.uleb128 0x2
+ 651 0026 04       		.byte	0x4
+ 652 0027 05       		.byte	0x5
+ 653 0028 696E7400 		.ascii	"int\000"
+ 654 002c 03       		.uleb128 0x3
+ 655 002d 04       		.byte	0x4
+ 656 002e 07       		.byte	0x7
+ 657 002f 1F020000 		.4byte	.LASF0
+ 658 0033 03       		.uleb128 0x3
+ 659 0034 08       		.byte	0x8
+ 660 0035 05       		.byte	0x5
+ 661 0036 53010000 		.4byte	.LASF1
+ 662 003a 03       		.uleb128 0x3
+ 663 003b 08       		.byte	0x8
+ 664 003c 04       		.byte	0x4
+ 665 003d BD010000 		.4byte	.LASF2
+ 666 0041 03       		.uleb128 0x3
+ 667 0042 01       		.byte	0x1
+ 668 0043 06       		.byte	0x6
+ 669 0044 F3010000 		.4byte	.LASF3
+ 670 0048 04       		.uleb128 0x4
+ 671 0049 8F010000 		.4byte	.LASF7
+ 672 004d 02       		.byte	0x2
+ 673 004e 1D       		.byte	0x1d
+ 674 004f 53000000 		.4byte	0x53
+ 675 0053 03       		.uleb128 0x3
+ 676 0054 01       		.byte	0x1
+ 677 0055 08       		.byte	0x8
+ 678 0056 E5010000 		.4byte	.LASF4
+ 679 005a 03       		.uleb128 0x3
+ 680 005b 02       		.byte	0x2
+ 681 005c 05       		.byte	0x5
+ 682 005d 12000000 		.4byte	.LASF5
+ 683 0061 03       		.uleb128 0x3
+ 684 0062 02       		.byte	0x2
+ 685 0063 07       		.byte	0x7
+ 686 0064 95020000 		.4byte	.LASF6
+ 687 0068 04       		.uleb128 0x4
+ 688 0069 56030000 		.4byte	.LASF8
+ 689 006d 02       		.byte	0x2
+ 690 006e 3F       		.byte	0x3f
+ 691 006f 73000000 		.4byte	0x73
+ 692 0073 03       		.uleb128 0x3
+ 693 0074 04       		.byte	0x4
+ 694 0075 05       		.byte	0x5
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 18
+
+
+ 695 0076 74010000 		.4byte	.LASF9
+ 696 007a 04       		.uleb128 0x4
+ 697 007b 3C030000 		.4byte	.LASF10
+ 698 007f 02       		.byte	0x2
+ 699 0080 41       		.byte	0x41
+ 700 0081 85000000 		.4byte	0x85
+ 701 0085 03       		.uleb128 0x3
+ 702 0086 04       		.byte	0x4
+ 703 0087 07       		.byte	0x7
+ 704 0088 3F020000 		.4byte	.LASF11
+ 705 008c 03       		.uleb128 0x3
+ 706 008d 08       		.byte	0x8
+ 707 008e 07       		.byte	0x7
+ 708 008f FF010000 		.4byte	.LASF12
+ 709 0093 04       		.uleb128 0x4
+ 710 0094 25010000 		.4byte	.LASF13
+ 711 0098 03       		.byte	0x3
+ 712 0099 18       		.byte	0x18
+ 713 009a 48000000 		.4byte	0x48
+ 714 009e 04       		.uleb128 0x4
+ 715 009f 8D020000 		.4byte	.LASF14
+ 716 00a3 03       		.byte	0x3
+ 717 00a4 2C       		.byte	0x2c
+ 718 00a5 68000000 		.4byte	0x68
+ 719 00a9 04       		.uleb128 0x4
+ 720 00aa 16020000 		.4byte	.LASF15
+ 721 00ae 03       		.byte	0x3
+ 722 00af 30       		.byte	0x30
+ 723 00b0 7A000000 		.4byte	0x7a
+ 724 00b4 05       		.uleb128 0x5
+ 725 00b5 2D010000 		.4byte	.LASF16
+ 726 00b9 04       		.byte	0x4
+ 727 00ba E401     		.2byte	0x1e4
+ 728 00bc 53000000 		.4byte	0x53
+ 729 00c0 05       		.uleb128 0x5
+ 730 00c1 1E010000 		.4byte	.LASF17
+ 731 00c5 04       		.byte	0x4
+ 732 00c6 E501     		.2byte	0x1e5
+ 733 00c8 61000000 		.4byte	0x61
+ 734 00cc 03       		.uleb128 0x3
+ 735 00cd 04       		.byte	0x4
+ 736 00ce 04       		.byte	0x4
+ 737 00cf 4D010000 		.4byte	.LASF18
+ 738 00d3 03       		.uleb128 0x3
+ 739 00d4 08       		.byte	0x8
+ 740 00d5 04       		.byte	0x4
+ 741 00d6 30030000 		.4byte	.LASF19
+ 742 00da 03       		.uleb128 0x3
+ 743 00db 01       		.byte	0x1
+ 744 00dc 08       		.byte	0x8
+ 745 00dd 82020000 		.4byte	.LASF20
+ 746 00e1 06       		.uleb128 0x6
+ 747 00e2 B4000000 		.4byte	0xb4
+ 748 00e6 03       		.uleb128 0x3
+ 749 00e7 04       		.byte	0x4
+ 750 00e8 07       		.byte	0x7
+ 751 00e9 1C000000 		.4byte	.LASF21
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 19
+
+
+ 752 00ed 07       		.uleb128 0x7
+ 753 00ee 0C030000 		.4byte	.LASF27
+ 754 00f2 04       		.byte	0x4
+ 755 00f3 05       		.byte	0x5
+ 756 00f4 30       		.byte	0x30
+ 757 00f5 12010000 		.4byte	0x112
+ 758 00f9 08       		.uleb128 0x8
+ 759 00fa 81030000 		.4byte	.LASF22
+ 760 00fe 05       		.byte	0x5
+ 761 00ff 31       		.byte	0x31
+ 762 0100 C0000000 		.4byte	0xc0
+ 763 0104 00       		.byte	0
+ 764 0105 08       		.uleb128 0x8
+ 765 0106 60030000 		.4byte	.LASF23
+ 766 010a 05       		.byte	0x5
+ 767 010b 32       		.byte	0x32
+ 768 010c B4000000 		.4byte	0xb4
+ 769 0110 02       		.byte	0x2
+ 770 0111 00       		.byte	0
+ 771 0112 04       		.uleb128 0x4
+ 772 0113 34020000 		.4byte	.LASF24
+ 773 0117 06       		.byte	0x6
+ 774 0118 38       		.byte	0x38
+ 775 0119 73000000 		.4byte	0x73
+ 776 011d 04       		.uleb128 0x4
+ 777 011e 61010000 		.4byte	.LASF25
+ 778 0122 06       		.byte	0x6
+ 779 0123 3F       		.byte	0x3f
+ 780 0124 A9000000 		.4byte	0xa9
+ 781 0128 04       		.uleb128 0x4
+ 782 0129 99010000 		.4byte	.LASF26
+ 783 012d 07       		.byte	0x7
+ 784 012e 30       		.byte	0x30
+ 785 012f 33010000 		.4byte	0x133
+ 786 0133 09       		.uleb128 0x9
+ 787 0134 04       		.byte	0x4
+ 788 0135 39010000 		.4byte	0x139
+ 789 0139 0A       		.uleb128 0xa
+ 790 013a 51020000 		.4byte	.LASF64
+ 791 013e 07       		.uleb128 0x7
+ 792 013f 68030000 		.4byte	.LASF28
+ 793 0143 08       		.byte	0x8
+ 794 0144 01       		.byte	0x1
+ 795 0145 1C       		.byte	0x1c
+ 796 0146 93010000 		.4byte	0x193
+ 797 014a 0B       		.uleb128 0xb
+ 798 014b 53656300 		.ascii	"Sec\000"
+ 799 014f 01       		.byte	0x1
+ 800 0150 1E       		.byte	0x1e
+ 801 0151 B4000000 		.4byte	0xb4
+ 802 0155 00       		.byte	0
+ 803 0156 0B       		.uleb128 0xb
+ 804 0157 4D696E00 		.ascii	"Min\000"
+ 805 015b 01       		.byte	0x1
+ 806 015c 1F       		.byte	0x1f
+ 807 015d B4000000 		.4byte	0xb4
+ 808 0161 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 20
+
+
+ 809 0162 08       		.uleb128 0x8
+ 810 0163 FF000000 		.4byte	.LASF29
+ 811 0167 01       		.byte	0x1
+ 812 0168 20       		.byte	0x20
+ 813 0169 B4000000 		.4byte	0xb4
+ 814 016d 02       		.byte	0x2
+ 815 016e 08       		.uleb128 0x8
+ 816 016f 1B030000 		.4byte	.LASF30
+ 817 0173 01       		.byte	0x1
+ 818 0174 21       		.byte	0x21
+ 819 0175 B4000000 		.4byte	0xb4
+ 820 0179 03       		.byte	0x3
+ 821 017a 08       		.uleb128 0x8
+ 822 017b B7010000 		.4byte	.LASF31
+ 823 017f 01       		.byte	0x1
+ 824 0180 22       		.byte	0x22
+ 825 0181 B4000000 		.4byte	0xb4
+ 826 0185 04       		.byte	0x4
+ 827 0186 08       		.uleb128 0x8
+ 828 0187 8A010000 		.4byte	.LASF32
+ 829 018b 01       		.byte	0x1
+ 830 018c 23       		.byte	0x23
+ 831 018d C0000000 		.4byte	0xc0
+ 832 0191 06       		.byte	0x6
+ 833 0192 00       		.byte	0
+ 834 0193 0C       		.uleb128 0xc
+ 835 0194 DA010000 		.4byte	.LASF40
+ 836 0198 01       		.byte	0x1
+ 837 0199 2F       		.byte	0x2f
+ 838 019a 00000000 		.4byte	.LFB68
+ 839 019e B0000000 		.4byte	.LFE68-.LFB68
+ 840 01a2 01       		.uleb128 0x1
+ 841 01a3 9C       		.byte	0x9c
+ 842 01a4 0D       		.uleb128 0xd
+ 843 01a5 00000000 		.4byte	.LASF35
+ 844 01a9 01       		.byte	0x1
+ 845 01aa 4F       		.byte	0x4f
+ 846 01ab 00000000 		.4byte	.LFB69
+ 847 01af 40000000 		.4byte	.LFE69-.LFB69
+ 848 01b3 01       		.uleb128 0x1
+ 849 01b4 9C       		.byte	0x9c
+ 850 01b5 E0010000 		.4byte	0x1e0
+ 851 01b9 0E       		.uleb128 0xe
+ 852 01ba 0F010000 		.4byte	.LASF33
+ 853 01be 01       		.byte	0x1
+ 854 01bf 51       		.byte	0x51
+ 855 01c0 E0010000 		.4byte	0x1e0
+ 856 01c4 02       		.uleb128 0x2
+ 857 01c5 91       		.byte	0x91
+ 858 01c6 74       		.sleb128 -12
+ 859 01c7 0F       		.uleb128 0xf
+ 860 01c8 12000000 		.4byte	.LBB2
+ 861 01cc 24000000 		.4byte	.LBE2-.LBB2
+ 862 01d0 0E       		.uleb128 0xe
+ 863 01d1 A6030000 		.4byte	.LASF34
+ 864 01d5 01       		.byte	0x1
+ 865 01d6 55       		.byte	0x55
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 21
+
+
+ 866 01d7 B4000000 		.4byte	0xb4
+ 867 01db 02       		.uleb128 0x2
+ 868 01dc 91       		.byte	0x91
+ 869 01dd 73       		.sleb128 -13
+ 870 01de 00       		.byte	0
+ 871 01df 00       		.byte	0
+ 872 01e0 10       		.uleb128 0x10
+ 873 01e1 1D010000 		.4byte	0x11d
+ 874 01e5 0D       		.uleb128 0xd
+ 875 01e6 DB000000 		.4byte	.LASF36
+ 876 01ea 01       		.byte	0x1
+ 877 01eb 5F       		.byte	0x5f
+ 878 01ec 00000000 		.4byte	.LFB70
+ 879 01f0 FC000000 		.4byte	.LFE70-.LFB70
+ 880 01f4 01       		.uleb128 0x1
+ 881 01f5 9C       		.byte	0x9c
+ 882 01f6 33020000 		.4byte	0x233
+ 883 01fa 0E       		.uleb128 0xe
+ 884 01fb 04010000 		.4byte	.LASF37
+ 885 01ff 01       		.byte	0x1
+ 886 0200 60       		.byte	0x60
+ 887 0201 33020000 		.4byte	0x233
+ 888 0205 02       		.uleb128 0x2
+ 889 0206 91       		.byte	0x91
+ 890 0207 6C       		.sleb128 -20
+ 891 0208 0E       		.uleb128 0xe
+ 892 0209 0F010000 		.4byte	.LASF33
+ 893 020d 01       		.byte	0x1
+ 894 020e 61       		.byte	0x61
+ 895 020f E0010000 		.4byte	0x1e0
+ 896 0213 02       		.uleb128 0x2
+ 897 0214 91       		.byte	0x91
+ 898 0215 74       		.sleb128 -12
+ 899 0216 0E       		.uleb128 0xe
+ 900 0217 33010000 		.4byte	.LASF38
+ 901 021b 01       		.byte	0x1
+ 902 021c 62       		.byte	0x62
+ 903 021d E0010000 		.4byte	0x1e0
+ 904 0221 02       		.uleb128 0x2
+ 905 0222 91       		.byte	0x91
+ 906 0223 70       		.sleb128 -16
+ 907 0224 0E       		.uleb128 0xe
+ 908 0225 7D010000 		.4byte	.LASF39
+ 909 0229 01       		.byte	0x1
+ 910 022a 63       		.byte	0x63
+ 911 022b 43020000 		.4byte	0x243
+ 912 022f 02       		.uleb128 0x2
+ 913 0230 91       		.byte	0x91
+ 914 0231 68       		.sleb128 -24
+ 915 0232 00       		.byte	0
+ 916 0233 11       		.uleb128 0x11
+ 917 0234 B4000000 		.4byte	0xb4
+ 918 0238 43020000 		.4byte	0x243
+ 919 023c 12       		.uleb128 0x12
+ 920 023d E6000000 		.4byte	0xe6
+ 921 0241 01       		.byte	0x1
+ 922 0242 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 22
+
+
+ 923 0243 11       		.uleb128 0x11
+ 924 0244 DA000000 		.4byte	0xda
+ 925 0248 53020000 		.4byte	0x253
+ 926 024c 12       		.uleb128 0x12
+ 927 024d E6000000 		.4byte	0xe6
+ 928 0251 02       		.byte	0x2
+ 929 0252 00       		.byte	0
+ 930 0253 0C       		.uleb128 0xc
+ 931 0254 A7010000 		.4byte	.LASF41
+ 932 0258 01       		.byte	0x1
+ 933 0259 98       		.byte	0x98
+ 934 025a 00000000 		.4byte	.LFB71
+ 935 025e 68000000 		.4byte	.LFE71-.LFB71
+ 936 0262 01       		.uleb128 0x1
+ 937 0263 9C       		.byte	0x9c
+ 938 0264 0C       		.uleb128 0xc
+ 939 0265 6E030000 		.4byte	.LASF42
+ 940 0269 01       		.byte	0x1
+ 941 026a BA       		.byte	0xba
+ 942 026b 00000000 		.4byte	.LFB72
+ 943 026f 2C000000 		.4byte	.LFE72-.LFB72
+ 944 0273 01       		.uleb128 0x1
+ 945 0274 9C       		.byte	0x9c
+ 946 0275 0D       		.uleb128 0xd
+ 947 0276 61020000 		.4byte	.LASF43
+ 948 027a 01       		.byte	0x1
+ 949 027b C0       		.byte	0xc0
+ 950 027c 00000000 		.4byte	.LFB73
+ 951 0280 A8000000 		.4byte	.LFE73-.LFB73
+ 952 0284 01       		.uleb128 0x1
+ 953 0285 9C       		.byte	0x9c
+ 954 0286 C3020000 		.4byte	0x2c3
+ 955 028a 0E       		.uleb128 0xe
+ 956 028b 47030000 		.4byte	.LASF44
+ 957 028f 01       		.byte	0x1
+ 958 0290 C1       		.byte	0xc1
+ 959 0291 B4000000 		.4byte	0xb4
+ 960 0295 02       		.uleb128 0x2
+ 961 0296 91       		.byte	0x91
+ 962 0297 77       		.sleb128 -9
+ 963 0298 0E       		.uleb128 0xe
+ 964 0299 CB000000 		.4byte	.LASF45
+ 965 029d 01       		.byte	0x1
+ 966 029e C2       		.byte	0xc2
+ 967 029f B4000000 		.4byte	0xb4
+ 968 02a3 02       		.uleb128 0x2
+ 969 02a4 91       		.byte	0x91
+ 970 02a5 76       		.sleb128 -10
+ 971 02a6 0E       		.uleb128 0xe
+ 972 02a7 F0000000 		.4byte	.LASF46
+ 973 02ab 01       		.byte	0x1
+ 974 02ac C3       		.byte	0xc3
+ 975 02ad B4000000 		.4byte	0xb4
+ 976 02b1 02       		.uleb128 0x2
+ 977 02b2 91       		.byte	0x91
+ 978 02b3 75       		.sleb128 -11
+ 979 02b4 0E       		.uleb128 0xe
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 23
+
+
+ 980 02b5 B0030000 		.4byte	.LASF47
+ 981 02b9 01       		.byte	0x1
+ 982 02ba C4       		.byte	0xc4
+ 983 02bb B4000000 		.4byte	0xb4
+ 984 02bf 02       		.uleb128 0x2
+ 985 02c0 91       		.byte	0x91
+ 986 02c1 74       		.sleb128 -12
+ 987 02c2 00       		.byte	0
+ 988 02c3 11       		.uleb128 0x11
+ 989 02c4 ED000000 		.4byte	0xed
+ 990 02c8 D3020000 		.4byte	0x2d3
+ 991 02cc 12       		.uleb128 0x12
+ 992 02cd E6000000 		.4byte	0xe6
+ 993 02d1 07       		.byte	0x7
+ 994 02d2 00       		.byte	0
+ 995 02d3 13       		.uleb128 0x13
+ 996 02d4 25000000 		.4byte	.LASF48
+ 997 02d8 05       		.byte	0x5
+ 998 02d9 34       		.byte	0x34
+ 999 02da C3020000 		.4byte	0x2c3
+ 1000 02de 05       		.uleb128 0x5
+ 1001 02df 03       		.byte	0x3
+ 1002 02e0 00000000 		.4byte	DS18x8_Sensor
+ 1003 02e4 13       		.uleb128 0x13
+ 1004 02e5 BF030000 		.4byte	.LASF49
+ 1005 02e9 05       		.byte	0x5
+ 1006 02ea 39       		.byte	0x39
+ 1007 02eb E1000000 		.4byte	0xe1
+ 1008 02ef 05       		.uleb128 0x5
+ 1009 02f0 03       		.byte	0x3
+ 1010 02f1 00000000 		.4byte	DS18x8_DataReady
+ 1011 02f5 14       		.uleb128 0x14
+ 1012 02f6 99030000 		.4byte	.LASF50
+ 1013 02fa 08       		.byte	0x8
+ 1014 02fb 1207     		.2byte	0x712
+ 1015 02fd 01030000 		.4byte	0x301
+ 1016 0301 06       		.uleb128 0x6
+ 1017 0302 9E000000 		.4byte	0x9e
+ 1018 0306 13       		.uleb128 0x13
+ 1019 0307 18010000 		.4byte	.LASF51
+ 1020 030b 01       		.byte	0x1
+ 1021 030c 14       		.byte	0x14
+ 1022 030d B4000000 		.4byte	0xb4
+ 1023 0311 05       		.uleb128 0x5
+ 1024 0312 03       		.byte	0x3
+ 1025 0313 00000000 		.4byte	Light
+ 1026 0317 13       		.uleb128 0x13
+ 1027 0318 37030000 		.4byte	.LASF52
+ 1028 031c 01       		.byte	0x1
+ 1029 031d 15       		.byte	0x15
+ 1030 031e B4000000 		.4byte	0xb4
+ 1031 0322 05       		.uleb128 0x5
+ 1032 0323 03       		.byte	0x3
+ 1033 0324 00000000 		.4byte	Time
+ 1034 0328 13       		.uleb128 0x13
+ 1035 0329 2C020000 		.4byte	.LASF53
+ 1036 032d 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 24
+
+
+ 1037 032e 16       		.byte	0x16
+ 1038 032f 39030000 		.4byte	0x339
+ 1039 0333 05       		.uleb128 0x5
+ 1040 0334 03       		.byte	0x3
+ 1041 0335 00000000 		.4byte	bLEDCMD
+ 1042 0339 03       		.uleb128 0x3
+ 1043 033a 01       		.byte	0x1
+ 1044 033b 02       		.byte	0x2
+ 1045 033c 87020000 		.4byte	.LASF54
+ 1046 0340 13       		.uleb128 0x13
+ 1047 0341 26030000 		.4byte	.LASF55
+ 1048 0345 01       		.byte	0x1
+ 1049 0346 17       		.byte	0x17
+ 1050 0347 39030000 		.4byte	0x339
+ 1051 034b 05       		.uleb128 0x5
+ 1052 034c 03       		.byte	0x3
+ 1053 034d 00000000 		.4byte	bLEDstate
+ 1054 0351 13       		.uleb128 0x13
+ 1055 0352 8D030000 		.4byte	.LASF56
+ 1056 0356 01       		.byte	0x1
+ 1057 0357 18       		.byte	0x18
+ 1058 0358 39030000 		.4byte	0x339
+ 1059 035c 05       		.uleb128 0x5
+ 1060 035d 03       		.byte	0x3
+ 1061 035e 00000000 		.4byte	bAlarmState
+ 1062 0362 13       		.uleb128 0x13
+ 1063 0363 33000000 		.4byte	.LASF57
+ 1064 0367 01       		.byte	0x1
+ 1065 0368 19       		.byte	0x19
+ 1066 0369 B4000000 		.4byte	0xb4
+ 1067 036d 05       		.uleb128 0x5
+ 1068 036e 03       		.byte	0x3
+ 1069 036f 00000000 		.4byte	ClockAddr
+ 1070 0373 13       		.uleb128 0x13
+ 1071 0374 41010000 		.4byte	.LASF58
+ 1072 0378 01       		.byte	0x1
+ 1073 0379 27       		.byte	0x27
+ 1074 037a 3E010000 		.4byte	0x13e
+ 1075 037e 05       		.uleb128 0x5
+ 1076 037f 03       		.byte	0x3
+ 1077 0380 00000000 		.4byte	CurrentTime
+ 1078 0384 13       		.uleb128 0x13
+ 1079 0385 C9010000 		.4byte	.LASF59
+ 1080 0389 01       		.byte	0x1
+ 1081 038a 2A       		.byte	0x2a
+ 1082 038b 28010000 		.4byte	0x128
+ 1083 038f 05       		.uleb128 0x5
+ 1084 0390 03       		.byte	0x3
+ 1085 0391 00000000 		.4byte	xQueueLightValue
+ 1086 0395 11       		.uleb128 0x11
+ 1087 0396 28010000 		.4byte	0x128
+ 1088 039a A5030000 		.4byte	0x3a5
+ 1089 039e 12       		.uleb128 0x12
+ 1090 039f E6000000 		.4byte	0xe6
+ 1091 03a3 02       		.byte	0x2
+ 1092 03a4 00       		.byte	0
+ 1093 03a5 13       		.uleb128 0x13
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 25
+
+
+ 1094 03a6 70020000 		.4byte	.LASF60
+ 1095 03aa 01       		.byte	0x1
+ 1096 03ab 2D       		.byte	0x2d
+ 1097 03ac 95030000 		.4byte	0x395
+ 1098 03b0 05       		.uleb128 0x5
+ 1099 03b1 03       		.byte	0x3
+ 1100 03b2 00000000 		.4byte	xQueueCurrentTime
+ 1101 03b6 00       		.byte	0
+ 1102              		.section	.debug_abbrev,"",%progbits
+ 1103              	.Ldebug_abbrev0:
+ 1104 0000 01       		.uleb128 0x1
+ 1105 0001 11       		.uleb128 0x11
+ 1106 0002 01       		.byte	0x1
+ 1107 0003 25       		.uleb128 0x25
+ 1108 0004 0E       		.uleb128 0xe
+ 1109 0005 13       		.uleb128 0x13
+ 1110 0006 0B       		.uleb128 0xb
+ 1111 0007 03       		.uleb128 0x3
+ 1112 0008 0E       		.uleb128 0xe
+ 1113 0009 1B       		.uleb128 0x1b
+ 1114 000a 0E       		.uleb128 0xe
+ 1115 000b 55       		.uleb128 0x55
+ 1116 000c 17       		.uleb128 0x17
+ 1117 000d 11       		.uleb128 0x11
+ 1118 000e 01       		.uleb128 0x1
+ 1119 000f 10       		.uleb128 0x10
+ 1120 0010 17       		.uleb128 0x17
+ 1121 0011 00       		.byte	0
+ 1122 0012 00       		.byte	0
+ 1123 0013 02       		.uleb128 0x2
+ 1124 0014 24       		.uleb128 0x24
+ 1125 0015 00       		.byte	0
+ 1126 0016 0B       		.uleb128 0xb
+ 1127 0017 0B       		.uleb128 0xb
+ 1128 0018 3E       		.uleb128 0x3e
+ 1129 0019 0B       		.uleb128 0xb
+ 1130 001a 03       		.uleb128 0x3
+ 1131 001b 08       		.uleb128 0x8
+ 1132 001c 00       		.byte	0
+ 1133 001d 00       		.byte	0
+ 1134 001e 03       		.uleb128 0x3
+ 1135 001f 24       		.uleb128 0x24
+ 1136 0020 00       		.byte	0
+ 1137 0021 0B       		.uleb128 0xb
+ 1138 0022 0B       		.uleb128 0xb
+ 1139 0023 3E       		.uleb128 0x3e
+ 1140 0024 0B       		.uleb128 0xb
+ 1141 0025 03       		.uleb128 0x3
+ 1142 0026 0E       		.uleb128 0xe
+ 1143 0027 00       		.byte	0
+ 1144 0028 00       		.byte	0
+ 1145 0029 04       		.uleb128 0x4
+ 1146 002a 16       		.uleb128 0x16
+ 1147 002b 00       		.byte	0
+ 1148 002c 03       		.uleb128 0x3
+ 1149 002d 0E       		.uleb128 0xe
+ 1150 002e 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 26
+
+
+ 1151 002f 0B       		.uleb128 0xb
+ 1152 0030 3B       		.uleb128 0x3b
+ 1153 0031 0B       		.uleb128 0xb
+ 1154 0032 49       		.uleb128 0x49
+ 1155 0033 13       		.uleb128 0x13
+ 1156 0034 00       		.byte	0
+ 1157 0035 00       		.byte	0
+ 1158 0036 05       		.uleb128 0x5
+ 1159 0037 16       		.uleb128 0x16
+ 1160 0038 00       		.byte	0
+ 1161 0039 03       		.uleb128 0x3
+ 1162 003a 0E       		.uleb128 0xe
+ 1163 003b 3A       		.uleb128 0x3a
+ 1164 003c 0B       		.uleb128 0xb
+ 1165 003d 3B       		.uleb128 0x3b
+ 1166 003e 05       		.uleb128 0x5
+ 1167 003f 49       		.uleb128 0x49
+ 1168 0040 13       		.uleb128 0x13
+ 1169 0041 00       		.byte	0
+ 1170 0042 00       		.byte	0
+ 1171 0043 06       		.uleb128 0x6
+ 1172 0044 35       		.uleb128 0x35
+ 1173 0045 00       		.byte	0
+ 1174 0046 49       		.uleb128 0x49
+ 1175 0047 13       		.uleb128 0x13
+ 1176 0048 00       		.byte	0
+ 1177 0049 00       		.byte	0
+ 1178 004a 07       		.uleb128 0x7
+ 1179 004b 13       		.uleb128 0x13
+ 1180 004c 01       		.byte	0x1
+ 1181 004d 03       		.uleb128 0x3
+ 1182 004e 0E       		.uleb128 0xe
+ 1183 004f 0B       		.uleb128 0xb
+ 1184 0050 0B       		.uleb128 0xb
+ 1185 0051 3A       		.uleb128 0x3a
+ 1186 0052 0B       		.uleb128 0xb
+ 1187 0053 3B       		.uleb128 0x3b
+ 1188 0054 0B       		.uleb128 0xb
+ 1189 0055 01       		.uleb128 0x1
+ 1190 0056 13       		.uleb128 0x13
+ 1191 0057 00       		.byte	0
+ 1192 0058 00       		.byte	0
+ 1193 0059 08       		.uleb128 0x8
+ 1194 005a 0D       		.uleb128 0xd
+ 1195 005b 00       		.byte	0
+ 1196 005c 03       		.uleb128 0x3
+ 1197 005d 0E       		.uleb128 0xe
+ 1198 005e 3A       		.uleb128 0x3a
+ 1199 005f 0B       		.uleb128 0xb
+ 1200 0060 3B       		.uleb128 0x3b
+ 1201 0061 0B       		.uleb128 0xb
+ 1202 0062 49       		.uleb128 0x49
+ 1203 0063 13       		.uleb128 0x13
+ 1204 0064 38       		.uleb128 0x38
+ 1205 0065 0B       		.uleb128 0xb
+ 1206 0066 00       		.byte	0
+ 1207 0067 00       		.byte	0
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 27
+
+
+ 1208 0068 09       		.uleb128 0x9
+ 1209 0069 0F       		.uleb128 0xf
+ 1210 006a 00       		.byte	0
+ 1211 006b 0B       		.uleb128 0xb
+ 1212 006c 0B       		.uleb128 0xb
+ 1213 006d 49       		.uleb128 0x49
+ 1214 006e 13       		.uleb128 0x13
+ 1215 006f 00       		.byte	0
+ 1216 0070 00       		.byte	0
+ 1217 0071 0A       		.uleb128 0xa
+ 1218 0072 13       		.uleb128 0x13
+ 1219 0073 00       		.byte	0
+ 1220 0074 03       		.uleb128 0x3
+ 1221 0075 0E       		.uleb128 0xe
+ 1222 0076 3C       		.uleb128 0x3c
+ 1223 0077 19       		.uleb128 0x19
+ 1224 0078 00       		.byte	0
+ 1225 0079 00       		.byte	0
+ 1226 007a 0B       		.uleb128 0xb
+ 1227 007b 0D       		.uleb128 0xd
+ 1228 007c 00       		.byte	0
+ 1229 007d 03       		.uleb128 0x3
+ 1230 007e 08       		.uleb128 0x8
+ 1231 007f 3A       		.uleb128 0x3a
+ 1232 0080 0B       		.uleb128 0xb
+ 1233 0081 3B       		.uleb128 0x3b
+ 1234 0082 0B       		.uleb128 0xb
+ 1235 0083 49       		.uleb128 0x49
+ 1236 0084 13       		.uleb128 0x13
+ 1237 0085 38       		.uleb128 0x38
+ 1238 0086 0B       		.uleb128 0xb
+ 1239 0087 00       		.byte	0
+ 1240 0088 00       		.byte	0
+ 1241 0089 0C       		.uleb128 0xc
+ 1242 008a 2E       		.uleb128 0x2e
+ 1243 008b 00       		.byte	0
+ 1244 008c 3F       		.uleb128 0x3f
+ 1245 008d 19       		.uleb128 0x19
+ 1246 008e 03       		.uleb128 0x3
+ 1247 008f 0E       		.uleb128 0xe
+ 1248 0090 3A       		.uleb128 0x3a
+ 1249 0091 0B       		.uleb128 0xb
+ 1250 0092 3B       		.uleb128 0x3b
+ 1251 0093 0B       		.uleb128 0xb
+ 1252 0094 11       		.uleb128 0x11
+ 1253 0095 01       		.uleb128 0x1
+ 1254 0096 12       		.uleb128 0x12
+ 1255 0097 06       		.uleb128 0x6
+ 1256 0098 40       		.uleb128 0x40
+ 1257 0099 18       		.uleb128 0x18
+ 1258 009a 9642     		.uleb128 0x2116
+ 1259 009c 19       		.uleb128 0x19
+ 1260 009d 00       		.byte	0
+ 1261 009e 00       		.byte	0
+ 1262 009f 0D       		.uleb128 0xd
+ 1263 00a0 2E       		.uleb128 0x2e
+ 1264 00a1 01       		.byte	0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 28
+
+
+ 1265 00a2 3F       		.uleb128 0x3f
+ 1266 00a3 19       		.uleb128 0x19
+ 1267 00a4 03       		.uleb128 0x3
+ 1268 00a5 0E       		.uleb128 0xe
+ 1269 00a6 3A       		.uleb128 0x3a
+ 1270 00a7 0B       		.uleb128 0xb
+ 1271 00a8 3B       		.uleb128 0x3b
+ 1272 00a9 0B       		.uleb128 0xb
+ 1273 00aa 11       		.uleb128 0x11
+ 1274 00ab 01       		.uleb128 0x1
+ 1275 00ac 12       		.uleb128 0x12
+ 1276 00ad 06       		.uleb128 0x6
+ 1277 00ae 40       		.uleb128 0x40
+ 1278 00af 18       		.uleb128 0x18
+ 1279 00b0 9642     		.uleb128 0x2116
+ 1280 00b2 19       		.uleb128 0x19
+ 1281 00b3 01       		.uleb128 0x1
+ 1282 00b4 13       		.uleb128 0x13
+ 1283 00b5 00       		.byte	0
+ 1284 00b6 00       		.byte	0
+ 1285 00b7 0E       		.uleb128 0xe
+ 1286 00b8 34       		.uleb128 0x34
+ 1287 00b9 00       		.byte	0
+ 1288 00ba 03       		.uleb128 0x3
+ 1289 00bb 0E       		.uleb128 0xe
+ 1290 00bc 3A       		.uleb128 0x3a
+ 1291 00bd 0B       		.uleb128 0xb
+ 1292 00be 3B       		.uleb128 0x3b
+ 1293 00bf 0B       		.uleb128 0xb
+ 1294 00c0 49       		.uleb128 0x49
+ 1295 00c1 13       		.uleb128 0x13
+ 1296 00c2 02       		.uleb128 0x2
+ 1297 00c3 18       		.uleb128 0x18
+ 1298 00c4 00       		.byte	0
+ 1299 00c5 00       		.byte	0
+ 1300 00c6 0F       		.uleb128 0xf
+ 1301 00c7 0B       		.uleb128 0xb
+ 1302 00c8 01       		.byte	0x1
+ 1303 00c9 11       		.uleb128 0x11
+ 1304 00ca 01       		.uleb128 0x1
+ 1305 00cb 12       		.uleb128 0x12
+ 1306 00cc 06       		.uleb128 0x6
+ 1307 00cd 00       		.byte	0
+ 1308 00ce 00       		.byte	0
+ 1309 00cf 10       		.uleb128 0x10
+ 1310 00d0 26       		.uleb128 0x26
+ 1311 00d1 00       		.byte	0
+ 1312 00d2 49       		.uleb128 0x49
+ 1313 00d3 13       		.uleb128 0x13
+ 1314 00d4 00       		.byte	0
+ 1315 00d5 00       		.byte	0
+ 1316 00d6 11       		.uleb128 0x11
+ 1317 00d7 01       		.uleb128 0x1
+ 1318 00d8 01       		.byte	0x1
+ 1319 00d9 49       		.uleb128 0x49
+ 1320 00da 13       		.uleb128 0x13
+ 1321 00db 01       		.uleb128 0x1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 29
+
+
+ 1322 00dc 13       		.uleb128 0x13
+ 1323 00dd 00       		.byte	0
+ 1324 00de 00       		.byte	0
+ 1325 00df 12       		.uleb128 0x12
+ 1326 00e0 21       		.uleb128 0x21
+ 1327 00e1 00       		.byte	0
+ 1328 00e2 49       		.uleb128 0x49
+ 1329 00e3 13       		.uleb128 0x13
+ 1330 00e4 2F       		.uleb128 0x2f
+ 1331 00e5 0B       		.uleb128 0xb
+ 1332 00e6 00       		.byte	0
+ 1333 00e7 00       		.byte	0
+ 1334 00e8 13       		.uleb128 0x13
+ 1335 00e9 34       		.uleb128 0x34
+ 1336 00ea 00       		.byte	0
+ 1337 00eb 03       		.uleb128 0x3
+ 1338 00ec 0E       		.uleb128 0xe
+ 1339 00ed 3A       		.uleb128 0x3a
+ 1340 00ee 0B       		.uleb128 0xb
+ 1341 00ef 3B       		.uleb128 0x3b
+ 1342 00f0 0B       		.uleb128 0xb
+ 1343 00f1 49       		.uleb128 0x49
+ 1344 00f2 13       		.uleb128 0x13
+ 1345 00f3 3F       		.uleb128 0x3f
+ 1346 00f4 19       		.uleb128 0x19
+ 1347 00f5 02       		.uleb128 0x2
+ 1348 00f6 18       		.uleb128 0x18
+ 1349 00f7 00       		.byte	0
+ 1350 00f8 00       		.byte	0
+ 1351 00f9 14       		.uleb128 0x14
+ 1352 00fa 34       		.uleb128 0x34
+ 1353 00fb 00       		.byte	0
+ 1354 00fc 03       		.uleb128 0x3
+ 1355 00fd 0E       		.uleb128 0xe
+ 1356 00fe 3A       		.uleb128 0x3a
+ 1357 00ff 0B       		.uleb128 0xb
+ 1358 0100 3B       		.uleb128 0x3b
+ 1359 0101 05       		.uleb128 0x5
+ 1360 0102 49       		.uleb128 0x49
+ 1361 0103 13       		.uleb128 0x13
+ 1362 0104 3F       		.uleb128 0x3f
+ 1363 0105 19       		.uleb128 0x19
+ 1364 0106 3C       		.uleb128 0x3c
+ 1365 0107 19       		.uleb128 0x19
+ 1366 0108 00       		.byte	0
+ 1367 0109 00       		.byte	0
+ 1368 010a 00       		.byte	0
+ 1369              		.section	.debug_aranges,"",%progbits
+ 1370 0000 44000000 		.4byte	0x44
+ 1371 0004 0200     		.2byte	0x2
+ 1372 0006 00000000 		.4byte	.Ldebug_info0
+ 1373 000a 04       		.byte	0x4
+ 1374 000b 00       		.byte	0
+ 1375 000c 0000     		.2byte	0
+ 1376 000e 0000     		.2byte	0
+ 1377 0010 00000000 		.4byte	.LFB68
+ 1378 0014 B0000000 		.4byte	.LFE68-.LFB68
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 30
+
+
+ 1379 0018 00000000 		.4byte	.LFB69
+ 1380 001c 40000000 		.4byte	.LFE69-.LFB69
+ 1381 0020 00000000 		.4byte	.LFB70
+ 1382 0024 FC000000 		.4byte	.LFE70-.LFB70
+ 1383 0028 00000000 		.4byte	.LFB71
+ 1384 002c 68000000 		.4byte	.LFE71-.LFB71
+ 1385 0030 00000000 		.4byte	.LFB72
+ 1386 0034 2C000000 		.4byte	.LFE72-.LFB72
+ 1387 0038 00000000 		.4byte	.LFB73
+ 1388 003c A8000000 		.4byte	.LFE73-.LFB73
+ 1389 0040 00000000 		.4byte	0
+ 1390 0044 00000000 		.4byte	0
+ 1391              		.section	.debug_ranges,"",%progbits
+ 1392              	.Ldebug_ranges0:
+ 1393 0000 00000000 		.4byte	.LFB68
+ 1394 0004 B0000000 		.4byte	.LFE68
+ 1395 0008 00000000 		.4byte	.LFB69
+ 1396 000c 40000000 		.4byte	.LFE69
+ 1397 0010 00000000 		.4byte	.LFB70
+ 1398 0014 FC000000 		.4byte	.LFE70
+ 1399 0018 00000000 		.4byte	.LFB71
+ 1400 001c 68000000 		.4byte	.LFE71
+ 1401 0020 00000000 		.4byte	.LFB72
+ 1402 0024 2C000000 		.4byte	.LFE72
+ 1403 0028 00000000 		.4byte	.LFB73
+ 1404 002c A8000000 		.4byte	.LFE73
+ 1405 0030 00000000 		.4byte	0
+ 1406 0034 00000000 		.4byte	0
+ 1407              		.section	.debug_line,"",%progbits
+ 1408              	.Ldebug_line0:
+ 1409 0000 B9020000 		.section	.debug_str,"MS",%progbits,1
+ 1409      0200A201 
+ 1409      00000201 
+ 1409      FB0E0D00 
+ 1409      01010101 
+ 1410              	.LASF35:
+ 1411 0000 76546173 		.ascii	"vTaskLightMeasure\000"
+ 1411      6B4C6967 
+ 1411      68744D65 
+ 1411      61737572 
+ 1411      6500
+ 1412              	.LASF5:
+ 1413 0012 73686F72 		.ascii	"short int\000"
+ 1413      7420696E 
+ 1413      7400
+ 1414              	.LASF21:
+ 1415 001c 73697A65 		.ascii	"sizetype\000"
+ 1415      74797065 
+ 1415      00
+ 1416              	.LASF48:
+ 1417 0025 44533138 		.ascii	"DS18x8_Sensor\000"
+ 1417      78385F53 
+ 1417      656E736F 
+ 1417      7200
+ 1418              	.LASF57:
+ 1419 0033 436C6F63 		.ascii	"ClockAddr\000"
+ 1419      6B416464 
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 31
+
+
+ 1419      7200
+ 1420              	.LASF61:
+ 1421 003d 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1421      43313120 
+ 1421      352E342E 
+ 1421      31203230 
+ 1421      31363036 
+ 1422 0070 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1422      20726576 
+ 1422      6973696F 
+ 1422      6E203233 
+ 1422      37373135 
+ 1423 00a3 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 1423      66756E63 
+ 1423      74696F6E 
+ 1423      2D736563 
+ 1423      74696F6E 
+ 1424              	.LASF45:
+ 1425 00cb 54657374 		.ascii	"TestCurrentHour\000"
+ 1425      43757272 
+ 1425      656E7448 
+ 1425      6F757200 
+ 1426              	.LASF36:
+ 1427 00db 76546173 		.ascii	"vTaskLightController\000"
+ 1427      6B4C6967 
+ 1427      6874436F 
+ 1427      6E74726F 
+ 1427      6C6C6572 
+ 1428              	.LASF46:
+ 1429 00f0 54657374 		.ascii	"TestCurrentMin\000"
+ 1429      43757272 
+ 1429      656E744D 
+ 1429      696E00
+ 1430              	.LASF29:
+ 1431 00ff 486F7572 		.ascii	"Hour\000"
+ 1431      00
+ 1432              	.LASF37:
+ 1433 0104 4C696768 		.ascii	"LightCycle\000"
+ 1433      74437963 
+ 1433      6C6500
+ 1434              	.LASF33:
+ 1435 010f 7844656C 		.ascii	"xDelayms\000"
+ 1435      61796D73 
+ 1435      00
+ 1436              	.LASF51:
+ 1437 0118 4C696768 		.ascii	"Light\000"
+ 1437      7400
+ 1438              	.LASF17:
+ 1439 011e 75696E74 		.ascii	"uint16\000"
+ 1439      313600
+ 1440              	.LASF13:
+ 1441 0125 75696E74 		.ascii	"uint8_t\000"
+ 1441      385F7400 
+ 1442              	.LASF16:
+ 1443 012d 75696E74 		.ascii	"uint8\000"
+ 1443      3800
+ 1444              	.LASF38:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 32
+
+
+ 1445 0133 7853686F 		.ascii	"xShortDelayms\000"
+ 1445      72744465 
+ 1445      6C61796D 
+ 1445      7300
+ 1446              	.LASF58:
+ 1447 0141 43757272 		.ascii	"CurrentTime\000"
+ 1447      656E7454 
+ 1447      696D6500 
+ 1448              	.LASF18:
+ 1449 014d 666C6F61 		.ascii	"float\000"
+ 1449      7400
+ 1450              	.LASF1:
+ 1451 0153 6C6F6E67 		.ascii	"long long int\000"
+ 1451      206C6F6E 
+ 1451      6720696E 
+ 1451      7400
+ 1452              	.LASF25:
+ 1453 0161 5469636B 		.ascii	"TickType_t\000"
+ 1453      54797065 
+ 1453      5F7400
+ 1454              	.LASF62:
+ 1455 016c 4C696768 		.ascii	"Light.c\000"
+ 1455      742E6300 
+ 1456              	.LASF9:
+ 1457 0174 6C6F6E67 		.ascii	"long int\000"
+ 1457      20696E74 
+ 1457      00
+ 1458              	.LASF39:
+ 1459 017d 41726475 		.ascii	"ArduinoClock\000"
+ 1459      696E6F43 
+ 1459      6C6F636B 
+ 1459      00
+ 1460              	.LASF32:
+ 1461 018a 59656172 		.ascii	"Year\000"
+ 1461      00
+ 1462              	.LASF7:
+ 1463 018f 5F5F7569 		.ascii	"__uint8_t\000"
+ 1463      6E74385F 
+ 1463      7400
+ 1464              	.LASF26:
+ 1465 0199 51756575 		.ascii	"QueueHandle_t\000"
+ 1465      6548616E 
+ 1465      646C655F 
+ 1465      7400
+ 1466              	.LASF41:
+ 1467 01a7 76546173 		.ascii	"vTaskLEDcontrol\000"
+ 1467      6B4C4544 
+ 1467      636F6E74 
+ 1467      726F6C00 
+ 1468              	.LASF31:
+ 1469 01b7 4D6F6E74 		.ascii	"Month\000"
+ 1469      6800
+ 1470              	.LASF2:
+ 1471 01bd 6C6F6E67 		.ascii	"long double\000"
+ 1471      20646F75 
+ 1471      626C6500 
+ 1472              	.LASF59:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 33
+
+
+ 1473 01c9 78517565 		.ascii	"xQueueLightValue\000"
+ 1473      75654C69 
+ 1473      67687456 
+ 1473      616C7565 
+ 1473      00
+ 1474              	.LASF40:
+ 1475 01da 764C6967 		.ascii	"vLightInit\000"
+ 1475      6874496E 
+ 1475      697400
+ 1476              	.LASF4:
+ 1477 01e5 756E7369 		.ascii	"unsigned char\000"
+ 1477      676E6564 
+ 1477      20636861 
+ 1477      7200
+ 1478              	.LASF3:
+ 1479 01f3 7369676E 		.ascii	"signed char\000"
+ 1479      65642063 
+ 1479      68617200 
+ 1480              	.LASF12:
+ 1481 01ff 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1481      206C6F6E 
+ 1481      6720756E 
+ 1481      7369676E 
+ 1481      65642069 
+ 1482              	.LASF15:
+ 1483 0216 75696E74 		.ascii	"uint32_t\000"
+ 1483      33325F74 
+ 1483      00
+ 1484              	.LASF0:
+ 1485 021f 756E7369 		.ascii	"unsigned int\000"
+ 1485      676E6564 
+ 1485      20696E74 
+ 1485      00
+ 1486              	.LASF53:
+ 1487 022c 624C4544 		.ascii	"bLEDCMD\000"
+ 1487      434D4400 
+ 1488              	.LASF24:
+ 1489 0234 42617365 		.ascii	"BaseType_t\000"
+ 1489      54797065 
+ 1489      5F7400
+ 1490              	.LASF11:
+ 1491 023f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1491      20756E73 
+ 1491      69676E65 
+ 1491      6420696E 
+ 1491      7400
+ 1492              	.LASF64:
+ 1493 0251 51756575 		.ascii	"QueueDefinition\000"
+ 1493      65446566 
+ 1493      696E6974 
+ 1493      696F6E00 
+ 1494              	.LASF43:
+ 1495 0261 76546573 		.ascii	"vTestLightTask\000"
+ 1495      744C6967 
+ 1495      68745461 
+ 1495      736B00
+ 1496              	.LASF60:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 34
+
+
+ 1497 0270 78517565 		.ascii	"xQueueCurrentTime\000"
+ 1497      75654375 
+ 1497      7272656E 
+ 1497      7454696D 
+ 1497      6500
+ 1498              	.LASF20:
+ 1499 0282 63686172 		.ascii	"char\000"
+ 1499      00
+ 1500              	.LASF54:
+ 1501 0287 5F426F6F 		.ascii	"_Bool\000"
+ 1501      6C00
+ 1502              	.LASF14:
+ 1503 028d 696E7433 		.ascii	"int32_t\000"
+ 1503      325F7400 
+ 1504              	.LASF6:
+ 1505 0295 73686F72 		.ascii	"short unsigned int\000"
+ 1505      7420756E 
+ 1505      7369676E 
+ 1505      65642069 
+ 1505      6E7400
+ 1506              	.LASF63:
+ 1507 02a8 433A5C55 		.ascii	"C:\\Users\\mag94\\Desktop\\UNIstuff\\4. Semester\\P"
+ 1507      73657273 
+ 1507      5C6D6167 
+ 1507      39345C44 
+ 1507      65736B74 
+ 1508 02d5 345F5665 		.ascii	"4_Vertical_farm\\RTOS_TEMPLATE-master\\PlanteModul."
+ 1508      72746963 
+ 1508      616C5F66 
+ 1508      61726D5C 
+ 1508      52544F53 
+ 1509 0306 63796473 		.ascii	"cydsn\000"
+ 1509      6E00
+ 1510              	.LASF27:
+ 1511 030c 44533138 		.ascii	"DS18x8_TSensor\000"
+ 1511      78385F54 
+ 1511      53656E73 
+ 1511      6F7200
+ 1512              	.LASF30:
+ 1513 031b 4461794F 		.ascii	"DayOfMonth\000"
+ 1513      664D6F6E 
+ 1513      746800
+ 1514              	.LASF55:
+ 1515 0326 624C4544 		.ascii	"bLEDstate\000"
+ 1515      73746174 
+ 1515      6500
+ 1516              	.LASF19:
+ 1517 0330 646F7562 		.ascii	"double\000"
+ 1517      6C6500
+ 1518              	.LASF52:
+ 1519 0337 54696D65 		.ascii	"Time\000"
+ 1519      00
+ 1520              	.LASF10:
+ 1521 033c 5F5F7569 		.ascii	"__uint32_t\000"
+ 1521      6E743332 
+ 1521      5F7400
+ 1522              	.LASF44:
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccrY1rDg.s 			page 35
+
+
+ 1523 0347 54657374 		.ascii	"TestLightValue\000"
+ 1523      4C696768 
+ 1523      7456616C 
+ 1523      756500
+ 1524              	.LASF8:
+ 1525 0356 5F5F696E 		.ascii	"__int32_t\000"
+ 1525      7433325F 
+ 1525      7400
+ 1526              	.LASF23:
+ 1527 0360 70726573 		.ascii	"present\000"
+ 1527      656E7400 
+ 1528              	.LASF28:
+ 1529 0368 436C6F63 		.ascii	"Clock\000"
+ 1529      6B00
+ 1530              	.LASF42:
+ 1531 036e 76546573 		.ascii	"vTestLightTaskInit\000"
+ 1531      744C6967 
+ 1531      68745461 
+ 1531      736B496E 
+ 1531      697400
+ 1532              	.LASF22:
+ 1533 0381 54656D70 		.ascii	"Temperature\000"
+ 1533      65726174 
+ 1533      75726500 
+ 1534              	.LASF56:
+ 1535 038d 62416C61 		.ascii	"bAlarmState\000"
+ 1535      726D5374 
+ 1535      61746500 
+ 1536              	.LASF50:
+ 1537 0399 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1537      52784275 
+ 1537      66666572 
+ 1537      00
+ 1538              	.LASF34:
+ 1539 03a6 4C696768 		.ascii	"LightRead\000"
+ 1539      74526561 
+ 1539      6400
+ 1540              	.LASF47:
+ 1541 03b0 54657374 		.ascii	"TestCurrentSec\000"
+ 1541      43757272 
+ 1541      656E7453 
+ 1541      656300
+ 1542              	.LASF49:
+ 1543 03bf 44533138 		.ascii	"DS18x8_DataReady\000"
+ 1543      78385F44 
+ 1543      61746152 
+ 1543      65616479 
+ 1543      00
+ 1544              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
