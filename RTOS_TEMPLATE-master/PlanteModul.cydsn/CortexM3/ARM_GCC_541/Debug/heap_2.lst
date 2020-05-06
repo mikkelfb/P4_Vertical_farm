@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
   49              		.type	pvPortMalloc, %function
   50              	pvPortMalloc:
   51              	.LFB68:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 2
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 2
 
 
   52              		.file 1 "Source\\portable\\MemMang\\heap_2.c"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
   54:Source\portable\MemMang/heap_2.c **** #define configADJUSTED_HEAP_SIZE	( configTOTAL_HEAP_SIZE - portBYTE_ALIGNMENT )
   55:Source\portable\MemMang/heap_2.c **** 
   56:Source\portable\MemMang/heap_2.c **** /*
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 3
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 3
 
 
   57:Source\portable\MemMang/heap_2.c ****  * Initialises the heap structures before their first use.
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  111:Source\portable\MemMang/heap_2.c **** 	/* Update the list to include the block being inserted in the correct */		\
  112:Source\portable\MemMang/heap_2.c **** 	/* position. */																	\
  113:Source\portable\MemMang/heap_2.c **** 	pxBlockToInsert->pxNextFreeBlock = pxIterator->pxNextFreeBlock;					\
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 4
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 4
 
 
  114:Source\portable\MemMang/heap_2.c **** 	pxIterator->pxNextFreeBlock = pxBlockToInsert;									\
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
   84 0022 7B68     		ldr	r3, [r7, #4]
   85 0024 002B     		cmp	r3, #0
   86 0026 0ED0     		beq	.L3
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 5
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 5
 
 
  137:Source\portable\MemMang/heap_2.c **** 		{
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  155:Source\portable\MemMang/heap_2.c **** 			{
  156:Source\portable\MemMang/heap_2.c **** 				pxPreviousBlock = pxBlock;
  123              		.loc 1 156 0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 6
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 6
 
 
  124 0062 FB69     		ldr	r3, [r7, #28]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  160 0098 FB69     		ldr	r3, [r7, #28]
  161 009a 5A68     		ldr	r2, [r3, #4]
  162 009c 7B68     		ldr	r3, [r7, #4]
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 7
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 7
 
 
  163 009e D31A     		subs	r3, r2, r3
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  204 00de F6D3     		bcc	.L10
  205              		.loc 1 185 0 discriminator 4
  206 00e0 3B69     		ldr	r3, [r7, #16]
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 8
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 8
 
 
  207 00e2 1A68     		ldr	r2, [r3]
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  239 010e 2037     		adds	r7, r7, #32
  240              		.cfi_def_cfa_offset 8
  241 0110 BD46     		mov	sp, r7
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 9
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 9
 
 
  242              		.cfi_def_cfa_register 13
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  284 0012 0823     		movs	r3, #8
  285 0014 5B42     		negs	r3, r3
  286 0016 3A69     		ldr	r2, [r7, #16]
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 10
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 10
 
 
  287 0018 1344     		add	r3, r3, r2
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  331 005c 1360     		str	r3, [r2]
  230:Source\portable\MemMang/heap_2.c **** 			traceFREE( pv, pxLink->xBlockSize );
  231:Source\portable\MemMang/heap_2.c **** 		}
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 11
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 11
 
 
  232:Source\portable\MemMang/heap_2.c **** 		( void ) xTaskResumeAll();
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  377 000c 80BC     		pop	{r7}
  378              		.cfi_restore 7
  379              		.cfi_def_cfa_offset 0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 12
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 12
 
 
  380 000e 7047     		bx	lr
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  250:Source\portable\MemMang/heap_2.c **** {
  425              		.loc 1 250 0
  426              		.cfi_startproc
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 13
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 13
 
 
  427              		@ args = 0, pretend = 0, frame = 8
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  462 002e 47F6F872 		movw	r2, #32760
  463 0032 5A60     		str	r2, [r3, #4]
  270:Source\portable\MemMang/heap_2.c **** 	pxFirstFreeBlock->pxNextFreeBlock = &xEnd;
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 14
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 14
 
 
  464              		.loc 1 270 0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  517 002a 02       		.byte	0x2
  518 002b D8       		.byte	0xd8
  519 002c 30000000 		.4byte	0x30
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 15
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 15
 
 
  520 0030 03       		.uleb128 0x3
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  574 0096 41       		.byte	0x41
  575 0097 9B000000 		.4byte	0x9b
  576 009b 03       		.uleb128 0x3
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 16
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 16
 
 
  577 009c 04       		.byte	0x4
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  631 0107 FB000000 		.4byte	.LASF24
  632 010b 07       		.uleb128 0x7
  633 010c E5000000 		.4byte	0xe5
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 17
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 17
 
 
  634 0110 08       		.uleb128 0x8
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  688 017c 0B       		.uleb128 0xb
  689 017d DC020000 		.4byte	.LASF54
  690 0181 01       		.byte	0x1
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 18
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 18
 
 
  691 0182 76       		.byte	0x76
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  745 01eb 6C       		.sleb128 -20
  746 01ec 0E       		.uleb128 0xe
  747 01ed C2000000 		.4byte	.LBB2
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 19
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 19
 
 
  748 01f1 2C000000 		.4byte	.LBE2-.LBB2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  802 025c 91       		.byte	0x91
  803 025d 70       		.sleb128 -16
  804 025e 0D       		.uleb128 0xd
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 20
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 20
 
 
  805 025f 10010000 		.4byte	.LASF40
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  859 02ce 0D       		.uleb128 0xd
  860 02cf 26010000 		.4byte	.LASF41
  861 02d3 01       		.byte	0x1
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 21
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 21
 
 
  862 02d4 FB       		.byte	0xfb
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  916 0341 08800000 		.4byte	xEnd
  917 0345 0D       		.uleb128 0xd
  918 0346 78030000 		.4byte	.LASF47
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 22
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 22
 
 
  919 034a 01       		.byte	0x1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  973 000f 10       		.uleb128 0x10
  974 0010 17       		.uleb128 0x17
  975 0011 00       		.byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 23
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 23
 
 
  976 0012 00       		.byte	0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1030 0048 00       		.byte	0
  1031 0049 00       		.byte	0
  1032 004a 07       		.uleb128 0x7
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 24
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 24
 
 
  1033 004b 35       		.uleb128 0x35
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1087 0081 3B       		.uleb128 0x3b
  1088 0082 0B       		.uleb128 0xb
  1089 0083 27       		.uleb128 0x27
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 25
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 25
 
 
  1090 0084 19       		.uleb128 0x19
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1144 00bb 00       		.byte	0
  1145 00bc 00       		.byte	0
  1146 00bd 0F       		.uleb128 0xf
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 26
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 26
 
 
  1147 00be 0B       		.uleb128 0xb
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1201 00f5 08       		.uleb128 0x8
  1202 00f6 3A       		.uleb128 0x3a
  1203 00f7 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 27
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 27
 
 
  1204 00f8 3B       		.uleb128 0x3b
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1258 012f 0E       		.uleb128 0xe
  1259 0130 3A       		.uleb128 0x3a
  1260 0131 0B       		.uleb128 0xb
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 28
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 28
 
 
  1261 0132 3B       		.uleb128 0x3b
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1315 016a 00       		.byte	0
  1316 016b 19       		.uleb128 0x19
  1317 016c 26       		.uleb128 0x26
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 29
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 29
 
 
  1318 016d 00       		.byte	0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1372 000b 00       		.byte	0
  1373 000c 0000     		.2byte	0
  1374 000e 0000     		.2byte	0
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 30
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 30
 
 
  1375 0010 00000000 		.4byte	.LFB68
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1411      2D736563 
  1411      74696F6E 
  1412              	.LASF25:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 31
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 31
 
 
  1413 009f 54656D70 		.ascii	"Temperature\000"
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1439 013e 666C6F61 		.ascii	"float\000"
  1439      7400
  1440              	.LASF48:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 32
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 32
 
 
  1441 0144 44533138 		.ascii	"DS18x8_Sensor\000"
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1463      6500
  1464              	.LASF12:
  1465 01e7 5F5F7569 		.ascii	"__uint32_t\000"
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 33
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 33
 
 
  1465      6E743332 
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1487      4D616C6C 
  1487      6F634661 
  1488              	.LASF54:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 34
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 34
 
 
  1489 02dc 7076506F 		.ascii	"pvPortMalloc\000"
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 1
  1513      31365F74 
  1513      00
  1514              	.LASF47:
-ARM GAS  C:\Users\mag94\AppData\Local\Temp\ccV2xtOt.s 			page 35
+ARM GAS  C:\Users\mag94\AppData\Local\Temp\cciu86Bu.s 			page 35
 
 
  1515 0378 78467265 		.ascii	"xFreeBytesRemaining\000"
