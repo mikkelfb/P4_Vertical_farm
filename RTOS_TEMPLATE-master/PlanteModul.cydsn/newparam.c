@@ -98,7 +98,7 @@ void vComsFromOtherTask( void *pvParameters){
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
     struct NewParameters TestFromCom;
     
-    TestFromCom.cID = 'p';
+    TestFromCom.cID = 't';
     TestFromCom.fECValue = 50;
     TestFromCom.fpHValue = 7;
     TestFromCom.uStartTime = 8;
@@ -158,9 +158,9 @@ void vTaskNewParam( void *pvParameters ){
                 Nutrients.cID = Temp.cID;
                 Nutrients.fNewValue = Temp.fECValue;
                 
-                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n ID sent: ");
                 SW_UART_TEST_USB_PutChar(Nutrients.cID);
-                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n New EC value: ");
                 SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
                 SW_UART_TEST_USB_PutString("\n ");
                     
@@ -174,21 +174,13 @@ void vTaskNewParam( void *pvParameters ){
                 Light.uStartTime = Temp.uStartTime;
                 Light.uStopTime = Temp.uStopTime;
                 
-                xQueueSendToBack(xQueueLightHandler, (void *) &Light, portMAX_DELAY);
-                
-                /*SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n New start time: ");
                 SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
-                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n New stop time: ");
                 SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
-                SW_UART_TEST_USB_PutString("\n ");*/
+                SW_UART_TEST_USB_PutString("\n ");
                 
-                //xQueueSendToBack(xQueueLightHandler, &uNewLightParams[0], portMAX_DELAY);
-                //xQueueSendToBack(xQueueLightHandler, &uNewLightParams[1], portMAX_DELAY);
-                //SW_UART_TEST_USB_PutString("new params sent \n");
-                /*SW_UART_TEST_USB_PutHexByte(uNewLightParams[0]);
-                SW_UART_TEST_USB_PutString(" ");
-                SW_UART_TEST_USB_PutHexByte(uNewLightParams[1]);
-                SW_UART_TEST_USB_PutString("\n ");*/
+                xQueueSendToBack(xQueueLightHandler, (void *) &Light, portMAX_DELAY);
                 break;
                 
             // If pH value
@@ -197,9 +189,9 @@ void vTaskNewParam( void *pvParameters ){
                 Nutrients.cID = Temp.cID;
                 Nutrients.fNewValue = Temp.fpHValue;
                 
-                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n ID sent: ");
                 SW_UART_TEST_USB_PutChar(Nutrients.cID);
-                SW_UART_TEST_USB_PutString("\n ");
+                SW_UART_TEST_USB_PutString("\n New pH value: ");
                 SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
                 SW_UART_TEST_USB_PutString("\n ");
                 
