@@ -179,7 +179,7 @@ void vTaskLightController(){
 
 void vTaskLEDcontrol(){
     _Bool bLEDcontrolcmd;
-    _Bool bLEDcontrolstate;
+    //_Bool bLEDcontrolstate;
     
     for(;;){
         /* Recieve on/off command and measured value */
