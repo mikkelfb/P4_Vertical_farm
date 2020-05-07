@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul\PlanteModul.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul">
 <ExpandedNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
@@ -48,6 +48,7 @@
 <v>PlanteModul\PlanteModul\Header Files\Kernel\stream_buffer.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel\task.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel\timers.h</v>
+<v>PlanteModul\PlanteModul\Header Files\Alarm.h</v>
 <v>PlanteModul\PlanteModul\Header Files\device.h</v>
 <v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
 <v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
@@ -59,6 +60,7 @@
 <v>PlanteModul\PlanteModul\Source Files\Kernel\stream_buffer.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\tasks.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Kernel\timers.c</v>
+<v>PlanteModul\PlanteModul\Source Files\Alarm.c</v>
 <v>PlanteModul\PlanteModul\Source Files\main.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
 <v>PlanteModul\PlanteModul\Generated_Source</v>
@@ -83,6 +85,16 @@
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\EEPROM</v>
 <v>PlanteModul\PlanteModul\Header Files</v>
 <v>PlanteModul\PlanteModul\Header Files\Kernel</v>
+<v>PlanteModul\PlanteModul\Header Files\Alarm.h</v>
+<v>PlanteModul\PlanteModul\Header Files\device.h</v>
+<v>PlanteModul\PlanteModul\Header Files\FreeRTOSConfig.h</v>
+<v>PlanteModul\PlanteModul\Header Files\light.h</v>
+<v>PlanteModul\PlanteModul\Header Files\Nutrients.h</v>
+<v>PlanteModul\PlanteModul\Header Files\WaterCondition.h</v>
+<v>PlanteModul\PlanteModul\Source Files</v>
+<v>PlanteModul\PlanteModul\Source Files\Kernel</v>
+<v>PlanteModul\PlanteModul\Source Files\Alarm.c</v>
+<v>PlanteModul\PlanteModul\Source Files\Light.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -107,11 +119,17 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_IRQ.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_theACLK.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_INT.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_IRQ.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Alarm.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_DS18.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
@@ -138,27 +156,44 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_Trigger.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_Trigger_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\heap_2.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_BOOT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_MASTER.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\I2C_SLAVE.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\isr_DS18.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Light.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\list.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\main.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\mpu_wrappers.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Nutrients.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_00.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_5V_out.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_LIGHT_in.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_LightTestLED.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_2.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_PERIPUMP_OUT_3.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_pH_in.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_WaterFlow.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_WaterPump.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\port.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_1_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_PERISTALTISK_2_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\queue.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\RTC.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\RTC_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SCL_1.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SDA_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\stream_buffer.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SW_UART_TEST_USB.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\SW_UART_TEST_USB_AsmGnu.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\tasks.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\timers.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\WaterCondition.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\PlanteModul.elf</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\PlanteModul.hex</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\PlanteModul.map</v>
@@ -173,15 +208,25 @@
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_IRQ.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_theACLK.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_INT.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_IRQ.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_PM.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Alarm.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_DS18.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
 <v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -197,7 +242,8 @@
 <v>PlanteModul\PlanteModul\CY8C58LP Family Datasheet</v>
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
-<v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
+<v>PlanteModul\PlanteModul\ADC_SAR_v3_10</v>
+<v>PlanteModul\PlanteModul\ADC_SAR_v3_10\ADC_SAR_v3_10.pdf</v>
 <v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
@@ -206,8 +252,10 @@
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
 <v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
+<v>PlanteModul\PlanteModul\I2C_v3_50.pdf</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30</v>
 <v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>
+<v>PlanteModul\PlanteModul\RTC_v2_0.pdf</v>
 <v>PlanteModul\PlanteModul\SW_Tx_UART_v1_50.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -217,7 +265,8 @@
 <v>PlanteModul\PlanteModul\CY8C58LP Family Datasheet</v>
 <v>PlanteModul\PlanteModul\System Reference Guides</v>
 <v>PlanteModul\PlanteModul\System Reference Guides\cy_boot_v5_90</v>
-<v>PlanteModul\PlanteModul\ADC_SAR_v3_10.pdf</v>
+<v>PlanteModul\PlanteModul\ADC_SAR_v3_10</v>
+<v>PlanteModul\PlanteModul\ADC_SAR_v3_10\ADC_SAR_v3_10.pdf</v>
 <v>PlanteModul\PlanteModul\cy_clock_v2_20</v>
 <v>PlanteModul\PlanteModul\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\cy_constant_v1_0.pdf</v>
@@ -226,6 +275,11 @@
 <v>PlanteModul\PlanteModul\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
 <v>PlanteModul\PlanteModul\DS18x8_A_00.pdf</v>
 <v>PlanteModul\PlanteModul\FreqDiv_v1_0.pdf</v>
+<v>PlanteModul\PlanteModul\I2C_v3_50.pdf</v>
+<v>PlanteModul\PlanteModul\PWM_v3_30</v>
+<v>PlanteModul\PlanteModul\PWM_v3_30\PWM_v3_30.pdf</v>
+<v>PlanteModul\PlanteModul\RTC_v2_0.pdf</v>
+<v>PlanteModul\PlanteModul\SW_Tx_UART_v1_50.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -248,12 +302,11 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\PlanteModul.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PlanteModul.cydsn\Nutrients.c" />
-<name v=".\PlanteModul.cydsn\Nutrients.h" />
 <name v=".\PlanteModul.cydsn\main.c" />
-<name v=".\PlanteModul.cydsn\PlanteModul.cydwr" />
-<name v=".\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.c" />
-<name v=".\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.h" />
+<name v=".\PlanteModul.cydsn\Nutrients.c" />
+<name v=".\PlanteModul.cydsn\Alarm.h" />
+<name v=".\PlanteModul.cydsn\Alarm.c" />
+<name v=".\PlanteModul.cydsn\Nutrients.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -261,7 +314,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="820, 331" SelectedTabbedMdiWindow="5c508c2d-1873-4958-9e57-48c8d093b761"><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\TopDesign\TopDesign.cysch" Guid="b99352ea-bdc1-460f-97f7-33ba093918aa" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="99d486d5-8c01-4e4e-b3a1-10f8ae57ee5d" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.h" Guid="4992f835-28ce-4e44-9c8d-058ddee0376c" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="5c508c2d-1873-4958-9e57-48c8d093b761" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\PlanteModul.cydwr" Guid="1d0e6337-8143-4ca3-b199-73f29a5c6388" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.c" Guid="df352129-d462-4b5c-b9a5-b0d30aa4301e" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5\DS18x8.h" Guid="7d085222-143f-4221-8c0f-97a7f5850d85" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="905, 502" SelectedTabbedMdiWindow="e32d28b1-308e-4aff-bba8-3cfb7e11af15"><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\TopDesign\TopDesign.cysch" Guid="b99352ea-bdc1-460f-97f7-33ba093918aa" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="13060e91-78bc-4fa2-b6c5-231181821483" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="b197035a-02f9-4204-a248-773e6c9de4e2" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Alarm.h" Guid="0f6124e9-bc7a-4c3a-81b8-a5bf7f84e2b0" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Alarm.c" Guid="e32d28b1-308e-4aff-bba8-3cfb7e11af15" /><DocumentWindow Key="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.h" Guid="3bc9fc93-efee-4b65-9802-41a76414ea70" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

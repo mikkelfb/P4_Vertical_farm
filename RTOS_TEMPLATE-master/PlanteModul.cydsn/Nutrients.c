@@ -37,7 +37,8 @@ const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
 QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
 QueueHandle_t xQueueWaterTemp;
-QueueHandle_t xQueueECValue;        //Create a queue for sending EC values to the test task.
+QueueHandle_t xQueueECValue;        // Create a queue for sending EC values to the test task.
+
 
 
 const uint8 MAX_SPEED = 6; // Max speed constant for the nutrient pumps
@@ -51,6 +52,8 @@ void vNutrientsInit() {
     xQueueNutrientPump[0] = xQueueCreate( 1, sizeof( _Bool ) );
     xQueueNutrientPump[1] = xQueueCreate( 1, sizeof( _Bool ) );
     xQueueNutrientPump[2] = xQueueCreate( 1, sizeof( _Bool ) );
+    
+
     
     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
     xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
