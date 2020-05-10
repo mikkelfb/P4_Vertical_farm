@@ -39,6 +39,7 @@
 #include "Nutrients.h"
 #include "light.h"
 #include "WaterCondition.h"
+#include "Communication.h"
 
 /* The time between cycles of the 'check' functionality (defined within the
 tick hook. */
@@ -64,7 +65,9 @@ int main( void )
      
     //vLightInit(); //initialize Light control task and parameters
     
-    vInitWaterCondition();
+    //vInitWaterCondition();
+    
+    vTaskComsInit();
     
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */

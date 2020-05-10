@@ -12,9 +12,9 @@
 
 /* [] END OF FILE */
 
-#ifndef UART_H 
-    #define UART_H 
-    #define UARTTEST 1 //set this to 0 to disable Debug/test
+#ifndef COMMUNICATION_H 
+    #define COMMUNICATION_H 
+    #define COMMUNICATIONTEST 1 //set this to 0 to disable Debug/test
     
     
     /*
@@ -22,12 +22,16 @@
     @Param[out]:
 	@Param[in]
     */
-    void vUARTInit();
+    void vTaskComsInit();
     
     void vRecieveFromFPGA();
     
+    //void vSendDataRequest();
     
-    #if LIGHTTEST == 1
+    //void vSendNewParams();
+    
+    
+    #if COMMUNICATIONTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         
         /*
