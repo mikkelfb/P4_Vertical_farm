@@ -26,9 +26,9 @@
     
     void vRecieveFromFPGA();
     
-    //void vSendDataRequest();
+    void vSendDataRequest();
     
-    //void vSendNewParams();
+    void vSendNewParams();
     
     
     #if COMMUNICATIONTEST == 1

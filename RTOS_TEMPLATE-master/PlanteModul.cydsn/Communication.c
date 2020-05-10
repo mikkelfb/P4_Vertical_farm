@@ -19,7 +19,6 @@
 #include <stdlib.h>
 
 char8 Buffersize;
-uint i = 0;
 char cRecievedData[8]; //program only works if this is a char (??)
 
 QueueHandle_t xQueueSendDataRequest;
@@ -34,11 +33,12 @@ struct Request{
     char cID;
     float Value;
 };
-struct Request RecievedParams;
+struct Request RecievedParams; //for internally sending recieved params 
+struct Request RecievedData;   //for internally sending recieved data request
 
 void vTaskComsInit(){
     UART_Start();
-    UART_PutString("function start \n");
+    //UART_PutString("function start \n"); USED FOR TEST
     /* Create queue for sending data request to the Data store task */
     xQueueSendDataRequest = xQueueCreate(8, sizeof(uint16));
     
@@ -46,14 +46,15 @@ void vTaskComsInit(){
     xQueueSendNewParams = xQueueCreate(8, sizeof(uint16));
     
     /* Creatw queues for sending recieved data requests and new params between functions in this file */
-    xQueueRecievedDataRequest = xQueueCreate(1, sizeof(uint16));
-    xQueueRecievedNewParams = xQueueCreate(1, sizeof(uint16));
+    xQueueRecievedDataRequest = xQueueCreate(8, sizeof( struct Request ));
+    xQueueRecievedNewParams = xQueueCreate(8, sizeof( struct Request ));
     
    
     xTaskCreate(vRecieveFromFPGA, "FPGA recieve", 100, NULL, 2, NULL);
-    //xTaskCreate(vSendDataRequest, "Send data request", 100, NULL, 2, NULL);
-    //xTaskCreate(vSendNewParams, "Send new params", 100, NULL, 2, NULL);
+    xTaskCreate(vSendDataRequest, "Send data request", 100, NULL, 2, NULL);
+    xTaskCreate(vSendNewParams, "Send new params", 100, NULL, 2, NULL);
 }
+
 
 /* This function consists of these steps: 
    - wait for not empty Rx fifo
@@ -65,13 +66,13 @@ void vTaskComsInit(){
        - send these to vSendNewParams()
 */
 void vRecieveFromFPGA(){
-    UART_PutString("function2 start \n");
+    //UART_PutString("function2 start \n"); USED FOR TEST
     for(;;){
         
         if(UART_GetRxBufferSize() == 1) //returns 1 for not empty RX FIFO
             {
                 cRecievedData[0] = UART_GetByte(); //recieve the indentifier
-                UART_PutChar(cRecievedData[0]);
+                //UART_PutChar(cRecievedData[0]); USED FOR TEST
                 
                 switch(cRecievedData[0])
                 {
@@ -82,7 +83,11 @@ void vRecieveFromFPGA(){
                            - identifier for the amount of data 
                         */
                         
-                        UART_PutString("Data request case \n");    
+                        UART_PutString("Data request case \n"); //USED FOR TEST
+                        RecievedData.cID = UART_GetByte();
+                        RecievedData.Value = UART_GetByte();
+                        
+                        xQueueSendToBack(xQueueRecievedDataRequest, (void *) &RecievedData, portMAX_DELAY);
                     
                         break;
                     
@@ -92,39 +97,67 @@ void vRecieveFromFPGA(){
                            - identifier for the sensor 
                            - new value
                         */
-                        UART_PutString("New param case \n");
+                        
+                        UART_PutString("New param case \n"); //USED FOR TEST
                         RecievedParams.cID = UART_GetByte(); 
                         RecievedParams.Value = UART_GetByte();
                         
+                        /* USED FOR TEST
                         UART_PutString("ID: ");
                         UART_PutChar(RecievedParams.cID);
                         UART_PutString(", value: ");
                         UART_PutChar(RecievedParams.Value);
-                        UART_PutString("\n");
-                    
+                        UART_PutString("\n");*/
+                        
+                        xQueueSendToBack(xQueueRecievedNewParams, (void *) &RecievedParams, portMAX_DELAY);
+                        
                         break;
                     
                 }
                 
             }
-            /*
-        else //returns 0 for empty RX FIFO
-            {
-                i = 0;
-            }*/
+            
     }
     
 }
-/*
+
 void vSendDataRequest(){
+    struct Request SendDataRequest;
     
+    for(;;)
+    {
+        xQueueReceive(xQueueRecievedDataRequest, &(SendDataRequest), portMAX_DELAY);
+        
+        UART_PutString("\n");
+        UART_PutString("Data request to send: \n");
+        UART_PutString("ID: ");
+        UART_PutChar(SendDataRequest.cID);
+        UART_PutString(", value: ");
+        UART_PutChar(SendDataRequest.Value);
+        UART_PutString("\n");
+        
+        // send data request to Data storage task
+        
+    }    
     
-}  */  
+}  
 
 void vSendNewParams(){
+    struct Request SendParams;
     
-    for(;;){
+    for(;;)
+    {
+        xQueueReceive(xQueueRecievedNewParams, &(SendParams), portMAX_DELAY);
         
+        UART_PutString("\n");
+        UART_PutString("New params to send: \n");
+        UART_PutString("ID: ");
+        UART_PutChar(SendParams.cID);
+        UART_PutString(", value: ");
+        UART_PutChar(SendParams.Value);
+        UART_PutString("\n");
+        
+        // send params to the queue in New Params task 
         
         
     }    
