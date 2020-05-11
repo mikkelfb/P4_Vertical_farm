@@ -31,7 +31,7 @@ QueueHandle_t xQueueRecievedNewParams;
 /* Struct for holding data when sending to another task, either data request or new params */
 struct Request{
     char cID;
-    float Value;
+    float Value[2];
 };
 struct Request RecievedParams; //for internally sending recieved params 
 struct Request RecievedData;   //for internally sending recieved data request
@@ -85,7 +85,10 @@ void vRecieveFromFPGA(){
                         
                         UART_PutString("Data request case \n"); //USED FOR TEST
                         RecievedData.cID = UART_GetByte();
-                        RecievedData.Value = UART_GetByte();
+                        for(int i = 0; i == 1; i++){
+                            RecievedData.Value[i] = UART_GetByte();
+                        }
+                        
                         
                         xQueueSendToBack(xQueueRecievedDataRequest, (void *) &RecievedData, portMAX_DELAY);
                     
@@ -100,14 +103,19 @@ void vRecieveFromFPGA(){
                         
                         UART_PutString("New param case \n"); //USED FOR TEST
                         RecievedParams.cID = UART_GetByte(); 
-                        RecievedParams.Value = UART_GetByte();
+                        for(int i = 0; i == 1; i++){
+                            RecievedParams.Value[i] = UART_GetByte();
+                        }
                         
-                        /* USED FOR TEST
+                        // USED FOR TEST
                         UART_PutString("ID: ");
                         UART_PutChar(RecievedParams.cID);
                         UART_PutString(", value: ");
-                        UART_PutChar(RecievedParams.Value);
-                        UART_PutString("\n");*/
+                        UART_PutArray((const uint8 *) RecievedParams.Value, 2);
+                        /*for(int i = 0; i == 1; i++){
+                            UART_PutChar(RecievedParams.Value[i]);
+                        }*/
+                        UART_PutString("\n");
                         
                         xQueueSendToBack(xQueueRecievedNewParams, (void *) &RecievedParams, portMAX_DELAY);
                         
@@ -133,7 +141,9 @@ void vSendDataRequest(){
         UART_PutString("ID: ");
         UART_PutChar(SendDataRequest.cID);
         UART_PutString(", value: ");
-        UART_PutChar(SendDataRequest.Value);
+        for(int i = 0; i == 1; i++){
+            UART_PutChar(SendDataRequest.Value[i]);
+        }
         UART_PutString("\n");
         
         // send data request to Data storage task
@@ -148,15 +158,17 @@ void vSendNewParams(){
     for(;;)
     {
         xQueueReceive(xQueueRecievedNewParams, &(SendParams), portMAX_DELAY);
-        
+        /*
         UART_PutString("\n");
         UART_PutString("New params to send: \n");
         UART_PutString("ID: ");
         UART_PutChar(SendParams.cID);
         UART_PutString(", value: ");
-        UART_PutChar(SendParams.Value);
+        for(int i = 0; i == 1; i++){
+            UART_PutChar(SendParams.Value[i]);
+        }
         UART_PutString("\n");
-        
+        */
         // send params to the queue in New Params task 
         
         
