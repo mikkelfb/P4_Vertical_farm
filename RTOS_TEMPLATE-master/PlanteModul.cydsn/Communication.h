@@ -30,6 +30,7 @@
     
     void vSendNewParams();
     
+    void vSendToFPGA();
     
     #if COMMUNICATIONTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */

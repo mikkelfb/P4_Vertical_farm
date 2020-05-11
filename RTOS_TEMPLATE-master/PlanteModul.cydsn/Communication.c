@@ -29,10 +29,11 @@ QueueHandle_t xQueueRecievedDataRequest;
 QueueHandle_t xQueueRecievedNewParams;
 
 
+
 /* Struct for holding data when sending to another task, either data request or new params */
 struct Request{
     char cID;
-    float Value[10];
+    float Value[8];
 };
 struct Request RecievedParams; //for internally sending recieved params 
 struct Request RecievedData;   //for internally sending recieved data request
@@ -49,11 +50,12 @@ void vTaskComsInit(){
     /* Creatw queues for sending recieved data requests and new params between functions in this file */
     xQueueRecievedDataRequest = xQueueCreate(10, sizeof( struct Request ));
     xQueueRecievedNewParams = xQueueCreate(10, sizeof( struct Request ));
-    
+        
    
     xTaskCreate(vRecieveFromFPGA, "FPGA recieve", 100, NULL, 2, NULL);
     xTaskCreate(vSendDataRequest, "Send data request", 100, NULL, 2, NULL);
     xTaskCreate(vSendNewParams, "Send new params", 100, NULL, 2, NULL);
+    xTaskCreate(vSendToFPGA, "Send message to FPGA", 100, NULL, 2, NULL);
 }
 
 
@@ -86,7 +88,7 @@ void vRecieveFromFPGA(){
                         UART_PutString("Data request case \n"); //USED FOR TEST
                         RecievedData.cID = UART_GetChar();
                         
-                        while(i < 10){
+                        while(i < 8){
                             RecievedData.Value[i] = UART_GetChar();
                             i++;
                         }    
@@ -157,7 +159,12 @@ void vSendDataRequest(){
         i = 0;
         UART_PutString("\n");
         
-        // send data request to Data storage task
+        
+        xQueueSendToBack(xQueueSendDataRequest, (void *) &SendDataRequest, portMAX_DELAY);
+        
+        /* This line should be completed in the process of putting the communication task together with the data storage */
+        //xQueueRecieve (the correct Queue, a location to save it, portMAX_DELAY);
+        
         
     }    
     
@@ -182,9 +189,16 @@ void vSendNewParams(){
         i = 0;
         UART_PutString("\n");
         
+        xQueueSendToBack(xQueueSendNewParams, (void *) &SendParams, portMAX_DELAY);
         // send params to the queue in New Params task 
         
         
     }    
     
-}    
+}
+
+void vSendToFPGA(){
+    extern QueueHandle_t xQueueCentralData;
+     DataToSend
+    xQueueReceive(
+}
