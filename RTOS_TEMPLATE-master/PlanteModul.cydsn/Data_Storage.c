@@ -46,7 +46,7 @@ void vInitDataStorage()                 // Initializing and creating tasks for t
     xQueueControllerData = xQueueCreate(10, sizeof(struct dataMessage));
     xQueueCentralData = xQueueCreate(10, sizeof(struct allData));
     xQueueCentralrequest = xQueueCreate(1 , sizeof(uint16));
-    xQueueStorageReady = xQueueCreate(1 , sizeof(struct allData));
+    xQueueStorageReady = xQueueCreate(10 , sizeof(struct allData));
     
     xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 3 , NULL);
     xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 4, NULL);
@@ -120,12 +120,14 @@ void vTaskDataQueueing()                // This task gathers datavalues from con
 
 void vTaskDataStorage()                         // This task works as a FIFO buffer for the 
 {                                               // central task to request data from
-    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 ); 
+    const TickType_t smallDelay = pdMS_TO_TICKS( 10 );
+    const TickType_t bigDelay = pdMS_TO_TICKS( 1000 );
     int readPtr = 0;
     int writePtr = 0;
     _Bool bufferFull = 0;
     _Bool bufferEmpty = 1;
     BaseType_t centralRequest;
+    BaseType_t queueRequest;
     const int storageSizes = 20;
     struct allData allDataArray[storageSizes];
     _Bool queueStatus;
@@ -133,9 +135,9 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
     
     for(;;)
     {                                           // task takes allData struct from dataQueueing task
-        if(bufferFull == 0)
+        queueRequest = xQueueReceive(xQueueStorageReady, &allDataArray[writePtr], smallDelay);
+        if((queueRequest == pdTRUE) && (bufferFull == 0))
         {
-            xQueueReceive(xQueueStorageReady, &allDataArray[writePtr], portMAX_DELAY);
             writePtr ++;
         //    SW_UART_TEST_USB_PutString("Data in array");
         //    SW_UART_TEST_USB_PutString("\n");
@@ -150,8 +152,8 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
             }
         }
                                                 // task checks for request from central and sends allData struct if true
-        centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, portMAX_DELAY);    
-        if(centralRequest == pdTRUE && (bufferEmpty == 0))
+        centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, bigDelay);    
+        if((centralRequest == pdTRUE) && (bufferEmpty == 0))
         {
         //    SW_UART_TEST_USB_PutString("Sending data to central");
         //    SW_UART_TEST_USB_PutString("\n");
@@ -166,7 +168,7 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
                 bufferEmpty = 1;
             }    
         } 
-        vTaskDelay(xDelayms);
+     //   vTaskDelay(xDelayms);
     }
 }
 
