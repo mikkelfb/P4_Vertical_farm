@@ -113,7 +113,7 @@ void vRecieveFromFPGA(){
                         }    
                         i = 0;
                         
-                        // USED FOR TEST
+                        /*// USED FOR TEST
                         UART_PutString("ID: ");
                         UART_PutChar(RecievedParams.cID);
                           
@@ -124,7 +124,7 @@ void vRecieveFromFPGA(){
                             i++;
                         }
                         i = 0;
-                        UART_PutString("\n");
+                        UART_PutString("\n");*/
                         
                         xQueueSendToBack(xQueueRecievedNewParams, (void *) &RecievedParams, portMAX_DELAY);
                         
@@ -145,16 +145,18 @@ void vSendDataRequest(){
     {
         xQueueReceive(xQueueRecievedDataRequest, &(SendDataRequest), portMAX_DELAY);
         
-        /*UART_PutString("\n");
+        UART_PutString("\n");
         UART_PutString("Data request to send: \n");
         UART_PutString("ID: ");
         UART_PutChar(SendDataRequest.cID);
         UART_PutString(", value: ");
-        for(int i = 0; i == 1; i++){
+        while(i < 10){
             UART_PutChar(SendDataRequest.Value[i]);
+            i++;
         }
+        i = 0;
         UART_PutString("\n");
-        */
+        
         // send data request to Data storage task
         
     }    
@@ -168,15 +170,17 @@ void vSendNewParams(){
     {
         xQueueReceive(xQueueRecievedNewParams, &(SendParams), portMAX_DELAY);
         
-        /*UART_PutString("\n");
+        UART_PutString("\n");
         UART_PutString("New params to send: \n");
         UART_PutString("ID: ");
         UART_PutChar(SendParams.cID);
         UART_PutString(", value: ");
-        for( i = 0; i < 10; i++){
+        while(i < 10){
             UART_PutChar(SendParams.Value[i]);
+            i++;
         }
-        UART_PutString("\n");*/
+        i = 0;
+        UART_PutString("\n");
         
         // send params to the queue in New Params task 
         
