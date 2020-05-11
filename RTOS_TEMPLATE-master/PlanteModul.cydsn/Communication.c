@@ -19,6 +19,7 @@
 #include <stdlib.h>
 
 char8 Buffersize;
+int i = 0;
 char cRecievedData[8]; //program only works if this is a char (??)
 
 QueueHandle_t xQueueSendDataRequest;
@@ -31,7 +32,7 @@ QueueHandle_t xQueueRecievedNewParams;
 /* Struct for holding data when sending to another task, either data request or new params */
 struct Request{
     char cID;
-    float Value[2];
+    float Value[10];
 };
 struct Request RecievedParams; //for internally sending recieved params 
 struct Request RecievedData;   //for internally sending recieved data request
@@ -82,14 +83,15 @@ void vRecieveFromFPGA(){
                            - identifier for the sensor 
                            - identifier for the amount of data 
                         */
-                        
+                        UART_ClearRxBuffer();
                         UART_PutString("Data request case \n"); //USED FOR TEST
                         RecievedData.cID = UART_GetByte();
-                        for(int i = 0; i == 1; i++){
+                        /*while(UART_GetRxBufferSize() == 1){
                             RecievedData.Value[i] = UART_GetByte();
+                            i++;
                         }
-                        
-                        
+                        i = 0;
+                        */
                         xQueueSendToBack(xQueueRecievedDataRequest, (void *) &RecievedData, portMAX_DELAY);
                     
                         break;
@@ -100,21 +102,33 @@ void vRecieveFromFPGA(){
                            - identifier for the sensor 
                            - new value
                         */
-                        
+                        UART_ClearRxBuffer();
                         UART_PutString("New param case \n"); //USED FOR TEST
-                        RecievedParams.cID = UART_GetByte(); 
-                        for(int i = 0; i == 1; i++){
+                        RecievedParams.cID = UART_GetChar(); 
+                        /*for(i = 0; i == 1; i++){
                             RecievedParams.Value[i] = UART_GetByte();
-                        }
+                            
+                        }*/
+                        //RecievedParams.Value[0] = UART_GetByte();
+                        //RecievedParams.Value[1] = UART_GetByte();
+                        while(UART_GetRxBufferSize() == 1){
+                            RecievedParams.Value[i] = UART_GetChar();
+                            i++;
+                        }    
+                        i = 0;
                         
                         // USED FOR TEST
                         UART_PutString("ID: ");
                         UART_PutChar(RecievedParams.cID);
                         UART_PutString(", value: ");
-                        UART_PutArray((const uint8 *) RecievedParams.Value, 2);
-                        /*for(int i = 0; i == 1; i++){
+                        //UART_PutArray(&(RecievedParams.Value), 2);
+                        
+                        while(i < 10){
                             UART_PutChar(RecievedParams.Value[i]);
-                        }*/
+                            //UART_PutChar(RecievedParams.Value[1]);
+                            i++;
+                        }
+                        i = 0;
                         UART_PutString("\n");
                         
                         xQueueSendToBack(xQueueRecievedNewParams, (void *) &RecievedParams, portMAX_DELAY);
@@ -136,7 +150,7 @@ void vSendDataRequest(){
     {
         xQueueReceive(xQueueRecievedDataRequest, &(SendDataRequest), portMAX_DELAY);
         
-        UART_PutString("\n");
+        /*UART_PutString("\n");
         UART_PutString("Data request to send: \n");
         UART_PutString("ID: ");
         UART_PutChar(SendDataRequest.cID);
@@ -145,7 +159,7 @@ void vSendDataRequest(){
             UART_PutChar(SendDataRequest.Value[i]);
         }
         UART_PutString("\n");
-        
+        */
         // send data request to Data storage task
         
     }    
