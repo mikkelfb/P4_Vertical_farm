@@ -20,38 +20,59 @@
 
 uint16 Buffersize;
 uint16 i = 0;
-char cRecievedData[8]; //program only works if this is a char (??)
+char cRecievedData; //program only works if this is a char (??)
+BaseType_t DataRequest;
 
-QueueHandle_t xQueueSendDataRequest;
+//QueueHandle_t xQueueSendDataRequest;
+QueueHandle_t xQueueDataToCentral;
 QueueHandle_t xQueueSendNewParams;
 
 QueueHandle_t xQueueRecievedDataRequest;
 QueueHandle_t xQueueRecievedNewParams;
 
-
+/* TEST QUEUES */
+QueueHandle_t xQueueTestData;
 
 /* Struct for holding data when sending to another task, either data request or new params */
-struct Request{
+struct Params{
     char cID;
     float Value[8];
 };
-struct Request RecievedParams; //for internally sending recieved params 
-struct Request RecievedData;   //for internally sending recieved data request
+struct Params RecievedParams; //for internally sending recieved params 
+//struct Request RecievedData;   //for internally sending recieved data request
+
+struct Data{
+    uint16  iPHval;
+    float  iECval;
+    uint16  iWaterT;
+    uint16  iWaterF;
+    uint16  iC02val[4];
+    uint16  iTempA;
+    uint16  iRHval;
+    uint16  iLightValue;
+};    
+struct Data SendToCentral; //for sending data to the central
 
 void vTaskComsInit(){
     UART_Start();
     //UART_PutString("function start \n"); USED FOR TEST
     /* Create queue for sending data request to the Data store task */
-    xQueueSendDataRequest = xQueueCreate(8, sizeof(uint16));
+    //xQueueSendDataRequest = xQueueCreate(8, sizeof(uint16));
+    
+    /* Create queue for sending data to the central */
+    xQueueDataToCentral = xQueueCreate(10, sizeof( struct Data ));
     
     /* Create queue for sending new params to the New Params task */
     xQueueSendNewParams = xQueueCreate(8, sizeof(uint16));
     
     /* Creatw queues for sending recieved data requests and new params between functions in this file */
-    xQueueRecievedDataRequest = xQueueCreate(10, sizeof( struct Request ));
-    xQueueRecievedNewParams = xQueueCreate(10, sizeof( struct Request ));
+    xQueueRecievedDataRequest = xQueueCreate(10, sizeof( BaseType_t ));
+    xQueueRecievedNewParams = xQueueCreate(10, sizeof( struct Params ));
         
-   
+    
+    /* TEST QUEUES */
+    xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
+    
     xTaskCreate(vRecieveFromFPGA, "FPGA recieve", 100, NULL, 2, NULL);
     xTaskCreate(vSendDataRequest, "Send data request", 100, NULL, 2, NULL);
     xTaskCreate(vSendNewParams, "Send new params", 100, NULL, 2, NULL);
@@ -70,13 +91,14 @@ void vTaskComsInit(){
 */
 void vRecieveFromFPGA(){
     //UART_PutString("function2 start \n"); USED FOR TEST
+    const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
     for(;;){
         
         if(UART_GetRxBufferSize() == 1) //returns 1 for not empty RX FIFO
             {
-                cRecievedData[0] = UART_GetByte(); //recieve the indentifier
+                cRecievedData = UART_GetByte(); //recieve the indentifier
                                 
-                switch(cRecievedData[0])
+                switch(cRecievedData)
                 {
                     case '0': //case with request for data
                         
@@ -85,18 +107,29 @@ void vRecieveFromFPGA(){
                            - identifier for the amount of data 
                         */
                         
-                        UART_PutString("Data request case \n"); //USED FOR TEST
-                        RecievedData.cID = UART_GetChar();
+                        //UART_PutString("Data request case \n"); //USED FOR TEST
                         
-                        while(i < 8){
-                            RecievedData.Value[i] = UART_GetChar();
-                            i++;
+                        DataRequest = pdTRUE;
+                        
+                        if(DataRequest == pdTRUE)
+                        {
+                            UART_PutString("\n");
+                            UART_PutString("Data request to send: TRUE \n");
+                            UART_PutString("\n");        
                         }    
-                        i = 0;
-                        
-                        
-                        xQueueSendToBack(xQueueRecievedDataRequest, (void *) &RecievedData, portMAX_DELAY);
+                        else{    
+                            UART_PutString("\n");
+                            UART_PutString("Data request to send: FALSE \n");
+                        }
+                        /* only works after merge with new params */
+                        //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
+        
                     
+                    
+                        xQueueSendToBack(xQueueRecievedDataRequest, &(DataRequest), portMAX_DELAY);
+                        
+                        DataRequest = pdFALSE;
+                        
                         break;
                     
                     case '1': //case with new param
@@ -106,7 +139,8 @@ void vRecieveFromFPGA(){
                            - new value
                         */
                         
-                        UART_PutString("New param case \n"); //USED FOR TEST
+                        //UART_PutString("New param case \n"); //USED FOR TEST
+                        vTaskDelay(xDelayms);
                         RecievedParams.cID = UART_GetChar(); 
                         
                         while(i < 10){
@@ -141,26 +175,44 @@ void vRecieveFromFPGA(){
 }
 
 void vSendDataRequest(){
-    struct Request SendDataRequest;
+    //extern QueueHandle_t xQueueCentralrequest; //only works after merge with data storage
+    //struct Request SendDataRequest;
+    BaseType_t SendDataRequest;
+    struct Data Send;
+    const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
     
     for(;;)
     {
         xQueueReceive(xQueueRecievedDataRequest, &(SendDataRequest), portMAX_DELAY);
         
-        UART_PutString("\n");
-        UART_PutString("Data request to send: \n");
-        UART_PutString("ID: ");
-        UART_PutChar(SendDataRequest.cID);
-        UART_PutString(", value: ");
-        while(i < 10){
-            UART_PutChar(SendDataRequest.Value[i]);
-            i++;
+        if(SendDataRequest == pdTRUE)
+        {
+            UART_PutString("\n");
+            UART_PutString("Data request: TRUE \n");
+            UART_PutString("\n");   
+            
+            vTaskDelay(xDelayms);
+            
+            Send.iC02val[0] = '1';
+            Send.iC02val[1] = ',';
+            Send.iC02val[2] = '3';
+            Send.iC02val[3] = '8';
+            Send.iECval = 2.5;
+            Send.iLightValue = 1;
+            Send.iPHval = '4';
+            Send.iRHval = 5;
+            Send.iTempA = 3;
+            Send.iWaterF = 1;
+            Send.iWaterT = 2;
+            
+            xQueueSendToBack(xQueueTestData, (void *) &Send, portMAX_DELAY);
+        }    
+        else{    
+            UART_PutString("\n");
+            UART_PutString("Data request: FALSE \n");
         }
-        i = 0;
-        UART_PutString("\n");
-        
-        
-        xQueueSendToBack(xQueueSendDataRequest, (void *) &SendDataRequest, portMAX_DELAY);
+        /* only works after merge with new params */
+        //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
         
         /* This line should be completed in the process of putting the communication task together with the data storage */
         //xQueueRecieve (the correct Queue, a location to save it, portMAX_DELAY);
@@ -171,7 +223,7 @@ void vSendDataRequest(){
 }  
 
 void vSendNewParams(){
-    struct Request SendParams;
+    struct Params SendParams;
     
     for(;;)
     {
@@ -189,7 +241,8 @@ void vSendNewParams(){
         i = 0;
         UART_PutString("\n");
         
-        xQueueSendToBack(xQueueSendNewParams, (void *) &SendParams, portMAX_DELAY);
+        /* only works after merge with new params */
+        //xQueueSendToBack(xQueueSendNewParams, (void *) &SendParams, portMAX_DELAY);
         // send params to the queue in New Params task 
         
         
@@ -198,7 +251,54 @@ void vSendNewParams(){
 }
 
 void vSendToFPGA(){
-    extern QueueHandle_t xQueueCentralData;
-     DataToSend
-    xQueueReceive(
+    //extern QueueHandle_t xQueueCentralData; //only works after merge with data storage
+    const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
+    char test[5];
+    float test2 = 2.3;
+    
+    for(;;)
+    {
+        //xQueueReceive(xQueueCentralData, &(SendToCentral), portMAX_DELAY);
+        xQueueReceive(xQueueTestData, &(SendToCentral), portMAX_DELAY);
+        i = 0;
+        
+        
+        
+        
+        //char test = (char)SendToCentral.iC02val;
+        UART_PutString("Recieved data to send to central: \n");
+        
+        vTaskDelay(xDelayms);
+        //UART_PutArray((uint8 *) &SendToCentral.iC02val, 8);
+        /*while(i < 4){
+            UART_PutChar(SendToCentral.iC02val[i]);
+            i++;
+        }
+        i = 0;*/
+        //UART_PutChar(SendToCentral.iC02val);
+        //UART_PutChar((uint16)1);
+        UART_PutString("\n");
+        
+        sprintf(test, "%f", test2);
+        UART_PutString(test);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iLightValue);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iPHval);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iRHval);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iTempA);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iWaterF);
+        UART_PutString("\n");
+        UART_PutChar(SendToCentral.iWaterT);
+        UART_PutString("\n");
+        
+        
+        /* only works after merge with data store */
+        //xQueueSendToBack(xQueueDataToCentral, (void *) &SendToCentral, portMAX_DELAY);
+        
+    }    
+    
 }
