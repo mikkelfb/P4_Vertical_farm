@@ -32,6 +32,8 @@
     
     void vSendToFPGA();
     
+    void UART_writeCommandWithArguments();
+    
     #if COMMUNICATIONTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         

@@ -41,6 +41,7 @@ struct Params{
 struct Params RecievedParams; //for internally sending recieved params 
 //struct Request RecievedData;   //for internally sending recieved data request
 
+/* struct from the data storage task, the float and array were used for test */
 struct Data{
     uint16  iPHval;
     float  iECval;
@@ -52,6 +53,8 @@ struct Data{
     uint16  iLightValue;
 };    
 struct Data SendToCentral; //for sending data to the central
+
+uint16_t command;
 
 void vTaskComsInit(){
     UART_Start();
@@ -77,6 +80,8 @@ void vTaskComsInit(){
     xTaskCreate(vSendDataRequest, "Send data request", 100, NULL, 2, NULL);
     xTaskCreate(vSendNewParams, "Send new params", 100, NULL, 2, NULL);
     xTaskCreate(vSendToFPGA, "Send message to FPGA", 100, NULL, 2, NULL);
+    
+    xTaskCreate(UART_writeCommandWithArguments, "bifshift", 100, (void*) command, 2, NULL);
 }
 
 
@@ -197,9 +202,9 @@ void vSendDataRequest(){
             Send.iC02val[1] = ',';
             Send.iC02val[2] = '3';
             Send.iC02val[3] = '8';
-            Send.iECval = 2.5;
+            Send.iECval = 2.5;          // used for testing the sprintf function
             Send.iLightValue = 1;
-            Send.iPHval = '4';
+            Send.iPHval = 42;
             Send.iRHval = 5;
             Send.iTempA = 3;
             Send.iWaterF = 1;
@@ -253,14 +258,14 @@ void vSendNewParams(){
 void vSendToFPGA(){
     //extern QueueHandle_t xQueueCentralData; //only works after merge with data storage
     const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
-    char test[5];
-    float test2 = 2.3;
+    char test[3];
+    float test2 = 2.3;  // used for testing the sprintf function
     
     for(;;)
     {
         //xQueueReceive(xQueueCentralData, &(SendToCentral), portMAX_DELAY);
         xQueueReceive(xQueueTestData, &(SendToCentral), portMAX_DELAY);
-        i = 0;
+        //i = 0;
         
         
         
@@ -279,21 +284,25 @@ void vSendToFPGA(){
         //UART_PutChar((uint16)1);
         UART_PutString("\n");
         
-        sprintf(test, "%f", test2);
-        UART_PutString(test);
-        UART_PutString("\n");
-        UART_PutChar(SendToCentral.iLightValue);
-        UART_PutString("\n");
-        UART_PutChar(SendToCentral.iPHval);
+        //sprintf(test, "%f", test2);     // around here things stop working
+        //UART_PutString(test);
+        //vTaskDelay(xDelayms);
+        //UART_ClearTxBuffer();
+        //UART_PutString("\n");
+        //UART_PutChar(SendToCentral.iLightValue);
+        //UART_PutString("\n");
+        
+        
+        /*UART_PutChar(SendToCentral.iPHval);
         UART_PutString("\n");
         UART_PutChar(SendToCentral.iRHval);
-        UART_PutString("\n");
-        UART_PutChar(SendToCentral.iTempA);
+        UART_PutString("\n");*/
+        /*UART_PutChar(SendToCentral.iTempA);
         UART_PutString("\n");
         UART_PutChar(SendToCentral.iWaterF);
         UART_PutString("\n");
         UART_PutChar(SendToCentral.iWaterT);
-        UART_PutString("\n");
+        UART_PutString("\n");*/
         
         
         /* only works after merge with data store */
@@ -302,3 +311,13 @@ void vSendToFPGA(){
     }    
     
 }
+
+void UART_writeCommandWithArguments(uint16_t command){
+    static uint8_t buf[2] = {0};
+    
+    buf[0] = command >> 8;
+    buf[1] = command;
+    
+    UART_PutArray(buf, 2);
+    
+}    
