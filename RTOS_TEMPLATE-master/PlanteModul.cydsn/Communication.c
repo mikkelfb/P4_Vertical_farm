@@ -18,12 +18,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-uint16 Buffersize;
+
 uint16 i = 0;
 char cRecievedData; //program only works if this is a char (??)
 BaseType_t DataRequest;
 
-//QueueHandle_t xQueueSendDataRequest;
 QueueHandle_t xQueueDataToCentral;
 QueueHandle_t xQueueSendNewParams;
 
@@ -31,7 +30,7 @@ QueueHandle_t xQueueRecievedDataRequest;
 QueueHandle_t xQueueRecievedNewParams;
 
 /* TEST QUEUES */
-QueueHandle_t xQueueTestData;
+//QueueHandle_t xQueueTestData;
 
 /* Struct for holding data when sending to another task, either data request or new params */
 struct Params{
@@ -39,9 +38,8 @@ struct Params{
     float Value[8];
 };
 struct Params RecievedParams; //for internally sending recieved params 
-//struct Request RecievedData;   //for internally sending recieved data request
 
-/* struct from the data storage task, the float and array were used for test */
+/* struct from the data storage task */
 struct Data{
     uint16  iPHval;
     uint16  iECval;
@@ -79,7 +77,7 @@ void vTaskComsInit(){
         
     
     /* TEST QUEUES */
-    xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
+    //xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
     
     xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 2, NULL);
     xTaskCreate(vTaskSendDataRequest, "Send data request", 100, NULL, 2, NULL);
@@ -94,11 +92,11 @@ void vTaskComsInit(){
 /* This function consists of these steps: 
    - wait for not empty Rx fifo
    - if first recieved byte is 0 (data request): 
-       - Datarequest is set to true, and sent in xQueueRecieveDataRequest
+       - Datarequest is set to true, and sent in xQueueRecievedDataRequest
    - if first recieved byte is 1 (new params):
        - save second recieved byte as sensor ID 
        - save third recieved byte as new value
-       - send these to vSendNewParams()
+       - send these to vTaskSendNewParams()
 */
 void vTaskRecieveFromFPGA(){
     
@@ -113,15 +111,11 @@ void vTaskRecieveFromFPGA(){
                 {
                     case '0': //case with request for data
                         
-                        /* I assume that we need X parameters in a data request: 
-                           - identifier for the sensor 
-                           - identifier for the amount of data 
-                        */
-                        
-                        UART_PutString("Data request case \n"); //USED FOR TEST
+                        //UART_PutString("Data request case \n"); //USED FOR TEST
                         
                         DataRequest = pdTRUE;
                         
+                        /* USED FOR TEST
                         if(DataRequest == pdTRUE)
                         {
                             UART_PutString("\n");
@@ -131,11 +125,11 @@ void vTaskRecieveFromFPGA(){
                         else{    
                             UART_PutString("\n");
                             UART_PutString("Data request to send: FALSE \n");
-                        }
+                        }*/
+                        
                         /* only works after merge with new params */
                         //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
         
-                    
                     
                         xQueueSendToBack(xQueueRecievedDataRequest, &(DataRequest), portMAX_DELAY);
                         
@@ -145,11 +139,6 @@ void vTaskRecieveFromFPGA(){
                     
                     case '1': //case with new param
                     
-                        /* I assume that we need X parameters in a new param request: 
-                           - identifier for the sensor 
-                           - new value
-                        */
-                        
                         //UART_PutString("New param case \n"); //USED FOR TEST
                         vTaskDelay(xDelayms);
                         RecievedParams.cID = UART_GetChar(); 
@@ -160,7 +149,7 @@ void vTaskRecieveFromFPGA(){
                         }    
                         i = 0;
                         
-                        /*// USED FOR TEST
+                        /* USED FOR TEST
                         UART_PutString("ID: ");
                         UART_PutChar(RecievedParams.cID);
                           
@@ -197,26 +186,28 @@ void vTaskSendDataRequest(){
         
         if(SendDataRequest == pdTRUE)
         {
+            /* USED FOR TEST
             UART_PutString("\n");
             UART_PutString("Data request: TRUE \n");
             UART_PutString("\n");   
             
             vTaskDelay(xDelayms);
             
-            Send.iC02val = 1;
-            Send.iECval = 25;          // used for testing the sprintf function
-            Send.iLightValue = 1;
-            Send.iPHval = 48;
-            Send.iRHval = 5;
-            Send.iTempA = 3;
-            Send.iWaterF = 1;
-            Send.iWaterT = 2;
+            Send.iC02val = 48;
+            Send.iECval = 49;          
+            Send.iLightValue = 50;
+            Send.iPHval = 51;
+            Send.iRHval = 52;
+            Send.iTempA = 53;
+            Send.iWaterF = 54;
+            Send.iWaterT = 55;
             
-            xQueueSendToBack(xQueueTestData, (void *) &Send, portMAX_DELAY);
+            xQueueSendToBack(xQueueTestData, (void *) &Send, portMAX_DELAY);*/
         }    
         else{    
+            /* USED FOR TEST 
             UART_PutString("\n");
-            UART_PutString("Data request: FALSE \n");
+            UART_PutString("Data request: FALSE \n");*/
         }        
     }    
     
@@ -229,6 +220,7 @@ void vTaskSendNewParams(){
     {
         xQueueReceive(xQueueRecievedNewParams, &(SendParams), portMAX_DELAY);
         
+        /* USED FOR TEST
         UART_PutString("\n");
         UART_PutString("New params to send: \n");
         UART_PutString("ID: ");
@@ -239,11 +231,10 @@ void vTaskSendNewParams(){
             i++;
         }
         i = 0;
-        UART_PutString("\n");
+        UART_PutString("\n");*/
         
         /* only works after merge with new params */
         //xQueueSendToBack(xQueueSendNewParams, (void *) &SendParams, portMAX_DELAY);
-        // send params to the queue in New Params task 
         
         
     }    
@@ -258,7 +249,9 @@ void vTaskSendToFPGA(){
     for(;;)
     {
         //xQueueReceive(xQueueCentralData, &(SendToCentral), portMAX_DELAY); this queue is for real
-        xQueueReceive(xQueueTestData, &SendToCentral, portMAX_DELAY); //this Queue is for test
+        //xQueueReceive(xQueueTestData, &SendToCentral, portMAX_DELAY); //this Queue is for test
+        
+        //UART_PutString("Data recieved from data storage: \n"); //USED FOR TEST
         vBitShifterUART(SendToCentral.iPHval);
         vBitShifterUART(SendToCentral.iECval);
         vBitShifterUART(SendToCentral.iWaterT);
