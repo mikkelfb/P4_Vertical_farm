@@ -12,6 +12,7 @@
 
 /* [] END OF FILE */
 
+
 #ifndef COMMUNICATION_H 
     #define COMMUNICATION_H 
     #define COMMUNICATIONTEST 1 //set this to 0 to disable Debug/test
@@ -24,15 +25,15 @@
     */
     void vTaskComsInit();
     
-    void vRecieveFromFPGA();
+    void vTaskRecieveFromFPGA();
     
-    void vSendDataRequest();
+    void vTaskSendDataRequest();
     
-    void vSendNewParams();
+    void vTaskSendNewParams();
     
-    void vSendToFPGA();
+    void vTaskSendToFPGA();
     
-    void UART_writeCommandWithArguments();
+    void vBitShifterUART(uint16 command);
     
     #if COMMUNICATIONTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
