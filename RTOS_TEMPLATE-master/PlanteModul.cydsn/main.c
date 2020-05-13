@@ -41,6 +41,7 @@
 #include "newparam.h"
 #include "Data_Storage.h"
 
+#include "Air.h"
 #include "WaterCondition.h"
 #include "Alarm.h"
 
@@ -74,6 +75,9 @@ int main( void )
     //vInitWaterCondition();
     
     vInitDataStorage();  //initialize data storage task
+    vAirInit();
+    
+    //vInitWaterCondition();
     
     vAlarmInit();
 	/* Will only get here if there was insufficient memory to create the idle
