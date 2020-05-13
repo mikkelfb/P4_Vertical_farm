@@ -39,6 +39,7 @@
 #include "light.h"
 #include "task.h"
 #include "queue.h"
+#include "Shared_resources.c"
 
 uint8 Light;                       // Variable contains measured light value //*** Se overvejelser med hensyn til denne variabel
 _Bool bLEDcmd;                     // Variable describing if the LED should be on/off
@@ -64,6 +65,13 @@ struct Clock{
 };
 
 struct Clock CurrentTime;
+
+struct lightMessage{
+    char identifier;
+    uint8 message;
+};
+
+struct lightMessage lightForData;
 
 /* Create a queue for sending the light value through UART */
 QueueHandle_t xQueueLightValue;
@@ -113,6 +121,8 @@ void vTaskLightMeasure(){
     //*** uint8 LightRead;
     for(;;){
         Light = Pin_LIGHT_in_Read();
+        lightForData.message = Light;
+        xQueueSendToBack(xQueueControllerData, &lightForData, portMAX_DELAY);
         vTaskDelay(xDelayms); 
     }
 }
@@ -122,9 +132,10 @@ void vTaskLightMeasure(){
     turns on/off LED lights and periodically checks if the lights are on */
 void vTaskLightController( void *pvParameters ){
     extern QueueHandle_t xQueueLightHandler;
-    
+    lightForData.identifier = 'l';
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
+    _Bool alarmAck;
     
     /*
     SW_UART_TEST_USB_PutString("\n ");
@@ -176,6 +187,8 @@ void vTaskLightController( void *pvParameters ){
                 //SW_UART_TEST_USB_PutString("Enough light: TRUE \n \n"); // Used for test
             }
             else if(Light == 1){
+                xQueueSendToBack(xQueueAlarmFromController, &lightForData, portMAX_DELAY);
+                xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
                 // The LED are not on, all is not good, send an alarm
                 //SW_UART_TEST_USB_PutString("Enough light: FALSE \n \n"); // Used for test
                 bAlarmState = 1;

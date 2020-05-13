@@ -18,6 +18,7 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
@@ -265,11 +266,8 @@ void vTaskNutrientController()                          //Controlunit for nutrin
 {
     const TickType_t xDelayms = pdMS_TO_TICKS(1000);    
     struct messageForData PHMessage;                    //Struct works as buffer for the PH values, when calcing mean and sending to data_task
-    PHMessage.message =0;
     struct messageForData ECMessage;                    //Struct works as buffer for the EC values, when calcing mean and sending to data_task
-    ECMessage.message =0;
     struct messageForData WTempMessage;                 //Struct works as buffer for the WTemp values, when sending to data_task
-    WTempMessage.message =0;
     struct messageForData TestingParam;                 //Struct for recieving new paramsettings
     TestingParam.message =0;
     PHMessage.identifier    = 'p';
@@ -278,10 +276,14 @@ void vTaskNutrientController()                          //Controlunit for nutrin
     float fPHParameter = 7.00;                          //Initial paramsettings
     float fECParameter = 2500.00;
     _Bool bstate;
+    _Bool alarmAck;
         
     for(;;)
     {
         vTaskDelay(xDelayms);
+        PHMessage.message =0;
+        ECMessage.message =0;
+        WTempMessage.message =0;
         for(int i = 0; i<= iSizeOfNutrients; i++)
         {                                               //Calculationg meanvalues in the buffers
             PHMessage.message = PHMessage.message + currentNutrients[i].iPHvalue;
@@ -292,9 +294,9 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         ECMessage.message = ECMessage.message/iSizeOfNutrients;
         WTempMessage.message = WTempMessage.message/iSizeOfNutrients; 
                                                         //Sending meanval to testtask or data_task
-        xQueueSendToBack(xQueueControllerTesttwo, &PHMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueControllerTesttwo, &ECMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueControllerTesttwo, &WTempMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &PHMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &ECMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &WTempMessage, portMAX_DELAY);
 
         if(PHMessage.message < (fPHParameter*0.9))      //Controlling nutrientpumps
         {
@@ -308,8 +310,10 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         }
         if(PHMessage.message < (fPHParameter*0.6) || PHMessage.message > (fPHParameter*1.4))
         {
-      //      SW_UART_TEST_USB_PutString("ALARM PH");     // Alarm statement, TBD
-      //      SW_UART_TEST_USB_PutString("\n");
+            xQueueSendToBack(xQueueAlarmFromController, &PHMessage, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //SW_UART_TEST_USB_PutString("ALARM PH");     // Alarm statement, TBD
+            //SW_UART_TEST_USB_PutString("\n");
         } 
         if(ECMessage.message < (fECParameter*0.8))      //Controlling nutrientpumps
         {
@@ -325,13 +329,17 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         }
         if(ECMessage.message < (fECParameter*0.6) || ECMessage.message > (fECParameter*1.4))
         {
-      //      SW_UART_TEST_USB_PutString("ALARM EC");     // Alarm statement, TBD
-      //      SW_UART_TEST_USB_PutString("\n");
+            xQueueSendToBack(xQueueAlarmFromController, &ECMessage, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //SW_UART_TEST_USB_PutString("ALARM EC");     // Alarm statement, TBD
+            //SW_UART_TEST_USB_PutString("\n");
         }       
         if(WTempMessage.message > 35 || WTempMessage.message < 5)
         {
-      //      SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
-      //      SW_UART_TEST_USB_PutString("\n");
+            xQueueSendToBack(xQueueAlarmFromController, &WTempMessage, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
+            //SW_UART_TEST_USB_PutString("\n");
         }
         BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY); //We make the task wait for ever untill it recives new Parameter, but we don't now when it does that. Change portMAX_Delay to 0 maybe?
         if(xStatus == pdPASS)

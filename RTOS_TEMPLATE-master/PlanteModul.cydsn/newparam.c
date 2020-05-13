@@ -20,6 +20,7 @@
 #include "newparam.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 //Declare handlers here:
 QueueHandle_t xQueueLightHandler;

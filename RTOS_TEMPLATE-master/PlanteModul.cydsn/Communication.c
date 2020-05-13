@@ -17,6 +17,7 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 
 uint16 i = 0;

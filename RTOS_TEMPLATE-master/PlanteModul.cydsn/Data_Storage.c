@@ -16,6 +16,7 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 struct allData{ // Struct contains all nutrients values measured, 
     uint16  iPHval;
@@ -32,13 +33,6 @@ struct dataMessage{ // struct type for messages sent by the controller tasks
     char identifier;
     uint16 message;
 };
-
-QueueHandle_t xQueueControllerData;     // Incoming data from controller tasks
-QueueHandle_t xQueueCentralrequest;     // Requests from central task
-QueueHandle_t xQueueCentralData;        // Data sent to central
-QueueHandle_t xQueueStorageReady;       // Struct containing new data from all sensors sent to DatatStorage task
-
-
 
 
 void vInitDataStorage()                 // Initializing and creating tasks for the DataStorage module

@@ -14,6 +14,12 @@
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
+#include "Shared_resources.c"
+
+struct waterMessageData{
+ char identifier;
+ uint16 message;
+};
 
 SemaphoreHandle_t waterSemph;
 
@@ -36,9 +42,12 @@ void vInitWaterCondition(){
 
 
 void vTaskFlowWater(){
-    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the amount of measure ments per second
+    const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the amount of measure ments per second
     uint8 flowWaterResult;
+    struct waterMessageData waterConValue;
+    waterConValue.identifier = 'f';
     _Bool state = 0; //state for detecting 
+    _Bool alarmAck;
     for(;;){
         if(state == 0 ){
             ADC_Flow_StartConvert(); //Start ACD convertion
@@ -46,9 +55,13 @@ void vTaskFlowWater(){
         }
         else if(ADC_Flow_IsEndConversion(ADC_Flow_RETURN_STATUS) && state == 1){ //Test if ADC convertion is done
             flowWaterResult = ADC_Flow_GetResult8(); //Get ADC result
+            waterConValue.message = flowWaterResult;
+            xQueueSendToBack(xQueueControllerData, &waterConValue, portMAX_DELAY);
             //SW_UART_TEST_USB_PutHexByte(flowWaterResult); //test to see what sensor show should be commented out in realese
             if(flowWaterResult < 50){ //If sensor gives a value under 50 = no water in pipes
                 WaterState = 0; //Set state 0 as th ere is no water in pipes
+                 xQueueSendToBack(xQueueAlarmFromController, &waterConValue, portMAX_DELAY);
+                xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             }
             else{
                 WaterState = 1; //set state 1 as there is water in pipes

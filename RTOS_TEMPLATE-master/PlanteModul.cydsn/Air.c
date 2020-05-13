@@ -16,6 +16,7 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 
 struct AirCondition {   // Struct for holding values from the sensor 
@@ -60,11 +61,8 @@ void vTaskAirController()
 {
     const TickType_t xDelayms = pdMS_TO_TICKS(1000);    
     struct TestData AirTMessage;                    //Struct works as buffer for the air temp values, when calcing mean.
-    AirTMessage.message = 0;
     struct TestData RHMessage;                    //Struct works as buffer for the RH values, when calcing mean.
-    RHMessage.message   = 0;
     struct TestData CO2Message;                 //Struct works as buffer for the CO2 values, when calculating mean
-    CO2Message.message  = 0;
     struct TestData TestingParam;                 //Struct for recieving new paramsettings
     TestingParam.message =0;
     AirTMessage.identifier  = 'a';
@@ -72,12 +70,15 @@ void vTaskAirController()
     CO2Message.identifier   = 'c';
     int RHParameter = 50;                          //Initial paramsettings
     _Bool bstate;
-    
+    _Bool alarmAck;
     for(;;)
     {
         vTaskDelay(xDelayms);
+        AirTMessage.message = 0;
+        RHMessage.message   = 0;
+        CO2Message.message  = 0;
         for(int i = 0; i<= iSizeOfAir; i++)
-        {                                               //Calculationg meanvalues in the buffers
+        {                                               //Calculating meanvalues in the buffers
             AirTMessage.message = AirTMessage.message + currentAir[i].iAirTemp;
             RHMessage.message = RHMessage.message + currentAir[i].iRH;
             CO2Message.message = CO2Message.message + currentAir[i].iCO2;
@@ -86,12 +87,14 @@ void vTaskAirController()
         RHMessage.message = RHMessage.message/iSizeOfAir;
         CO2Message.message = CO2Message.message/iSizeOfAir; 
                                                         //Sending meanval to testtask or data_task
-        xQueueSendToBack(xQueueAirConditions, &AirTMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueAirConditions, &RHMessage, portMAX_DELAY);
-        xQueueSendToBack(xQueueAirConditions, &CO2Message, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &AirTMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &RHMessage, portMAX_DELAY);
+        xQueueSendToBack(xQueueControllerData, &CO2Message, portMAX_DELAY);
 
         if(AirTMessage.message > 40 || AirTMessage.message < 5)      //Alarm for air temp
         {
+            xQueueSendToBack(xQueueAlarmFromController, &AirTMessage, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM AirTemp");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
@@ -110,11 +113,15 @@ void vTaskAirController()
         }
         if(RHMessage.message < (RHParameter*0.5) || RHMessage.message > (RHParameter*1.5))
         {
+            xQueueSendToBack(xQueueAlarmFromController, &RHMessage, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM RH");     // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }       
         if(CO2Message.message > 2000 || CO2Message.message < 1000)
         {
+             xQueueSendToBack(xQueueAlarmFromController, &CO2Message, portMAX_DELAY);
+            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM CO2");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }

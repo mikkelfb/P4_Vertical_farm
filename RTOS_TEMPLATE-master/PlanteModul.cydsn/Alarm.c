@@ -17,6 +17,7 @@
 #include "queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "Shared_resources.c"
 
 
 struct alarmMessage{
@@ -24,11 +25,6 @@ struct alarmMessage{
     uint16 message;
 };
 
-
-QueueHandle_t xQueueAlarmFromController;
-QueueHandle_t xQueueAlarmForController;
-QueueHandle_t xQueueAlarmForFPGA;
-QueueHandle_t xQueueAlarmFromFPGA;
 
 void vAlarmInit()
 {

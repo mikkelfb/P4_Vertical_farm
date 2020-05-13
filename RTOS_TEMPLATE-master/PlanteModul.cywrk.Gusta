@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul\Header Files\Communication.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PlanteModul\PlanteModul\Source Files\Alarm.c">
 <ExpandedNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
@@ -74,13 +74,11 @@
 <v>PlanteModul\PlanteModul\Source Files\main.c</v>
 <v>PlanteModul\PlanteModul\Source Files\newparam.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
+<v>PlanteModul\PlanteModul\Source Files\Shared_resources.c</v>
 <v>PlanteModul\PlanteModul\Source Files\WaterCondition.c</v>
 <v>PlanteModul\PlanteModul\Generated_Source</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>PlanteModul</v>
-<v>PlanteModul\PlanteModul</v>
-<v>PlanteModul\PlanteModul\TopDesign</v>
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr</v>
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\Pins</v>
 <v>PlanteModul\PlanteModul\PlanteModul.cydwr\Analog</v>
@@ -113,7 +111,10 @@
 <v>PlanteModul\PlanteModul\Source Files\main.c</v>
 <v>PlanteModul\PlanteModul\Source Files\newparam.c</v>
 <v>PlanteModul\PlanteModul\Source Files\Nutrients.c</v>
+<v>PlanteModul\PlanteModul\Source Files\Shared_resources.c</v>
 <v>PlanteModul\PlanteModul\Source Files\WaterCondition.c</v>
+<v>PlanteModul\PlanteModul\Generated_Source</v>
+<v>PlanteModul\PlanteModul\Generated_Source\PSoC5</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -232,6 +233,40 @@
 <VisibleNodeIds>
 <v>PlanteModul</v>
 <v>PlanteModul\PlanteModul</v>
+<v>PlanteModul\PlanteModul\CortexM3</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_IRQ.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Flow_theACLK.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_INT.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_IRQ.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_PM.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_PH_theACLK.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Air.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Alarm.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_1.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_DS18.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Communication.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cy_em_eeprom.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\Data_Storage.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_clock_delay.lst</v>
+<v>PlanteModul\PlanteModul\CortexM3\ARM_GCC_541\Debug\Listing Files\DS18x8_ControlReg_DRV.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -299,10 +334,16 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\PlanteModul.cydsn\Nutrients.c" />
-<name v=".\PlanteModul.cydsn\Communication.c" />
-<name v=".\PlanteModul.cydsn\newparam.c" />
+<name v=".\PlanteModul.cydsn\Air.c" />
+<name v=".\PlanteModul.cydsn\Light.c" />
+<name v=".\PlanteModul.cydsn\Air.h" />
+<name v=".\PlanteModul.cydsn\Shared_resources.c" />
+<name v=".\PlanteModul.cydsn\Data_Storage.c" />
 <name v=".\PlanteModul.cydsn\Alarm.c" />
-<name v=".\PlanteModul.cydsn\Communication.h" />
+<name v=".\PlanteModul.cydsn\Communication.c" />
+<name v=".\PlanteModul.cydsn\main.c" />
+<name v=".\PlanteModul.cydsn\newparam.c" />
+<name v=".\PlanteModul.cydsn\WaterCondition.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -310,7 +351,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1069, 453" SelectedTabbedMdiWindow="2466d622-0b02-4786-9a0f-0b801291b9eb"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2a77613c-3d66-4090-953f-53e26fb4858b" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="eb55a325-a8be-42b8-8bf5-1e0f1eee8f7c" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Communication.c" Guid="209bab28-1a44-469d-b305-eb34cba2a9af" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\newparam.c" Guid="6cb60086-3ae8-4078-9638-2eb684e1f1fc" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Alarm.c" Guid="9e7cee9f-0d73-4faa-9e36-32c6f36b815b" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Communication.h" Guid="2466d622-0b02-4786-9a0f-0b801291b9eb" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1069, 453" SelectedTabbedMdiWindow="04c2c59b-33b3-4437-9e4d-bd33b0ead1ec"><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Nutrients.c" Guid="eb55a325-a8be-42b8-8bf5-1e0f1eee8f7c" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Air.c" Guid="6fff6b1b-5934-4dbc-8b92-3916709e8b86" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Light.c" Guid="04c2c59b-33b3-4437-9e4d-bd33b0ead1ec" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Air.h" Guid="0f9d7bb1-7182-434e-b1f2-3379c403be2b" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Shared_resources.c" Guid="3465caeb-a1ad-47a7-969f-40e90709a050" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Data_Storage.c" Guid="32482a22-9a9a-4715-a20a-742fc00ec171" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Alarm.c" Guid="7749f9f7-b6b8-4800-b040-3dd0051dba96" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Communication.c" Guid="992c1d7c-d2cf-4411-959a-d58dcc7b31e0" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\main.c" Guid="b2b5cdfd-1f77-4532-960b-a0eb7e590761" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\newparam.c" Guid="c6addad8-23ec-487b-818e-1d7f33fc2b6c" /><DocumentWindow Key="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\WaterCondition.c" Guid="a89e31a4-a442-4195-b324-1a29923e8d4b" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="2a77613c-3d66-4090-953f-53e26fb4858b" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
