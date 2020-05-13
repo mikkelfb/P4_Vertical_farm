@@ -299,7 +299,7 @@ void vTaskSendToFPGA(){
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueRecievedAlarm, &SendAlarm, ,0);
+        xStatus = xQueueReceive(xQueueRecievedAlarm, &SendAlarm,0);
         if(xStatus == pdTRUE)
         {
             //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
@@ -355,11 +355,11 @@ void vTaskAlarmHandler(){
 
 void vTestTaskComsInit(){
     /* Alarm test task */
-    xTaskCreate(vTaskTestAlarm, "alarm test", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskTestComAlarm, "alarm test", 100, NULL, 2, NULL);
     
 }    
 
-void vTaskTestAlarm(){
+void vTaskTestComAlarm(){
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 );
     
     struct AlarmMessage TestAlarm;

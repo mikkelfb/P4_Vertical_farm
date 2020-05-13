@@ -66,7 +66,7 @@ void vNewparamInit(){
     /*This queue is entirely for testing purposes*/
     xQueueTestNewParam = xQueueCreate(5, sizeof (struct NewParameters) );
     
-    xTaskCreate(vComsFromOtherTask, "coms from other task", 100, NULL, 2, NULL);
+    //xTaskCreate(vComsFromOtherTask, "coms from other task", 100, NULL, 2, NULL);
     xTaskCreate(vTaskNewParam, "new param task", 100, NULL, 2, NULL);
     
     

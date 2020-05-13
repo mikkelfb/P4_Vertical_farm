@@ -51,7 +51,7 @@
         
         void vTestTaskComsInit();
         
-        void vTaskTestAlarm();
+        void vTaskTestComAlarm();
         
     #endif
 #endif
