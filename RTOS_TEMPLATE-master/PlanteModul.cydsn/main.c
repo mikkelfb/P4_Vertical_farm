@@ -38,6 +38,8 @@
 /* Plantemodul includes */
 #include "Nutrients.h"
 #include "light.h"
+#include "newparam.h"
+
 #include "WaterCondition.h"
 #include "Alarm.h"
 
@@ -64,6 +66,9 @@ int main( void )
     vNutrientsInit(); //initialize Nutrients control task and parameteres
      
     //vLightInit(); //initialize Light control task and parameters
+    //vNutrientsInit(); //initialize Nutrients control task and parameteres
+    vLightInit(); //initialize Light control task and parameters
+    vNewparamInit();
     
     //vInitWaterCondition();
     
