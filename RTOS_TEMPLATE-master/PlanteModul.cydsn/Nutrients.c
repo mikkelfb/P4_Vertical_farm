@@ -329,7 +329,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
       //      SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
       //      SW_UART_TEST_USB_PutString("\n");
         }
-        BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY);
+        BaseType_t xStatus = xQueueReceive(xQueueControllerTest, &TestingParam, portMAX_DELAY); //We make the task wait for ever untill it recives new Parameter, but we don't now when it does that. Change portMAX_Delay to 0 maybe?
         if(xStatus == pdPASS)
         {                                               // Setting new params for PH or EC
             switch(TestingParam.identifier)
