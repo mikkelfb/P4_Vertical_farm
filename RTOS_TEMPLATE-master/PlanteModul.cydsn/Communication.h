@@ -35,6 +35,8 @@
     
     void vBitShifterUART(uint16 command);
     
+    void vTaskAlarmHandler();
+    
     #if COMMUNICATIONTEST == 1
         /* --- TEST TASK/FUNCTIONS/VARIABLES --- */
         
@@ -47,7 +49,9 @@
         All test task/functions, must start with (type)Test(Task/Function/Var)(Name)
         */
         
+        void vTestTaskComsInit();
         
+        void vTaskTestAlarm();
         
     #endif
 #endif
