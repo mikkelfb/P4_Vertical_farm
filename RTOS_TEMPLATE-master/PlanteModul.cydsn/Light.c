@@ -195,6 +195,7 @@ void vTaskLightController( void *pvParameters ){
 
 void vTaskLEDcontrol(){
     _Bool bLEDcontrolcmd;
+    //_Bool bLEDcontrolstate;
     
     for(;;){
         /* Recieve on/off command and measured value */

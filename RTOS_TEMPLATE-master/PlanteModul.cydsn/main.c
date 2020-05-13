@@ -44,6 +44,7 @@
 #include "Air.h"
 #include "WaterCondition.h"
 #include "Alarm.h"
+#include "Communication.h"
 
 /* The time between cycles of the 'check' functionality (defined within the
 tick hook. */
@@ -78,6 +79,8 @@ int main( void )
     vAirInit();
     
     //vInitWaterCondition();
+    
+    vTaskComsInit();
     
     vAlarmInit();
 	/* Will only get here if there was insufficient memory to create the idle
