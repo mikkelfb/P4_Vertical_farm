@@ -123,6 +123,7 @@ void vTaskComsInit(){
        - save third recieved byte as new value
        - send these to vTaskSendNewParams()
 */
+//I dont really get the logic behind this module
 void vTaskRecieveFromFPGA(){
     
     const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
@@ -132,7 +133,7 @@ void vTaskRecieveFromFPGA(){
     
     for(;;){
         
-        xStatus = xQueueReceive(xQueueWaitForACK, &SentAlarm, portMAX_DELAY);
+        xStatus = xQueueReceive(xQueueWaitForACK, &SentAlarm, 0); 
         
         if(xStatus == pdTRUE)
         {
@@ -298,7 +299,7 @@ void vTaskSendToFPGA(){
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueRecievedAlarm, &SendAlarm, portMAX_DELAY);
+        xStatus = xQueueReceive(xQueueRecievedAlarm, &SendAlarm, ,0);
         if(xStatus == pdTRUE)
         {
             //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
@@ -325,7 +326,6 @@ void vTaskSendToFPGA(){
     }    
     
 } 
-
 
 void vTaskAlarmHandler(){
     //extern QueueHandle_t xQueueAlarmForFPGA; //only works after merge with alarm task
