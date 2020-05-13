@@ -23,6 +23,7 @@ struct Nutrients{ // Struct contains nutrients values measured
     uint16  iPHvalue;
     uint16  iECvalue;
     uint16  iWaterTemp;
+    uint16  iWaterFlow;
 };
 
 struct messageForData{
@@ -84,7 +85,6 @@ void vNutrientsInit() {
     #if NUTRIENTSTEST == 1
         vTestTaskInit();
     #endif
-    
     
 }
 
@@ -175,6 +175,8 @@ float fCalculatePHValue(float fPHVoltage){
     float fIntercept = 7.0 - fSlope*(fNeutralVoltage-1500.0)/3.0; //calculate b in y = ax + b
     return fSlope*(fPHVoltage-1500.0)/3.0 + fIntercept; //return pH value
 }
+
+
 
 
 

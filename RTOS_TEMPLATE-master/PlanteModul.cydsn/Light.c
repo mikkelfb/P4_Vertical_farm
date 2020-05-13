@@ -231,7 +231,7 @@ void vTaskLEDcontrol(){
 
 /*  Initialize test tasks
 void vTestLightTaskInit(){
-    xTaskCreate(vTestLightTask, "TestLight", 1000, NULL, 2, NULL);
+ //   xTaskCreate(vTestLightTask, "TestLight", 1000, NULL, 2, NULL);
 }    
 */
 /*  Function tests vTaskLightMeasure() and vTaskLightController() 
