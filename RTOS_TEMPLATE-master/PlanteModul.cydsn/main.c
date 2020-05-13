@@ -61,7 +61,7 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
-    //vNutrientsInit(); //initialize Nutrients control task and parameteres
+    vNutrientsInit(); //initialize Nutrients control task and parameteres
      
     //vLightInit(); //initialize Light control task and parameters
     
