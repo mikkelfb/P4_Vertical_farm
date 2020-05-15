@@ -134,7 +134,7 @@ void vTaskComsInit(){
 //I dont really get the logic behind this module
 void vTaskRecieveFromFPGA(){
     
-    const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
+    const TickType_t xDelayms = pdMS_TO_TICKS( 200 );
     uint16 i = 0;
     _Bool RecievedACK;
     _Bool SentAlarm;
@@ -144,6 +144,7 @@ void vTaskRecieveFromFPGA(){
     
     for(;;){
         
+        vTaskDelay(xDelayms);
         xStatus = xQueueReceive(xQueueWaitForACK, &SentAlarm, 0); 
         
         if(xStatus == pdTRUE)
@@ -196,7 +197,6 @@ void vTaskRecieveFromFPGA(){
                     case '1': //case with new param
                     
                         //UART_PutString("New param case \n"); //USED FOR TEST
-                        vTaskDelay(xDelayms);
                         RecievedParams.cID = UART_GetChar(); 
                         
                         while(i < 2){
@@ -323,7 +323,7 @@ void vTaskSendToFPGA(){
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, bigDelay);
+        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, portMAX_DELAY);
         if(xStatus == pdTRUE)
         {
             //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
@@ -393,7 +393,7 @@ void vTaskAlarmHandler(){
 
 void vTestTaskComsInit(){
     /* Alarm test task */
-    xTaskCreate(vTaskTestComAlarm, "alarm test", 100, NULL, 2, NULL);
+ //   xTaskCreate(vTaskTestComAlarm, "alarm test", 100, NULL, 2, NULL);
     
 }    
 

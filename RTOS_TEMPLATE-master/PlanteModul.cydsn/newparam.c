@@ -124,8 +124,8 @@ void vTaskNewParam(){
             // If pH value
             case 'p':
                 
-                Nutrients.cID = Temp.cID;
-                Nutrients.fNewValue = Temp.fpHValue;
+                Nutrients.cID = input.cID;
+                Nutrients.iNewValue = input.iNewValue;
                 /*
                 SW_UART_TEST_USB_PutString("\n ID sent: ");
                 SW_UART_TEST_USB_PutChar(Nutrients.cID);
@@ -152,7 +152,7 @@ void vTaskNewParam(){
 
 void vInitTestParam()
 {
-    vComsFromOtherTask();
+//    vComsFromOtherTask();
 }
 
     //This task is entirely for testing purposes. It just sends new parameters, in much the same way that the 

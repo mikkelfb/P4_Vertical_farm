@@ -125,7 +125,7 @@ void vTaskAirController()
             //SW_UART_TEST_USB_PutString("ALARM CO2");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
-        BaseType_t xStatus = xQueueReceive(xQueueAirTestValues, &TestingParam, portMAX_DELAY);
+        BaseType_t xStatus = xQueueReceive(xQueueAirTestValues, &TestingParam, 0);
         if(xStatus == pdPASS)
         {                                               // Setting new params for RH
             switch(TestingParam.identifier)

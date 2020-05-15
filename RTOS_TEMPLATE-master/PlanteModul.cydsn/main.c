@@ -38,11 +38,11 @@
 /* Plantemodul includes */
 #include "Nutrients.h"
 #include "light.h"
-#include "newparam.h"
-#include "Data_Storage.h"
-
 #include "Air.h"
 #include "WaterCondition.h"
+
+#include "newparam.h"
+#include "Data_Storage.h"
 #include "Alarm.h"
 #include "Communication.h"
 
@@ -66,23 +66,18 @@ int main( void )
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	prvHardwareSetup();
     
-    vNutrientsInit(); //initialize Nutrients control task and parameteres
      
-    //vLightInit(); //initialize Light control task and parameters
-    //vNutrientsInit(); //initialize Nutrients control task and parameteres
-    vLightInit(); //initialize Light control task and parameters
-    vNewparamInit();
+    vLightInit();         //initialize Light control task and parameters
+    vNutrientsInit();     //initialize Nutrients control task and parameteres
+    vInitWaterCondition();//initialize watercondition task and parameters
+    vAirInit();           //initialize air task and parameters
     
-    //vInitWaterCondition();
+    vNewparamInit();        // inits newParam tasks
+    vInitDataStorage();     //initialize data storage tasks
+    vTaskComsInit();        // inits communication tasks
+    vAlarmInit();           // inits alarm tasks
     
-    vInitDataStorage();  //initialize data storage task
-    vAirInit();
     
-    //vInitWaterCondition();
-    
-    vTaskComsInit();
-    
-    vAlarmInit();
 	/* Will only get here if there was insufficient memory to create the idle
     task.  The idle task is created within vTaskStartScheduler(). */
 	vTaskStartScheduler();

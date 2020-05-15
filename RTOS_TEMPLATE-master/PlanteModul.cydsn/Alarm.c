@@ -64,7 +64,7 @@ void vTaskAlarmHandling()
 
 void vTestTaskAlarmInit()
 {
-    xTaskCreate(vTaskTestAlarm, "Alarm Test", 1000, NULL, 4, NULL);
+ //   xTaskCreate(vTaskTestAlarm, "Alarm Test", 1000, NULL, 4, NULL);
 }
 
 void vTaskTestAlarm()

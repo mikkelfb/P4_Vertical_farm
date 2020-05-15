@@ -172,14 +172,14 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
                     /////////////////// Test tasks here /////////////////////////////////////// 
 void vTestStorageInit()
 {
-   // xTaskCreate(vTaskTestData, "StorageTest", 1000, NULL, 4, NULL);
+    xTaskCreate(vTaskTestData, "StorageTest", 1000, NULL, 3, NULL);
 }
 
 void vTaskTestData()
 {                                   // Creating structs to simulate messages from controllertasks
     int centralRequest = 1;
     struct allData testData;
-    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 );
+    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 );
     
     struct dataMessage testMessage1;
     testMessage1.identifier = 'p';
@@ -210,12 +210,10 @@ void vTaskTestData()
     testMessage7.message = 7;
     
     struct dataMessage testMessage8;
-    testMessage1.identifier = 'p';
-    testMessage1.message = 8;
-    
-    struct dataMessage testMessage9;
     testMessage8.identifier = 'l';
-    testMessage8.message = 9;
+    testMessage8.message = 8;
+    
+    
     for(;;)
     {                                   // Sending testmessages for DataQueueing task to pick up
         xQueueSendToBack(xQueueControllerData, &testMessage1, portMAX_DELAY);
@@ -226,12 +224,13 @@ void vTaskTestData()
         xQueueSendToBack(xQueueControllerData, &testMessage6, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &testMessage7, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &testMessage8, portMAX_DELAY);
-        xQueueSendToBack(xQueueControllerData, &testMessage9, portMAX_DELAY);
+
                                         // Requesting what the central task would request
-        xQueueSendToBack(xQueueCentralrequest, &centralRequest, portMAX_DELAY);
+//        xQueueSendToBack(xQueueCentralrequest, &centralRequest, portMAX_DELAY);
                                         // Recieving what the central task would recieve
-        xQueueReceive(xQueueCentralData, &testData, portMAX_DELAY);
-                                        // Printing values via UART
+//        xQueueReceive(xQueueCentralData, &testData, portMAX_DELAY);
+
+/*        // Printing values via UART
         SW_UART_TEST_USB_PutString("testdata:");
         SW_UART_TEST_USB_PutString("\n");
         SW_UART_TEST_USB_PutHexByte(testData.iPHval);
@@ -250,8 +249,8 @@ void vTaskTestData()
         SW_UART_TEST_USB_PutString("\n");
         SW_UART_TEST_USB_PutHexByte(testData.iLightValue);
         SW_UART_TEST_USB_PutString("\n");
-        vTaskDelay(xDelayms);
-                                    // incrementing values for the test messages
+
+ */                                   // incrementing values for the test messages
         testMessage1.message ++;
         testMessage2.message ++;
         testMessage3.message ++;
@@ -260,7 +259,8 @@ void vTaskTestData()
         testMessage6.message ++;
         testMessage7.message ++;
         testMessage8.message ++;
-        testMessage9.message ++;
+        
+        vTaskDelay(xDelayms);
     }    
 }
 
