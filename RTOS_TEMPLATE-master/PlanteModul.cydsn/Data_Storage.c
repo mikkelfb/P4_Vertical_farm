@@ -212,6 +212,19 @@ void vTaskTestData()
     struct dataMessage testMessage8;
     testMessage8.identifier = 'l';
     testMessage8.message = 8;
+   
+    
+/*    
+    struct allData testForBitshift;
+    testForBitshift.iPHval = 1;
+    testForBitshift.iECval = 1;
+    testForBitshift.iLightValue = 1;
+    testForBitshift.iC02val = 1;
+    testForBitshift.iRHval = 1;
+    testForBitshift.iTempA = 1;
+    testForBitshift.iWaterF = 1;
+    testForBitshift.iWaterT = 1;
+*/    
     
     
     for(;;)
@@ -260,6 +273,7 @@ void vTaskTestData()
         testMessage7.message ++;
         testMessage8.message ++;
         
+//        xQueueSendToBack(xQueueCentralData, &testForBitshift, portMAX_DELAY);
         vTaskDelay(xDelayms);
     }    
 }

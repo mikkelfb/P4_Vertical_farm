@@ -66,11 +66,12 @@ void vBitShifterUART(uint16 command){
 
     uint8_t buf[2] = {0};
     
-    buf[0] = command & 0xff;
-    buf[1] = (command >> 8);
+
+    buf[0] = (command >> 8);
+    buf[1] = command & 0xff;
     
-    UART_PutArray(buf, 2);
-    
+    UART_PutChar(buf[0]);
+    UART_PutChar(buf[1]);    
 } 
 
 uint16_t vBitShiftForMessage(uint8 command[2])
@@ -82,7 +83,7 @@ uint16_t vBitShiftForMessage(uint8 command[2])
 }
 
 void vTaskComsInit(){
-    UART_Start();
+   
     
     /* Create queue for sending data to the central */
     xQueueDataToCentral = xQueueCreate(10, sizeof( struct Data ));
@@ -205,22 +206,20 @@ void vTaskRecieveFromFPGA(){
                         }    
                         i = 0;
                         
+                        
+                      
+                        
+                        
                         ParamsForMess.cID = RecievedParams.cID;
                         ParamsForMess.iMessage = vBitShiftForMessage(RecievedParams.Value);
                         
-                        /* USED FOR TEST
+                        // USED FOR TEST
                         UART_PutString("ID: ");
-                        UART_PutChar(RecievedParams.cID);
-                          
+                        UART_PutChar(RecievedParams.cID);  
                         UART_PutString(", value: ");
-                        
-                        while(i < 10){
-                            UART_PutChar(RecievedParams.Value[i]);
-                            i++;
-                        }
-                        i = 0;
-                        UART_PutString("\n");*/
-                        
+                        UART_PutChar(RecievedParams.Value[0]);
+                        UART_PutString("\n");
+
                         xQueueSendToBack(xQueueSendNewParams, &ParamsForMess, portMAX_DELAY);
                         
                         break;
@@ -313,7 +312,8 @@ void vTaskSendNewParams(){
 
 
 
-void vTaskSendToFPGA(){
+void vTaskSendToFPGA()
+{
     const TickType_t bigDelay = pdMS_TO_TICKS( 500 ); 
     const TickType_t smallDelay = pdMS_TO_TICKS( 100 ); 
     struct Message SendAlarm;
@@ -323,7 +323,7 @@ void vTaskSendToFPGA(){
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, portMAX_DELAY);
+        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, bigDelay);
         if(xStatus == pdTRUE)
         {
             //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST

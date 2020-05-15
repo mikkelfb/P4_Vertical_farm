@@ -134,7 +134,7 @@ void vTaskNewParam(){
                 SW_UART_TEST_USB_PutString("\n ");
                 */
                 
-                xQueueSendToBack(xQueueNutrientsHandler, (void *) &Nutrients, portMAX_DELAY);
+                xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
            
                 break;
         

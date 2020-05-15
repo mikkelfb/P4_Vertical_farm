@@ -72,15 +72,15 @@ void vNutrientsInit() {
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
-    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 1, NULL);
-    xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 1, NULL);
-    xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 1, NULL);
+   // xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 1, NULL);
+   // xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 1, NULL);
+   // xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 1, NULL);
 
     
-    xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 1 , NULL);
-    xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 1 , NULL);
+   // xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 1 , NULL);
+   // xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 1 , NULL);
     xTaskCreate(vTaskNutrientController, "NutrientController", 1000, NULL, 2, NULL);
-    xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 1, NULL);
+   // xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 1, NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
@@ -284,6 +284,8 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         PHMessage.message =0;
         ECMessage.message =0;
         WTempMessage.message =0;
+        
+        /*
         for(int i = 0; i<= iSizeOfNutrients; i++)
         {                                               //Calculationg meanvalues in the buffers
             PHMessage.message = PHMessage.message + currentNutrients[i].iPHvalue;
@@ -298,6 +300,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         xQueueSendToBack(xQueueControllerData, &ECMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &WTempMessage, portMAX_DELAY);
 
+        
         if(PHMessage.message < (iPHParameter*0.9))      //Controlling nutrientpumps
         {
             bstate =1;
@@ -341,6 +344,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             //SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
+        */
         BaseType_t xStatus = xQueueReceive(xQueueNutrientsHandler, &NewParam, 0); //We make the task wait for ever untill it recives new Parameter, but we don't now when it does that. Change portMAX_Delay to 0 maybe?
         if(xStatus == pdPASS)
         {                                               // Setting new params for PH or EC
@@ -348,9 +352,9 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             {
                 case 'p':
                     iPHParameter = NewParam.message;
-      //          SW_UART_TEST_USB_PutString("new PH value: ");
-      //          SW_UART_TEST_USB_PutHexInt(TestingParam.message);
-      //          SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("new PH value: ");
+                SW_UART_TEST_USB_PutHexInt(NewParam.message);
+                SW_UART_TEST_USB_PutString("\n");
                     break;
                 case 'e':
                     iECParameter = NewParam.message;
