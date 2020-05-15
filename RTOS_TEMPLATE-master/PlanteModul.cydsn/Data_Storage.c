@@ -43,7 +43,7 @@ void vInitDataStorage()                 // Initializing and creating tasks for t
     xQueueStorageReady = xQueueCreate(10 , sizeof(struct allData));
     
     xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 3 , NULL);
-    xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 4, NULL);
+    xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 3, NULL);
     
     #if Data_Storage_Test == 1
         vTestStorageInit();

@@ -20,15 +20,14 @@
 #include "Shared_resources.c"
 
 
-uint16 i = 0;
+
 char cRecievedData; //program only works if this is a char (??)
 BaseType_t DataRequest;
 
 QueueHandle_t xQueueDataToCentral;
-QueueHandle_t xQueueSendNewParams;
 
-QueueHandle_t xQueueRecievedDataRequest;
 QueueHandle_t xQueueRecievedNewParams;
+QueueHandle_t xQueueRecievedDataRequest;
 
 QueueHandle_t xQueueRecievedAlarm;
 QueueHandle_t xQueueAlarmACK;
@@ -41,12 +40,12 @@ QueueHandle_t xQueueWaitForACK;
 /* Struct for holding data when sending to another task, either data request or new params */
 struct Params{
     char cID;
-    float Value[8];
+    uint8_t Value[2];
 };
-struct Params RecievedParams; //for internally sending recieved params 
+
 
 /* Struct for holding recieved alarm data from alarm task */
-struct AlarmMessage{
+struct Message{
     char cID;
     uint16 iMessage;
 };    
@@ -74,6 +73,14 @@ void vBitShifterUART(uint16 command){
     
 } 
 
+uint16_t vBitShiftForMessage(uint8 command[2])
+{
+    uint16_t buff;
+    buff = (uint16_t) ((((uint16_t) command[0] ) << 8 )|
+                        ((uint16_t)  command[1]));
+    return buff;
+}
+
 void vTaskComsInit(){
     UART_Start();
     
@@ -88,7 +95,7 @@ void vTaskComsInit(){
     xQueueRecievedNewParams = xQueueCreate(10, sizeof( struct Params ));
     
     /* Create queues for sending recieved alarms and alarm ACK from FPGA between functions in this file */
-    xQueueRecievedAlarm = xQueueCreate(1, sizeof(struct AlarmMessage));
+    xQueueRecievedAlarm = xQueueCreate(1, sizeof(struct Message));
     xQueueAlarmACK = xQueueCreate(1, sizeof(_Bool));
     xQueueWaitForACK = xQueueCreate(1, sizeof(_Bool));
     
@@ -96,11 +103,11 @@ void vTaskComsInit(){
     //xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
     //xQueueTestAlarm = xQueueCreate(1, sizeof(struct AlarmMessage));
     
-    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 2, NULL);
-    xTaskCreate(vTaskSendDataRequest, "Send data request", 100, NULL, 2, NULL);
-    xTaskCreate(vTaskSendNewParams, "Send new params", 100, NULL, 2, NULL);
-    xTaskCreate(vTaskSendToFPGA, "Send message to FPGA", 100, NULL, 2, NULL);
-    xTaskCreate(vTaskAlarmHandler, "alarm handling", 100, NULL, 1, NULL); //highest priority
+    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 3, NULL);
+//    xTaskCreate(vTaskSendDataRequest, "Send data request", 100, NULL, 2, NULL);
+//    xTaskCreate(vTaskSendNewParams, "Send new params", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskSendToFPGA, "Send message to FPGA", 100, NULL, 3, NULL);
+//    xTaskCreate(vTaskAlarmHandler, "alarm handling", 100, NULL, 1, NULL); //highest priority
     
     
     /*Initialize test tasks*/
@@ -128,9 +135,12 @@ void vTaskComsInit(){
 void vTaskRecieveFromFPGA(){
     
     const TickType_t xDelayms = pdMS_TO_TICKS( 100 );
+    uint16 i = 0;
     _Bool RecievedACK;
     _Bool SentAlarm;
     _Bool xStatus;
+    struct Params RecievedParams; //for internally sending recieved params 
+    struct Message ParamsForMess; //for sending param to NewParam task
     
     for(;;){
         
@@ -177,7 +187,7 @@ void vTaskRecieveFromFPGA(){
                         //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
         
                     
-                        xQueueSendToBack(xQueueRecievedDataRequest, &(DataRequest), portMAX_DELAY);
+                        xQueueSendToBack(xQueueCentralrequest, &DataRequest, portMAX_DELAY);
                         
                         DataRequest = pdFALSE;
                         
@@ -189,11 +199,14 @@ void vTaskRecieveFromFPGA(){
                         vTaskDelay(xDelayms);
                         RecievedParams.cID = UART_GetChar(); 
                         
-                        while(i < 10){
+                        while(i < 2){
                             RecievedParams.Value[i] = UART_GetChar();
                             i++;
                         }    
                         i = 0;
+                        
+                        ParamsForMess.cID = RecievedParams.cID;
+                        ParamsForMess.iMessage = vBitShiftForMessage(RecievedParams.Value);
                         
                         /* USED FOR TEST
                         UART_PutString("ID: ");
@@ -208,7 +221,7 @@ void vTaskRecieveFromFPGA(){
                         i = 0;
                         UART_PutString("\n");*/
                         
-                        xQueueSendToBack(xQueueRecievedNewParams, (void *) &RecievedParams, portMAX_DELAY);
+                        xQueueSendToBack(xQueueSendNewParams, &ParamsForMess, portMAX_DELAY);
                         
                         break;
                     
@@ -220,6 +233,10 @@ void vTaskRecieveFromFPGA(){
     
 }
 
+
+
+
+/*
 void vTaskSendDataRequest(){
     //extern QueueHandle_t xQueueCentralrequest; //only works after merge with data storage
     BaseType_t SendDataRequest;
@@ -228,7 +245,7 @@ void vTaskSendDataRequest(){
     
     for(;;)
     {
-        xQueueReceive(xQueueRecievedDataRequest, &(SendDataRequest), portMAX_DELAY);
+        xQueueReceive(xQueueRecievedDataRequest, &SendDataRequest, portMAX_DELAY);
         
         if(SendDataRequest == pdTRUE)
         {
@@ -250,16 +267,16 @@ void vTaskSendDataRequest(){
             Send.iWaterF = 54;
             Send.iWaterT = 55;
             
-            xQueueSendToBack(xQueueTestData, (void *) &Send, portMAX_DELAY);*/
+            xQueueSendToBack(xQueueTestData, (void *) &Send, portMAX_DELAY);
             
             
         }    
-        /* USED FOR TEST
+         USED FOR TEST
         else{    
              
             UART_PutString("\n");
             UART_PutString("Data request: FALSE \n");
-        }        */
+        }        
     }    
     
 }  
@@ -271,11 +288,11 @@ void vTaskSendNewParams(){
     {
         xQueueReceive(xQueueRecievedNewParams, &(SendParams), portMAX_DELAY);
         
-        /* only works after merge with new params */
+         only works after merge with new params 
         //xQueueSendToBack(xQueueSendNewParams, (void *) &SendParams, portMAX_DELAY);
         
         
-        /* USED FOR TEST
+         USED FOR TEST
         UART_PutString("\n");
         UART_PutString("New params to send: \n");
         UART_PutString("ID: ");
@@ -286,21 +303,27 @@ void vTaskSendNewParams(){
             i++;
         }
         i = 0;
-        UART_PutString("\n");*/
+        UART_PutString("\n");
         
     }    
     
 }
+*/
+
+
+
 
 void vTaskSendToFPGA(){
-    //extern QueueHandle_t xQueueCentralData; //only works after merge with data storage
-    struct AlarmMessage SendAlarm;
+    const TickType_t bigDelay = pdMS_TO_TICKS( 500 ); 
+    const TickType_t smallDelay = pdMS_TO_TICKS( 100 ); 
+    struct Message SendAlarm;
     struct Data SendToCentral; 
     _Bool xStatus;
+    _Bool yStatus;
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueRecievedAlarm, &SendAlarm,0);
+        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, bigDelay);
         if(xStatus == pdTRUE)
         {
             //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
@@ -309,25 +332,33 @@ void vTaskSendToFPGA(){
             //UART_PutString(", message: "); USED FOR TEST
             vBitShifterUART(SendAlarm.iMessage);
             //UART_PutString("\n\n"); USED FOR TEST
-            xQueueSendToBack(xQueueWaitForACK, &xStatus, portMAX_DELAY);
+            xQueueSendToBack(xQueueAlarmFromFPGA, &xStatus, portMAX_DELAY);
         }    
         
         //xQueueReceive(xQueueCentralData, &(SendToCentral), portMAX_DELAY); this queue is for real
         //xQueueReceive(xQueueTestData, &SendToCentral, portMAX_DELAY); //this Queue is for test
         
         //UART_PutString("Data recieved from data storage: \n"); //USED FOR TEST
-        vBitShifterUART(SendToCentral.iPHval);
-        vBitShifterUART(SendToCentral.iECval);
-        vBitShifterUART(SendToCentral.iWaterT);
-        vBitShifterUART(SendToCentral.iWaterF);
-        vBitShifterUART(SendToCentral.iC02val);
-        vBitShifterUART(SendToCentral.iTempA);
-        vBitShifterUART(SendToCentral.iRHval);
-        vBitShifterUART(SendToCentral.iLightValue);        
-    }    
-    
+        
+        yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, smallDelay);
+        if (yStatus == pdTRUE)
+        {
+            vBitShifterUART(SendToCentral.iPHval);
+            vBitShifterUART(SendToCentral.iECval);
+            vBitShifterUART(SendToCentral.iWaterT);
+            vBitShifterUART(SendToCentral.iWaterF);
+            vBitShifterUART(SendToCentral.iC02val);
+            vBitShifterUART(SendToCentral.iTempA);
+            vBitShifterUART(SendToCentral.iRHval);
+            vBitShifterUART(SendToCentral.iLightValue); 
+        }
+    }       
 } 
 
+
+
+
+/*
 void vTaskAlarmHandler(){
     //extern QueueHandle_t xQueueAlarmForFPGA; //only works after merge with alarm task
     //extern QueueHandle_t xQueueAlarmFromFPGA; //only works after merge with alarm task
@@ -353,6 +384,12 @@ void vTaskAlarmHandler(){
     }    
     
 }    
+*/
+
+
+
+//////////////////////////////// Test Task ///////////////////////////////
+
 
 void vTestTaskComsInit(){
     /* Alarm test task */
@@ -363,7 +400,7 @@ void vTestTaskComsInit(){
 void vTaskTestComAlarm(){
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 );
     
-    struct AlarmMessage TestAlarm;
+    struct Message TestAlarm;
     TestAlarm.cID = 't';
     TestAlarm.iMessage = 50;
     

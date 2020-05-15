@@ -29,8 +29,8 @@ _Bool WaterState; //Variable to determine wheter or not there is water in the pi
 
 void vInitWaterCondition(){    
     //Craete the 3 tasks
-    xTaskCreate(vTaskFlowWater , "Flow water", 50 , NULL , 2 , NULL);
-    xTaskCreate(vTaskWaterPump , "Water pump", 50 , NULL , 2 , NULL);
+    xTaskCreate(vTaskFlowWater , "Flow water", 50 , NULL , 1 , NULL);
+    xTaskCreate(vTaskWaterPump , "Water pump", 50 , NULL , 1 , NULL);
     xTaskCreate(vTaskWaterConditionController , "Water Condition controller", 50 , NULL , 2 , NULL);
     
     //Create queue for controller task to send Waterpump task a message wether it should run or not.

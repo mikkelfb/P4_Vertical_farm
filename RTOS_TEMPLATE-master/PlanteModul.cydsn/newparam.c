@@ -22,9 +22,7 @@
 #include <stdlib.h>
 #include "Shared_resources.c"
 
-//Declare handlers here:
-QueueHandle_t xQueueLightHandler;
-QueueHandle_t xQueueNutrientsHandler;
+
 
 /*
 uint16 uRecievedNewParams[3] = {0, 0, 0};               
@@ -35,8 +33,8 @@ uint16 uNewNutrientParams[2] = {0, 0};
 // 'e' = EC, 'p' = pH, 't' = time
 struct NewParameters{
     char cID;                   
-    float fpHValue;
-    float fECValue;
+    uint16_t fpHValue;
+    uint16_t fECValue;
     uint8 uStartTime;
     uint8 uStopTime;
 };
@@ -48,7 +46,7 @@ struct LightPackage{
 
 struct NutrientsPackage{
     char cID;
-    float fNewValue;
+    uint16_t iNewValue;
 };    
 
 /*--------------------------*/
@@ -68,47 +66,34 @@ void vNewparamInit(){
     xQueueTestNewParam = xQueueCreate(5, sizeof (struct NewParameters) );
     
     //xTaskCreate(vComsFromOtherTask, "coms from other task", 100, NULL, 2, NULL);
-    xTaskCreate(vTaskNewParam, "new param task", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskNewParam, "new param task", 100, NULL, 3, NULL);
     
     
-    #if NUTRIENTSTEST == 1
-        vTestTaskInit();
+    #if NEWPARAMTEST == 1
+        vInitTestParam();
     #endif
 }
 
-/*This task is entirely for testing purposes. It just sends new parameters, in much the same way that the 
-communication task eventually will: As a struct, where the first element is an identifier in the form of a character.
-In this task it will be assumed that the identifier makes 'e' = EC, 't' = light, 'p' = pH
-void vComsFromOtherTask( void *pvParameters){
-    const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
-    struct NewParameters TestFromCom;
-    
-    TestFromCom.cID = 't';
-    TestFromCom.fECValue = 50;
-    TestFromCom.fpHValue = 7;
-    TestFromCom.uStartTime = 8;
-    TestFromCom.uStopTime = 16;
-    xQueueSendToBack(xQueueTestNewParam, (void *) &TestFromCom, portMAX_DELAY);
-}
 
-*/
+
+
 /* This task reads the incoming new params and determines which control task the new params should be sent to */
-void vTaskNewParam( void *pvParameters ){
-    struct NewParameters Temp;
+void vTaskNewParam(){
+    struct NutrientsPackage input;
     struct LightPackage Light;
     struct NutrientsPackage Nutrients;
     
     for(;;)
     {
-        xQueueReceive(xQueueTestNewParam, &(Temp), portMAX_DELAY);
+        xQueueReceive(xQueueSendNewParams, &input, portMAX_DELAY);
     
-        switch(Temp.cID)
+        switch(input.cID)
         {
             // If EC value
             case 'e':
                 
-                Nutrients.cID = Temp.cID;
-                Nutrients.fNewValue = Temp.fECValue;
+                Nutrients.cID = input.cID;
+                Nutrients.iNewValue = input.iNewValue;
                 
                 /*
                 SW_UART_TEST_USB_PutString("\n ID sent: ");
@@ -117,15 +102,15 @@ void vTaskNewParam( void *pvParameters ){
                 SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
                 SW_UART_TEST_USB_PutString("\n ");
                 */    
-                xQueueSendToBack(xQueueNutrientsHandler, (void *) &Nutrients, portMAX_DELAY);
+                xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
            
                 break;
         
             // If light cycle value
             case 't':
                 
-                Light.uStartTime = Temp.uStartTime;
-                Light.uStopTime = Temp.uStopTime;
+                Light.uStartTime = (input.iNewValue >> 8);
+                Light.uStopTime  = input.iNewValue;
                 /*
                 SW_UART_TEST_USB_PutString("\n New start time: ");
                 SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
@@ -133,7 +118,7 @@ void vTaskNewParam( void *pvParameters ){
                 SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
                 SW_UART_TEST_USB_PutString("\n ");
                 */
-                xQueueSendToBack(xQueueLightHandler, (void *) &Light, portMAX_DELAY);
+                xQueueSendToBack(xQueueLightHandler, &Light, portMAX_DELAY);
                 break;
                 
             // If pH value
@@ -157,6 +142,33 @@ void vTaskNewParam( void *pvParameters ){
         
     }
     
+}
+
+
+
+
+///////////////// Test tasks ////////////////////////////
+
+
+void vInitTestParam()
+{
+    vComsFromOtherTask();
+}
+
+    //This task is entirely for testing purposes. It just sends new parameters, in much the same way that the 
+    //communication task eventually will: As a struct, where the first element is an identifier in the form of a character.
+    //In this task it will be assumed that the identifier makes 'e' = EC, 't' = light, 'p' = pH
+
+void vComsFromOtherTask(){
+    const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
+    struct NewParameters TestFromCom;
+    
+    TestFromCom.cID = 't';
+    TestFromCom.fECValue = 50;
+    TestFromCom.fpHValue = 7;
+    TestFromCom.uStartTime = 8;
+    TestFromCom.uStopTime = 16;
+    xQueueSendToBack(xQueueTestNewParam, (void *) &TestFromCom, portMAX_DELAY);
 }
 
 

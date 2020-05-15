@@ -51,9 +51,9 @@ void vTaskAlarmHandling()
         xStatus = xQueueReceive(xQueueAlarmFromController, &messForFPGA, portMAX_DELAY);
         if (xStatus == pdTRUE)
         {
+            xQueueSendToBack(xQueueAlarmForController, &recievedMess, portMAX_DELAY);
             xQueueSendToBack(xQueueAlarmForFPGA, &messForFPGA, portMAX_DELAY);
             xQueueReceive(xQueueAlarmFromFPGA, &recievedMess, portMAX_DELAY);
-            xQueueSendToBack(xQueueAlarmForController, &recievedMess, portMAX_DELAY);
         }       
     }
 }

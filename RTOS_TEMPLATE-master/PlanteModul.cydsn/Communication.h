@@ -12,7 +12,7 @@
 
 /* [] END OF FILE */
 
-
+#include "project.h"
 #ifndef COMMUNICATION_H 
     #define COMMUNICATION_H 
     #define COMMUNICATIONTEST 1 //set this to 0 to disable Debug/test
@@ -34,6 +34,8 @@
     void vTaskSendToFPGA();
     
     void vBitShifterUART(uint16 command);
+    
+    uint16_t vBitShiftForMessage(uint8 command[2]);
     
     void vTaskAlarmHandler();
     

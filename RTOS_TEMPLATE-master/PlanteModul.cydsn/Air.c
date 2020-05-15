@@ -45,7 +45,7 @@ QueueHandle_t xQueueAirTestValues;
  // initializing and creating task and queues
 void vAirInit()
 {
-    xTaskCreate(vTaskAirController, "Air controller", 1000, NULL, 3, NULL);
+    xTaskCreate(vTaskAirController, "Air controller", 1000, NULL, 2, NULL);
 
     xQueueAirConditions = xQueueCreate(5, sizeof(struct TestData));
     xQueueAirTestValues = xQueueCreate(5, sizeof(struct TestData));

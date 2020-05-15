@@ -26,9 +26,13 @@ QueueHandle_t xQueueStorageReady;           // Struct containing new data from a
 
 QueueHandle_t xQueueAlarmFromController;    // incoming alarm from controller tasks
 QueueHandle_t xQueueAlarmForController;     // ack sending to controller tasks
-QueueHandle_t xQueueAlarmForFPGA;           // sening alarm to UART task
+QueueHandle_t xQueueAlarmForFPGA;           // sending alarm to UART task
 QueueHandle_t xQueueAlarmFromFPGA;          // Receiving ack from UART task
 
 
+QueueHandle_t xQueueSendNewParams;          // For transfering new params from Communication task to newParam task
+
+QueueHandle_t xQueueLightHandler;           // Queuehandles for transferring new params from newParam task to controller tasks
+QueueHandle_t xQueueNutrientsHandler;
 
 /* [] END OF FILE */

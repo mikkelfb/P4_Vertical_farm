@@ -98,7 +98,7 @@ void vLightInit(){
     
     /*  Create the task that will control the light sensor. The task is created with
         priority 2. */
-    xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 2 , NULL);
+    xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 1 , NULL);
     
     /*  Create the controller task that will recieve external commands 
         and regulate the LED based on the sensor value. 
@@ -106,7 +106,7 @@ void vLightInit(){
     xTaskCreate(vTaskLightController, "Light controller", 100, NULL, 2, NULL);
     
     /*  Create the LED task to turn on and off the LED */
-    xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 1, NULL);
     
     /*Initialize test tasks*/
     #if LIGHTTEST == 1
@@ -130,12 +130,13 @@ void vTaskLightMeasure(){
 
 /*  This function recieves info about which time interval there should be light, 
     turns on/off LED lights and periodically checks if the lights are on */
-void vTaskLightController( void *pvParameters ){
-    extern QueueHandle_t xQueueLightHandler;
+void vTaskLightController(){
     lightForData.identifier = 'l';
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
     _Bool alarmAck;
+    LightCycle.Start = 8;
+    LightCycle.Stop  = 20;
     
     /*
     SW_UART_TEST_USB_PutString("\n ");
@@ -145,7 +146,7 @@ void vTaskLightController( void *pvParameters ){
     SW_UART_TEST_USB_PutHexByte(LightCycle.Stop);
     SW_UART_TEST_USB_PutString("\n ");
     */
-    xQueueReceive(xQueueLightHandler, &(LightCycle), 0); // If queue is empty, return immediately
+    xQueueReceive(xQueueLightHandler, &LightCycle, 0); // If queue is empty, return immediately
     /*
     SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutString("Updated light cycle values: ");
