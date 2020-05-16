@@ -67,7 +67,7 @@ int main( void )
 	prvHardwareSetup();
     
      
-    //vLightInit();         //initialize Light control task and parameters
+    vLightInit();         //initialize Light control task and parameters
     vNutrientsInit();     //initialize Nutrients control task and parameteres
     //vInitWaterCondition();//initialize watercondition task and parameters
     //vAirInit();           //initialize air task and parameters

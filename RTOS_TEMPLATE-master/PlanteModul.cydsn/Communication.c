@@ -89,7 +89,7 @@ void vTaskComsInit(){
     xQueueDataToCentral = xQueueCreate(10, sizeof( struct Data ));
     
     /* Create queue for sending new params to the New Params task */
-    xQueueSendNewParams = xQueueCreate(8, sizeof(uint16));
+    xQueueSendNewParams = xQueueCreate(8, sizeof(struct Message));
     
     /* Creatw queues for sending recieved data requests and new params between functions in this file */
     xQueueRecievedDataRequest = xQueueCreate(10, sizeof( BaseType_t ));
@@ -104,7 +104,7 @@ void vTaskComsInit(){
     //xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
     //xQueueTestAlarm = xQueueCreate(1, sizeof(struct AlarmMessage));
     
-    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 3, NULL);
+    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 4, NULL);
 //    xTaskCreate(vTaskSendDataRequest, "Send data request", 100, NULL, 2, NULL);
 //    xTaskCreate(vTaskSendNewParams, "Send new params", 100, NULL, 2, NULL);
     xTaskCreate(vTaskSendToFPGA, "Send message to FPGA", 100, NULL, 3, NULL);
@@ -141,6 +141,8 @@ void vTaskRecieveFromFPGA(){
     _Bool SentAlarm;
     _Bool xStatus;
     struct Params RecievedParams; //for internally sending recieved params 
+    RecievedParams.Value[0] = 0;
+    RecievedParams.Value[1] = 0;
     struct Message ParamsForMess; //for sending param to NewParam task
     
     for(;;){
@@ -161,7 +163,7 @@ void vTaskRecieveFromFPGA(){
             xQueueSendToBack(xQueueAlarmACK, &RecievedACK, portMAX_DELAY);
         }    
         
-        if(UART_GetRxBufferSize() == 1) //returns 1 for not empty RX FIFO
+        if(UART_GetRxBufferSize() != 0) //returns size of buffer RX FIFO
             {
                 cRecievedData = UART_GetByte(); //recieve the indentifier
                                 
@@ -169,7 +171,7 @@ void vTaskRecieveFromFPGA(){
                 {
                     case '0': //case with request for data
                         
-                        //UART_PutString("Data request case \n"); //USED FOR TEST
+                        SW_UART_TEST_USB_PutString("Data package \n"); //USED FOR TEST
                         
                         DataRequest = pdTRUE;
                         
@@ -185,9 +187,7 @@ void vTaskRecieveFromFPGA(){
                             UART_PutString("Data request to send: FALSE \n");
                         }*/
                         
-                        /* only works after merge with new params */
-                        //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
-        
+                               
                     
                         xQueueSendToBack(xQueueCentralrequest, &DataRequest, portMAX_DELAY);
                         
@@ -197,28 +197,28 @@ void vTaskRecieveFromFPGA(){
                     
                     case '1': //case with new param
                     
-                        //UART_PutString("New param case \n"); //USED FOR TEST
                         RecievedParams.cID = UART_GetChar(); 
-                        
+                        //SW_UART_TEST_USB_PutHexByte(RecievedParams.cID);
                         while(i < 2){
-                            RecievedParams.Value[i] = UART_GetChar();
+                            RecievedParams.Value[i] = UART_GetByte();
+                            //SW_UART_TEST_USB_PutHexByte(RecievedParams.Value[i]);
+                            //SW_UART_TEST_USB_PutString("\n");
                             i++;
+                             
                         }    
                         i = 0;
-                        
-                        
-                      
-                        
+                        SW_UART_TEST_USB_PutString("New param case \n"); //USED FOR TEST
                         
                         ParamsForMess.cID = RecievedParams.cID;
                         ParamsForMess.iMessage = vBitShiftForMessage(RecievedParams.Value);
+                        //SW_UART_TEST_USB_PutHexInt(ParamsForMess.iMessage);
                         
                         // USED FOR TEST
-                        UART_PutString("ID: ");
-                        UART_PutChar(RecievedParams.cID);  
-                        UART_PutString(", value: ");
-                        UART_PutChar(RecievedParams.Value[0]);
-                        UART_PutString("\n");
+                        //UART_PutString("ID: ");
+                        //UART_PutChar(RecievedParams.cID);  
+                        //UART_PutString(", value: ");
+                        //UART_PutChar(RecievedParams.Value[0]);
+                        //UART_PutString("\n");
 
                         xQueueSendToBack(xQueueSendNewParams, &ParamsForMess, portMAX_DELAY);
                         

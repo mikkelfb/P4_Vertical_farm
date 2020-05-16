@@ -10,7 +10,6 @@
  * ========================================
 */
 
-
 /* [] END OF FILE */
 
 #include "FreeRTOS.h"
@@ -111,13 +110,13 @@ void vTaskNewParam(){
                 
                 Light.uStartTime = (input.iNewValue >> 8);
                 Light.uStopTime  = input.iNewValue;
-                /*
+                
                 SW_UART_TEST_USB_PutString("\n New start time: ");
                 SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
                 SW_UART_TEST_USB_PutString("\n New stop time: ");
                 SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
                 SW_UART_TEST_USB_PutString("\n ");
-                */
+                
                 xQueueSendToBack(xQueueLightHandler, &Light, portMAX_DELAY);
                 break;
                 
@@ -126,14 +125,13 @@ void vTaskNewParam(){
                 
                 Nutrients.cID = input.cID;
                 Nutrients.iNewValue = input.iNewValue;
-                /*
+                
                 SW_UART_TEST_USB_PutString("\n ID sent: ");
                 SW_UART_TEST_USB_PutChar(Nutrients.cID);
                 SW_UART_TEST_USB_PutString("\n New pH value: ");
-                SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
+                SW_UART_TEST_USB_PutHexInt(input.iNewValue);
                 SW_UART_TEST_USB_PutString("\n ");
-                */
-                
+                             
                 xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
            
                 break;
