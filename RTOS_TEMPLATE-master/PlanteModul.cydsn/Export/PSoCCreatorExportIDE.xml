@@ -25,7 +25,7 @@
       <Tool Name="postbuild" Command="" Options="" />
     </Toolchain>
   </Toolchains>
-  <Project Name="PlanteModul" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" Version="5.90" Type="Normal">
+  <Project Name="PlanteModul" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" Version="5.90" Type="Normal">
     <CMSIS_SVD_File>PlanteModul.svd</CMSIS_SVD_File>
     <Datasheet />
     <LinkerFiles>
@@ -34,8 +34,8 @@
       <LinkerFile Toolchain="ARM IAR Generic">.\Generated_Source\PSoC5\Cm3Iar.icf</LinkerFile>
     </LinkerFiles>
     <Folders>
-      <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">Source\list.c</File>
           <File BuildType="BUILD" Toolchain="">Source\queue.c</File>
@@ -84,8 +84,8 @@
           <File BuildType="BUILD" Toolchain="">WaterCondition.h</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Generated_Source\PSoC5">
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter_cfg.c</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cymetadata.c</File>
@@ -102,6 +102,117 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitteriar.inc</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cyfitter.h</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cydisabledsheets.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB.h</File>
+          <File BuildType="BUILD" Toolchain="ARM GCC Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmGnu.s</File>
+          <File BuildType="BUILD" Toolchain="ARM MDK Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmRv.s</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="ARM IAR Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmIar.s</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8.h</File>
+
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_00_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_00.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_00.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_DS18.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_DS18.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_DS18.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\isr_DS18.h</File>
+
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_SLAVE.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_MASTER.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PVT.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_INT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_BOOT.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_IRQ.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_IRQ.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_theACLK.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_theACLK.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_StatusReg_BUS.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_StatusReg_BUS.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_clock_delay.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_clock_delay.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_IRQ.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_IRQ.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_theACLK.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_theACLK.h</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.c</File>
+          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.h</File>
+
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">Generated_Source\PSoC5\cm3gcc.ld</File>
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">Generated_Source\PSoC5\Cm3RealView.scat</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Cm3Start.c</File>
@@ -135,156 +246,53 @@
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareexport.ld</File>
           <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\cycodeshareimport.scat</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SDA_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SCL_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_SLAVE.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_MASTER.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\I2C_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Clock_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_1_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\PWM_PERISTALTISK_2_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_2.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_1.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_PERIPUMP_OUT_3.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_pH_in.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_IRQ.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_IRQ.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_theACLK.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_PH_theACLK.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB.h</File>
-          <File BuildType="BUILD" Toolchain="ARM GCC Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmGnu.s</File>
-          <File BuildType="BUILD" Toolchain="ARM MDK Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmRv.s</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\SW_UART_TEST_USB_PVT.h</File>
-          <File BuildType="BUILD" Toolchain="ARM IAR Generic">Generated_Source\PSoC5\SW_UART_TEST_USB_AsmIar.s</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_DRV_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_StatusReg_BUS.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_StatusReg_BUS.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_TimerDelay_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_ControlReg_SEL_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_clock_delay.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_clock_delay.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_Trigger_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\DS18x8_isr_DataReady.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LIGHT_in.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_5V_out.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_LightTestLED.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\RTC_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_IRQ.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_IRQ.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_theACLK.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\ADC_Flow_theACLK.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterPump.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\Pin_WaterFlow.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_INT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_BOOT.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\UART_IntClock.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\WaterTemp_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\WaterTemp.c</File>
-          <File BuildType="BUILD" Toolchain="">Generated_Source\PSoC5\WaterTemp.h</File>
+
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_GCC_Generic">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_GCC_Generic">
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM GCC Generic">.\Export\ARM_GCC_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_MDK_Generic">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_MDK_Generic">
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM MDK Generic">.\Export\ARM_MDK_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
-      <Folder BuildType="STRICT" Path="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_IAR_Generic">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
+      <Folder BuildType="STRICT" Path="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn\Export\ARM_IAR_Generic">
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn">
           <File BuildType="BUILD" Toolchain="ARM IAR Generic">.\Export\ARM_IAR_Generic\CyComponentLibrary.a</File>
         </Files>
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\codegentemp">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_441">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\ARM_GCC_473">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051_Keil_952">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\DP8051">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM0p">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM3">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM4">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
       <Folder BuildType="EXCLUDE" Path=".\CortexM7">
-        <Files Root="C:\Users\mag94\Desktop\UNIstuff\4. Semester\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
+        <Files Root="C:\Users\Gusta\OneDrive\Dokumenter\GitHub\P4_Vertical_farm\RTOS_TEMPLATE-master\PlanteModul.cydsn" />
       </Folder>
     </Folders>
   </Project>

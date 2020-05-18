@@ -53,6 +53,7 @@ struct TimeInterval{
     uint8 Stop;
 };
 struct TimeInterval LightCycle;
+struct TimeInterval incomingLight;
     
 /* Create a struct for storing the current time */
 struct Clock{
@@ -138,6 +139,8 @@ void vTaskLightController(){
     const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
     _Bool alarmAck;
+    _Bool xStatus;
+    
     LightCycle.Start = 8;
     LightCycle.Stop  = 20;
     
@@ -149,7 +152,7 @@ void vTaskLightController(){
     SW_UART_TEST_USB_PutHexByte(LightCycle.Stop);
     SW_UART_TEST_USB_PutString("\n ");
     */
-    xQueueReceive(xQueueLightHandler, &LightCycle, 0); // If queue is empty, return immediately
+   
     /*
     SW_UART_TEST_USB_PutString("\n ");
     SW_UART_TEST_USB_PutString("Updated light cycle values: ");
@@ -205,6 +208,17 @@ void vTaskLightController(){
                         
             //SW_UART_TEST_USB_PutString("Within active hours of light cycle: FALSE \n \n"); // Used for test
         }    
+         xStatus = xQueueReceive(xQueueLightHandler, &incomingLight, 0); // If queue is empty, return immediately
+        if (xStatus == 1)
+        {
+            LightCycle.Start = incomingLight.Start;
+            LightCycle.Stop = incomingLight.Stop;
+            SW_UART_TEST_USB_PutString("new timez: \n ");
+            SW_UART_TEST_USB_PutHexInt(LightCycle.Start);
+            SW_UART_TEST_USB_PutString("\n");
+            SW_UART_TEST_USB_PutHexInt(LightCycle.Stop);
+            SW_UART_TEST_USB_PutString("\n");
+        }
     vTaskDelay(xDelayms); 
     }
 }

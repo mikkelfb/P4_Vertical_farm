@@ -363,9 +363,9 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             {
                 case 'p':
                     iPHParameter = NewParam.message;
-                SW_UART_TEST_USB_PutString("new PH value: ");
-                SW_UART_TEST_USB_PutHexInt(NewParam.message);
-                SW_UART_TEST_USB_PutString("\n");
+                /*SW_UART_TEST_USB_PutString("new PH value: ");
+                SW_UART_TEST_USB_PutHexInt(iPHParameter);
+                SW_UART_TEST_USB_PutString("\n");*/
                     break;
                 case 'e':
                     iECParameter = NewParam.message;
