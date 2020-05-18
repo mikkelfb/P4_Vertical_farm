@@ -30,8 +30,8 @@ struct TestData{        // Struct for testing the air controller
     uint16 message;
 };
 
-const int iSizeOfAir = 40; // Should be the same as the value of the array below
-struct AirCondition currentAir[40]; //array of structs for calculating mean values 
+const int iSizeOfAir = 10; // Should be the same as the value of the array below
+struct AirCondition currentAir[10]; //array of structs for calculating mean values 
 int iAirTIndex = 0; // Use this index to save AirT measurements into the struct array
 int iRHIndex = 0; // Use this index to save RH measurements into the struct array
 int iCO2Index = 0; // Use this index to save CO2 measurements into the struct array
@@ -43,9 +43,13 @@ QueueHandle_t xQueueAirTestValues;
 
 
  // initializing and creating task and queues
+
+
+
+
 void vAirInit()
 {
-    xTaskCreate(vTaskAirController, "Air controller", 1000, NULL, 2, NULL);
+    xTaskCreate(vTaskAirController, "Air controller", 100, NULL, 2, NULL);
 
     xQueueAirConditions = xQueueCreate(5, sizeof(struct TestData));
     xQueueAirTestValues = xQueueCreate(5, sizeof(struct TestData));
@@ -55,7 +59,9 @@ void vAirInit()
     #endif
 }
     
-    
+
+
+
     
 void vTaskAirController()
 {
@@ -79,14 +85,24 @@ void vTaskAirController()
         CO2Message.message  = 0;
         for(int i = 0; i<= iSizeOfAir; i++)
         {                                               //Calculating meanvalues in the buffers
-            AirTMessage.message = AirTMessage.message + currentAir[i].iAirTemp;
-            RHMessage.message = RHMessage.message + currentAir[i].iRH;
-            CO2Message.message = CO2Message.message + currentAir[i].iCO2;
+            AirTMessage.message = 250;
+            RHMessage.message = 500;
+            CO2Message.message = 24000;
         }
         AirTMessage.message = AirTMessage.message/iSizeOfAir;
         RHMessage.message = RHMessage.message/iSizeOfAir;
         CO2Message.message = CO2Message.message/iSizeOfAir; 
-                                                        //Sending meanval to testtask or data_task
+        SW_UART_TEST_USB_PutString("Air T mean Val:");
+        SW_UART_TEST_USB_PutHexInt(AirTMessage.message);
+        SW_UART_TEST_USB_PutString("\n");
+        SW_UART_TEST_USB_PutString("RH mean Val: ");
+        SW_UART_TEST_USB_PutHexInt(RHMessage.message);
+        SW_UART_TEST_USB_PutString("\n");
+        SW_UART_TEST_USB_PutString("CO2 mean Val: ");
+        SW_UART_TEST_USB_PutHexInt(CO2Message.message);
+        SW_UART_TEST_USB_PutString("\n");
+
+        //Sending meanval to testtask or data_task
         xQueueSendToBack(xQueueControllerData, &AirTMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &RHMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &CO2Message, portMAX_DELAY);

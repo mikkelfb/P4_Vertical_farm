@@ -32,8 +32,8 @@ struct messageForData{
     uint16 message;
 };
 
-const int iSizeOfNutrients = 40; // Should be the same as the value of the array below
-struct Nutrients currentNutrients[40]; // Create struct array with space for 40 measurements
+const int iSizeOfNutrients = 10; // Should be the same as the value of the array below
+struct Nutrients currentNutrients[10]; // Create struct array with space for 40 measurements
 int iPHIndex = 0; // Use this index to save pH measurements into the struct array
 int iECIndex = 0; // Use this index to save EC measurements into the struct array
 int iWaterTempIndex = 0; // Use this index to save water temperature measurements into the struct array
@@ -44,7 +44,7 @@ const float fAcidVoltage = 2032.44; //Voltage at pH 4, should be calibrated
 QueueHandle_t xQueueNutrientPump[3]; // Create a queue for 3 nutrient pumps
 QueueHandle_t xQueuePHValue;        // Create a queue for sending pH values through UART
 QueueHandle_t xQueueWaterTemp;
-QueueHandle_t xQueueECValue;        //Create a queue for sending EC values to the test task.
+// QueueHandle_t xQueueECValue;        //Create a queue for sending EC values to the test task.
 QueueHandle_t xQueueControllerTest; //Create a queue for sending EC values to the test task.
 QueueHandle_t xQueueControllerTesttwo; 
 
@@ -65,7 +65,7 @@ void vNutrientsInit() {
     
     xQueuePHValue = xQueueCreate(1 , sizeof(uint16));
     xQueueWaterTemp = xQueueCreate(1 , sizeof(uint16));
-    xQueueECValue = xQueueCreate(1, sizeof(uint16));
+    // xQueueECValue = xQueueCreate(1, sizeof(uint16));
     xQueueControllerTest = xQueueCreate(1, sizeof(struct messageForData));
     xQueueControllerTesttwo = xQueueCreate(5, sizeof(struct messageForData));
     
@@ -77,10 +77,10 @@ void vNutrientsInit() {
    // xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 1, NULL);
 
     
-   // xTaskCreate(vTaskMeasurePH, "PH", 1000 , NULL , 1 , NULL);
-   // xTaskCreate(vTaskWaterTemp, "VandTemp", 1000, NULL, 1 , NULL);
-    xTaskCreate(vTaskNutrientController, "NutrientController", 1000, NULL, 2, NULL);
-   // xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 1, NULL);
+    xTaskCreate(vTaskMeasurePH, "PH", 100 , NULL , 1 , NULL);
+    xTaskCreate(vTaskWaterTemp, "VandTemp", 100, NULL, 1 , NULL);
+    xTaskCreate(vTaskNutrientController, "NutrientController", 100, NULL, 2, NULL);
+    xTaskCreate(vTaskMeasureEC, "Get EC value", 100, NULL, 1, NULL);
     
     /*Initialize test tasks*/
     #if NUTRIENTSTEST == 1
@@ -141,7 +141,7 @@ void vTaskNutrientPump( void *pvParameters ) {
 
 void vTaskMeasurePH(){
     float fPHVoltage;
-    const TickType_t xDelayms = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 ); // Sets the measurement resolution.
     float fPHValue;
     float fMilliPHValue;
     uint16 iMilliPHValue;
@@ -163,8 +163,12 @@ void vTaskMeasurePH(){
                 iPHIndex = 0;
             }
             bState = 0;
+            
           //  xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             //xQueueSendToBack(xQueuePHValue , &iMilliPHValue , portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
+            SW_UART_TEST_USB_PutString("Recieved PH val: ");
+            SW_UART_TEST_USB_PutHexInt(iMilliPHValue);
+            SW_UART_TEST_USB_PutString("\n");
             vTaskDelay(xDelayms);
         }
     }
@@ -182,7 +186,7 @@ float fCalculatePHValue(float fPHVoltage){
 
 
 void vTaskWaterTemp(){
-    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 1000 ); // Sets the measurement resolution.
     int16 waterTemp; 
     _Bool flagTimer = 1;
     for(;;) 
@@ -191,6 +195,7 @@ void vTaskWaterTemp(){
             flagTimer = 0;
             DS18x8_SendTemperatureRequest(); //  Sending request to sensor, checking bus, and setting DataReady == 1 
         }
+        vTaskDelay(xDelayms);
         if (DS18x8_DataReady) // DS18 completed temperature measurement - begin read data
         {   
             DS18x8_ReadTemperature(); //  Reads temperature from DS scratchpad and stores in DS18x8_Sensor[i]
@@ -202,7 +207,10 @@ void vTaskWaterTemp(){
             {
                 iWaterTempIndex = 0;
             }
-            xQueueSendToBack(xQueueWaterTemp, &waterTemp, portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
+            SW_UART_TEST_USB_PutString("Recieved watertemp: ");
+            SW_UART_TEST_USB_PutHexInt(waterTemp);
+            SW_UART_TEST_USB_PutString("\n");
+            //xQueueSendToBack(xQueueWaterTemp, &waterTemp, portMAX_DELAY); // Send the value to the back of the queue. Used for testing only.
             flagTimer = 1;
             vTaskDelay(xDelayms);
         }    
@@ -215,7 +223,7 @@ void vTaskMeasureEC()
     float fmicroECValue;
     //float fnanoECValue;
     uint16 imicroECValue;
-    const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 300 ); // Sets the measurement resolution.
+    const TickType_t xDelaymsBeforeRead = pdMS_TO_TICKS( 1000 ); // Sets the measurement resolution.
     const TickType_t xDelaymsTimerEvent = pdMS_TO_TICKS( 100 ); // Sets the measurement resolution.    
     for (;;){
 
@@ -257,7 +265,10 @@ void vTaskMeasureEC()
                 iECIndex = 0;
             }        
         }
-        xQueueSendToBack(xQueueECValue, &imicroECValue, portMAX_DELAY);
+        // xQueueSendToBack(xQueueECValue, &imicroECValue, portMAX_DELAY);
+         SW_UART_TEST_USB_PutString("Recieved EC val: ");
+         SW_UART_TEST_USB_PutHexInt(imicroECValue);
+         SW_UART_TEST_USB_PutString("\n");
         vTaskDelay(xDelaymsTimerEvent);
     }
 }
@@ -285,7 +296,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         ECMessage.message =0;
         WTempMessage.message =0;
         
-        /*
+        
         for(int i = 0; i<= iSizeOfNutrients; i++)
         {                                               //Calculationg meanvalues in the buffers
             PHMessage.message = PHMessage.message + currentNutrients[i].iPHvalue;
@@ -344,7 +355,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             //SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
-        */
+        
         BaseType_t xStatus = xQueueReceive(xQueueNutrientsHandler, &NewParam, 0); //We make the task wait for ever untill it recives new Parameter, but we don't now when it does that. Change portMAX_Delay to 0 maybe?
         if(xStatus == pdPASS)
         {                                               // Setting new params for PH or EC

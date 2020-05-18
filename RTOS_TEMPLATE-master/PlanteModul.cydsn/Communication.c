@@ -169,26 +169,10 @@ void vTaskRecieveFromFPGA(){
                 {
                     case '0': //case with request for data
                         
-                        //UART_PutString("Data request case \n"); //USED FOR TEST
+                        SW_UART_TEST_USB_PutString("Data request case \n"); //USED FOR TEST
                         
                         DataRequest = pdTRUE;
-                        
-                        /* USED FOR TEST
-                        if(DataRequest == pdTRUE)
-                        {
-                            UART_PutString("\n");
-                            UART_PutString("Data request to send: TRUE \n");
-                            UART_PutString("\n");        
-                        }    
-                        else{    
-                            UART_PutString("\n");
-                            UART_PutString("Data request to send: FALSE \n");
-                        }*/
-                        
-                        /* only works after merge with new params */
-                        //xQueueSendToBack(xQueueCentralrequest, DataRequest, portMAX_DELAY);
-        
-                    
+            
                         xQueueSendToBack(xQueueCentralrequest, &DataRequest, portMAX_DELAY);
                         
                         DataRequest = pdFALSE;
@@ -197,28 +181,25 @@ void vTaskRecieveFromFPGA(){
                     
                     case '1': //case with new param
                     
-                        //UART_PutString("New param case \n"); //USED FOR TEST
+                        SW_UART_TEST_USB_PutString("New param case \n"); //USED FOR TEST
+                        
                         RecievedParams.cID = UART_GetChar(); 
                         
                         while(i < 2){
-                            RecievedParams.Value[i] = UART_GetChar();
+                            RecievedParams.Value[i] = UART_GetByte();
                             i++;
                         }    
                         i = 0;
-                        
-                        
-                      
-                        
-                        
+ 
                         ParamsForMess.cID = RecievedParams.cID;
                         ParamsForMess.iMessage = vBitShiftForMessage(RecievedParams.Value);
                         
                         // USED FOR TEST
-                        UART_PutString("ID: ");
-                        UART_PutChar(RecievedParams.cID);  
-                        UART_PutString(", value: ");
-                        UART_PutChar(RecievedParams.Value[0]);
-                        UART_PutString("\n");
+                        SW_UART_TEST_USB_PutString("ID: ");
+                        SW_UART_TEST_USB_PutChar(RecievedParams.cID);  
+                        SW_UART_TEST_USB_PutString(", value: ");
+                        SW_UART_TEST_USB_PutChar(RecievedParams.Value[0]);
+                        SW_UART_TEST_USB_PutString("\n");
 
                         xQueueSendToBack(xQueueSendNewParams, &ParamsForMess, portMAX_DELAY);
                         
@@ -323,24 +304,25 @@ void vTaskSendToFPGA()
     
     for(;;)
     {
-        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, bigDelay);
+        vTaskDelay(smallDelay);
+        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, 0);
         if(xStatus == pdTRUE)
         {
-            //UART_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
-            //UART_PutString("ID: "); USED FOR TEST
+            //SW_UART_TEST_USB_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
+            //SW_UART_TEST_USB_PutString("ID: "); USED FOR TEST
             UART_PutChar(SendAlarm.cID);
-            //UART_PutString(", message: "); USED FOR TEST
+            //SW_UART_TEST_USB_PutString(", message: "); USED FOR TEST
             vBitShifterUART(SendAlarm.iMessage);
-            //UART_PutString("\n\n"); USED FOR TEST
+            //SW_UART_TEST_USB_PutString("\n\n"); USED FOR TEST
             xQueueSendToBack(xQueueAlarmFromFPGA, &xStatus, portMAX_DELAY);
         }    
         
         //xQueueReceive(xQueueCentralData, &(SendToCentral), portMAX_DELAY); this queue is for real
         //xQueueReceive(xQueueTestData, &SendToCentral, portMAX_DELAY); //this Queue is for test
         
-        //UART_PutString("Data recieved from data storage: \n"); //USED FOR TEST
+        //SW_UART_TEST_USB_PutString("Data recieved from data storage: \n"); //USED FOR TEST
         
-        yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, smallDelay);
+        yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, 0);
         if (yStatus == pdTRUE)
         {
             vBitShifterUART(SendToCentral.iPHval);
@@ -373,10 +355,10 @@ void vTaskAlarmHandler(){
         //xStatus = xQueueReceive(xQueueTestAlarm, &MessageForFPGA, portMAX_DELAY); USED FOR TEST
         if(xStatus == pdTRUE)
         {
-            //UART_PutString("Alarm Handler: Alarm recieved \n\n"); USED FOR TEST
+            //SW_UART_TEST_USB_PutString("Alarm Handler: Alarm recieved \n\n"); USED FOR TEST
             xQueueSendToBack(xQueueRecievedAlarm, &MessageForFPGA, portMAX_DELAY);
             xQueueReceive(xQueueAlarmACK, &RecievedACK, portMAX_DELAY);
-            //UART_PutString("Alarm Handler: ACK recieved \n\n"); USED FOR TEST
+            //SW_UART_TEST_USB_PutString("Alarm Handler: ACK recieved \n\n"); USED FOR TEST
             //xQueueSendToBack(xQueueAlarmFromFPGA, &RecievedACK, portMAX_DELAY);//only works after merge with alarm task
             
         }    
@@ -406,12 +388,12 @@ void vTaskTestComAlarm(){
     
     for(;;)
     {
-        UART_PutString("Test alarm: \n");
-        UART_PutString("ID: ");
-        UART_PutChar(TestAlarm.cID);
-        UART_PutString(", message: ");
+        SW_UART_TEST_USB_PutString("Test alarm: \n");
+        SW_UART_TEST_USB_PutString("ID: ");
+        SW_UART_TEST_USB_PutChar(TestAlarm.cID);
+        SW_UART_TEST_USB_PutString(", message: ");
         vBitShifterUART(TestAlarm.iMessage);
-        UART_PutString("\n\n");
+        SW_UART_TEST_USB_PutString("\n\n");
         //xQueueSendToBack(xQueueTestAlarm, &TestAlarm, portMAX_DELAY);
         vTaskDelay(xDelayms);
         

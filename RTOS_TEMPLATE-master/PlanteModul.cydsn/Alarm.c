@@ -28,7 +28,7 @@ struct alarmMessage{
 
 void vAlarmInit()
 {
-    xTaskCreate(vTaskAlarmHandling, "Alarm", 1000, NULL, 4, NULL);
+    xTaskCreate(vTaskAlarmHandling, "Alarm", 100, NULL, 4, NULL);
     
     xQueueAlarmFromController   = xQueueCreate(1, sizeof(struct alarmMessage));
     xQueueAlarmForController    = xQueueCreate(1, sizeof(_Bool));

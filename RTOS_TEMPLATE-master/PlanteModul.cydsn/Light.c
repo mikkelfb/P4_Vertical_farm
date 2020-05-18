@@ -98,7 +98,7 @@ void vLightInit(){
     
     /*  Create the task that will control the light sensor. The task is created with
         priority 2. */
-    xTaskCreate(vTaskLightMeasure, "Light", 1000 , NULL , 1 , NULL);
+    xTaskCreate(vTaskLightMeasure, "Light", 100 , NULL , 1 , NULL);
     
     /*  Create the controller task that will recieve external commands 
         and regulate the LED based on the sensor value. 
@@ -117,11 +117,14 @@ void vLightInit(){
 /*  This function turns on the light sensor, periodically reads the sensor 
     and sends the measured value to the created queue for UART */
 void vTaskLightMeasure(){
-    const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
     //*** uint8 LightRead;
     for(;;){
         Light = Pin_LIGHT_in_Read();
         lightForData.message = Light;
+        SW_UART_TEST_USB_PutString("Light: ");
+        SW_UART_TEST_USB_PutHexByte(Light);
+        SW_UART_TEST_USB_PutString("\n");
         xQueueSendToBack(xQueueControllerData, &lightForData, portMAX_DELAY);
         vTaskDelay(xDelayms); 
     }
