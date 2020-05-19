@@ -99,7 +99,7 @@ void vLightInit(){
     
     /*  Create the task that will control the light sensor. The task is created with
         priority 2. */
-    xTaskCreate(vTaskLightMeasure, "Light", 100 , NULL , 1 , NULL);
+    xTaskCreate(vTaskLightMeasure, "Light", 100 , NULL , 3 , NULL);
     
     /*  Create the controller task that will recieve external commands 
         and regulate the LED based on the sensor value. 
@@ -107,7 +107,7 @@ void vLightInit(){
     xTaskCreate(vTaskLightController, "Light controller", 100, NULL, 2, NULL);
     
     /*  Create the LED task to turn on and off the LED */
-    xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 1, NULL);
+    xTaskCreate(vTaskLEDcontrol, "LED controller", 100, NULL, 3, NULL);
     
     /*Initialize test tasks*/
     #if LIGHTTEST == 1
@@ -123,9 +123,9 @@ void vTaskLightMeasure(){
     for(;;){
         Light = Pin_LIGHT_in_Read();
         lightForData.message = Light;
-        SW_UART_TEST_USB_PutString("Light: ");
-        SW_UART_TEST_USB_PutHexByte(Light);
-        SW_UART_TEST_USB_PutString("\n");
+        //SW_UART_TEST_USB_PutString("Light: ");
+        //SW_UART_TEST_USB_PutHexByte(Light);
+        //SW_UART_TEST_USB_PutString("\n");
         xQueueSendToBack(xQueueControllerData, &lightForData, portMAX_DELAY);
         vTaskDelay(xDelayms); 
     }
@@ -136,7 +136,7 @@ void vTaskLightMeasure(){
     turns on/off LED lights and periodically checks if the lights are on */
 void vTaskLightController(){
     lightForData.identifier = 'l';
-    const TickType_t xDelayms = pdMS_TO_TICKS( 10000 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 5000 ); // Sets the measurement resolution.
     const TickType_t xShortDelayms = pdMS_TO_TICKS( 100 );
     _Bool alarmAck;
     _Bool xStatus;

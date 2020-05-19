@@ -71,7 +71,7 @@ void vTaskAirController()
     struct TestData CO2Message;                 //Struct works as buffer for the CO2 values, when calculating mean
     struct TestData TestingParam;                 //Struct for recieving new paramsettings
     TestingParam.message =0;
-    AirTMessage.identifier  = 'a';
+    AirTMessage.identifier  = 't';
     RHMessage.identifier    = 'r';
     CO2Message.identifier   = 'c';
     int RHParameter = 50;                          //Initial paramsettings
@@ -83,7 +83,7 @@ void vTaskAirController()
         AirTMessage.message = 0;
         RHMessage.message   = 0;
         CO2Message.message  = 0;
-        for(int i = 0; i<= iSizeOfAir; i++)
+        for(int i = 0; i< iSizeOfAir; i++)
         {                                               //Calculating meanvalues in the buffers
             AirTMessage.message = 250;
             RHMessage.message = 500;
@@ -92,15 +92,15 @@ void vTaskAirController()
         AirTMessage.message = AirTMessage.message/iSizeOfAir;
         RHMessage.message = RHMessage.message/iSizeOfAir;
         CO2Message.message = CO2Message.message/iSizeOfAir; 
-        SW_UART_TEST_USB_PutString("Air T mean Val:");
-        SW_UART_TEST_USB_PutHexInt(AirTMessage.message);
-        SW_UART_TEST_USB_PutString("\n");
-        SW_UART_TEST_USB_PutString("RH mean Val: ");
-        SW_UART_TEST_USB_PutHexInt(RHMessage.message);
-        SW_UART_TEST_USB_PutString("\n");
-        SW_UART_TEST_USB_PutString("CO2 mean Val: ");
-        SW_UART_TEST_USB_PutHexInt(CO2Message.message);
-        SW_UART_TEST_USB_PutString("\n");
+        //SW_UART_TEST_USB_PutString("Air T mean Val:");
+        //SW_UART_TEST_USB_PutHexInt(AirTMessage.message);
+        //SW_UART_TEST_USB_PutString("\n");
+        //SW_UART_TEST_USB_PutString("RH mean Val: ");
+        //SW_UART_TEST_USB_PutHexInt(RHMessage.message);
+        //SW_UART_TEST_USB_PutString("\n");
+        //SW_UART_TEST_USB_PutString("CO2 mean Val: ");
+        //SW_UART_TEST_USB_PutHexInt(CO2Message.message);
+        //SW_UART_TEST_USB_PutString("\n");
 
         //Sending meanval to testtask or data_task
         xQueueSendToBack(xQueueControllerData, &AirTMessage, portMAX_DELAY);

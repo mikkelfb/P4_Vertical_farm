@@ -68,34 +68,42 @@ void vTaskDataQueueing()                // This task gathers datavalues from con
                 case 'p':   //PHvalue
                     dataForQueue.iPHval     = recievedMessage.message;
                     pReady = 1;
+                    SW_UART_TEST_USB_PutString("PH \n");
                     break;
                 case 'e':   //ECvalue
                     dataForQueue.iECval     = recievedMessage.message;
                     eReady = 1;
+                    SW_UART_TEST_USB_PutString("EC \n");
                     break;
                 case 'w':   //WaterTemp
                     dataForQueue.iWaterT    = recievedMessage.message;
                     wReady = 1;
+                    SW_UART_TEST_USB_PutString("WT \n");
                     break;
                 case 'f':   //WaterFlow
                     dataForQueue.iWaterF    = recievedMessage.message;
                     fReady = 1;
+                    SW_UART_TEST_USB_PutString("WF \n");
                     break;
                 case 'c':   //Co2value
                     dataForQueue.iC02val    = recievedMessage.message;
                     cReady = 1;
+                    SW_UART_TEST_USB_PutString("CO2 \n");
                     break;
                 case 't':   //AirTemp
                     dataForQueue.iTempA     = recievedMessage.message;
                     tReady = 1;
+                    SW_UART_TEST_USB_PutString("AT \n");
                     break;
                 case 'r':   //RelativHum
                     dataForQueue.iRHval     = recievedMessage.message;
                     rReady = 1;
+                    SW_UART_TEST_USB_PutString("RH \n");
                     break;
                 case 'l':   //lightVal
                     dataForQueue.iLightValue= recievedMessage.message;
                     lReady = 1;
+                    SW_UART_TEST_USB_PutString("LV \n");
                     break;
             }
         }
@@ -103,7 +111,7 @@ void vTaskDataQueueing()                // This task gathers datavalues from con
         {
             xQueueSendToBack(xQueueStorageReady, &dataForQueue, portMAX_DELAY);
             pReady = 0, eReady = 0, wReady = 0, fReady = 0, cReady = 0, tReady = 0, rReady = 0, lReady = 0;
-        //    SW_UART_TEST_USB_PutString("AllData Queued");
+            SW_UART_TEST_USB_PutString("AllData Queued");
         //    SW_UART_TEST_USB_PutString("\n");
         }
     }
@@ -135,8 +143,32 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
             if((queueRequest == pdTRUE) && (bufferFull == 0))
             {
                 writePtr ++;
-            //    SW_UART_TEST_USB_PutString("Data in array");
-            //    SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("Data in array");
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("PH: ");
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iPHval);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("EC: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iECval);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("WT: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iWaterT);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("WF: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iWaterF);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("CO2: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iC02val);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("AT: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iTempA);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("RH: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iRHval);
+                SW_UART_TEST_USB_PutString("\n");
+                SW_UART_TEST_USB_PutString("LV: " );
+                SW_UART_TEST_USB_PutHexInt(allDataArray[readPtr].iLightValue);
+                SW_UART_TEST_USB_PutString("\n");
                 bufferEmpty = 0;
                 if(writePtr >= storageSizes)
                 {
@@ -152,8 +184,8 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
         centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, bigDelay);    
         if((centralRequest == pdTRUE) && (bufferEmpty == 0))
         {
-        //    SW_UART_TEST_USB_PutString("Sending data to central");
-        //    SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutString("Sending data to central");
+            //SW_UART_TEST_USB_PutString("\n");
             bufferFull = 0;
             xQueueSendToBack(xQueueCentralData, &allDataArray[readPtr], portMAX_DELAY);
             readPtr ++;
@@ -176,7 +208,7 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
                     /////////////////// Test tasks here /////////////////////////////////////// 
 void vTestStorageInit()
 {
-    xTaskCreate(vTaskTestData, "StorageTest", 1000, NULL, 3, NULL);
+//    xTaskCreate(vTaskTestData, "StorageTest", 1000, NULL, 3, NULL);
 }
 
 void vTaskTestData()

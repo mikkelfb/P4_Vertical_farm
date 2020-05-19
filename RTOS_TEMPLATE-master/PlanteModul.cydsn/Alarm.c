@@ -84,19 +84,19 @@ void vTaskTestAlarm()
         
         if(xStatusFPGA == pdTRUE)
         {
-            SW_UART_TEST_USB_PutString("alarm recieved in FPGA task: ");
-            SW_UART_TEST_USB_PutString("\n");
-            SW_UART_TEST_USB_PutChar(alarmOnFPGA.identifier);
-            SW_UART_TEST_USB_PutString("\n");
-            SW_UART_TEST_USB_PutHexInt(alarmOnFPGA.message);
-            SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutString("alarm recieved in FPGA task: ");
+            //SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutChar(alarmOnFPGA.identifier);
+            //SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutHexInt(alarmOnFPGA.message);
+            //SW_UART_TEST_USB_PutString("\n");
             xQueueSendToBack(xQueueAlarmFromFPGA, &xStatusFPGA, portMAX_DELAY);
             
             xQueueReceive(xQueueAlarmForController, &xStatusController, portMAX_DELAY);
             if(xStatusController == pdTRUE)
             {
-            SW_UART_TEST_USB_PutString("check recieved from alarmtask in controllertask"); 
-            SW_UART_TEST_USB_PutString("\n"); 
+            //SW_UART_TEST_USB_PutString("check recieved from alarmtask in controllertask"); 
+            //SW_UART_TEST_USB_PutString("\n"); 
             }
         }
         vTaskDelay(xDelayms);

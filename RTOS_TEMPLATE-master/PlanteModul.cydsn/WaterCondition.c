@@ -42,7 +42,7 @@ void vInitWaterCondition(){
 
 
 void vTaskFlowWater(){
-    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the amount of measure ments per second
+    const TickType_t xDelayms = pdMS_TO_TICKS( 5000 ); // Sets the amount of measure ments per second
     uint8 flowWaterResult;
     struct waterMessageData waterConValue;
     waterConValue.identifier = 'f';
@@ -57,13 +57,13 @@ void vTaskFlowWater(){
             flowWaterResult = ADC_Flow_GetResult8(); //Get ADC result
             waterConValue.message = flowWaterResult;
             xQueueSendToBack(xQueueControllerData, &waterConValue, portMAX_DELAY);
-            SW_UART_TEST_USB_PutString("waterflow: ");
-            SW_UART_TEST_USB_PutHexByte(flowWaterResult); //test to see what sensor show should be commented out in realese
-            SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutString("waterflow: ");
+            //SW_UART_TEST_USB_PutHexByte(flowWaterResult); //test to see what sensor show should be commented out in realese
+            //SW_UART_TEST_USB_PutString("\n");
             if(flowWaterResult < 50){ //If sensor gives a value under 50 = no water in pipes
                 WaterState = 0; //Set state 0 as th ere is no water in pipes
-                 xQueueSendToBack(xQueueAlarmFromController, &waterConValue, portMAX_DELAY);
-                xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+                //xQueueSendToBack(xQueueAlarmFromController, &waterConValue, portMAX_DELAY);
+                //xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             }
             else{
                 WaterState = 1; //set state 1 as there is water in pipes
