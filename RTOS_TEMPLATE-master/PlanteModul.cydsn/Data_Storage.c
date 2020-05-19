@@ -37,13 +37,13 @@ struct dataMessage{ // struct type for messages sent by the controller tasks
 
 void vInitDataStorage()                 // Initializing and creating tasks for the DataStorage module
 {
-    xQueueControllerData = xQueueCreate(10, sizeof(struct dataMessage));
+    xQueueControllerData = xQueueCreate(20, sizeof(struct dataMessage));
     xQueueCentralData = xQueueCreate(10, sizeof(struct allData));
     xQueueCentralrequest = xQueueCreate(1 , sizeof(uint16));
     xQueueStorageReady = xQueueCreate(10 , sizeof(struct allData));
     
-    xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 3 , NULL);
-    xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 3, NULL);
+    xTaskCreate(vTaskDataStorage, "Data Storage", 1000, NULL , 4 , NULL);
+    xTaskCreate(vTaskDataQueueing, "Data Queueing", 1000, NULL, 4, NULL);
     
     #if Data_Storage_Test == 1
         vTestStorageInit();
@@ -140,7 +140,7 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
         if(bufferFull == 0)
         {// task takes allData struct from dataQueueing task
             queueRequest = xQueueReceive(xQueueStorageReady, &allDataArray[writePtr], smallDelay);
-            if((queueRequest == pdTRUE) && (bufferFull == 0))
+            if((queueRequest == pdPASS) && (bufferFull == 0))
             {
                 writePtr ++;
                 SW_UART_TEST_USB_PutString("Data in array");
@@ -182,10 +182,10 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
         }
                                                 // task checks for request from central and sends allData struct if true
         centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, bigDelay);    
-        if((centralRequest == pdTRUE) && (bufferEmpty == 0))
+        if((centralRequest == pdPASS) && (bufferEmpty == 0))
         {
-            //SW_UART_TEST_USB_PutString("Sending data to central");
-            //SW_UART_TEST_USB_PutString("\n");
+            SW_UART_TEST_USB_PutString("Sending data to central");
+            SW_UART_TEST_USB_PutString("\n");
             bufferFull = 0;
             xQueueSendToBack(xQueueCentralData, &allDataArray[readPtr], portMAX_DELAY);
             readPtr ++;

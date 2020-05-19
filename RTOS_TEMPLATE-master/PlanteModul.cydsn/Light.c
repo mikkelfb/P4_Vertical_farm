@@ -118,7 +118,7 @@ void vLightInit(){
 /*  This function turns on the light sensor, periodically reads the sensor 
     and sends the measured value to the created queue for UART */
 void vTaskLightMeasure(){
-    const TickType_t xDelayms = pdMS_TO_TICKS( 2000 ); // Sets the measurement resolution.
+    const TickType_t xDelayms = pdMS_TO_TICKS( 5000 ); // Sets the measurement resolution.
     //*** uint8 LightRead;
     for(;;){
         Light = Pin_LIGHT_in_Read();

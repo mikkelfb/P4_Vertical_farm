@@ -107,6 +107,8 @@ void vTaskAirController()
         xQueueSendToBack(xQueueControllerData, &RHMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &CO2Message, portMAX_DELAY);
 
+        
+/*
         if(AirTMessage.message > 40 || AirTMessage.message < 5)      //Alarm for air temp
         {
             xQueueSendToBack(xQueueAlarmFromController, &AirTMessage, portMAX_DELAY);
@@ -141,6 +143,7 @@ void vTaskAirController()
             //SW_UART_TEST_USB_PutString("ALARM CO2");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
+*/
         BaseType_t xStatus = xQueueReceive(xQueueAirTestValues, &TestingParam, 0);
         if(xStatus == pdPASS)
         {                                               // Setting new params for RH
