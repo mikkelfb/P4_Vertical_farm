@@ -72,9 +72,9 @@ void vNutrientsInit() {
     
     /*  Create the task that will control one nutrient pump. The task is created with
         priority 1. */
-   // xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 1, NULL);
-   // xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 1, NULL);
-   // xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 2, 1, NULL);
+    xTaskCreate(vTaskNutrientPump, "Pump 1", 100, (void*)pcTextForNutrientPump, 1, NULL);
+    xTaskCreate(vTaskNutrientPump, "Pump 2", 100, (void*)pcTextForNutrientPump + 1, 1, NULL);
+    xTaskCreate(vTaskNutrientPump, "Pump 3", 100, (void*)pcTextForNutrientPump + 2, 1, NULL);
 
     
     xTaskCreate(vTaskMeasurePH, "PH", 100 , NULL , 3 , NULL);
@@ -106,8 +106,10 @@ void vTaskNutrientPump( void *pvParameters ) {
                 if (xStatus == pdPASS) {
                     if (bState) {
                         PWM_PERISTALTISK_1_WriteCompare1(MAX_SPEED); // Start running the pump.
+                        SW_UART_TEST_USB_PutString("Pump 1 running \n");
                     } else {
                         PWM_PERISTALTISK_1_WriteCompare1(STOP_SPEED); // Stop running the pump.
+                        SW_UART_TEST_USB_PutString("Pump 1 stopped \n");
                     }
                 }
                 break;
@@ -118,8 +120,10 @@ void vTaskNutrientPump( void *pvParameters ) {
                 if (xStatus == pdPASS) {
                     if (bState) {
                         PWM_PERISTALTISK_1_WriteCompare2(MAX_SPEED);
+                        SW_UART_TEST_USB_PutString("Pump 2 running \n");
                     } else {
                         PWM_PERISTALTISK_1_WriteCompare2(STOP_SPEED);
+                        SW_UART_TEST_USB_PutString("Pump 2 stopped \n");
                     }
                 }
                 break;
@@ -269,9 +273,9 @@ void vTaskMeasureEC()
             }        
         }
         // xQueueSendToBack(xQueueECValue, &imicroECValue, portMAX_DELAY);
-         //SW_UART_TEST_USB_PutString("Recieved EC val: ");
-         //SW_UART_TEST_USB_PutHexInt(imicroECValue);
-         //SW_UART_TEST_USB_PutString("\n");
+         SW_UART_TEST_USB_PutString("Recieved EC val: ");
+         SW_UART_TEST_USB_PutHexInt(imicroECValue);
+         SW_UART_TEST_USB_PutString("\n");
         vTaskDelay(xDelaymsTimerEvent);
     }
 }
@@ -279,7 +283,7 @@ void vTaskMeasureEC()
 void vTaskNutrientController()                          //Controlunit for nutrinets responsible for calculating mean values, sending data, receiving new parameters.
 {
     const TickType_t xDelayms = pdMS_TO_TICKS(5000);
-    const TickType_t longDelay = pdMS_TO_TICKS(12000);
+    const TickType_t longDelay = pdMS_TO_TICKS(1000);
     struct messageForData PHMessage;                    //Struct works as buffer for the PH values, when calcing mean and sending to data_task
     struct messageForData ECMessage;                    //Struct works as buffer for the EC values, when calcing mean and sending to data_task
     struct messageForData WTempMessage;                 //Struct works as buffer for the WTemp values, when sending to data_task
@@ -288,8 +292,8 @@ void vTaskNutrientController()                          //Controlunit for nutrin
     PHMessage.identifier    = 'p';
     ECMessage.identifier    = 'e';
     WTempMessage.identifier = 'w';
-    uint16_t iPHParameter = 7000;                          //Initial paramsettings
-    uint16_t iECParameter = 2500;
+    uint16_t iPHParameter = 2700;                          //Initial paramsettings
+    uint16_t iECParameter = 1300;
     _Bool bstate;
     _Bool alarmAck;
     vTaskDelay(longDelay);  
@@ -322,7 +326,7 @@ void vTaskNutrientController()                          //Controlunit for nutrin
         xQueueSendToBack(xQueueControllerData, &ECMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &WTempMessage, portMAX_DELAY);
 
-        /*
+        
         if(PHMessage.message < (iPHParameter*0.9))      //Controlling nutrientpumps
         {
             bstate =1;
@@ -333,13 +337,13 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             bstate =0;
             xQueueSendToBack(xQueueNutrientPump[2], &bstate, portMAX_DELAY); 
         }
-        if(PHMessage.message < (iPHParameter*0.6) || PHMessage.message > (iPHParameter*1.4))
-        {
-            xQueueSendToBack(xQueueAlarmFromController, &PHMessage, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
-            //SW_UART_TEST_USB_PutString("ALARM PH");     // Alarm statement, TBD
-            //SW_UART_TEST_USB_PutString("\n");
-        } 
+ //       if(PHMessage.message < (iPHParameter*0.5) || PHMessage.message > (iPHParameter*1.5))
+ //       {
+ //           xQueueSendToBack(xQueueAlarmFromController, &PHMessage, portMAX_DELAY);
+ //           xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+ //           SW_UART_TEST_USB_PutString("ALARM PH");     // Alarm statement, TBD
+ //           SW_UART_TEST_USB_PutString("\n");
+ //       } 
         if(ECMessage.message < (iECParameter*0.8))      //Controlling nutrientpumps
         {
             bstate =1;
@@ -352,22 +356,22 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             xQueueSendToBack(xQueueNutrientPump[0], &bstate, portMAX_DELAY); 
             xQueueSendToBack(xQueueNutrientPump[1], &bstate, portMAX_DELAY); 
         }
-        if(ECMessage.message < (iECParameter*0.6) || ECMessage.message > (iECParameter*1.4))
-        {
-            xQueueSendToBack(xQueueAlarmFromController, &ECMessage, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+//        if(ECMessage.message < (iECParameter*0.6) || ECMessage.message > (iECParameter*1.4))
+//        {
+//            xQueueSendToBack(xQueueAlarmFromController, &ECMessage, portMAX_DELAY);
+//            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM EC");     // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
-        }       
-        if(WTempMessage.message > 35 || WTempMessage.message < 5)
-        {
-            xQueueSendToBack(xQueueAlarmFromController, &WTempMessage, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
-            SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
-            SW_UART_TEST_USB_PutString("\n");
-            SW_UART_TEST_USB_PutHexInt(WTempMessage.message);
-        }
-        */
+//        }       
+//        if(WTempMessage.message > 45 || WTempMessage.message < 5)
+//        {
+       //     xQueueSendToBack(xQueueAlarmFromController, &WTempMessage, portMAX_DELAY);
+       //     xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+        //    SW_UART_TEST_USB_PutString("ALARM WTemp");  // Alarm statement, TBD
+        //    SW_UART_TEST_USB_PutString("\n");
+        //    SW_UART_TEST_USB_PutHexInt(WTempMessage.message);
+//        }
+     
         BaseType_t xStatus = xQueueReceive(xQueueNutrientsHandler, &NewParam, 0); //We make the task wait for ever untill it recives new Parameter, but we don't now when it does that. Change portMAX_Delay to 0 maybe?
         if(xStatus == pdPASS)
         {                                               // Setting new params for PH or EC
@@ -375,9 +379,9 @@ void vTaskNutrientController()                          //Controlunit for nutrin
             {
                 case 'p':
                     iPHParameter = NewParam.message;
-                /*SW_UART_TEST_USB_PutString("new PH value: ");
-                SW_UART_TEST_USB_PutHexInt(iPHParameter);
-                SW_UART_TEST_USB_PutString("\n");*/
+                //SW_UART_TEST_USB_PutString("new PH value: ");
+                //SW_UART_TEST_USB_PutHexInt(iPHParameter);
+                //SW_UART_TEST_USB_PutString("\n");
                     break;
                 case 'e':
                     iECParameter = NewParam.message;

@@ -101,18 +101,17 @@ void vTaskAirController()
         //SW_UART_TEST_USB_PutString("CO2 mean Val: ");
         //SW_UART_TEST_USB_PutHexInt(CO2Message.message);
         //SW_UART_TEST_USB_PutString("\n");
-
         //Sending meanval to testtask or data_task
         xQueueSendToBack(xQueueControllerData, &AirTMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &RHMessage, portMAX_DELAY);
         xQueueSendToBack(xQueueControllerData, &CO2Message, portMAX_DELAY);
 
         
-/*
+
         if(AirTMessage.message > 40 || AirTMessage.message < 5)      //Alarm for air temp
         {
-            xQueueSendToBack(xQueueAlarmFromController, &AirTMessage, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //xQueueSendToBack(xQueueAlarmFromController, &AirTMessage, portMAX_DELAY);
+            //xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM AirTemp");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
@@ -131,19 +130,19 @@ void vTaskAirController()
         }
         if(RHMessage.message < (RHParameter*0.5) || RHMessage.message > (RHParameter*1.5))
         {
-            xQueueSendToBack(xQueueAlarmFromController, &RHMessage, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //xQueueSendToBack(xQueueAlarmFromController, &RHMessage, portMAX_DELAY);
+            //xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM RH");     // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }       
-        if(CO2Message.message > 2000 || CO2Message.message < 1000)
+        if(CO2Message.message > 3000 || CO2Message.message < 1000)
         {
-             xQueueSendToBack(xQueueAlarmFromController, &CO2Message, portMAX_DELAY);
-            xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+            //xQueueSendToBack(xQueueAlarmFromController, &CO2Message, portMAX_DELAY);
+            //xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
             //SW_UART_TEST_USB_PutString("ALARM CO2");  // Alarm statement, TBD
             //SW_UART_TEST_USB_PutString("\n");
         }
-*/
+
         BaseType_t xStatus = xQueueReceive(xQueueAirTestValues, &TestingParam, 0);
         if(xStatus == pdPASS)
         {                                               // Setting new params for RH

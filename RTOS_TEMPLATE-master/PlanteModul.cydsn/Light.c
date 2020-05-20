@@ -194,8 +194,8 @@ void vTaskLightController(){
                 //SW_UART_TEST_USB_PutString("Enough light: TRUE \n \n"); // Used for test
             }
             else if(Light == 1){
-                xQueueSendToBack(xQueueAlarmFromController, &lightForData, portMAX_DELAY);
-                xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
+               // xQueueSendToBack(xQueueAlarmFromController, &lightForData, portMAX_DELAY);
+               // xQueueReceive(xQueueAlarmForController, &alarmAck, portMAX_DELAY);
                 // The LED are not on, all is not good, send an alarm
                 //SW_UART_TEST_USB_PutString("Enough light: FALSE \n \n"); // Used for test
                 bAlarmState = 1;

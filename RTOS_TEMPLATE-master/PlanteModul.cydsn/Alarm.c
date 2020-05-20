@@ -28,7 +28,7 @@ struct alarmMessage{
 
 void vAlarmInit()
 {
-    xTaskCreate(vTaskAlarmHandling, "Alarm", 100, NULL, 4, NULL);
+    xTaskCreate(vTaskAlarmHandling, "Alarm", 100, NULL, 2, NULL);
     
     xQueueAlarmFromController   = xQueueCreate(1, sizeof(struct alarmMessage));
     xQueueAlarmForController    = xQueueCreate(1, sizeof(_Bool));
@@ -49,8 +49,8 @@ void vTaskAlarmHandling()
     for(;;)
     {
         xStatus = xQueueReceive(xQueueAlarmFromController, &messForFPGA, portMAX_DELAY);
-        if (xStatus == pdTRUE)
-        {
+        if (xStatus == pdPASS)
+        {   recievedMess = 1;
             xQueueSendToBack(xQueueAlarmForController, &recievedMess, portMAX_DELAY);
             xQueueSendToBack(xQueueAlarmForFPGA, &messForFPGA, portMAX_DELAY);
             xQueueReceive(xQueueAlarmFromFPGA, &recievedMess, portMAX_DELAY);

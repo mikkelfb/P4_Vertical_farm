@@ -78,64 +78,71 @@ void vNewparamInit(){
 
 /* This task reads the incoming new params and determines which control task the new params should be sent to */
 void vTaskNewParam(){
+    const TickType_t xDelayms = pdMS_TO_TICKS( 500 );
     struct NutrientsPackage input;
     struct LightPackage Light;
     struct NutrientsPackage Nutrients;
+    _Bool xStatus = 0;
     
     for(;;)
     {
-        xQueueReceive(xQueueSendNewParams, &input, portMAX_DELAY);
+        vTaskDelay(xDelayms);
+        xStatus = xQueueReceive(xQueueSendNewParams, &input, 0);
     
-        switch(input.cID)
+        if (xStatus == pdPASS)
         {
-            // If EC value
-            case 'e':
-                
-                Nutrients.cID = input.cID;
-                Nutrients.iNewValue = input.iNewValue;
-                
-                /*
-                SW_UART_TEST_USB_PutString("\n ID sent: ");
-                SW_UART_TEST_USB_PutChar(Nutrients.cID);
-                SW_UART_TEST_USB_PutString("\n New EC value: ");
-                SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
-                SW_UART_TEST_USB_PutString("\n ");
-                */    
-                xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
-           
-                break;
-        
-            // If light cycle value
-            case 't':
-                
-                Light.uStartTime = (input.iNewValue >> 8);
-                Light.uStopTime  = input.iNewValue;
-                
-                SW_UART_TEST_USB_PutString("\n New start time: ");
-                SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
-                SW_UART_TEST_USB_PutString("\n New stop time: ");
-                SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
-                SW_UART_TEST_USB_PutString("\n ");
-                
-                xQueueSendToBack(xQueueLightHandler, &Light, portMAX_DELAY);
-                break;
-                
-            // If pH value
-            case 'p':
-                
-                Nutrients.cID = input.cID;
-                Nutrients.iNewValue = input.iNewValue;
-                
-                SW_UART_TEST_USB_PutString("\n ID sent: ");
-                SW_UART_TEST_USB_PutChar(Nutrients.cID);
-                SW_UART_TEST_USB_PutString("\n New pH value: ");
-                SW_UART_TEST_USB_PutHexInt(input.iNewValue);
-                SW_UART_TEST_USB_PutString("\n ");
-                             
-                xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
-           
-                break;
-        
+            switch(input.cID)
+            {
+                // If EC value
+                case 'e':
+                    
+                    Nutrients.cID = input.cID;
+                    Nutrients.iNewValue = input.iNewValue;
+                    
+                    /*
+                    SW_UART_TEST_USB_PutString("\n ID sent: ");
+                    SW_UART_TEST_USB_PutChar(Nutrients.cID);
+                    SW_UART_TEST_USB_PutString("\n New EC value: ");
+                    SW_UART_TEST_USB_PutHexByte(Nutrients.fNewValue);
+                    SW_UART_TEST_USB_PutString("\n ");
+                    */    
+                    xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
+               
+                    break;
+            
+                // If light cycle value
+                case 't':
+                    
+                    Light.uStartTime = (input.iNewValue >> 8);
+                    Light.uStopTime  = input.iNewValue;
+                    
+                    SW_UART_TEST_USB_PutString("\n New start time: ");
+                    SW_UART_TEST_USB_PutHexByte(Light.uStartTime);
+                    SW_UART_TEST_USB_PutString("\n New stop time: ");
+                    SW_UART_TEST_USB_PutHexByte(Light.uStopTime);
+                    SW_UART_TEST_USB_PutString("\n ");
+                    
+                    xQueueSendToBack(xQueueLightHandler, &Light, portMAX_DELAY);
+                    break;
+                    
+                // If pH value
+                case 'p':
+                    
+                    Nutrients.cID = input.cID;
+                    Nutrients.iNewValue = input.iNewValue;
+                    
+    /*                
+                    SW_UART_TEST_USB_PutString("\n ID sent: ");
+                    SW_UART_TEST_USB_PutChar(Nutrients.cID);
+                    SW_UART_TEST_USB_PutString("\n New pH value: ");
+                    SW_UART_TEST_USB_PutHexInt(input.iNewValue);
+                    SW_UART_TEST_USB_PutString("\n ");
+    */             
+                    xQueueSendToBack(xQueueNutrientsHandler, &Nutrients, portMAX_DELAY);
+               
+                    break;
+            
+            }
         }
         
     }

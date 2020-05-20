@@ -104,7 +104,7 @@ void vTaskComsInit(){
     //xQueueTestData = xQueueCreate(20, sizeof( struct Data ));
     //xQueueTestAlarm = xQueueCreate(1, sizeof(struct AlarmMessage));
     
-    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 4, NULL);
+    xTaskCreate(vTaskRecieveFromFPGA, "FPGA recieve", 100, NULL, 3, NULL);
 //    xTaskCreate(vTaskSendDataRequest, "Send data request", 100, NULL, 2, NULL);
 //    xTaskCreate(vTaskSendNewParams, "Send new params", 100, NULL, 2, NULL);
     xTaskCreate(vTaskSendToFPGA, "Send message to FPGA", 100, NULL, 3, NULL);
@@ -148,8 +148,8 @@ void vTaskRecieveFromFPGA(){
     for(;;){
         
         vTaskDelay(xDelayms);
+/*
         xStatus = xQueueReceive(xQueueWaitForACK, &SentAlarm, 0); 
-        
         if(xStatus == pdTRUE)
         {
             // UART_PutString("Recieve from FPGA: waiting for alarm ACK \n\n"); USED FOR TEST
@@ -162,7 +162,7 @@ void vTaskRecieveFromFPGA(){
             //UART_PutString("\n\n"); USED FOR TEST
             xQueueSendToBack(xQueueAlarmACK, &RecievedACK, portMAX_DELAY);
         }    
-        
+*/        
         if(UART_GetRxBufferSize() != 0) //returns size of buffer RX FIFO
             {
                 cRecievedData = UART_GetByte(); //recieve the indentifier
@@ -189,30 +189,23 @@ void vTaskRecieveFromFPGA(){
                         
 
                         RecievedParams.cID = UART_GetChar(); 
-                        //SW_UART_TEST_USB_PutHexByte(RecievedParams.cID);
-                        while(i < 2){
+                        while(i < 2)
+                        {
                             RecievedParams.Value[i] = UART_GetByte();
-
-
-                            i++;
-                             
+                            i++;      
                         }    
                         i = 0;
 
- 
-
                         ParamsForMess.cID = RecievedParams.cID;
                         ParamsForMess.iMessage = vBitShiftForMessage(RecievedParams.Value);
-                        //SW_UART_TEST_USB_PutHexInt(ParamsForMess.iMessage);
                         
                         // USED FOR TEST
 
                         SW_UART_TEST_USB_PutString("ID: ");
                         SW_UART_TEST_USB_PutChar(RecievedParams.cID);  
                         SW_UART_TEST_USB_PutString(", value: ");
-                        SW_UART_TEST_USB_PutChar(RecievedParams.Value[0]);
+                        SW_UART_TEST_USB_PutHexInt(ParamsForMess.iMessage);
                         SW_UART_TEST_USB_PutString("\n");
-
 
                         xQueueSendToBack(xQueueSendNewParams, &ParamsForMess, portMAX_DELAY);
                         
@@ -318,15 +311,16 @@ void vTaskSendToFPGA()
     for(;;)
     {
         vTaskDelay(smallDelay);
-        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, 0);
-        if(xStatus == pdTRUE)
+        xStatus = xQueueReceive(xQueueAlarmForFPGA, &SendAlarm, smallDelay);
+        if(xStatus == pdPASS)
         {
-            //SW_UART_TEST_USB_PutString("Send to FPGA: Alarm recieved \n"); USED FOR TEST
-            //SW_UART_TEST_USB_PutString("ID: "); USED FOR TEST
+            SW_UART_TEST_USB_PutString("Send to FPGA: Alarm recieved \n"); 
+            SW_UART_TEST_USB_PutString("ID: ");
+            SW_UART_TEST_USB_PutChar(SendAlarm.cID);
             UART_PutChar(SendAlarm.cID);
-            //SW_UART_TEST_USB_PutString(", message: "); USED FOR TEST
+            SW_UART_TEST_USB_PutString(", message: "); 
             vBitShifterUART(SendAlarm.iMessage);
-            //SW_UART_TEST_USB_PutString("\n\n"); USED FOR TEST
+            SW_UART_TEST_USB_PutHexInt(SendAlarm.iMessage); 
             xQueueSendToBack(xQueueAlarmFromFPGA, &xStatus, portMAX_DELAY);
         }    
         
@@ -335,8 +329,8 @@ void vTaskSendToFPGA()
         
         //SW_UART_TEST_USB_PutString("Data recieved from data storage: \n"); //USED FOR TEST
         
-        yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, 0);
-        if (yStatus == pdTRUE)
+        yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, smallDelay);
+        if (yStatus == pdPASS)
         {
             vBitShifterUART(SendToCentral.iPHval);
             vBitShifterUART(SendToCentral.iECval);
