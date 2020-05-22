@@ -186,8 +186,8 @@ void vTaskDataStorage()                         // This task works as a FIFO buf
         centralRequest = xQueueReceive(xQueueCentralrequest, &queueStatusCentral, bigDelay);    
         if((centralRequest == pdPASS) && (bufferEmpty == 0))
         {
-            SW_UART_TEST_USB_PutString("Sending data to central");
-            SW_UART_TEST_USB_PutString("\n");
+            //SW_UART_TEST_USB_PutString("Sending data to central");
+            //SW_UART_TEST_USB_PutString("\n");
             bufferFull = 0;
             xQueueSendToBack(xQueueCentralData, &allDataArray[readPtr], portMAX_DELAY);
             readPtr ++;

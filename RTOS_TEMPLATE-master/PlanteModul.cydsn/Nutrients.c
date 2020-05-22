@@ -157,7 +157,7 @@ void vTaskMeasurePH(){
             bState = 1;
         }
         else if( (ADC_PH_IsEndConversion(ADC_PH_RETURN_STATUS) != 0) && (bState == 1) ){
-            fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 3000.0; // Calculate voltage from measured value
+            fPHVoltage = ((ADC_PH_GetResult16()) / 4096.0) * 2000.0; // Calculate voltage from measured value
             fPHValue = fCalculatePHValue(fPHVoltage); // Convert the voltage to a pH value
             fMilliPHValue = fPHValue * 1000; // Convert to milli pH value. This makes sure that we can see float values. 
             iMilliPHValue = (uint16) fMilliPHValue; // Convert to a sendable message for UART (from float to int).
@@ -273,9 +273,9 @@ void vTaskMeasureEC()
             }        
         }
         // xQueueSendToBack(xQueueECValue, &imicroECValue, portMAX_DELAY);
-         SW_UART_TEST_USB_PutString("Recieved EC val: ");
-         SW_UART_TEST_USB_PutHexInt(imicroECValue);
-         SW_UART_TEST_USB_PutString("\n");
+         //SW_UART_TEST_USB_PutString("Recieved EC val: ");
+         //SW_UART_TEST_USB_PutHexInt(imicroECValue);
+         //SW_UART_TEST_USB_PutString("\n");
         vTaskDelay(xDelaymsTimerEvent);
     }
 }

@@ -69,7 +69,6 @@ void vBitShifterUART(uint16 command){
 
     buf[0] = (command >> 8);
     buf[1] = command & 0xff;
-    
     UART_PutChar(buf[0]);
     UART_PutChar(buf[1]);    
 } 
@@ -166,10 +165,10 @@ void vTaskRecieveFromFPGA(){
         if(UART_GetRxBufferSize() != 0) //returns size of buffer RX FIFO
             {
                 cRecievedData = UART_GetByte(); //recieve the indentifier
-                                
+                SW_UART_TEST_USB_PutString("Data  modtaget");
                 switch(cRecievedData)
                 {
-                    case '0': //case with request for data
+                    case 0: //case with request for data
                         
                         SW_UART_TEST_USB_PutString("Data request case \n"); //USED FOR TEST
                         
@@ -332,6 +331,7 @@ void vTaskSendToFPGA()
         yStatus = xQueueReceive(xQueueCentralData, &SendToCentral, smallDelay);
         if (yStatus == pdPASS)
         {
+            SW_UART_TEST_USB_PutString("Sending to FPGA\n");
             vBitShifterUART(SendToCentral.iPHval);
             vBitShifterUART(SendToCentral.iECval);
             vBitShifterUART(SendToCentral.iWaterT);
@@ -340,6 +340,22 @@ void vTaskSendToFPGA()
             vBitShifterUART(SendToCentral.iTempA);
             vBitShifterUART(SendToCentral.iRHval);
             vBitShifterUART(SendToCentral.iLightValue); 
+            SW_UART_TEST_USB_PutString("\n PH: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iPHval);
+            SW_UART_TEST_USB_PutString("\n EC: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iECval);
+            SW_UART_TEST_USB_PutString("\n WT: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iWaterT);
+            SW_UART_TEST_USB_PutString("\n WF: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iWaterF);
+            SW_UART_TEST_USB_PutString("\n CO2: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iC02val);
+            SW_UART_TEST_USB_PutString("\n TA: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iTempA);
+            SW_UART_TEST_USB_PutString("\n RH: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iRHval);
+            SW_UART_TEST_USB_PutString("\n LV: ");
+            SW_UART_TEST_USB_PutHexInt(SendToCentral.iLightValue);
         }
     }       
 } 
